@@ -2446,6 +2446,25 @@ Sep: [
 </SCRIPT>
 </TBODY>
 </TABLE>
+<script>
+document.getElementById("spending-form").addEventListener("submit", function(e){
+  e.preventDefault(); // stop page reload
+  const item = document.getElementById("item").value;
+  const amount = document.getElementById("amount").value;
+  const date = document.getElementById("date").value;
+
+  // find your table (replace "myTable" with its actual ID)
+  const table = document.querySelector("table");
+
+  const row = table.insertRow(-1);
+  row.insertCell(0).innerText = item;
+  row.insertCell(1).innerText = amount;
+  row.insertCell(2).innerText = date;
+
+  // clear fields
+  e.target.reset();
+});
+</script>
 <TABLE width="100%">
  					<TBODY>
 	<TR align="Center" bgcolor="gray" height="2%">
