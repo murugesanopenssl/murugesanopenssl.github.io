@@ -36,18 +36,17 @@
 <div id="tableContainer"></div>
 
 <script type="module">
-function formatDate(dateStr) {
-  // Accepts both "YYYY-MM-DD" and "DD-MMM-YYYY" formats
-  try {
-    const d = new Date(dateStr);
-    const day = String(d.getDate()).padStart(2, "0");
-    const month = d.toLocaleString("en-US", { month: "short" });
-    const year = d.getFullYear();
-    return `${day}-${month}-${year}`;
-  } catch (e) {
-    return dateStr;
-  }
-}
+                        function formatDate(dateStr)
+                        {
+                                const date = new Date(dateStr.split("-").reverse().join("-"));
+                                const weekday = date.toLocaleString('en-GB', { weekday: 'short' });
+                                const day = date.toLocaleString('en-GB', { day: '2-digit' });
+                                const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                                const month = months[date.getMonth()];
+                                const year = date.getFullYear();
+                                return `${weekday} ${day}-${month}-${year}`;
+                        }
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getDatabase, ref, set, get, child, push } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
