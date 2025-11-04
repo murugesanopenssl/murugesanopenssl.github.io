@@ -247,7 +247,7 @@ monthSelect.addEventListener('change', async ()=>{
   const snap = await get(child(ref(db), '/spendingData'));
   const dataAll = snap.exists() ? snap.val() : baseData;
   renderForSelected(dataAll);
-);
+});
 
 // initialize
 initAndLoad();
