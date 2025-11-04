@@ -29,9 +29,7 @@
   <input type="number" id="amountInput" placeholder="Amount" step="0.01" />
 
   <button id="addBtn">Add Entry</button>
-  <!--
   <button id="saveDefaultBtn">Save default array to DB</button>
-  -->
 </div>
 
 <div id="message" aria-live="polite"></div>
@@ -233,7 +231,6 @@ async function addEntry(){
   message.textContent = "Saved entry.";
 }
 
-/*
 // button handlers
 addBtn.addEventListener('click', addEntry);
 saveDefaultBtn.addEventListener('click', async ()=>{
@@ -244,7 +241,6 @@ saveDefaultBtn.addEventListener('click', async ()=>{
   populateMonthSelect(Object.keys(dataAll));
   renderForSelected(dataAll);
 });
-*/
 
 // when user changes month selection
 monthSelect.addEventListener('change', async ()=>{
