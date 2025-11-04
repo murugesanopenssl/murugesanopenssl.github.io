@@ -7,10 +7,10 @@
 		<TITLE>N.Murugesan GDP</TITLE>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-<form name="spending-form" netlify>
-  <label>Item: <input type="text" name="item" required></label><br>
-  <label>Amount: <input type="number" name="amount" required></label><br>
-  <label>Date: <input type="date" name="date" required></label><br>
+<form id="spending-form" name="spending-form" netlify>
+  <label>Item: <input type="text" id="item" name="item" required></label><br>
+  <label>Amount: <input type="number" id="amount" name="amount" required></label><br>
+  <label>Date: <input type="date" id="date" name="date" required></label><br>
   <button type="submit">Save</button>
 </form>
 <NOSCRIPT>
@@ -2453,15 +2453,12 @@ document.getElementById("spending-form").addEventListener("submit", function(e){
   const amount = document.getElementById("amount").value;
   const date = document.getElementById("date").value;
 
-  // find your table (replace "myTable" with its actual ID)
-  const table = document.querySelector("table");
-
+  const table = document.querySelector("table"); // your main table
   const row = table.insertRow(-1);
   row.insertCell(0).innerText = item;
   row.insertCell(1).innerText = amount;
   row.insertCell(2).innerText = date;
 
-  // clear fields
   e.target.reset();
 });
 </script>
