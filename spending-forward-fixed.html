@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Spending Tracker - Firebase</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 18px; }
+  h1 { margin-bottom: 6px; }
+  .controls { margin: 8px 0; }
+  input, select, button { margin-right: 6px; padding: 6px 8px; }
+  table { width:100%; border-collapse:collapse; margin-top:12px; }
+  th, td { border:1px solid #ccc; padding:6px; text-align:left; }
+  th { background:#f3f3f3; }
+</style>
+</head>
+<body>
+<h1>Spending Tracker (Firebase)</h1>
+<p>Default view shows <strong>Nov-2025</strong> if available. Use Add Entry to add data.</p>
+
+<div class="controls">
+  <label for="monthSelect">View:</label>
+  <select id="monthSelect"></select>
+
+  <label for="dateInput">Date:</label>
+  <input type="date" id="dateInput" />
+
+  <input type="text" id="itemInput" placeholder="Item (e.g., Snacks)" />
+  <input type="number" id="amountInput" placeholder="Amount" step="0.01" />
+
+  <button id="addBtn">Add Entry</button>
+  <button id="saveDefaultBtn">Save default array to DB</button>
+</div>
+
+<div id="message" aria-live="polite"></div>
+<div id="tableContainer"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getDatabase, ref, set, get, child, push } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+// Firebase config (from user)
+const firebaseConfig = {
+  apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+  authDomain: "openmurugesan.firebaseapp.com",
+  databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "openmurugesan",
+  storageBucket: "openmurugesan.firebasestorage.app",
+  messagingSenderId: "307675598593",
+  appId: "1:307675598593:web:4af163460ce2c3bc719500",
+  measurementId: "G-0MFK92PQMP"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const rootRef = ref(db, "spendingData");
+
+// ----- Hardcoded fallback array (base version) -----
+const baseRaw = {
+  Nov: [
+    [ "03-Nov-2025","Snacks",30.00,"Petrol",210.00 ],
+    [ "02-Nov-2025","Rice",700.00,"BananaLeaf",10.00,"Veg",70.00 ],
+    [ "01-Nov-2025","ToBng",69.00,"Veg",107.00,"Rice",360.00,"Lunch",55.00,"Snacks",30.00 ]
+  ]
+};
+
+// helper: convert "03-Nov-2025" -> "Nov-2025"
+function monthKeyFromDateString(dstr){
+  try{
+    const parts = dstr.split("-");
+    if(parts.length >= 3){
+      return parts[1] + "-" + parts[2];
+    }
+    const d = new Date(dstr);
+    const m = d.toLocaleString('en-US',{month:'short'});
+    const y = d.getFullYear();
+    return m + "-" + y;
+  }catch(e){
+    return dstr;
+  }
+}
+
+// convert baseRaw to month-year keyed object
+function normalizeBase(raw){
+  const out = {};
+  for(const k in raw){
+    const rows = raw[k];
+    for(const row of rows){
+      const date = row[0];
+      const mk = monthKeyFromDateString(date);
+      if(!out[mk]) out[mk] = [];
+      out[mk].push(row.slice()); // copy
+    }
+  }
+  return out;
+}
+
+const baseData = normalizeBase(baseRaw);
+
+// UI elements
+const monthSelect = document.getElementById('monthSelect');
+const dateInput = document.getElementById('dateInput');
+const itemInput = document.getElementById('itemInput');
+const amountInput = document.getElementById('amountInput');
+const tableContainer = document.getElementById('tableContainer');
+const message = document.getElementById('message');
+const addBtn = document.getElementById('addBtn');
+const saveDefaultBtn = document.getElementById('saveDefaultBtn');
+
+// default date to today
+dateInput.valueAsDate = new Date();
+
+// utility: format monthKey to label
+function labelOf(mk){
+  return mk;
+}
+
+// load DB, if empty set baseData then display default month
+async function initAndLoad(){
+  message.textContent = "Loading data from Firebase...";
+  const snap = await get(child(ref(db), '/spendingData'));
+  let data;
+  if(snap.exists()){
+    data = snap.val();
+    message.textContent = "Loaded data from Firebase.";
+  } else {
+    // no data, save baseData then use it
+    await set(rootRef, baseData);
+    data = baseData;
+    message.textContent = "No data in DB — saved local default array to database.";
+  }
+  populateMonthSelect(Object.keys(data));
+  // default to Nov-2025 if available, else current month
+  const defaultMk = Object.keys(data).find(k => k.startsWith("Nov")) || currentMonthKey();
+  monthSelect.value = defaultMk || "all";
+  renderForSelected(data);
+}
+
+// populate month dropdown (All + months sorted newest first)
+function populateMonthSelect(monthKeys){
+  monthSelect.innerHTML = "";
+  const optAll = document.createElement('option'); optAll.value = 'all'; optAll.textContent = 'All Months';
+  monthSelect.appendChild(optAll);
+  // sort keys descending by year-month
+  monthKeys.sort((a,b)=>{
+    const da = new Date(a); const db = new Date(b);
+    return db - da;
+  });
+  for(const mk of monthKeys){
+    const opt = document.createElement('option');
+    opt.value = mk;
+    opt.textContent = labelOf(mk);
+    monthSelect.appendChild(opt);
+  }
+}
+
+// get current monthKey like "Nov-2025"
+function currentMonthKey(){
+  const d = new Date();
+  const mo = d.toLocaleString('en-US',{month:'short'});
+  const yr = d.getFullYear();
+  return mo + "-" + yr;
+}
+
+// render table for selected month or all
+async function renderForSelected(dataFromDB){
+  const sel = monthSelect.value;
+  let data = dataFromDB;
+  if(!data){
+    const snap = await get(child(ref(db), '/spendingData'));
+    if(snap.exists()) data = snap.val();
+    else data = baseData;
+  }
+  let html = "<table><thead><tr><th>Date</th><th>Item</th><th>Amount</th></tr></thead><tbody>";
+  const months = sel === 'all' ? Object.keys(data) : [sel];
+  for(const mk of months){
+    if(!data[mk]) continue;
+    data[mk].forEach(row=>{
+      const date = row[0];
+      for(let i=1;i<row.length;i+=2){
+        const item = row[i];
+        const amt = row[i+1];
+        if(item && (amt !== undefined && amt !== null)){
+          html += `<tr><td>${date}</td><td>${item}</td><td>${amt}</td></tr>`;
+        }
+      }
+    });
+  }
+  html += "</tbody></table>";
+  tableContainer.innerHTML = html;
+}
+
+// add entry: update DB structure properly
+async function addEntry(){
+  const date = dateInput.value;
+  const item = itemInput.value.trim();
+  const amount = parseFloat(amountInput.value);
+  if(!date || !item || Number.isNaN(amount)){
+    alert("Please enter Date, Item and Amount.");
+    return;
+  }
+  const mk = monthKeyFromDateString(date);
+  const monthRef = ref(db, `spendingData/${mk}`);
+  const snap = await get(monthRef);
+  let monthArr = snap.exists() ? snap.val() : [];
+  // monthArr is array of rows (each row: [date, item, amount, ...pairs])
+  // find row for same date
+  let foundIndex = -1;
+  for(let i=0;i<monthArr.length;i++){
+    if(monthArr[i][0] === date){
+      foundIndex = i; break;
+    }
+  }
+  if(foundIndex >= 0){
+    monthArr[foundIndex].push(item, amount);
+  } else {
+    monthArr.push([date, item, amount]);
+  }
+  // write back
+  await set(monthRef, monthArr);
+  // refresh UI
+  const snapAll = await get(child(ref(db), '/spendingData'));
+  const dataAll = snapAll.exists() ? snapAll.val() : baseData;
+  populateMonthSelect(Object.keys(dataAll));
+  monthSelect.value = mk;
+  renderForSelected(dataAll);
+  // clear inputs
+  itemInput.value = "";
+  amountInput.value = "";
+  dateInput.valueAsDate = new Date();
+  message.textContent = "Saved entry.";
+}
+
+// button handlers
+addBtn.addEventListener('click', addEntry);
+saveDefaultBtn.addEventListener('click', async ()=>{
+  await set(rootRef, baseData);
+  message.textContent = "Default array saved to DB.";
+  const snap = await get(child(ref(db), '/spendingData'));
+  const dataAll = snap.exists() ? snap.val() : baseData;
+  populateMonthSelect(Object.keys(dataAll));
+  renderForSelected(dataAll);
+});
+
+// when user changes month selection
+monthSelect.addEventListener('change', async ()=>{
+  const snap = await get(child(ref(db), '/spendingData'));
+  const dataAll = snap.exists() ? snap.val() : baseData;
+  renderForSelected(dataAll);
+);
+
+// initialize
+initAndLoad();
+</script>
+</body>
+</html>
