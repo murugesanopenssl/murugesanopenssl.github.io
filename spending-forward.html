@@ -98,26 +98,44 @@
     document.getElementById("spendingTable").innerHTML = html;
   }
 
-  async function addEntry() {
-    const date = document.getElementById('dateInput').value;
-    const item = document.getElementById('itemInput').value.trim();
-    const amount = parseFloat(document.getElementById('amountInput').value);
-    if (!item || !amount) {
-      alert("Please enter item and amount.");
-      return;
-    }
-
-    const monthKey = monthNames[new Date(date).getMonth()];
-    const entryRef = ref(db, `spendingData/${monthKey}`);
-
-    const snapshot = await get(entryRef);
-    let monthData = snapshot.exists() ? snapshot.val() : [];
-    monthData.push([date, item, amount]);
-    await set(entryRef, monthData);
-
-    alert("✅ Entry added!");
-    loadData();
+async function addEntry() {
+  const date = document.getElementById('dateInput').value;
+  const item = document.getElementById('itemInput').value.trim();
+  const amount = parseFloat(document.getElementById('amountInput').value);
+  if (!item || !amount) {
+    alert("Please enter item and amount.");
+    return;
   }
+
+  const monthKey = monthNames[new Date(date).getMonth()];
+  const entryRef = ref(db, `spendingData/${monthKey}`);
+
+  const snapshot = await get(entryRef);
+  let monthData = snapshot.exists() ? snapshot.val() : [];
+
+  // Find if date already exists
+  let found = false;
+  for (let row of monthData) {
+    if (row[0] === date) {
+      row.push(item, amount);
+      found = true;
+      break;
+    }
+  }
+  // If not found, add new date row
+  if (!found) monthData.push([date, item, amount]);
+
+  // Save back to Firebase
+  await set(entryRef, monthData);
+  alert("✅ Entry added!");
+  
+  // Clear input fields
+  document.getElementById('itemInput').value = "";
+  document.getElementById('amountInput').value = "";
+  document.getElementById('dateInput').valueAsDate = new Date();
+
+  loadData();
+}
 
   document.getElementById("monthSelect").addEventListener("change", loadData);
   window.addEventListener("load", loadData);
