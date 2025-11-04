@@ -2446,20 +2446,31 @@ Sep: [
 </SCRIPT>
 </TBODY>
 </TABLE>
-<script>
-document.getElementById("spending-form").addEventListener("submit", function(e){
-  e.preventDefault(); // stop page reload
-  const item = document.getElementById("item").value;
-  const amount = document.getElementById("amount").value;
-  const date = document.getElementById("date").value;
+<SCRIPT type="text/javascript">
+window.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("spending-form");
+  if (!form) return;
 
-  const table = document.querySelector("table"); // your main table
-  const row = table.insertRow(-1);
-  row.insertCell(0).innerText = item;
-  row.insertCell(1).innerText = amount;
-  row.insertCell(2).innerText = date;
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // stop page reload
+    const item = document.getElementById("item").value;
+    const amount = document.getElementById("amount").value;
+    const date = document.getElementById("date").value;
 
-  e.target.reset();
+    // find your main table
+    const table = document.querySelector("table");
+    if (!table) {
+      alert("No table found on page!");
+      return;
+    }
+
+    const row = table.insertRow(-1);
+    row.insertCell(0).innerText = item;
+    row.insertCell(1).innerText = amount;
+    row.insertCell(2).innerText = date;
+
+    e.target.reset();
+  });
 });
 </script>
 <TABLE width="100%">
