@@ -56,13 +56,65 @@ const db = getDatabase(app);
 const rootRef = ref(db, "spendingData");
 
 // ----- Hardcoded fallback array (base version) -----
-const baseRaw = {
-  Nov: [
-    [ "03-Nov-2025","Snacks",30.00,"Petrol",210.00 ],
-    [ "02-Nov-2025","Rice",700.00,"BananaLeaf",10.00,"Veg",70.00 ],
-    [ "01-Nov-2025","ToBng",69.00,"Veg",107.00,"Rice",360.00,"Lunch",55.00,"Snacks",30.00 ]
-  ]
-};
+			const baseRaw = {
+Nov: [
+
+[ formatDate("03-Nov-2025"),        "Snacks",  30.00,       "Petrol", 210.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
+[ formatDate("02-Nov-2025"),          "Rice", 700.00,   "BananaLeaf",  10.00,      "Veg",  70.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
+[ formatDate("01-Nov-2025"),         "ToBng",  69.00,          "Veg", 107.00,     "Rice", 360.00,           "Lunch",  55.00,     "Snacks",     30.00,            "",  0.00,        "",   0.00 ]
+
+],
+Oct: [
+// Chandapura to attibele and left 2 wheeler at Chandapura
+[ formatDate("31-Oct-2025"),        "Snacks",  18.00,       "Dinner",  45.00,  "EntSoup",  40.00,       "FeviQuick",  10.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
+[ formatDate("26-Oct-2025"),     "LaptopFan", 350.00,    "   Repair",   0.00,"NotTraced",   0.00,            "Till",   0.00,"30-Oct-2025",      0.00,            "",  0.00,        "",   0.00 ],
+[ formatDate("25-Oct-2025"),         "Train",  23.00,       "Snacks",   80.00,     "MobCover", 200.00,     "Pickle", 240.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
+[ formatDate("24-Oct-2025"),          "BMTC",  23.00,       "Snacks",   80.00,     "MobCover", 200.00,     "Pickle", 240.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
+[ formatDate("23-Oct-2025"),        "Snacks",  80.00,             "",    0.00,            "",    0.00,           "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
+[ formatDate("22-Oct-2025"),       "Haircut", 60.00,       "Earset",  150.00,             "",    0.00,      "Lunch",  40.00,  "feviquick",    -10.00,       "Lemon",  5.00,  "Petrol", 220.00 ],
+[ formatDate("21-Oct-2025"),       "ToBng", 183.00,       "Tea",  10.00,     "MSPuri",  40.00,      "Dinner",  40.00,  "BathBrush",    96.00,       "Milk",  80.00,  "VaalaIlai", 330.00 ],
+/*
+vaalai ilai 20.00
+vilakku 20.00
+kuchi 40.00
+mango leaf 50.00
+samandhi poo 40.00
+malli poo 60.00
+oil 80.00
+banana 20.00
+*/
+[ formatDate("20-Oct-2025"),         "Tea",  10.00,   "EntSoup",  20.00,"SugarEntMed", 404.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
+[ formatDate("19-Oct-2025"),        "Auto",  20.00,      "Kool",  20.00,    "EntSoup",  20.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
+[ formatDate("18-Oct-2025"),       "ToBng", 417.00,       "Tea",  10.00,           "",     "",            "",     "",           "",       "",           "",     "",           "",     "" ],
+[ formatDate("17-Oct-2025"),         "Tea",  10.00,    "Snacks",  40.00,     "Petrol", 200.00,       "Lunch", 105.00,  "EntVapour",   200.00,     "Dinner", 355.00,           "",     "" ],
+[ formatDate("16-Oct-2025"),       "BFast", 105.00,       "Tea",  20.00, "AdhaarUpdt", 200.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
+[ formatDate("15-Oct-2025"),      "BESCOM", 174.00,    "3Roses", 345.00,  "DressRope", 120.00,         "Tea",  10.00,     "Snacks",    60.00,           "",     "",           "",     "" ],
+[ formatDate("14-Oct-2025"), "LenseRepair", 900.00,  "SnackTea",  10.00,           "",     "",      "Snacks", 256.00,           "",     0.00,           "",     "",           "",     "" ],
+[ formatDate("13-Oct-2025"),         "Tea",  20.00,       "Ent", 100.00,     "Snacks",  23.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
+[ formatDate("12-Oct-2025"),         "Tea",  50.00,   "Poosari",  10.00,       "Soup",  20.00,      "2Meera", 156.00, "PantTailor",    30.00,     "Snacks",  10.00,       "Livo",  10.00 ],
+[ formatDate("11-Oct-2025"),  "BngToHosur",  13.00,  "HosToDpi",  56.00,  "DpiPetrol", 200.00,     "EntSoup",  20.00,  "EntInject",   610.00, "ViradamTip",  10.00,     "Dinner",  40.00 ],
+[ formatDate("10-Oct-2025"),        "BMTC",  25.00,     "Lunch",  70.00,      "Bfast",  70.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
+[ formatDate("09-Oct-2025"),        "BMTC",  25.00,    "Snacks", 120.00,     "Snacks",  50.00,      "Dinner",  20.00, "IGCSE_SSLC", 35000.00,           "",     "",           "",     "" ],
+[ formatDate("08-Oct-2025"),      "Snacks",  80.00,     "Sweet", 216.00,       "Milk",     "",            "",     "",           "",       "",           "",     "",           "",     "" ],
+[ formatDate("07-Oct-2025"),       "BFast",     "",          "",     "",       "Milk",     "",            "",     "",           "",       "",           "",     "",           "",     "" ],
+[ formatDate("06-Oct-2025"),       "BFast",  60.00,    "Snacks",  20.00,       "Milk",  82.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
+[ formatDate("05-Oct-2025"),       "BFast",     "",     "Sweet", 617.00,     "Snacks",  30.00,         "Veg",  60.00,      "NoTea",       "",      "Lunch",  45.00,           "",     "" ],
+[ formatDate("04-Oct-2025"),       "BFast",  60.00,     "Lunch",  60.00,     "Dinner",  80.00,         "Veg", 330.00,     "MSSnac",    35.00,     "Snacks", 240.00,      "NoTea",     "" ],
+[ formatDate("03-Oct-2025"),       "BFast", 140.00,    "Dinner",  70.00,           "",     "",       "Lunch",  80.00,  "TvsRepair",   581.00,           "",     "",           "",     "" ],
+[ formatDate("02-Oct-2025"),       "BFast", 130.00,     "Lunch",  70.00,     "Dinner",     "", "SnacksSweet", 806.00,   "NMPetrol",   250.00,           "",     "",           "",     "" ],
+[ formatDate("01-Oct-2025"),       "BFast",     "",     "Lunch",  70.00,     "Dinner",  30.00,    "DpiToBng",  98.00,   "SLPetrol",    50.00,  "SLWhelRep",  20.00,        "Veg", 100.00 ]
+],
+Sep: [
+[ formatDate("30-Sep-2025"),       "BFast",     "",     "Lunch",     "",      "Snack",  60.00,     "ToHosur",  13.00,      "ToDpi",    56.00,     "BngGas", 857.00,     "Digest", 20.00 ],
+[ formatDate("29-Sep-2025"),       "BFast",  70.00,     "Lunch",  60.00,   "SnackOat", 407.00,         "Veg", 916.00,      "EntDr",   200.00,     "EntMed", 634.00,  "SnackPuff", 25.00 ],
+[ formatDate("28-Sep-2025"),       "BFast",  50.00,     "Lunch",  50.00,  "Snacksoup", 120.00,  "GarbDonate",  20.00,    "TeaHarp",   549.00, "SchoolFees", 55000.00,          "",    "" ],
+[ formatDate("27-Sep-2025"),       "BFast",     "",     "Lunch",     "",           "",     "",      "Dinner",     "",           "",     "",           "",       "",          "",    "" ],
+[ formatDate("26-Sep-2025"),       "BFast",  50.00,     "Lunch",  50.00,      "Snack", 250.00,      "Dinner",  50.00, "Vegetables",   466.00,   "SLBigMrt", 249.00,      "MPURI",    35.00 ],
+[ formatDate("25-Sep-2025"),       "BFast",  50.00,     "Lunch",  50.00,     "Dinner",  50.00,            "",       "",           "",     "",           "",       "",          "",    "" ],
+[ formatDate("24-Sep-2025"),      "Dinner",  40.00,     "Snack", 150.00,           "",     "",            "",       "",           "",     "",           "",       "",          "",    "" ],
+[ formatDate("13-Sep-2025"),      "BESCOM", 256.00,          "",    .00,           "",     "",            "",       "",           "",     "",           "",       "",          "",    "" ]
+]
+			};
 
 // helper: convert "03-Nov-2025" -> "Nov-2025"
 function monthKeyFromDateString(dstr){
