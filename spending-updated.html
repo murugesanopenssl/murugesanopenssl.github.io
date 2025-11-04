@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spending Tracker (Firebase Connected)</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  th, td { border: 1px solid #aaa; padding: 8px; text-align: left; }
+  th { background: #f2f2f2; }
+  input, select, button { margin: 5px; padding: 8px; }
+</style>
+</head>
+<body>
+<h2>💰 Spending Tracker - Firebase Integrated</h2>
+
+<div>
+  <label for="monthSelect">Select Month:</label>
+  <select id="monthSelect">
+    <option value="current" selected>Current Month</option>
+    <option value="all">All Months</option>
+  </select>
+</div>
+
+<div>
+  <input type="date" id="dateInput">
+  <input type="text" id="itemInput" placeholder="Item">
+  <input type="number" id="amountInput" placeholder="Amount">
+  <button onclick="addEntry()">➕ Add Entry</button>
+</div>
+
+<div id="spendingTable"></div>
+
+<noscript>
+  <p>This app requires JavaScript to run.</p>
+</noscript>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "murugesanopenssl",
+    authDomain: "openmurugesan.firebaseapp.com",
+    databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "openmurugesan",
+    storageBucket: "openmurugesan.firebasestorage.app",
+    messagingSenderId: "307675598593",
+    appId: "1:307675598593:web:4af163460ce2c3bc719500",
+    measurementId: "G-0MFK92PQMP"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  const today = new Date();
+  document.getElementById('dateInput').valueAsDate = today;
+
+  const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const currentMonth = monthNames[today.getMonth()];
+
+  const spendingData = {
+    Nov: [
+      ["03-Nov-2025","Snacks",30.00,"Petrol",210.00],
+      ["02-Nov-2025","Rice",700.00,"BananaLeaf",10.00,"Veg",70.00],
+      ["01-Nov-2025","ToBng",69.00,"Veg",107.00,"Rice",360.00,"Lunch",55.00,"Snacks",30.00]
+    ]
+  };
+
+  async function loadData() {
+    const snapshot = await get(child(ref(db), "spendingData"));
+    if (snapshot.exists()) {
+      displayData(snapshot.val());
+    } else {
+      await set(ref(db, "spendingData"), spendingData);
+      displayData(spendingData);
+    }
+  }
+
+  function displayData(data) {
+    const selected = document.getElementById('monthSelect').value;
+    let html = "<table><tr><th>Date</th><th>Item</th><th>Amount</th></tr>";
+    const months = selected === "all" ? Object.keys(data) : [currentMonth];
+    months.forEach(m => {
+      if (data[m]) {
+        data[m].forEach(row => {
+          const date = row[0];
+          for (let i = 1; i < row.length; i += 2) {
+            const item = row[i];
+            const amt = row[i + 1];
+            if (item && amt) html += `<tr><td>${date}</td><td>${item}</td><td>${amt}</td></tr>`;
+          }
+        });
+      }
+    });
+    html += "</table>";
+    document.getElementById("spendingTable").innerHTML = html;
+  }
+
+  async function addEntry() {
+    const date = document.getElementById('dateInput').value;
+    const item = document.getElementById('itemInput').value.trim();
+    const amount = parseFloat(document.getElementById('amountInput').value);
+    if (!item || !amount) {
+      alert("Please enter item and amount.");
+      return;
+    }
+
+    const monthKey = monthNames[new Date(date).getMonth()];
+    const entryRef = ref(db, `spendingData/${monthKey}`);
+
+    const snapshot = await get(entryRef);
+    let monthData = snapshot.exists() ? snapshot.val() : [];
+    monthData.push([date, item, amount]);
+    await set(entryRef, monthData);
+
+    alert("✅ Entry added!");
+    loadData();
+  }
+
+  document.getElementById("monthSelect").addEventListener("change", loadData);
+  window.addEventListener("load", loadData);
+</script>
+
+</body>
+</html>
