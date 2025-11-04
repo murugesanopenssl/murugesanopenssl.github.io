@@ -252,6 +252,16 @@ async function renderForSelected(dataFromDB){
   html += "</tbody></table>";
   tableContainer.innerHTML = html;
 }
+async function loadData() {
+  const dbRef = ref(db);
+  const snapshot = await get(child(dbRef, "spendingData"));
+  if (snapshot.exists()) {
+    displayData(snapshot.val());
+  } else {
+    await set(ref(db, "spendingData"), baseData);
+    displayData(baseData);
+  }
+}
 
 // add entry: update DB structure properly
 async function addEntry(){
@@ -292,6 +302,7 @@ async function addEntry(){
   amountInput.value = "";
   dateInput.valueAsDate = new Date();
   message.textContent = "Saved entry.";
+  loadData();
 }
 
 // button handlers
