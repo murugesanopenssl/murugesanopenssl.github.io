@@ -1,0 +1,654 @@
+.MoneyHealthTips
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.MoneyHealthTips a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.MoneyHealthTips a:hover
+{
+	color: #f1f1f1;
+}
+.MoneyHealthTips .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+.inhale_hotwater_ent
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.inhale_hotwater_ent a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.inhale_hotwater_ent a:hover
+{
+	color: #f1f1f1;
+}
+.inhale_hotwater_ent .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+body
+{
+	font-family: "Lato", sans-serif;
+}
+.HomePageSidePanel
+{
+	width:0;
+	position:fixed;
+	z-index:1;
+	height:410px;
+	top:100;
+	left:0;
+	color:black;
+	background-color:orange;
+	overflow-x:hidden;
+	transition:0.5s;
+	padding-top:10px;
+}
+
+.GarbagesSidePanel01
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.GarbagesSidePanel01 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.GarbagesSidePanel01 a:hover
+{
+	color: #f1f1f1;
+}
+.GarbagesSidePanel01 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+.AadhaarHelpSidePanel01
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.AadhaarHelpSidePanel01 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.AadhaarHelpSidePanel01 a:hover
+{
+	color: #f1f1f1;
+}
+.AadhaarHelpSidePanel01 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+
+
+.MyPredictSidePanel01
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.MyPredictSidePanel01 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.MyPredictSidePanel01 a:hover
+{
+	color: #f1f1f1;
+}
+.MyPredictSidePanel01 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+.WindowsHelpSidePanel01
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.WindowsHelpSidePanel01 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.WindowsHelpSidePanel01 a:hover
+{
+	color: #f1f1f1;
+}
+.WindowsHelpSidePanel01 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+
+.MyselfSidePanel01
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.MyselfSidePanel01 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.MyselfSidePanel01 a:hover
+{
+	color: #f1f1f1;
+}
+.MyselfSidePanel01 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+
+
+
+.PrivacyPolicySidePanel01
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.PrivacyPolicySidePanel01 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.PrivacyPolicySidePanel01 a:hover
+{
+	color: #f1f1f1;
+}
+.PrivacyPolicySidePanel01 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+.MoneyHelpSidePanel01
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.MoneyHelpSidePanel01 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.MoneyHelpSidePanel01 a:hover
+{
+	color: #f1f1f1;
+}
+.MoneyHelpSidePanel01 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+.MoneyHelpSidePanel02
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.MoneyHelpSidePanel02 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.MoneyHelpSidePanel02 a:hover
+{
+	color: #f1f1f1;
+}
+.MoneyHelpSidePanel02 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+.MoneyHelpSidePanel03
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.MoneyHelpSidePanel03 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.MoneyHelpSidePanel03 a:hover
+{
+	color: #f1f1f1;
+}
+.MoneyHelpSidePanel03 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+.MoneyHelpSidePanel04
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.MoneyHelpSidePanel04 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.MoneyHelpSidePanel04 a:hover
+{
+	color: #f1f1f1;
+}
+.MoneyHelpSidePanel04 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+.HomePageSidePanel a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.HomePageSidePanel a:hover
+{
+	color: #f1f1f1;
+}
+.HomePageSidePanel .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+.openbtn
+{
+	font-size: 13px;
+	cursor: pointer;
+	background-color: #111;
+	color: white;
+	padding: 10px 1px;
+	border: none;
+}
+.openbtn:hover
+{
+	background-color:#444;
+}
+
+.SBI_employee_never_helpSidePanel01
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.SBI_employee_never_helpSidePanel01 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.SBI_employee_never_helpSidePanel01 a:hover
+{
+	color: #f1f1f1;
+}
+.SBI_employee_never_helpSidePanel01 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+.MoneyHelp05SidePanel05
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.MoneyHelp05SidePanel05 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.MoneyHelp05SidePanel05 a:hover
+{
+	color: #f1f1f1;
+}
+.MoneyHelp05SidePanel05 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+.SBI_employee_never_help01SidePanel01
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.SBI_employee_never_help01SidePanel01 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.SBI_employee_never_help01SidePanel01 a:hover
+{
+	color: #f1f1f1;
+}
+.SBI_employee_never_help01SidePanel01 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+.MoneyHelpSidePanel05
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.MoneyHelpSidePanel05 a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.MoneyHelpSidePanel05 a:hover
+{
+	color: #f1f1f1;
+}
+.MoneyHelpSidePanel05 .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+.hide
+{
+	display: none;
+}
+.myDIV:hover + .hide
+{
+	display: block;
+	color: red;
+}
+.right-aligned {
+  text-align: right;
+}
+
+.right-aligned > * {
+  display: inline-block;
+}
+
+.search-table
+{
+	background-color: #C9E4CA;
+	color: black;
+}
+
+
+.table a
+{
+	display:block;
+	text-decoration:none;
+}
+
+table
+{
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 10px;
+}
