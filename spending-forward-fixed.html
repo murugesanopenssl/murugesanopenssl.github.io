@@ -1138,14 +1138,14 @@ async function addEntry(){
   if(foundIndex >= 0){
     monthArr[foundIndex].push(item, amount);
   } else {
-    monthArr.push([date, item, amount]);
+    monthArr.push([formatDate(date), item, amount]);
   }
-  // write back
-  // write back entire object to preserve other months
+
+  // write back entire object to preserve all months
   const snapAll = await get(child(ref(db), '/spendingData'));
   let dataAll = snapAll.exists() ? snapAll.val() : baseData;
   dataAll[mk] = monthArr;
-  await set(rootRef, dataAll);
+  await set(ref(db, "spendingData"), dataAll);
 
   // refresh UI
   populateMonthSelect(Object.keys(dataAll));
