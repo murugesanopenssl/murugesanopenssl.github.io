@@ -814,7 +814,7 @@ const rootRef = ref(db, "spendingData");
 // ----- Hardcoded fallback array (base version) -----
 			const baseRaw = {
 Nov: [
-[ formatDate("06-Nov-2025"),        "Snacks", 40.00,              "",    0.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
+[ formatDate("06-Nov-2025"),        "Snacks", 40.00,        "Pickle",  203.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("05-Nov-2025"),     "BreadMilk", 200.00, "TvsInsurance", 1098.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("04-Nov-2025"),          "Veg",  108.00,       "Sweet",  176.00,"BreadMilk", 200.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("03-Nov-2025"),        "Snacks",  30.00,       "Petrol", 210.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
@@ -1141,19 +1141,22 @@ async function addEntry(){
     monthArr.push([date, item, amount]);
   }
   // write back
-  await set(monthRef, monthArr);
-  // refresh UI
+  // write back entire object to preserve other months
   const snapAll = await get(child(ref(db), '/spendingData'));
-  const dataAll = snapAll.exists() ? snapAll.val() : baseData;
+  let dataAll = snapAll.exists() ? snapAll.val() : baseData;
+  dataAll[mk] = monthArr;
+  await set(rootRef, dataAll);
+
+  // refresh UI
   populateMonthSelect(Object.keys(dataAll));
   monthSelect.value = mk;
-  renderForSelected(dataAll);
+  await renderForSelected(dataAll);
+
   // clear inputs
   itemInput.value = "";
   amountInput.value = "";
   dateInput.valueAsDate = new Date();
-  message.textContent = "Saved entry.";
-  loadData();
+  message.textContent = "Saved entry and updated table.";
 }
 // button handlers
 addBtn.addEventListener('click', addEntry);
