@@ -768,16 +768,21 @@ async function addEntry(){
   let monthArr = snap.exists() ? snap.val() : [];
   // monthArr is array of rows (each row: [date, item, amount, ...pairs])
   // find row for same date
+  // find row for same formatted date
+  const formattedDate = formatDate(
+    new Date(date).toLocaleDateString("en-GB").replace(/\//g, "-")
+  );
   let foundIndex = -1;
-  for(let i=0;i<monthArr.length;i++){
-    if(monthArr[i][0] === date){
-      foundIndex = i; break;
+  for (let i = 0; i < monthArr.length; i++) {
+    if (monthArr[i][0] === formattedDate) {
+      foundIndex = i;
+      break;
     }
   }
-  if(foundIndex >= 0){
+  if (foundIndex >= 0) {
     monthArr[foundIndex].push(item, amount);
   } else {
-    monthArr.push([date, item, amount]);
+    monthArr.push([formattedDate, item, amount]);
   }
   // write back
   await set(monthRef, monthArr);
