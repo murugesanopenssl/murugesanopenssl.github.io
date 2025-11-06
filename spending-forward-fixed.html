@@ -1070,12 +1070,7 @@ let html = "<table border='1'>\
 				const isSnack = /snack/i.test(e.item);
 				const amtVal = parseFloat(e.amt) || 0;
 				const style = isSnack ? " style='background:red;color:white;'" : "";
-				rowHtml += `<td${style}>${e.item}</td>
-				<td${style}>${amtVal.toFixed(2)} <button class="del-btn"
-				data-month="${encodeURIComponent(mk)}"
-				data-date="${encodeURIComponent(d)}"
-				data-item="${encodeURIComponent(e.item)}"
-				data-amt="${amtVal}">❌</button></td>`;
+				rowHtml += `<td${style}>${e.item}</td><td${style}>${amtVal.toFixed(2)}</td>`;
 				subTotal += amtVal;
 				if(isSnack) wasted += amtVal;
 			} else {
@@ -1107,52 +1102,7 @@ let html = "<table border='1'>\
 
 	html += "</table>";
 	tableContainer.innerHTML = html;
-	// attach delete handlers for the buttons we injected
-	document.querySelectorAll('.del-btn').forEach(btn => {
-	btn.addEventListener('click', async function () {
-	const monthKey = decodeURIComponent(this.dataset.month);
-	const dateStr = decodeURIComponent(this.dataset.date);
-	const item = decodeURIComponent(this.dataset.item);
-	const amt = parseFloat(this.dataset.amt);
-	await deleteEntry(monthKey, dateStr, item, amt);
-	});
-	});
 }
-async function deleteEntry(monthKey, dateStr, item, amt) {
-  if (!confirm(`Delete "${item}" ${amt}?`)) return;
-  const dbRef = ref(db);
-  const snap = await get(child(dbRef, `spendingData/${monthKey}`));
-  if (!snap.exists()) return alert("No data found for this month.");
-  let arr = snap.val();
-
-  // remove matching item+amount pairs only for the given date row
-  arr = arr.map(row => {
-    if (row[0] === dateStr) {
-      const newRow = [row[0]];
-      for (let i = 1; i < row.length; i += 2) {
-        const it = row[i];
-        const val = row[i + 1];
-        if (!(it === item && Number(val) === Number(amt))) {
-          newRow.push(it, val);
-        }
-      }
-      return newRow;
-    }
-    return row;
-  });
-
-  // write back updated month array
-  await set(ref(db, `spendingData/${monthKey}`), arr);
-
-  // refresh UI
-  const snapAll = await get(child(ref(db), '/spendingData'));
-  const dataAll = snapAll.exists() ? snapAll.val() : baseData;
-  populateMonthSelect(Object.keys(dataAll));
-  monthSelect.value = monthKey;
-  await renderForSelected(dataAll);
-  alert(`Deleted "${item}" ${amt} on ${dateStr}`);
-}
-
 async function loadData() {
   const dbRef = ref(db);
   const snapshot = await get(child(ref(db), "spendingData"));
