@@ -1116,10 +1116,11 @@ async function loadData() {
 }
 // add entry: update DB structure properly
 async function addEntry(){
-  const date = dateInput.value;
+  const rawDate = dateInput.value;
+  const date = formatDate(rawDate.split("-").reverse().join("-"));
   const item = itemInput.value.trim();
   const amount = parseFloat(amountInput.value);
-  if(!date || !item || Number.isNaN(amount)){
+  if(!rawDate || !item || Number.isNaN(amount)){
     alert("Please enter Date, Item and Amount.");
     return;
   }
