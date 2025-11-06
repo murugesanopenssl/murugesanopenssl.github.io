@@ -814,7 +814,7 @@ const rootRef = ref(db, "spendingData");
 // ----- Hardcoded fallback array (base version) -----
 			const baseRaw = {
 Nov: [
-[ formatDate("06-Nov-2025"),        "Snacks", 40.00,              "",    0.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
+[ formatDate("06-Nov-2025"),        "Snacks", 40.00,        "Pickle",  203.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("05-Nov-2025"),     "BreadMilk", 200.00, "TvsInsurance", 1098.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("04-Nov-2025"),          "Veg",  108.00,       "Sweet",  176.00,"BreadMilk", 200.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("03-Nov-2025"),        "Snacks",  30.00,       "Petrol", 210.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
@@ -1116,10 +1116,11 @@ async function loadData() {
 }
 // add entry: update DB structure properly
 async function addEntry(){
-  const date = dateInput.value;
+  const rawDate = dateInput.value;
+  const date = formatDate(rawDate.split("-").reverse().join("-"));
   const item = itemInput.value.trim();
   const amount = parseFloat(amountInput.value);
-  if(!date || !item || Number.isNaN(amount)){
+  if(!rawDate || !item || Number.isNaN(amount)){
     alert("Please enter Date, Item and Amount.");
     return;
   }
@@ -1138,22 +1139,25 @@ async function addEntry(){
   if(foundIndex >= 0){
     monthArr[foundIndex].push(item, amount);
   } else {
-    monthArr.push([date, item, amount]);
+    monthArr.push([formatDate(date), item, amount]);
   }
-  // write back
-  await set(monthRef, monthArr);
-  // refresh UI
+
+  // write back entire object to preserve all months
   const snapAll = await get(child(ref(db), '/spendingData'));
-  const dataAll = snapAll.exists() ? snapAll.val() : baseData;
+  let dataAll = snapAll.exists() ? snapAll.val() : baseData;
+  dataAll[mk] = monthArr;
+  await set(ref(db, "spendingData"), dataAll);
+
+  // refresh UI
   populateMonthSelect(Object.keys(dataAll));
   monthSelect.value = mk;
-  renderForSelected(dataAll);
+  await renderForSelected(dataAll);
+
   // clear inputs
   itemInput.value = "";
   amountInput.value = "";
   dateInput.valueAsDate = new Date();
-  message.textContent = "Saved entry.";
-  loadData();
+  message.textContent = "Saved entry and updated table.";
 }
 // button handlers
 addBtn.addEventListener('click', addEntry);
