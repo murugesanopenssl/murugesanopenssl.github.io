@@ -459,7 +459,7 @@ HOME </TD>
 	<!--
 	#}
 	-->
-<h1>Spending Tracker (Firebase)</h1>
+<h1>Save money by preventing to waste your money</h1>
 <p>Default view shows <strong>Nov-2025</strong> if available. Use Add Entry to add data.</p>
 <div class="controls">
   <label for="monthSelect">View:</label>
@@ -503,6 +503,7 @@ const rootRef = ref(db, "spendingData");
 // ----- Hardcoded fallback array (base version) -----
 			const baseRaw = {
 Nov: [
+[ formatDate("05-Nov-2025"),             "",    0.00,            "",    0.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("04-Nov-2025"),          "Veg",  108.00,       "Sweet",  176.00,"BreadMilk", 200.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("03-Nov-2025"),        "Snacks",  30.00,       "Petrol", 210.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("02-Nov-2025"),          "Rice", 700.00,   "BananaLeaf",  10.00,      "Veg",  70.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
@@ -619,9 +620,20 @@ async function initAndLoad(){
     message.textContent = "No data in DB — saved local default array to database.";
   }
   populateMonthSelect(Object.keys(data));
-  // default to Nov-2025 if available, else current month
-  const defaultMk = Object.keys(data).find(k => k.startsWith("Nov")) || currentMonthKey();
-  monthSelect.value = defaultMk || "all";
+
+  // determine current month key like "Nov-2025"
+  const curMk = currentMonthKey();
+
+  // prefer exact match for current month-year, else prefer any key with same month name,
+  // else fall back to the first available month key, else use 'all'
+  const keys = Object.keys(data || {});
+  const defaultMk = keys.find(k => k === curMk)
+    || keys.find(k => k.startsWith(curMk.split('-')[0]))
+    || keys[0]
+    || 'all';
+
+  // set dropdown and render for selected source (DB takes precedence)
+  monthSelect.value = defaultMk;
   renderForSelected(data);
 }
 // populate month dropdown (All + months sorted newest first)
@@ -657,23 +669,78 @@ async function renderForSelected(dataFromDB){
     if(snap.exists()) data = snap.val();
     else data = baseData;
   }
-  let html = "<table><thead><tr><th>Date</th><th>Item</th><th>Amount</th></tr></thead><tbody>";
+let html = "<table border='1'><thead><tr><th>Date</th><th>Item</th><th>Amount</th><th>Item</th><th>Amount</th><th>Item</th><th>Amount</th><th>Item</th><th>Amount</th><th>Item</th><th>Amount</th><th>Item</th><th>Amount</th><th>Sub Total</th><th>Wasted</th></tr></thead><tbody>";
   const months = sel === 'all' ? Object.keys(data) : [sel];
-  for(const mk of months){
-    if(!data[mk]) continue;
-    data[mk].forEach(row=>{
-      const date = row[0];
-      for(let i=1;i<row.length;i+=2){
-        const item = row[i];
-        const amt = row[i+1];
-        if(item && (amt !== undefined && amt !== null)){
-          html += `<tr><td>${date}</td><td>${item}</td><td>${amt}</td></tr>`;
-        }
-      }
-    });
-  }
-  html += "</tbody></table>";
-  tableContainer.innerHTML = html;
+
+  const dailyMap = {};
+	for(const mk of months)
+	{
+		if(!data[mk]) continue;
+
+		data[mk].forEach(row=>{
+			const date = row[0];
+			for(let i=1;i<row.length;i+=2)
+			{
+				const item = row[i];
+				const amt = row[i+1];
+				if(item && (amt !== undefined && amt !== null))
+				{
+					if(!dailyMap[date]) dailyMap[date] = [];
+					dailyMap[date].push({ item, amt });
+				}
+			}
+		});
+	}
+
+	let grandTotal = 0;
+	let grandWaste = 0;
+
+	for(const d of Object.keys(dailyMap))
+	{
+		const entries = dailyMap[d];
+		let subTotal = 0;
+		let wasted = 0;
+		let rowHtml = `<tr><td>${d}</td>`;
+
+		// ensure exactly 6 item/amount pairs per row
+		for(let i=0;i<6;i++){
+			if(entries[i]){
+				const e = entries[i];
+				const isSnack = /snack/i.test(e.item);
+				const amtVal = parseFloat(e.amt) || 0;
+				const style = isSnack ? " style='background:red;color:white;'" : "";
+				rowHtml += `<td${style}>${e.item}</td><td${style}>${amtVal.toFixed(2)}</td>`;
+				subTotal += amtVal;
+				if(isSnack) wasted += amtVal;
+			} else {
+				rowHtml += "<td></td><td></td>";
+			}
+		}
+
+		const wastedStyle = wasted > 0 ? " style='background:red;color:white;'" : "";
+		rowHtml += `<td>${subTotal.toFixed(2)}</td><td${wastedStyle}>${wasted.toFixed(2)}</td></tr>`;
+		html += rowHtml;
+
+		grandTotal += subTotal;
+		grandWaste += wasted;
+	}
+
+	const totalAfterWaste = grandTotal - grandWaste;
+
+	html += `<tr style='font-weight:bold;background:#ffe5e5;'>
+	<td colspan='13' align='right'>Total amount spent excluding wasted amount:</td>
+	<td>${totalAfterWaste.toFixed(2)}</td>
+	<td>${grandWaste.toFixed(2)}</td>
+	</tr>`;
+
+	html += `<tr style='font-weight:bold;background:#c7f9cc;'>
+	<td colspan='13' align='right'>Total amount spent including wasted amount:</td>
+	<td>${grandTotal.toFixed(2)}</td>
+	<td></td>
+	</tr>`;
+
+	html += "</table>";
+	tableContainer.innerHTML = html;
 }
 async function loadData() {
   const dbRef = ref(db);
