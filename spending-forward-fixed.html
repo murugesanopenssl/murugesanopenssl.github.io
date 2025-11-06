@@ -11,7 +11,39 @@
    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
    -->
 <style>
-/* Styling the link */
+.rectangle {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: lightblue;
+            border: 2px solid black;
+            margin: 50px;
+        }
+
+        /* Top-left arrow */
+        .arrow-top-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 20px solid black;
+        }
+
+        /* Bottom-right arrow */
+        .arrow-bottom-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-top: 20px solid black;
+            border-right: 20px solid transparent;
+        }
+		/* Styling the link */
         .link-style {
             color: orange;  /* Sets the text color to orange */
             text-decoration: none; /* Removes underline */
@@ -172,7 +204,17 @@
 
     <!-- Menu Bar -->
     <nav>
-        <a href="#">Home</a>
+		<SCRIPT>
+			HomePage=window.location.href.indexOf("index.html");
+			if( 0 < HomePage )
+			{
+				document.write( "<a>Home</a>");
+			}
+			else
+			{
+				document.write( "<a href=\"index.html\">Home</a>");
+			}
+		</SCRIPT>
         <a href="#">Products & Services</a>
         <a href="#">How Do I (Help)</a>
         <a href="#">Manage Debit Card</a>
@@ -215,7 +257,7 @@
             <a class="link-style" onclick="toggleTable()">PreventWastage</a>
         </div>
         <div>
-            <i class="material-icons">compare_arrows</i>
+            <i class="material-icons"><div class="rectangle"><div class="arrow-top-left"></div><div class="arrow-bottom-right"></div></div></i>
             <a href="#">CompareBankFD</a>
         </div>
     </div>
@@ -267,7 +309,7 @@
 <NOSCRIPT>
 <TABLE border='1'>
 <TR> <TD valign='top' align='right' bgcolor=cyan>
-HOME </TD>
+<A href='index.html'>HOME</A> </TD>
 <TD valign='top' align='right'>
 	<A>MoneyHelp01</A>
 </TD>
