@@ -1,21 +1,326 @@
 <!DOCTYPE html>
 <HTML lang="en">
-	<HEAD>
-		<META charset="UTF-8">
-		<LINK href="MyMenu002.css" rel="stylesheet">
-		<META name="viewport" content="width=device-width, initial-scale=1.0">
-		<TITLE>Prevent wasting money</TITLE>
-	</HEAD>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<META charset="UTF-8">
+	<LINK href="MyMenu002.css" rel="stylesheet">
+	<META name="viewport" content="width=device-width, initial-scale=1.0">
+	<TITLE>Human-AI Financial Solutions</TITLE>
+   <!--
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   -->
+<style>
+.rectangle {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: lightblue;
+            border: 2px solid black;
+            margin: 50px;
+        }
+
+        /* Top-left arrow */
+        .arrow-top-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 20px solid black;
+        }
+
+        /* Bottom-right arrow */
+        .arrow-bottom-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-top: 20px solid black;
+            border-right: 20px solid transparent;
+        }
+		/* Styling the link */
+        .link-style {
+            color: orange;  /* Sets the text color to orange */
+            text-decoration: none; /* Removes underline */
+            font-weight: bold; /* Optional: Makes it bold */
+            cursor: pointer; /* Changes the cursor to a pointer when hovering */
+        }
+        
+        /* Table styling */
+        #PreventWastage {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #PreventWastage, #PreventWastage th, #PreventWastage td {
+            border: 1px solid black;
+        }
+
+        #PreventWastage th, #PreventWastage td {
+            padding: 8px;
+            text-align: center;
+        }
+
+
+        #IndexTable {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #IndexTable, #IndexTable th, #IndexTable td {
+            border: 1px solid black;
+        }
+
+        #IndexTable th, #IndexTable td {
+            padding: 8px;
+            text-align: center;
+        }
+
+		.triangle {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;    /* Left side of the triangle */
+            border-right: 25px solid transparent;   /* Right side of the triangle */
+            border-bottom: 50px solid #0071bb;     /* Bottom side of the triangle */
+            position: relative;                     /* Allows positioning of text inside */
+        }
+
+        /* Exclamation mark inside the triangle */
+        .triangle-text {
+            position: absolute;
+            top: 50%;     /* Adjusts vertical positioning */
+            left: 50%;    /* Centers the text horizontally */
+            transform: translateX(-50%); /* Adjusts to truly center the text */
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .circle {
+            width: 50px;
+            height: 50px;
+            background-color: #0071bb;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /* Header */
+        header {
+            background-color: #0071bb;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        /* Menu bar */
+        nav {
+            background-color: #f1f1f1;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #0071bb;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #004f7c;
+        }
+
+        /* Icon and links */
+        .icon-menu {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+
+        .icon-menu div {
+            text-align: center;
+        }
+
+        .icon-menu i {
+            font-size: 40px;
+            color: #0071bb;
+        }
+
+        .icon-menu div a {
+            display: block;
+            margin-top: 10px;
+            color: #0071bb;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0071bb;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        td a {
+            color: #0071bb;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+
+
+    <!-- Header -->
+    <header>
+        <h1>Human-AI Financial Solutions = HAI FS</h1>
+    </header>
+
+    <!-- Menu Bar -->
+    <nav>
+		<a class="link-style" onclick="toggleTable()" id='Homehref' style='color:blue'>Home</a>
+        <a href="#">Products & Services</a>
+        <a href="#">How Do I (Help)</a>
+        <a href="#">Manage Debit Card</a>
+        <a href="#">E-Mandate</a>
+        <a href="#">Contact Us</a>
+    </nav>
+<script>
+        // Function to toggle the table visibility
+        function toggleTable() {
+			var IndexTable=document.getElementById('IndexTable');
+			var CategoryAmountDetailsAttr=document.getElementById('CategoryAmountDetailsTab');
+            var PreventWastageTable = document.getElementById('PreventWastage');
+            // Check the current visibility state
+            if (PreventWastageTable.style.display === 'none')
+			{
+				HomeTable.style.display="none";
+				document.getElementById('PreventWastagehref').style.color = "#00ff00";
+                PreventWastageTable.style.display = 'table'; // Show the table
+				CategoryAmountDetailsAttr.style.display='none';
+            }
+			else
+			{
+				HomeTable.style.display="none";
+				document.getElementById('PreventWastagehref').style.color="blue";
+                PreventWastageTable.style.display = 'none'; // Hide the table
+				CategoryAmountDetailsAttr.style.display='table';
+            }
+        }
+    </script>
+    <!-- Icon Menu -->
+    <div class="icon-menu">
+        <div>
+            <i class="material-icons">    <div class="circle">?</div></i>
+            <a href="#">FinanceHelp</a>
+        </div>
+        <div>
+            <i class="material-icons"><div class="circle">i</div></i>
+            <a href="#">About FinanceSSL</a>
+        </div>
+        <div>
+            <i class="material-icons"><div class="triangle">
+        <div class="triangle-text">!</div>
+    </div></i>
+            <a class="link-style" onclick="toggleTable()" id='PreventWastagehref' style='color:blue'>PreventWastage</a>
+        </div>
+        <div>
+            <i class="material-icons"><div class="rectangle"><div class="arrow-top-left"></div><div class="arrow-bottom-right"></div></div></i>
+            <a href="#">CompareBankFD</a>
+        </div>
+    </div>
+
+    <!-- Spending Table -->
+    <table id='CategoryAmountDetailsTab'>
+        <thead>
+            <TR>
+                <TH valign='top' align='right'>Category</TH>
+                <TH valign='top' align='right'>Amount</TH>
+                <TH valign='top' align='right'>Details</TH>
+            </TR>
+        </thead>
+        <tbody>
+            <!-- Example row -->
+            <TR>
+                <TD valign='top' align='right'>Rent</TD>
+                <TD valign='top' align='right'>$1200</TD>
+                <TD valign='top' align='right'><a href="#">View Details</a></TD>
+            </TR>
+            <TR>
+                <TD valign='top' align='right'>Utilities</TD>
+                <TD valign='top' align='right'>$250</TD>
+                <TD valign='top' align='right'><a href="#">View Details</a></TD>
+            </TR>
+            <TR>
+                <TD valign='top' align='right'>Food</TD>
+                <TD valign='top' align='right'>$400</TD>
+                <TD valign='top' align='right'><a href="#">View Details</a></TD>
+            </TR>
+            <TR>
+                <TD valign='top' align='right'>Entertainment</TD>
+                <TD valign='top' align='right'>$150</TD>
+                <TD valign='top' align='right'><a href="#">View Details</a></TD>
+            </TR>
+        </tbody>
+    </table>
+<!--
+	Menu name:
+		Save Money, Avoid Waste
+-->
+	<!--
 	<SCRIPT TYPE="text/javascript" src="NMmenu050.js">
 	</SCRIPT>
-	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+	-->
 	<!--
 	#{
 	-->
 <NOSCRIPT>
 <TABLE border='1'>
 <TR> <TD valign='top' align='right' bgcolor=cyan>
-HOME </TD>
+<A href='index.html'>HOME</A> </TD>
 <TD valign='top' align='right'>
 	<A>MoneyHelp01</A>
 </TD>
@@ -457,7 +762,45 @@ HOME </TD>
 	<!--
 	#}
 	-->
-<h1>Spending Tracker (Firebase)</h1>
+<TABLE id='HomeTable'>
+	<TR>
+		<TD valign='top' align='right'>
+			asd
+		</TD>
+	</TR>
+</TABLE>
+<TABLE id='PreventWastage'>
+	<SCRIPT>
+window.onload = function() {
+            // Hide the PreventWastage table
+            const preventWastageTable = document.getElementById("PreventWastage");
+			const HomeTable = document.getElementById("HomeTable");
+            preventWastageTable.style.display = "table"; // Hide it
+            HomeTable.style.display = "none"; // Hide it
+
+            // Show the CategoryAmountDetailsTab table
+            const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
+            categoryAmountDetailsTab.style.display = "none"; // Show it
+            const IndexTable = document.getElementById("IndexTable");
+            IndexTable.style.display = "none"; // Show it
+			const link = preventWastageTable.querySelector('a');
+			if (link)
+			{
+				link.style.color = "orange"; // Change the color to orange
+			}
+			if( "blue" == document.getElementById('PreventWastagehref').style.color )
+			{
+				document.getElementById('PreventWastagehref').style.color = "#00ff00";
+			}
+			else
+			{
+				document.getElementById('PreventWastagehref').style.color="blue";
+			}
+		}
+		</SCRIPT>
+<TR>
+<TD valign='top' align='right'>
+<h1>Save Money by Preventing Unnecessary Expenses</h1>
 <p>Default view shows <strong>Nov-2025</strong> if available. Use Add Entry to add data.</p>
 <div class="controls">
   <label for="monthSelect">View:</label>
@@ -501,7 +844,10 @@ const rootRef = ref(db, "spendingData");
 // ----- Hardcoded fallback array (base version) -----
 			const baseRaw = {
 Nov: [
-[ formatDate("04-Nov-2025"),          "Veg",  108.00,       "Sweet",  176.00,"BreadMilk", 200.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
+[ formatDate("07-Nov-2025"),         "ToDpi", 69.00,   "AdhPanXerox",   15.00,  "EntSoup",  20.00,       "EntInject", 100.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
+[ formatDate("06-Nov-2025"),        "Snacks", 40.00,        "Pickle",  203.00],
+[ formatDate("05-Nov-2025"),     "BreadMilk", 200.00, "TvsInsurance", 1098.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
+[ formatDate("04-Nov-2025"),          "Veg",  108.00,        "Sweet",  176.00,"BreadMilk", 200.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("03-Nov-2025"),        "Snacks",  30.00,       "Petrol", 210.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("02-Nov-2025"),          "Rice", 700.00,   "BananaLeaf",  10.00,      "Veg",  70.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("01-Nov-2025"),         "ToBng",  69.00,          "Veg", 107.00,     "Rice", 360.00,           "Lunch",  55.00,     "Snacks",     30.00,            "",  0.00,        "",   0.00 ]
@@ -617,9 +963,20 @@ async function initAndLoad(){
     message.textContent = "No data in DB — saved local default array to database.";
   }
   populateMonthSelect(Object.keys(data));
-  // default to Nov-2025 if available, else current month
-  const defaultMk = Object.keys(data).find(k => k.startsWith("Nov")) || currentMonthKey();
-  monthSelect.value = defaultMk || "all";
+
+  // determine current month key like "Nov-2025"
+  const curMk = currentMonthKey();
+
+  // prefer exact match for current month-year, else prefer any key with same month name,
+  // else fall back to the first available month key, else use 'all'
+  const keys = Object.keys(data || {});
+  const defaultMk = keys.find(k => k === curMk)
+    || keys.find(k => k.startsWith(curMk.split('-')[0]))
+    || keys[0]
+    || 'all';
+
+  // set dropdown and render for selected source (DB takes precedence)
+  monthSelect.value = defaultMk;
   renderForSelected(data);
 }
 // populate month dropdown (All + months sorted newest first)
@@ -655,23 +1012,127 @@ async function renderForSelected(dataFromDB){
     if(snap.exists()) data = snap.val();
     else data = baseData;
   }
-  let html = "<table><thead><tr><th>Date</th><th>Item</th><th>Amount</th></tr></thead><tbody>";
+let html = "<table border='1'>\
+				<thead>\
+					<TR>\
+						<th valign='top' align='right'>\
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date\
+						</TH>\
+						<th valign='top' align='right'>\
+							Item\
+						</TH>\
+						<th valign='top' align='right'>\
+							Amount\
+						</TH>\
+						<th valign='top' align='right'>\
+							Item\
+						</TH>\
+						<th valign='top' align='right'>\
+							Amount\
+						</TH>\
+						<th valign='top' align='right'>\
+							Item</TH>\
+						<th valign='top' align='right'>\
+							Amount\
+						</TH>\
+						<th valign='top' align='right'>\
+							Item\
+						</TH>\
+						<th valign='top' align='right'>\
+							Amount\
+						</TH>\
+						<th valign='top' align='right'>\
+							Item\
+						</TH>\
+						<th valign='top' align='right'>\
+							Amount\
+						</TH>\
+						<th valign='top' align='right'>\
+							Item\
+						</TH>\
+						<th valign='top' align='right'>\
+							Amount\
+						</TH>\
+						<th valign='top' align='right'>\
+							Subtotal\
+						</TH>\
+						<th valign='top' align='right'>\
+							Wasted\
+						</TH>\
+					</TR>\
+				</thead>\
+			<tbody>";
   const months = sel === 'all' ? Object.keys(data) : [sel];
-  for(const mk of months){
-    if(!data[mk]) continue;
-    data[mk].forEach(row=>{
-      const date = row[0];
-      for(let i=1;i<row.length;i+=2){
-        const item = row[i];
-        const amt = row[i+1];
-        if(item && (amt !== undefined && amt !== null)){
-          html += `<tr><td>${date}</td><td>${item}</td><td>${amt}</td></tr>`;
-        }
-      }
-    });
-  }
-  html += "</tbody></table>";
-  tableContainer.innerHTML = html;
+
+  const dailyMap = {};
+	for(const mk of months)
+	{
+		if(!data[mk]) continue;
+
+		data[mk].forEach(row=>{
+			const date = row[0];
+			for(let i=1;i<row.length;i+=2)
+			{
+				const item = row[i];
+				const amt = row[i+1];
+				if(item && (amt !== undefined && amt !== null))
+				{
+					if(!dailyMap[date]) dailyMap[date] = [];
+					dailyMap[date].push({ item, amt });
+				}
+			}
+		});
+	}
+
+	let grandTotal = 0;
+	let grandWaste = 0;
+
+	for(const d of Object.keys(dailyMap))
+	{
+		const entries = dailyMap[d];
+		let subTotal = 0;
+		let wasted = 0;
+		let rowHtml = `<TR><TD valign='top' align='left'>${d}</TD>`;
+
+		// ensure exactly 6 item/amount pairs per row
+		for(let i=0;i<6;i++){
+			if(entries[i]){
+				const e = entries[i];
+				const isSnack = /snack/i.test(e.item);
+				const amtVal = parseFloat(e.amt) || 0;
+				const style = isSnack ? " style='background:red;color:white;'" : "";
+				rowHtml += `<td${style}>${e.item}</TD><td${style}>${amtVal.toFixed(2)}</TD>`;
+				subTotal += amtVal;
+				if(isSnack) wasted += amtVal;
+			} else {
+				rowHtml += "<TD valign='top' align='left'></TD><TD valign='top' align='left'></TD>";
+			}
+		}
+
+		const wastedStyle = wasted > 0 ? " style='background:red;color:white;'" : "";
+		rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD><td${wastedStyle}>${wasted.toFixed(2)}</TD></TR>`;
+		html += rowHtml;
+
+		grandTotal += subTotal;
+		grandWaste += wasted;
+	}
+
+	const totalAfterWaste = grandTotal - grandWaste;
+
+	html += `<tr style='font-weight:bold;background:#ffe5e5;'>
+	<td colspan='13' align='right'>Total amount spent excluding wasted amount:</TD>
+	<TD valign='top' align='left'>${totalAfterWaste.toFixed(2)}</TD>
+	<TD valign='top' align='left' style='background-color: #FF0000; color: #FFFFFF;'>${grandWaste.toFixed(2)}</TD>
+	</TR>`;
+
+	html += `<tr style='font-weight:bold;background:#c7f9cc;'>
+	<td colspan='13' align='right'>Total amount spent including wasted amount:</TD>
+	<TD valign='top' align='left'>${grandTotal.toFixed(2)}</TD>
+	<TD valign='top' align='left'></TD>
+	</TR>`;
+
+	html += "</table>";
+	tableContainer.innerHTML = html;
 }
 async function loadData() {
   const dbRef = ref(db);
@@ -686,10 +1147,11 @@ async function loadData() {
 }
 // add entry: update DB structure properly
 async function addEntry(){
-  const date = dateInput.value;
+  const rawDate = dateInput.value;
+  const date = formatDate(rawDate.split("-").reverse().join("-"));
   const item = itemInput.value.trim();
   const amount = parseFloat(amountInput.value);
-  if(!date || !item || Number.isNaN(amount)){
+  if(!rawDate || !item || Number.isNaN(amount)){
     alert("Please enter Date, Item and Amount.");
     return;
   }
@@ -708,22 +1170,25 @@ async function addEntry(){
   if(foundIndex >= 0){
     monthArr[foundIndex].push(item, amount);
   } else {
-    monthArr.push([date, item, amount]);
+    monthArr.push([formatDate(date), item, amount]);
   }
-  // write back
-  await set(monthRef, monthArr);
-  // refresh UI
+
+  // write back entire object to preserve all months
   const snapAll = await get(child(ref(db), '/spendingData'));
-  const dataAll = snapAll.exists() ? snapAll.val() : baseData;
+  let dataAll = snapAll.exists() ? snapAll.val() : baseData;
+  dataAll[mk] = monthArr;
+  await set(ref(db, "spendingData"), dataAll);
+
+  // refresh UI
   populateMonthSelect(Object.keys(dataAll));
   monthSelect.value = mk;
-  renderForSelected(dataAll);
+  await renderForSelected(dataAll);
+
   // clear inputs
   itemInput.value = "";
   amountInput.value = "";
   dateInput.valueAsDate = new Date();
-  message.textContent = "Saved entry.";
-  loadData();
+  message.textContent = "Saved entry and updated table.";
 }
 // button handlers
 addBtn.addEventListener('click', addEntry);
@@ -744,5 +1209,8 @@ monthSelect.addEventListener('change', async ()=>{
 // initialize
 initAndLoad();
 </script>
+</TD>
+</TR>
+</TABLE>
 </body>
 </html>
