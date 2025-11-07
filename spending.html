@@ -222,34 +222,62 @@
     <!-- Menu Bar -->
     <nav>
 		<a class="link-style" onclick="toggleTable()" id='Homehref' style='color:blue'>Home</a>
+		<script type='text/javascript'>
+		function showHomeTable()
+		{
+			const homeTable = document.getElementById('HomeTable');
+			const preventWastage = document.getElementById('PreventWastage');
+			const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+			preventWastage.style.display = 'none';
+			categoryAmount.style.display = 'none';
+			homeTable.style.display = 'table';
+		}
+		</script>
         <a href="#">Products & Services</a>
         <a href="#">How Do I (Help)</a>
         <a href="#">Manage Debit Card</a>
         <a href="#">E-Mandate</a>
         <a href="#">Contact Us</a>
     </nav>
-<script>
-        // Function to toggle the table visibility
-        function toggleTable() {
-			var IndexTable=document.getElementById('IndexTable');
-			var CategoryAmountDetailsAttr=document.getElementById('CategoryAmountDetailsTab');
-            var PreventWastageTable = document.getElementById('PreventWastage');
-            // Check the current visibility state
-            if (PreventWastageTable.style.display === 'none')
-			{
-				HomeTable.style.display="none";
-				document.getElementById('PreventWastagehref').style.color = "#00ff00";
-                PreventWastageTable.style.display = 'table'; // Show the table
-				CategoryAmountDetailsAttr.style.display='none';
-            }
-			else
-			{
-				HomeTable.style.display="none";
-				document.getElementById('PreventWastagehref').style.color="blue";
-                PreventWastageTable.style.display = 'none'; // Hide the table
-				CategoryAmountDetailsAttr.style.display='table';
-            }
+<script type='text/javascript'>
+function toggleTable() {
+    const homeLink = document.getElementById('Homehref');
+    const preventLink = document.getElementById('PreventWastagehref');
+    const homeTable = document.getElementById('HomeTable');
+    const preventWastage = document.getElementById('PreventWastage');
+    const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+
+    // check which link was clicked
+    const clickedId = event.target.id;
+
+    if (clickedId === 'Homehref') {
+        if (homeTable.style.display === 'none' || homeTable.style.display === '') {
+            // Home is disabled → enable it
+            homeTable.style.display = 'table';
+            categoryAmount.style.display = 'none';
+            preventWastage.style.display = 'none';
+        } else {
+            // Home is enabled → disable it and show categoryAmount
+            homeTable.style.display = 'none';
+            categoryAmount.style.display = 'table';
+            preventWastage.style.display = 'none';
         }
+    }
+
+    if (clickedId === 'PreventWastagehref') {
+        if (preventWastage.style.display === 'none' || preventWastage.style.display === '') {
+            // PreventWastage is disabled → enable it
+            preventWastage.style.display = 'table';
+            categoryAmount.style.display = 'none';
+            homeTable.style.display = 'none';
+        } else {
+            // PreventWastage is enabled → disable it and show categoryAmount
+            preventWastage.style.display = 'none';
+            categoryAmount.style.display = 'table';
+            homeTable.style.display = 'none';
+        }
+    }
+}
     </script>
     <!-- Icon Menu -->
     <div class="icon-menu">
@@ -763,11 +791,660 @@
 	#}
 	-->
 <TABLE id='HomeTable'>
+			<TR>
+				<TD valign='top' align='left'>
+					<FONT color='red'><B><U>பொதுப் பிரமுகர் நிகழ்ச்சிகளில் கலந்து கொள்ளவில்லை</B></U><BR>
+நான் பிறந்த நாளிலிருந்து இன்று வரை <B><U>ஆந்திரப்பிரதேசம்/கர்நாடகா/கேரளா/தமிழ்நாடு மற்றும் தெலுங்கானா</B></U><BR>
+போன்ற இந்திய மாநிலங்களில் உள்ள எந்த கூட்டமான நிகழ்ச்சிகளிலும் நான் கலந்து கொள்ளவில்லை.<BR>
+இவர்கள் பொதுவாக வருகை தந்தாலும்,<BR>
+அவர்கள் நடத்தும் எந்த நெரிசலான பகுதிகளிலும் நான் பங்கேற்றதில்லை.<BR>
+<B><U>இதன் மூலம் கிடைத்த நன்மைகள்</B></U>:<BR>
+கூட்டநெரிசலின் மூலம் உண்டாகக்கூடிய ஆபத்துகளிலிருந்து என் குடும்பத்தினரைவும்<BR>
+என்னையும் பாதுகாத்துள்ளேன்.<BR>
+கூட்டங்களுக்கு செல்லாமல்,<BR>
+என் இருசக்கர வாகனத்தில் எரிபொருள் செலவிடாமல் பணம் சேமித்துள்ளேன்.<BR>
+மாசுபட்ட காற்றை சுவாசிப்பதைத் தவிர்த்து,<BR>
+உடல்நலத்தை பாதுகாத்துள்ளேன்.<BR>
+மேலே குறிப்பிட்ட காரணங்களால் மறைமுகமாகவே பணம் சேமிக்கப்பட்டுள்ளது.<BR>
+<B><U>நான் வாழ்ந்திடும் வரை செய்யும் செயற்கைகள்</B></U>:<BR>
+நான் எப்போதும் என்னை பாதுகாப்பாக வைத்துக் கொள்ள,<BR>
+கூட்டமான பகுதிகளில் செல்லாமல் இருப்பது,
+நான் நலமுடன் இருப்பதற்கு எனக்கு நானே அறிவுறுத்திக்கொள்வேன்.<BR>
+<B><U>சமூகத்திற்கு வழங்குதல்</B></U>:<BR>
+மக்கள் மகத்துவத்தை அடைவது மற்றவர்களுக்கு உதவுதல் மற்றும் கருணையை<BR>
+பரப்புதலால் தான் சாத்தியமென நான் நம்புகிறேன். எனவே பிறந்ததிலிருந்து இன்று வரை<BR>
+நான் சேமித்துள்ள இந்திய பைசா/ரூபாய்களை ஏழைகளுக்கோ அல்லது<BR>
+தேசிய பாதுகாப்பு நிதிக்கோ (NDF)<BR>
+மற்றும் பார்வையற்றோருக்கான தேசிய சங்கத்திற்க்கோ (NAB)<BR>
+பயன்படுத்தி வந்திருக்கிறேன்.<BR>
+<B><U>பணத்தைச் சேமிக்கும் நடைமுறை</B></U>:<BR>
+நான் ஒவ்வொரு நாளும் என் செலவுகளை கணினியில் பதிவு செய்கிறேன்.
+<B><U>வீட்டில் இருந்த நாட்கள்</B></U>:
+<TABLE border='1'>
+<TR><TD valign='top' align='left'>செவ்வாய் 14-புரட்டாசி-5127</TD><TD valign='top' align='left'>Tue 30‑Sep‑2025</TD></TR>
+<TR><TD valign='top' align='left'>புதன் 15-புரட்டாசி-5127</TD><TD valign='top' align='left'>Wed 01‑Oct‑2025</TD></TR>
+<TR><TD valign='top' align='left'>வியாழன் 16-புரட்டாசி-5127</TD><TD valign='top' align='left'>Thu 02‑Oct‑2025</TD></TR>
+</TD>
+</TR>
+</TABLE>
+<B><U>இதனால் கிடைத்த பயன்கள்</B></U>:
+பணம் மிச்சப்படுத்தல்
+வெளியே உணவு சாப்பிடுதல் தவிர்த்தல்
+உடல் கொழுப்பு அதிகரிப்பதைத் தடுத்தல்
+<TABLE border='1'>
+<TR><TD valign='top' align='left'>செவ்வாய் 14-புரட்டாசி-5127</TD><TD valign='top' align='left'>Tue 30-Sep-2025</TR>
+<TR><TD valign='top' align='left'>புதன் 15-புரட்டாசி-5127</TD><TD valign='top' align='left'>Wed 01-Oct-2025</TD></TR>
+<TR><TD valign='top' align='left'>வியாழன் 16-புரட்டாசி-5127</TD><TD valign='top' align='left'>Thu 02-Oct-2025</TD></TR>
+</TABLE>
+<B><U>இதன் காரணமாக,<BR>
+இது எனக்கு உதவியது</B></U>:
+1. பணத்தை மிச்சப்படுத்துதல்
+2. வெளியில் உணவு சாப்பிடுவதைத் தவிர்த்தல்
+3. உடலில் கொழுப்பு அதிகரிப்பதைத் தடுத்தல்.</FONT>
+<TABLE style='background-color:black;color:white;'>
+<TR>
+<TD valign='top' align='left'>
+$ echo "ஆந்திரப்பிரதேசம்/கர்நாடகா/கேரளா/தமிழ்நாடு மற்றும் தெலுங்கானா" | tr "/" "\n" |\<BR>
+/usr/bin/sed "s/ மற்றும் /\n/;" 2>&1 |\<BR>
+/usr/bin/sort -u 2>&1<BR>
+ஆந்திரப்பிரதேசம்<BR>
+கர்நாடகா<BR>
+கேரளா<BR>
+தமிழ்நாடு<BR>
+தெலுங்கானா
+</TD>
+</TR>
+</TABLE>
+</TD>
+<TD valign='top' align='left'>
+<B><U>PERSONAL REFLECTIONS ON ATTENDING PUBLIC EVENTS:</B></U><BR>
+I have never attended events or gatherings involving prominent personalities, such as:<BR>
+&bull; Billionaires (crorepathis/millionaires)<BR>
+&bull; Actresses,<BR>
+&bull; Actors,
+&bull; and Celebrities<BR>
+&bull; Political figures like Prime Ministers,<BR>
+&bull; Presidents,<BR>
+&bull; Chief Ministers,<BR>
+&bull; Members of Parliament (MPs),<BR>
+&bull; Members of the Legislative Assembly (MLAs),<BR>
+and Women and Men Politicians<BR>
+&bull; Royalty like Princessess,<BR>
+&bull; Princes,<BR>
+&bull; and Kings<BR>
+&bull; Religious Leaders and Preachers (Women and Men)<BR>
+Even if these personalities visited my home state of Tamil Nadu,<BR>
+&bull; Andhra Pradesh,<BR>
+Telangana,<BR>
+&bull; or Karnataka,<BR>
+&bull; I have avoided their public events or crowded areas since birth.<BR>
+<B><U>REASONS FOR AVOIDING CROWDED AREAS</B></U>:<BR>
+01) <B><U>SAFETY</B></U>:<BR>
+By avoiding crowded places,<BR>
+I have protected both myself and my family
+from potential dangers associated with large crowds.<BR>
+02) FINANCIAL SAVINGS</B></U>:<BR>
+I have saved money by not wasting fuel (petrol) on travel to crowded events.<BR>
+This has also kept my vehicle's fuel expenses under control.<BR>
+03) <B><U>HEALTH BENEFITS</B></U>:<BR>
+I have avoided the risks of breathing polluted air in crowded areas,
+which is crucial for maintaining good health.<BR>
+04) <B><U>INDIRECT SAVINGS</B></U>:<BR>
+Through the steps above,<BR>
+I have saved money,<BR>
+keeping it from being spent on unnecessary travel,<BR>
+food,<BR>
+and health risks.<BR>
+<B><U>PERSONAL COMMITMENT</B></U>:<BR>
+As long as I am alive,<BR>
+I will continue advising myself to protect my well-being by
+avoiding crowded areas.<BR>
+<B><U>GIVING BACK TO SOCIETY</B></U>:<BR>
+I believe that true greatness comes from helping others and spreading kindness.<BR>
+To this end:<BR>
+I dedicate the money I save,<BR>
+from daily savings and avoiding unnecessary spending,<BR>
+to worthy causes like:<BR>
+Helping the poor,<BR>
+contributing to the National Defence Fund (NDF) and<BR>
+supporting National Association for the Blind (NAB)<BR>
+<B><U>MY MONEY-SAVING HABIT</B></U>:<BR>
+I track my daily expenses on my computer,<BR>
+which helps me stay disciplined<BR>
+with my finances.<BR>
+Days I Stayed Home to Save and Improve My Health:<BR>
+I did not leave my house on the following days:<BR>
+Tue 14-Puratassi-5127 (Tue 30-Sep-2025)<BR>
+Wed 15-Puratassi-5127 (Wed 01-Oct-2025)<BR>
+Thu 16-Puratassi-5127 (Thu 02-Oct-2025)<BR>
+<B><U>These DECISIONS HELPED ME</B></U>:<BR>
+Save money by staying home.<BR>
+Avoid eating out and unnecessary spending.<BR>
+Prevent weight gain and maintain my physical health by staying away from
+unhealthy food options.
+<TABLE style='background-color:black;color:white;width:100%;'>
+<TR>
+<TD valign='top' align='left'>
+$ echo "Andhra Pradesh/Karnataka/Kerala/Tamil Nadu and Telangana" 2>&1 |\<BR>
+/usr/bin/tr "/" "\n" 2>&1 |\<BR>
+/usr/bin/sed "s/ and /\n/;" 2>&1 |\<BR>
+/usr/bin/sort -u 2>&1<BR>
+Andhra Pradesh<BR>
+Karnataka<BR>
+Kerala<BR>
+Tamil Nadu<BR>
+Telangana
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR><TD valign='top' align='left'>
+TERMS AND CONDITIONS APPLIED AT GEOCITIES.WS WEBSITE PROVIDER<BR>
+In 2025, I expect the United States to impose a significant increase in income tax on imported Indian products,<BR>
+potentially reaching as high as 420%. This development has led me to make some adjustments to our purchasing habits.<BR>
+<BR>
+As a result of this change, I have made the following changes:<BR>
+<BR>
+• I have stopped buying US products like: Coca Cola from the US market due to the increased taxes.<BR>
+• As a result, my consumption of Head & Shoulders, an American product, has also decreased significantly at my home.
+<BR>
+--- Products No Longer Purchased ---<BR>
+<BR>
+I have stopped buying following items:<BR>
+<BR>
+1. Kinley Water<BR>
+2. Aquafina Water<BR>
+3. HP-UX Laptop<BR>
+4. HP PRINTER/SCANNER<BR>
+4. SunOS/MYSQL/Oracle<BR>
+5. Dell Laptop<BR>
+6. APPLE MOBILE/LAPTOP<BR>
+6. MAC Laptop<BR>
+7. UNIX INITIALLY FROM KEN THOMPSON AND DENNIS RITCHIE AT BELL LABS(BELL COUNTY/NORTH AMERICA) IN THE UNITED STATES.<BR>
+7. RED HAT LINUX.<BR>
+8. Citrix/netviewer.exe<BR>
+<A href='' onclick='javascript:window.open("https://www.aadinews.com/2025/08/28/india-banned-coca-cola-and-pepsi-what-impact-will-this-have-on-the-indian-economy");'>India banned Coca-Cola and Pepsi</A><BR>
+INDIA BANNED COCA-COLA AND PEPSI PRODUCTS<BR>
+(NEWS SHARED) ON:<BR>
+Thu 28-Aug-2025 10:09 PM IST.<BR>
+I WAS EXPECTING TO BAN COCA-COLA AND PEPSI<BR>
+FROM 2013 UNTIL NOW,<BR>
+BUT IT APPEARS THAT THEY ARE STILL BEING<BR>
+SOLD AT INDIAN BAKERY/SHOPS TODAY.<BR>
+LET ME WAIT FOR A FEW MORE WEEKS/MONTHS/YEARS BEFORE<BR>
+BANNING THOSE PRODUCTS AT BAKERIES IN INDIA.
+</FONT>
+</TD>
+<TD valign='top' align='left'>
+	<TABLE style='width:100%;' border='1'>
+		<TR>
+			<TD valign='top' align='left'>
+				<IMG src='images/vadivel-get-prize.jpg'></TD>
+			<TD valign='top' align='left'>
+				<IMG src='images/N_MURUGESAN3.jpg'><BR>
+				<FONT color='red'>
+				<B><U>என் பதற்றத்தைக் குறைக்க:</B></U><BR>
+				தமிழ் திரைப்பட நகைச்சுவை நடிகர் திரு.வடிவேலுவைப் போலவே,<BR>
+				எனது குடும்பத்திற்குள் இருந்த அனைத்து மோதல்களையும் தீர்த்து வைத்து,<BR>
+				வியாழக்கிழமை 02-அக்-2025 அன்று<BR>
+				(மகாத்மா காந்தியின் பிறந்தநாள் கொண்டாட்டத்தின் போது) எனது பன்னாட்டு துணிச்சல் விருதைப் பெற்றுள்ளேன்.<BR>
+				<B><U>To reduce my tension</B></U>:<BR>
+				Like Tamil film comedian Mr.Vadivelu,<R>
+				I have received my Multi-National Bravery Award on Thursday 02-Oct-2025<BR>
+				(during Mahatma Gandhi's birthday celebration) after resolving all the conflicts within my family.
+				</FONT>
+			</TD>
+		</TR>
+	</TD>
+</TR>
+		</TABLE>
+<TR>
+<TD bgcolor='lightgreen' valign='top' align='left' colspan='2'>
+01) &#9638;DISCLAIMER: NO INTERNATIONAL PURCHASES&#9638;<BR>
+I would like to clarify that this page is not intended for individuals looking to purchase items from countries outside their own.<BR>
+02) &#9638;MY PREFERENCE: FRUGAL SHOPPING&#9638;<BR>
+Instead, I recommend being mindful of your spending habits and avoiding unnecessary international purchases. Saving money without wasting it should be our top priority.<BR>
+<BR>
+03) &#9638;HISTORICAL CONTEXT: SHARED MARKETS&#9638;<BR>
+Did you know that many business and political leaders used to operate under a shared market system? This meant that they would sell their products to buyers across the globe,<BR>
+earning revenue from each sale. Unfortunately, this practice has largely disappeared, leaving us with more expensive options today.<BR>
+<P>The sequence for the listed locations as they receive sunlight is:</P>
+<P>To follow the path of the sun, the sequence for the listed locations as they receive sunlight would be:</P>
+<UL>
+  <LI>01) Antartica. Famous countries: Australia/New Zealand</LI>
+  <LI>02) South America. Famous countries: Brazil/Argentina/Chile/Peru/Colombia/Uruguay/Ecuador/Venezuela</LI>
+  <LI>03) North America. Famous countries: Antigua and Barbuda, Bahamas, Barbados, Belize, Canada, Costa Rica, Cuba, Dominica, Dominican Republic, El Salvador,<BR>
+  Grenada, Guatemala, Haiti, Honduras, Jamaica, Mexico, Nicaragua, Panama, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines,<BR>
+  Trinidad and Tobago, and the United States of America</LI>
+  <LI>04) Africa. Famous countries: Nigeria, Ethiopia, Egypt, DR Congo, Tanzania, South Africa, Kenya, Sudan, Uganda, Algeria, Angola, Morocco, Mozambique,<BR>
+  Ghana, Madagascar, Côte d'Ivoire(Ivory Coast), Cameroon, Niger, Mali, Burkina Faso, Malawi, Zambia, Chad, Somalia, Senegal, Zimbabwe, Guinea, Benin, Rwanda,<BR>
+  Burundi, Tunisia, South Sudan, Togo, Sierra Leone, Libya, Congo, Liberia, Central African Republic, Mauritania, Eritrea, Namibia, Gambia, Gabon, Botswana,<BR>
+  Lesotho, Guinea-Bissau, Equatorial Guinea, Mauritius, Eswatini, Djibouti, Comoros, Cabo Verde, Sao Tome & Principe, Seychelles</LI>
+  <LI>05) Europe</LI>
+  <LI>06) Asia having the country India</LI>
+  <LI>07) Australia</LI>
+</UL></TD></TR>
+<TR>
+	<TD valign='top' align='left' colspan='2'>
+		<TABLE border='1'>
+			<TR>
+				<TD valign='top' align='left'>
+					PRODUCT NAME</TD><TD valign='top' align='left'>COUNTRY</TD></TR>
+	<TR bgcolor='red'><TD valign='top' align='left'>HEAD & SHOULDERS<BR>
+	COCA COLA<BR>
+	PEPSI<BR>
+	Openoffice/soffice.exe<BR>
+	TIDE SOAP = PROCTER & GAMBLE (P&G)<BR>
+	ARIEL<BR>
+	LEVI JEANS<BR>
+	BOOMER FROM MARS WRIGLEY COMPANY<BR>
+	AMAZON<BR>
+	WHIRLPOOL WASHING MACHINE<BR>
+	GILLETE<BR>
+	TOMMY ATKINS MANGOS<BR>
+	WHATSAPP/WASTEAPP<BR>
+	WALMART(FLIPKART)<BR>
+	quora.com WEBSITE<BR>
+	forums.devshed.com WEBSITE<BR>
+	linkedin.com WEBSITE<BR>
+	experts-exchange.com WEBSITE<BR>
+	WIKIPEDIA<BR>
+	WHISPER SANITORY NAPKIN<BR>
+	JOCKEY INTERNATIONAL<BR>
+	EVEREVE SANITORY NAPKIN<BR>
+	STAYFREE SANITORY NAPKIN = JOHNSON & JOHNSON<BR>
+	VISOLVE (KOVAITEAM FROM COIMBATORE INDIA) SETTLED AT U.S<BR>
+	NESS DIGITAL ENGINEERING<BR>
+	sourceforge.net WEBSITE<BR>
+	process explorer/procexp.exe<BR>
+	IBM/AIX(cygnus part of cygwin mksh.exe/bash.exe/gdb.exe/gcc.exe/g++.exe/make.exe/vim.exe)<BR>
+	MOZILLA firefox/firefox.exe/thunderbird/thunderbird.exe<BR>
+	brave/brave.exe<BR>
+	chrome/chrome.exe<BR>
+	INTEL<BR>
+	CHATGPT = AI<BR>
+	OLLAMA = AI<BR>
+	G.E<BR>
+	<HR>
+	MICROSOFT WINDOWS:<BR>
+	msedge.exe/bing/outlook.exe/winword.exe/excel.exe/powerpnt.exe<BR>
+	powershell.exe/cmd.exe/olk.exe/outlook.exe<BR>
+	mspaint.exe/calc.exe/rundll32.exe/explorer.exe/ms-teams.exe<BR>
+	sqlservr.exe/Ssms.exe/netsh.exe/WMIC.exe
+	<HR>
+	https://wwww.google.co.in<BR>
+	https://www.google.com.hk<BR>
+	https://wwww.google.co.uk<BR>
+	https://wwww.google.com<BR>
+	https://wwww.google.* using same common database<BR>
+	FORD MOTOR COMPANY<BR>
+	COLGATE/CLOSEUP TOOTH PASTE<BR>
+	HP LAPTOP<BR>
+	HP PRINTER/SCANNER<BR>
+	HP Inc/HPScan.exe
+	</TD>
+	<TD valign='top' align='left' colspan='3'>UNITED STATES/NORTH AMERICA</TD>
+</TR>
+<TR bgcolor='red'>
+<TD valign='top' align='left'>
+KINLEY
+</TD>
+<TD valign='top' align='left' colspan='3'>
+KINLEY IS A BRAND OF PACKAGED DRINKING WATER OWNED BY COCA-COLA<BR>
+UNITED STATES OF AMERICA AT NORTH AMERICA CONTINENT.
+</TD>
+</TR>
+<TR bgcolor='red'>
+<TD valign='top' align='left'>
+AQUAFINA
+</TD>
+<TD valign='top' align='left' colspan='3'>
+AQUAFINA IS A BRAND OF PURIFIED BOTTLED WATER THAT IS PRODUCED BY PEPSICO.<BR>
+WHILE AQUAFINA IS AN AMERICAN BRAND, IT IS SOLD IN MANY COUNTRIES AROUND THE WORLD.<BR>
+UNITED STATES OF AMERICA AT NORTH AMERICA CONTINENT.
+</TD>
+</TR>
+<TR bgcolor='red'>
+<TD valign='top' align='left'>
+gpay<BR>
+63.00 TIPS IF SPENDING 155000.00 INR<BR>
+375.00 TIPS IF SPENDING USING SBI DEBIT CARD.
+</TD>
+<TD valign='top' align='left' colspan='3'>
+Google Pay (GPay) is primarily owned and operated by Google,<BR>
+which is headquartered in the United States. While Google Pay is used in many countries,<BR>
+the company behind the service is based in Mountain View, California
+</TD>
+</TR>
+<TR bgcolor='red'>
+<TD valign='top' align='left'>
+DELL LAPTOP/MOUSE
+</TD>
+<TD valign='top' align='left' colspan='3'>
+Michael Saul Dell (born February 23,<BR>
+1965) is an <B><U>AMERICAN</B></U> businessman and investor.<BR>
+He is the founder, chairman,<BR>
+and CEO of Dell Technologies,<BR>
+one of the world's largest technology infrastructure companies.
+</TD>
+</TR>
+<TR><TD valign='top' align='left'>CORPORATION<BR>CHENNAI TAMILNADU INDIA</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>statisticstimes.com PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>cleartax PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>TATA SKY PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>tutorialspoint.com PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>naukri.com PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>BSNL FIBERNET/PREPAID/POSTPAID</TD><TD colspan='3' valign='top' align='left'>FROM INDIA/ASIA<BR>571.00 INR PER MONTH 3300 GB PER MONTH = 106.45 GB PER DAY.<BR>471.00 INR PER MONTH 1000 GB PER MONTH = 32.26 GB PER DAY.<BR>IF BSNL MODEM DISPLAYING RED LIGHT NEAR PON LOCATION AT MODEM,<BR>SWITCH OFF MODEM FOR 05 MINUTES AND SWITCH ON AGAIN.</TD></TR>
+<TR><TD valign='top' align='left'>I ACTIV SANITORY NAPKIN</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>SUN NETWORK</TD><TD valign='top' align='left' colspan='3'>KALANITHI MARAN AN INDIAN BILLIONAIRE MEDIA PROPRIETOR:<BR>30289.00 CROREPATHI FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>LION DATES</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>RUPA VEST AND APPAREL BRAND<BR>LUX SOAP/VENUS VEST AND APPARELS</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR>
+<TD valign='top' align='left'>
+MEERA SHAMPOO
+</TD>
+<TD valign='top' align='left' colspan='3'>
+MEERA SHAMPOO IS OWNED BY CAVINKARE PVT. LTD,<BR>
+AN <B><U>INDIAN</B></U> COMPANY.<BR>
+THE BRAND IS A FLAGSHIP PRODUCT OF CAVINKARE,<BR>
+A MAJOR PLAYER IN THE <B><U>INDIAN</B></U> FAST-MOVING CONSUMER GOODS (FMCG) MARKET.
+</TD>
+</TR>
+<TR>
+<TD valign='top' align='left'>
+Sunfeast is a brand of biscuits, not an edible oil
+</TD>
+<TD valign='top' align='left' colspan='3'>
+ADANI WILMAR IS AN <B><U>INDIAN</B></U> COMPANY.<BR>
+THE EDIBLE OIL BRAND "FORTUNE" IS OWNED BY ADANI WILMAR.<BR>
+ADANI WILMAR ALSO OWNS THE RAPUR EDIBLE OIL REFINERY,<BR>
+WHICH PRODUCES FORTUNE SUNFLOWER OIL.<BR>
+SUNFEAST IS A POPULAR BRAND OF BISCUITS PRODUCED BY ITC FOODS
+</TD>
+</TR>
+<TR><TD valign='top' align='left'>KARTHIKA SHAMPOO</TD><TD valign='top' align='left' colspan='3'>A PRODUCT OF <B><U>INDIA</B></U>. IT IS MANUFACTURED BY CAVINKARE PRIVATE LTD</TD>
+</TR>
+<TR><TD valign='top' align='left'>MTR FOODS/PICKLE</TD>
+<TD valign='top' align='left' colspan='3'>
+Orkla ASA, A NORWEGIAN INDUSTRIAL INVESTMENT COMPANY.<BR>
+ORKLA ACQUIRED MTR FOODS IN 2007 AND HAS SINCE RESTRUCTURED ITS <B><U>INDIAN</B></U> OPERATIONS,<BR>INCLUDING MTR, UNDER THE NAME ORKLA <B><U>INDIA</B></U>
+</TD>
+</TR>
+<TR><TD valign='top' align='left'>CHIK SHAMPOO</TD><TD valign='top' align='left' colspan='3'><B><U>INDIAN</B></U> BRAND OWNED BY CAVINKARE</TD>
+</TR>
+<TR>
+<TD valign='top' align='left'>
+BISLERI
+</TD>
+<TD valign='top' align='left' colspan='3'>
+BISLERI, THE WELL-KNOWN <B><U>INDIAN</B></U> BOTTLED WATER BRAND,<BR>
+IS OWNED BY AN <B><U>INDIAN</B></U> COMPANY CALLED BISLERI INTERNATIONAL PVT. LTD.
+</TD>
+</TR>
+<TR>
+<TD valign='top' align='left'>
+MILTON LUNCH BOX/WATER BOTTLE
+</TD>
+<TD valign='top' align='left' colspan='3'>
+THE COUNTRY OF ORIGIN FOR MILTON LUNCH BOXES, INCLUDING THOSE MANUFACTURED BY HAMILTON HOUSEWARES P. LTD., IS <B><U>INDIA</B></U></TD></TR>
+<TR>
+<TD valign='top' align='left'>
+PHONEPE (NO TIPS)
+</TD>
+<TD valign='top' align='left' colspan='3'>
+<B><U>INDIAN</B></U> COMPANY,<BR>
+HEADQUARTERED IN BENGALURU, <B><U>INDIA</B></U>.<BR>
+WHILE IT WAS INITIALLY BACKED BY FLIPKART,<BR>
+WALMART NOW OWNS A SIGNIFICANT STAKE IN THE COMPANY,<BR>
+ACCORDING TO GROWW.<BR>
+PHONEPE WAS FOUNDED BY SAMEER NIGAM,<BR>
+RAHUL CHARI, AND BURZIN ENGINEER IN 2015</TD></TR>
+<TR>
+<TD valign='top' align='left'>
+CELLO LUNCH BOXES.
+</TD>
+<TD valign='top' align='left' colspan='3'>
+MADE IN <B><U>INDIA</B></U></TD></TR>
 	<TR>
-		<TD valign='top' align='right'>
-			asd
+		<TD valign='top' align='left'>PARACHUTE COCONUT OIL</TD><TD valign='top' align='left' colspan='3'>THE BRAND PARACHUTE ORIGINATES FROM <B><U>INDIA</B></U><BR>IT IS A FLAGSHIP BRAND OF MARICO LIMITED,<BR>A MAJOR <B><U>INDIAN</B></U> CONSUMER GOODS COMPANY, ACCORDING TO THEIR WEBSITE.<BR>PARACHUTE IS PRIMARILY KNOWN FOR ITS HAIR CARE PRODUCTS,<BR>ESPECIALLY COCONUT OIL</TD>
+</TR>
+<TR><TD valign='top' align='left'>IDHAYAM OIL</TD><TD valign='top' align='left' colspan='3'>PRODUCED IN <B><U>INDIA</B></U></TD></TR>
+<TR><TD valign='top' align='left'>HERBAL STRATEGI BATH ROOM CLEANER</TD><TD valign='top' align='left' colspan='3'>PRODUCED IN <B><U>INDIA</B></U></TD></TR>
+<TR>
+<TD valign='top' align='left'>
+SUNFEAST YIPPEE NOODLES
+</TD>
+<TD valign='top' align='left' colspan='3'>
+SUNFEAST YIPPEE!, THE INSTANT NOODLE BRAND,<BR>
+IS OWNED BY ITC LIMITED, AN <B><U>INDIAN</B></U> CONGLOMERATE.<BR>
+SPECIFICALLY, IT'S PART OF ITC'S FOODS DIVISION.<BR>
+THE BRAND WAS LAUNCHED IN 2010 TO COMPETE WITH MAGGI NOODLES.
+</TD>
+
+<TR>
+<TD valign='top' align='left'>
+CINTHOL SOAP<BR>
+AMOUNT LESS THAN HIMALAYA SOAP<BR>
+GOOD NIGHT
+</TD>
+<TD valign='top' align='left' colspan='3'>
+CINTHOL<BR>
+GOOD NIGHT BEING OWNED BY GODREJ CONSUMER PRODUCTS LIMITED (GCPL),<BR>
+AN <B><U>INDIAN</B></U> MULTINATIONAL CONSUMER GOODS COMPANY. GCPL IS HEADQUARTERED IN MUMBAI,<BR>
+<B><U>INDIA</B></U>, AND ITS PRODUCTS INCLUDE SOAPS, HAIR COLORANTS, TOILETRIES,<BR>
+AND LIQUID DETERGENTS.
+</TD>
+</TR>
+
+
+<TR><TD valign='top' align='left'>GOPAL TOOTHPASTE PERAL TREDING CORPORATION</TD><TD valign='top' align='left' colspan='3'>
+FROM <B><U>INDIA</B></U>. </TD></TR>
+	<TR>
+		<TD valign='top' align='left'>
+			HIMALAYA TOOTHPASTE/SHAMPOO
+		</TD>
+		<TD valign='top' align='left' colspan='3'>
+			HIMALAYA WELLNESS COMPANY<BR>
+			(FORMERLY HIMALAYA DRUG COMPANY)<BR>IS AN <B><U>INDIAN</B></U>
+			MULTINATIONAL PERSONAL CARE AND PHARMACEUTICAL COMPANY BASED IN BANGALORE,<BR>
+			<B><U>INDIA</B></U>.
 		</TD>
 	</TR>
+<TR>
+<TD valign='top' align='left'>
+TVS
+</TD>
+<TD valign='top' align='left' colspan='3'>
+TVS (T. V. SUNDRAM IYENGAR AND SONS) IS AN <B><U>INDIAN</B></U> GROUP OF COMPANIES,<BR>
+AND THE OWNER OF TVS MOTOR COMPANY IS THE TVS GROUP,<BR>
+WHICH IS BASED IN <B><U>INDIA</B></U>.
+</TD>
+</TR>
+<TR><TD valign='top' align='left'>ALL OUT</TD><TD valign='top' align='left' colspan='3'>ALL OUT IS AN UNFUNDED COMPANY BASED IN GURUGRAM (INDIA), FOUNDED IN 1990</TD>
+</TR>
+<TR><TD valign='top' align='left'>SUPERMAX SHAVING BLADE</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+
+<TR><TD valign='top' align='left'>LASER SHAVING BLADE</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+
+<TR>
+<TD valign='top' align='left'>
+LENOVO LAPTOP/PRINTER
+</TD>
+<TD valign='top' align='left' colspan='3'>
+HONG KONG-BASED CHINESE MULTINATIONAL TECHNOLOGY COMPANY.
+</TD>
+</TR>
+<TR>
+	<TD valign='top' align='left'>RENAULT TRIBER/KIGER</TD>
+	<TD valign='top' align='left' colspan='3'>FROM RENAULT INDIA PRIVATE LIMITED</TD>
+	
+</TR>
+<TR><TD valign='top' align='left'>MESWAK TOOTH PASTE<BR>DABUR INDIA LIMITED</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>LENSKART</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR>
+	<TD valign='top' align='left'>STATE BANK OF INDIA = SBI</TD>
+	<TD valign='top' align='left' colspan='3'>FROM INDIAN GOVERNMENT/ASIA</TD>
+</TR>
+<TR><TD valign='top' align='left'>BSNL</TD><TD valign='top' align='left' colspan='3'>FROM INDIAN GOVERNMENT/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>JOYALUKKAS</TD><TD valign='top' align='left' colspan='3'>FROM KERALA/INDIAN GOVERNMENT</TD></TR>
+<TR><TD valign='top' align='left'>AJAY TOOTHBRUSH<BR>RAGHAV LIFESTYLE PRODUCTS DELHI</TD><TD valign='top' align='left' colspan='3'>FROM PRIVATE COMPANY AT INDIA</TD></TR>
+<TR><TD valign='top' align='left'>AJANTA TOOTHBRUSH</TD><TD valign='top' align='left' colspan='3'>FROM PRIVATE COMPANY AT INDIA</TD></TR>
+<TR><TD valign='top' align='left'>AIRTEL</TD><TD valign='top' align='left' colspan='3'>FROM PRIVATE COMPANY AT INDIA</TD></TR>
+<TR><TD valign='top' align='left'>KARNATAKA BANK</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>LIFELONG GAS STOVE</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>VIDIEM VOGUE GAS STOVE</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>PREETHI KITCHEN APPLIANCES PRIVATE LIMITED.</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>PIGEON GAS STOVE BRAND</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>BLOWHOT GAS STOVE</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>BUTTERFLY GAS STOVE</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>MILTON GAS STOVE</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>PUNJAB NATIONAL BANK</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR>
+	<TD valign='top' align='left'>TAMILNAD MERCANTILE BANK/TMB</TD>
+	<TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR>
+	<TD valign='top' align='left'>UNION BANK</TD>
+	<TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR>
+	<TD valign='top' align='left'>CANARA BANK</TD>
+	<TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR>
+	<TD valign='top' align='left'>HDFC BANK</TD>
+	<TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>AIRTEL PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>JIO PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>RELIANCE PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>AIRCEL PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR>
+	<TD valign='top' align='left'>HMT WATCH</TD>
+	<TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR>
+	<TD valign='top' align='left'>SONATA</TD>
+	<TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR>
+	<TD valign='top' align='left'>TVS GROUP</TD>
+	<TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>TATA CARS</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>MAHINDRA CARS</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>BIG BASKET</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR style='background-color: white; color: red;'><TD valign='top' align='left'>HONDA</TD><TD valign='top' align='left' colspan='3'>FROM JAPAN</TD></TR>
+<TR style='background-color: white; color: red;'><TD valign='top' align='left'>SONY HEADSET</TD><TD valign='top' align='left' colspan='3'>FROM JAPAN</TD></TR>
+<TR style='background-color: white; color: red;'><TD valign='top' align='left'>CANON XEROX/PRITNER/SCANNER<BR>EPSON XEROX/PRITNER/SCANNER</TD><TD valign='top' align='left' colspan='3'>FROM JAPAN</TD></TR>
+<TR style='background-color: white; color: red;'><TD valign='top' align='left'>SOFY SANITORY NAPKIN JAPAN</TD><TD valign='top' align='left' colspan='3'>FROM JAPAN</TD></TR>
+<TR style='background-color: white; color: red;'><TD valign='top' align='left'>YAMAHA VEHICLE/HELMET</TD><TD valign='top' align='left' colspan='3'>FROM JAPAN</TD></TR>
+<TR style='background-color: white; color: red;'>
+	<TD valign='top' align='left'>TOYOTA MOTOR CORPORATION</TD>
+	<TD valign='top' align='left' colspan='3'>FROM JAPAN</TD></TR>
+<TR style='background-color: white; color: red;'>
+	<TD valign='top' align='left'>MARUTI SUZUKI/ACCESS 125 (SUZUKI MOTOR CORPORATION)</TD>
+	<TD valign='top' align='left' colspan='3'>FROM JAPAN</TD></TR>
+<TR bgcolor='lightblue'><TD valign='top' align='left'>ACER LAPTOP/PRINTER(<B><U>MY LAPTOP</B></U>)</TD><TD valign='top' align='left' colspan='3'>TAIWAN COUNTRY<BR>TAIWANESE MULTINATIONAL HARDWARE AND ELECTRONICS CORPORATION,<BR>
+HEADQUARTERED IN XIZHI, NEW TAIPEI CITY, TAIWAN</TD></TR>
+<TR style='background-color: white; color: black;'><TD valign='top' align='left'>NESTLE<BR>MAGGI<BR></TD><TD valign='top' align='left' colspan='3'>The parent company, NESTLE S.A, is headquartered in Vevey,<BR><B><U>SWITZERLAND/EUROPE</B></U>.<BR>NESTLE <B><U>INDIA</B></U> IS A SUBSIDIARY OF NESTLE S.A</TD></TR>
+<TR bgcolor='white'><TD valign='top' align='left'>SENSORA TOOTHPASTE</TD><TD valign='top' align='left' colspan='3'>DENMARK</TD></TR>
+<TR bgcolor='white'><TD valign='top' align='left'>LOGITECH MOUSE</TD><TD valign='top' align='left' colspan='3'>TODAY, BATA'S HEADQUARTERS ARE LOCATED IN SWITZERLAND/EUROPE</TD></TR>
+<TR bgcolor='white'><TD valign='top' align='left'>BATA SHOE/SLIPPER/CHAPPAL</TD><TD valign='top' align='left' colspan='3'>TODAY, BATA'S HEADQUARTERS ARE LOCATED IN SWITZERLAND/EUROPE</TD></TR>
+<TR bgcolor='white'><TD valign='top' align='left'>stackoverflow.com</TD><TD valign='top' align='left' colspan='3'>NETHERLANDS/EUROPE</TD></TR>
+<TR bgcolor='white'><TD valign='top' align='left'>w3schools.com</TD><TD valign='top' align='left' colspan='3'>NORWAY/EUROPE</TD></TR>
+<TR style='background-color:yellow;color:blue;'>
+	<TD valign='top' align='left'>GLOBAL EXCHANGE SERVICES</TD>
+	<TD valign='top' align='left' colspan='3'>FROM SPAIN COUNTRY</TD>
+</TR>
+<TR bgcolor='orange'>
+	<TD valign='top' align='left'>ACCENTURE</TD>
+	<TD valign='top' align='left' colspan='3'>FROM IRELAND/EUROPE.</TD>
+</TR>
+<TR style='background-color:green;color:white;'><TD valign='top' align='left'>ELICA VETRO GAS STOVE</TD><TD valign='top' align='left' colspan='3'>COUNTRY OF ORIGIN: ITALY/EUROPE<BR>SONIA MAINO/(LATER SONIA GANDHI) CITIZEN UNTIL 1983<BR>COUNTRY OF MANUFACTURER: INDIAN</TD></TR>
+<TR style='background-color:green;color:white;'><TD valign='top' align='left'>CHICCO TOOTHPASTE</TD><TD valign='top' align='left' colspan='3'>WAS FOUNDED AT ITALY/EUROPE<BR>LATER BISLERI INTERNATIONAL PVT. LTD. IS AN INDIAN COMPANY</TD></TR>
+<TR style='background-color:green;color:white;'><TD valign='top' align='left'>BISLERY WATER</TD><TD valign='top' align='left' colspan='3'>WAS FOUNDED AT ITALY/EUROPE<BR>LATER BISLERI INTERNATIONAL PVT. LTD. IS AN INDIAN COMPANY</TD></TR>
+<TR><TD valign='top' align='left'>CHICK SHAMPOO CAVINkARE PRIVATE COMPANY(1983)</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>KAG TILES PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>AVR SILVER/GOLD/DIAMONDS A.V.RAMACHANDRAN CHETTIYAR INDIA</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>TANISHQ SILVER/GOLD/DIAMONDS/TITAN WATCH</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>MALABAR SILVER/GOLD/DIAMONDS JEWELLERY PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>MUTHOOD FIN CORP PRIVATE COMPANY FROM KERALA INDIA</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>KALYAN SILVER/GOLD/DIAMONDS JEWELLERY PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR><TD valign='top' align='left'>LALITHAA JEWELLERY PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
+<TR>
+	<TD valign='top' align='left'>LAMBORGHINI CARS</TD>
+	<TD valign='top' align='left' colspan='3'>FROM ITALY/EUROPE</TD>
+</TR>
+<TR bgcolor='yellow'><TD valign='top' align='left'>SAP = SYSTEM APPLICATIONS, PRODUCTS IN DATA PROCESSING.<BR> MULTI-LANGUAGE SUPPORT</TD><TD valign='top' align='left' colspan='3'>FROM GERMANY</TD></TR>
+<TR bgcolor='yellow'><TD valign='top' align='left'>VIM BRAND</TD><TD valign='top' align='left' colspan='3'>FROM GERMANY</TD></TR>
+<TR bgcolor='yellow'><TD valign='top' align='left'>VOLKSWAGEN CARS</TD><TD valign='top' align='left' colspan='3'>FROM GERMANY</TD></TR>
+<TR bgcolor='pink'>
+	<TD valign='top' align='left'>HYUNDAI CARS</TD>
+	<TD valign='top' align='left' colspan='3'>FROM SOUTH KOERA</TD>
+	
+</TR>
+<TR><TD valign='top' align='left'>TURBODRUM WASHING MACHINE</TD><TD valign='top' align='left' colspan='3'>FROM SOUTH KOREA</TD></TR>
+<TR><TD valign='top' align='left'>LG WASHING MACHINE</TD><TD valign='top' align='left' colspan='3'>FROM SOUTH KOREA</TD></TR>
+<TR><TD valign='top' align='left'>SAMSUNG MOBILE/WASHING MACHINE</TD><TD valign='top' align='left' colspan='3'>FROM SOUTH KOREA</TD></TR>
+<TR><TD valign='top' align='left'>FANG OWNER TOOTH PASTE</TD><TD valign='top' align='left' colspan='3'>FROM CHINA</TD></TR>
+<TR><TD valign='top' align='left'>VIVO MOBILE<BR>OPPO MOBILE<BR>ONEPLUS MOBILE<BR>REALME MOBILE<BR>REDME MOBILE</TD><TD valign='top' align='left' colspan='3'>FROM CHINA</TD></TR>
+<TR style='background-color: white; color: black;'><TD valign='top' align='left'>NOKIA</TD><TD colspan='3' valign='top' align='left'>FINLAND</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>vlc/vlc.exe</TD><TD colspan='3' valign='top' align='left'>FRANCE</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>notepad++/notepad++.exe</TD><TD colspan='3' valign='top' align='left'>FRANCE</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>TRUECALLER PRIVATE COMPANY</TD><TD colspan='3' valign='top' align='left'>SWEDISH</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>REXONA               </TD><TD colspan='3' valign='top' align='left'>BRITISH-DUTCH UNITED KINGDOM MULTINATIONAL CONSUMER GOODS COMPANY UNILEVER</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>PEPSODANT TOOTH PASTE</TD><TD colspan='3' valign='top' align='left'>BRITISH-DUTCH UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>SENSODYNE</TD><TD colspan='3' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>wise.com PRIVATE COMPANY</TD><TD colspan='3' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>VODAFONE/VIM/VI PRIVATE COMPANY</TD><TD colspan='3' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>TextPad/TextPad.exe</TD><TD colspan='3' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>opera/opera.exe</TD><TD colspan='3' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>putty/putty.exe</TD><TD colspan='3' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>OXFORD UNIVESITY/DICTIONARY</TD><TD colspan='3' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>DETTOL SOAP</TD><TD colspan='3' valign='top' align='left'>BRITISH MULTINATIONAL CONSUMER GOODS COMPANY RECKITT (FORMERLY RECKITT BENCKISER)<BR>
+UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>SAVLON SOAP</TD><TD valign='top' align='left' colspan='3'>Savlon's owner depends on the region:
+ITC owns the brand in India,<BR>
+while Johnson & Johnson continues to own it in other markets like Sub-Saharan Africa.</TD></TR>
+<TR style='background-color:red;color:white;'><TD valign='top' align='left'>CLINIC PLUS SHAMPOO<BR>DOVE SOAP<BR>LIFEBUOY SOAP<BR>RIN<BR>WHEEL SOAP<BR>SURF EXCEL</TD><TD valign='top' align='left' colspan='3'>UNILEVER, A BRITISH-DUTCH(UNITED KINGDOM) MULTINATIONAL COMPANY,<BR>BUT IT IS PRODUCED AND SOLD IN INDIA BY<BR>HINDUSTAN UNILEVER LIMITED (HUL),<BR>MAKING INDIA ITS PRIMARY COUNTRY OF ORIGIN AND OPERATION.</TD></TR>
+<TR style='background-color:red;color:white;'><TD valign='top' align='left'>SUNLIGHT SOAP<BR>DOVE SOAP<BR>LIFEBUOY SOAP<BR>RIN<BR>WHEEL SOAP<BR>SURF EXCEL</TD><TD valign='top' align='left' colspan='3'>UNILEVER, A BRITISH-DUTCH(UNITED KINGDOM) MULTINATIONAL COMPANY,<BR>BUT IT IS PRODUCED AND SOLD IN INDIA BY<BR>HINDUSTAN UNILEVER LIMITED (HUL),<BR>MAKING INDIA ITS PRIMARY COUNTRY OF ORIGIN AND OPERATION.</TD></TR>
+<TR style='background-color: lightblue; color: red;'><TD valign='top' align='left'>CADBURY DAIRY MILK<BR>PEPE JEANS</TD><TD valign='top' align='left' colspan='3'>OWNED BY THE <B><U>(UNITED KINGDOM)/BRITISH</B></U><BR>I LIKE HILL JASON SOFTWARE ENGINEER AT UK AT G.E(A PART OF G.X.S) FROM 2004 TO 2013<BR></TD></TR>
+<TR style='background-color: lightblue; color: red;'><TD valign='top' align='left'>linuxquestions.org</TD><TD valign='top' align='left' colspan='3'>OWNED BY THE <B><U>(UNITED KINGDOM)/BRITISH</TD></TR>
+<TR style='background-color: lightblue; color: red;'><TD valign='top' align='left'>HARPIC BATH ROOM CLEANER<BR>BRITANNIA<BR>MILK BIKIS<BR>MARIE GOLD</TD><TD valign='top' align='left' colspan='3'>(UNITED KINGDOM)/<B><U>(UNITED KINGDOM)/BRITISH</B></U><BR>I LIKE HILL JASON SOFTWARE ENGINEER AT UK FROM G.E(A PART OF G.X.S FROM 2004 TO 2009)
+</TD></TR>
+<TR style='background-color: cyan; color: black;'><TD valign='top' align='left'>Linux</TD><TD colspan='3' valign='top' align='left'>OPEN SOURCE FROM ALL COUNTRIES AT EARTH</TD>
+</TR>
+</TABLE>
+<PRE>--- GEOCITIES.ws: A Hosting Service Provider ---
+GEOCITIES.ws is an unfunded company based in the United States, founded in 1999. It operates as a provider of hosting services.
+--- Company Overview ---
+* GEOCITIES.ws has not raised any funding to date.
+* The company boasts 5,900 active competitors.
+* Of these, 26 are funded, while 231 have exited (gone out of business).
+* Its top competitors include established players such as:
+        + 1&1 IONOS
+        + GoDaddy
+        + Liquid Web
+Note: I've formatted the text to make it easier to read and understand, with clear headings and concise bullet points. Let me
+know if you have any further requests!
+<HR>
+--- GeoCities.ws: A Separate Entity from the Original GeoCities ---
+Geocities.ws is not the same entity as the original GeoCities, which was founded by:
+* --- David Bohnett ---: An American philanthropist and technology entrepreneur
+* --- John Rezner ---: A California-based entrepreneur
+--- The Original GeoCities Service ---
+The original GeoCities service was launched in 1994 and was later acquired by Yahoo! (owned by Apollo Global Management) in
+1999. Key points about the original service:
+* --- Founders: --- David Bohnett and John Rezner
+* --- Original Name: --- Beverly Hills Internet, later changed to GeoCities
+* --- Acquisition: --- Acquired by Yahoo! in 1999
+* --- Service: --- A web hosting service that allowed users to create and publish websites
+* --- Unique Feature: --- Users could choose a "city" (e.g. Silicon Valley or Hollywood) to categorize their websites
+* --- Inactive: --- The original GeoCities service was shut down by Yahoo! on October 26, 2009
+--- GeoCities.ws: Separation from the Original ---
+Geocities.ws is a separate entity that appears to be using a similar name. According to Tracxn, GeoCities.ws has made no
+investments or acquisitions.
+--- Security Concerns ---
+When uploading HTML files to geocities.ws, a computer automatically inserts JavaScript coding into the files. This code is used
+to save all user's data/cache inside the geocities.ws database.</PRE>
+</TD>
+</TR>
+</TBODY>
 </TABLE>
 <TABLE id='PreventWastage'>
 	<SCRIPT>
