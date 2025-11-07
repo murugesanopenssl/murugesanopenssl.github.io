@@ -756,11 +756,11 @@
 window.onload = function() {
             // Hide the PreventWastage table
             const preventWastageTable = document.getElementById("PreventWastage");
-            preventWastageTable.style.display = "none"; // Hide it
+            preventWastageTable.style.display = "table"; // Hide it
 
             // Show the CategoryAmountDetailsTab table
             const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
-            categoryAmountDetailsTab.style.display = "table"; // Show it
+            categoryAmountDetailsTab.style.display = "none"; // Show it
 			const link = preventWastageTable.querySelector('a');
 			if (link)
 			{
@@ -1182,4 +1182,5 @@ initAndLoad();
 </TR>
 </TABLE>
 </body>
+
 </html>
