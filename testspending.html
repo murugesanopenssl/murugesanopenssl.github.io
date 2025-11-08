@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <HTML lang="en">
 	<HEAD>
-	    <META CHARSET="UTF-8">
-	    <META name="viewport" content="width=device-width, initial-scale=1.0">
+		<META CHARSET="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<META charset="UTF-8">
 		<LINK href="MyMenu002.css" rel="stylesheet">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,7 +93,7 @@ width: 100%;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translateX(-50%);
+	transform: translateX( -50% );
 	color: white;
 	font-size: 30px;
 	font-weight: bold;
@@ -228,93 +228,102 @@ td a:hover
 		<A href="#">Manage Debit Card</A>
 		<A href="#">E-Mandate</A>
 		<A href="#">Contact Us</A>
-	    </NAV>
-	<SCRIPT type='text/javascript'>
-	function toggleTable() {
-	    const homeLink = document.getElementById('Homehref');
-	    const preventLink = document.getElementById('PreventWastagehref');
-	    const homeTable = document.getElementById('HomeTable');
-	    const preventWastage = document.getElementById('PreventWastage');
-	    const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-	    const clickedId = event.target.id;
-	    if (clickedId === 'Homehref') {
-		if (homeTable.style.display === 'none' || homeTable.style.display === '') {
-		    homeTable.style.display = 'table';
-		    categoryAmount.style.display = 'none';
-		    preventWastage.style.display = 'none';
-		} else {
-		    homeTable.style.display = 'none';
-		    categoryAmount.style.display = 'table';
-		    preventWastage.style.display = 'none';
+		</NAV>
+<SCRIPT type='text/javascript'>
+	function toggleTable()
+	{
+		const homeLink = document.getElementById('Homehref');
+		const preventLink = document.getElementById('PreventWastagehref');
+		const homeTable = document.getElementById('HomeTable');
+		const preventWastage = document.getElementById('PreventWastage');
+		const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+		const clickedId = event.target.id;
+		if( 'Homehref' === clickedId )
+		{
+			if( 'none' === homeTable.style.display || '' === homeTable.style.display )
+			{
+				homeTable.style.display = 'table';
+				categoryAmount.style.display = 'none';
+				preventWastage.style.display = 'none';
+			}
+			else
+			{
+				homeTable.style.display = 'none';
+				categoryAmount.style.display = 'table';
+				preventWastage.style.display = 'none';
+			}
 		}
-	    }
-	    if (clickedId === 'PreventWastagehref') {
-		if (preventWastage.style.display === 'none' || preventWastage.style.display === '') {
-		    preventWastage.style.display = 'table';
-		    categoryAmount.style.display = 'none';
-		    homeTable.style.display = 'none';
-		} else {
-		    preventWastage.style.display = 'none';
-		    categoryAmount.style.display = 'table';
-		    homeTable.style.display = 'none';
+		if( 'PreventWastagehref' === clickedId )
+		{
+			if( 'none' === preventWastage.style.display || '' === preventWastage.style.display )
+			{
+				preventWastage.style.display = 'table';
+				categoryAmount.style.display = 'none';
+				homeTable.style.display = 'none';
+			}
+			else
+			{
+				preventWastage.style.display = 'none';
+				categoryAmount.style.display = 'table';
+				homeTable.style.display = 'none';
+			}
 		}
-	    }
 	}
-	    </SCRIPT>
-	    <!-- Icon Menu -->
-	    <DIV class="icon-menu">
+		</SCRIPT>
+		<!-- Icon Menu -->
+		<DIV class="icon-menu">
 		<DIV>
-		    <I class="material-icons">    <DIV class="circle">?</DIV></I>
-		    <A href="#">FinanceHelp</A>
+			<I class="material-icons">	<DIV class="circle">?</DIV></I>
+			<A href="#">FinanceHelp</A>
 		</DIV>
 		<DIV>
-		    <I class="material-icons"><DIV class="circle">i</DIV></I>
-		    <A href="#">About FinanceSSL</A>
+			<I class="material-icons"><DIV class="circle">i</DIV></I>
+			<A href="#">About FinanceSSL</A>
 		</DIV>
 		<DIV>
-		    <I class="material-icons"><DIV class="triangle">
+			<I class="material-icons"><DIV class="triangle">
 		<DIV class="triangle-text">!</DIV>
-	    </DIV></I>
-		    <A class="link-style" onclick="toggleTable()" id='PreventWastagehref' style='color:blue'>PreventWastage</A>
+		</DIV></I>
+			<A class="link-style" onclick="toggleTable()" id='PreventWastagehref' style='color:blue'>PreventWastage</A>
 		</DIV>
 		<DIV>
-		    <I class="material-icons"><DIV class="rectangle"><DIV class="arrow-top-left"></DIV><DIV class="arrow-bottom-right"></DIV></DIV></I>
-		    <A href="#">CompareBankFD</A>
+			<I class="material-icons"><DIV class="rectangle"><DIV class="arrow-top-left"></DIV><DIV class="arrow-bottom-right"></DIV></DIV></I>
+			<A href="#">CompareBankFD</A>
 		</DIV>
-	    </DIV>
-	    <!-- Spending Table -->
-	    <TABLE id='CategoryAmountDetailsTab'>
+		</DIV>
+		<!-- Spending Table -->
+		<TABLE id='CategoryAmountDetailsTab'>
 		<THEAD>
-		    <TR>
+			<TR>
 			<TH valign='top' align='right'>Category</TH>
 			<TH valign='top' align='right'>Amount</TH>
 			<TH valign='top' align='right'>Details</TH>
-		    </TR>
+			</TR>
 		</THEAD>
 		<TBODY>
-		    <!-- Example row -->
-		    <TR>
+			<!-- Example row -->
+			<TR>
 			<TD valign='top' align='right'>Rent</TD>
 			<TD valign='top' align='right'>1200.00 &#8377;</TD>
 			<TD valign='top' align='right'><A href="#">View Details</A></TD>
-		    </TR>
-		    <TR>
+			</TR>
+			<TR>
 			<TD valign='top' align='right'>Utilities</TD>
 			<TD valign='top' align='right'>250.00 &#8377;</TD>
 			<TD valign='top' align='right'><A href="#">View Details</A></TD>
-		    </TR>
-		    <TR>
+			</TR>
+			<TR>
 			<TD valign='top' align='right'>Food</TD>
 			<TD valign='top' align='right'>400.00 &#8377;</TD>
 			<TD valign='top' align='right'><A href="#">View Details</A></TD>
-		    </TR>
-		    <TR>
+			</TR>
+			<TR>
 			<TD valign='top' align='right'>Entertainment</TD>
 			<TD valign='top' align='right'>150.00 &#8377;</TD>
 			<TD valign='top' align='right'><A href="#">View Details</A></TD>
-		    </TR>
+			</TR>
 		</TBODY>
-	    </TABLE>
+		</TABLE>
 	<!--
 		Menu name:
 			Save Money, Avoid Waste
@@ -885,7 +894,7 @@ td a:hover
 	to worthy causes like:<BR>
 	Helping the poor,<BR>
 	contributing to the National Defence Fund (NDF) and<BR>
-	supporting National Association for the Blind (NAB)<BR>
+	supporting National Association for the Blind ( NAB )<BR>
 	<B><U>MY MONEY-SAVING HABIT</B></U>:<BR>
 	I track my daily expenses on my computer,<BR>
 	which helps me stay disciplined<BR>
@@ -990,18 +999,18 @@ td a:hover
 	<P>The sequence for the listed locations as they receive sunlight is:</P>
 	<P>To follow the path of the sun, the sequence for the listed locations as they receive sunlight would be:</P>
 	<UL>
-	  <LI>01) Antartica. Famous countries: Australia/New Zealand</LI>
-	  <LI>02) South America. Famous countries: Brazil/Argentina/Chile/Peru/Colombia/Uruguay/Ecuador/Venezuela</LI>
-	  <LI>03) North America. Famous countries: Antigua and Barbuda, Bahamas, Barbados, Belize, Canada, Costa Rica, Cuba, Dominica, Dominican Republic, El Salvador,<BR>
-	  Grenada, Guatemala, Haiti, Honduras, Jamaica, Mexico, Nicaragua, Panama, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines,<BR>
-	  Trinidad and Tobago, and the United States of America</LI>
-	  <LI>04) Africa. Famous countries: Nigeria, Ethiopia, Egypt, DR Congo, Tanzania, South Africa, Kenya, Sudan, Uganda, Algeria, Angola, Morocco, Mozambique,<BR>
-	  Ghana, Madagascar, Côte d'Ivoire(Ivory Coast), Cameroon, Niger, Mali, Burkina Faso, Malawi, Zambia, Chad, Somalia, Senegal, Zimbabwe, Guinea, Benin, Rwanda,<BR>
-	  Burundi, Tunisia, South Sudan, Togo, Sierra Leone, Libya, Congo, Liberia, Central African Republic, Mauritania, Eritrea, Namibia, Gambia, Gabon, Botswana,<BR>
-	  Lesotho, Guinea-Bissau, Equatorial Guinea, Mauritius, Eswatini, Djibouti, Comoros, Cabo Verde, Sao Tome & Principe, Seychelles</LI>
-	  <LI>05) Europe</LI>
-	  <LI>06) Asia having the country India</LI>
-	  <LI>07) Australia</LI>
+		<LI>01) Antartica. Famous countries: Australia/New Zealand</LI>
+		<LI>02) South America. Famous countries: Brazil/Argentina/Chile/Peru/Colombia/Uruguay/Ecuador/Venezuela</LI>
+		<LI>03) North America. Famous countries: Antigua and Barbuda, Bahamas, Barbados, Belize, Canada, Costa Rica, Cuba, Dominica, Dominican Republic, El Salvador,<BR>
+			Grenada, Guatemala, Haiti, Honduras, Jamaica, Mexico, Nicaragua, Panama, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines,<BR>
+			Trinidad and Tobago, and the United States of America</LI>
+		<LI>04) Africa. Famous countries: Nigeria, Ethiopia, Egypt, DR Congo, Tanzania, South Africa, Kenya, Sudan, Uganda, Algeria, Angola, Morocco, Mozambique,<BR>
+			Ghana, Madagascar, Côte d'Ivoire(Ivory Coast), Cameroon, Niger, Mali, Burkina Faso, Malawi, Zambia, Chad, Somalia, Senegal, Zimbabwe, Guinea, Benin, Rwanda,<BR>
+			Burundi, Tunisia, South Sudan, Togo, Sierra Leone, Libya, Congo, Liberia, Central African Republic, Mauritania, Eritrea, Namibia, Gambia, Gabon, Botswana,<BR>
+			Lesotho, Guinea-Bissau, Equatorial Guinea, Mauritius, Eswatini, Djibouti, Comoros, Cabo Verde, Sao Tome & Principe, Seychelles</LI>
+		<LI>05) Europe</LI>
+		<LI>06) Asia having the country India</LI>
+		<LI>07) Australia</LI>
 	</UL></TD></TR>
 	<TR>
 		<TD valign='top' align='left' colspan='2'>
@@ -1360,7 +1369,7 @@ td a:hover
 	<TR style='background-color: red; color: white;'><TD valign='top' align='left'>vlc/vlc.exe</TD><TD colspan='3' valign='top' align='left'>FRANCE</TD></TR>
 	<TR style='background-color: red; color: white;'><TD valign='top' align='left'>notepad++/notepad++.exe</TD><TD colspan='3' valign='top' align='left'>FRANCE</TD></TR>
 	<TR style='background-color: red; color: white;'><TD valign='top' align='left'>TRUECALLER PRIVATE COMPANY</TD><TD colspan='3' valign='top' align='left'>SWEDISH</TD></TR>
-	<TR style='background-color: red; color: white;'><TD valign='top' align='left'>REXONA               </TD><TD colspan='3' valign='top' align='left'>BRITISH-DUTCH UNITED KINGDOM MULTINATIONAL CONSUMER GOODS COMPANY UNILEVER</TD></TR>
+	<TR style='background-color: red; color: white;'><TD valign='top' align='left'>REXONA</TD><TD colspan='3' valign='top' align='left'>BRITISH-DUTCH UNITED KINGDOM MULTINATIONAL CONSUMER GOODS COMPANY UNILEVER</TD></TR>
 	<TR style='background-color: red; color: white;'><TD valign='top' align='left'>PEPSODANT TOOTH PASTE</TD><TD colspan='3' valign='top' align='left'>BRITISH-DUTCH UNITED KINGDOM</TD></TR>
 	<TR style='background-color: red; color: white;'><TD valign='top' align='left'>SENSODYNE</TD><TD colspan='3' valign='top' align='left'>UNITED KINGDOM</TD></TR>
 	<TR style='background-color: red; color: white;'><TD valign='top' align='left'>wise.com PRIVATE COMPANY</TD><TD colspan='3' valign='top' align='left'>UNITED KINGDOM</TD></TR>
@@ -1420,7 +1429,7 @@ td a:hover
 	</TBODY>
 	</TABLE>
 	<TABLE id='PreventWastage'>
-		<SCRIPT>
+<SCRIPT type='text/javascript'>
 	window.onload = function() {
 		const preventWastageTable = document.getElementById("PreventWastage");
 		const HomeTable = document.getElementById("HomeTable");
@@ -1431,38 +1440,38 @@ td a:hover
 		const IndexTable = document.getElementById("IndexTable");
 		IndexTable.style.display = "none";
 		const link = preventWastageTable.querySelector('a');
-				if (link)
-				{
-					link.style.color = "orange";
-				}
-				if( "blue" == document.getElementById('PreventWastagehref').style.color )
-				{
-					document.getElementById('PreventWastagehref').style.color = "#00ff00";
-				}
-				else
-				{
-					document.getElementById('PreventWastagehref').style.color="blue";
-				}
-			}
-			</SCRIPT>
+		if( link )
+		{
+			link.style.color = "orange";
+		}
+		if( "blue" == document.getElementById('PreventWastagehref').style.color )
+		{
+			document.getElementById('PreventWastagehref').style.color = "#00ff00";
+		}
+		else
+		{
+			document.getElementById('PreventWastagehref').style.color="blue";
+		}
+	}
+</SCRIPT>
 	<TR>
 	<TD valign='top' align='right'>
 	<H1>Save Money by Preventing Unnecessary Expenses</H1>
 	<P>Default view shows <STRONG>Nov-2025</STRONG> if available. Use Add Entry to add data.</P>
 	<DIV class="controls">
-	  <LABEL for="monthSelect">View:</LABEL>
-	  <SELECT id="monthSelect"></SELECT>
-	  <LABEL for="dateInput">Date:</LABEL>
-	  <INPUT type="date" id="dateInput" />
-	  <INPUT type="text" id="itemInput" placeholder="Item (e.g., Snacks)" />
-	  <INPUT type="number" id="amountInput" placeholder="Amount" step="0.01" />
-	  <BUTTON id="addBtn">Add Entry</BUTTON>
-	  <BUTTON id="saveDefaultBtn">Save default array to DB</BUTTON>
+		<LABEL for="monthSelect">View:</LABEL>
+		<SELECT id="monthSelect"></SELECT>
+		<LABEL for="dateInput">Date:</LABEL>
+		<INPUT type="date" id="dateInput" />
+		<INPUT type="text" id="itemInput" placeholder="Item (e.g., Snacks)" />
+		<INPUT type="number" id="amountInput" placeholder="Amount" step="0.01" />
+		<BUTTON id="addBtn">Add Entry</BUTTON>
+		<BUTTON id="saveDefaultBtn">Save default array to DB</BUTTON>
 	</DIV>
 	<DIV id="message" aria-live="polite"></DIV>
 	<DIV id="tableContainer"></DIV>
 	<SCRIPT type="module">
-				function formatDate(dateStr)
+				function formatDate( dateStr )
 				{
 					const date = new Date(dateStr.split("-").reverse().join("-"));
 					const weekday = date.toLocaleString('en-GB', { weekday: 'short' });
@@ -1475,37 +1484,37 @@ td a:hover
 	import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 	import { getDatabase, ref, set, get, child, push } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 	const firebaseConfig = {
-	  apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
-	  authDomain: "openmurugesan.firebaseapp.com",
-	  databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
-	  projectId: "openmurugesan",
-	  storageBucket: "openmurugesan.firebasestorage.app",
-	  messagingSenderId: "307675598593",
-	  appId: "1:307675598593:web:4af163460ce2c3bc719500",
-	  measurementId: "G-0MFK92PQMP"
+		apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+		authDomain: "openmurugesan.firebaseapp.com",
+		databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+		projectId: "openmurugesan",
+		storageBucket: "openmurugesan.firebasestorage.app",
+		messagingSenderId: "307675598593",
+		appId: "1:307675598593:web:4af163460ce2c3bc719500",
+		measurementId: "G-0MFK92PQMP"
 	};
 	const app = initializeApp(firebaseConfig);
 	const db = getDatabase(app);
 	const rootRef = ref(db, "spendingData");
-				const baseRaw = {
+	const baseRaw = {
 	Nov: [
-	[ formatDate("08-Nov-2025"),        "Petrol", 200.00,              "",    0.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-	[ formatDate("07-Nov-2025"),         "ToDpi",  69.00,   "AdhPanXerox",   15.00,  "EntSoup",  20.00,       "EntInject", 100.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-	[ formatDate("06-Nov-2025"),        "Snacks",  40.00,        "Pickle",  203.00],
-	[ formatDate("05-Nov-2025"),     "BreadMilk", 200.00, "TvsInsurance", 1098.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-	[ formatDate("04-Nov-2025"),          "Veg",  108.00,        "Sweet",  176.00,"BreadMilk", 200.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-	[ formatDate("03-Nov-2025"),        "Snacks",  30.00,       "Petrol", 210.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-	[ formatDate("02-Nov-2025"),          "Rice", 700.00,   "BananaLeaf",  10.00,      "Veg",  70.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-	[ formatDate("01-Nov-2025"),         "ToBng",  69.00,          "Veg", 107.00,     "Rice", 360.00,           "Lunch",  55.00,     "Snacks",     30.00,            "",  0.00,        "",   0.00 ]
+	[ formatDate("08-Nov-2025"),		"Petrol", 200.00,			  "",	0.00,		 "",   0.00,				"",   0.00,		   "",	  0.00,			"",  0.00,		"",   0.00 ],
+	[ formatDate("07-Nov-2025"),		 "ToDpi",  69.00,   "AdhPanXerox",   15.00,  "EntSoup",  20.00,	   "EntInject", 100.00,		   "",	  0.00,			"",  0.00,		"",   0.00 ],
+	[ formatDate("06-Nov-2025"),		"Snacks",  40.00,		"Pickle",  203.00],
+	[ formatDate("05-Nov-2025"),	 "BreadMilk", 200.00, "TvsInsurance", 1098.00,		 "",   0.00,				"",   0.00,		   "",	  0.00,			"",  0.00,		"",   0.00 ],
+	[ formatDate("04-Nov-2025"),		  "Veg",  108.00,		"Sweet",  176.00,"BreadMilk", 200.00,				"",   0.00,		   "",	  0.00,			"",  0.00,		"",   0.00 ],
+	[ formatDate("03-Nov-2025"),		"Snacks",  30.00,	   "Petrol", 210.00,		 "",   0.00,				"",   0.00,		   "",	  0.00,			"",  0.00,		"",   0.00 ],
+	[ formatDate("02-Nov-2025"),		  "Rice", 700.00,   "BananaLeaf",  10.00,	  "Veg",  70.00,				"",   0.00,		   "",	  0.00,			"",  0.00,		"",   0.00 ],
+	[ formatDate("01-Nov-2025"),		 "ToBng",  69.00,		  "Veg", 107.00,	 "Rice", 360.00,		   "Lunch",  55.00,	 "Snacks",	 30.00,			"",  0.00,		"",   0.00 ]
 	],
 	Oct: [
-	[ formatDate("31-Oct-2025"),        "Snacks",  18.00,       "Dinner",  45.00,  "EntSoup",  40.00,       "FeviQuick",  10.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-	[ formatDate("26-Oct-2025"),     "LaptopFan", 350.00,    "   Repair",   0.00,"NotTraced",   0.00,            "Till",   0.00,"30-Oct-2025",      0.00,            "",  0.00,        "",   0.00 ],
-	[ formatDate("25-Oct-2025"),         "Train",  23.00,       "Snacks",   80.00,     "MobCover", 200.00,     "Pickle", 240.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-	[ formatDate("24-Oct-2025"),          "BMTC",  23.00,       "Snacks",   80.00,     "MobCover", 200.00,     "Pickle", 240.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-	[ formatDate("23-Oct-2025"),        "Snacks",  80.00,             "",    0.00,            "",    0.00,           "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-	[ formatDate("22-Oct-2025"),       "Haircut", 60.00,       "Earset",  150.00,             "",    0.00,      "Lunch",  40.00,  "feviquick",    -10.00,       "Lemon",  5.00,  "Petrol", 220.00 ],
-	[ formatDate("21-Oct-2025"),       "ToBng", 183.00,       "Tea",  10.00,     "MSPuri",  40.00,      "Dinner",  40.00,  "BathBrush",    96.00,       "Milk",  80.00,  "VaalaIlai", 330.00 ],
+	[ formatDate("31-Oct-2025"),		"Snacks",  18.00,	   "Dinner",  45.00,  "EntSoup",  40.00,	   "FeviQuick",  10.00,		   "",	  0.00,			"",  0.00,		"",   0.00 ],
+	[ formatDate("26-Oct-2025"),	 "LaptopFan", 350.00,	"   Repair",   0.00,"NotTraced",   0.00,			"Till",   0.00,"30-Oct-2025",	  0.00,			"",  0.00,		"",   0.00 ],
+	[ formatDate("25-Oct-2025"),		 "Train",  23.00,	   "Snacks",   80.00,	 "MobCover", 200.00,	 "Pickle", 240.00,		   "",	  0.00,			"",  0.00,		"",   0.00 ],
+	[ formatDate("24-Oct-2025"),		  "BMTC",  23.00,	   "Snacks",   80.00,	 "MobCover", 200.00,	 "Pickle", 240.00,		   "",	  0.00,			"",  0.00,		"",   0.00 ],
+	[ formatDate("23-Oct-2025"),		"Snacks",  80.00,			 "",	0.00,			"",	0.00,		   "",   0.00,		   "",	  0.00,			"",  0.00,		"",   0.00 ],
+	[ formatDate("22-Oct-2025"),	   "Haircut", 60.00,	   "Earset",  150.00,			 "",	0.00,	  "Lunch",  40.00,  "feviquick",	-10.00,	   "Lemon",  5.00,  "Petrol", 220.00 ],
+	[ formatDate("21-Oct-2025"),	   "ToBng", 183.00,	   "Tea",  10.00,	 "MSPuri",  40.00,	  "Dinner",  40.00,  "BathBrush",	96.00,	   "Milk",  80.00,  "VaalaIlai", 330.00 ],
 	/*
 	vaalai ilai 20.00
 	vilakku 20.00
@@ -1516,64 +1525,75 @@ td a:hover
 	oil 80.00
 	banana 20.00
 	*/
-	[ formatDate("20-Oct-2025"),         "Tea",  10.00,   "EntSoup",  20.00,"SugarEntMed", 404.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
-	[ formatDate("19-Oct-2025"),        "Auto",  20.00,      "Kool",  20.00,    "EntSoup",  20.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
-	[ formatDate("18-Oct-2025"),       "ToBng", 417.00,       "Tea",  10.00,           "",     "",            "",     "",           "",       "",           "",     "",           "",     "" ],
-	[ formatDate("17-Oct-2025"),         "Tea",  10.00,    "Snacks",  40.00,     "Petrol", 200.00,       "Lunch", 105.00,  "EntVapour",   200.00,     "Dinner", 355.00,           "",     "" ],
-	[ formatDate("16-Oct-2025"),       "BFast", 105.00,       "Tea",  20.00, "AdhaarUpdt", 200.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
-	[ formatDate("15-Oct-2025"),      "BESCOM", 174.00,    "3Roses", 345.00,  "DressRope", 120.00,         "Tea",  10.00,     "Snacks",    60.00,           "",     "",           "",     "" ],
-	[ formatDate("14-Oct-2025"), "LenseRepair", 900.00,  "SnackTea",  10.00,           "",     "",      "Snacks", 256.00,           "",     0.00,           "",     "",           "",     "" ],
-	[ formatDate("13-Oct-2025"),         "Tea",  20.00,       "Ent", 100.00,     "Snacks",  23.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
-	[ formatDate("12-Oct-2025"),         "Tea",  50.00,   "Poosari",  10.00,       "Soup",  20.00,      "2Meera", 156.00, "PantTailor",    30.00,     "Snacks",  10.00,       "Livo",  10.00 ],
-	[ formatDate("11-Oct-2025"),  "BngToHosur",  13.00,  "HosToDpi",  56.00,  "DpiPetrol", 200.00,     "EntSoup",  20.00,  "EntInject",   610.00, "ViradamTip",  10.00,     "Dinner",  40.00 ],
-	[ formatDate("10-Oct-2025"),        "BMTC",  25.00,     "Lunch",  70.00,      "Bfast",  70.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
-	[ formatDate("09-Oct-2025"),        "BMTC",  25.00,    "Snacks", 120.00,     "Snacks",  50.00,      "Dinner",  20.00, "IGCSE_SSLC", 35000.00,           "",     "",           "",     "" ],
-	[ formatDate("08-Oct-2025"),      "Snacks",  80.00,     "Sweet", 216.00,       "Milk",     "",            "",     "",           "",       "",           "",     "",           "",     "" ],
-	[ formatDate("07-Oct-2025"),       "BFast",     "",          "",     "",       "Milk",     "",            "",     "",           "",       "",           "",     "",           "",     "" ],
-	[ formatDate("06-Oct-2025"),       "BFast",  60.00,    "Snacks",  20.00,       "Milk",  82.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
-	[ formatDate("05-Oct-2025"),       "BFast",     "",     "Sweet", 617.00,     "Snacks",  30.00,         "Veg",  60.00,      "NoTea",       "",      "Lunch",  45.00,           "",     "" ],
-	[ formatDate("04-Oct-2025"),       "BFast",  60.00,     "Lunch",  60.00,     "Dinner",  80.00,         "Veg", 330.00,     "MSSnac",    35.00,     "Snacks", 240.00,      "NoTea",     "" ],
-	[ formatDate("03-Oct-2025"),       "BFast", 140.00,    "Dinner",  70.00,           "",     "",       "Lunch",  80.00,  "TvsRepair",   581.00,           "",     "",           "",     "" ],
-	[ formatDate("02-Oct-2025"),       "BFast", 130.00,     "Lunch",  70.00,     "Dinner",     "", "SnacksSweet", 806.00,   "NMPetrol",   250.00,           "",     "",           "",     "" ],
-	[ formatDate("01-Oct-2025"),       "BFast",     "",     "Lunch",  70.00,     "Dinner",  30.00,    "DpiToBng",  98.00,   "SLPetrol",    50.00,  "SLWhelRep",  20.00,        "Veg", 100.00 ]
+	[ formatDate("20-Oct-2025"),		 "Tea",  10.00,   "EntSoup",  20.00,"SugarEntMed", 404.00,			"",	 "",		   "",	   "",		   "",	 "",		   "",	 "" ],
+	[ formatDate("19-Oct-2025"),		"Auto",  20.00,	  "Kool",  20.00,	"EntSoup",  20.00,			"",	 "",		   "",	   "",		   "",	 "",		   "",	 "" ],
+	[ formatDate("18-Oct-2025"),	   "ToBng", 417.00,	   "Tea",  10.00,		   "",	 "",			"",	 "",		   "",	   "",		   "",	 "",		   "",	 "" ],
+	[ formatDate("17-Oct-2025"),		 "Tea",  10.00,	"Snacks",  40.00,	 "Petrol", 200.00,	   "Lunch", 105.00,  "EntVapour",   200.00,	 "Dinner", 355.00,		   "",	 "" ],
+	[ formatDate("16-Oct-2025"),	   "BFast", 105.00,	   "Tea",  20.00, "AdhaarUpdt", 200.00,			"",	 "",		   "",	   "",		   "",	 "",		   "",	 "" ],
+	[ formatDate("15-Oct-2025"),	  "BESCOM", 174.00,	"3Roses", 345.00,  "DressRope", 120.00,		 "Tea",  10.00,	 "Snacks",	60.00,		   "",	 "",		   "",	 "" ],
+	[ formatDate("14-Oct-2025"), "LenseRepair", 900.00,  "SnackTea",  10.00,		   "",	 "",	  "Snacks", 256.00,		   "",	 0.00,		   "",	 "",		   "",	 "" ],
+	[ formatDate("13-Oct-2025"),		 "Tea",  20.00,	   "Ent", 100.00,	 "Snacks",  23.00,			"",	 "",		   "",	   "",		   "",	 "",		   "",	 "" ],
+	[ formatDate("12-Oct-2025"),		 "Tea",  50.00,   "Poosari",  10.00,	   "Soup",  20.00,	  "2Meera", 156.00, "PantTailor",	30.00,	 "Snacks",  10.00,	   "Livo",  10.00 ],
+	[ formatDate("11-Oct-2025"),  "BngToHosur",  13.00,  "HosToDpi",  56.00,  "DpiPetrol", 200.00,	 "EntSoup",  20.00,  "EntInject",   610.00, "ViradamTip",  10.00,	 "Dinner",  40.00 ],
+	[ formatDate("10-Oct-2025"),		"BMTC",  25.00,	 "Lunch",  70.00,	  "Bfast",  70.00,			"",	 "",		   "",	   "",		   "",	 "",		   "",	 "" ],
+	[ formatDate("09-Oct-2025"),		"BMTC",  25.00,	"Snacks", 120.00,	 "Snacks",  50.00,	  "Dinner",  20.00, "IGCSE_SSLC", 35000.00,		   "",	 "",		   "",	 "" ],
+	[ formatDate("08-Oct-2025"),	  "Snacks",  80.00,	 "Sweet", 216.00,	   "Milk",	 "",			"",	 "",		   "",	   "",		   "",	 "",		   "",	 "" ],
+	[ formatDate("07-Oct-2025"),	   "BFast",	 "",		  "",	 "",	   "Milk",	 "",			"",	 "",		   "",	   "",		   "",	 "",		   "",	 "" ],
+	[ formatDate("06-Oct-2025"),	   "BFast",  60.00,	"Snacks",  20.00,	   "Milk",  82.00,			"",	 "",		   "",	   "",		   "",	 "",		   "",	 "" ],
+	[ formatDate("05-Oct-2025"),	   "BFast",	 "",	 "Sweet", 617.00,	 "Snacks",  30.00,		 "Veg",  60.00,	  "NoTea",	   "",	  "Lunch",  45.00,		   "",	 "" ],
+	[ formatDate("04-Oct-2025"),	   "BFast",  60.00,	 "Lunch",  60.00,	 "Dinner",  80.00,		 "Veg", 330.00,	 "MSSnac",	35.00,	 "Snacks", 240.00,	  "NoTea",	 "" ],
+	[ formatDate("03-Oct-2025"),	   "BFast", 140.00,	"Dinner",  70.00,		   "",	 "",	   "Lunch",  80.00,  "TvsRepair",   581.00,		   "",	 "",		   "",	 "" ],
+	[ formatDate("02-Oct-2025"),	   "BFast", 130.00,	 "Lunch",  70.00,	 "Dinner",	 "", "SnacksSweet", 806.00,   "NMPetrol",   250.00,		   "",	 "",		   "",	 "" ],
+	[ formatDate("01-Oct-2025"),	   "BFast",	 "",	 "Lunch",  70.00,	 "Dinner",  30.00,	"DpiToBng",  98.00,   "SLPetrol",	50.00,  "SLWhelRep",  20.00,		"Veg", 100.00 ]
 	],
 	Sep: [
-	[ formatDate("30-Sep-2025"),       "BFast",     "",     "Lunch",     "",      "Snack",  60.00,     "ToHosur",  13.00,      "ToDpi",    56.00,     "BngGas", 857.00,     "Digest", 20.00 ],
-	[ formatDate("29-Sep-2025"),       "BFast",  70.00,     "Lunch",  60.00,   "SnackOat", 407.00,         "Veg", 916.00,      "EntDr",   200.00,     "EntMed", 634.00,  "SnackPuff", 25.00 ],
-	[ formatDate("28-Sep-2025"),       "BFast",  50.00,     "Lunch",  50.00,  "Snacksoup", 120.00,  "GarbDonate",  20.00,    "TeaHarp",   549.00, "SchoolFees", 55000.00,          "",    "" ],
-	[ formatDate("27-Sep-2025"),       "BFast",     "",     "Lunch",     "",           "",     "",      "Dinner",     "",           "",     "",           "",       "",          "",    "" ],
-	[ formatDate("26-Sep-2025"),       "BFast",  50.00,     "Lunch",  50.00,      "Snack", 250.00,      "Dinner",  50.00, "Vegetables",   466.00,   "SLBigMrt", 249.00,      "MPURI",    35.00 ],
-	[ formatDate("25-Sep-2025"),       "BFast",  50.00,     "Lunch",  50.00,     "Dinner",  50.00,            "",       "",           "",     "",           "",       "",          "",    "" ],
-	[ formatDate("24-Sep-2025"),      "Dinner",  40.00,     "Snack", 150.00,           "",     "",            "",       "",           "",     "",           "",       "",          "",    "" ],
-	[ formatDate("13-Sep-2025"),      "BESCOM", 256.00,          "",    .00,           "",     "",            "",       "",           "",     "",           "",       "",          "",    "" ]
+	[ formatDate("30-Sep-2025"),	   "BFast",	 "",	 "Lunch",	 "",	  "Snack",  60.00,	 "ToHosur",  13.00,	  "ToDpi",	56.00,	 "BngGas", 857.00,	 "Digest", 20.00 ],
+	[ formatDate("29-Sep-2025"),	   "BFast",  70.00,	 "Lunch",  60.00,   "SnackOat", 407.00,		 "Veg", 916.00,	  "EntDr",   200.00,	 "EntMed", 634.00,  "SnackPuff", 25.00 ],
+	[ formatDate("28-Sep-2025"),	   "BFast",  50.00,	 "Lunch",  50.00,  "Snacksoup", 120.00,  "GarbDonate",  20.00,	"TeaHarp",   549.00, "SchoolFees", 55000.00,		  "",	"" ],
+	[ formatDate("27-Sep-2025"),	   "BFast",	 "",	 "Lunch",	 "",		   "",	 "",	  "Dinner",	 "",		   "",	 "",		   "",	   "",		  "",	"" ],
+	[ formatDate("26-Sep-2025"),	   "BFast",  50.00,	 "Lunch",  50.00,	  "Snack", 250.00,	  "Dinner",  50.00, "Vegetables",   466.00,   "SLBigMrt", 249.00,	  "MPURI",	35.00 ],
+	[ formatDate("25-Sep-2025"),	   "BFast",  50.00,	 "Lunch",  50.00,	 "Dinner",  50.00,			"",	   "",		   "",	 "",		   "",	   "",		  "",	"" ],
+	[ formatDate("24-Sep-2025"),	  "Dinner",  40.00,	 "Snack", 150.00,		   "",	 "",			"",	   "",		   "",	 "",		   "",	   "",		  "",	"" ],
+	[ formatDate("13-Sep-2025"),	  "BESCOM", 256.00,		  "",	.00,		   "",	 "",			"",	   "",		   "",	 "",		   "",	   "",		  "",	"" ]
 	]
 				};
-	function monthKeyFromDateString(dstr){
-	  try{
-	    const parts = dstr.split("-");
-	    if(parts.length >= 3){
-	      return parts[1] + "-" + parts[2];
-	    }
-	    const d = new Date(dstr);
-	    const m = d.toLocaleString('en-US',{month:'short'});
-	    const y = d.getFullYear();
-	    return m + "-" + y;
-	  }catch(e){
-	    return dstr;
-	  }
+	function monthKeyFromDateString(dstr)
+	{
+		try
+		{
+			const parts = dstr.split("-");
+			if( 3 <= parts.length )
+			{
+				return parts[1] + "-" + parts[2];
+			}
+			const d = new Date(dstr);
+			const m = d.toLocaleString('en-US',{month:'short'});
+			const y = d.getFullYear();
+			return m + "-" + y;
+		}
+		catch(e)
+		{
+			return dstr;
+		}
 	}
-	function normalizeBase(raw){
-	  const out = {};
-	  for(const k in raw){
-	    const rows = raw[k];
-	    for(const row of rows){
-	      const date = row[0];
-	      const mk = monthKeyFromDateString(date);
-	      if(!out[mk]) out[mk] = [];
-	      out[mk].push(row.slice());
-	    }
-	  }
-	  return out;
+	function normalizeBase(raw)
+	{
+		const out = {};
+		for( const k in raw )
+		{
+			const rows = raw[k];
+			for( const row of rows )
+			{
+				const date = row[0];
+				const mk = monthKeyFromDateString(date);
+				if(!out[mk])
+				{
+					out[mk] = [];
+				}
+				out[mk].push(row.slice());
+			}
+		}
+		return out;
 	}
 	const baseData = normalizeBase(baseRaw);
 	const monthSelect = document.getElementById('monthSelect');
@@ -1585,60 +1605,77 @@ td a:hover
 	const addBtn = document.getElementById('addBtn');
 	const saveDefaultBtn = document.getElementById('saveDefaultBtn');
 	dateInput.valueAsDate = new Date();
-	function labelOf(mk){
-	  return mk;
+	function labelOf(mk)
+	{
+		return mk;
 	}
-	async function initAndLoad(){
-	  message.textContent = "Loading data from Firebase...";
-	  const snap = await get(child(ref(db), '/spendingData'));
-	  let data;
-	  if(snap.exists()){
-	    data = snap.val();
-	    message.textContent = "Loaded data from Firebase.";
-	  } else {
-	    await set(rootRef, baseData);
-	    data = baseData;
-	    message.textContent = "No data in DB — saved local default array to database.";
-	  }
-	  populateMonthSelect(Object.keys(data));
-	  const curMk = currentMonthKey();
-	  const keys = Object.keys(data || {});
-	  const defaultMk = keys.find(k => k === curMk)
-	    || keys.find(k => k.startsWith(curMk.split('-')[0]))
-	    || keys[0]
-	    || 'all';
-	  monthSelect.value = defaultMk;
-	  renderForSelected(data);
+	async function initAndLoad()
+	{
+		message.textContent = "Loading data from Firebase...";
+		const snap = await get(child(ref(db), '/spendingData'));
+		let data;
+		if( snap.exists() )
+		{
+			data = snap.val();
+			message.textContent = "Loaded data from Firebase.";
+		}
+		else
+		{
+			await set(rootRef, baseData);
+			data = baseData;
+			message.textContent = "No data in DB — saved local default array to database.";
+		}
+		populateMonthSelect(Object.keys(data));
+		const curMk = currentMonthKey();
+		const keys = Object.keys(data || {});
+		const defaultMk = keys.find(k => k === curMk)
+		|| keys.find(k => k.startsWith(curMk.split('-')[0]))
+		|| keys[0]
+		|| 'all';
+		monthSelect.value = defaultMk;
+		renderForSelected(data);
 	}
-	function populateMonthSelect(monthKeys){
-	  monthSelect.innerHTML = "";
-	  const optAll = document.createElement('option'); optAll.value = 'all'; optAll.textContent = 'All Months';
-	  monthSelect.appendChild(optAll);
-	  monthKeys.sort((a,b)=>{
-	    const da = new Date(a); const db = new Date(b);
-	    return db - da;
-	  });
-	  for(const mk of monthKeys){
-	    const opt = document.createElement('option');
-	    opt.value = mk;
-	    opt.textContent = labelOf(mk);
-	    monthSelect.appendChild(opt);
-	  }
+	function populateMonthSelect(monthKeys)
+	{
+		monthSelect.innerHTML = "";
+		const optAll = document.createElement('option'); optAll.value = 'all'; optAll.textContent = 'All Months';
+		monthSelect.appendChild(optAll);
+		monthKeys.sort((a,b)=>{
+			const da = new Date(a); const db = new Date(b);
+			return db - da;
+		});
+		for( const mk of monthKeys )
+		{
+			const opt = document.createElement('option');
+			opt.value = mk;
+			opt.textContent = labelOf(mk);
+			monthSelect.appendChild(opt);
+		}
 	}
-	function currentMonthKey(){
-	  const d = new Date();
-	  const mo = d.toLocaleString('en-US',{month:'short'});
-	  const yr = d.getFullYear();
-	  return mo + "-" + yr;
+	function currentMonthKey()
+	{
+		const d = new Date();
+		const mo = d.toLocaleString('en-US',{month:'short'});
+		const yr = d.getFullYear();
+		return mo + "-" + yr;
 	}
-	async function renderForSelected(dataFromDB){
-	  const sel = monthSelect.value;
-	  let data = dataFromDB;
-	  if(!data){
-	    const snap = await get(child(ref(db), '/spendingData'));
-	    if(snap.exists()) data = snap.val();
-	    else data = baseData;
-	  }
+	async function renderForSelected(dataFromDB)
+	{
+		const sel = monthSelect.value;
+		let data = dataFromDB;
+		if(!data)
+		{
+			const snap = await get(child(ref(db), '/spendingData'));
+			if( snap.exists() )
+			{
+				data = snap.val();
+			}
+		}
+		else
+		{
+			data = baseData;
+		}
+	}
 	let html = "<TABLE border='1'>\
 					<THEAD>\
 						<TR>\
@@ -1689,43 +1726,53 @@ td a:hover
 						</TR>\
 					</THEAD>\
 				<TBODY>";
-	  const months = sel === 'all' ? Object.keys(data) : [sel];
-	  const dailyMap = {};
-		for(const mk of months)
+	const months = sel === 'all' ? Object.keys(data) : [sel];
+	const dailyMap = {};
+		for( const mk of months )
 		{
 			if(!data[mk]) continue;
-			data[mk].forEach(row=>{
+			data[mk].forEach( row=>{
 				const date = row[0];
-				for(let i=1;i<row.length;i+=2)
+				for( let i=1; row.length > i; i+=2 )
 				{
 					const item = row[i];
 					const amt = row[i+1];
-					if(item && (amt !== undefined && amt !== null))
+					if( item && ( undefined !== amt && null !== amt ) )
 					{
-						if(!dailyMap[date]) dailyMap[date] = [];
-						dailyMap[date].push({ item, amt });
+						if( !dailyMap[date] )
+						{
+							dailyMap[date] = [];
+						}
+						dailyMap[date].push( { item, amt } );
 					}
 				}
 			});
 		}
 		let grandTotal = 0;
 		let grandWaste = 0;
-		for(const d of Object.keys(dailyMap))
+		for( const d of Object.keys(dailyMap) )
 		{
 			const entries = dailyMap[d];
 			let subTotal = 0;
 			let wasted = 0;
 			let rowHtml = `<TR><TD valign='top' align='left'>${d}</TD>`;
-			for(let i=0;i<6;i++){
-				if(entries[i]){
+			for( let i=0; 6 > i; i++ )
+			{
+				if( entries[i] )
+				{
 					const e = entries[i];
 					const isSnack = /snack/i.test(e.item);
 					const amtVal = parseFloat(e.amt) || 0;
 					const style = isSnack ? " style='background:red;color:white;'" : "";
 					rowHtml += `<TD${style}>${e.item}</TD><TD${style}>${amtVal.toFixed(2)}</TD>`;
 					subTotal += amtVal;
-					if(isSnack) wasted += amtVal;
-				} else {
+					if( isSnack )
+					{
+						wasted += amtVal;
+					}
+				}
+				else
+				{
 					rowHtml += "<TD valign='top' align='left'></TD><TD valign='top' align='left'></TD>";
 				}
 			}
@@ -1749,71 +1796,103 @@ td a:hover
 		html += "</TABLE>";
 		tableContainer.innerHTML = html;
 	}
-	async function loadData() {
-	  const dbRef = ref(db);
-	  const snapshot = await get(child(ref(db), "spendingData"));
-	  console.log("Data loaded from Firebase path: spendingData");
-	  if (snapshot.exists()) {
-	    displayData(snapshot.val());
-	  } else {
-	    await set(ref(db, "spendingData"), baseData);
-	    displayData(baseData);
-	  }
+	async function loadData()
+	{
+		const dbRef = ref(db);
+		const snapshot = await get(child(ref(db), "spendingData"));
+		console.log("Data loaded from Firebase path: spendingData");
+		if( snapshot.exists() )
+		{
+			displayData(snapshot.val());
+		}
+		else
+		{
+			await set(ref(db, "spendingData"), baseData);
+			displayData(baseData);
+		}
 	}
-	async function addEntry(){
-	  const rawDate = dateInput.value;
-	  const date = formatDate(rawDate.split("-").reverse().join("-"));
-	  const item = itemInput.value.trim();
-	  const amount = parseFloat(amountInput.value);
-	  if(!rawDate || !item || Number.isNaN(amount)){
-	    alert("Please enter Date, Item and Amount.");
-	    return;
-	  }
-	  const mk = monthKeyFromDateString(date);
-	  const monthRef = ref(db, `spendingData/${mk}`);
-	  const snap = await get(monthRef);
-	  let monthArr = snap.exists() ? snap.val() : [];
-	  let foundIndex = -1;
-	  for(let i=0;i<monthArr.length;i++){
-	    if(monthArr[i][0] === date){
-	      foundIndex = i; break;
-	    }
-	  }
-	  if(foundIndex >= 0){
-	    monthArr[foundIndex].push(item, amount);
-	  } else {
-	    monthArr.push([formatDate(date), item, amount]);
-	  }
-	  const snapAll = await get(child(ref(db), '/spendingData'));
-	  let dataAll = snapAll.exists() ? snapAll.val() : baseData;
-	  dataAll[mk] = monthArr;
-	  await set(ref(db, "spendingData"), dataAll);
-	  populateMonthSelect(Object.keys(dataAll));
-	  monthSelect.value = mk;
-	  await renderForSelected(dataAll);
-	  itemInput.value = "";
-	  amountInput.value = "";
-	  dateInput.valueAsDate = new Date();
-	  message.textContent = "Saved entry and updated table.";
+	async function addEntry()
+	{
+		const rawDate = dateInput.value;
+		const date = formatDate( rawDate.split("-").reverse().join("-") );
+		const item = itemInput.value.trim();
+		const amount = parseFloat(amountInput.value);
+		if(!rawDate || !item || Number.isNaN(amount))
+		{
+			alert("Please enter Date, Item and Amount.");
+			return;
+		}
+		const mk = monthKeyFromDateString(date);
+		const monthRef = ref(db, `spendingData/${mk}`);
+		const snap = await get(monthRef);
+		let monthArr = snap.exists() ? snap.val() : [];
+		let foundIndex = -1;
+		for( let i=0; monthArr.length > i; i++ )
+		{
+			if( date === monthArr[i][0] )
+			{
+				foundIndex = i; break;
+			}
+		}
+		if( 0 <= foundIndex )
+		{
+			monthArr[foundIndex].push(item, amount);
+		}
+		else
+		{
+			monthArr.push( [formatDate(date), item, amount] );
+		}
+		const snapAll = await get(child(ref(db), '/spendingData'));
+		let dataAll = snapAll.exists() ? snapAll.val() : baseData;
+		dataAll[mk] = monthArr;
+		await set(ref(db, "spendingData"), dataAll);
+		populateMonthSelect(Object.keys(dataAll));
+		monthSelect.value = mk;
+		await renderForSelected(dataAll);
+		itemInput.value = "";
+		amountInput.value = "";
+		dateInput.valueAsDate = new Date();
+		message.textContent = "Saved entry and updated table.";
 	}
 	addBtn.addEventListener('click', addEntry);
-	saveDefaultBtn.addEventListener('click', async ()=>{
-	  await set(rootRef, baseData);
-	  message.textContent = "Default array saved to DB.";
-	  const snap = await get(child(ref(db), '/spendingData'));
-	  const dataAll = snap.exists() ? snap.val() : baseData;
-	  populateMonthSelect(Object.keys(dataAll));
-	  renderForSelected(dataAll);
+	saveDefaultBtn.addEventListener('click', async ()=> {
+		await set(rootRef, baseData);
+		message.textContent = "Default array saved to DB.";
+		const snap = await get(child(ref(db), '/spendingData'));
+		const dataAll = snap.exists() ? snap.val() : baseData;
+		populateMonthSelect(Object.keys(dataAll));
+		renderForSelected(dataAll);
 	});
-	monthSelect.addEventListener('change', async ()=>{
-	  const snap = await get(child(ref(db), '/spendingData'));
-	  const dataAll = snap.exists() ? snap.val() : baseData;
-	  renderForSelected(dataAll);
+	monthSelect.addEventListener('change', async ()=> {
+		const snap = await get(child(ref(db), '/spendingData'));
+		const dataAll = snap.exists() ? snap.val() : baseData;
+		renderForSelected(dataAll);
 	});
 	initAndLoad();
 	</SCRIPT>
 	</TD>
 	</TR>
 	</TABLE>
+<SCRIPT type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function()
+	{
+	const today = new Date();
+	const options = { day: '2-digit', month: 'short', year: 'numeric' };
+	const todayFormatted = today.toLocaleDateString('en-GB', options).replace(/ /g, '-');
+	const lastDate = localStorage.getItem("lastDateAdded");
+	if( lastDate !== todayFormatted )
+	{
+		localStorage.setItem("lastDateAdded", todayFormatted);
+		fetch("your_database_api_url_here", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ date: todayFormatted })
+		})
+		.then(response => response.text())
+		.then(result => console.log("Date added:", todayFormatted))
+		.catch(error => console.error("Error saving date:", error));
+	}
+});
+</SCRIPT>
 	</BODY>
 </HTML>
