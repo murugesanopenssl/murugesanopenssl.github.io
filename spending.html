@@ -221,8 +221,19 @@
 
     <!-- Menu Bar -->
     <nav>
-		<a href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' class="link-style" id='Homehref' style='color:blue'>Home</a>
-		<script type='text/javascript'>
+		<SCRIPT type='text/javascript'>
+            if( window.location.href.includes('spending.html') )
+            {
+                    document.write("<a class='link-style' onclick='toggleTable()' id='PreventWastagehref' style='color:blue'>PreventWastage</a>");
+            }
+            else
+            {
+                    document.write("<a class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/spending.html' id='PreventWastagehref' style='color:blue'>PreventWastage</a>");
+            }
+            if( window.location.href.includes('index.html') )
+            {
+                    document.write("<a class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' id='Homehref' style='color:blue'>Home</a>");
+            }
 		function showHomeTable()
 		{
 			const homeTable = document.getElementById('HomeTable');
@@ -1453,7 +1464,35 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 </TABLE>
 <TABLE id='PreventWastage'>
 	<SCRIPT>
+	 // Function to get the current date in the format "dd-MMM-yyyy"
+    function getTodaysDate() {
+        var today = new Date();
+        var day = today.getDate();
+        var month = today.toLocaleString('default', { month: 'short' }); // Get short month name
+        var year = today.getFullYear();
+        return day + '-' + month + '-' + year;
+    }
+
+    // Function to add today's date as a new row to the table
+    function addTodaysRow() {
+        var table = document.getElementById("spending-table").getElementsByTagName('tbody')[0];
+
+        // Create a new row
+        var newRow = table.insertRow(table.rows.length);
+
+        // Create a new cell for the date
+        var cell1 = newRow.insertCell(0);
+        cell1.textContent = getTodaysDate(); // Today's date
+
+        // Create cells for the reason and amount (you can leave them blank for now)
+        var cell2 = newRow.insertCell(1);
+        cell2.textContent = "Enter reason"; // Placeholder for reason (can be updated later)
+
+        var cell3 = newRow.insertCell(2);
+        cell3.textContent = "Enter amount"; // Placeholder for amount (can be updated later)
+    }
 window.onload = function() {
+	        addTodaysRow();
             // Hide the PreventWastage table
             const preventWastageTable = document.getElementById("PreventWastage");
 			const HomeTable = document.getElementById("HomeTable");
