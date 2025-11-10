@@ -224,11 +224,11 @@
 		<SCRIPT type='text/javascript'>
             if( window.location.href.includes('index.html') )
             {
-                    document.write("<a class='link-style' onclick='toggleTable()' id='PreventWastagehref' style='color:blue'>Home</a>");
+                    document.write("<A href='index.html' class='link-style' onclick='toggleTable()' id='PreventWastagehref' style='color:blue'>Home</A>");
             }
             else
             {
-                    document.write("<a class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/spending.html' id='PreventWastagehref' style='color:blue'>Home</a>");
+                    document.write("<A href='index.html' class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/spending.html' id='PreventWastagehref' style='color:blue'>Home</A>");
             }
 		function showHomeTable()
 		{
@@ -239,83 +239,89 @@
 			categoryAmount.style.display = 'none';
 			homeTable.style.display = 'table';
 		}
-		</script>
-        <a href="#">Products & Services</a>
-        <a href="#">How Do I Help?</a>
-        <a href="#">Manage Debit Card</a>
-        <a href="#">E-Mandate</a>
-        <a href="#">Contact Us</a>
+		</SCRIPT>
+        <A href="#">Products & Services</A>
+        <A href="#">How Do I Help?</A>
+        <A href="#">Manage Debit Card</A>
+        <A href="#">E-Mandate</A>
+        <A href="#">Contact Us</A>
     </nav>
-<script type='text/javascript'>
-function toggleTable() {
-    const homeLink = document.getElementById('Homehref');
-    const preventLink = document.getElementById('PreventWastagehref');
-    const homeTable = document.getElementById('HomeTable');
-    const preventWastage = document.getElementById('PreventWastage');
-    const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-
-    // check which link was clicked
-    const clickedId = event.target.id;
-
-    if( clickedId === 'Homehref') {
-        if( homeTable.style.display === 'none' || homeTable.style.display === '') {
-            // Home is disabled → enable it
-            homeTable.style.display = 'table';
-            categoryAmount.style.display = 'none';
-            preventWastage.style.display = 'none';
-        } else {
-            // Home is enabled → disable it and show categoryAmount
-            homeTable.style.display = 'none';
-            categoryAmount.style.display = 'table';
-            preventWastage.style.display = 'none';
-        }
-    }
-
-    if( clickedId === 'PreventWastagehref') {
-        if( preventWastage.style.display === 'none' || preventWastage.style.display === '') {
-            // PreventWastage is disabled → enable it
-            preventWastage.style.display = 'table';
-            categoryAmount.style.display = 'none';
-            homeTable.style.display = 'none';
-        } else {
-            // PreventWastage is enabled → disable it and show categoryAmount
-            preventWastage.style.display = 'none';
-            categoryAmount.style.display = 'table';
-            homeTable.style.display = 'none';
-        }
-    }
-}
-    </script>
+			<SCRIPT type='text/javascript'>
+				function toggleTable()
+				{
+					const homeLink = document.getElementById('Homehref');
+					const preventLink = document.getElementById('PreventWastagehref');
+					const homeTable = document.getElementById('HomeTable');
+					const preventWastage = document.getElementById('PreventWastage');
+					const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+					// check which link was clicked
+					const clickedId = event.target.id;
+					if( clickedId === 'Homehref')
+					{
+						if( homeTable.style.display === 'none' || homeTable.style.display === '')
+						{
+							// Home is disabled → enable it
+							homeTable.style.display = 'table';
+							categoryAmount.style.display = 'none';
+							preventWastage.style.display = 'none';
+						}
+						else
+						{
+							// Home is enabled → disable it and show categoryAmount
+							homeTable.style.display = 'none';
+							categoryAmount.style.display = 'table';
+							preventWastage.style.display = 'none';
+						}
+					}
+					if( clickedId === 'PreventWastagehref')
+					{
+						if( preventWastage.style.display === 'none' || preventWastage.style.display === '')
+						{
+							// PreventWastage is disabled → enable it
+							preventWastage.style.display = 'table';
+							categoryAmount.style.display = 'none';
+							homeTable.style.display = 'none';
+						}
+						else
+						{
+							// PreventWastage is enabled → disable it and show categoryAmount
+							preventWastage.style.display = 'none';
+							categoryAmount.style.display = 'table';
+							homeTable.style.display = 'none';
+						}
+					}
+				}
+    </SCRIPT>
     <!-- Icon Menu -->
-    <div class="icon-menu">
-        <div>
-            <i class="material-icons">    <div class="circle">?</div></i>
-            <a href="#">FinanceHelp</a>
-        </div>
-        <div>
-            <i class="material-icons"><div class="circle">i</div></i>
-            <a href="#">About FinanceSSL</a>
-        </div>
-        <div>
-            <i class="material-icons"><div class="triangle">
-        <div class="triangle-text">!</div>
-    </div></i>
+    <DIV class="icon-menu">
+        <DIV>
+            <i class="material-icons">    <DIV class="circle">?</DIV></i>
+            <A href="#">FinanceHelp</A>
+        </DIV>
+        <DIV>
+            <i class="material-icons"><DIV class="circle">i</DIV></i>
+            <A href="#">About FinanceSSL</A>
+        </DIV>
+        <DIV>
+            <i class="material-icons"><DIV class="triangle">
+        <DIV class="triangle-text">!</DIV>
+    </DIV></i>
 	<SCRIPT type='text/javascript'>
 		if( window.location.href.includes('spending.html') )
 		{
-			document.write("<a class='link-style' onclick='toggleTable()' id='PreventWastagehref' style='color:blue'>PreventWastage</a>");
+			document.write("<A href='#' class='link-style' onclick='toggleTable(event)' id='PreventWastagehref' style='color:blue'>PreventWastage</A>");
 		}
 		else
 		{
-			document.write("<a class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/spending.html' id='PreventWastagehref' style='color:blue'>PreventWastage</a>");
+			document.write("<A href='#' class='link-style' onclick='toggleTable(event)' id='PreventWastagehref' style='color:blue'>PreventWastage</A>");
 		}
 	</SCRIPT>
-        </div>
-        <div>
-            <i class="material-icons"><div class="rectangle"><div class="arrow-top-left"></div><div class="arrow-bottom-right"></div></div></i>
-            <a href="#">CompareBankFD</a>
-        </div>
-    </div>
+        </DIV>
+        <DIV>
+            <i class="material-icons"><DIV class="rectangle"><DIV class="arrow-top-left"></DIV><DIV class="arrow-bottom-right"></DIV></DIV></i>
+            <A href="#">CompareBankFD</A>
+        </DIV>
+    </DIV>
 
     <!-- Spending Table -->
     <table id='CategoryAmountDetailsTab'>
@@ -331,22 +337,22 @@ function toggleTable() {
             <TR>
                 <TD valign='top' align='right'>Rent</TD>
                 <TD valign='top' align='right'>12000.00 &#8377;</TD>
-                <TD valign='top' align='right'><a href="#">View Details</a></TD>
+                <TD valign='top' align='right'><A href="#">View Details</A></TD>
             </TR>
             <TR>
                 <TD valign='top' align='right'>Petrol</TD>
                 <TD valign='top' align='right'>920.00 &#8377;</TD>
-                <TD valign='top' align='right'><a href="#">View Details</a></TD>
+                <TD valign='top' align='right'><A href="#">View Details</A></TD>
             </TR>
             <TR>
                 <TD valign='top' align='right'>Food</TD>
                 <TD valign='top' align='right'>400.00 &#8377;</TD>
-                <TD valign='top' align='right'><a href="#">View Details</a></TD>
+                <TD valign='top' align='right'><A href="#">View Details</A></TD>
             </TR>
             <TR>
                 <TD valign='top' align='right'>Saved Amount</TD>
                 <TD valign='top' align='right'>150.00 &#8377;</TD>
-                <TD valign='top' align='right'><a href="#">View Details</a></TD>
+                <TD valign='top' align='right'><A href="#">View Details</A></TD>
             </TR>
         </tbody>
     </table>
@@ -360,7 +366,7 @@ function toggleTable() {
 <NOSCRIPT>
 <TABLE border='1'>
 <TR> <TD valign='top' align='right' bgcolor=cyan>
-<a href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' class="link-style" id='Homehref' style='color:blue'>Home</a>
+<A href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' class="link-style" id='Homehref' style='color:blue'>Home</A>
 <TD valign='top' align='right'>
 	<A>MoneyHelp01</A>
 </TD>
@@ -393,21 +399,21 @@ function toggleTable() {
 </TD>
 </TR>
 <TR> <TD valign='top' align='right'>
-	<A HREF='NMurugesan_cv.html'>NMurugesan_cv</A>
+	<A href='NMurugesan_cv.html'>NMurugesan_cv</A>
 </TD> <TD valign='top' align='right'>
-			<A HREF='mis-interest.html' title='வல்லரசுபங்களிப்பு01'>வல்லரசுபங்களிப்பு</A>
+			<A href='mis-interest.html' title='வல்லரசுபங்களிப்பு01'>வல்லரசுபங்களிப்பு</A>
 </TD>
 <TD valign='top' align='right'>
-	<A HREF='BEST_BANK_TO_OPEN_FD.html'>BankForFd</A>
+	<A href='BEST_BANK_TO_OPEN_FD.html'>BankForFd</A>
 </TD>
 	<TD valign='top' align='right'>
-		<A HREF='MIS_INTEREST_EARLIER_INTERNET_BANKING_ERROR.html'>PostNetLeapErr</A>
+		<A href='MIS_INTEREST_EARLIER_INTERNET_BANKING_ERROR.html'>PostNetLeapErr</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='SANI_MUTHU_CALENDAR.html'>SaniMuthuCalendar</A>
+		<A href='SANI_MUTHU_CALENDAR.html'>SaniMuthuCalendar</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='I_FEEL_RENT_BETTER_THAN_LEASE.html'>Rent &gt; Lease</A>
+		<A href='I_FEEL_RENT_BETTER_THAN_LEASE.html'>Rent &gt; Lease</A>
 	</TD>
 	<TD valign='top' align='right'>
 		<A href='SBI_employee_never_help.html'>SbiEmpNeverHelp</A>
@@ -415,105 +421,105 @@ function toggleTable() {
 	<TD valign='top' align='right'>
 		<A href='block_url_msedge.html'>BlockUrlMsedge</A>
 	</TD>
-	<TD valign='top' align='right'><A HREF='find_Number_Of_system_connected_to_bsnl.html'>BSNLUsrCnt</A></TD>
-	<TD valign='top' align='right'><A HREF='Prediction.html'>MyPrediciton</A></TD>
+	<TD valign='top' align='right'><A href='find_Number_Of_system_connected_to_bsnl.html'>BSNLUsrCnt</A></TD>
+	<TD valign='top' align='right'><A href='Prediction.html'>MyPrediciton</A></TD>
 	<TD valign='top' align='right'>
-		<A HREF='KnowledgeTransferAmount.html' title='Knowledge transfer amount'>KDA</A>
+		<A href='KnowledgeTransferAmount.html' title='Knowledge transfer amount'>KDA</A>
 	</TD>
 </TR>
 <TR>
 	<TD valign='top' align='right'>
-			<A HREF='openssl_speed.html'>openssl speed</A> </TD>
+			<A href='openssl_speed.html'>openssl speed</A> </TD>
 	<TD valign='top' align='right'>
-		<A HREF='nsc_interest.html' title='வல்லரசுபங்களிப்பு02'>வல்லரசுபங்களிப்பு</A>
+		<A href='nsc_interest.html' title='வல்லரசுபங்களிப்பு02'>வல்லரசுபங்களிப்பு</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='Post_office_PPF_deposit.html'>PostPpfDeposit</A>
+		<A href='Post_office_PPF_deposit.html'>PostPpfDeposit</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='DoNotWasteMoney.html'>NoMoneyWastage</A>
+		<A href='DoNotWasteMoney.html'>NoMoneyWastage</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='UselessGasTaxAgencies.html'>Gas tax agency</A>
+		<A href='UselessGasTaxAgencies.html'>Gas tax agency</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='PreventMoney_Wastage.html'>PreventMoneyWaste</A>
+		<A href='PreventMoney_Wastage.html'>PreventMoneyWaste</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='AppolloPharmacy.html'>Apollo</A>
+		<A href='AppolloPharmacy.html'>Apollo</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='GarbageNumbers.html'>GarbageNumbers</A>
+		<A href='GarbageNumbers.html'>GarbageNumbers</A>
 	</TD>
-	<TD valign='top' align='right'><A HREF='Windows_ERR_HELP.html'>WindowsHelp</A></TD>
-	<TD valign='top' align='right'><A HREF='My_dream_at_universe.html'>MyUniverseDream</A></TD>
-	<TD valign='top' align='right'><A HREF='Time-travel-knowledge-transfer.html'>TimeTravel</A></TD>
+	<TD valign='top' align='right'><A href='Windows_ERR_HELP.html'>WindowsHelp</A></TD>
+	<TD valign='top' align='right'><A href='My_dream_at_universe.html'>MyUniverseDream</A></TD>
+	<TD valign='top' align='right'><A href='Time-travel-knowledge-transfer.html'>TimeTravel</A></TD>
 </TR>
 <TR>
 	<TD rowspan='14' valign='top' align='right'>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='ppf.html' title='வல்லரசுபங்களிப்பு03'>வல்லரசுபங்களிப்பு</A>
+		<A href='ppf.html' title='வல்லரசுபங்களிப்பு03'>வல்லரசுபங்களிப்பு</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='LEARN_SBI_FD.html'>Learn SBI ETDR</A>
+		<A href='LEARN_SBI_FD.html'>Learn SBI ETDR</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='CurrentBillPayment.html'>ElectricBillPayment</A>
+		<A href='CurrentBillPayment.html'>ElectricBillPayment</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='LPG_No_tips_delivery.html'>LPG no tips</A>
+		<A href='LPG_No_tips_delivery.html'>LPG no tips</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='IPPB_Transfer_money.html'>IppbMoneyTransfer</A>
+		<A href='IPPB_Transfer_money.html'>IppbMoneyTransfer</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='GarbageEmail.html'>GarbageEmail</A>
+		<A href='GarbageEmail.html'>GarbageEmail</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='HackUrlEmailNumSms.html'>HackUrlSms</A>
+		<A href='HackUrlEmailNumSms.html'>HackUrlSms</A>
 	</TD>
-	<TD valign='top' align='right'><A HREF='thunderbird_at_Windows.html'>thunderbird</A></TD>
-	<TD valign='top' align='right'><A HREF='spending.html'>NoMoneyWastage</A></TD>
-	<TD valign='top' align='right'><A HREF='Gold-seller-comparison.html'>GoldSeller</A></TD>
+	<TD valign='top' align='right'><A href='thunderbird_at_Windows.html'>thunderbird</A></TD>
+	<TD valign='top' align='right'><A href='spending.html'>NoMoneyWastage</A></TD>
+	<TD valign='top' align='right'><A href='Gold-seller-comparison.html'>GoldSeller</A></TD>
 </TR>
 <TR>
 	<TD valign='top' align='right'>
-			<A HREF='shared-market-mis-compare.html'>SharedMktMis</A>
+			<A href='shared-market-mis-compare.html'>SharedMktMis</A>
 	</TD>
 	<TD valign='top' align='right'>
-			<A HREF='how-open-sbi-etdr.html'>Steps@SbiFD</A>
+			<A href='how-open-sbi-etdr.html'>Steps@SbiFD</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='Steps_to_Close_NPS_After_5_Years.html'>NeverOpenNps</A>
+		<A href='Steps_to_Close_NPS_After_5_Years.html'>NeverOpenNps</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='airtel_recharge.html'>MobChargeErr</A>
+		<A href='airtel_recharge.html'>MobChargeErr</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='BIDARAGUPPA-GARBAGE-DUMPING.html'>GarbageAttendance</A>
+		<A href='BIDARAGUPPA-GARBAGE-DUMPING.html'>GarbageAttendance</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='Samsung_Light_Mode.html'>SamsungLightMode</A>
+		<A href='Samsung_Light_Mode.html'>SamsungLightMode</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='LoanLicSchoolActions.html'>LoanLicSchool</A>
+		<A href='LoanLicSchoolActions.html'>LoanLicSchool</A>
 	</TD>
-	<TD valign='top' align='right'><A HREF='Import_Eml_File_To_Thunderbird.html'>ImportEmail</A></TD>
-	<TD valign='top' align='right'><A HREF='murugesan_openssl.html'>My ranking</A></TD>
-	<TD valign='top' align='right'><A HREF='INDIAN_PM.html'>INDIAN_PM</A></TD>
+	<TD valign='top' align='right'><A href='Import_Eml_File_To_Thunderbird.html'>ImportEmail</A></TD>
+	<TD valign='top' align='right'><A href='murugesan_openssl.html'>My ranking</A></TD>
+	<TD valign='top' align='right'><A href='INDIAN_PM.html'>INDIAN_PM</A></TD>
 </TR>
 <TR>
-	<TD valign='top' align='right'> <A HREF='MIS_ONLINE_EXCEPTION.html'>MisOnlineException</A>
+	<TD valign='top' align='right'> <A href='MIS_ONLINE_EXCEPTION.html'>MisOnlineException</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='SBI_ETDR_INTEREST.html'>SBI ETDR</A>
+		<A href='SBI_ETDR_INTEREST.html'>SBI ETDR</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='HomeChecklist.html'>HomeCheckList</A>
+		<A href='HomeChecklist.html'>HomeCheckList</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='PostOfficeHolidays.html'>PostOfficeHolidays</A>
+		<A href='PostOfficeHolidays.html'>PostOfficeHolidays</A>
 	</TD>
 	<TD valign='top' align='right'>
 		<A title='https://results.cbse.nic.in user to get HSC results from Tamilnadu.'>results.cbse.nic.in</A>
@@ -521,25 +527,25 @@ function toggleTable() {
 		<A href='Friendship_day.html'>FriendshipDay</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='UPDATE_AADHAR_WAIT_DAYS.html'>UpdateAadhar</A>
+		<A href='UPDATE_AADHAR_WAIT_DAYS.html'>UpdateAadhar</A>
 	</TD>
-	<TD valign='top' align='right'><A HREF='ThunderBird_All_Mail_Count.html'>EMAIL Count</A></TD>
-	<TD valign='top' align='right'><A HREF='My_Drawings.html'>My drawing</A></TD>
-	<TD valign='top' align='right'><A HREF='TAMILNADU_CM.html'>TamilnaduCM</A></TD>
+	<TD valign='top' align='right'><A href='ThunderBird_All_Mail_Count.html'>EMAIL Count</A></TD>
+	<TD valign='top' align='right'><A href='My_Drawings.html'>My drawing</A></TD>
+	<TD valign='top' align='right'><A href='TAMILNADU_CM.html'>TamilnaduCM</A></TD>
 </TR>
-<TR> <TD valign='top' align='right'> 		<A HREF='THIRUMOOLAR-MIS-EXAMPLE.html'>ThirumoolarMis</A>
+<TR> <TD valign='top' align='right'> 		<A href='THIRUMOOLAR-MIS-EXAMPLE.html'>ThirumoolarMis</A>
 </TD>
 	<TD valign='top' align='right'>
-			<A HREF='TMB_ETDR_INTEREST.html'>TMB ETDR</A>
+			<A href='TMB_ETDR_INTEREST.html'>TMB ETDR</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='PETROL_AIR_PUMP.html'>PetrolAirPump</A>
+		<A href='PETROL_AIR_PUMP.html'>PetrolAirPump</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='FixedDepositComparisonBanks.html'>FD at each bank</A>
+		<A href='FixedDepositComparisonBanks.html'>FD at each bank</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='SMS_Hackers.html'>SMS hackers</A>
+		<A href='SMS_Hackers.html'>SMS hackers</A>
 	</TD>
 	<TD valign='top' align='right'>
 		<A href='Benefits_of_plants.html'>BenefitsOfPlants</A>
@@ -551,58 +557,58 @@ function toggleTable() {
 	<TD valign='top' align='right'><A href='murugesan_openssl_search.html'>murugesan ssl</A></TD>
 	<TD valign='top' align='right'><A href='KARNATAKA_CM.html'>Karnataka CM</A></TD>
 </TR>
-<TR> <TD valign='top' align='right'> <A HREF='do_not_waste_money.html'>Save money</A>
+<TR> <TD valign='top' align='right'> <A href='do_not_waste_money.html'>Save money</A>
 </TD>
 	<TD valign='top' align='right'>
-			<A HREF='IND_ETDR_INTEREST.html'>IND ETDR</A>
+			<A href='IND_ETDR_INTEREST.html'>IND ETDR</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='BuyerAction.html'>BuyerActions</A>
+		<A href='BuyerAction.html'>BuyerActions</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='Indane-gas-ippb.html'>IPPG gas payment</A>
+		<A href='Indane-gas-ippb.html'>IPPG gas payment</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='block_geocities.html'>Block geocities</A>
+		<A href='block_geocities.html'>Block geocities</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='firefox_Comedy.html'>FirefoxComedy</A>
+		<A href='firefox_Comedy.html'>FirefoxComedy</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='UPDATE_AADHAR_WAIT_DAYS.html'>AadharChgWaitDays</A>
+		<A href='UPDATE_AADHAR_WAIT_DAYS.html'>AadharChgWaitDays</A>
 	</TD>
-	<TD valign='top' align='right'><A HREF='IDA14092023000.html'>WorstPatch</A></TD>
-	<TD valign='top' align='right'><A HREF='poems/index.html'>My tamil poems</A></TD>
-	<TD valign='top' align='right'><A HREF='earth_politics_or_general_age.html'>PoliticsAge</A></TD>
+	<TD valign='top' align='right'><A href='IDA14092023000.html'>WorstPatch</A></TD>
+	<TD valign='top' align='right'><A href='poems/index.html'>My tamil poems</A></TD>
+	<TD valign='top' align='right'><A href='earth_politics_or_general_age.html'>PoliticsAge</A></TD>
 </TR>
 <TR>
 	<TD valign='top' align='right'>
 		<A href='AIBEX_mobile_cover_seller_amazon.html'>AIBEX mobile cover</A>
 	</TD>
 	<TD valign='top' align='right'>
-			<A HREF='BNK_CREDIT_INTEREST.html'>Bank credit</A>
+			<A href='BNK_CREDIT_INTEREST.html'>Bank credit</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='2WHEELER_INSURANCE.html'>2WheelerLIC</A>
+		<A href='2WHEELER_INSURANCE.html'>2WheelerLIC</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='Pay_Book_Bharat_gas_online.html'>BuyCylinder-NoTips</A>
+		<A href='Pay_Book_Bharat_gas_online.html'>BuyCylinder-NoTips</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='BlockWebSite.html'>Block website</A>
+		<A href='BlockWebSite.html'>Block website</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='JokesReduceTension.html'>ReduceTension</A>
+		<A href='JokesReduceTension.html'>ReduceTension</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='DOWNLOAD_PAN_AADHAR.html'>DownloadPanAadhar</A>
+		<A href='DOWNLOAD_PAN_AADHAR.html'>DownloadPanAadhar</A>
 	</TD>
 	<TD valign='top' align='right'></TD>
 	<TD valign='top' align='right'>
-		<A HREF='I_love_mathematics.html'>I <span style="color: red;">&#9829;</span> Mathematics</A>
+		<A href='I_love_mathematics.html'>I <span style="color: red;">&#9829;</span> Mathematics</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='Politician_assets.html'>PoliticianAssets</A>
+		<A href='Politician_assets.html'>PoliticianAssets</A>
 	</TD>
 </TR>
 <TR>
@@ -610,29 +616,29 @@ function toggleTable() {
 		<A href='HowToEarnMoney.html'>Earn money</A>
 	</TD>
 	<TD valign='top' align='right'>
-			<A HREF='Donate.html'>Before donations</A>
+			<A href='Donate.html'>Before donations</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='SbiRewards.html'>SbiRewards</A>
+		<A href='SbiRewards.html'>SbiRewards</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='SoapProductCountry.html'>SoapCompany</A>
+		<A href='SoapProductCountry.html'>SoapCompany</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='NEWS_emails.html'>NEWS emails</A>
+		<A href='NEWS_emails.html'>NEWS emails</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='Roaming_144_Comedy.html'>RoamingComedy</A>
+		<A href='Roaming_144_Comedy.html'>RoamingComedy</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='aadhaar-unlock-bio-metrics.html'>AadharBioMetrics</A>
+		<A href='aadhaar-unlock-bio-metrics.html'>AadharBioMetrics</A>
 	</TD>
 	<TD valign='top' align='right'></TD>
 	<TD valign='top' align='right'>
-		<A HREF='TamilLetters.html'>Tamil letters</A>
+		<A href='TamilLetters.html'>Tamil letters</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='NewsPolitics.html'>NEWSpolitics</A>
+		<A href='NewsPolitics.html'>NEWSpolitics</A>
 	</TD>
 </TR>
 <TR>
@@ -640,24 +646,24 @@ function toggleTable() {
 		<A href='DNC_Chit_fund.html'>Chit fund</A>
 	</TD>
 	<TD valign='top' align='right'>
-			<A HREF='mydonation.html'>My donation</A>
+			<A href='mydonation.html'>My donation</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='HDFC_AMB_Hacker.html'>HdfcAmbHacker</A>
+		<A href='HDFC_AMB_Hacker.html'>HdfcAmbHacker</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='rajaji_nagar_ho.html'>RajajiNagarPost</A>
+		<A href='rajaji_nagar_ho.html'>RajajiNagarPost</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='ISRO_emails.html'>ISRO emails</A>
+		<A href='ISRO_emails.html'>ISRO emails</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='fiverr_Comedy.html'>FiverrComedy</A>
+		<A href='fiverr_Comedy.html'>FiverrComedy</A>
 	</TD>
 	<TD valign='top' align='right'></TD>
 	<TD valign='top' align='right'></TD>
 	<TD valign='top' align='right'>
-		<A HREF='kannada_letters.html'>Kannada letters</A>
+		<A href='kannada_letters.html'>Kannada letters</A>
 	</TD>
 </TR>
 <TR>
@@ -668,22 +674,22 @@ function toggleTable() {
 		<A href='No_IMPS_ippb_to_Bank.html'>NoImps at Ippb</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='HandleBankAMB.html'>HandleBankAMB</A>
+		<A href='HandleBankAMB.html'>HandleBankAMB</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='SaveMoney.html'>Save money</A>
+		<A href='SaveMoney.html'>Save money</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='NPS_emails.html'>NPS emails</A>
+		<A href='NPS_emails.html'>NPS emails</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='HappyEngineersDay.html'>HappyEngineersDay</A>
+		<A href='HappyEngineersDay.html'>HappyEngineersDay</A>
 	</TD>
 	<TD valign='top' align='right'>
 	</TD>
 	<TD valign='top' align='right'></TD>
 	<TD valign='top' align='left' colspan='2'>
-		<A HREF='Gregorian_calendar.html'>Gregorian calendar</A>
+		<A href='Gregorian_calendar.html'>Gregorian calendar</A>
 	</TD>
 </TR>
 <TR>
@@ -694,22 +700,22 @@ function toggleTable() {
 		<A href='NEVER_USE_GPAY_MOBILE_RECHARGE.html' title='DO NOT PERFORM MOBILE RECHARGE USING PHONE PAY OR PAYTM OR GPAY OR MOBILE APP' >NMGpay</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='TVS_MONEY_WASTAGE.html'>TvsMoneyWastage</A>
+		<A href='TVS_MONEY_WASTAGE.html'>TvsMoneyWastage</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='China_Tv_mobile_router.html'>China mobile router</A>
+		<A href='China_Tv_mobile_router.html'>China mobile router</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='uninstall_mob_apps.html'>UninstallMobApps</A>
+		<A href='uninstall_mob_apps.html'>UninstallMobApps</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='HappyBirthDay.html'>HappyBirthday</A>
+		<A href='HappyBirthDay.html'>HappyBirthday</A>
 	</TD>
 	<TD valign='top' align='right'>
 	</TD>
 	<TD valign='top' align='right'></TD>
 	<TD valign='top' align='right'>
-		<A HREF='exercise_at_home.html'>Exercise@Home</A>
+		<A href='exercise_at_home.html'>Exercise@Home</A>
 	</TD>
 </TR>
 <TR>
@@ -720,22 +726,22 @@ function toggleTable() {
 		<A href='Tamilnadu_CurrentBill.html'>TN TNEB</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='COMPARE_ATM_MOB_PAY.html'>ATMGpayCompare</A>
+		<A href='COMPARE_ATM_MOB_PAY.html'>ATMGpayCompare</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='ippb.html'>India post app</A>
+		<A href='ippb.html'>India post app</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='ITR_Refund_reissue.html'>ITR refund issue</A>
+		<A href='ITR_Refund_reissue.html'>ITR refund issue</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='WeLikeGod.html'>WeLikeGod</A>
+		<A href='WeLikeGod.html'>WeLikeGod</A>
 	</TD>
 	<TD valign='top' align='right'>
 	</TD>
 	<TD valign='top' align='right'></TD>
 	<TD valign='top' align='right'>
-		<A HREF='thirukkural_001_kadavuL_vaazhthu.html'>Thirukkural</A>
+		<A href='thirukkural_001_kadavuL_vaazhthu.html'>Thirukkural</A>
 	</TD>
 </TR>
 <TR>
@@ -746,16 +752,16 @@ function toggleTable() {
 		<A href='Karnataka_CurrentBill.html'>KA BESCOM</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='MOBILE_postpaid_payment.html'>MobPostpaidPay</A>
+		<A href='MOBILE_postpaid_payment.html'>MobPostpaidPay</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='Traffic_violation.html'>TrafficViolation</A>
+		<A href='Traffic_violation.html'>TrafficViolation</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='ITR_Refund_NOT_RECEIVED.html'>ITRRefundWaiting</A>
+		<A href='ITR_Refund_NOT_RECEIVED.html'>ITRRefundWaiting</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='tamilnadu_public_holidays.html'>TNSchoolHolidays</A>
+		<A href='tamilnadu_public_holidays.html'>TNSchoolHolidays</A>
 	</TD>
 </TR>
 <TR>
@@ -766,16 +772,16 @@ function toggleTable() {
 		<A href='FindIndianRupee-Duplicate.html'>Duplicate INR</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='nsc_open.html'>OpenNscOnline</A>
+		<A href='nsc_open.html'>OpenNscOnline</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='Traffic_Violation_payment.html'>Pay@TrafficViolation</A>
+		<A href='Traffic_Violation_payment.html'>Pay@TrafficViolation</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='Petrol_Usage_Milage.html'>PetrolUsage</A>
+		<A href='Petrol_Usage_Milage.html'>PetrolUsage</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='Karnataka_school_holidays.html'>KASchoolHolidays</A>
+		<A href='Karnataka_school_holidays.html'>KASchoolHolidays</A>
 	</TD>
 </TR>
 <TR>
@@ -783,18 +789,18 @@ function toggleTable() {
 		<A href='STEPS_OPENING_POSTOFFICE_ACCOUNT.html'>PostActOpensteps</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='PostOfficeJointBalance.html'>Bal@PostOffice</A>
+		<A href='PostOfficeJointBalance.html'>Bal@PostOffice</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='mobile_charge_alarm.html'>MobChargeAlarm</A>
+		<A href='mobile_charge_alarm.html'>MobChargeAlarm</A>
 	</TD>
 	<TD valign='top' align='right'>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='PostOfficeJointBalance.html'>NetBankTimedOut</A>
+		<A href='PostOfficeJointBalance.html'>NetBankTimedOut</A>
 	</TD>
 	<TD valign='top' align='right'>
-		<A HREF='StepsToUnlockSim.html'>UnlockSimSteps</A>
+		<A href='StepsToUnlockSim.html'>UnlockSimSteps</A>
 	</TD>
 </TR>
 </TABLE>
@@ -1459,68 +1465,102 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 </TBODY>
 </TABLE>
 <TABLE id='PreventWastage'>
-	<SCRIPT>
-	 // Function to get the current date in the format "dd-MMM-yyyy"
-    function getTodaysDate() {
-        var today = new Date();
-        var day = today.getDate();
-        var month = today.toLocaleString('default', { month: 'short' }); // Get short month name
-        var year = today.getFullYear();
-        return day + '-' + month + '-' + year;
-    }
+		<SCRIPT type='text/javascript'>
+			// Function to get the current date in the format "dd-MMM-yyyy"
+			function getTodaysDate()
+			{
+				var today = new Date();
+				var day = today.getDate();
+				var month = today.toLocaleString('default', { month: 'short' });
+				var year = today.getFullYear();
+				return day + '-' + month + '-' + year;
+			}
+			// Function to add today's date as a new row to the table
+			function addTodaysRow()
+			{
+				var table = document.getElementById("PreventWastage").getElementsByTagName('tbody')[0];
+				var newRow = table.insertRow(table.rows.length);
+				var cell1 = newRow.insertCell(0);
+				cell1.textContent = getTodaysDate();
+				var cell2 = newRow.insertCell(1);
+				cell2.textContent = "Enter reason";
+				var cell3 = newRow.insertCell(2);
+				cell3.textContent = "Enter amount";
+			}
+			window.onload = function()
+			{
+				addTodaysRow();
+				const preventWastageTable = document.getElementById("PreventWastage");
+				const homeTable = document.getElementById("HomeTable");
+				const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
+				const indexTable = document.getElementById("IndexTable");
+				const preventLink = document.getElementById("PreventWastagehref");
+				const homeLink = document.getElementById("Homehref");
+				// ✅ Ensure PreventWastage is visible and Home hidden on page load
+				if (preventWastageTable) preventWastageTable.style.display = "table";
+				if (homeTable) homeTable.style.display = "none";
+				if (categoryAmountDetailsTab) categoryAmountDetailsTab.style.display = "none";
+				if (indexTable) indexTable.style.display = "none";
+				// ✅ Set correct link colors
+				if (preventLink) preventLink.style.color = "orange";
+				if (homeLink) homeLink.style.color = "blue";
+			};
+			// ✅ Updated toggleTable to correctly handle display and color switching
+			function toggleTable(event)
+			{
+				event = event || window.event;
+				event.preventDefault(); // ✅ Stop page reload
 
-    // Function to add today's date as a new row to the table
-    function addTodaysRow() {
-        var table = document.getElementById("spending-table").getElementsByTagName('tbody')[0];
+				const clickedId = event.target.id;
+				const homeLink = document.getElementById('Homehref');
+				const preventLink = document.getElementById('PreventWastagehref');
+				const homeTable = document.getElementById('HomeTable');
+				const preventWastage = document.getElementById('PreventWastage');
+				const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
 
-        // Create a new row
-        var newRow = table.insertRow( table.rows.length );
-
-        // Create a new cell for the date
-        var cell1 = newRow.insertCell(0);
-        cell1.textContent = getTodaysDate(); // Today's date
-
-        // Create cells for the reason and amount ( you can leave them blank for now )
-        var cell2 = newRow.insertCell(1);
-        cell2.textContent = "Enter reason"; // Placeholder for reason ( can be updated later )
-
-        var cell3 = newRow.insertCell(2);
-        cell3.textContent = "Enter amount"; // Placeholder for amount ( can be updated later )
-    }
-window.onload = function() {
-	addTodaysRow();
-	// Hide the PreventWastage table
-	const preventWastageTable = document.getElementById("PreventWastage");
-	const HomeTable = document.getElementById("HomeTable");
-	preventWastageTable.style.display = "table"; // Hide it
-	HomeTable.style.display = "none"; // Hide it
-
-	// Show the CategoryAmountDetailsTab table
-	const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
-	categoryAmountDetailsTab.style.display = "none"; // Show it
-	const IndexTable = document.getElementById("IndexTable");
-	IndexTable.style.display = "none"; // Show it
-	const link = preventWastageTable.querySelector('a');
-	if( link )
-	{
-		link.style.color = "orange"; // Change the color to orange
-	}
-	if( "blue" == document.getElementById('PreventWastagehref').style.color )
-	{
-		document.getElementById('PreventWastagehref').style.color = "#00ff00";
-	}
-	else
-	{
-		document.getElementById('PreventWastagehref').style.color="blue";
-	}
-	toggleTable();
-}
+				if (clickedId === 'Homehref')
+				{
+					if (homeTable.style.display === 'none' || homeTable.style.display === '')
+					{
+						homeTable.style.display = 'table';
+						preventWastage.style.display = 'none';
+						categoryAmount.style.display = 'none';
+						homeLink.style.color = 'orange';
+						preventLink.style.color = 'blue';
+					}
+					else
+					{
+						homeTable.style.display = 'none';
+						categoryAmount.style.display = 'table';
+						preventWastage.style.display = 'none';
+						homeLink.style.color = 'blue';
+					}
+				}
+				else if (clickedId === 'PreventWastagehref')
+				{
+					if (preventWastage.style.display === 'none' || preventWastage.style.display === '')
+					{
+						preventWastage.style.display = 'table';
+						categoryAmount.style.display = 'none';
+						homeTable.style.display = 'none';
+						preventLink.style.color = 'orange';
+						homeLink.style.color = 'blue';
+					}
+					else
+					{
+						preventWastage.style.setProperty('display', 'none', 'important'); // ✅ Force hide
+						categoryAmount.style.display = 'table';
+						homeTable.style.display = 'none';
+						preventLink.style.color = 'blue';
+					}
+				}
+			}
 		</SCRIPT>
 <TR>
 <TD valign='top' align='right'>
 <h1>Save Money by Preventing Unnecessary Expenses</h1>
 <p>Default view shows <strong>Nov-2025</strong> if available. Use Add Entry to add data.</p>
-<div class="controls">
+<DIV class="controls">
   <label for="monthSelect">View:</label>
   <select id="monthSelect"></select>
   <label for="dateInput">Date:</label>
@@ -1529,10 +1569,10 @@ window.onload = function() {
   <input type="number" id="amountInput" placeholder="Amount" step="0.01" />
   <button id="addBtn">Add Entry</button>
   <button id="saveDefaultBtn">Save default array to DB</button>
-</div>
-<div id="message" aria-live="polite"></div>
-<div id="tableContainer"></div>
-<script type="module">
+</DIV>
+<div id="message" aria-live="polite"></DIV>
+<div id="tableContainer"></DIV>
+<SCRIPT type="module">
                         function formatDate( dateStr )
                         {
                                 const date = new Date( dateStr.split("-").reverse().join("-") );
@@ -1963,7 +2003,7 @@ monthSelect.addEventListener('change', async ()=>{
 });
 // initialize
 initAndLoad();
-</script>
+</SCRIPT>
 </TD>
 </TR>
 </TABLE>
