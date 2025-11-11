@@ -70,36 +70,20 @@
 			{
 				border: 1px solid black;
 			}
-
-        #PreventWastage th, #PreventWastage td {
-            padding: 8px;
-            text-align: center;
-        }
-
-
-        #IndexTable {
-            margin-top: 20px;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        #IndexTable, #IndexTable th, #IndexTable td {
-            border: 1px solid black;
-        }
-
-        #IndexTable th, #IndexTable td {
-            padding: 8px;
-            text-align: center;
-        }
-
-		.triangle {
-            width: 0;
-            height: 0;
-            border-left: 25px solid transparent;    /* Left side of the triangle */
-            border-right: 25px solid transparent;   /* Right side of the triangle */
-            border-bottom: 50px solid #0071bb;     /* Bottom side of the triangle */
-            position: relative;                     /* Allows positioning of text inside */
-        }
+			#PreventWastage th, #PreventWastage td
+			{
+				padding: 8px;
+				text-align: center;
+			}
+			.triangle
+			{
+				width: 0;
+				height: 0;
+				border-left: 25px solid transparent;    /* Left side of the triangle */
+				border-right: 25px solid transparent;   /* Right side of the triangle */
+				border-bottom: 50px solid #0071bb;     /* Bottom side of the triangle */
+				position: relative;                     /* Allows positioning of text inside */
+			}
 
         /* Exclamation mark inside the triangle */
         .triangle-text {
@@ -333,8 +317,8 @@
     <table id='CategoryAmountDetailsTab'>
         <thead>
             <TR>
-                <TH valign='top' align='right'>Category</TH>
-                <TH valign='top' align='right'>Amount per month</TH>
+                <TH valign='top' align='right'>Category last month</TH>
+                <TH valign='top' align='right'>Amount during last month</TH>
                 <TH valign='top' align='right'>Details</TH>
             </TR>
         </thead>
@@ -346,18 +330,28 @@
                 <TD valign='top' align='right'><a href="#">View Details</a></TD>
             </TR>
             <TR>
+                <TD valign='top' align='right'>BSNL FIBERNET</TD>
+                <TD valign='top' align='right'>&nbsp;1101.00 &#8377;</TD>
+                <TD valign='top' align='right'><a href="#">View Details</a></TD>
+            </TR>
+            <TR>
                 <TD valign='top' align='right'>Petrol</TD>
-                <TD valign='top' align='right'>920.00 &#8377;</TD>
+                <TD valign='top' align='right'>&nbsp;&nbsp;&nbsp;920.00 &#8377;</TD>
                 <TD valign='top' align='right'><a href="#">View Details</a></TD>
             </TR>
             <TR>
                 <TD valign='top' align='right'>Food</TD>
-                <TD valign='top' align='right'>400.00 &#8377;</TD>
+                <TD valign='top' align='right'>&nbsp;1785.00 &#8377;</TD>
+                <TD valign='top' align='right'><a href="#">View Details</a></TD>
+            </TR>
+            <TR style='backgroundcolor:red;'>
+                <TD valign='top' align='right'>Wasted amount</TD>
+                <TD valign='top' align='right'>2003.00 &#8377;</TD>
                 <TD valign='top' align='right'><a href="#">View Details</a></TD>
             </TR>
             <TR>
                 <TD valign='top' align='right'>Saved Amount</TD>
-                <TD valign='top' align='right'>150.00 &#8377;</TD>
+                <TD valign='top' align='right'>1000.00 &#8377;</TD>
                 <TD valign='top' align='right'><a href="#">View Details</a></TD>
             </TR>
         </tbody>
@@ -1510,19 +1504,13 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				const preventWastageTable = document.getElementById("PreventWastage");
 				const homeTable = document.getElementById("HomeTable");
 				const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
-				const indexTable = document.getElementById("IndexTable");
-
-				// ✅ Show PreventWastage by default
 				preventWastageTable.style.display = "table";
 				homeTable.style.display = "none";
 				categoryAmountDetailsTab.style.display = "none";
-				if (indexTable) indexTable.style.display = "none";
-
 				const preventLink = document.getElementById("PreventWastagehref");
 				if (preventLink)
 				{
 					alert( (""preventLink).includes("index.html") );
-					// ✅ If PreventWastage table is visible, make it orange; else blue
 					if (preventWastageTable.style.display === "table")
 					{
 						preventLink.style.setProperty("color", "orange", "important");
