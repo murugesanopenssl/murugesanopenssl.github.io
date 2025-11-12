@@ -228,7 +228,7 @@
 			</SCRIPT>
 			<A href="#">Products & Services</A>
 			<A href="#">How Do I Help?</A>
-			<A href="#">Manage Debit Card</A>
+			<A href="Manage_SBI_debit_card.html">Manage any bank debit card</A>
 			<A href="#">E-Mandate</A>
 			<A href="#">Contact Us</A>
 		</NAV>
@@ -285,34 +285,40 @@
 					<DIV class="circle">?</DIV>
 				</I>
 			<A href="#">FinanceHelp</A>
+			</DIV>
+			<DIV>
+				<I class="material-icons"><DIV class="circle">i</DIV></I>
+				<A href="#">About FinanceSSL</A>
+			</DIV>
+			<DIV>
+				<I class="material-icons">
+					<DIV class="triangle">
+						<DIV class="triangle-text">!</DIV>
+					</DIV>
+				</I>
+				<SCRIPT type='text/javascript'>
+					if( window.location.href.includes('spending.html') )
+					{
+						document.write("<A href='#' class='link-style' onclick='toggleTable(event)' id='PreventWastagehref' style='color:blue'>PreventWastage</A>");
+					}
+					else
+					{
+						document.write("<A href='#' class='link-style' onclick='toggleTable(event)' id='PreventWastagehref' style='color:blue'>PreventWastage</A>");
+					}
+				</SCRIPT>
+			</DIV>
+			<DIV>
+				<I class="material-icons">
+					<DIV class="rectangle">
+						<DIV class="arrow-top-left">
+						</DIV>
+						<DIV class="arrow-bottom-right">
+						</DIV>
+					</DIV>
+				</I>
+				<A href="#">CompareBankFD</A>
+			</DIV>
 		</DIV>
-		<DIV>
-			<I class="material-icons"><DIV class="circle">i</DIV></I>
-			<A href="#">About FinanceSSL</A>
-		</DIV>
-		<DIV>
-			<I class="material-icons">
-				<DIV class="triangle">
-				<DIV class="triangle-text">!</DIV>
-				</DIV>
-			</I>
-			<SCRIPT type='text/javascript'>
-				if( window.location.href.includes('spending.html') )
-				{
-					document.write("<A href='#' class='link-style' onclick='toggleTable(event)' id='PreventWastagehref' style='color:blue'>PreventWastage</A>");
-				}
-				else
-				{
-					document.write("<A href='#' class='link-style' onclick='toggleTable(event)' id='PreventWastagehref' style='color:blue'>PreventWastage</A>");
-				}
-			</SCRIPT>
-		</DIV>
-		<DIV>
-			<I class="material-icons"><DIV class="rectangle"><DIV class="arrow-top-left"></DIV><DIV class="arrow-bottom-right"></DIV></DIV></I>
-			<A href="#">CompareBankFD</A>
-		</DIV>
-	  </DIV>
-
 		<!-- Spending Table -->
 		<TABLE id='CategoryAmountDetailsTab'>
 			<THEAD>
@@ -332,7 +338,7 @@
 				<TR>
 					<TD valign='top' align='right'>BSNL FIBERNET</TD>
 					<TD valign='top' align='right'>&nbsp;1101.00 &#8377;</TD>
-					<TD valign='top' align='right'><a href="#">View Details</a></TD>
+					<TD valign='top' align='right'><A href="#">View Details</A></TD>
 				</TR>
 				<TR>
 					<TD valign='top' align='right'>Petrol</TD>
@@ -344,10 +350,10 @@
 					<TD valign='top' align='right'>1785.00 &#8377;</TD>
 					<TD valign='top' align='right'><A href="#">View Details</A></TD>
 				</TR>
-				<TR style='backgroundcolor:red;'>
+				<TR style='background-color:red;'>
 					<TD valign='top' align='right'>Wasted amount</TD>
 					<TD valign='top' align='right'>2003.00 &#8377;</TD>
-					<TD valign='top' align='right'><a href="#">View Details</a></TD>
+					<TD valign='top' align='right'><A href="#">View Details</A></TD>
 				</TR>
 				<TR>
 					<TD valign='top' align='right'>Saved Amount</TD>
@@ -1239,7 +1245,6 @@ IS OWNED BY ITC LIMITED, AN <B><U>INDIAN</B></U> CONGLOMERATE.<BR>
 SPECIFICALLY, IT'S PART OF ITC'S FOODS DIVISION.<BR>
 THE BRAND WAS LAUNCHED IN 2010 TO COMPETE WITH MAGGI NOODLES.
 </TD>
-
 <TR>
 <TD valign='top' align='left'>
 CINTHOL SOAP<BR>
@@ -1254,8 +1259,6 @@ AN <B><U>INDIAN</B></U> MULTINATIONAL CONSUMER GOODS COMPANY. GCPL IS HEADQUARTE
 AND LIQUID DETERGENTS.
 </TD>
 </TR>
-
-
 <TR><TD valign='top' align='left'>GOPAL TOOTHPASTE PERAL TREDING CORPORATION</TD><TD valign='top' align='left' colspan='3'>
 FROM <B><U>INDIA</B></U>. </TD></TR>
 	<TR>
@@ -1282,9 +1285,7 @@ WHICH IS BASED IN <B><U>INDIA</B></U>.
 <TR><TD valign='top' align='left'>ALL OUT</TD><TD valign='top' align='left' colspan='3'>ALL OUT IS AN UNFUNDED COMPANY BASED IN GURUGRAM ( INDIA ), FOUNDED IN 1990</TD>
 </TR>
 <TR><TD valign='top' align='left'>SUPERMAX SHAVING BLADE</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
-
 <TR><TD valign='top' align='left'>LASER SHAVING BLADE</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
-
 <TR>
 <TD valign='top' align='left'>
 LENOVO LAPTOP/PRINTER
@@ -1508,14 +1509,12 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 			{
 				event = event || window.event;
 				event.preventDefault(); // ✅ Stop page reload
-
 				const clickedId = event.target.id;
 				const homeLink = document.getElementById('Homehref');
 				const preventLink = document.getElementById('PreventWastagehref');
 				const homeTable = document.getElementById('HomeTable');
 				const preventWastage = document.getElementById('PreventWastage');
 				const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-
 				if (clickedId === 'Homehref')
 				{
 					if (homeTable.style.display === 'none' || homeTable.style.display === '')
@@ -1600,6 +1599,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 						// ----- Hardcoded fallback array ( base version ) -----
 const baseRaw = {
 Nov: [
+[ formatDate("12-Nov-2025"),          "Liveo",   24.00,   "SortsRepair", 30.00, "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("11-Nov-2025"), "1SortTwoShirts", 1050.00,       "",  0.00, "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("10-Nov-2025"), "IGCSESslcFees", 112000.00,       "",  0.00, "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
 [ formatDate("09-Nov-2025"),   "MMMTrainTkt",1000.00,       "MumSnac",  206.00,"NoteTeSop", 532.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
@@ -1710,8 +1710,10 @@ Sep: [
 						const message = document.getElementById('message');
 						const addBtn = document.getElementById('addBtn');
 						const saveDefaultBtn = document.getElementById('saveDefaultBtn');
-						// default date to today
-						dateInput.valueAsDate = new Date();
+						// default date to today IST
+						const now = new Date();
+						const istDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+						dateInput.valueAsDate = istDate;
 						// utility: format monthKey to label
 						function labelOf( mk )
 						{
@@ -1735,10 +1737,8 @@ Sep: [
 							  message.textContent = "No data in DB — saved local default array to database.";
 							}
 							populateMonthSelect( Object.keys( data ) );
-
 							// determine current month key like "Nov-2025"
 							const curMk = currentMonthKey();
-
 							// prefer exact match for current month-year, else prefer any key with same month name,
 							// else fall back to the first available month key, else use 'all'
 							const keys = Object.keys( data || {} );
@@ -1746,7 +1746,6 @@ Sep: [
 							  || keys.find( k => k.startsWith( curMk.split('-')[0]) )
 							  || keys[0]
 							  || 'all';
-
 							// set dropdown and render for selected source ( DB takes precedence )
 							monthSelect.value = defaultMk;
 							renderForSelected( data );
@@ -1844,12 +1843,10 @@ Sep: [
 										</THEAD>\
 									<TBODY>";
 							const months = sel === 'all' ? Object.keys( data ) : [sel];
-
 							const dailyMap = {};
 							for( const mk of months )
 							{
 								if(!data[mk]) continue;
-
 								data[mk].forEach( row=>{
 									const date = row[0];
 									for( let i=1; i<row.length; i+=2)
@@ -1864,17 +1861,14 @@ Sep: [
 									}
 								});
 							}
-
 							let grandTotal = 0;
 							let grandWaste = 0;
-
 							for( const d of Object.keys( dailyMap ) )
 							{
 								const entries = dailyMap[d];
 								let subTotal = 0;
 								let wasted = 0;
 								let rowHtml = `<TR><TD class='right-align'>${d}</TD>`;
-
 								// ensure exactly 6 item/amount pairs per row
 								for( let i=0; i<6; i++)
 								{
@@ -1883,8 +1877,12 @@ Sep: [
 										const e = entries[i];
 										const isSnack = /snack/i.test( e.item );
 										const amtVal = parseFloat( e.amt ) || 0;
+										// Apply red background to snack items and amounts
 										const style = isSnack ? " style='background:red;color:white;'" : "";
-										rowHtml += `<TD class='right-align'>${e.item}</TD><TD class='right-align'>${amtVal.toFixed(2)}</TD>`;
+										const firstAmountStyle = i === 0 && isSnack ? "style='background:red;color:white;'" : ""; // Apply red background to the first amount if it's a snack
+										// Add item and amount with respective styles
+										rowHtml += `<TD class='right-align' ${isSnack ? style : ""}>${e.item}</TD>
+													<TD class='right-align' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
 										subTotal += amtVal;
 										if( isSnack )
 										{
@@ -1896,29 +1894,27 @@ Sep: [
 										rowHtml += "<TD class='right-align'></TD><TD class='right-align'></TD>";
 									}
 								}
-
+								// Apply red background style to wasted column if necessary
 								const wastedStyle = wasted > 0 ? " style='background:red;color:white;'" : "";
-								rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD><TD valign='top' align='right'>${wasted.toFixed(2)}</TD></TR>`;
+								rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
+											<TD valign='top' align='right' ${wastedStyle}>${wasted.toFixed(2)}</TD></TR>`;
+								
 								html += rowHtml;
-
 								grandTotal += subTotal;
 								grandWaste += wasted;
 							}
-
+							// Calculate the total after waste
 							const totalAfterWaste = grandTotal - grandWaste;
-
 							html += `<TR style='font-weight:bold;background:#ffe5e5;'>
 							<TD colspan='13' align='right'>Total amount spent excluding wasted amount:</TD>
 							<TD valign='top' align='left'>${totalAfterWaste.toFixed(2)}</TD>
 							<TD valign='top' align='left' style='background-color: #FF0000; color: #FFFFFF;'>${grandWaste.toFixed(2)}</TD>
 							</TR>`;
-
 							html += `<TR style='font-weight:bold;background:#c7f9cc;'>
 							<TD colspan='13' align='right'>Total amount spent including wasted amount:</TD>
 							<TD valign='top' align='left'>${grandTotal.toFixed(2)}</TD>
 							<TD valign='top' align='left'></TD>
 							</TR>`;
-
 							html += "</TABLE>";
 							tableContainer.innerHTML = html;
 						}
@@ -1967,18 +1963,15 @@ Sep: [
 							{
 							monthArr.push([formatDate(date), item, amount]);
 							}
-
 							// write back entire object to preserve all months
 							const snapAll = await get(child(ref(db), '/spendingData'));
 							let dataAll = snapAll.exists() ? snapAll.val() : baseData;
 							dataAll[mk] = monthArr;
 							await set(ref(db, "spendingData"), dataAll);
-
 							// refresh UI
 							populateMonthSelect(Object.keys(dataAll));
 							monthSelect.value = mk;
 							await renderForSelected(dataAll);
-
 							// clear inputs
 							itemInput.value = "";
 							amountInput.value = "";
