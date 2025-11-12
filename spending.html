@@ -1668,19 +1668,19 @@ Sep: [
 						{
 							try
 							{
-							  const parts = dstr.split("-");
-							  if( 3 <= parts.length )
-							  {
-							    return parts[1] + "-" + parts[2];
-							  }
-							  const d = new Date( dstr );
-							  const m = d.toLocaleString('en-US',{month:'short'});
-							  const y = d.getFullYear();
-							  return m + "-" + y;
+								const parts = dstr.split("-");
+								if( 3 <= parts.length )
+								{
+									return parts[1] + "-" + parts[2];
+								}
+								const d = new Date( dstr );
+								const m = d.toLocaleString('en-US',{month:'short'});
+								const y = d.getFullYear();
+								return m + "-" + y;
 							}
 							catch( e )
 							{
-							  return dstr;
+								return dstr;
 							}
 						}
 						// convert baseRaw to month-year keyed object
@@ -1689,14 +1689,14 @@ Sep: [
 							const out = {};
 							for( const k in raw )
 							{
-							  const rows = raw[k];
-							  for( const row of rows )
-							  {
-							    const date = row[0];
-							    const mk = monthKeyFromDateString( date );
-							    if(!out[mk]) out[mk] = [];
-							    out[mk].push( row.slice() ); // copy
-							  }
+								const rows = raw[k];
+								for( const row of rows )
+								{
+									const date = row[0];
+									const mk = monthKeyFromDateString( date );
+									if(!out[mk]) out[mk] = [];
+									out[mk].push( row.slice() ); // copy
+								}
 							}
 							return out;
 						}
@@ -1726,15 +1726,14 @@ Sep: [
 							let data;
 							if( snap.exists() )
 							{
-							  data = snap.val();
-							  message.textContent = "Loaded data from Firebase.";
+								data = snap.val();
+								message.textContent = "Loaded data from Firebase.";
 							}
 							else
 							{
-							  // no data, save baseData then use it
-							  await set( rootRef, baseData );
-							  data = baseData;
-							  message.textContent = "No data in DB — saved local default array to database.";
+								await set( rootRef, baseData );
+								data = baseData;
+								message.textContent = "No data in DB — saved local default array to database.";
 							}
 							populateMonthSelect( Object.keys( data ) );
 							// determine current month key like "Nov-2025"
@@ -1743,9 +1742,9 @@ Sep: [
 							// else fall back to the first available month key, else use 'all'
 							const keys = Object.keys( data || {} );
 							const defaultMk = keys.find( k => k === curMk )
-							  || keys.find( k => k.startsWith( curMk.split('-')[0]) )
-							  || keys[0]
-							  || 'all';
+								|| keys.find( k => k.startsWith( curMk.split('-')[0]) )
+								|| keys[0]
+								|| 'all';
 							// set dropdown and render for selected source ( DB takes precedence )
 							monthSelect.value = defaultMk;
 							renderForSelected( data );
@@ -1758,15 +1757,15 @@ Sep: [
 							monthSelect.appendChild( optAll );
 							// sort keys descending by year-month
 							monthKeys.sort( ( a,b )=>{
-							  const da = new Date( a ); const db = new Date( b );
-							  return db - da;
+								const da = new Date( a ); const db = new Date( b );
+								return db - da;
 							});
 							for( const mk of monthKeys )
 							{
-							  const opt = document.createElement('option');
-							  opt.value = mk;
-							  opt.textContent = labelOf( mk );
-							  monthSelect.appendChild( opt );
+								const opt = document.createElement('option');
+								opt.value = mk;
+								opt.textContent = labelOf( mk );
+								monthSelect.appendChild( opt );
 							}
 						}
 						// get current monthKey like "Nov-2025"
@@ -1781,16 +1780,17 @@ Sep: [
 						{
 							const sel = monthSelect.value;
 							let data = dataFromDB;
-							if(!data){
-							  const snap = await get( child( ref( db ), '/spendingData') );
-							  if( snap.exists() )
-							  {
-							    data = snap.val();
-							  }
-							  else
-							  {
-							    data = baseData;
-							  }
+							if(!data)
+							{
+								const snap = await get( child( ref( db ), '/spendingData') );
+								if( snap.exists() )
+								{
+									data = snap.val();
+								}
+								else
+								{
+									data = baseData;
+								}
 							}
 						let html = "<TABLE border='1'>\
 										<THEAD>\
@@ -1872,26 +1872,24 @@ Sep: [
 								// ensure exactly 6 item/amount pairs per row
 								for( let i=0; i<6; i++)
 								{
-									if( entries[i] )
-									{
-										const e = entries[i];
-										const isSnack = /snack/i.test( e.item );
-										const amtVal = parseFloat( e.amt ) || 0;
-										// Apply red background to all snack items and amounts
-										const style = isSnack ? " style='background:red;color:white;'" : "";
-										// Add item and amount with same red color for every snack occurrence
-										rowHtml += `<TD class='right-align' ${style}>${e.item}</TD>
-													<TD class='right-align' ${style}>${amtVal.toFixed(2)}</TD>`;
-										subTotal += amtVal;
-										if( isSnack )
+										if( entries[i] )
 										{
-											wasted += amtVal;
+												const e = entries[i];
+												const isSnack = /snack/i.test( e.item );
+												const amtVal = parseFloat( e.amt ) || 0;
+												const style = isSnack ? " style='background:red;color:white;'" : "";
+												rowHtml += `<TD class='right-align' ${style}>${e.item}</TD>
+																		<TD class='right-align' ${style}>${amtVal.toFixed(2)}</TD>`;
+												subTotal += amtVal;
+												if( isSnack )
+												{
+														wasted += amtVal;
+												}
 										}
-									}
-									else
-									{
-										rowHtml += "<TD class='right-align'></TD><TD class='right-align'></TD>";
-									}
+										else
+										{
+												rowHtml += "<TD class='right-align'></TD><TD class='right-align'></TD>";
+										}
 								}
 								// Apply red background style to wasted column if necessary
 								const wastedStyle = wasted > 0 ? " style='background:red;color:white;'" : "";
@@ -1923,7 +1921,7 @@ Sep: [
 							console.log("Data loaded from Firebase path: spendingData");
 							if( snapshot.exists() )
 							{
-							  displayData( snapshot.val() );
+								displayData( snapshot.val() );
 							}
 							else
 							{
