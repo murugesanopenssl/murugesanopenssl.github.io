@@ -1654,7 +1654,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 							const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 							const month = months[date.getMonth()];
 							const year = date.getFullYear();
-							return `${weekday}${day}${month}${year}`;
+							return `${weekday} ${day}-${month}-${year}`;
 						}
 						import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 						import { getDatabase, ref, set, get, child, push } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
@@ -2237,7 +2237,7 @@ Apr: [
 							
 							// Sort the months in chronological order (latest first)
 							monthKeys.sort((a, b) => {
-								const [monthA, yearA] = a.split('-'); // Split string to extract month and year
+								const [monthA, yearA] = a.split('-	'); // Split string to extract month and year
 								const [monthB, yearB] = b.split('-');
 								
 								// Convert month string (Jan, Feb, etc.) to month number (0 for Jan, 1 for Feb, etc.)
