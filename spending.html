@@ -394,13 +394,16 @@
 				</TR>
 				<TR>
                 <TD style="text-align: right; vertical-align: top;">
-					xerox Copies(2025-2026)
+					xerox Copies(2025-2026)<BR>
+					TOTAL XEROX COPIES = 42 pages
 				</TD>
-                <TD style="text-align: right; vertical-align: top;">
+                <TD style="text-align: right; vertical-align: top;" id="XeroxCopiesValue">
 			40.00 &#8377;
 		</TD>
                 <TD style="text-align: right; vertical-align: top;">
-			40.00 = 20 * 02.00<BR>PAN, AADHAAR CARDS FRONT AND BACK = 02.00<BR>20 Black and white pages.<BR>00 Colour pages.</TD>
+			40.00 = 20 * 02.00<BR>PAN, AADHAAR CARDS FRONT AND BACK = 02.00<BR>20 Black and white pages.<BR>00 Colour pages.<BR>
+			OTHER GARBAGE XEROX SHOP@DHARMAPURI/TN/INDIA:<BR>
+			Black and white page 10.00 and 5.00</TD>
             </TR>
             <TR>
                 <TD style="text-align: right; vertical-align: top;">
@@ -1729,21 +1732,21 @@ Nov: [
 		],
 		[ formatDate("08-Nov-2025"),
 			"Petrol",			200.00,
-			"",				0.00,
-			"",				0.00,
-			"",				0.00,
-			"",				0.00,
-			"",				0.00,
-			"",				0.00
+			"",					0.00,
+			"",					0.00,
+			"",					0.00,
+			"",					0.00,
+			"",					0.00,
+			"",					0.00
 		],
 		[ formatDate("07-Nov-2025"),
 			"ToDpi",			69.00,
-			"02BwXerox",			15.00,
+			"02BwXerox",		15.00,
 			"EntSoup",			20.00,
-			"EntInject",			100.00,
-			"",				0.00,
-			"",				0.00,
-			"",				0.00
+			"EntInject",		100.00,
+			"",					0.00,
+			"",					0.00,
+			"",					0.00
 		],
 		[ formatDate("06-Nov-2025"),
 			"Snack",			40.00,
@@ -1765,7 +1768,7 @@ Nov: [
 		],
 		[ formatDate("04-Nov-2025"),
 			"Veg",				108.00,
-			"SnackSweet",			176.00,
+			"Sweet",			176.00,
 			"BreadMilk",			200.00,
 			"",				0.00,
 			"",				0.00,
@@ -2326,6 +2329,7 @@ Apr: [
 						const lastPetrol = getLastMonthPetrolAmount();
 						document.getElementById("PetrolLastMonthValue").textContent = lastPetrol.toFixed(2);
 
+						let xeroxCopesVal =0;
 						function getLastMonthWastedAmount()
 						{
 							let total = 0;
@@ -2359,14 +2363,24 @@ Apr: [
 												}
 											}
 										}
+										{
+											const searchXerox =  ("" + r[i]).toLowerCase();
+											if( searchXerox.includes("xerox") )
+											{
+												if( undefined !== r[i+1] && !isNaN(parseFloat(r[i+1])))
+												{
+													xeroxCopesVal = xeroxCopesVal + parseFloat(r[i+1]);
+												}
+											}
+										}
 									}
 								}
 							}
 							return total;
 						}
 						const WastedAmtVal = getLastMonthWastedAmount();
-						document.getElementById("WastedAmtValue").textContent = WastedAmtVal.toFixed(2);
-
+                        document.getElementById("WastedAmtValue").textContent = WastedAmtVal.toFixed(2);
+						document.getElementById("XeroxCopiesValue").textContent = xeroxCopesVal.toFixed(2);
 						function getLastMonthFoodAmount()
 						{
 							let xeroxTotal = 0;
