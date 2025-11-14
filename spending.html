@@ -385,7 +385,7 @@
 					<TD style="text-align: right; vertical-align: top;">
 						Wasted amount
 					</TD>
-					<TD style="text-align: right; vertical-align: top;">
+					<TD style="text-align: right; vertical-align: top;" id="WastedAmtValue">
 						2003.00 &#8377;
 					</TD>
 					<TD style="text-align: right; vertical-align: top;">
@@ -2326,8 +2326,50 @@ Apr: [
 						const lastPetrol = getLastMonthPetrolAmount();
 						document.getElementById("PetrolLastMonthValue").textContent = lastPetrol.toFixed(2);
 
+						function getLastMonthWastedAmount()
+						{
+							let total = 0;
+							const allMonths = Object.keys(baseRaw);
+							const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+							const dt  = new Date(ist);
+							const mmm = dt.toString().substr(4,3);
+							const yyyy = dt.getFullYear();
+							const lastMonthKey = mmm + "-" + yyyy;
+							for( const month in baseRaw )
+							{
+								const rows = baseRaw[month];
+								for( const r of rows )
+								{
+									for( let i = 0; i < r.length; i++ )
+									{
+										const findThismonth = ("" + r[0]);
+										const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+										const lastMmm = new Date(ist);
+										lastMmm.setMonth(lastMmm.getMonth() - 1);
+										var prevmmm=""+lastMmm;
+										var last_mmm_yyyy=(""+prevmmm.substr(4,3)+"-"+prevmmm.substr(11,4) );
+										if( findThismonth.includes(last_mmm_yyyy) )
+										{
+											const searchFood =  ("" + r[i]).toLowerCase();
+											if( searchFood.includes("snack") )
+											{
+												if( undefined !== r[i+1] && !isNaN(parseFloat(r[i+1])))
+												{
+													total = total + parseFloat(r[i+1]);
+												}
+											}
+										}
+									}
+								}
+							}
+							return total;
+						}
+						const WastedAmtVal = getLastMonthWastedAmount();
+						document.getElementById("WastedAmtValue").textContent = WastedAmtVal.toFixed(2);
+
 						function getLastMonthFoodAmount()
 						{
+							let xeroxTotal = 0;
 							let total = 0;
 							const allMonths = Object.keys(baseRaw);
 							const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
