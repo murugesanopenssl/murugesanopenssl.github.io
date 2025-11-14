@@ -352,8 +352,8 @@
                 <td style="text-align: right; vertical-align: top;">
 			BSNL FIBERNET
 		</TD>
-                <td style="text-align: right; vertical-align: top;">
-			&nbsp;1101.00 &#8377;
+                <td style="text-align: right; vertical-align: top;" id="BsnlLastMonthValue">
+			&nbsp;1100.00 &#8377;
 		</TD>
                 <td style="text-align: right; vertical-align: top;">
 			<A href="#">View Details</A>
@@ -1673,6 +1673,15 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 						const rootRef = ref( db, "spendingData" );
 const baseRaw = {
 Nov: [
+		[ formatDate("14-Nov-2025"),
+			"MumBis",			30.00,
+			"Livo",				12.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00
+		],
 		[ formatDate("13-Nov-2025"),
 			"Bfast",			40.00,
 			"20BwXerox",			40.00,
@@ -1984,7 +1993,7 @@ banana 20.00
 		],
 		[ formatDate("07-Oct-2025"),
 			"BFast",			0.00,
-			"BSNLNet",			1042.00,
+			"BSNLNet",			1101.00,
 			"Milk",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2121,7 +2130,7 @@ Sep: [
 		],
 		[ formatDate("04-Sep-2025"),
 			"",				0.00,
-			"BSNLNet",			1042.00,
+			"BSNLNet",		1042.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2146,8 +2155,8 @@ Aug: [
 			"",				0.00
 		],
 		[ formatDate("30-Aug-2025"),
-			"BSNLNet",			1042.00,
-			"PPF",				500.00,
+			"BSNLNet",		1042.00,
+			"PPF",			500.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
@@ -2253,6 +2262,30 @@ Apr: [
 		]
 	]
 };
+						function getLastMonthBsnlAmount()
+						{
+							let total = 0;
+
+							for( const month in baseRaw )
+							{
+								const rows = baseRaw[month];
+								for( const r of rows )
+								{
+									if( "BSNLNet" == r[3] )
+									{
+										total = total + r[4];
+										break;
+									}
+								}
+								if(0 != total)
+								{
+									break;
+								}
+							}
+							return total;
+						}
+						const lastBsnl = getLastMonthBsnlAmount();
+						document.getElementById("BsnlLastMonthValue").textContent = lastBsnl.toFixed(2);
 						function monthKeyFromDateString( dstr )
 						{
 							try
