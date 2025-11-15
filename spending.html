@@ -395,18 +395,18 @@
 				<TR>
                 <TD style="text-align: right; vertical-align: top;">
 					xerox Copies(2025-2026)<BR>
-					TOTAL XEROX COPIES = 42 pages
+					TOTAL XEROX COPIES = 56 pages
 				</TD>
                 <TD style="text-align: right; vertical-align: top;" id="XeroxCopiesValue">
 			40.00 &#8377;
 		</TD>
                 <TD style="text-align: right; vertical-align: top;">
-			40.00 = ( 20 * 02.00 )
+			70.00 = ( 20 * 02.00 )
 			<!--
 			<BR>PAN, AADHAAR CARDS FRONT AND BACK = 02.00<BR>20 Black and white pages.<BR>00 Colour pages.<BR>
 			OTHER GARBAGE XEROX SHOP@DHARMAPURI/TN/INDIA:<BR>
 			-->
-			+ 10.00 + 5.00</TD>
+			+ 10.00 + 5.00 + 15.00</TD>
 		</TR>
             <TR>
                 <TD style="text-align: right; vertical-align: top; background-color: #FF9933;">
@@ -1678,35 +1678,44 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 						};
 						const app = initializeApp( firebaseConfig );
 						const db = getDatabase( app );
-						const rootRef = ref( db, "spendingData" );
+						const rootRef = ref( db, "spending" );
 const baseRaw = {
 Nov: [
+		[ formatDate("15-Nov-2025"),
+			"Xerox14Page",					15.00,
+			"Lunch",					60.00,
+			"ToBng",					85.00,
+			"SchoolFile",					75.00,
+			"Veg",						172.00,
+			"EntSoup",					30.00,
+			"",						0.00
+		],
 		[ formatDate("14-Nov-2025"),
-			"MumBis",			30.00,
-			"Liveo",				12.00,
-			"",				0.00,
-			"",				0.00,
-			"",				0.00,
-			"",				0.00,
-			"",				0.00
+			"MumBis",					30.00,
+			"Liveo",					12.00,
+			"FromFather",					-1000.00,
+			"",						0.00,
+			"",						0.00,
+			"",						0.00,
+			"",						0.00
 		],
 		[ formatDate("13-Nov-2025"),
-			"Bfast",			40.00,
-			"20BwXerox",			40.00,
-			"puncture",			80.00,
-			"Lunch",			40.00,
-			"",				0.00,
-			"",				0.00,
-			"",				0.00
+			"Bfast",				40.00,
+			"20BwXerox",				40.00,
+			"puncture",				80.00,
+			"Lunch",				40.00,
+			"",					0.00,
+			"",					0.00,
+			"",					0.00
 		],
 		[ formatDate("12-Nov-2025"),
 			"Liveo",				24.00,
-			"SortsRepair",			30.00,
-			"DairyMilk",			98.00,
+			"SortsRepair",				30.00,
+			"DairyMilk",				98.00,
 			"Lunch",				50.00,
 			"BESCOM",				142.00,
-			"",						0.00,
-			"",						0.00
+			"",					0.00,
+			"",					0.00
 		],
 		[ formatDate("11-Nov-2025"),
 			"1SortTwoShirts",		1050.00,
@@ -2491,7 +2500,7 @@ Apr: [
 						async function initAndLoad()
 						{
 							message.textContent = "Loading data from Firebase...";
-							const snap = await get( child( ref( db ), '/spendingData'));
+							const snap = await get( child( ref( db ), '/spending'));
 							let data;
 							if( snap.exists() )
 							{
@@ -2551,7 +2560,7 @@ Apr: [
 							let data = dataFromDB;
 							if(!data)
 							{
-								const snap = await get( child( ref( db ), '/spendingData') );
+								const snap = await get( child( ref( db ), '/spending') );
 								if( snap.exists() )
 								{
 									data = snap.val();
@@ -2690,15 +2699,15 @@ Apr: [
 						}
 						async function loadData() {
 							const dbRef = ref( db );
-							const snapshot = await get( child( ref( db ), "spendingData") );
-							console.log("Data loaded from Firebase path: spendingData");
+							const snapshot = await get( child( ref( db ), "spending") );
+							console.log("Data loaded from Firebase path: spending");
 							if( snapshot.exists() )
 							{
 								displayData( snapshot.val() );
 							}
 							else
 							{
-							await set( ref( db, "spendingData"), baseData );
+							await set( ref( db, "spending"), baseData );
 							displayData( baseData );
 							}
 						}
@@ -2714,7 +2723,7 @@ Apr: [
 								return;
 							}
 							const mk = monthKeyFromDateString(date);
-							const monthRef = ref(db, `spendingData/${mk}`);
+							const monthRef = ref(db, `spending/${mk}`);
 							const snap = await get(monthRef);
 							let monthArr = snap.exists() ? snap.val() : [];
 							let foundIndex = -1;
@@ -2733,10 +2742,10 @@ Apr: [
 							{
 							monthArr.push([formatDate(date), item, amount]);
 							}
-							const snapAll = await get(child(ref(db), '/spendingData'));
+							const snapAll = await get(child(ref(db), '/spending'));
 							let dataAll = snapAll.exists() ? snapAll.val() : baseData;
 							dataAll[mk] = monthArr;
-							await set(ref(db, "spendingData"), dataAll);
+							await set(ref(db, "spending"), dataAll);
 							populateMonthSelect(Object.keys(dataAll));
 							monthSelect.value = mk;
 							await renderForSelected(dataAll);
@@ -2749,7 +2758,7 @@ Apr: [
 						saveDefaultBtn.addEventListener('click', async ()=>{
 							await set(rootRef, baseData);
 							message.textContent = "Default array saved to DB.";
-							const snap = await get(child(ref(db), '/spendingData'));
+							const snap = await get(child(ref(db), '/spending'));
 							const dataAll = snap.exists() ? snap.val() : baseData;
 							populateMonthSelect(Object.keys(dataAll));
 							const curMk = currentMonthKey();
@@ -2757,7 +2766,7 @@ Apr: [
 							renderForSelected(dataAll);
 						});
 						monthSelect.addEventListener('change', async ()=>{
-							const snap = await get(child(ref(db), '/spendingData'));
+							const snap = await get(child(ref(db), '/spending'));
 							const dataAll = snap.exists() ? snap.val() : baseData;
 							renderForSelected(dataAll);
 						});
