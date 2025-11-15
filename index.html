@@ -293,7 +293,7 @@
                 <TD style="text-align: right; vertical-align: top;">
 			Food
 		</TD>
-                <TD style="text-align: right; vertical-align: top;" id='FoodLastMonthValue'>
+                <TD style="text-align: right; vertical-align: top;">
 			&nbsp;1785.00 &#8377;
 		</TD>
                 <TD style="text-align: right; vertical-align: top;">
@@ -352,56 +352,6 @@
 	<!--
 	#{
 	-->
-						function getLastMonthFoodAmount()
-						{
-							let xeroxTotal = 0;
-							let total = 0;
-							const allMonths = Object.keys(baseRaw);
-							const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
-							const dt  = new Date(ist);
-							const mmm = dt.toString().substr(4,3);
-							const yyyy = dt.getFullYear();
-							const lastMonthKey = mmm + "-" + yyyy;
-							for( const month in baseRaw )
-							{
-								const rows = baseRaw[month];
-								for( const r of rows )
-								{
-									for( let i = 0; i < r.length; i++ )
-									{
-										const findThismonth = ("" + r[0]);
-										const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
-										const lastMmm = new Date(ist);
-										lastMmm.setMonth(lastMmm.getMonth() - 1);
-										var prevmmm=""+lastMmm;
-										var last_mmm_yyyy=(""+prevmmm.substr(4,3)+"-"+prevmmm.substr(11,4) );
-										if( findThismonth.includes(last_mmm_yyyy) )
-										{
-											const searchFood =  ("" + r[i]).toLowerCase();
-											if(		searchFood.includes("bfast")	||
-													searchFood.includes("lunch")	||
-													searchFood.includes("dinner")	||
-													searchFood.includes("soup")		||
-													searchFood.includes("livo")	||
-													searchFood.includes("liveo")	||
-													searchFood.includes("tea")		||
-													searchFood.includes("milk")
-											)
-											{
-												if( undefined !== r[i+1] && !isNaN(parseFloat(r[i+1])))
-												{
-													total = total + parseFloat(r[i+1]);
-												}
-											}
-										}
-									}
-								}
-							}
-							return total;
-						}
-						const lastFood = getLastMonthFoodAmount();
-						document.getElementById("FoodLastMonthValue").innerHTML = lastFood.toFixed(2) + " &#8377;";
-					</SCRIPT>
 <NOSCRIPT>
 <TABLE border='1'>
 <TR> <TD valign='top' align='right' bgcolor=cyan>
