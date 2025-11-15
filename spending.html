@@ -52,7 +52,7 @@
 			}
 			.link-style
 			{
-				color: orange;
+				color: blue;
 				text-decoration: none;
 				font-weight: bold;
 				cursor: pointer;
@@ -334,10 +334,10 @@
 						Rent
 					</TD>
 					<TD style="text-align: right; vertical-align: top;">
-						12000.00 &#8377;
+						8333.33 &#8377;
 					</TD>
 					<TD style="text-align: right; vertical-align: top;">
-						<A href="#">View Details</A>
+						Attibele Karnataka India
 					</TD>
 					<TD style="text-align: right; vertical-align: top;">
 						&nbsp;
@@ -356,7 +356,7 @@
 						&nbsp;1100.00 &#8377;
 					</TD>
 					<TD style="text-align: right; vertical-align: top;">
-						<A href="#">View Details</A>
+						Two connections: 01) at Dharmapuri Tamilnadu 02) at Attibele Karnataka, India
 					</TD>
 				</TR>
 				<TR>
@@ -367,7 +367,7 @@
 						&nbsp;&nbsp;&nbsp;120.00 &#8377;
 					</TD>
 					<TD style="text-align: right; vertical-align: top;">
-						<A href="#">View Details</A>
+						at Indian Oil petrol bunk to receive SBI rewards points and Indian Oil points, to buy 200.00 &#8377; or 400.00 &#8377;
 					</TD>
 				</TR>
 				<TR>
@@ -378,18 +378,18 @@
 						&nbsp;1785.00 &#8377;
 					</TD>
 					<TD style="text-align: right; vertical-align: top;">
-						View Details</A>
+						Break fast/Lunch/Dinner/Soup/Milk/Tea
 					</TD>
 				</TR>
 				<TR style='backgroundcolor:red;'>
-					<TD style="text-align: right; vertical-align: top;">
+					<TD style="text-align: right; vertical-align: top; background-color: red;color:white;">
 						Wasted amount
 					</TD>
-					<TD style="text-align: right; vertical-align: top;" id="WastedAmtValue">
+					<TD style="text-align: right; vertical-align: top; background-color: red;color:white;" id="WastedAmtValue">
 						2003.00 &#8377;
 					</TD>
-					<TD style="text-align: right; vertical-align: top;">
-						<A href="#">View Details</A>
+					<TD style="text-align: right; vertical-align: top; background-color: red;color:white;">
+						Snacks
 					</TD>
 				</TR>
 				<TR>
@@ -401,19 +401,24 @@
 			40.00 &#8377;
 		</TD>
                 <TD style="text-align: right; vertical-align: top;">
-			40.00 = 20 * 02.00<BR>PAN, AADHAAR CARDS FRONT AND BACK = 02.00<BR>20 Black and white pages.<BR>00 Colour pages.<BR>
+			40.00 = ( 20 * 02.00 )
+			<!--
+			<BR>PAN, AADHAAR CARDS FRONT AND BACK = 02.00<BR>20 Black and white pages.<BR>00 Colour pages.<BR>
 			OTHER GARBAGE XEROX SHOP@DHARMAPURI/TN/INDIA:<BR>
-			Black and white page 10.00 and 5.00</TD>
-            </TR>
+			-->
+			+ 10.00 + 5.00</TD>
+		</TR>
             <TR>
-                <TD style="text-align: right; vertical-align: top;">
-			Saved Amount(PPF)
+                <TD style="text-align: right; vertical-align: top; background-color: #FF9933;">
+			Saved Amount
 		</TD>
-                <TD style="text-align: right; vertical-align: top;">
-			11297.00 &#8377;
+                <TD style="text-align: right; vertical-align: top; background-color: #FFFFFF;">
+					<Font color='#000080'>
+					12448.00 &#8377;
+					</FONT>
 		</TD>
-                <TD style="text-align: right; vertical-align: top;">
-			<A href="#">View Details</A>
+                <TD style="text-align: right; vertical-align: top; background-color: #138808;">
+			Indian Government Savings and Investments (PPF and Post Office Balance)
 		</TD>
             </TR>
         </TBODY>
@@ -1593,7 +1598,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 						homeTable.style.display = 'table';
 						preventWastage.style.display = 'none';
 						categoryAmount.style.display = 'none';
-						homeLink.style.color = 'orange';
+						homeLink.style.color = 'blue';
 						preventLink.style.color = 'blue';
 					}
 					else
@@ -1713,7 +1718,7 @@ Nov: [
 			"",				0.00
 		],
 		[ formatDate("10-Nov-2025"),
-			"IGCSESslcFees",		112000.00,
+			"",				0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2287,7 +2292,7 @@ Apr: [
 							return total;
 						}
 						const lastBsnl = getLastMonthBsnlAmount();
-						document.getElementById("BsnlLastMonthValue").textContent = lastBsnl.toFixed(2);
+						document.getElementById("BsnlLastMonthValue").innerHTML = lastBsnl.toFixed(2) + " &#8377;";
 						function getLastMonthPetrolAmount()
 						{
 							let total = 0;
@@ -2327,7 +2332,7 @@ Apr: [
 							return total;
 						}
 						const lastPetrol = getLastMonthPetrolAmount();
-						document.getElementById("PetrolLastMonthValue").textContent = lastPetrol.toFixed(2);
+						document.getElementById("PetrolLastMonthValue").innerHTML = lastPetrol.toFixed(2) + " &#8377;";
 
 						let xeroxCopesVal =0;
 						function getLastMonthWastedAmount()
@@ -2379,8 +2384,8 @@ Apr: [
 							return total;
 						}
 						const WastedAmtVal = getLastMonthWastedAmount();
-                        document.getElementById("WastedAmtValue").textContent = WastedAmtVal.toFixed(2);
-						document.getElementById("XeroxCopiesValue").textContent = xeroxCopesVal.toFixed(2);
+                        document.getElementById("WastedAmtValue").innerHTML = WastedAmtVal.toFixed(2) + " &#8377;";
+						document.getElementById("XeroxCopiesValue").innerHTML = xeroxCopesVal.toFixed(2) + " &#8377;";
 						function getLastMonthFoodAmount()
 						{
 							let xeroxTotal = 0;
@@ -2429,7 +2434,7 @@ Apr: [
 							return total;
 						}
 						const lastFood = getLastMonthFoodAmount();
-						document.getElementById("FoodLastMonthValue").textContent = lastFood.toFixed(2);
+						document.getElementById("FoodLastMonthValue").innerHTML = lastFood.toFixed(2) + " &#8377;";;
 
 						function monthKeyFromDateString( dstr )
 						{
@@ -2525,7 +2530,8 @@ Apr: [
 								}
 								return monthIndexB - monthIndexA;
 							});
-							for (const mk of monthKeys) {
+							for( const mk of monthKeys )
+							{
 								const opt = document.createElement('option');
 								opt.value = mk;
 								opt.textContent = mk;
@@ -2612,7 +2618,7 @@ Apr: [
 								if(!data[mk]) continue;
 								data[mk].forEach( row=>{
 									const date = row[0];
-									for( let i=1; i<row.length; i+=2)
+									for( let i=1; row.length > i; i+=2)
 									{
 										const item = row[i];
 										const amt = row[i+1];
@@ -2712,7 +2718,7 @@ Apr: [
 							const snap = await get(monthRef);
 							let monthArr = snap.exists() ? snap.val() : [];
 							let foundIndex = -1;
-							for(let i=0;i<monthArr.length;i++)
+							for(let i=0; monthArr.length > i; ++i)
 							{
 								if( date === monthArr[i][0] )
 								{
