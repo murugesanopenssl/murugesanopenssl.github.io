@@ -227,11 +227,14 @@
 					homeTable.style.display = 'table';
 				}
 			</SCRIPT>
-			<A href="#">Products & Services</A>
-			<A href="#">How Do I Help?</A>
-			<A href="Manage_SBI_debit_card.html">Manage any bank debit card</A>
-			<A href="#">E-Mandate</A>
-			<A href="#">Contact Us</A>
+			<A onclick="toggleTable(event)" class="link-style" id="PreventWastagehref">PreventWastage</A>
+			<A href="Manage_SBI_debit_card.html">ManageDebitCard</A>
+			<A href="#">EMandate</A>
+			<A href="#">ContactMe</A>
+			<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
+			<A href="#">FinanceSSL</A>
+			<A href="#">CompareBankFD</A>
+			<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
 		</NAV>
 		<SCRIPT type='text/javascript'>
 			function toggleTable()
@@ -274,47 +277,6 @@
 				}
 			}
 		</SCRIPT>
-		<!-- Icon Menu -->
-		<DIV class="icon-menu">
-			<DIV>
-				<I class="material-icons">
-					<DIV class="circle">?</DIV>
-				</I>
-			<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
-			</DIV>
-			<DIV>
-				<I class="material-icons"><DIV class="circle">i</DIV></I>
-				<A href="#">About FinanceSSL</A>
-			</DIV>
-			<DIV>
-				<I class="material-icons">
-					<DIV class="triangle">
-						<DIV class="triangle-text">!</DIV>
-					</DIV>
-				</I>
-				<SCRIPT type='text/javascript'>
-					if( window.location.href.includes('spending.html') )
-					{
-						document.write("<A href='#' class='link-style' onclick='toggleTable(event)' id='PreventWastagehref' style='color:blue'>PreventWastage</A>");
-					}
-					else
-					{
-						document.write("<A href='#' class='link-style' onclick='toggleTable(event)' id='PreventWastagehref' style='color:blue'>PreventWastage</A>");
-					}
-				</SCRIPT>
-			</DIV>
-			<DIV>
-				<I class="material-icons">
-					<DIV class="rectangle">
-						<DIV class="arrow-top-left">
-						</DIV>
-						<DIV class="arrow-bottom-right">
-						</DIV>
-					</DIV>
-				</I>
-				<A href="#">CompareBankFD</A>
-			</DIV>
-		</DIV>
 		<!-- Spending Table -->
 		<!--
 		#{
@@ -414,11 +376,11 @@
 		</TD>
                 <TD style="text-align: right; vertical-align: top; background-color: #FFFFFF;">
 					<Font color='#000080'>
-					12448.00 &#8377;
+					24952.00 &#8377;
 					</FONT>
 		</TD>
                 <TD style="text-align: right; vertical-align: top; background-color: #138808;">
-			Indian Government Savings and Investments (PPF and Post Office Balance)
+			Indian Government Savings and Investments (PPF, ETDR, RD, NSC and POST-OFFICE-BALANCE)
 		</TD>
             </TR>
         </TBODY>
@@ -1436,7 +1398,7 @@ HEADQUARTERED IN XIZHI, NEW TAIPEI CITY, TAIWAN</TD></TR>
 	<TD valign='top' align='left'>GLOBAL EXCHANGE SERVICES</TD>
 	<TD valign='top' align='left' colspan='3'>FROM SPAIN COUNTRY</TD>
 </TR>
-<TR bgcolor='orange'>
+<TR bgcolor='blue'>
 	<TD valign='top' align='left'>ACCENTURE</TD>
 	<TD valign='top' align='left' colspan='3'>FROM IRELAND/EUROPE.</TD>
 </TR>
@@ -1574,7 +1536,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				}
 				if(preventLink)
 				{
-					preventLink.style.color = "orange";
+					preventLink.style.color = "blue";
 				}
 				if(homeLink)
 				{
@@ -1616,7 +1578,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 						preventWastage.style.display = 'table';
 						categoryAmount.style.display = 'none';
 						homeTable.style.display = 'none';
-						preventLink.style.color = 'orange';
+						preventLink.style.color = 'blue';
 						homeLink.style.color = 'blue';
 					}
 					else
