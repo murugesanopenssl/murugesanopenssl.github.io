@@ -220,7 +220,7 @@
 
 			const id = "VISIT-" + Date.now();
 			const bow = navigator.userAgent;
-			const ctry = (navigator.language.includes("en-IN") ? "IN" : "UNKNOWN");
+			const ctry = (navigator.language.includes("en-IN") ? "IN" : country);
 
 			set(ref(db, "userAccess/" + id), {
 				browser: bow,
