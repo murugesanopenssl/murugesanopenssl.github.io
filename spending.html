@@ -10,212 +10,25 @@
 		<!--
 		<LINK rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		-->
-		<STYLE type='text/css'>
-			.right-align
-			{
-				text-align: right !important;
-			}
-			td.amount
-			{
-				text-align: right !important;
-			}
-			.rectangle
-			{
-				position: relative;
-				width: 50px;
-				height: 50px;
-				background-color: lightblue;
-				border: 2px solid black;
-				margin: 50px;
-			}
-			.arrow-top-left
-			{
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 0;
-				height: 0;
-				border-left: 20px solid transparent;
-				border-right: 20px solid transparent;
-				border-bottom: 20px solid black;
-			}
-			.arrow-bottom-right
-			{
-				position: absolute;
-				bottom: 0;
-				right: 0;
-				width: 0;
-				height: 0;
-				border-left: 20px solid transparent;
-				border-top: 20px solid black;
-				border-right: 20px solid transparent;
-			}
-			.link-style
-			{
-				color: blue;
-				text-decoration: none;
-				font-weight: bold;
-				cursor: pointer;
-			}
-			#PreventWastage
-			{
-				margin-top: 20px;
-				border-collapse: collapse;
-				width: 100%;
-			}
-			#PreventWastage, #PreventWastage th, #PreventWastage td
-			{
-				border: 1px solid black;
-			}
-			#PreventWastage th, #PreventWastage td
-			{
-				padding: 8px;
-				text-align: center;
-			}
-			.triangle
-			{
-				width: 0;
-				height: 0;
-				border-left: 25px solid transparent;
-				border-right: 25px solid transparent;
-				border-bottom: 50px solid #0071bb;
-				position: relative;
-			}
-			.triangle-text
-			{
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translateX(-50%);
-				color: white;
-				font-size: 30px;
-				font-weight: bold;
-			}
-			.circle
-			{
-				width: 50px;
-				height: 50px;
-				background-color: #0071bb;
-				border-radius: 50%;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				color: white;
-				font-size: 30px;
-				font-weight: bold;
-			}
-			body
-			{
-				font-family: Arial, sans-serif;
-				margin: 0;
-				padding: 0;
-			}
-			header
-			{
-				background-color: #0071bb;
-				color: white;
-				padding: 10px 0;
-				text-align: center;
-			}
-			header h1
-			{
-				margin: 0;
-			}
-			nav
-			{
-				background-color: #f1f1f1;
-				padding: 10px;
-				display: flex;
-				justify-content: center;
-			}
-			nav a
-			{
-				margin: 0 20px;
-				text-decoration: none;
-				color: #0071bb;
-				font-weight: bold;
-			}
-			nav a:hover
-			{
-				color: #004f7c;
-			}
-			.icon-menu
-			{
-				display: flex;
-				justify-content: space-around;
-				padding: 20px;
-				background-color: #f1f1f1;
-			}
-			.icon-menu div
-			{
-				text-align: center;
-			}
-			.icon-menu i
-			{
-				font-size: 40px;
-				color: #0071bb;
-			}
-			.icon-menu div a
-			{
-				display: block;
-				margin-top: 10px;
-				color: #0071bb;
-				font-weight: bold;
-				text-decoration: none;
-			}
-			table
-			{
-				width: 100%;
-				margin: 20px auto;
-				border-collapse: collapse;
-			}
-			table, th, td
-			{
-				border: 1px solid #ddd;
-				text-align: left;
-			}
-			th, td
-			{
-				padding: 8px 12px;
-				text-align: center;
-			}
-			th
-			{
-				background-color: #0071bb;
-				color: white;
-			}
-			td
-			{
-				background-color: #f9f9f9;
-			}
-			td a
-			{
-				color: #0071bb;
-				text-decoration: none;
-			}
-			td a:hover
-			{
-				text-decoration: underline;
-			}
-		</STYLE>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-		<!-- HEADER -->
-		<HEADER>
-			<H1>Human-AI Financial Solutions = HAI FS</H1>
-		</HEADER>
-		<!-- Menu Bar -->
-		<NAV>
+		<DIV style="width:100%;display:block;margin:0;padding:0;">
+			<TABLE style="width:100%; margin:0; padding:0;">
+					<TR>
+						<TD style="text-align:center;vertical-align:top;background-color:#0071bb;" colspan='9'>
+							<FONT size='5'><FONT color='white'>Human-AI Financial Solutions = HAI FS</FONT></FONT>
+						</TD>
+					</TR>
 			<SCRIPT type='text/javascript'>
 				const now = new Date();
 				const istDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
 				if( window.location.href.includes('index.html') )
 				{
-					document.write("<A href='index.html' class='link-style' id='Homehref' style='color:blue'>Home</A>");
+					document.write("<TR><TD style='text-align: right; vertical-align: top;'><A href='index.html' class='link-style' id='Homehref' style='color:blue'>Home</A></TD>");
 				}
 				else
 				{
-					document.write("<A href='index.html' class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' id='Homehref' style='color:blue'>Home</A>");
+					document.write("<TR><TD style='text-align: right; vertical-align: top;'><A href='index.html' class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' id='Homehref' style='color:blue'>Home</A></TD>");
 				}
 				function showHomeTable()
 				{
@@ -227,14 +40,30 @@
 					homeTable.style.display = 'table';
 				}
 			</SCRIPT>
-			<A href='spending.html' onclick="toggleTable(event)" class="link-style" id="PreventWastagehref">PreventWastage</A>
-			<A href="save_money_and_lives.html">Save lives and money</A>
-			<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
-			<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
-			<A href='Visitor_count.html'>Visitor count</FONT></A>
-			<A><FONT color='#556677'>Inprogress02</FONT></A>
-			<A><FONT color='#556677'>Inprogress03</FONT></A>
-		</NAV>
+					<TD style='background-color:orange;text-align:right;vertical-align:top;'>
+						<A href='spending.html' onclick="toggleTable(event)" class="link-style" id="PreventWastagehref">PreventWastage</A>
+					</TD>
+					<TD style="text-align: right; vertical-align: top;">
+						<A href="save_money_and_lives.html">Save lives and money</A>
+					</TD>
+					<TD style="text-align: right; vertical-align: top;">
+						<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
+					</TD>
+					<TD style="text-align: right; vertical-align: top;">
+						<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
+					</TD>
+					<TD style="text-align: right; vertical-align: top;">
+						<A href='Visitor_count.html'>Visitor count</FONT></A>
+					</TD>
+					<TD style="text-align: right; vertical-align: top;">
+						<A><FONT color='#556677'>Inprogress02</FONT></A>
+					</TD>
+					<TD style="text-align: right; vertical-align: top;">
+						<A><FONT color='#556677'>Inprogress03</FONT></A>
+					</TD>
+				</TR>
+			</TABLE>
+		</DIV>
 		<!-- Spending Table -->
 		<!--
 		#{
@@ -331,7 +160,7 @@
 				</TR>
 				<TR>
 					<TD style="text-align: right; vertical-align: top; background-color: #FF9933;">
-						Saved Amount
+						Saved amount
 					</TD>
 					<TD style="text-align: right; vertical-align: top; background-color: #FFFFFF;">
 						<Font color='#000080'>
@@ -340,6 +169,19 @@
 					</TD>
 					<TD style="text-align: right; vertical-align: top; background-color: #138808;">
 						Indian Government Savings and Investments (PPF, RD, NSC and POST-OFFICE-BALANCE)
+					</TD>
+				</TR>
+				<TR>
+					<TD style="text-align: right; vertical-align: top; background-color: #FF9933;">
+						Temporarily saved amount
+					</TD>
+					<TD style="text-align: right; vertical-align: top; background-color: #FFFFFF;">
+						<Font color='#000080'>
+							11675.00 &#8377;
+						</FONT>
+					</TD>
+					<TD style="text-align: right; vertical-align: top; background-color: #138808;">
+						SSLC EXAM FEES AND INDIAN GOVERNMENT BANK SBI ETDR
 					</TD>
 				</TR>
 			</TBODY>
@@ -1481,7 +1323,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
 				const preventLink = document.getElementById("PreventWastagehref");
 				const homeLink = document.getElementById("Homehref");
-				document.getElementById("PreventWastagehref").style.color="#2ECC71";
+				document.getElementById("PreventWastagehref").style.color="white";
 				if( preventWastageTable )
 				{
 					preventWastageTable.style.display = "table";
@@ -1522,7 +1364,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				    preventWastage.style.display = 'none';
 				    categoryAmount.style.display = 'none';
 				    homeLink.style.color = 'blue';
-				    preventLink.style.color = 'blue';
+				    preventLink.style.color = 'white';
 				}
 				else
 				{
@@ -1537,7 +1379,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				if( 'none' === preventWastage.style.display || '' === preventWastage.style.display )
 				{
 				    preventWastage.style.display = 'table';
-				    preventLink.style.color = '#2ECC71';
+				    preventLink.style.color = 'white';
 				    categoryAmount.style.display = 'none';
 				    homeTable.style.display = 'none';
 				}
@@ -1551,7 +1393,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 			    }
 			}			</SCRIPT>
 				<TR>
-					<TD valign='top' align='right'>
+					<TD valign='top' align='middle'>
 						<H1>Save Money by Preventing Unnecessary Expenses</H1>
 						<SCRIPT type='text/javascript'>
 							mmm=(""+istDate).substr( 4,3);
@@ -1720,9 +1562,9 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("17-Nov-2025"),
-			"None",					0.00,
 			"StayHome",				0.00,
-			"StayHome",				0.00,
+			"",					0.00,
+			"",					0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -2157,10 +1999,10 @@ Sep: [
 			"Harpic",			539.00
 		],
 		[ formatDate("27-Sep-2025"),
-			"BFast",			0.00,
-			"Lunch",			0.00,
+			"StayHome",			0.00,
 			"",				0.00,
-			"Dinner",			0.00,
+			"",				0.00,
+			"",				0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
@@ -2734,8 +2576,16 @@ Apr: [
 										const amtVal = parseFloat( e.amt ) || 0;
 										const style = isSnack ? " style='background:red;color:white;'" : "";
 										const firstAmountStyle = i === 0 && isSnack ? "style='background:red;color:white;'" : "";
-										rowHtml += `<TD class='right-align' ${isSnack ? style : ""}>${e.item}</TD>
-													<TD class='right-align' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
+										if( "StayHome" == `${e.item}` )
+										{
+											rowHtml += `<TD class='right-align' bgcolor='#00ff00' ${isSnack ? style : ""}>${e.item}</TD>
+														<TD class='right-align' bgcolor='#00ff00' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
+										}
+										else
+										{
+											rowHtml += `<TD class='right-align' ${isSnack ? style : ""}>${e.item}</TD>
+														<TD class='right-align' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
+										}
 										subTotal += amtVal;
 										if( isSnack )
 										{
@@ -2752,8 +2602,16 @@ Apr: [
 									}
 								}
 								const wastedStyle = wasted > 0 ? " style='background:red;color:white;'" : "";
-								rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
-											<TD valign='top' align='right' ${wastedStyle}>${wasted.toFixed(2)}</TD></TR>`;
+								if(0.00 == `${subTotal.toFixed(2)}` )
+								{
+									rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
+												<TD valign='top' align='right' ${wastedStyle} bgcolor='#00ff00'>${wasted.toFixed(2)}</TD></TR>`;
+								}
+								else
+								{
+									rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
+												<TD valign='top' align='right' ${wastedStyle}>${wasted.toFixed(2)}</TD></TR>`;
+								}
 								
 								html += rowHtml;
 								grandTotal += subTotal;

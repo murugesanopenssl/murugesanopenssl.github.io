@@ -9,195 +9,23 @@
 		<!--
 		<LINK rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		-->
-		<STYLE type='text/css'>
-			.rectangle
-			{
-				position: relative;
-				width: 50px;
-				height: 50px;
-				background-color: lightblue;
-				border: 2px solid black;
-				margin: 50px;
-			}
-			.arrow-top-left
-			{
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 0;
-				height: 0;
-				border-left: 20px solid transparent;
-				border-right: 20px solid transparent;
-				border-bottom: 20px solid black;
-			}
-			.disabled-link
-			{
-				pointer-events: none;
-			}
-			.arrow-bottom-right
-			{
-				position: absolute;
-				bottom: 0;
-				right: 0;
-				width: 0;
-				height: 0;
-				border-left: 20px solid transparent;
-				border-top: 20px solid black;
-				border-right: 20px solid transparent;
-			}
-			.link-style
-			{
-				color: blue;
-				text-decoration: none;
-				font-weight: bold;
-				cursor: pointer;
-			}
-			.link-style.active
-			{
-				color: blue;
-			}
-			.triangle
-			{
-				width: 0;
-				height: 0;
-				border-left: 25px solid transparent;
-				border-right: 25px solid transparent;
-				border-bottom: 50px solid #0071bb;
-				position: relative;
-			}
-			.triangle-text
-			{
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translateX(-50%);
-				color: white;
-				font-size: 30px;
-				font-weight: bold;
-			}
-			.circle
-			{
-				width: 50px;
-				height: 50px;
-				background-color: #0071bb;
-				border-radius: 50%;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				color: white;
-				font-size: 30px;
-				font-weight: bold;
-			}
-			body
-			{
-				font-family: Arial, sans-serif;
-				margin: 0;
-				padding: 0;
-			}
-			header
-			{
-				background-color: #0071bb;
-				color: white;
-				padding: 10px 0;
-				text-align: center;
-			}
-			header h1
-			{
-				margin: 0;
-			}
-			nav
-			{
-				background-color: #f1f1f1;
-				padding: 10px;
-				display: flex;
-				justify-content: center;
-			}
-			nav a
-			{
-				margin: 0 20px;
-				text-decoration: none;
-				color: #0071bb;
-				font-weight: bold;
-			}
-			nav a:hover
-			{
-				color: #004f7c;
-			}
-			.icon-menu
-			{
-				display: flex;
-				justify-content: space-around;
-				padding: 20px;
-				background-color: #f1f1f1;
-			}
-			.icon-menu div
-			{
-				text-align: center;
-			}
-			.icon-menu i
-			{
-				font-size: 40px;
-				color: #0071bb;
-			}
-			.icon-menu div a
-			{
-				display: block;
-				margin-top: 10px;
-				color: #0071bb;
-				font-weight: bold;
-				text-decoration: none;
-			}
-			table
-			{
-				width: 100%;
-				margin: 20px auto;
-				border-collapse: collapse;
-			}
-			table, th, td
-			{
-				border: 1px solid #ddd;
-				text-align: left;
-			}
-			th, td
-			{
-				padding: 8px 12px;
-				text-align: center;
-			}
-			th
-			{
-				background-color: #0071bb;
-				color: white;
-			}
-			td
-			{
-				background-color: #f9f9f9;
-			}
-			td a
-			{
-				color: #0071bb;
-				text-decoration: none;
-			}
-			td a:hover
-			{
-				text-decoration: underline;
-			}
-		</STYLE>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-		<!-- Header -->
-		<HEADER>
-			<H1>Human-AI Financial Solutions = HAI FS</H1>
-		</HEADER>
-		<!-- Menu Bar -->
-		<NAV>
+		<DIV style="width:100%;display:block;margin:0;padding:0;">
+			<TABLE style="width:100%; margin:0; padding:0;">
+					<TR>
+						<TD style="text-align:center;vertical-align:top;background-color:#0071bb;" colspan='9'>
+							<FONT size='5'><FONT color='white'>Human-AI Financial Solutions = HAI FS</FONT></FONT>
+						</TD>
+					</TR>
 			<SCRIPT type='text/javascript'>
 				if( window.location.href.includes('save_money_and_lives.html') )
 				{
-						document.write("<A class='link-style' href='index.html' id='Homehref' style='color:blue'>Home</A>");
+						document.write("<TR><TD><A class='link-style' href='index.html' id='Homehref' style='color:blue'>Home</A></TD>");
 				}
 				else
 				{
-						document.write("<A class='link-style' href='index.html' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/save_money_and_lives.html' id='Homehref' style='color:blue'>Home</A>");
+						document.write("<TR><TD><A class='link-style' href='index.html' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/save_money_and_lives.html' id='Homehref' style='color:blue'>Home</A></TD>");
 				}
 		function showHomeTable()
 		{
@@ -209,14 +37,15 @@
 			homeTable.style.display = 'table';
 		}
 		</SCRIPT>
-	<A href='spending.html' class='link-style' id='PreventWastagehref' style='color:blue'>PreventWastage</A>
-	<A href="save_money_and_lives.html">Save lives and money</A>
-	<A><FONT color='orange'><U>ShareKnowledgeTransferToPeople</FONT></U></A>
-	<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
-        <A href='Visitor_count.html'>Visitor count</FONT></A>
-	<A><FONT color='#556677'>Inprogress02</FONT></A>
-	<A><FONT color='#556677'>Inprogress03</FONT></A>
-    </NAV>
+			<TD><A href='spending.html' class='link-style' id='PreventWastagehref' style='color:blue'>PreventWastage</A></TD>
+			<TD><A href="save_money_and_lives.html">Save lives and money</A></TD>
+			<TD bgcolor='orange'><A><FONT color='black'><U>ShareKnowledgeTransferToPeople</FONT></U></A></TD>
+			<TD><A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A></TD>
+			<TD><A href='Visitor_count.html'>Visitor count</FONT></A></TD>
+			<TD><A><FONT color='#556677'>Inprogress02</FONT></A></TD>
+			<TD><A><FONT color='#556677'>Inprogress03</FONT></A></TD>
+		</TR>
+    </DIV>
 	<SCRIPT type='text/javascript'>
 			function toggleTable()
 			{
