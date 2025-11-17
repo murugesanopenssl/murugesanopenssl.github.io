@@ -229,12 +229,11 @@
 			</SCRIPT>
 			<A href='spending.html' onclick="toggleTable(event)" class="link-style" id="PreventWastagehref">PreventWastage</A>
 			<A href="save_money_and_lives.html">Save lives and money</A>
-			<A>EMandate</A>
-			<A>ContactMe</A>
-			<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
-			<A>FinanceSSL</A>
-			<A>CompareBankFD</A>
 			<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
+			<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
+			<A href='Visitor_count.html'>Visitor count</FONT></A>
+			<A><FONT color='#556677'>Inprogress02</FONT></A>
+			<A><FONT color='#556677'>Inprogress03</FONT></A>
 		</NAV>
 		<!-- Spending Table -->
 		<!--
@@ -1482,7 +1481,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
 				const preventLink = document.getElementById("PreventWastagehref");
 				const homeLink = document.getElementById("Homehref");
-				document.getElementById("PreventWastagehref").style.color="orange";
+				document.getElementById("PreventWastagehref").style.color="#2ECC71";
 				if( preventWastageTable )
 				{
 					preventWastageTable.style.display = "table";
@@ -1538,7 +1537,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				if( 'none' === preventWastage.style.display || '' === preventWastage.style.display )
 				{
 				    preventWastage.style.display = 'table';
-				    preventLink.style.color = 'orange';
+				    preventLink.style.color = '#2ECC71';
 				    categoryAmount.style.display = 'none';
 				    homeTable.style.display = 'none';
 				}
@@ -2587,7 +2586,7 @@ Apr: [
 							optAll.textContent = 'All Months';
 							monthSelect.appendChild(optAll);
 							monthKeys.sort((a, b) => {
-								const [monthA, yearA] = a.split('-	');
+								const [monthA, yearA] = a.split('-');
 								const [monthB, yearB] = b.split('-');
 								const monthIndexA = new Date(`${monthA} 1, ${yearA}`).getMonth();
 								const monthIndexB = new Date(`${monthB} 1, ${yearB}`).getMonth();

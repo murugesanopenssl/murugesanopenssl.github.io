@@ -191,7 +191,7 @@
 		<!-- Menu Bar -->
 		<NAV>
 			<SCRIPT type='text/javascript'>
-				document.write("<A class='link-style' onclick='toggleTable(event)' id='Homehref' style='color:blue'>Home</A>");
+				document.write("<A href='index.html' class='link-style' id='Homehref' style='color:blue'>Home</A>");
 				function showHomeTable()
 				{
 					const homeTable = document.getElementById('HomeTable');
@@ -203,13 +203,12 @@
 				}
 		</SCRIPT>
 	<A href='spending.html' class='link-style' id='PreventWastagehref' style='color:blue'>PreventWastage</A>
-	<A href="save_money_and_lives.html">Save lives and money</A>
-        <A>EMandate</A>
-        <A>ContactMe</A>
-	<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
-	<A>FinanceSSL</A>
-	<A>CompareBankFD</A>
+	<A><FONT color='orange'>Save lives and money</FONT></A>
 	<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
+	<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
+        <A href='Visitor_count.html'>Visitor count</FONT></A>
+	<A><FONT color='#556677'>Inprogress02</FONT></A>
+	<A><FONT color='#556677'>Inprogress03</FONT></A>
     </NAV>
 	<SCRIPT type='text/javascript'>
 			function toggleTable(event)
@@ -230,7 +229,7 @@
 						homeTable.style.display = 'table';
 						preventWastage.style.display = 'none';
 						categoryAmount.style.display = 'none';
-						homeLink.style.color = 'orange';
+						homeLink.style.color = 'blue';
 						preventLink.style.color = 'blue';
 					}
 					else
@@ -246,7 +245,7 @@
 					if( 'none' === preventWastage.style.display || '' === preventWastage.style.display )
 					{
 						preventWastage.style.display = 'table';
-						preventLink.style.color = 'orange';
+						preventLink.style.color = 'blue';
 						categoryAmount.style.display = 'none';
 						homeTable.style.display = 'none';
 					}
@@ -1732,7 +1731,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 			{
 				addTodaysRow();
 				const homeLink = document.getElementById('Homehref');
-				homeLink.style.color = 'orange';
+				homeLink.style.color = 'blue';
 				const homeTable = document.getElementById("HomeTable");
 				const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
 				homeTable.style.display = "table";
