@@ -209,13 +209,13 @@
 			<SCRIPT type='text/javascript'>
 				const now = new Date();
 				const istDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-				if( window.location.href.includes('index.html') )
+				if( window.location.href.includes('save_money_and_lives.html') )
 				{
-					document.write("<A href='index.html' class='link-style' id='PreventWastagehref' style='color:blue'>Home</A>");
+					document.write("<A href='save_money_and_lives.html' class='link-style' id='Homehref' style='color:blue'>Home</A>");
 				}
 				else
 				{
-					document.write("<A href='index.html' class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' id='PreventWastagehref' style='color:blue'>Home</A>");
+					document.write("<A href='save_money_and_lives.html' class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/save_money_and_lives.html' id='Homehref' style='color:blue'>Home</A>");
 				}
 				function showHomeTable()
 				{
@@ -227,8 +227,8 @@
 					homeTable.style.display = 'table';
 				}
 			</SCRIPT>
-			<A onclick="toggleTable(event)" class="link-style" id="PreventWastagehref">PreventWastage</A>
-			<A href="Manage_SBI_debit_card.html">ManageDebitCard</A>
+			<A href='spending.html' onclick="toggleTable(event)" class="link-style" id="PreventWastagehref">PreventWastage</A>
+			<A href="index.html">ManageDebitCard</A>
 			<A>EMandate</A>
 			<A>ContactMe</A>
 			<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
@@ -236,47 +236,6 @@
 			<A>CompareBankFD</A>
 			<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
 		</NAV>
-		<SCRIPT type='text/javascript'>
-			function toggleTable()
-			{
-				const homeLink = document.getElementById('Homehref');
-				const preventLink = document.getElementById('PreventWastagehref');
-				const homeTable = document.getElementById('HomeTable');
-				const preventWastage = document.getElementById('PreventWastage');
-				const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-				const clickedId = event.target.id;
-				if( clickedId === 'Homehref')
-				{
-					if( homeTable.style.display === 'none' || homeTable.style.display === '')
-					{
-						homeTable.style.display = 'table';
-						categoryAmount.style.display = 'none';
-						preventWastage.style.display = 'none';
-					}
-					else
-					{
-						homeTable.style.display = 'none';
-						categoryAmount.style.display = 'table';
-						preventWastage.style.display = 'none';
-					}
-				}
-				if( clickedId === 'PreventWastagehref')
-				{
-					if( preventWastage.style.display === 'none' || preventWastage.style.display === '')
-					{
-						preventWastage.style.display = 'table';
-						categoryAmount.style.display = 'none';
-						homeTable.style.display = 'none';
-					}
-					else
-					{
-						preventWastage.style.display = 'none';
-						categoryAmount.style.display = 'table';
-						homeTable.style.display = 'none';
-					}
-				}
-			}
-		</SCRIPT>
 		<!-- Spending Table -->
 		<!--
 		#{
@@ -355,39 +314,40 @@
 					</TD>
 				</TR>
 				<TR>
-                <TD style="text-align: right; vertical-align: top;">
-					xerox Copies(2025-2026)<BR>
-					TOTAL XEROX COPIES = 56 pages
-				</TD>
-                <TD style="text-align: right; vertical-align: top;" id="XeroxCopiesValue">
-			40.00 &#8377;
-		</TD>
-                <TD style="text-align: right; vertical-align: top;">
-			70.00 = ( 20 * 02.00 )
-			<!--
-			<BR>PAN, AADHAAR CARDS FRONT AND BACK = 02.00<BR>20 Black and white pages.<BR>00 Colour pages.<BR>
-			OTHER GARBAGE XEROX SHOP@DHARMAPURI/TN/INDIA:<BR>
-			-->
-			+ 10.00 + 5.00 + 15.00</TD>
-		</TR>
-            <TR>
-                <TD style="text-align: right; vertical-align: top; background-color: #FF9933;">
-			Saved Amount
-		</TD>
-                <TD style="text-align: right; vertical-align: top; background-color: #FFFFFF;">
-					<Font color='#000080'>
-					13297.00 &#8377;
-					</FONT>
-		</TD>
-                <TD style="text-align: right; vertical-align: top; background-color: #138808;">
-			Indian Government Savings and Investments (PPF, RD, NSC and POST-OFFICE-BALANCE)
-		</TD>
-            </TR>
-        </TBODY>
-    </TABLE>
-	<!--
-	#}
-	-->
+					<TD style="text-align: right; vertical-align: top;">
+						xerox Copies(2025-2026)<BR>
+						TOTAL XEROX COPIES = 56 pages
+					</TD>
+					<TD style="text-align: right; vertical-align: top;" id="XeroxCopiesValue">
+						40.00 &#8377;
+					</TD>
+					<TD style="text-align: right; vertical-align: top;">
+						70.00 = ( 20 * 02.00 )
+						<!--
+						<BR>PAN, AADHAAR CARDS FRONT AND BACK = 02.00<BR>20 Black and white pages.<BR>00 Colour pages.<BR>
+						OTHER GARBAGE XEROX SHOP@DHARMAPURI/TN/INDIA:<BR>
+						-->
+						+ 10.00 + 5.00 + 15.00
+					</TD>
+				</TR>
+				<TR>
+					<TD style="text-align: right; vertical-align: top; background-color: #FF9933;">
+						Saved Amount
+					</TD>
+					<TD style="text-align: right; vertical-align: top; background-color: #FFFFFF;">
+						<Font color='#000080'>
+							13297.00 &#8377;
+						</FONT>
+					</TD>
+					<TD style="text-align: right; vertical-align: top; background-color: #138808;">
+						Indian Government Savings and Investments (PPF, RD, NSC and POST-OFFICE-BALANCE)
+					</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<!--
+		#}
+		-->
 		<!--
 			Menu name:
 			Save Money, Avoid Waste
@@ -398,7 +358,7 @@
 			<NOSCRIPT>
 			<TABLE border='1'>
 			<TR> <TD valign='top' align='right' bgcolor=cyan>
-			<A href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' class="link-style" id='Homehref' style='color:blue'>Home</A>
+			<A href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/save_money_and_lives.html' class="link-style" id='Homehref' style='color:blue'>Home</A>
 			<TD valign='top' align='right'>
 			<A>MoneyHelp01</A>
 			</TD>
@@ -1522,75 +1482,75 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
 				const preventLink = document.getElementById("PreventWastagehref");
 				const homeLink = document.getElementById("Homehref");
-				if(preventWastageTable)
+				document.getElementById("PreventWastagehref").style.color="orange";
+				if( preventWastageTable )
 				{
 					preventWastageTable.style.display = "table";
 				}
-				if(homeTable)
+				if( homeTable )
 				{
 					homeTable.style.display = "none";
 				}
-				if(categoryAmountDetailsTab)
+				if( categoryAmountDetailsTab )
 				{
 					categoryAmountDetailsTab.style.display = "none";
 				}
-				if(preventLink)
+				if( preventLink )
 				{
-					preventLink.style.color = "blue";
+					// preventLink.style.color = "blue";
 				}
-				if(homeLink)
+				if( homeLink )
 				{
 					homeLink.style.color = "blue";
 				}
 			};
 			function toggleTable(event)
 			{
-				event = event || window.event;
-				event.preventDefault();
-				const clickedId = event.target.id;
-				const homeLink = document.getElementById('Homehref');
-				const preventLink = document.getElementById('PreventWastagehref');
-				const homeTable = document.getElementById('HomeTable');
-				const preventWastage = document.getElementById('PreventWastage');
-				const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-				if(clickedId === 'Homehref')
+			    event = event || window.event;
+			    event.preventDefault();
+			    const clickedId = event.target.id;
+			    const homeLink = document.getElementById('Homehref');
+			    const preventLink = document.getElementById('PreventWastagehref');
+			    const homeTable = document.getElementById('HomeTable');
+			    const preventWastage = document.getElementById('PreventWastage');
+			    const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+			    
+			    if( 'Homehref' === clickedId )
+			    {
+				if( 'none' === homeTable.style.display || '' === homeTable.style.display )
 				{
-					if(homeTable.style.display === 'none' || homeTable.style.display === '')
-					{
-						homeTable.style.display = 'table';
-						preventWastage.style.display = 'none';
-						categoryAmount.style.display = 'none';
-						homeLink.style.color = 'blue';
-						preventLink.style.color = 'blue';
-					}
-					else
-					{
-						homeTable.style.display = 'none';
-						categoryAmount.style.display = 'table';
-						preventWastage.style.display = 'none';
-						homeLink.style.color = 'blue';
-					}
+				    homeTable.style.display = 'table';
+				    preventWastage.style.display = 'none';
+				    categoryAmount.style.display = 'none';
+				    homeLink.style.color = 'blue';
+				    preventLink.style.color = 'blue';
 				}
-				else if(clickedId === 'PreventWastagehref')
+				else
 				{
-					if(preventWastage.style.display === 'none' || preventWastage.style.display === '')
-					{
-						preventWastage.style.display = 'table';
-						categoryAmount.style.display = 'none';
-						homeTable.style.display = 'none';
-						preventLink.style.color = 'blue';
-						homeLink.style.color = 'blue';
-					}
-					else
-					{
-						preventWastage.style.setProperty('display', 'none', 'important');
-						categoryAmount.style.display = 'table';
-						homeTable.style.display = 'none';
-						preventLink.style.color = 'blue';
-					}
+				    homeTable.style.display = 'none';
+				    categoryAmount.style.display = 'table';
+				    preventWastage.style.display = 'none';
+				    homeLink.style.color = 'blue';
 				}
-			}
-			</SCRIPT>
+			    }
+			    else if( 'PreventWastagehref' === clickedId )
+			    {
+				if( 'none' === preventWastage.style.display || '' === preventWastage.style.display )
+				{
+				    preventWastage.style.display = 'table';
+				    preventLink.style.color = 'orange';
+				    categoryAmount.style.display = 'none';
+				    homeTable.style.display = 'none';
+				}
+				else
+				{
+				    preventWastage.style.setProperty('display', 'none', 'important');
+				    categoryAmount.style.display = 'table';
+				    homeTable.style.display = 'none';
+				    preventLink.style.color = 'blue';
+				}
+			    }
+			}			</SCRIPT>
 				<TR>
 					<TD valign='top' align='right'>
 						<H1>Save Money by Preventing Unnecessary Expenses</H1>
@@ -1598,7 +1558,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 							mmm=(""+istDate).substr( 4,3);
 							yyyy=(""+istDate).substr( 11,4);
 							mmm_yyyy=mmm+"-"+yyyy;
-							document.write( "<P>Default view shows <STRONG>"+mmm_yyyy+"  if available. Use Add Entry to add data.</P>");
+							document.write( "<P>Default view shows <STRONG>"+mmm_yyyy+" if available. Use Add Entry to add data.</P>");
 						</SCRIPT>
 						<NOSCRIPT>
 							<P>Default view shows <STRONG>ThisMonth-ThisYear</STRONG> if available. Use Add Entry to add data.</P>
@@ -2317,21 +2277,21 @@ May: [
 			"",				0.00
 		],
 		[ formatDate("29-May-2025"),
-			"DPIBigMart",  			290.00,
+			"DPIBigMart",			290.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("21-May-2025"),
-			"DPIPetrol",  			250.00,
+			"DPIPetrol",			250.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("17-May-2025"),
-			"DPIPetrol",  			200.00,
+			"DPIPetrol",			200.00,
 			"DpiBigMart",			600.00,
 			"",				0.00,
 			"",				0.00,
@@ -2390,7 +2350,7 @@ Apr: [
 										break;
 									}
 								}
-								if(0 != total)
+								if( 0 != total )
 								{
 									break;
 								}
@@ -2404,7 +2364,7 @@ Apr: [
 							let total = 0;
 							const allMonths = Object.keys(baseRaw);
 							const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
-							const dt  = new Date(ist);
+							const dt = new Date(ist);
 							const mmm = dt.toString().substr(4,3);
 							const yyyy = dt.getFullYear();
 							const lastMonthKey = mmm + "-" + yyyy;
@@ -2413,7 +2373,7 @@ Apr: [
 								const rows = baseRaw[month];
 								for( const r of rows )
 								{
-									for( let i = 0; i < r.length; i++ )
+									for( let i = 0; r.length > i; ++i )
 									{
 										const findThismonth = ("" + r[0]);
 										const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
@@ -2423,8 +2383,8 @@ Apr: [
 										var last_mmm_yyyy=(""+prevmmm.substr(4,3)+"-"+prevmmm.substr(11,4) );
 										if( findThismonth.includes(last_mmm_yyyy) )
 										{
-											const searchPetrol =  ("" + r[i]).toLowerCase();
-											if(searchPetrol.includes("petrol") )
+											const searchPetrol = ("" + r[i]).toLowerCase();
+											if( searchPetrol.includes("petrol") )
 											{
 												if( undefined != typeof r[i] )
 												{
@@ -2446,7 +2406,7 @@ Apr: [
 							let total = 0;
 							const allMonths = Object.keys(baseRaw);
 							const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
-							const dt  = new Date(ist);
+							const dt = new Date(ist);
 							const mmm = dt.toString().substr(4,3);
 							const yyyy = dt.getFullYear();
 							const lastMonthKey = mmm + "-" + yyyy;
@@ -2455,7 +2415,7 @@ Apr: [
 								const rows = baseRaw[month];
 								for( const r of rows )
 								{
-									for( let i = 0; i < r.length; i++ )
+									for( let i = 0; r.length > i; ++i )
 									{
 										const findThismonth = ("" + r[0]);
 										const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
@@ -2465,20 +2425,20 @@ Apr: [
 										var last_mmm_yyyy=(""+prevmmm.substr(4,3)+"-"+prevmmm.substr(11,4) );
 										if( findThismonth.includes(last_mmm_yyyy) )
 										{
-											const searchFood =  ("" + r[i]).toLowerCase();
+											const searchFood = ("" + r[i]).toLowerCase();
 											if( searchFood.includes("snack") )
 											{
-												if( undefined !== r[i+1] && !isNaN(parseFloat(r[i+1])))
+												if( ( undefined !== r[i+1] ) && !isNaN( parseFloat(r[i+1]) ) )
 												{
 													total = total + parseFloat(r[i+1]);
 												}
 											}
 										}
 										{
-											const searchXerox =  ("" + r[i]).toLowerCase();
+											const searchXerox = ("" + r[i]).toLowerCase();
 											if( searchXerox.includes("xerox") )
 											{
-												if( undefined !== r[i+1] && !isNaN(parseFloat(r[i+1])))
+												if( ( undefined !== r[i+1] ) && !isNaN( parseFloat(r[i+1]) ) )
 												{
 													xeroxCopesVal = xeroxCopesVal + parseFloat(r[i+1]);
 												}
@@ -2490,7 +2450,7 @@ Apr: [
 							return total;
 						}
 						const WastedAmtVal = getLastMonthWastedAmount();
-                        document.getElementById("WastedAmtValue").innerHTML = WastedAmtVal.toFixed(2) + " &#8377;";
+						document.getElementById("WastedAmtValue").innerHTML = WastedAmtVal.toFixed(2) + " &#8377;";
 						document.getElementById("XeroxCopiesValue").innerHTML = xeroxCopesVal.toFixed(2) + " &#8377;";
 						function getLastMonthFoodAmount()
 						{
@@ -2498,7 +2458,7 @@ Apr: [
 							let total = 0;
 							const allMonths = Object.keys(baseRaw);
 							const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
-							const dt  = new Date(ist);
+							const dt = new Date(ist);
 							const mmm = dt.toString().substr(4,3);
 							const yyyy = dt.getFullYear();
 							const lastMonthKey = mmm + "-" + yyyy;
@@ -2507,7 +2467,7 @@ Apr: [
 								const rows = baseRaw[month];
 								for( const r of rows )
 								{
-									for( let i = 0; i < r.length; i++ )
+									for( let i = 0; r.length > i; ++i )
 									{
 										const findThismonth = ("" + r[0]);
 										const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
@@ -2517,18 +2477,18 @@ Apr: [
 										var last_mmm_yyyy=(""+prevmmm.substr(4,3)+"-"+prevmmm.substr(11,4) );
 										if( findThismonth.includes(last_mmm_yyyy) )
 										{
-											const searchFood =  ("" + r[i]).toLowerCase();
+											const searchFood = ("" + r[i]).toLowerCase();
 											if(		searchFood.includes("bfast")	||
 													searchFood.includes("lunch")	||
 													searchFood.includes("dinner")	||
-													searchFood.includes("soup")		||
+													searchFood.includes("soup")	||
 													searchFood.includes("livo")	||
 													searchFood.includes("liveo")	||
-													searchFood.includes("tea")		||
+													searchFood.includes("tea")	||
 													searchFood.includes("milk")
 											)
 											{
-												if( undefined !== r[i+1] && !isNaN(parseFloat(r[i+1])))
+												if( ( undefined !== r[i+1] ) && !isNaN( parseFloat(r[i+1]) ) )
 												{
 													total = total + parseFloat(r[i+1]);
 												}
@@ -2571,7 +2531,7 @@ Apr: [
 								{
 									const date = row[0];
 									const mk = monthKeyFromDateString( date );
-									if(!out[mk])
+									if( !out[mk] )
 									{
 										out[mk] = [];
 									}
@@ -2631,7 +2591,8 @@ Apr: [
 								const [monthB, yearB] = b.split('-');
 								const monthIndexA = new Date(`${monthA} 1, ${yearA}`).getMonth();
 								const monthIndexB = new Date(`${monthB} 1, ${yearB}`).getMonth();
-								if (yearA !== yearB) {
+								if( yearA !== yearB )
+								{
 									return yearB - yearA;
 								}
 								return monthIndexB - monthIndexA;
@@ -2655,7 +2616,7 @@ Apr: [
 						{
 							const sel = monthSelect.value;
 							let data = dataFromDB;
-							if(!data)
+							if( !data )
 							{
 								const snap = await get( child( ref( db ), '/spending') );
 								if( snap.exists() )
@@ -2721,16 +2682,22 @@ Apr: [
 							const dailyMap = {};
 							for( const mk of months )
 							{
-								if(!data[mk]) continue;
+								if( !data[mk] )
+								{
+									continue;
+								}
 								data[mk].forEach( row=>{
 									const date = row[0];
 									for( let i=1; row.length > i; i+=2)
 									{
 										const item = row[i];
 										const amt = row[i+1];
-										if( item && ( amt !== undefined && amt !== null) )
+										if( item && ( ( undefined !== amt ) && ( null !== amt ) ) )
 										{
-											if(!dailyMap[date]) dailyMap[date] = [];
+											if( !dailyMap[date] )
+											{
+												dailyMap[date] = [];
+											}
 											dailyMap[date].push({ item, amt });
 										}
 									}
@@ -2739,19 +2706,27 @@ Apr: [
 							let grandTotal = 0;
 							let grandWaste = 0;
 							let BSNLNetAmt = 0;
+							let today = new Date();
+							today.setHours(0, 0, 0, 0);
 							for( const d of Object.keys( dailyMap ) )
 							{
 								const entries = dailyMap[d];
 								let subTotal = 0;
 								let wasted = 0;
+								let inputDate = new Date(d);
+								if( today < inputDate )
+								{
+									continue;
+								}
 								let rowHtml = `<TR><TD class='right-align'>${d}</TD>`;
-								for( let i=0; i<6; i++)
+								for( let i=0; 6 > i; ++i )
 								{
 									if( entries[i] )
 									{
 										const e = entries[i];
-										if (e.item === "None") // Do not display None values and continue the loop again.
+										if( "None" === e.item ) // Do not display None values and continue the loop again.
 										{
+											rowHtml += `<TD class='right-align'></TD><TD class='right-align'></TD><TD class='right-align'></TD><TD class='right-align'></TD>`;
 											++i;
 											continue;
 										}
@@ -2819,12 +2794,14 @@ Apr: [
 							const date = formatDate( rawDate.split("-").reverse().join("-") );
 							const item = itemInput.value.trim();
 							const amount = parseFloat(amountInput.value);
-							if(!rawDate || !item || Number.isNaN(amount))
+							if( !rawDate || !item || Number.isNaN(amount) )
 							{
 								alert("Please enter Date, Item and Amount.");
 								return;
 							}
+							alert("ASD1");
 							const mk = monthKeyFromDateString(date);
+							// const mk = monthKeyFromDateString(rawDate);
 							const monthRef = ref(db, `spending/${mk}`);
 							const snap = await get(monthRef);
 							let monthArr = snap.exists() ? snap.val() : [];
@@ -2844,6 +2821,7 @@ Apr: [
 							{
 							monthArr.push([formatDate(date), item, amount]);
 							}
+							alert("ASD2");
 							const snapAll = await get(child(ref(db), '/spending'));
 							let dataAll = snapAll.exists() ? snapAll.val() : baseData;
 							dataAll[mk] = monthArr;
@@ -2853,6 +2831,7 @@ Apr: [
 							await renderForSelected(dataAll);
 							itemInput.value = "";
 							amountInput.value = "";
+							alert("ASD3");
 							dateInput.valueAsDate = new Date();
 							message.textContent = "Saved entry and updated table.";
 						}

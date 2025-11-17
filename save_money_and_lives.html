@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META CHARSET="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<LINK href="MyMenu002.css" rel="stylesheet">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>Human-AI Financial Solutions</TITLE>
+		<!--
+		<LINK rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		-->
+		<STYLE type='text/css'>
+			.rectangle
+			{
+				position: relative;
+				width: 50px;
+				height: 50px;
+				background-color: lightblue;
+				border: 2px solid black;
+				margin: 50px;
+			}
+			.arrow-top-left
+			{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 0;
+				height: 0;
+				border-left: 20px solid transparent;
+				border-right: 20px solid transparent;
+				border-bottom: 20px solid black;
+			}
+			.disabled-link
+			{
+				pointer-events: none;
+			}
+			.arrow-bottom-right
+			{
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 0;
+				height: 0;
+				border-left: 20px solid transparent;
+				border-top: 20px solid black;
+				border-right: 20px solid transparent;
+			}
+			.link-style
+			{
+				color: blue;
+				text-decoration: none;
+				font-weight: bold;
+				cursor: pointer;
+			}
+			.link-style.active
+			{
+				color: blue;
+			}
+			.triangle
+			{
+				width: 0;
+				height: 0;
+				border-left: 25px solid transparent;
+				border-right: 25px solid transparent;
+				border-bottom: 50px solid #0071bb;
+				position: relative;
+			}
+			.triangle-text
+			{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translateX(-50%);
+				color: white;
+				font-size: 30px;
+				font-weight: bold;
+			}
+			.circle
+			{
+				width: 50px;
+				height: 50px;
+				background-color: #0071bb;
+				border-radius: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: white;
+				font-size: 30px;
+				font-weight: bold;
+			}
+			body
+			{
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+			}
+			header
+			{
+				background-color: #0071bb;
+				color: white;
+				padding: 10px 0;
+				text-align: center;
+			}
+			header h1
+			{
+				margin: 0;
+			}
+			nav
+			{
+				background-color: #f1f1f1;
+				padding: 10px;
+				display: flex;
+				justify-content: center;
+			}
+			nav a
+			{
+				margin: 0 20px;
+				text-decoration: none;
+				color: #0071bb;
+				font-weight: bold;
+			}
+			nav a:hover
+			{
+				color: #004f7c;
+			}
+			.icon-menu
+			{
+				display: flex;
+				justify-content: space-around;
+				padding: 20px;
+				background-color: #f1f1f1;
+			}
+			.icon-menu div
+			{
+				text-align: center;
+			}
+			.icon-menu i
+			{
+				font-size: 40px;
+				color: #0071bb;
+			}
+			.icon-menu div a
+			{
+				display: block;
+				margin-top: 10px;
+				color: #0071bb;
+				font-weight: bold;
+				text-decoration: none;
+			}
+			table
+			{
+				width: 100%;
+				margin: 20px auto;
+				border-collapse: collapse;
+			}
+			table, th, td
+			{
+				border: 1px solid #ddd;
+				text-align: left;
+			}
+			th, td
+			{
+				padding: 8px 12px;
+				text-align: center;
+			}
+			th
+			{
+				background-color: #0071bb;
+				color: white;
+			}
+			td
+			{
+				background-color: #f9f9f9;
+			}
+			td a
+			{
+				color: #0071bb;
+				text-decoration: none;
+			}
+			td a:hover
+			{
+				text-decoration: underline;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<!-- Header -->
+		<HEADER>
+			<H1>Human-AI Financial Solutions = HAI FS</H1>
+		</HEADER>
+		<!-- Menu Bar -->
+		<NAV>
+			<SCRIPT type='text/javascript'>
+				if( window.location.href.includes('save_money_and_lives.html') )
+				{
+						document.write("<A class='link-style' onclick='toggleTable(event)' id='Homehref' style='color:blue'>Home</A>");
+				}
+				else
+				{
+						document.write("<A class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/save_money_and_lives.html' id='Homehref' style='color:blue'>Home</A>");
+				}
+		function showHomeTable()
+		{
+			const homeTable = document.getElementById('HomeTable');
+			const preventWastage = document.getElementById('PreventWastage');
+			const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+			preventWastage.style.display = 'none';
+			categoryAmount.style.display = 'none';
+			homeTable.style.display = 'table';
+		}
+		</SCRIPT>
+	<A href='spending.html' class='link-style' id='PreventWastagehref' style='color:blue'>PreventWastage</A>
+	<A href="index.html">ManageDebitCard</A>
+        <A>EMandate</A>
+        <A>ContactMe</A>
+	<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
+	<A>FinanceSSL</A>
+	<A>CompareBankFD</A>
+	<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
+    </NAV>
+	<SCRIPT type='text/javascript'>
+			function toggleTableold(event)
+			{
+				const homeLink = document.getElementById('Homehref');
+				const homeTable = document.getElementById('HomeTable');
+				const preventWastage = document.getElementById('PreventWastage');
+				const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+				const clickedId = event.target.id;
+				if( clickedId === 'Homehref')
+				{
+					if( homeTable.style.display === 'none' || homeTable.style.display === '')					{
+						homeTable.style.display = 'table';
+						categoryAmount.style.display = 'none';
+						preventWastage.style.display = 'none';
+					}
+					else
+					{
+						homeTable.style.display = 'none';
+						categoryAmount.style.display = 'table';
+						preventWastage.style.display = 'none';
+					}
+				}
+			}
+			function toggleTable(event)
+			{
+				event = event || window.event;
+				event.preventDefault();
+				const clickedId = event.target.id;
+				const homeLink = document.getElementById('Homehref');
+				const preventLink = document.getElementById('PreventWastagehref');
+				const homeTable = document.getElementById('HomeTable');
+				const preventWastage = document.getElementById('PreventWastage');
+				const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+
+				if( 'Homehref' === clickedId )
+				{
+					if( 'none' === homeTable.style.display || '' === homeTable.style.display )
+					{
+						homeTable.style.display = 'table';
+						preventWastage.style.display = 'none';
+						categoryAmount.style.display = 'none';
+						homeLink.style.color = 'orange';
+						preventLink.style.color = 'blue';
+					}
+					else
+					{
+						homeTable.style.display = 'none';
+						categoryAmount.style.display = 'table';
+						preventWastage.style.display = 'none';
+						homeLink.style.color = 'blue';
+					}
+				}
+				else if( 'PreventWastagehref' === clickedId )
+				{
+					if( 'none' === preventWastage.style.display || '' === preventWastage.style.display )
+					{
+						preventWastage.style.display = 'table';
+						preventLink.style.color = 'orange';
+						categoryAmount.style.display = 'none';
+						homeTable.style.display = 'none';
+					}
+					else
+					{
+						preventWastage.style.setProperty('display', 'none', 'important');
+						categoryAmount.style.display = 'table';
+						homeTable.style.display = 'none';
+						preventLink.style.color = 'blue';
+					}
+				}
+			}
+    </SCRIPT>
+	<!--
+	#{
+	-->
+    <TABLE style="border: 1px solid black; border-collapse: collapse;" id='CategoryAmountDetailsTab'>
+        <THEAD>
+            <TR>
+                <TH valign='top' align='right'>Category last month</TH>
+                <TH valign='top' align='right'>Amount during last month</TH>
+                <TH valign='top' align='right'>Details</TH>
+            </TR>
+        </THEAD>
+        <TBODY>
+            <!-- Example row -->
+            <TR>
+                <TD style="text-align: right; vertical-align: top;">
+			Rent
+		</TD>
+                <TD style="text-align: right; vertical-align: top;">
+			8333.33 &#8377;
+		</TD>
+                <TD style="text-align: right; vertical-align: top;">
+			Attibele Karnataka India
+		</TD>
+                <TD style="text-align: right; vertical-align: top;">
+			&nbsp;
+			&nbsp;
+			&nbsp;
+			&nbsp;
+			&nbsp;
+			&nbsp;
+		</TD>
+            </TR>
+            <TR>
+                <TD style="text-align: right; vertical-align: top;">
+			BSNL FIBERNET
+		</TD>
+                <TD style="text-align: right; vertical-align: top;">
+			&nbsp;1101.00 &#8377;
+		</TD>
+                <TD style="text-align: right; vertical-align: top;">
+			Two connections: 01) at Dharmapuri Tamilnadu 02) at Attibele Karnataka, India
+		</TD>
+            </TR>
+            <TR>
+                <TD style="text-align: right; vertical-align: top;">
+			Petrol
+		</TD>
+                <TD style="text-align: right; vertical-align: top;">
+			&nbsp;&nbsp;&nbsp;920.00 &#8377;
+		</TD>
+                <TD style="text-align: right; vertical-align: top;">
+			at Indian Oil petrol bunk to receive SBI rewards points and Indian Oil points, to buy 200.00 &#8377; or 400.00 &#8377;
+		</TD>
+            </TR>
+            <TR>
+                <TD style="text-align: right; vertical-align: top;">
+			Food
+		</TD>
+                <TD style="text-align: right; vertical-align: top;">
+			&nbsp;2227.00 &#8377;
+		</TD>
+                <TD style="text-align: right; vertical-align: top;">
+			Break fast/Lunch/Dinner/Soup/Milk/Tea
+		</TD>
+            </TR>
+            <TR style='backgroundcolor:red;'>
+                <TD style="text-align: right; vertical-align: top; background-color: red;color:white;">
+			Wasted amount
+		</TD>
+		<TD style="text-align: right; vertical-align: top; background-color: red;color:white;" id="WastedAmtValue">
+			1993.00 &#8377;
+		</TD>
+		<TD style="text-align: right; vertical-align: top; background-color: red;color:white;">
+			Snacks
+		</TD>
+            </TR>
+            <TR>
+                <TD style="text-align: right; vertical-align: top;">
+			xerox Copies(2025-2026) Total xerox copies = 56 pages
+		</TD>
+                <TD style="text-align: right; vertical-align: top;">
+			70.00 &#8377;
+		</TD>
+                <TD style="text-align: right; vertical-align: top;">
+			70.00 = ( 20 * 02.00 )
+			<!--
+			<BR>PAN, AADHAAR CARDS FRONT AND BACK = 02.00<BR>20 Black and white pages.<BR>00 Colour pages.<BR>
+			OTHER GARBAGE XEROX SHOP@DHARMAPURI/TN/INDIA:<BR>
+			-->
+			+ 10.00 + 5.00 + 15.00</TD>
+		</TD>
+            </TR>
+            <TR>
+                <TD style="text-align: right; vertical-align: top; background-color: #FF9933;">
+			Saved Amount
+		</TD>
+                <TD style="text-align: right; vertical-align: top; background-color: #FFFFFF;">
+					<Font color='#000080'>
+					13297.00 &#8377;
+					</FONT>
+		</TD>
+                <TD style="text-align: right; vertical-align: top; background-color: #138808;">
+			Indian Government Savings and Investments (PPF, RD, NSC and POST-OFFICE-BALANCE)
+		</TD>
+            </TR>
+        </TBODY>
+    </TABLE>
+	<!--
+	#}
+	-->
+<!--
+	Menu name:
+		Save Money, Avoid Waste
+-->
+	<!--
+	#{
+	-->
+<NOSCRIPT>
+<TABLE style="border: 1px solid black; border-collapse: collapse;">
+<TR> <TD valign='top' align='right' bgcolor=cyan>
+<A href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/save_money_and_lives.html' class="link-style" id='Homehref' style='color:blue'>Home</A>
+<td style="vertical-align: top; text-align:right;">
+	<A>MoneyHelp01</A>
+</TD>
+<td style="vertical-align: top; text-align:right;">
+	<A>MoneyHelp02</A>
+</TD>
+<td style="vertical-align: top; text-align:right;">
+	<A>MoneyHelp03</A>
+</TD>
+<td style="vertical-align: top; text-align:right;">
+	<A>MoneyHelp04</A>
+</TD>
+<td style="vertical-align: top; text-align:right;">
+	<A>MoneyHelp05</A>
+</TD>
+<td style="vertical-align: top; text-align:right;">
+	<A>Garbages</A>
+</TD>
+<td style="vertical-align: top; text-align:right;">
+	UpdateAadhar
+</TD>
+<td style="vertical-align: top; text-align:right;">
+	WindowsHelp
+</TD>
+<td style="vertical-align: top; text-align:right;">
+	<A>Myself</A>
+</TD>
+<TD valign='top' align='right' bgcolor='cyan'>
+	<A>Privacy</A>
+</TD>
+</TR>
+<TR> <td style="vertical-align: top; text-align:right;">
+	<A HREF='NMurugesan_cv.html'>NMurugesan_cv</A>
+</TD> <td style="vertical-align: top; text-align:right;">
+			<A HREF='mis-interest.html' title='வல்லரசுபங்களிப்பு01'>வல்லரசுபங்களிப்பு</A>
+</TD>
+<td style="vertical-align: top; text-align:right;">
+	<A HREF='BEST_BANK_TO_OPEN_FD.html'>BankForFd</A>
+</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='MIS_INTEREST_EARLIER_INTERNET_BANKING_ERROR.html'>PostNetLeapErr</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='SANI_MUTHU_CALENDAR.html'>SaniMuthuCalendar</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='I_FEEL_RENT_BETTER_THAN_LEASE.html'>Rent &gt; Lease</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='SBI_employee_never_help.html'>SbiEmpNeverHelp</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='block_url_msedge.html'>BlockUrlMsedge</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='find_Number_Of_system_connected_to_bsnl.html'>BSNLUsrCnt</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='Prediction.html'>MyPrediciton</A></TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='KnowledgeTransferAmount.html' title='Knowledge transfer amount'>KDA</A>
+	</TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align:right;">
+			<A HREF='openssl_speed.html'>openssl speed</A> </TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='nsc_interest.html' title='வல்லரசுபங்களிப்பு02'>வல்லரசுபங்களிப்பு</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='Post_office_PPF_deposit.html'>PostPpfDeposit</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='DoNotWasteMoney.html'>NoMoneyWastage</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='UselessGasTaxAgencies.html'>Gas tax agency</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='PreventMoney_Wastage.html'>PreventMoneyWaste</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='AppolloPharmacy.html'>Apollo</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='GarbageNumbers.html'>GarbageNumbers</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='Windows_ERR_HELP.html'>WindowsHelp</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='My_dream_at_universe.html'>MyUniverseDream</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='Time-travel-knowledge-transfer.html'>TimeTravel</A></TD>
+</TR>
+<TR>
+	<TD rowspan='14' valign='top' align='right'>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='ppf.html' title='வல்லரசுபங்களிப்பு03'>வல்லரசுபங்களிப்பு</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='LEARN_SBI_FD.html'>Learn SBI ETDR</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='CurrentBillPayment.html'>ElectricBillPayment</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='LPG_No_tips_delivery.html'>LPG no tips</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='IPPB_Transfer_money.html'>IppbMoneyTransfer</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='GarbageEmail.html'>GarbageEmail</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='HackUrlEmailNumSms.html'>HackUrlSms</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='thunderbird_at_Windows.html'>thunderbird</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='spending.html'>NoMoneyWastage</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='Gold-seller-comparison.html'>GoldSeller</A></TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align:right;">
+			<A HREF='shared-market-mis-compare.html'>SharedMktMis</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+			<A HREF='how-open-sbi-etdr.html'>Steps@SbiFD</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='Steps_to_Close_NPS_After_5_Years.html'>NeverOpenNps</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='airtel_recharge.html'>MobChargeErr</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='BIDARAGUPPA-GARBAGE-DUMPING.html'>GarbageAttendance</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='Samsung_Light_Mode.html'>SamsungLightMode</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='LoanLicSchoolActions.html'>LoanLicSchool</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='Import_Eml_File_To_Thunderbird.html'>ImportEmail</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='murugesan_openssl.html'>My ranking</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='INDIAN_PM.html'>INDIAN_PM</A></TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align:right;"> <A HREF='MIS_ONLINE_EXCEPTION.html'>MisOnlineException</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='SBI_ETDR_INTEREST.html'>SBI ETDR</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='HomeChecklist.html'>HomeCheckList</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='PostOfficeHolidays.html'>PostOfficeHolidays</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A title='https://results.cbse.nic.in user to get HSC results from Tamilnadu.'>results.cbse.nic.in</A>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='Friendship_day.html'>FriendshipDay</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='UPDATE_AADHAR_WAIT_DAYS.html'>UpdateAadhar</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='ThunderBird_All_Mail_Count.html'>EMAIL Count</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='My_Drawings.html'>My drawing</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='TAMILNADU_CM.html'>TamilnaduCM</A></TD>
+</TR>
+<TR> <td style="vertical-align: top; text-align:right;"> 		<A HREF='THIRUMOOLAR-MIS-EXAMPLE.html'>ThirumoolarMis</A>
+</TD>
+	<td style="vertical-align: top; text-align:right;">
+			<A HREF='TMB_ETDR_INTEREST.html'>TMB ETDR</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='PETROL_AIR_PUMP.html'>PetrolAirPump</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='FixedDepositComparisonBanks.html'>FD at each bank</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='SMS_Hackers.html'>SMS hackers</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='Benefits_of_plants.html'>BenefitsOfPlants</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='TNEB_ADD_AADHAAR_ONLINE.html'>TNEBAddAadhar</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;"><A href='Change_Default_SearchEngine.html'>DefaultEngine</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A href='murugesan_openssl_search.html'>murugesan ssl</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A href='KARNATAKA_CM.html'>Karnataka CM</A></TD>
+</TR>
+<TR> <td style="vertical-align: top; text-align:right;"> <A HREF='do_not_waste_money.html'>Save money</A>
+</TD>
+	<td style="vertical-align: top; text-align:right;">
+			<A HREF='IND_ETDR_INTEREST.html'>IND ETDR</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='BuyerAction.html'>BuyerActions</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='Indane-gas-ippb.html'>IPPG gas payment</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='block_geocities.html'>Block geocities</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='firefox_Comedy.html'>FirefoxComedy</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='UPDATE_AADHAR_WAIT_DAYS.html'>AadharChgWaitDays</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='IDA14092023000.html'>WorstPatch</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='poems/index.html'>My tamil poems</A></TD>
+	<td style="vertical-align: top; text-align:right;"><A HREF='earth_politics_or_general_age.html'>PoliticsAge</A></TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='AIBEX_mobile_cover_seller_amazon.html'>AIBEX mobile cover</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+			<A HREF='BNK_CREDIT_INTEREST.html'>Bank credit</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='2WHEELER_INSURANCE.html'>2WheelerLIC</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='Pay_Book_Bharat_gas_online.html'>BuyCylinder-NoTips</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='BlockWebSite.html'>Block website</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='JokesReduceTension.html'>ReduceTension</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='DOWNLOAD_PAN_AADHAR.html'>DownloadPanAadhar</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;"></TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='I_love_mathematics.html'>I <SPAN style="color: red;">&#9829;</SPAN> Mathematics</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='Politician_assets.html'>PoliticianAssets</A>
+	</TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='HowToEarnMoney.html'>Earn money</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+			<A HREF='Donate.html'>Before donations</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='SbiRewards.html'>SbiRewards</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='SoapProductCountry.html'>SoapCompany</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='NEWS_emails.html'>NEWS emails</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='Roaming_144_Comedy.html'>RoamingComedy</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='aadhaar-unlock-bio-metrics.html'>AadharBioMetrics</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;"></TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='TamilLetters.html'>Tamil letters</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='NewsPolitics.html'>NEWSpolitics</A>
+	</TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='DNC_Chit_fund.html'>Chit fund</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+			<A HREF='mydonation.html'>My donation</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='HDFC_AMB_Hacker.html'>HdfcAmbHacker</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='rajaji_nagar_ho.html'>RajajiNagarPost</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='ISRO_emails.html'>ISRO emails</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='fiverr_Comedy.html'>FiverrComedy</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;"></TD>
+	<td style="vertical-align: top; text-align:right;"></TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='kannada_letters.html'>Kannada letters</A>
+	</TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='SBI_ATM_CARD_SERVICE_CHARGES.html'>SBI ATM charges</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='No_IMPS_ippb_to_Bank.html'>NoImps at Ippb</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='HandleBankAMB.html'>HandleBankAMB</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='SaveMoney.html'>Save money</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='NPS_emails.html'>NPS emails</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='HappyEngineersDay.html'>HappyEngineersDay</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+	</TD>
+	<td style="vertical-align: top; text-align:right;"></TD>
+	<TD valign='top' align='left' colspan='1'>
+		<A HREF='Gregorian_calendar.html'>Gregorian calendar</A>
+	</TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='bsnl_airtel_jio.html'>BSNL vs private</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='NEVER_USE_GPAY_MOBILE_RECHARGE.html' title='DO NOT PERFORM MOBILE RECHARGE USING PHONE PAY OR PAYTM OR GPAY OR MOBILE APP' >NMGpay</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='TVS_MONEY_WASTAGE.html'>TvsMoneyWastage</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='China_Tv_mobile_router.html'>China mobile router</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='uninstall_mob_apps.html'>UninstallMobApps</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='HappyBirthDay.html'>HappyBirthday</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+	</TD>
+	<td style="vertical-align: top; text-align:right;"></TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='exercise_at_home.html'>Exercise@Home</A>
+	</TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='SBIAtmUsage.html'>SBI ATM error</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='Tamilnadu_CurrentBill.html'>TN TNEB</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='COMPARE_ATM_MOB_PAY.html'>ATMGpayCompare</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='ippb.html'>India post app</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='ITR_Refund_reissue.html'>ITR refund issue</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='WeLikeGod.html'>WeLikeGod</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+	</TD>
+	<td style="vertical-align: top; text-align:right;"></TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='thirukkural_001_kadavuL_vaazhthu.html'>Thirukkural</A>
+	</TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='closing-nsc-online.html'>Closing NSC online</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='Karnataka_CurrentBill.html'>KA BESCOM</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='MOBILE_postpaid_payment.html'>MobPostpaidPay</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='Traffic_violation.html'>TrafficViolation</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='ITR_Refund_NOT_RECEIVED.html'>ITRRefundWaiting</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='tamilnadu_public_holidays.html'>TNSchoolHolidays</A>
+	</TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='term_deposit.html'>Term deposit</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='FindIndianRupee-Duplicate.html'>Duplicate INR</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='nsc_open.html'>OpenNscOnline</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='Traffic_Violation_payment.html'>Pay@TrafficViolation</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='Petrol_Usage_Milage.html'>PetrolUsage</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='Karnataka_school_holidays.html'>KASchoolHolidays</A>
+	</TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align:right;">
+		<A href='STEPS_OPENING_POSTOFFICE_ACCOUNT.html'>PostActOpensteps</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='PostOfficeJointBalance.html'>Bal@PostOffice</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='mobile_charge_alarm.html'>MobChargeAlarm</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='PostOfficeJointBalance.html'>NetBankTimedOut</A>
+	</TD>
+	<td style="vertical-align: top; text-align:right;">
+		<A HREF='StepsToUnlockSim.html'>UnlockSimSteps</A>
+	</TD>
+</TR>
+</TABLE>
+</NOSCRIPT>
+	<!--
+	#}
+	-->
+<TABLE style="border: 1px solid black; border-collapse: collapse;" id='HomeTable'>
+			<TR>
+				<td style="vertical-align: top; text-align:left;width:50%;">
+					<FONT color='red'><B><U>பொதுப் பிரமுகர் நிகழ்ச்சிகளில் கலந்து கொள்ளவில்லை</B></U><BR>
+நான் பிறந்த நாளிலிருந்து இன்று வரை,<BR>
+<B><U>ஆந்திரப்பிரதேசம்/கர்நாடகா/கேரளா/தமிழ்நாடு மற்றும் தெலுங்கானா</B></U><BR>
+போன்ற இந்திய மாநிலங்களில் உள்ள எந்த கூட்டமான நிகழ்ச்சிகளிலும்<BR>
+நான் கலந்து கொள்ளவில்லை.<BR>
+இவர்கள் பொதுவாக வருகை தந்தாலும்,<BR>
+அவர்கள் நடத்தும் எந்த நெரிசலான பகுதிகளிலும் நான் பங்கேற்றதில்லை.<BR>
+<B><U>இதன் மூலம் கிடைத்த நன்மைகள்</B></U>:<BR>
+கூட்டநெரிசலின் மூலம் உண்டாகக்கூடிய ஆபத்துகளிலிருந்து<BR>
+என் குடும்பத்தினரைவும்<BR>
+என்னையும் பாதுகாத்துள்ளேன்.<BR>
+கூட்டங்களுக்கு செல்லாமல்,<BR>
+என் இருசக்கர வாகனத்தில் எரிபொருள் செலவிடாமல் பணம் சேமித்துள்ளேன்.<BR>
+மாசுபட்ட காற்றை சுவாசிப்பதைத் தவிர்த்து,<BR>
+உடல்நலத்தை பாதுகாத்துள்ளேன்.<BR>
+மேலே குறிப்பிட்ட காரணங்களால் மறைமுகமாகவே பணம் சேமிக்கப்பட்டுள்ளது.<BR>
+<B><U>நான் வாழ்ந்திடும் வரை செய்யும் செயற்கைகள்</B></U>:<BR>
+நான் எப்போதும் என்னை பாதுகாப்பாக வைத்துக் கொள்ள,<BR>
+கூட்டமான பகுதிகளில் செல்லாமல் இருப்பது,<BR>
+நான் நலமுடன் இருப்பதற்கு எனக்கு நானே அறிவுறுத்திக்கொள்வேன்.<BR>
+<B><U>சமூகத்திற்கு வழங்குதல்</B></U>:<BR>
+மக்கள் மகத்துவத்தை அடைவது மற்றவர்களுக்கு உதவுதல் மற்றும் கருணையை<BR>
+பரப்புதலால் தான் சாத்தியமென நான் நம்புகிறேன். எனவே பிறந்ததிலிருந்து இன்று வரை<BR>
+நான் சேமித்துள்ள இந்திய பைசா/ரூபாய்களை ஏழைகளுக்கோ அல்லது<BR>
+தேசிய பாதுகாப்பு நிதிக்கோ ( NDF )<BR>
+மற்றும் பார்வையற்றோருக்கான தேசிய சங்கத்திற்க்கோ ( NAB )<BR>
+பயன்படுத்தி வந்திருக்கிறேன்.<BR>
+<B><U>பணத்தைச் சேமிக்கும் நடைமுறை</B></U>:<BR>
+நான் ஒவ்வொரு நாளும்<BR>
+என் செலவுகளை கணினியில் பதிவு செய்கிறேன்.
+<B><U>வீட்டில் இருந்த நாட்கள்</B></U>:
+<TABLE style="border: 1px solid black; border-collapse: collapse;width:25%;">
+<TR><td style="vertical-align: top; text-align: left;">செவ்வாய் 14-புரட்டாசி-5127</TD><td style="vertical-align: top; text-align: left;">Tue 30-Sep-2025</TD></TR>
+<TR><td style="vertical-align: top; text-align: left;">புதன் 15-புரட்டாசி-5127</TD><td style="vertical-align: top; text-align: left;">Wed 01-Oct-2025</TD></TR>
+<TR><td style="vertical-align: top; text-align: left;">வியாழன் 16-புரட்டாசி-5127</TD><td style="vertical-align: top; text-align: left;">Thu 02-Oct-2025</TD></TR>
+</TD>
+</TR>
+</TABLE>
+<B><U>இதனால் கிடைத்த பயன்கள்</B></U>:
+பணம் மிச்சப்படுத்தல்,<BR>
+வெளியே உணவு சாப்பிடுதல் தவிர்த்தல்,<BR>
+உடல் கொழுப்பு அதிகரிப்பதைத் தடுத்தல்
+<TABLE style="border:1px solid black;border-collapse:collapse;width:25%;">
+<TR><td style="vertical-align: top; text-align: left;">செவ்வாய் 14-புரட்டாசி-5127</TD><td style="vertical-align: top; text-align: left;">Tue 30-Sep-2025</TR>
+<TR><td style="vertical-align: top; text-align: left;">புதன் 15-புரட்டாசி-5127</TD><td style="vertical-align: top; text-align: left;">Wed 01-Oct-2025</TD></TR>
+<TR><td style="vertical-align: top; text-align: left;">வியாழன் 16-புரட்டாசி-5127</TD><td style="vertical-align: top; text-align: left;">Thu 02-Oct-2025</TD></TR>
+</TABLE>
+<B><U>இதன் காரணமாக,<BR>
+இது எனக்கு உதவியது</B></U>:<BR>
+1. பணத்தை மிச்சப்படுத்துதல்<BR>
+2. வெளியில் உணவு சாப்பிடுவதைத் தவிர்த்தல்<BR>
+3. உடலில் கொழுப்பு அதிகரிப்பதைத் தடுத்தல்.</FONT><BR>
+<TABLE style="border: 1px solid black; border-collapse: collapse;background-color:black;color:white;'>
+<TR>
+<td style="vertical-align: top; text-align: left;">
+$ echo "ஆந்திரப்பிரதேசம்/கர்நாடகா/கேரளா/தமிழ்நாடு மற்றும் தெலுங்கானா" | tr "/" "\n" |\<BR>
+/usr/bin/sed "s/ மற்றும் /\n/;" 2>&1 |\<BR>
+/usr/bin/sort -u 2>&1<BR>
+ஆந்திரப்பிரதேசம்<BR>
+கர்நாடகா<BR>
+கேரளா<BR>
+தமிழ்நாடு<BR>
+தெலுங்கானா
+</TD>
+</TR>
+</TABLE>
+</TD>
+<td style="vertical-align: top; text-align: left;width:50%;">
+<B><U>PERSONAL REFLECTIONS ON ATTENDING PUBLIC EVENTS:</B></U><BR>
+I have never attended events or gatherings involving prominent personalities, such as:<BR>
+&bull; Billionaires ( crorepathis/millionaires )<BR>
+&bull; Actresses,<BR>
+&bull; Actors,
+&bull; and Celebrities<BR>
+&bull; Political figures like Prime Ministers,<BR>
+&bull; Presidents,<BR>
+&bull; Chief Ministers,<BR>
+&bull; Members of Parliament ( MPs ),<BR>
+&bull; Members of the Legislative Assembly ( MLAs ),<BR>
+and Women and Men Politicians<BR>
+&bull; Royalty like Princessess,<BR>
+&bull; Princes,<BR>
+&bull; and Kings<BR>
+&bull; Religious Leaders and Preachers ( Women and Men )<BR>
+Even if these personalities visited my home state of Tamil Nadu,<BR>
+&bull; Andhra Pradesh,<BR>
+Telangana,<BR>
+&bull; or Karnataka,<BR>
+&bull; I have avoided their public events or crowded areas since birth.<BR>
+<B><U>REASONS FOR AVOIDING CROWDED AREAS</B></U>:<BR>
+01) <B><U>SAFETY</B></U>:<BR>
+By avoiding crowded places,<BR>
+I have protected both myself and my family
+from potential dangers associated with large crowds.<BR>
+02) FINANCIAL SAVINGS</B></U>:<BR>
+I have saved money by not wasting fuel ( petrol ) on travel to crowded events.<BR>
+This has also kept my vehicle's fuel expenses under control.<BR>
+03) <B><U>HEALTH BENEFITS</B></U>:<BR>
+I have avoided the risks of breathing polluted air in crowded areas,
+which is crucial for maintaining good health.<BR>
+04) <B><U>INDIRECT SAVINGS</B></U>:<BR>
+Through the steps above,<BR>
+I have saved money,<BR>
+keeping it from being spent on unnecessary travel,<BR>
+food,<BR>
+and health risks.<BR>
+<B><U>PERSONAL COMMITMENT</B></U>:<BR>
+As long as I am alive,<BR>
+I will continue advising myself to protect my well-being by
+avoiding crowded areas.<BR>
+<B><U>GIVING BACK TO SOCIETY</B></U>:<BR>
+I believe that true greatness comes from helping others and spreading kindness.<BR>
+To this end:<BR>
+I dedicate the money I save,<BR>
+from daily savings and avoiding unnecessary spending,<BR>
+to worthy causes like:<BR>
+Helping the poor,<BR>
+contributing to the National Defence Fund ( NDF ) and<BR>
+supporting National Association for the Blind ( NAB )<BR>
+<B><U>MY MONEY-SAVING HABIT</B></U>:<BR>
+I track my daily expenses on my computer,<BR>
+which helps me stay disciplined<BR>
+with my finances.<BR>
+Days I Stayed Home to Save and Improve My Health:<BR>
+I did not leave my house on the following days:<BR>
+Tue 14-Puratassi-5127 ( Tue 30-Sep-2025 )<BR>
+Wed 15-Puratassi-5127 ( Wed 01-Oct-2025 )<BR>
+Thu 16-Puratassi-5127 ( Thu 02-Oct-2025 )<BR>
+<B><U>These DECISIONS HELPED ME</B></U>:<BR>
+Save money by staying home.<BR>
+Avoid eating out and unnecessary spending.<BR>
+Prevent weight gain and maintain my physical health by staying away from
+unhealthy food options.
+<TABLE style="border: 1px solid black; border-collapse: collapse;background-color:black;color:white;width:100%;'>
+<TR>
+<td style="vertical-align: top; text-align: left;">
+$ echo "Andhra Pradesh/Karnataka/Kerala/Tamil Nadu and Telangana" 2>&1 |\<BR>
+/usr/bin/tr "/" "\n" 2>&1 |\<BR>
+/usr/bin/sed "s/ and /\n/;" 2>&1 |\<BR>
+/usr/bin/sort -u 2>&1<BR>
+Andhra Pradesh<BR>
+Karnataka<BR>
+Kerala<BR>
+Tamil Nadu<BR>
+Telangana
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR style='background-color:red;'>
+<TD style='background-color:red;vertical-align:top;text-align:left;'>
+TERMS AND CONDITIONS APPLIED AT GEOCITIES.WS WEBSITE PROVIDER<BR>
+In 2025, I expect the United States to impose a significant increase in income tax on imported Indian products,<BR>
+potentially reaching as high as 420%.<BR>
+This development has led me to make some adjustments to our purchasing habits.<BR>
+<BR>
+As a result of this change, I have made the following changes:<BR>
+<BR>
+• I have stopped buying US products like: Coca Cola from the US market due to the increased taxes.<BR>
+• As a result, my consumption of Head & Shoulders (HEAD AND SHOULDERS) SHAMPOO,<BR>
+an American product, has also decreased significantly at my home.
+<BR>
+--- Products No Longer Purchased ---<BR>
+<BR>
+I have stopped buying following items:<BR>
+<BR>
+1. Kinley Water<BR>
+2. Aquafina Water<BR>
+3. HP-UX Laptop<BR>
+4. HP PRINTER/SCANNER<BR>
+4. SunOS/MYSQL/Oracle<BR>
+5. Dell Laptop<BR>
+6. APPLE MOBILE/LAPTOP<BR>
+6. MAC Laptop<BR>
+7. UNIX INITIALLY FROM KEN THOMPSON AND DENNIS RITCHIE AT:<BR>
+BELL LABS( BELL COUNTY/NORTH AMERICA ) IN THE UNITED STATES.<BR>
+7. RED HAT LINUX.<BR>
+8. Citrix/netviewer.exe PRIVATE COMPANY<BR>
+<A href='' onclick='javascript:window.open("https://www.aadinews.com/2025/08/28/india-banned-coca-cola-and-pepsi-what-impact-will-this-have-on-the-indian-economy");'>India banned Coca-Cola and Pepsi</A><BR>
+INDIA BANNED COCA-COLA AND PEPSI PRODUCTS<BR>
+( NEWS SHARED ) ON:<BR>
+Thu 28-Aug-2025 10:09 PM IST.<BR>
+I WAS EXPECTING TO BAN COCA-COLA AND PEPSI<BR>
+FROM 2013 UNTIL NOW,<BR>
+BUT IT APPEARS THAT THEY ARE STILL BEING<BR>
+SOLD AT INDIAN BAKERY/SHOPS TODAY.<BR>
+LET ME WAIT FOR A FEW MORE WEEKS/MONTHS/YEARS BEFORE<BR>
+BANNING THOSE PRODUCTS AT BAKERIES IN INDIA.
+</FONT>
+</TD>
+<td style="vertical-align: top; text-align: left;">
+	<TABLE style="border: 2px solid black; border-collapse: collapse;width:100%;'>
+		<TR>
+			<td style="vertical-align: top; text-align: left;">
+				<IMG src='images/vadivel-get-prize.jpg' style='width:25%;'>&nbsp;
+				<IMG src='images/N_MURUGESAN3.jpg' style='width:25%;'>
+			</TD>
+		</TR>
+		<TR>
+			<TD valign='top' align='left' colspan='1'>
+				<FONT color='red'>
+				<B><U>என் பதற்றத்தைக் குறைக்க:</B></U><BR>
+				தமிழ் திரைப்பட நகைச்சுவை நடிகர் திரு.வடிவேலுவைப் போலவே,<BR>
+				எனது குடும்பத்திற்குள் இருந்த அனைத்து மோதல்களையும் தீர்த்து வைத்து,<BR>
+				வியாழக்கிழமை 02-அக்-2025 அன்று<BR>
+				(மகாத்மா காந்தியின் பிறந்தநாள் கொண்டாட்டத்தின் போது) எனது பன்னாட்டு துணிச்சல் விருதைப் பெற்றுள்ளேன்.<BR>
+				<B><U>To reduce my tension</B></U>:<BR>
+				Like Tamil film comedian Mr.Vadivelu,<R>
+				I have received my Multi-National Bravery Award on Thursday 02-Oct-2025<BR>
+				( during Mahatma Gandhi's birthday celebration ) after resolving all the conflicts within my family.
+				</FONT>
+			</TD>
+		</TR>
+	</TD>
+</TR>
+		</TABLE>
+<TR>
+<TD style='background-color:red;vertical-align:top;text-align:left;' align='left' colspan='1'>
+01) &#9638;DISCLAIMER: NO INTERNATIONAL PURCHASES&#9638;<BR>
+I would like to clarify that this page is not intended for:<BR>
+individuals looking to purchase items from countries outside their own.<BR>
+02) &#9638;MY PREFERENCE: FRUGAL SHOPPING&#9638;<BR>
+Instead, I recommend being mindful of your spending habits and<BR>
+avoiding unnecessary international purchases.<BR>
+Saving money without wasting it should be our top priority.<BR>
+<BR>
+03) &#9638;HISTORICAL CONTEXT: SHARED MARKETS&#9638;<BR>
+Did you know that many business and political leaders used to operate under a shared market system?<BR>
+This meant that they would sell their products to buyers across the globe,<BR>
+earning revenue from each sale.<BR>
+Unfortunately, this practice has largely disappeared,<BR>
+leaving us with more expensive options today.<BR>
+<P>The sequence for the listed locations as they receive sunlight is:</P>
+<P>To follow the path of the sun,<BR>
+the sequence for the listed locations as they receive sunlight would be:</P>
+<UL>
+  <LI>01) Antartica. Famous countries: Australia/New Zealand</LI>
+  <LI>02) South America. Famous countries:<BR>
+  Brazil/Argentina/Chile/Peru/Colombia/Uruguay/Ecuador/Venezuela</LI>
+  <LI>03) North America. Famous countries:<BR>
+  Antigua and Barbuda, Bahamas, Barbados, Belize, Canada, Costa Rica,<BR>
+  Cuba, Dominica, Dominican Republic, El Salvador,<BR>
+  Grenada, Guatemala, Haiti, Honduras, Jamaica, Mexico,<BR>
+  Nicaragua, Panama, Saint Kitts and Nevis, Saint Lucia,<BR>
+  Saint Vincent and the Grenadines,<BR>
+  Trinidad and Tobago, and the United States of America</LI>
+  <LI>04) Africa. Famous countries: Nigeria, Ethiopia, Egypt,<BR>
+  DR Congo, Tanzania, South Africa, Kenya, Sudan, Uganda, Algeria,<BR>
+  Angola, Morocco, Mozambique,<BR>
+  Ghana, Madagascar, Côte d'Ivoire( Ivory Coast ), Cameroon, Niger,<BR>
+  Mali, Burkina Faso, Malawi, Zambia, Chad, Somalia, Senegal, Zimbabwe,<BR>
+  Guinea, Benin, Rwanda,<BR>
+  Burundi, Tunisia, South Sudan, Togo, Sierra Leone, Libya, Congo, Liberia,<BR>
+  Central African Republic, Mauritania, Eritrea, Namibia, Gambia, Gabon, Botswana,<BR>
+  Lesotho, Guinea-Bissau, Equatorial Guinea, Mauritius, Eswatini, Djibouti,<BR>
+  Comoros, Cabo Verde, Sao Tome & Principe, Seychelles</LI>
+  <LI>05) Europe</LI>
+  <LI>06) Asia having the country India</LI>
+  <LI>07) Australia</LI>
+</UL></TD></TR>
+<TR>
+	<TD valign='top' align='left' colspan='2'>
+		<TABLE style="border:2px solid black; border-collapse: collapse;">
+			<TR>
+				<TD style="vertical-align: top; text-align: left;">
+					PRODUCT NAME
+				</TD>
+				<TD style="vertical-align: top; text-align: left;">
+					COUNTRY
+				</TD>
+			</TR>
+			<TR bgcolor='red'>
+				<TD style='background-color:red;vertical-align:top;text-align:left;color:white;' colspan='1'>
+					HEAD & SHOULDERS SHAMPOO<BR>
+					HEAD AND SHOULDERS SHAMPOO<BR>
+					COCA COLA<BR>
+					PEPSI<BR>
+					Openoffice/soffice.exe PRIVATE COMPANY<BR>
+					TIDE SOAP = PROCTER & GAMBLE ( P&G )<BR>
+					ARIEL<BR>
+					LEVI JEANS<BR>
+					BOOMER FROM MARS WRIGLEY COMPANY<BR>
+					AMAZON<BR>
+					WHIRLPOOL WASHING MACHINE<BR>
+					GILLETE<BR>
+					TOMMY ATKINS MANGOS<BR>
+					WHATSAPP/WASTEAPP<BR>
+					WALMART( FLIPKART )<BR>
+					quora.com WEBSITE<BR>
+					forums.devshed.com WEBSITE<BR>
+					linkedin.com WEBSITE<BR>
+					experts-exchange.com WEBSITE<BR>
+					WIKIPEDIA<BR>
+					WHISPER SANITORY NAPKIN<BR>
+					JOCKEY INTERNATIONAL<BR>
+					EVEREVE SANITORY NAPKIN<BR>
+					STAYFREE SANITORY NAPKIN = JOHNSON & JOHNSON<BR>
+					VISOLVE ( KOVAITEAM FROM COIMBATORE INDIA ) SETTLED AT U.S<BR>
+					NESS DIGITAL ENGINEERING<BR>
+					sourceforge.net WEBSITE<BR>
+					process explorer/procexp.exe PRIVATE COMPANY<BR>
+					IBM/AIX( cygnus part of cygwin mksh.exe/bash.exe/gdb.exe/gcc.exe/g++.exe/make.exe/vim.exe )<BR>
+					MOZILLA firefox/firefox.exe/thunderbird/thunderbird.exe PRIVATE COMPANY<BR>
+					brave/brave.exe PRIVATE COMPANY<BR>
+					chrome/chrome.exe PRIVATE COMPANY<BR>
+					INTEL<BR>
+					CHATGPT = AI<BR>
+					OLLAMA = AI<BR>
+					G.E<BR>
+					<HR>
+					MICROSOFT WINDOWS:<BR>
+					msedge.exe/bing/outlook.exe/winword.exe/excel.exe/powerpnt.exe PRIVATE COMPANY<BR>
+					powershell.exe/cmd.exe/olk.exe/outlook.exe PRIVATE COMPANY<BR>
+					mspaint.exe/calc.exe/rundll32.exe/explorer.exe/ms-teams.exe PRIVATE COMPANY<BR>
+					sqlservr.exe/Ssms.exe/netsh.exe/WMIC.exe
+					<HR>
+					https://wwww.google.co.in<BR>
+					https://www.google.com.hk<BR>
+					https://wwww.google.co.uk<BR>
+					https://wwww.google.com<BR>
+					https://wwww.google.* using same common database<BR>
+					FORD MOTOR COMPANY<BR>
+					COLGATE/CLOSEUP TOOTH PASTE<BR>
+					HP LAPTOP<BR>
+					HP PRINTER/SCANNER<BR>
+					HP Inc/HPScan.exe
+				</TD>
+				<TD style="background-color:red;color:white;vertical-align: top; text-align: left;">
+					UNITED STATES/NORTH AMERICA
+				</TD>
+			</TR>
+			<TR bgcolor='red'>
+				<TD style='background-color:red;color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+					KINLEY
+				</TD>
+				<TD style='background-color:red;color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+				KINLEY IS A BRAND OF PACKAGED DRINKING WATER OWNED BY COCA-COLA<BR>
+UNITED STATES OF AMERICA AT NORTH AMERICA CONTINENT.
+			</TD>
+		</TR>
+		<TR bgcolor='red'>
+			<TD style='background-color:red;vertical-align:top;text-align:left;' align='left' colspan='1'>
+				AQUAFINA
+			</TD>
+			<TD style='background-color:red;color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+				AQUAFINA IS A BRAND OF PURIFIED BOTTLED WATER THAT IS PRODUCED BY PEPSICO.<BR>
+				WHILE AQUAFINA IS AN AMERICAN BRAND, IT IS SOLD IN MANY COUNTRIES AROUND THE WORLD.<BR>
+				UNITED STATES OF AMERICA AT NORTH AMERICA CONTINENT.
+			</TD>
+		</TR>
+		<TR bgcolor='red'>
+			<TD style='background-color:red;vertical-align:top;text-align:left;' align='left' colspan='1'>
+				gpay<BR>
+				63.00 TIPS IF SPENDING 155000.00 INR<BR>
+				375.00 TIPS IF SPENDING USING SBI DEBIT CARD.
+			</TD>
+			<TD style='background-color:red;color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+Google Pay ( GPay ) is primarily owned and operated by Google,<BR>
+which is headquartered in the United States. While Google Pay is used in many countries,<BR>
+the company behind the service is based in Mountain View, California
+</TD>
+</TR>
+<TR bgcolor='red'>
+<TD style='background-color:red;vertical-align:top;text-align:left;' align='left' colspan='1'>
+DELL LAPTOP/MOUSE
+</TD>
+<TD style='background-color:red;color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+Michael Saul Dell ( born February 23,<BR>
+1965 ) is an <B><U>AMERICAN</B></U> businessman and investor.<BR>
+He is the founder, chairman,<BR>
+and CEO of Dell Technologies,<BR>
+one of the world's largest technology infrastructure companies.
+</TD>
+</TR>
+<TR>
+<TD style='background-color:#00ff00;vertical-align:top;text-align:left;' align='left' colspan='1'>
+CORPORATION<BR>CHENNAI TAMILNADU INDIA</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD></TR>
+<TR>
+<TD style='background-color:yellow;vertical-align:top;text-align:left;' align='left' colspan='1'>
+statisticstimes.com PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR>
+<TD style='background-color:yellow;vertical-align:top;text-align:left;' align='left' colspan='1'>
+cleartax PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">TATA SKY PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">tutorialspoint.com PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">naukri.com PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR>
+<TD style='background-color:#00ff00;color:black;vertical-align:top;text-align:left;' align='left' colspan='1'>
+BSNL FIBERNET/PREPAID/POSTPAID</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA<BR>571.00 INR PER MONTH 3300 GB PER MONTH = 106.45 GB PER DAY.<BR>471.00 INR PER MONTH 1000 GB PER MONTH = 32.26 GB PER DAY.<BR>IF BSNL MODEM DISPLAYING RED LIGHT NEAR PON LOCATION AT MODEM,<BR>SWITCH OFF MODEM FOR 05 MINUTES AND SWITCH ON AGAIN.</TD></TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">I ACTIV SANITORY NAPKIN PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="vertical-align: top;background-color:yellow; text-align: left;">SUN NETWORK PRIVATE AND POLITICAL COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+KALANITHI MARAN AN INDIAN BILLIONAIRE MEDIA PROPRIETOR:<BR>30289.00 CROREPATHI FROM INDIA/ASIA</TD></TR>
+<TR><td style="vertical-align: top;background-color:yellow; text-align: left;">LION DATES PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">RUPA VEST AND APPAREL BRAND<BR>LUX SOAP/VENUS VEST AND APPARELS</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR>
+<td style="background-color:yellow;vertical-align: top; text-align: left;">
+MEERA SHAMPOO
+</TD>
+<TD valign='top' align='left' colspan='1'>
+MEERA SHAMPOO IS OWNED BY CAVINKARE PVT. LTD,<BR>
+AN <B><U>INDIAN</B></U> COMPANY.<BR>
+THE BRAND IS A FLAGSHIP PRODUCT OF CAVINKARE,<BR>
+A MAJOR PLAYER IN THE <B><U>INDIAN</B></U> FAST-MOVING CONSUMER GOODS ( FMCG ) MARKET.
+</TD>
+</TR>
+<TR>
+<td style="background-color:yellow;vertical-align: top; text-align: left;">
+Sunfeast is a brand of biscuits, not an edible oil
+</TD>
+<TD style="vertical-align: top; text-align: left;" colspan='1'>
+ADANI WILMAR IS AN <B><U>INDIAN</B></U> COMPANY.<BR>
+THE EDIBLE OIL BRAND "FORTUNE" IS OWNED BY ADANI WILMAR.<BR>
+ADANI WILMAR ALSO OWNS THE RAPUR EDIBLE OIL REFINERY,<BR>
+WHICH PRODUCES FORTUNE SUNFLOWER OIL.<BR>
+SUNFEAST IS A POPULAR BRAND OF BISCUITS PRODUCED BY ITC FOODS
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">KARTHIKA SHAMPOO PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>A PRODUCT OF <B><U>INDIA</B></U>. IT IS MANUFACTURED BY CAVINKARE PRIVATE LTD</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">MTR FOODS/PICKLE PRIVATE COMPANY</TD>
+<TD valign='top' align='left' colspan='1'>
+Orkla ASA, A NORWEGIAN INDUSTRIAL INVESTMENT COMPANY.<BR>
+ORKLA ACQUIRED MTR FOODS IN 2007 AND HAS SINCE RESTRUCTURED ITS <B><U>INDIAN</B></U> OPERATIONS,<BR>INCLUDING MTR, UNDER THE NAME ORKLA <B><U>INDIA</B></U>
+</TD>
+</TR>
+<TR>
+<td style="background-color:yellow;vertical-align: top; text-align: left;">
+BISLERI
+</TD>
+<TD valign='top' align='left' colspan='1'>
+BISLERI, THE WELL-KNOWN <B><U>INDIAN</B></U> BOTTLED WATER BRAND,<BR>
+IS OWNED BY AN <B><U>INDIAN</B></U> COMPANY CALLED BISLERI INTERNATIONAL PVT. LTD.
+</TD>
+</TR>
+<TR>
+<td style="background-color:yellow;vertical-align: top; text-align: left;">
+MILTON LUNCH BOX/WATER BOTTLE
+</TD>
+<TD valign='top' align='left' colspan='1'>
+THE COUNTRY OF ORIGIN FOR MILTON LUNCH BOXES, INCLUDING THOSE MANUFACTURED BY HAMILTON HOUSEWARES P. LTD., IS <B><U>INDIA</B></U></TD></TR>
+<TR>
+<td style="background-color:yellow;vertical-align: top; text-align: left;">
+PHONEPE ( NO TIPS )
+</TD>
+<TD valign='top' align='left' colspan='1'>
+<B><U>INDIAN</B></U> COMPANY,<BR>
+HEADQUARTERED IN BENGALURU, <B><U>INDIA</B></U>.<BR>
+WHILE IT WAS INITIALLY BACKED BY FLIPKART,<BR>
+WALMART NOW OWNS A SIGNIFICANT STAKE IN THE COMPANY,<BR>
+ACCORDING TO GROWW.<BR>
+PHONEPE WAS FOUNDED BY SAMEER NIGAM,<BR>
+RAHUL CHARI, AND BURZIN ENGINEER IN 2015</TD></TR>
+<TR>
+<td style="background-color:yellow;vertical-align: top; text-align: left;">
+CELLO LUNCH BOXES.
+</TD>
+<TD valign='top' align='left' colspan='1'>
+MADE IN <B><U>INDIA</B></U></TD></TR>
+	<TR>
+		<td style="background-color:yellow;vertical-align: top; text-align: left;">PARACHUTE COCONUT OIL PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>THE BRAND PARACHUTE ORIGINATES FROM <B><U>INDIA</B></U><BR>IT IS A FLAGSHIP BRAND OF MARICO LIMITED,<BR>A MAJOR <B><U>INDIAN</B></U> CONSUMER GOODS COMPANY, ACCORDING TO THEIR WEBSITE.<BR>PARACHUTE IS PRIMARILY KNOWN FOR ITS HAIR CARE PRODUCTS,<BR>ESPECIALLY COCONUT OIL</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">IDHAYAM OIL PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>PRODUCED IN <B><U>INDIA</B></U></TD></TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">HERBAL STRATEGI BATH ROOM CLEANER PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>PRODUCED IN <B><U>INDIA</B></U></TD></TR>
+<TR>
+<td style="background-color:yellow;vertical-align: top; text-align: left;">
+SUNFEAST YIPPEE NOODLES PRIVATE COMPANY
+</TD>
+<TD valign='top' align='left' colspan='1'>
+SUNFEAST YIPPEE!, THE INSTANT NOODLE BRAND,<BR>
+IS OWNED BY ITC LIMITED, AN <B><U>INDIAN</B></U> CONGLOMERATE.<BR>
+SPECIFICALLY, IT'S PART OF ITC'S FOODS DIVISION.<BR>
+THE BRAND WAS LAUNCHED IN 2010 TO COMPETE WITH MAGGI NOODLES.
+</TD>
+<TR>
+<td style="background-color:yellow;vertical-align: top; text-align: left;">
+CINTHOL SOAP PRIVATE COMPANY<BR>
+AMOUNT LESS THAN HIMALAYA SOAP<BR>
+GOOD NIGHT
+</TD>
+<TD valign='top' align='left' colspan='1'>
+CINTHOL<BR>
+GOOD NIGHT BEING OWNED BY GODREJ CONSUMER PRODUCTS LIMITED ( GCPL ),<BR>
+AN <B><U>INDIAN</B></U> MULTINATIONAL CONSUMER GOODS COMPANY. GCPL IS HEADQUARTERED IN MUMBAI,<BR>
+<B><U>INDIA</B></U>, AND ITS PRODUCTS INCLUDE SOAPS, HAIR COLORANTS, TOILETRIES,<BR>
+AND LIQUID DETERGENTS.
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">GOPAL TOOTHPASTE PERAL TREDING CORPORATION PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>
+FROM <B><U>INDIA</B></U>. </TD></TR>
+	<TR>
+		<td style="background-color:yellow;vertical-align: top; text-align: left;">
+			HIMALAYA TOOTHPASTE/SHAMPOO
+		</TD>
+		<TD valign='top' align='left' colspan='1'>
+			HIMALAYA WELLNESS COMPANY<BR>
+			( FORMERLY HIMALAYA DRUG COMPANY )<BR>IS AN <B><U>INDIAN</B></U>
+			MULTINATIONAL PERSONAL CARE AND PHARMACEUTICAL COMPANY BASED IN BANGALORE,<BR>
+			<B><U>INDIA</B></U>.
+		</TD>
+	</TR>
+<TR>
+<td style="background-color:yellow;vertical-align: top; text-align: left;">
+TVS PRIVATE COMPANY
+</TD>
+<TD valign='top' align='left' colspan='1'>
+TVS ( T. V. SUNDRAM IYENGAR AND SONS ) IS AN <B><U>INDIAN</B></U> GROUP OF COMPANIES,<BR>
+AND THE OWNER OF TVS MOTOR COMPANY IS THE TVS GROUP,<BR>
+WHICH IS BASED IN <B><U>INDIA</B></U>.
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">ALL OUT PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>ALL OUT IS AN UNFUNDED COMPANY BASED IN GURUGRAM ( INDIA ), FOUNDED IN 1990</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">SUPERMAX SHAVING BLADE PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">LASER SHAVING BLADE PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR>
+<td style="background-color:yellow;vertical-align: top; text-align: left;">
+LENOVO LAPTOP/PRINTER PRIVATE COMPANY
+</TD>
+<TD valign='top' align='left' colspan='1'>
+HONG KONG-BASED CHINESE MULTINATIONAL TECHNOLOGY COMPANY.
+</TD>
+</TR>
+<TR>
+	<td style="background-color:yellow;vertical-align: top; text-align: left;">RENAULT TRIBER/KIGER PRIVATE COMPANY</TD>
+	<TD valign='top' align='left' colspan='1'>FROM RENAULT INDIA PRIVATE LIMITED</TD>
+	
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">MESWAK TOOTH PASTE PRIVATE COMPANY<BR>DABUR INDIA LIMITED PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">LENSKART PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR>
+	<td style="background-color:#00ff00;vertical-align: top; text-align: left;">STATE BANK OF INDIA = SBI FROM GOVERNMENT OF INDIA</TD>
+	<TD valign='top' align='left' colspan='1'>FROM INDIAN GOVERNMENT/ASIA</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">JOYALUKKAS PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>FROM KERALA/INDIAN GOVERNMENT</TD></TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">AJAY TOOTHBRUSH<BR>RAGHAV LIFESTYLE PRODUCTS DELHI</TD><TD valign='top' align='left' colspan='1'>FROM PRIVATE COMPANY AT INDIA</TD></TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">AJANTA TOOTHBRUSH</TD><TD valign='top' align='left' colspan='1'>FROM PRIVATE COMPANY AT INDIA</TD></TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">KARNATAKA BANK PRIVATE BANK</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">LIFELONG GAS STOVE PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">VIDIEM VOGUE GAS STOVE PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="vertical-align: top; text-align: left;background-color:yellow;">PREETHI KITCHEN APPLIANCES PRIVATE LIMITED.</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">PIGEON GAS STOVE BRAND PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">BLOWHOT GAS STOVE PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">BUTTERFLY GAS STOVE PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">MILTON GAS STOVE PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">PUNJAB NATIONAL BANK PRIVATE BANK</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR>
+	<td style="background-color:yellow;vertical-align: top; text-align: left;">TAMILNAD MERCANTILE BANK PRIVATE BANK/TMB</TD>
+	
+	<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+	FROM INDIA/ASIA
+	</TD>
+	</TR>
+<TR>
+	<td style="background-color:yellow;vertical-align: top; text-align: left;">UNION BANK PRIVATE BANK</TD>
+	
+	<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+	FROM INDIA/ASIA
+	</TD>
+	</TR>
+<TR>
+	<td style="background-color:yellow;vertical-align: top; text-align: left;">CANARA BANK PRIVATE BANK</TD>
+	
+	<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+	FROM INDIA/ASIA
+	</TD>
+	</TR>
+<TR>
+	<td style="background-color:yellow;vertical-align: top; text-align: left;">HDFC BANK PRIVATE BANK</TD>
+	
+	<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+	FROM INDIA/ASIA
+	</TD>
+	</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">AIRTEL PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">JIO PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">RELIANCE PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">AIRCEL PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR>
+	<td style="background-color:yellow;vertical-align: top; text-align: left;">HMT WATCH PRIVATE COMPANY</TD>
+	
+	<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+	FROM INDIA/ASIA
+	</TD>
+	</TR>
+<TR>
+	<td style="background-color:yellow;vertical-align: top; text-align: left;">SONATA PRIVATE COMPANY</TD>
+	
+	<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+	FROM INDIA/ASIA
+	</TD>
+	</TR>
+<TR>
+	<td style="background-color:yellow;vertical-align: top; text-align: left;">TVS GROUP PRIVATE COMPANY</TD>
+	
+	<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+	FROM INDIA/ASIA
+	</TD>
+	</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">TATA CARS PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">MAHINDRA CARS PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">BIG BASKET PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR style='background-color: white; color: red;'><td style="background-color:yellow;vertical-align: top; text-align: left;">HONDA PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>FROM JAPAN</TD></TR>
+<TR style='background-color: white; color: red;'><td style="background-color:yellow;vertical-align: top; text-align: left;">SONY HEADSET PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>FROM JAPAN</TD></TR>
+<TR style='background-color: white; color: red;'><td style="background-color:yellow;vertical-align: top; text-align: left;">CANON XEROX/PRITNER/SCANNER<BR>EPSON XEROX/PRITNER/SCANNER PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>FROM JAPAN</TD></TR>
+<TR style='background-color: white; color: red;'><td style="background-color:yellow;vertical-align: top; text-align: left;">SOFY SANITORY NAPKIN PRIVATE COMPANY JAPAN</TD><TD valign='top' align='left' colspan='1'>FROM JAPAN</TD></TR>
+<TR style='background-color: white; color: red;'><td style="background-color:yellow;vertical-align: top; text-align: left;">YAMAHA VEHICLE/HELMET PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>FROM JAPAN</TD></TR>
+<TR style='background-color: white; color: red;'>
+	<td style="background-color:yellow;vertical-align: top; text-align: left;">TOYOTA MOTOR CORPORATION PRIVATE COMPANY</TD>
+	<TD valign='top' align='left' colspan='1'>FROM JAPAN</TD></TR>
+<TR style='background-color: white; color: red;'>
+	<td style="background-color:yellow;vertical-align: top; text-align: left;">MARUTI SUZUKI/ACCESS 125 ( SUZUKI MOTOR CORPORATION ) PRIVATE COMPANY</TD>
+	<TD valign='top' align='left' colspan='1'>FROM JAPAN</TD></TR>
+<TR>
+<td style="text-align:left;vertical-align:top;background-color:yellow;">ACER LAPTOP/PRINTER(<B><U>MY LAPTOP</B></U>) PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>TAIWAN COUNTRY<BR>TAIWANESE MULTINATIONAL HARDWARE AND ELECTRONICS CORPORATION,<BR>
+HEADQUARTERED IN XIZHI, NEW TAIPEI CITY, TAIWAN</TD></TR>
+<TR style='background-color: white; color: black;'>
+<td style="vertical-align: top; text-align: left;background-color:yellow;">NESTLE<BR>MAGGI PRIVATE COMPANY<BR></TD><TD valign='top' align='left' colspan='1'>The parent company, NESTLE S.A, is headquartered in Vevey,<BR><B><U>SWITZERLAND/EUROPE</B></U>.<BR>NESTLE <B><U>INDIA</B></U> IS A SUBSIDIARY OF NESTLE S.A</TD></TR>
+<TR bgcolor='white'><td style="vertical-align: top; text-align: left;background-color:yellow;">SENSORA TOOTHPASTE PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>DENMARK</TD></TR>
+<TR bgcolor='white'><td style="vertical-align: top; text-align: left;background-color:yellow;">LOGITECH MOUSE PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>TODAY, BATA'S HEADQUARTERS ARE LOCATED IN SWITZERLAND/EUROPE</TD></TR>
+<TR bgcolor='white'><td style="vertical-align: top; text-align: left;background-color:yellow;">BATA SHOE/SLIPPER/CHAPPAL PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>TODAY, BATA'S HEADQUARTERS ARE LOCATED IN SWITZERLAND/EUROPE</TD></TR>
+<TR bgcolor='white'><td style="vertical-align: top; text-align: left;background-color:yellow;">stackoverflow.com PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>NETHERLANDS/EUROPE</TD></TR>
+<TR bgcolor='white'><td style="vertical-align: top; text-align: left;background-color:yellow;">w3schools.com PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>NORWAY/EUROPE</TD></TR>
+<TR style='background-color:yellow;color:blue;'>
+	<td style="background-color:yellow;vertical-align: top; text-align: left;">GLOBAL EXCHANGE SERVICES PRIVATE COMPANY</TD>
+	<TD valign='top' align='left' colspan='1'>FROM SPAIN COUNTRY</TD>
+</TR>
+<TR bgcolor='orange'>
+	<td style="background-color:yellow;vertical-align: top; text-align: left;">ACCENTURE PRIVATE COMPANY</TD>
+	<TD valign='top' align='left' colspan='1'>FROM IRELAND/EUROPE.</TD>
+</TR>
+<TR style='background-color:green;color:black;'><td style="background-color:yellow;vertical-align: top; text-align: left;">ELICA VETRO GAS STOVE PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>COUNTRY OF ORIGIN: ITALY/EUROPE<BR>SONIA MAINO/( LATER SONIA GANDHI ) CITIZEN UNTIL 1983<BR>COUNTRY OF MANUFACTURER: INDIAN</TD></TR>
+<TR style='background-color:green;color:black;'><td style="background-color:yellow;vertical-align: top; text-align: left;">CHICCO TOOTHPASTE PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>WAS FOUNDED AT ITALY/EUROPE<BR>LATER BISLERI INTERNATIONAL PVT. LTD. IS AN INDIAN COMPANY</TD></TR>
+<TR style='background-color:green;color:black;'><td style="background-color:yellow;vertical-align: top; text-align: left;">BISLERY WATER PRIVATE COMPANY</TD><TD valign='top' align='left' colspan='1'>WAS FOUNDED AT ITALY/EUROPE<BR>LATER BISLERI INTERNATIONAL PVT. LTD. IS AN INDIAN COMPANY</TD></TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">CHICK/CHIK SHAMPOO CAVINKARE PRIVATE COMPANY(1983)</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">KAG TILES PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">AVR SILVER/GOLD/DIAMONDS A.V.RAMACHANDRAN CHETTIYAR PRIVATE COMPANY INDIA</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">TANISHQ SILVER/GOLD/DIAMONDS/TITAN WATCH PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">MALABAR SILVER/GOLD/DIAMONDS JEWELLERY PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">MUTHOOD FIN CORP PRIVATE COMPANY FROM KERALA INDIA</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">KALYAN SILVER/GOLD/DIAMONDS JEWELLERY PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR><td style="background-color:yellow;vertical-align: top; text-align: left;">LALITHAA JEWELLERY PRIVATE COMPANY</TD>
+<TD style='background-color:white;vertical-align:top;text-align:left;' align='left' colspan='1'>
+FROM INDIA/ASIA
+</TD>
+</TR>
+<TR>
+	<td style="vertical-align: top; text-align: left;background-color:yellow;">LAMBORGHINI CARS</TD>
+	<TD valign='top' align='left' colspan='1'>FROM ITALY/EUROPE</TD>
+</TR>
+<TR bgcolor='yellow'><td style="vertical-align: top; text-align: left;background-color:yellow;">SAP = SYSTEM APPLICATIONS, PRODUCTS IN DATA PROCESSING.<BR> MULTI-LANGUAGE SUPPORT</TD><TD valign='top' align='left' colspan='1'>FROM GERMANY</TD></TR>
+<TR bgcolor='yellow'><td style="vertical-align: top; text-align: left;background-color:yellow;">VIM BRAND</TD><TD valign='top' align='left' colspan='1'>FROM GERMANY</TD></TR>
+<TR bgcolor='yellow'><td style="vertical-align: top; text-align: left;background-color:yellow;">VOLKSWAGEN CARS</TD><TD valign='top' align='left' colspan='1'>FROM GERMANY</TD></TR>
+<TR bgcolor='pink'>
+	<td style="vertical-align: top; text-align: left;background-color:yellow;">HYUNDAI CARS</TD>
+	<TD valign='top' align='left' colspan='1'>FROM SOUTH KOERA</TD>
+	
+</TR>
+<TR><td style="vertical-align: top; text-align: left;background-color:yellow;">TURBODRUM WASHING MACHINE</TD><TD valign='top' align='left' colspan='1'>FROM SOUTH KOREA</TD></TR>
+<TR><td style="vertical-align: top; text-align: left;background-color:yellow;">LG WASHING MACHINE</TD><TD valign='top' align='left' colspan='1'>FROM SOUTH KOREA</TD></TR>
+<TR><td style="vertical-align: top; text-align: left;background-color:yellow;">SAMSUNG MOBILE/WASHING MACHINE</TD><TD valign='top' align='left' colspan='1'>FROM SOUTH KOREA</TD></TR>
+<TR><td style="vertical-align: top; text-align: left;background-color:yellow;">FANG OWNER TOOTH PASTE</TD><TD valign='top' align='left' colspan='1'>FROM CHINA</TD></TR>
+<TR><td style="vertical-align: top; text-align: left;background-color:yellow;">VIVO MOBILE<BR>OPPO MOBILE<BR>ONEPLUS MOBILE<BR>REALME MOBILE<BR>REDME MOBILE</TD><TD valign='top' align='left' colspan='1'>FROM CHINA</TD></TR>
+<TR style='background-color: white; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">NOKIA</TD><TD colspan='1' valign='top' align='left'>FINLAND</TD></TR>
+<TR style='background-color:red; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">vlc/vlc.exe PRIVATE COMPANY</TD><TD colspan='1' valign='top' align='left'>FRANCE</TD></TR>
+<TR style='background-color: red; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">notepad++/notepad++.exe PRIVATE COMPANY</TD><TD colspan='1' valign='top' align='left'>FRANCE</TD></TR>
+<TR style='background-color: red; color: black;'><td style="background-color:yellow;vertical-align: top; text-align: left;">TRUECALLER PRIVATE COMPANY</TD><TD colspan='1' valign='top' align='left'>SWEDISH</TD></TR>
+<TR style='background-color: red; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">REXONA               </TD><TD colspan='1' valign='top' align='left'>BRITISH-DUTCH UNITED KINGDOM MULTINATIONAL CONSUMER GOODS COMPANY UNILEVER</TD></TR>
+<TR style='background-color: red; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">PEPSODANT TOOTH PASTE</TD><TD colspan='1' valign='top' align='left'>BRITISH-DUTCH UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">SENSODYNE</TD><TD colspan='1' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: black;'><td style="background-color:yellow;vertical-align: top; text-align: left;">wise.com PRIVATE COMPANY</TD><TD colspan='1' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: black;'><td style="background-color:yellow;vertical-align: top; text-align: left;">VODAFONE/VIM/VI PRIVATE COMPANY</TD><TD colspan='1' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">TextPad/TextPad.exe PRIVATE COMPANY</TD><TD colspan='1' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">opera/opera.exe PRIVATE COMPANY</TD><TD colspan='1' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">putty/putty.exe PRIVATE COMPANY</TD><TD colspan='1' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">OXFORD UNIVESITY/DICTIONARY</TD><TD colspan='1' valign='top' align='left'>UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">DETTOL SOAP</TD><TD colspan='1' valign='top' align='left'>BRITISH MULTINATIONAL CONSUMER GOODS COMPANY RECKITT ( FORMERLY RECKITT BENCKISER )<BR>
+UNITED KINGDOM</TD></TR>
+<TR style='background-color: red; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">SAVLON SOAP</TD><TD valign='top' align='left' colspan='1'>Savlon's owner depends on the region:
+ITC owns the brand in India,<BR>
+while Johnson & Johnson continues to own it in other markets like Sub-Saharan Africa.</TD></TR>
+<TR style='background-color:red;color:black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">CLINIC PLUS SHAMPOO<BR>DOVE SOAP<BR>LIFEBUOY SOAP<BR>RIN<BR>WHEEL SOAP<BR>SURF EXCEL</TD><TD valign='top' align='left' colspan='1'>UNILEVER, A BRITISH-DUTCH( UNITED KINGDOM ) MULTINATIONAL COMPANY,<BR>BUT IT IS PRODUCED AND SOLD IN INDIA BY<BR>HINDUSTAN UNILEVER LIMITED ( HUL ),<BR>MAKING INDIA ITS PRIMARY COUNTRY OF ORIGIN AND OPERATION.</TD></TR>
+<TR style='background-color:red;color:black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">SUNLIGHT SOAP<BR>DOVE SOAP<BR>LIFEBUOY SOAP<BR>RIN<BR>WHEEL SOAP<BR>SURF EXCEL</TD><TD valign='top' align='left' colspan='1'>UNILEVER, A BRITISH-DUTCH( UNITED KINGDOM ) MULTINATIONAL COMPANY,<BR>BUT IT IS PRODUCED AND SOLD IN INDIA BY<BR>HINDUSTAN UNILEVER LIMITED ( HUL ),<BR>MAKING INDIA ITS PRIMARY COUNTRY OF ORIGIN AND OPERATION.</TD></TR>
+<TR style='background-color: lightblue; color: red;'><td style="vertical-align: top; text-align: left;background-color:yellow;">CADBURY DAIRY MILK<BR>PEPE JEANS</TD><TD valign='top' align='left' colspan='1'>OWNED BY THE <B><U>( UNITED KINGDOM )/BRITISH</B></U><BR>I LIKE HILL JASON SOFTWARE ENGINEER AT UK AT G.E( A PART OF G.X.S ) FROM 2004 TO 2013<BR></TD></TR>
+<TR style='background-color: lightblue; color: red;'><td style="vertical-align: top; text-align: left;background-color:yellow;">linuxquestions.org</TD><TD valign='top' align='left' colspan='1'>OWNED BY THE <B><U>( UNITED KINGDOM )/BRITISH</TD></TR>
+<TR style='background-color: lightblue; color: red;'><td style="vertical-align: top; text-align: left;background-color:yellow;">HARPIC BATH ROOM CLEANER<BR>BRITANNIA<BR>MILK BIKIS<BR>MARIE GOLD</TD><TD valign='top' align='left' colspan='1'>( UNITED KINGDOM )/<B><U>( UNITED KINGDOM )/BRITISH</B></U><BR>I LIKE HILL JASON SOFTWARE ENGINEER AT UK FROM G.E( A PART OF G.X.S FROM 2004 TO 2009 )
+</TD></TR>
+<TR style='background-color: cyan; color: black;'><td style="vertical-align: top; text-align: left;background-color:yellow;">Linux PRIVATE COMPANY.</TD><TD colspan='1' valign='top' align='left'>OPEN SOURCE FROM ALL COUNTRIES AT EARTH</TD>
+</TR>
+<TR>
+<TD colspan='2'>
+<PRE>--- GEOCITIES.ws: A Hosting Service Provider ---
+GEOCITIES.ws is an unfunded company based in the United States, founded in 1999. It operates as a provider of hosting services.
+--- Company Overview ---
+* GEOCITIES.ws has not raised any funding to date.
+* The company boasts 5,900 active competitors.
+* Of these, 26 are funded, while 231 have exited ( gone out of business ).
+* Its top competitors include established players such as:
+        + 1&1 IONOS
+        + GoDaddy
+        + Liquid Web
+Note: I've formatted the text to make it easier to read and understand, with clear headings and concise bullet points. Let me
+know if you have any further requests!
+<HR>
+--- GeoCities.ws: A Separate Entity from the Original GeoCities ---
+Geocities.ws is not the same entity as the original GeoCities, which was founded by:
+* --- David Bohnett ---: An American philanthropist and technology entrepreneur
+* --- John Rezner ---: A California-based entrepreneur
+--- The Original GeoCities Service ---
+The original GeoCities service was launched in 1994 and was later acquired by Yahoo! ( owned by Apollo Global Management ) in
+1999. Key points about the original service:
+* --- Founders: --- David Bohnett and John Rezner
+* --- Original Name: --- Beverly Hills Internet, later changed to GeoCities
+* --- Acquisition: --- Acquired by Yahoo! in 1999
+* --- Service: --- A web hosting service that allowed users to create and publish websites
+* --- Unique Feature: --- Users could choose a "city" ( e.g. Silicon Valley or Hollywood ) to categorize their websites
+* --- Inactive: --- The original GeoCities service was shut down by Yahoo! on October 26, 2009
+--- GeoCities.ws: Separation from the Original ---
+Geocities.ws is a separate entity that appears to be using a similar name. According to Tracxn, GeoCities.ws has made no
+investments or acquisitions.
+--- Security Concerns ---
+When uploading HTML files to geocities.ws, a computer automatically inserts JavaScript coding into the files. This code is used
+to save all user's data/cache inside the geocities.ws database.</PRE>
+</TD>
+</TR>
+</TBODY>
+</TABLE>
+<TABLE style="border: 1px solid black; border-collapse: collapse;" id='PreventWastage'>
+	<SCRIPT type='text/javascript'>
+    function getTodaysDate() {
+        var today = new Date();
+        var day = today.getDate();
+        var month = today.toLocaleString('default', { month: 'short' });
+        var year = today.getFullYear();
+        return day + '-' + month + '-' + year;
+    }
+			function addTodaysRow()
+			{
+				const tableElement = document.getElementById("spending-table");
+				if( !tableElement )
+				{
+					console.warn("spending-table not found in DOM yet");
+					return;
+				}
+				const table = tableElement.getElementsByTagName('tbody')[0];
+				const newRow = table.insertRow(table.rows.length);
+				const cell1 = newRow.insertCell(0);
+				const cell2 = newRow.insertCell(1);
+				const cell3 = newRow.insertCell(2);
+				const cell4 = newRow.insertCell(3);
+				const today = new Date();
+				const date = today.toDateString();
+				cell1.innerHTML = table.rows.length;
+				cell2.innerHTML = date;
+				cell3.innerHTML = "Category";
+				cell4.innerHTML = "0.00 ₹";
+			}
+			window.onload = function()
+			{
+				addTodaysRow();
+				const homeLink = document.getElementById('Homehref');
+				homeLink.style.color = 'orange';
+				const homeTable = document.getElementById("HomeTable");
+				const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
+				homeTable.style.display = "table";
+				categoryAmountDetailsTab.style.display = "none";
+			};
+		</SCRIPT>
+<TR>
+</TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>
