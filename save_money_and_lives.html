@@ -191,23 +191,16 @@
 		<!-- Menu Bar -->
 		<NAV>
 			<SCRIPT type='text/javascript'>
-				if( window.location.href.includes('index.html') )
+				document.write("<A class='link-style' onclick='toggleTable(event)' id='Homehref' style='color:blue'>Home</A>");
+				function showHomeTable()
 				{
-						document.write("<A class='link-style' onclick='toggleTable(event)' id='Homehref' style='color:blue'>Home</A>");
+					const homeTable = document.getElementById('HomeTable');
+					const preventWastage = document.getElementById('PreventWastage');
+					const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+					preventWastage.style.display = 'none';
+					categoryAmount.style.display = 'none';
+					homeTable.style.display = 'table';
 				}
-				else
-				{
-						document.write("<A class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' id='Homehref' style='color:blue'>Home</A>");
-				}
-		function showHomeTable()
-		{
-			const homeTable = document.getElementById('HomeTable');
-			const preventWastage = document.getElementById('PreventWastage');
-			const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-			preventWastage.style.display = 'none';
-			categoryAmount.style.display = 'none';
-			homeTable.style.display = 'table';
-		}
 		</SCRIPT>
 	<A href='spending.html' class='link-style' id='PreventWastagehref' style='color:blue'>PreventWastage</A>
 	<A href="save_money_and_lives.html">Save lives and money</A>
@@ -219,28 +212,6 @@
 	<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
     </NAV>
 	<SCRIPT type='text/javascript'>
-			function toggleTableold(event)
-			{
-				const homeLink = document.getElementById('Homehref');
-				const homeTable = document.getElementById('HomeTable');
-				const preventWastage = document.getElementById('PreventWastage');
-				const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-				const clickedId = event.target.id;
-				if( clickedId === 'Homehref')
-				{
-					if( homeTable.style.display === 'none' || homeTable.style.display === '')					{
-						homeTable.style.display = 'table';
-						categoryAmount.style.display = 'none';
-						preventWastage.style.display = 'none';
-					}
-					else
-					{
-						homeTable.style.display = 'none';
-						categoryAmount.style.display = 'table';
-						preventWastage.style.display = 'none';
-					}
-				}
-			}
 			function toggleTable(event)
 			{
 				event = event || window.event;
