@@ -199,53 +199,57 @@
 		</THEAD>
 		<TBODY id="tbody"></TBODY>
 		</TABLE>
-		<SCRIPT type="module">
-			import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-			import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+		<script type="module">
 
-			const firebaseConfig = {
-				apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
-				authDomain: "openmurugesan.firebaseapp.com",
-				databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
-				projectId: "openmurugesan",
-				storageBucket: "openmurugesan.firebasestorage.app",
-				messagingSenderId: "307675598593",
-				appId: "1:307675598593:web:4af163460ce2c3bc719500",
-				measurementId: "G-0MFK92PQMP"
-			};
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-			const app = initializeApp(firebaseConfig);
-			const db = getDatabase(app);
-			const tbody = document.getElementById("tbody");
+const firebaseConfig = {
+    apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+    authDomain: "openmurugesan.firebaseapp.com",
+    databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "openmurugesan",
+    storageBucket: "openmurugesan.firebasestorage.app",
+    messagingSenderId: "307675598593",
+    appId: "1:307675598593:web:4af163460ce2c3bc719500",
+    measurementId: "G-0MFK92PQMP"
+};
 
-			const id = "VISIT-" + Date.now();
-			const bow = navigator.userAgent;
-			const ctry = (navigator.language.includes("en-IN") ? "IN" : "UNKNOWN");
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const tbody = document.getElementById("tbody");
 
-			set(ref(db, "userAccess/" + id), {
-				browser: bow,
-				country: ctry,
-				timestamp: Date.now()
-			});
+const id = "VISIT-" + Date.now();
+const bow = navigator.userAgent;
 
-			onValue(ref(db, "userAccess"), snap => {
-				tbody.innerHTML = "";
-				let counts = {};
+const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+const ctry = tz.includes("Kolkata") ? "IN" : "UNKNOWN";
 
-				snap.forEach(child => {
-					let c = child.val().country || "UNKNOWN";
-					counts[c] = (counts[c] || 0) + 1;
-				});
+set(ref(db, "userAccess/" + id), {
+    browser: bow,
+    country: ctry,
+    timestamp: Date.now()
+});
 
-				Object.keys(counts).forEach(country => {
-					let cname = (country === "IN") ? "INDIA" : country;
-					tbody.innerHTML += `
-					<TR>
-						<TD valign='top' align='right'>${String(counts[country]).padStart(4,"0")}</TD>
-						<TD valign='top' align='right'>${cname}</TD>
-					</TR>`;
-				});
-			});
-		</SCRIPT>
+onValue(ref(db, "userAccess"), snap => {
+    tbody.innerHTML = "";
+    let counts = {};
+
+    snap.forEach(child => {
+        let c = child.val().country || "UNKNOWN";
+        counts[c] = (counts[c] || 0) + 1;
+    });
+
+    Object.keys(counts).forEach(country => {
+        let cname = (country === "IN") ? "INDIA" : country;
+        tbody.innerHTML += `
+        <tr>
+            <td valign='top' align='right'>${String(counts[country]).padStart(4,"0")}</td>
+            <td valign='top' align='right'>${cname}</td>
+        </tr>`;
+    });
+});
+
+</script>
 	</BODY>
 </HTML>
