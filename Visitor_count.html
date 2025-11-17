@@ -222,7 +222,7 @@ const id = "VISIT-" + Date.now();
 const bow = navigator.userAgent;
 
 const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-const ctry = (tz.includes("Kolkata") || tz.includes("Calcutta")) ? "INDIA" : "Since user changed time-zone manually/VPN/PROXY/custom OS/browser blocks locale<BR>Location: UNKNOWN";
+const ctry = (tz.includes("Kolkata") || tz.includes("Calcutta")) ? "INDIA" : "Location: UNKNOWN – location for these users is not available due to VPN, proxy, or privacy settings on their device.";
 
 set(ref(db, "userAccess/" + id), {
 	browser: bow,
@@ -237,7 +237,7 @@ onValue(ref(db, "userAccess"), snap => {
 
 	snap.forEach(child => {
 		let raw = child.val().country;
-		let finalC = (raw === "INDIA") ? "INDIA" : "Since user changed time-zone manually/VPN/PROXY/custom OS/browser blocks locale<BR>Location: UNKNOWN";
+		let finalC = (raw === "INDIA") ? "INDIA" : "Location: UNKNOWN – location for these users is not available due to VPN, proxy, or privacy settings on their device.";
 		counts[finalC] = (counts[finalC] || 0) + 1;
 	});
 
