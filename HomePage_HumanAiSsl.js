@@ -1,12 +1,20 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+const firebaseConfig = {
+	apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+	authDomain: "openmurugesan.firebaseapp.com",
+	databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+	projectId: "openmurugesan",
+	storageBucket: "openmurugesan.firebasestorage.app",
+	messagingSenderId: "307675598593",
+	appId: "1:307675598593:web:4af163460ce2c3bc719500",
+	measurementId: "G-0MFK92PQMP"
+};
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const visitsRef = ref(db, 'visitor_count');
+push(visitsRef, { timestamp: new Date().toISOString() });
 var indx=0;
-if( window.location.href.includes('index.html') )
-{
-	document.write("<A><Font color='orange'>Home</FONT></A>");
-}
-else
-{
-	document.write("<A href='index.html' class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/spending.html' id='PreventWastagehref' style='color:blue'>Home</A>");
-}
 function showHomeTable()
 {
 	const tamilhomeTable = document.getElementById('TamilHomeTable');
