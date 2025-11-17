@@ -193,7 +193,7 @@
 		<TABLE border='1'>
 		<THEAD>
 		<TR>
-		<TH>User Count for index.html</TH>
+		<TH>User Count for https://murugesanopenssl.github.io/ExplorerPatcher-Exception-Windows-11-Home-Single-Language</TH>
 		<TH>Country</TH>
 		</TR>
 		</THEAD>
@@ -214,7 +214,6 @@ const firebaseConfig = {
     appId: "1:307675598593:web:4af163460ce2c3bc719500",
     measurementId: "G-0MFK92PQMP"
 };
-
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const tbody = document.getElementById("tbody");
@@ -223,33 +222,33 @@ const id = "VISIT-" + Date.now();
 const bow = navigator.userAgent;
 
 const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-const ctry = tz.includes("Kolkata") ? "IN" : "UNKNOWN";
+const ctry = (tz.includes("Kolkata") || tz.includes("Calcutta")) ? "INDIA" : "Since user changed time-zone manually/VPN/PROXY/custom OS/browser blocks locale<BR>Location: UNKNOWN";
 
 set(ref(db, "userAccess/" + id), {
-    browser: bow,
-    country: ctry,
-    timestamp: Date.now()
+	browser: bow,
+	country: ctry,
+	timezone: tz,
+	timestamp: Date.now()
 });
 
 onValue(ref(db, "userAccess"), snap => {
-    tbody.innerHTML = "";
-    let counts = {};
+	tbody.innerHTML = "";
+	let counts = {};
 
-    snap.forEach(child => {
-        let c = child.val().country || "UNKNOWN";
-        counts[c] = (counts[c] || 0) + 1;
-    });
+	snap.forEach(child => {
+		let raw = child.val().country;
+		let finalC = (raw === "INDIA") ? "INDIA" : "Since user changed time-zone manually/VPN/PROXY/custom OS/browser blocks locale<BR>Location: UNKNOWN";
+		counts[finalC] = (counts[finalC] || 0) + 1;
+	});
 
-    Object.keys(counts).forEach(country => {
-        let cname = (country === "IN") ? "INDIA" : country;
-        tbody.innerHTML += `
-        <tr>
-            <td valign='top' align='right'>${String(counts[country]).padStart(4,"0")}</td>
-            <td valign='top' align='right'>${cname}</td>
-        </tr>`;
-    });
+	Object.keys(counts).forEach(country => {
+		tbody.innerHTML += `
+		<tr>
+			<td valign='top' align='right'>${String(counts[country]).padStart(4,"0")}</td>
+			<td valign='top' align='right'>${country}</td>
+		</tr>`;
+	});
 });
-
 </script>
 	</BODY>
 </HTML>
