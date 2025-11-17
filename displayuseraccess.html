@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+		<META CHARSET="UTF-8">
+		<TITLE>User Access Count</TITLE>
+		<STYLE style='text/css'>
+			table
+			{
+				border-collapse: collapse; width: 400px;
+			}
+			th, td
+			{
+				border: 1px solid black; padding: 8px;
+			}
+			th
+			{
+				background:#ddd;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY>
+		<H2>User Access Count</H2>
+		<TABLE>
+		<THEAD>
+		<TR>
+		<TH>User Count</TH>
+		<TH>Country</TH>
+		</TR>
+		</THEAD>
+		<TBODY id="tbody"></TBODY>
+		</TABLE>
+		<SCRIPT type="module">
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+			import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+			const firebaseConfig = {
+			apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+			authDomain: "openmurugesan.firebaseapp.com",
+			databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+			projectId: "openmurugesan",
+			storageBucket: "openmurugesan.firebasestorage.app",
+			messagingSenderId: "307675598593",
+			appId: "1:307675598593:web:4af163460ce2c3bc719500",
+			measurementId: "G-0MFK92PQMP"
+			};
+			const app = initializeApp(firebaseConfig);
+			const db = getDatabase(app);
+			const tbody = document.getElementById("tbody");
+			onValue(ref(db, "userAccess"), snap => {
+			tbody.innerHTML = "";
+			let counts = {};
+			snap.forEach(child => {
+			let c = child.val().country || "UNKNOWN";
+			counts[c] = (counts[c] || 0) + 1;
+			});
+			Object.keys(counts).forEach(country => {
+			tbody.innerHTML += `
+			<TR>
+			<TD valign='top' align='left'>${counts[country]}</TD>
+			<TD valign='top' align='left'>${country}</TD>
+			</TR>
+			`;
+			});
+			});
+		</SCRIPT>
+	</BODY>
+</HTML>
