@@ -8,28 +8,6 @@
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tamil and Gregorian Calendar</title>
     <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px;
-            font-family: 'Arial', sans-serif;
-        }
-        th, td {
-            padding: 15px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-        .today {
-            background-color: cyan;
-            font-weight: bold;
-        }
-        .calendar-container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .calendar-table {
-            width: 48%;
-        }
     </style>		<!--
 		<LINK rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		-->
@@ -85,9 +63,9 @@
 				</TR>
 			</TABLE>
 		</DIV>
-    <div class="calendar-container">
+    <div style="display: flex; justify-content: space-between;">
         <!-- Left Column: Tamil Calendar -->
-        <table class="calendar-table" id="tamil-calendar">
+        <table style="width: 50%; border: 1px solid #000;" id="tamil-calendar" style="width: 48%;">
             <caption><strong>Tamil Calendar</strong></caption>
             <thead>
                 <tr>
@@ -98,7 +76,7 @@
         </table>
 
         <!-- Right Column: Gregorian Calendar -->
-        <table class="calendar-table" id="gregorian-calendar">
+        <table style="width: 50%; border: 1px solid #000;" id="gregorian-calendar">
             <caption><strong>Gregorian Calendar</strong></caption>
             <thead>
                 <tr>
@@ -160,9 +138,11 @@
             for (let day = 1; day <= daysInMonth; day++) {
                 const cell = document.createElement('td');
                 cell.innerHTML = day;
-                if (new Date().getDate() === day && new Date().getMonth() === month && new Date().getFullYear() === year) {
-                    cell.classList.add('today');
-                }
+				if (new Date().getDate() === day && new Date().getMonth() === month && new Date().getFullYear() === year) {
+					// Directly apply the styles
+					cell.style.backgroundColor = 'cyan';
+					cell.style.fontWeight = 'bold';
+				}
                 row.appendChild(cell);
 
                 if ((firstDay + day) % 7 === 0) {
@@ -196,9 +176,11 @@
                 const tamilMonth = getTamilMonth(new Date(year, month, day));
                 const cell = document.createElement('td');
                 cell.innerHTML = `${day} <br> ${tamilMonth} <br> 5127`; // Tamil date format: <Day> <Month> <Year>
-                if (new Date().getDate() === day && new Date().getMonth() === month && new Date().getFullYear() === year) {
-                    cell.classList.add('today');
-                }
+				if (new Date().getDate() === day && new Date().getMonth() === month && new Date().getFullYear() === year) {
+					// Directly apply the styles to the cell
+					cell.style.backgroundColor = 'cyan';
+					cell.style.fontWeight = 'bold';
+				}
                 row.appendChild(cell);
 
                 if ((firstDay + day) % 7 === 0) {
