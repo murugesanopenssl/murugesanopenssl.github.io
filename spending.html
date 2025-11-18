@@ -55,9 +55,7 @@
 					<TD style="text-align:middle;vertical-align:top;">
 						<A href='Visitor_count.html'>Visitor count</FONT></A>
 					</TD>
-					<TD style="text-align:middle;vertical-align:top;">
-						<A><FONT color='#556677'>Inprogress02</FONT></A>
-					</TD>
+					<TD valign='top' align='middle'><A href='tamil-calendar.html'><FONT color='#556677'>Tamil/Gregorian calendar</FONT></A></TD>
 					<TD style="text-align:middle;vertical-align:top;">
 						<A><FONT color='#556677'>Inprogress03</FONT></A>
 					</TD>
@@ -164,7 +162,7 @@
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
-							13297.00 &#8377;
+							15570.00 &#8377; <!-- SAVEDAMT -->
 						</FONT>
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
@@ -177,11 +175,43 @@
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
-							11075.00 &#8377;
+						<SCRIPT type='text/javascript'>
+						SAVEDAMT_Tue_18_Nov_2025=11118.00;
+						SAVEDAMT_Wed_19_Nov_2025=11165.00;
+						SAVEDAMT=SAVEDAMT_Wed_19_Nov_2025;
+						document.write( SAVEDAMT.toFixed(2)+" &#8377;");
+						</SCRIPT>
 						</FONT>
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
 						SSLC EXAM FEES AND INDIAN GOVERNMENT BANK SBI ETDR
+					</TD>
+				</TR>
+				<TR>
+					<TD style="text-align:right;vertical-align:top; background-color: #FF9933;">
+						Required to save for 10th FEES ON Sun 14-Dec-2025 IST
+					</TD>
+					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
+						<Font color='#000080'>
+						<SCRIPT type='text/javascript'>
+						RequiredAmt=55000.00 - SAVEDAMT;
+						document.write( RequiredAmt.toFixed(2)+" &#8377;");
+						</SCRIPT>
+						</FONT>
+					</TD>
+					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
+						AMOUNT TO SAVE PER DAY:<BR>
+						<SCRIPT type='text/javascript'>
+							var today = new Date();
+							var offset = 5.5;
+							today.setHours(today.getHours() + offset);
+							var targetDate = new Date('2025-12-14T00:00:00+05:30');
+							var timeDiff = targetDate - today;
+							var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
+							var RequiredAmt = 55000.00 - SAVEDAMT;
+							var SAVE_PER_DAY = RequiredAmt / daysLeft;
+							document.write(SAVE_PER_DAY.toFixed(2) + " &#8377;");
+						</SCRIPT>
 					</TD>
 				</TR>
 			</TBODY>
@@ -2565,7 +2595,7 @@ Apr: [
 									if( entries[i] )
 									{
 										const e = entries[i];
-										if( "None" === e.item ) // Do not display None values and continue the loop again.
+										if( "None" === e.item )
 										{
 											rowHtml += `<TD class='right-align'></TD><TD class='right-align'></TD><TD class='right-align'></TD><TD class='right-align'></TD>`;
 											++i;

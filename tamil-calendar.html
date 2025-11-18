@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META CHARSET="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<META charset="UTF-8">
+		<LINK href="MyMenu002.css" rel="stylesheet">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil and Gregorian Calendar</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .today {
+            background-color: cyan;
+            font-weight: bold;
+        }
+        .calendar-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .calendar-table {
+            width: 48%;
+        }
+    </style>		<!--
+		<LINK rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		-->
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV style="width:100%;display:block;margin:0;padding:0;">
+			<TABLE border='0' style="width:100%; margin:0; padding:0;">
+					<TR>
+						<TD style="text-align:center;vertical-align:top;background-color:#0071bb;" colspan='9'>
+							<FONT size='5'><FONT color='white'>Human-AI Financial Solutions = HAI FS</FONT></FONT>
+						</TD>
+					</TR>
+			<SCRIPT type='text/javascript'>
+				const now = new Date();
+				const istDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+				if( window.location.href.includes('index.html') )
+				{
+					document.write("<TR><TD style='text-align:middle;vertical-align:top;'><A href='index.html' class='link-style' id='Homehref' style='color:blue'>Home</A></TD>");
+				}
+				else
+				{
+					document.write("<TR><TD style='text-align:middle;vertical-align:top;'><A href='index.html' class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' id='Homehref' style='color:blue'>Home</A></TD>");
+				}
+				function showHomeTable()
+				{
+					const homeTable = document.getElementById('HomeTable');
+					const preventWastage = document.getElementById('PreventWastage');
+					const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+					preventWastage.style.display = 'none';
+					categoryAmount.style.display = 'none';
+					homeTable.style.display = 'table';
+				}
+			</SCRIPT>
+					<TD style='background-color:white;text-align:middle;vertical-align:top;'>
+						<A href='spending.html' onclick="toggleTable(event)" class="link-style" id="PreventWastagehref">PreventWastage</A>
+					</TD>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href="save_money_and_lives.html">Save lives and money</A>
+					</TD>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
+					</TD>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
+					</TD>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href='Visitor_count.html'>Visitor count</FONT></A>
+					</TD>
+					<TD style='background-color:orange;' valign='top' align='middle'><A><FONT color='#556677'>Tamil/Gregorian calendar</FONT></A></TD>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A><FONT color='#556677'>Inprogress03</FONT></A>
+					</TD>
+				</TR>
+			</TABLE>
+		</DIV>
+    <div class="calendar-container">
+        <!-- Left Column: Tamil Calendar -->
+        <table class="calendar-table" id="tamil-calendar">
+            <caption><strong>Tamil Calendar</strong></caption>
+            <thead>
+                <tr>
+                    <th>ஞா</th><th>தி</th><th>செ</th><th>பு</th><th>வி</th><th>வெ</th><th>ச</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <!-- Right Column: Gregorian Calendar -->
+        <table class="calendar-table" id="gregorian-calendar">
+            <caption><strong>Gregorian Calendar</strong></caption>
+            <thead>
+                <tr>
+                    <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        // Define Tamil months and their corresponding Gregorian date ranges
+        const tamilMonthRanges = [
+            { month: "சித்திரை", start: { month: 3, day: 14 }, end: { month: 4, day: 13 } },
+            { month: "வைகாசி", start: { month: 4, day: 14 }, end: { month: 5, day: 14 } },
+            { month: "ஆனி", start: { month: 5, day: 15 }, end: { month: 6, day: 14 } },
+            { month: "ஆடி", start: { month: 6, day: 15 }, end: { month: 7, day: 14 } },
+            { month: "ஆவணி", start: { month: 7, day: 15 }, end: { month: 8, day: 14 } },
+            { month: "புரட்டாசி", start: { month: 8, day: 15 }, end: { month: 9, day: 14 } },
+            { month: "ஐப்பசி", start: { month: 9, day: 15 }, end: { month: 10, day: 14 } },
+            { month: "மார்கழி", start: { month: 10, day: 15 }, end: { month: 11, day: 14 } },
+            { month: "தை", start: { month: 11, day: 15 }, end: { month: 12, day: 14 } },
+            { month: "மாசி", start: { month: 0, day: 15 }, end: { month: 1, day: 14 } },
+            { month: "பங்குனி", start: { month: 1, day: 15 }, end: { month: 2, day: 14 } },
+        ];
+
+        // Get the Tamil month for a given Gregorian date
+        function getTamilMonth(date) {
+            for (let i = 0; i < tamilMonthRanges.length; i++) {
+                const range = tamilMonthRanges[i];
+                const start = range.start;
+                const end = range.end;
+                
+                // Check if the current date falls within the range for the Tamil month
+                if (
+                    (date.getMonth() === start.month && date.getDate() >= start.day) || // if it's after the start date of the Tamil month
+                    (date.getMonth() === end.month && date.getDate() <= end.day) // if it's before the end date of the Tamil month
+                ) {
+                    return range.month;
+                }
+            }
+            return ''; // In case no match is found
+        }
+
+        // Function to create the Gregorian calendar for a given month
+        function createGregorianCalendar(year, month) {
+            const daysInMonth = new Date(year, month + 1, 0).getDate(); // Get the number of days in the month
+            const firstDay = new Date(year, month, 1).getDay(); // Get the first day of the month
+
+            let table = document.getElementById('gregorian-calendar').getElementsByTagName('tbody')[0];
+            let row = document.createElement('tr');
+
+            // Fill empty cells for the previous month
+            for (let i = 0; i < firstDay; i++) {
+                row.appendChild(document.createElement('td'));
+            }
+
+            // Add the days of the current month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const cell = document.createElement('td');
+                cell.innerHTML = day;
+                if (new Date().getDate() === day && new Date().getMonth() === month && new Date().getFullYear() === year) {
+                    cell.classList.add('today');
+                }
+                row.appendChild(cell);
+
+                if ((firstDay + day) % 7 === 0) {
+                    table.appendChild(row);
+                    row = document.createElement('tr');
+                }
+            }
+
+            // Add empty cells for the next month if necessary
+            while (row.children.length < 7) {
+                row.appendChild(document.createElement('td'));
+            }
+            table.appendChild(row);
+        }
+
+        // Function to create Tamil calendar for a given month
+        function createTamilCalendar(year, month) {
+            const daysInMonth = new Date(year, month + 1, 0).getDate(); // Get the number of days in the month
+            const firstDay = new Date(year, month, 1).getDay(); // First day of the month in Gregorian calendar
+
+            let table = document.getElementById('tamil-calendar').getElementsByTagName('tbody')[0];
+            let row = document.createElement('tr');
+
+            // Fill empty cells for the previous month
+            for (let i = 0; i < firstDay; i++) {
+                row.appendChild(document.createElement('td'));
+            }
+
+            // Add Tamil dates based on Gregorian dates
+            for (let day = 1; day <= daysInMonth; day++) {
+                const tamilMonth = getTamilMonth(new Date(year, month, day));
+                const cell = document.createElement('td');
+                cell.innerHTML = `${day} <br> ${tamilMonth} <br> 5127`; // Tamil date format: <Day> <Month> <Year>
+                if (new Date().getDate() === day && new Date().getMonth() === month && new Date().getFullYear() === year) {
+                    cell.classList.add('today');
+                }
+                row.appendChild(cell);
+
+                if ((firstDay + day) % 7 === 0) {
+                    table.appendChild(row);
+                    row = document.createElement('tr');
+                }
+            }
+
+            // Add empty cells for the next month if necessary
+            while (row.children.length < 7) {
+                row.appendChild(document.createElement('td'));
+            }
+            table.appendChild(row);
+        }
+
+        // Get the current year and month dynamically
+        const currentYear = new Date().getFullYear();  // Get current year
+        const currentMonth = new Date().getMonth();    // Get current month (0 = Jan, 1 = Feb, etc.)
+
+        // Generate both Gregorian and Tamil calendars for the current month and year
+        createGregorianCalendar(currentYear, currentMonth); // Current month
+        createTamilCalendar(currentYear, currentMonth); // Current month
+    </script>
+
+</body>
+</html>

@@ -82,3 +82,12 @@ function DispIndx ()
 	DispVal = String(indx).padStart(3, '0');
 	document.write( DispVal+")" );
 }
+function CloseMoneyHelp()
+{
+        moneyhelp01.style.height = "0px";
+        moneyhelp01.style.width = "0px";
+        EntHealthId01.style.height = "0px";
+        EntHealthId01.style.width = "0px";
+}
+const content = ``;
+  document.getElementById('content').innerHTML = content;
