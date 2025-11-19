@@ -57,7 +57,7 @@
 					</TD>
 					<TD valign='top' align='middle'><A href='tamil-calendar.html'><FONT color='#556677'>Tamil/Gregorian calendar</FONT></A></TD>
 					<TD style="text-align:middle;vertical-align:top;">
-						<A><FONT color='#556677'>Inprogress03</FONT></A>
+						<A href='displayMoneyHelpMenu.html'><FONT color='#556677'>Money Help</FONT></A>
 					</TD>
 				</TR>
 			</TABLE>
@@ -1574,8 +1574,8 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("19-Nov-2025"),
-			"None",					0.00,
-			"",					0.00,
+			"Metro",				90.00,
+			"BMTC",					24.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1588,8 +1588,7 @@ Nov: [
 			"Lunch",				50.00,
 			"Dinner",				45.00,
 			"Brush",				19.00,
-			"",					0.00,
-			"",					0.00
+			"VeeraRaghavanExpired",			0.00
 		],
 		[ formatDate("17-Nov-2025"),
 			"StayHome",				0.00,
@@ -2589,7 +2588,7 @@ Apr: [
 								{
 									continue;
 								}
-								let rowHtml = `<TR><TD class='right-align'>${d}</TD>`;
+								let rowHtml = `<TR><TD valign='top' style='width:10px;' align='right'>${d}</TD>`;
 								for( let i=0; 6 > i; ++i )
 								{
 									if( entries[i] )
@@ -2610,6 +2609,11 @@ Apr: [
 										{
 											rowHtml += `<TD class='right-align' bgcolor='#00ff00' ${isSnack ? style : ""}>${e.item}</TD>
 														<TD class='right-align' bgcolor='#00ff00' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
+										}
+										else if( "VeeraRaghavanExpired" == `${e.item}` )
+										{
+											rowHtml += `<TD class='right-align' bgcolor='red' ${isSnack ? style : ""}>${e.item}</TD>
+														<TD class='right-align' ${i === 0 && isSnack ? firstAmountStyle : ""}></TD>`;
 										}
 										else
 										{
