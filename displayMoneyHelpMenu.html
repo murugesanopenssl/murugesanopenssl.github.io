@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<HTML LANG="en">
+	<HEAD>
+		<META CHARSET="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>Money Help Menu</TITLE>
+		<SCRIPT type="text/javascript">
+			function toggleSubmenu01() {
+				var submenu = document.getElementById('financialResourcesMenu01');
+				var button = document.getElementById('toggleButton01');
+				if ('none' === submenu.style.display) {
+					submenu.style.display = 'block';
+					button.innerHTML = 'Close Financial Service Menu';
+				} else {
+					submenu.style.display = 'none';
+					button.innerHTML = 'Show Financial Resources';
+				}
+			}
+			function toggleSubmenu02() {
+				var submenu = document.getElementById('financialResourcesMenu02');
+				var button = document.getElementById('toggleButton02');
+				if ('none' === submenu.style.display) {
+					submenu.style.display = 'block';
+					button.innerHTML = 'Close GOVT RESOURCE Menu';
+				} else {
+					submenu.style.display = 'none';
+					button.innerHTML = 'Show GOVT Resources';
+				}
+			}
+		</SCRIPT>
+	</HEAD>
+	<BODY style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+		<TABLE style="width: 100%; border-collapse: collapse; background-color: #f0f0f0; border: 1px solid #ccc;">
+			<TBODY>
+				<TR>
+					<TD style="background-color: white; text-align: center; vertical-align: top;">
+						<A href="index.html" style="text-decoration: none; color: blue; padding: 5px 10px;">Home</A>
+					</TD>
+					<TD style="padding: 10px; text-align: center;">
+						<A href="spending.html" onclick="toggleTable(event)" style="text-decoration: none; color: #000; padding: 5px 10px;" id="PreventWastagehref">Prevent Wastage</A>
+					</TD>
+					<TD style="padding: 10px; text-align: center;">
+						<A href="save_money_and_lives.html" style="text-decoration: none; color: #000; padding: 5px 10px;">Save lives and money</A>
+					</TD>
+					<TD style="padding: 10px; text-align: center;">
+						<A href="ShareKnowledgeTransferToPeople.html" style="text-decoration: none; color: #000; padding: 5px 10px; text-decoration: underline;">Share Knowledge Transfer</A>
+					</TD>
+					<TD style="padding: 10px; text-align: center;">
+						<A href="my_exercise.html" style="text-decoration: none; color: #000; padding: 5px 10px;">MyExercise</A>
+					</TD>
+					<TD style="padding: 10px; text-align: center;">
+						<A href="Visitor_count.html" style="text-decoration: none; color: #000; padding: 5px 10px;">Visitor count</A>
+					</TD>
+					<TD style="padding: 10px; text-align: center;">
+						<A href="tamil-calendar.html" style="text-decoration: none; color: #556677; padding: 5px 10px;">Tamil/Gregorian Calendar</A>
+					</TD>
+					<TD style="padding: 10px; text-align: center;background-color:orange;">
+						<A style="text-decoration: none; color: #556677; padding: 5px 10px;">Money Help</A>
+					</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+
+		<!-- Buttons to toggle financial resources and GOVT resources -->
+		<TABLE>
+			<TR>
+				<TD style="padding: 10px; text-align:left;">
+					<BUTTON id="toggleButton01" onclick="toggleSubmenu01()" style="display: block; margin: 20px; background-color: #4CAF50; color: white; padding: 10px 20px; cursor: pointer; text-align: center; font-size: 18px; border: none; width: 100%; transition: background-color 0.3s;">Show Financial Resources</BUTTON>
+				</TD>
+				<TD style="padding: 10px; text-align:left;">
+					<BUTTON id="toggleButton02" onclick="toggleSubmenu02()" style="display: block; margin: 20px; background-color: #4CAF50; color: white; padding: 10px 20px; cursor: pointer; text-align: center; font-size: 18px; border: none; width: 100%; transition: background-color 0.3s;">Show GOVT Resources</BUTTON>
+				</TD>
+			</TR>
+		</TABLE>
+
+		<!-- Financial Resources and GOVT Resources -->
+		<TABLE>
+			<TBODY>
+				<TR>
+					<!-- Financial Resources Menu (Left Column) -->
+					<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
+						<DIV id="financialResourcesMenu01" style="display: none; background-color: #f8f8f8; padding: 10px; border-top: 2px solid #ccc; margin-top: 10px;">
+							<BUTTON onclick="toggleSubmenu01()" style="background-color: #f44336; color: white; border: none; padding: 8px 16px; cursor: pointer; font-size: 16px; margin-bottom: 10px;">Close Financial Resources Menu</BUTTON>
+							<H3>Financial Resources</H3>
+							<A href="post-office-mis.html" style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">Post Office MIS</A>
+							<A href="post-office-nsc.html" style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">Post Office NSC</A>
+							<A style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">SBI Fixed Deposit</A>
+						</DIV>
+					</TD>
+
+					<!-- GOVT Resources Menu (Right Column) -->
+					<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
+						<DIV id="financialResourcesMenu02" style="display: none; background-color: #f8f8f8; padding: 10px; border-top: 2px solid #ccc; margin-top: 10px;">
+							<BUTTON onclick="toggleSubmenu02()" style="background-color: #f44336; color: white; border: none; padding: 8px 16px; cursor: pointer; font-size: 16px; margin-bottom: 10px;">Close GOVT RESOURCE Menu</BUTTON>
+							<H3>GOVT Resources</H3>
+							<A style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">GOVT Plan 1</A>
+							<A style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">GOVT Plan 2</A>
+							<A style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">GOVT Plan 3</A>
+						</DIV>
+					</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+	</BODY>
+</HTML>
