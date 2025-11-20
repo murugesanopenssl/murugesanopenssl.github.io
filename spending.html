@@ -14,11 +14,6 @@
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 		<DIV style="width:100%;display:block;margin:0;padding:0;">
 			<TABLE border='0' style="width:100%; margin:0; padding:0;">
-					<TR>
-						<TD style="text-align:center;vertical-align:top;background-color:#0071bb;" colspan='9'>
-							<FONT size='5'><FONT color='white'>Human-AI Financial Solutions = HAI FS</FONT></FONT>
-						</TD>
-					</TR>
 			<SCRIPT type='text/javascript'>
 				const now = new Date();
 				const istDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
@@ -50,7 +45,7 @@
 						<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
 					</TD>
 					<TD style="text-align:middle;vertical-align:top;">
-						<A href="https://www.geocities.ws/murugesan/mis-interest.html">FinanceHelp</A>
+						<A href="my_exercise.html">MyExercise</A>
 					</TD>
 					<TD style="text-align:middle;vertical-align:top;">
 						<A href='Visitor_count.html'>Visitor count</FONT></A>
@@ -1473,6 +1468,17 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 						const db = getDatabase( app );
 						const rootRef = ref( db, "spending" );
 const baseRaw = {
+Dec: [
+		[ formatDate("30-Nov-2025"),
+			"None",					0.00,
+			"",					0.00,
+			"",					0.00,
+			"",					0.00,
+			"",					0.00,
+			"",					0.00,
+			"",					0.00
+		]
+],
 Nov: [
 		[ formatDate("30-Nov-2025"),
 			"None",					0.00,
@@ -1588,7 +1594,7 @@ Nov: [
 			"Lunch",				50.00,
 			"Dinner",				45.00,
 			"Brush",				19.00,
-			"VeeraRaghavanExpired",			0.00
+			"",			0.00
 		],
 		[ formatDate("17-Nov-2025"),
 			"StayHome",				0.00,
@@ -1602,8 +1608,8 @@ Nov: [
 		[ formatDate("16-Nov-2025"),
 			"WaterCanVicks",			371.00,
 			"Sweet",				130.00,
-			"SweetYetToGive",			-2.00,
 			"Petrol",				230.00,
+			"",					0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
@@ -1611,11 +1617,10 @@ Nov: [
 		[ formatDate("15-Nov-2025"),
 			"Xerox14Page",				15.00,
 			"Lunch",				60.00,
-			"ToBng",				85.00,
+			"ToBng",				115.00,	// 85.00 Soup 30.00
 			"SchoolFile",				75.00,
 			"Veg",					172.00,
-			"EntSoup",				30.00,
-			"",					0.00
+			"RD",					1000.00
 		],
 		[ formatDate("14-Nov-2025"),
 			"MumBis",					30.00,
@@ -1631,7 +1636,7 @@ Nov: [
 			"20BwXerox",				40.00,
 			"puncture",				80.00,
 			"Lunch",				40.00,
-			"",					0.00,
+			"PPF",					700.00,
 			"",					0.00,
 			"",					0.00
 		],
@@ -1831,7 +1836,7 @@ banana 20.00
 			"Auto",				20.00,
 			"Kool",				20.00,
 			"EntSoup",			20.00,
-			"",				0.00,
+			"NSC",				1000.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
@@ -1869,7 +1874,7 @@ banana 20.00
 			"DressRope",			120.00,
 			"Tea",				10.00,
 			"Snack",			60.00,
-			"",				0.00,
+			"RD",				1000.00,
 			"",				0.00
 		],
 		[ formatDate("14-Oct-2025"),
@@ -2063,6 +2068,15 @@ Sep: [
 			"",				0.00,
 			"",				0.00
 		],
+		[ formatDate("15-Sep-2025"),
+			"RD",				1000.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00
+		],
 		[ formatDate("14-Sep-2025"),
 			"BESCOM",			256.00,
 			"",				0.00,
@@ -2091,6 +2105,13 @@ Aug: [
 			"",				0.00,
 			"",				0.00
 		],
+		[ formatDate("15-Aug-2025"),
+			"RD",				1000.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00
+		],
 		[ formatDate("22-Aug-2025"),
 			"BESCOM",			226.00,
 			"",				0.00,
@@ -2109,6 +2130,13 @@ Aug: [
 Jul: [
 		[ formatDate("14-Jul-2025"),
 			"BESCOM",			316.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00
+		],
+		[ formatDate("15-Jul-2025"),
+			"RD",				1000.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2132,6 +2160,13 @@ Jun: [
 		],
 		[ formatDate("02-Jun-2025"),
 			"DpiLunch",			252.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00
+		],
+		[ formatDate("15-Jun-2025"),
+			"RD",				1000.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2166,6 +2201,13 @@ May: [
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
+		],
+		[ formatDate("15-May-2025"),
+			"RD",				1000.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00,
+			"",				0.00
 		]
 	],
 Apr: [
@@ -2185,7 +2227,7 @@ Apr: [
 		],
 		[ formatDate("15-Apr-2025"),
 			"BESCOM",			721.00,
-			"",				0.00,
+			"RD",				1000.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
@@ -2610,10 +2652,10 @@ Apr: [
 											rowHtml += `<TD class='right-align' bgcolor='#00ff00' ${isSnack ? style : ""}>${e.item}</TD>
 														<TD class='right-align' bgcolor='#00ff00' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
 										}
-										else if( "VeeraRaghavanExpired" == `${e.item}` )
+										else if( "PPF" == `${e.item}` || "NSC" == `${e.item}` || "RD" == `${e.item}` )
 										{
-											rowHtml += `<TD class='right-align' bgcolor='red' ${isSnack ? style : ""}>${e.item}</TD>
-														<TD class='right-align' ${i === 0 && isSnack ? firstAmountStyle : ""}></TD>`;
+											rowHtml += `<TD class='right-align' bgcolor='#00ff00' ${isSnack ? style : ""}>${e.item}</TD>
+														<TD class='right-align' bgcolor='#00ff00' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
 										}
 										else
 										{
