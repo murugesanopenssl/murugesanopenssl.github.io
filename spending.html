@@ -19,11 +19,11 @@
 				const istDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
 				if( window.location.href.includes('index.html') )
 				{
-					document.write("<TR><TD style='text-align:middle;vertical-align:top;'><A href='index.html' class='link-style' id='Homehref' style='color:blue'>Home</A></TD>");
+					document.write("<TR><TD style='text-align:right;vertical-align:top;'><A href='index.html' class='link-style' id='Homehref' style='color:blue'>Home</A></TD>");
 				}
 				else
 				{
-					document.write("<TR><TD style='text-align:middle;vertical-align:top;'><A href='index.html' class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' id='Homehref' style='color:blue'>Home</A></TD>");
+					document.write("<TR><TD style='text-align:right;vertical-align:top;'><A href='index.html' class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' id='Homehref' style='color:blue'>Home</A></TD>");
 				}
 				function showHomeTable()
 				{
@@ -35,19 +35,19 @@
 					homeTable.style.display = 'table';
 				}
 			</SCRIPT>
-					<TD style='background-color:orange;text-align:middle;vertical-align:top;'>
+					<TD style='background-color:orange;text-align:right;vertical-align:top;'>
 						<A href='spending.html' onclick="toggleTable(event)" class="link-style" id="PreventWastagehref">PreventWastage</A>
 					</TD>
-					<TD style="text-align:middle;vertical-align:top;">
+					<TD style="text-align:right;vertical-align:top;">
 						<A href="save_money_and_lives.html">Save lives and money</A>
 					</TD>
-					<TD style="text-align:middle;vertical-align:top;">
+					<TD style="text-align:right;vertical-align:top;">
 						<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
 					</TD>
-					<TD style="text-align:middle;vertical-align:top;">
+					<TD style="text-align:right;vertical-align:top;">
 						<A href="my_exercise.html">MyExercise</A>
 					</TD>
-			<TD style="text-align:middle;vertical-align:top;background-color:white;">
+			<TD style="text-align:right;vertical-align:top;background-color:white;">
 				<SCRIPT type='text/javascript'>
 					if( -1 != window.location.href.indexOf("remove-blockages-kitchen-pvc-outflow-pipe.html") )
 					{
@@ -59,11 +59,11 @@
 					}
 				</SCRIPT>
 			</TD>
-					<TD style="text-align:middle;vertical-align:top;">
+					<TD style="text-align:right;vertical-align:top;">
 						<A href='Visitor_count.html'>Visitor count</FONT></A>
 					</TD>
-					<TD valign='top' align='middle'><A href='tamil-calendar.html'><FONT color='#556677'>Tamil/Gregorian calendar</FONT></A></TD>
-					<TD style="text-align:middle;vertical-align:top;">
+					<TD valign='top' align='right'><A href='tamil-calendar.html'><FONT color='#556677'>Tamil/Gregorian calendar</FONT></A></TD>
+					<TD style="text-align:right;vertical-align:top;">
 						<A href='displayMoneyHelpMenu.html'><FONT color='#556677'>Money Help</FONT></A>
 					</TD>
 				</TR>
@@ -169,7 +169,7 @@
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
-							16156.00 &#8377; <!-- SAVEDAMT -->
+							23546.00 &#8377; <!-- SAVEDAMT -->
 						</FONT>
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
@@ -186,7 +186,8 @@
 						SAVEDAMT_Tue_18_Nov_2025=11118.00;
 						SAVEDAMT_Wed_19_Nov_2025=11165.00;
 						SAVEDAMT_Thu_20_Nov_2025=11690.00;
-						SAVEDAMT=SAVEDAMT_Thu_20_Nov_2025;
+						SAVEDAMT_Fri_21_Nov_2025=11877.00;
+						SAVEDAMT=SAVEDAMT_Fri_21_Nov_2025;
 						document.write( SAVEDAMT.toFixed(2)+" &#8377;");
 						</SCRIPT>
 						</FONT>
@@ -210,6 +211,7 @@
 					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
 						AMOUNT TO SAVE PER DAY:<BR>
 						<SCRIPT type='text/javascript'>
+							/*
 							var today = new Date();
 							var offset = 5.5;
 							today.setHours(today.getHours() + offset);
@@ -217,9 +219,24 @@
 							var timeDiff = targetDate - today;
 							var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
 							var RequiredAmt = 55000.00 - SAVEDAMT;
+							alert(SAVEDAMT);
 							var SAVE_PER_DAY = RequiredAmt / daysLeft;
 							document.write(SAVE_PER_DAY.toFixed(2) + " &#8377;");
-						</SCRIPT>
+							*/
+							var today = new Date();
+							today.setHours(0,0,0,0); // reset time to start of today
+
+							var targetDate = new Date('2025-12-14T00:00:00+05:30');
+							targetDate.setHours(0,0,0,0); // start of target day
+
+							var timeDiff = targetDate - today;
+							var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1; // including today
+
+							var RequiredAmt = 55000.00 - SAVEDAMT;
+							var SAVE_PER_DAY = RequiredAmt / daysLeft;
+
+							document.write(SAVE_PER_DAY.toFixed(2) + " &#8377;");
+					</SCRIPT>
 					</TD>
 				</TR>
 			</TBODY>
@@ -622,7 +639,7 @@
 			<A href='closing-nsc-online.html'>Closing NSC online</A>
 			</TD>
 			<TD valign='top' align='right'>
-			<A href='Karnataka_CurrentBill.html'>KA க.மி.விலை/BESCOM</A>
+			<A href='Karnataka_CurrentBill.html'>க.மி.க.கணக்கு</A>
 			</TD>
 			<TD valign='top' align='right'>
 			<A href='MOBILE_postpaid_payment.html'>MobPostpaidPay</A>
@@ -1578,7 +1595,7 @@ Nov: [
 			"கா.உணவு",			40.00,
 			"ம.உணவு",			45.00,
 			"இ.உணவு",			0.00,
-			"மூ.தொ.தொ.ம",		292.62,
+			"மூ.கா.தொ.ம",		292.62,
 			"பெ.பெ.போ",			23.00,
 			"",					0.00,
 			"",					0.00
@@ -1588,7 +1605,7 @@ Nov: [
 			"அப்பா ஜியோ",				3599.00,
 			"ம.உணவு",				100.00,
 			"எரிபொருள்",				200.00,
-			"SoapHandler",				100.00,
+			"சோ.கை.பெட்டி",				100.00,
 			"",					0.00,
 			"",					0.00
 		],
@@ -1606,7 +1623,7 @@ Nov: [
 			"சிற்றுண்டி",				35.00,
 			"இ.உணவு",				50.00,
 			"இ.உணவு",				45.00,
-			"Brush",				19.00,
+			"பல் தூரிகை",				19.00,
 			"",			0.00
 		],
 		[ formatDate("17-Nov-2025"),
@@ -1631,14 +1648,14 @@ Nov: [
 			"Xerox14Page",				15.00,
 			"இ.உணவு",				60.00,
 			"பயணச்சீட்டு",				115.00,	// 85.00 Soup 30.00
-			"SchoolFile",				75.00,
+			"குறிப்பேடு",				75.00,
 			"காய்கறி",					172.00,
-			"ம.நே.வை",					1000.00
+			"தொ.வை",					1000.00
 		],
 		[ formatDate("14-Nov-2025"),
 			"MumBis",					30.00,
 			"லிவ்-ஓ ",					12.00,
-			"FromFather",					-1000.00,
+			"தந்தையிடமிருந்து",					-1000.00,
 			"",						0.00,
 			"",						0.00,
 			"",						0.00,
@@ -1647,18 +1664,18 @@ Nov: [
 		[ formatDate("13-Nov-2025"),
 			"கா.உணவு",				40.00,
 			"20நகல்",				40.00,
-			"puncture",				80.00,
+			"வ.து.ச",				80.00,
 			"இ.உணவு",				40.00,
 			"பொ.பா.தொ",					700.00,
-			"பா.ச.நி.லிஇணையம்",			1042.00,
+			"பா.ச.நி.லி.இ",			1042.00,
 			"",					0.00
 		],
 		[ formatDate("12-Nov-2025"),
 			"லிவ்-ஓ ",				24.00,
-			"குறுந்திருப்பு.பழுது",				30.00,
-			"DairyMilk",				98.00,
+			"கு.ப",				30.00,
+			"கேட்பரி.டைரி.மில்க்",				98.00,
 			"இ.உணவு",				50.00,
-			"க.மி.விலை",				142.00,
+			"க.மி.க.கணக்கு",				142.00,
 			"",					0.00,
 			"",					0.00
 		],
@@ -1681,9 +1698,9 @@ Nov: [
 			"",				0.00
 		],
 		[ formatDate("09-Nov-2025"),
-			"MMMTrainTkt",			1000.00,
-			"MumSnac",			166.00,
-			"குறிப்புபுத்தகம் தேநீர் ",		532.00,
+			"மா.ர.ப",			1000.00,
+			"அ.சி",			166.00,
+			"குறிப்பேடு<BR>தேநீர் ",		532.00,
 			"சிற்றுண்டி",			40.00,
 			"",				0.00,
 			"",				0.00,
@@ -1699,10 +1716,10 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("07-Nov-2025"),
-			"ToDpi",			69.00,
+			"த.பயணச்சீட்டு",			69.00,
 			"02நகல்",		15.00,
-			"மூ.தொ.தொ நீடாணம்",			20.00,
-			"மூ.தொ.தொ ஊசி",		100.00,
+			"மூ.கா.தொ வடிசாறு",			20.00,
+			"மூ.கா.தொ.ஊ",		100.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
@@ -1718,7 +1735,7 @@ Nov: [
 		],
 		[ formatDate("05-Nov-2025"),
 			"BreadMilk",			200.00,
-			"SBIInsure",			1098.00,
+			"பா.ஸ்.வ.கா",			1098.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -1766,7 +1783,7 @@ Oct: [
 		[ formatDate("31-Oct-2025"),
 			"சிற்றுண்டி",			18.00,
 			"இ.உணவு",			45.00,
-			"மூ.தொ.தொ நீடாணம்",			40.00,
+			"மூ.கா.தொ வடிசாறு",			40.00,
 			"FeviQuick",			10.00,
 			"",				0.00,
 			"",				0.00,
@@ -1838,8 +1855,8 @@ oil 80.00
 */
 		[ formatDate("20-Oct-2025"),
 			"Tea",				10.00,
-			"மூ.தொ.தொ நீடாணம்",			20.00,
-			"மூ.தொ.தொ Med",			404.00,
+			"மூ.கா.தொ வடிசாறு",			20.00,
+			"மூ.கா.தொ Med",			404.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -1848,7 +1865,7 @@ oil 80.00
 		[ formatDate("19-Oct-2025"),
 			"Auto",				20.00,
 			"Kool",				20.00,
-			"மூ.தொ.தொ நீடாணம்",			20.00,
+			"மூ.கா.தொ வடிசாறு",			20.00,
 			"NSC",				1000.00,
 			"",				0.00,
 			"",				0.00,
@@ -1868,7 +1885,7 @@ oil 80.00
 			"சிற்றுண்டி",			40.00,
 			"எரிபொருள்",			200.00,
 			"இ.உணவு",			105.00,
-			"மூ.தொ.தொ Vapour",			200.00,
+			"மூ.கா.தொ Vapour",			200.00,
 			"இ.உணவு",			355.00,
 			"",				0.00
 		],
@@ -1882,12 +1899,12 @@ oil 80.00
 			"",				0.00
 		],
 		[ formatDate("15-Oct-2025"),
-			"க.மி.விலை",			174.00,
+			"க.மி.க.கணக்கு",			174.00,
 			"3Roses",			345.00,
 			"DressRope",			120.00,
 			"Tea",				10.00,
 			"சிற்றுண்டி",			60.00,
-			"ம.நே.வை",				1000.00,
+			"தொ.வை",				1000.00,
 			"",				0.00
 		],
 		[ formatDate("14-Oct-2025"),
@@ -1901,7 +1918,7 @@ oil 80.00
 		],
 		[ formatDate("13-Oct-2025"),
 			"Tea",				20.00,
-			"மூ.தொ.தொ",				100.00,
+			"மூ.கா.தொ",				100.00,
 			"சிற்றுண்டி",			23.00,
 			"",				0.00,
 			"",				0.00,
@@ -1921,8 +1938,8 @@ oil 80.00
 			"BngToTn",			13.00,
 			"HosToDpi",			56.00,
 			"எரிபொருள்/DpiPetrol",			200.00,
-			"மூ.தொ.தொ நீடாணம்",			20.00,
-			"மூ.தொ.தொ ஊசி",			610.00,
+			"மூ.கா.தொ வடிசாறு",			20.00,
+			"மூ.கா.தொ.ஊ",			610.00,
 			"GodTip",			10.00,
 			"இ.உணவு",			40.00
 		],
@@ -2032,8 +2049,8 @@ Sep: [
 			"இ.உணவு",			60.00,
 			"சிற்றுண்டி",			407.00,
 			"காய்கறி",				916.00,
-			"மூ.தொ.தொ Dr",			200.00,
-			"மூ.தொ.தொ Med",			634.00,
+			"மூ.கா.தொ Dr",			200.00,
+			"மூ.கா.தொ Med",			634.00,
 			"சிற்றுண்டி",			25.00
 		],
 		[ formatDate("28-Sep-2025"),
@@ -2082,7 +2099,7 @@ Sep: [
 			"",				0.00
 		],
 		[ formatDate("15-Sep-2025"),
-			"ம.நே.வை",				1000.00,
+			"தொ.வை",				1000.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2091,7 +2108,7 @@ Sep: [
 			"",				0.00
 		],
 		[ formatDate("14-Sep-2025"),
-			"க.மி.விலை",			256.00,
+			"க.மி.க.கணக்கு",			256.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2119,14 +2136,14 @@ Aug: [
 			"",				0.00
 		],
 		[ formatDate("15-Aug-2025"),
-			"ம.நே.வை",				1000.00,
+			"தொ.வை",				1000.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("22-Aug-2025"),
-			"க.மி.விலை",			226.00,
+			"க.மி.க.கணக்கு",			226.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2142,14 +2159,14 @@ Aug: [
 	],
 Jul: [
 		[ formatDate("14-Jul-2025"),
-			"க.மி.விலை",			316.00,
+			"க.மி.க.கணக்கு",			316.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("15-Jul-2025"),
-			"ம.நே.வை",				1000.00,
+			"தொ.வை",				1000.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2158,14 +2175,14 @@ Jul: [
 	],
 Jun: [
 		[ formatDate("17-Jun-2025"),
-			"க.மி.விலை",			6.00,
+			"க.மி.க.கணக்கு",			6.00,
 			"இனிப்பு",			217.00,
 			"எரிபொருள்/BngPetrol",			200.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("10-Jun-2025"),
-			"க.மி.விலை",			100.00,
+			"க.மி.க.கணக்கு",			100.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2179,7 +2196,7 @@ Jun: [
 			"",				0.00
 		],
 		[ formatDate("15-Jun-2025"),
-			"ம.நே.வை",				1000.00,
+			"தொ.வை",				1000.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2189,7 +2206,7 @@ Jun: [
 May: [
 		[ formatDate("30-May-2025"),
 			"SchoolFees",			55000.00,
-			"க.மி.விலை",			0.00,
+			"க.மி.க.கணக்கு",			0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
@@ -2216,7 +2233,7 @@ May: [
 			"",				0.00
 		],
 		[ formatDate("15-May-2025"),
-			"ம.நே.வை",				1000.00,
+			"தொ.வை",				1000.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2239,8 +2256,8 @@ Apr: [
 			"",				0.00
 		],
 		[ formatDate("15-Apr-2025"),
-			"க.மி.விலை",			721.00,
-			"ம.நே.வை",				1000.00,
+			"க.மி.க.கணக்கு",			721.00,
+			"தொ.வை",				1000.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
@@ -2652,7 +2669,7 @@ Apr: [
 										const e = entries[i];
 										if( "None" === e.item )
 										{
-											rowHtml += `<TD class='right-align'></TD><TD class='right-align'></TD><TD class='right-align'></TD><TD class='right-align'></TD>`;
+											rowHtml += `<TD valign='top' align='right'></TD><TD valign='top' align='right'></TD><TD valign='top' align='right'></TD><TD valign='top' align='right'></TD>`;
 											++i;
 											continue;
 										}
@@ -2663,18 +2680,18 @@ Apr: [
 										const firstAmountStyle = i === 0 && isSnack ? "style='background:red;color:white;'" : "";
 										if( "வீட்டிலுருங்கள்" == `${e.item}` )
 										{
-											rowHtml += `<TD class='right-align' bgcolor='#00ff00' ${isSnack ? style : ""}>${e.item}</TD>
-														<TD class='right-align' bgcolor='#00ff00' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
+											rowHtml += `<TD valign='top' align='right' bgcolor='#00ff00' ${isSnack ? style : ""}>${e.item}</TD>
+														<TD valign='top' align='right' bgcolor='#00ff00' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
 										}
-										else if( "பொ.பா.தொ" == `${e.item}` || "NSC" == `${e.item}` || "ம.நே.வை" == `${e.item}` )
+										else if( "பொ.பா.தொ" == `${e.item}` || "NSC" == `${e.item}` || "தொ.வை" == `${e.item}` )
 										{
-											rowHtml += `<TD class='right-align' bgcolor='#00ff00' ${isSnack ? style : ""}>${e.item}</TD>
-														<TD class='right-align' bgcolor='#00ff00' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
+											rowHtml += `<TD valign='top' align='right' bgcolor='#00ff00' ${isSnack ? style : ""}>${e.item}</TD>
+														<TD valign='top' align='right' bgcolor='#00ff00' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
 										}
 										else
 										{
-											rowHtml += `<TD class='right-align' ${isSnack ? style : ""}>${e.item}</TD>
-														<TD class='right-align' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
+											rowHtml += `<TD valign='top' align='right' ${isSnack ? style : ""}>${e.item}</TD>
+														<TD valign='top' align='right' ${i === 0 && isSnack ? firstAmountStyle : ""}>${amtVal.toFixed(2)}</TD>`;
 										}
 										subTotal += amtVal;
 										if( isSnack )
@@ -2688,7 +2705,7 @@ Apr: [
 									}
 									else
 									{
-										rowHtml += "<TD class='right-align'></TD><TD class='right-align'></TD>";
+										rowHtml += "<TD valign='top' align='right'></TD><TD valign='top' align='right'></TD>";
 									}
 								}
 								const wastedStyle = wasted > 0 ? " style='background:red;color:white;'" : "";
@@ -2797,6 +2814,293 @@ Apr: [
 						});
 						initAndLoad();
 					</SCRIPT>
+				</TD>
+			</TR>
+		</TABLE>
+		<TABLE border='1' style='width:100%;'>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					பொ.பா.தொ<BR>
+					பொது பாதுகாப்புத் தொகை
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					PPF<BR>
+					Public provident fund
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					ம.உணவு<BR>
+					மதிய உணவு
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Lunch
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					இ.உணவு<BR>
+					இரவு உணவு
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Dinner
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					மூ.கா.தொ.ம<BR>
+					மூக்கு காது தொண்டை மருந்து
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					ENT medicine
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					மூ.கா.தொ.ஊ<BR>
+					மூ.கா.தொ ஊசி<BR>
+					மூக்கு காது தொண்டை ஊசி
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					ENT injection
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					பெ.பெ.போ<BR>
+					பெ.பெ.போ.க<BR>
+					பெங்களூரு பெருநகரப் போக்குவரத்துக் கழகம்
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					BMTC<BR>
+					Bangalore Metropolitan Transport Corporation
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					அப்பா ஜியோ
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Jio recharge for my father
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					எரிபொருள்
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Petrol/Diesel
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					சோ.கை.பெட்டி<BR>
+					சோப்பு கையாளும் பெட்டி
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Soap handling box
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					சிற்றுண்டி
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Snacks
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					பல் தூரிகை
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Tooth brush
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					வீட்டிலுருங்கள்
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Stay at home
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					இனிப்பு
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Sweet
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					பயணச்சீட்டு
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Travel ticket
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					குறிப்பேடு
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Notebook
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					காய்கறி
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Vegetable
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					தொ.வை<BR>
+					தொடர் வைப்புத்தொகை
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Recurring deposit
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					லிவ்-ஓ 
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Live-O<BR>
+					Indian product<BR>
+					for digestion.
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					தந்தையிடமிருந்து
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					From my faher
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					நகல்
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Copy<BR>
+					Xerox
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					வ.து.ச<BR>
+					வட்டகை துளை சரிசெய்தல்
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Repair tyre puncuture
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					பா.ச.நி.லி.இ<BR>
+					பா.ச.நி.லி.இணையம்<BR>
+					பாரத் சஞ்சார் நிகாம் லிமிடெட் இணையம்
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Bharat Sanchar Nigam Limited internet<BR>
+					BSNL INTERNET<BR>
+					BSNL FIBERNET
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					கு.ப<BR>
+					குறுந்திருப்பு.பழுது
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Short term reair
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					கேட்பரி.டைரி.மில்க்
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Cadbury.Dairy.Milk
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					க.மி.க.கணக்கு<BR>
+					கர்நாடக மின்சாரக் கட்டணக் கணக்கு					
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Bangalore Electricity Supply Company Limited ELECTRIC BILL<BR>
+					BESCOM ELECTRIC BILL
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					தேநீர்
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Tea
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					த.பயணச்சீட்டு<BR>
+					தர்மபுரி பயணச்சீட்டு
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					 Travel ticket to dharmapuri
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					மூ.கா.தொ வடிசாறு<BR>
+					காது, மூக்கு, தொண்டை வடிசாறு
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					ENT Soup<BR>
+					Eye nose throat soup
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					மா.ர.ப<BR>
+					மாதாந்திர ரயில் பயணச்சீட்டு
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Monthly train ticket
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					அ.சி<BR>
+					அம்மா சிற்றுண்டி
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Mummy's snacks
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					பா.ஸ்.வ.கா<BR>
+					பாரத ஸ்டேட் வங்கி காப்பீடு
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Insurance from State Bank of India
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					வாழை இலை
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Banana leaf
 				</TD>
 			</TR>
 		</TABLE>
