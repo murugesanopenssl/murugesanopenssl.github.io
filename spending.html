@@ -2492,7 +2492,9 @@ Apr: [
 						const message = document.getElementById('message');
 						const addBtn = document.getElementById('addBtn');
 						const saveDefaultBtn = document.getElementById('saveDefaultBtn');
-						dateInput.valueAsDate = istDate;
+						const nowIST = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+						// dateInput.valueAsDate = nowIST;
+						dateInput.value = new Date().toLocaleDateString("en-CA",{ timeZone:"Asia/Kolkata" });
 						function labelOf( mk )
 						{
 							return mk;
@@ -2793,7 +2795,9 @@ Apr: [
 							await renderForSelected(dataAll);
 							itemInput.value = "";
 							amountInput.value = "";
-							dateInput.valueAsDate = new Date();
+							const nowIST = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+							// dateInput.valueAsDate = nowIST;
+							dateInput.value = new Date().toLocaleDateString("en-CA",{ timeZone:"Asia/Kolkata" });
 							message.textContent = "Saved entry and updated table.";
 						}
 						addBtn.addEventListener('click', addEntry);
