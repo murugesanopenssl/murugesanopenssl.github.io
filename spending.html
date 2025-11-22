@@ -66,6 +66,9 @@
 					<TD style="text-align:right;vertical-align:top;">
 						<A href='displayMoneyHelpMenu.html'><FONT color='#556677'>Money Help</FONT></A>
 					</TD>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href='poems/index.html'><FONT color='#556677'>My tamil poems</FONT></A>
+					</TD>
 				</TR>
 			</TABLE>
 		</DIV>
@@ -132,7 +135,7 @@
 						&nbsp;1785.00 &#8377;
 					</TD>
 					<TD style="text-align:right;vertical-align:top;">
-						கா.உணவு/Break fast/Bfast/இ.உணவு/Dinner/ம.உணவு/Lunch/Soup/Milk/Tea
+						கா.உணவு/Break fast/Bfast/இ.உணவு/Dinner/ம.உணவு/Lunch/Soup/பால்/Milk/Tea
 					</TD>
 				</TR>
 				<TR style='backgroundcolor:red;'>
@@ -169,11 +172,11 @@
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
-							241570.00 &#8377; <!-- SAVEDAMT -->
+							15,64,570.00 &#8377; <!-- SAVEDAMT -->
 						</FONT>
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
-						Indian Government Savings and Investments (பொ.பா.தொ/PPF, மறு நேரடி வைப்பு/RD, NSC and POST-OFFICE-BALANCE)
+						Indian Government Savings and Investments (பொ.பா.தொ/PPF, மறு நேரடி வைப்பு/RD, NSC, MIS and POST-OFFICE-BALANCE)
 					</TD>
 				</TR>
 				<TR>
@@ -187,9 +190,11 @@
 						SAVEDAMT_Wed_19_Nov_2025=11165.00;
 						SAVEDAMT_Thu_20_Nov_2025=11690.00;
 						SAVEDAMT_Fri_21_Nov_2025_a=11877.00;
-						SAVEDAMT_Fri_21_Nov_2025_b=11796.70;
+						SAVEDAMT_Fri_21_Nov_2025_b="11796.70";
 						SAVEDAMT=SAVEDAMT_Fri_21_Nov_2025_b;
-						document.write( SAVEDAMT.toFixed(2)+" &#8377;");
+						DISP_SAVED_AMT=parseFloat(SAVEDAMT).toFixed(2);
+						DISP_SAVED_AMT = DISP_SAVED_AMT.replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
+						document.write( DISP_SAVED_AMT+" &#8377;");
 						</SCRIPT>
 						</FONT>
 					</TD>
@@ -198,14 +203,15 @@
 					</TD>
 				</TR>
 				<TR>
-					<TD style="text-align:right;vertical-align:top; background-color: #FF9933;">
-						Required to save for 10th FEES ON Sun 14-Dec-2025 IST
+					<TD style="text-align:left; vertical-align:top; background-color: #FF9933; white-space: nowrap;">
+						To save for 10th fees on Sun 14-Dec-2025
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
 						<SCRIPT type='text/javascript'>
 						RequiredAmt=55000.00 - SAVEDAMT;
-						document.write( RequiredAmt.toFixed(2)+" &#8377;");
+						// document.write( RequiredAmt.toFixed(2)+" &#8377;");
+						document.write(RequiredAmt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " &#8377;");
 						</SCRIPT>
 						</FONT>
 					</TD>
@@ -235,8 +241,13 @@
 
 							var RequiredAmt = 55000.00 - SAVEDAMT;
 							var SAVE_PER_DAY = RequiredAmt / daysLeft;
-
-							document.write(SAVE_PER_DAY.toFixed(2) + " &#8377;");
+							var formattedAmt = SAVE_PER_DAY.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+							if( 1 === formattedAmt.indexOf(',') )
+							{
+								formattedAmt = '0' + formattedAmt; // Add leading zero if necessary
+							}
+							// document.write(SAVE_PER_DAY.toFixed(2) + " &#8377;");
+							document.write(formattedAmt + " &#8377;");
 					</SCRIPT>
 					</TD>
 				</TR>
@@ -1450,7 +1461,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 			}			</SCRIPT>
 				<TR>
 					<TD valign='top' align='middle'>
-						<H1>Save Money by Preventing Unnecessary Expenses</H1>
+						<H1><FONT size='5'>தேவையற்ற செலவுகளைத் நாம் தடுப்பதன் மூலம் நமது பணத்தைச் சேமிக்க முடியும்.</FONT></H1>
 						<SCRIPT type='text/javascript'>
 							mmm=(""+istDate).substr( 4,3);
 							yyyy=(""+istDate).substr( 11,4);
@@ -1585,7 +1596,7 @@ Nov: [
 		],
 		[ formatDate("22-Nov-2025"),
 			"கா.உணவு",			210.00,
-			"த.பயணச்சீட்டு",		56.00,
+			"த.ப.சீட்டு",		56.00,
 			"பால்",				130.00,
 			"",					0.00,
 			"",					0.00,
@@ -1606,7 +1617,7 @@ Nov: [
 			"அப்பா ஜியோ",				3599.00,
 			"ம.உணவு",				100.00,
 			"எரிபொருள்",				200.00,
-			"சோ.கை.பெட்டி",				100.00,
+			"வ.கை.பெட்டி",				100.00,
 			"",					0.00,
 			"",					0.00
 		],
@@ -1656,7 +1667,7 @@ Nov: [
 		[ formatDate("14-Nov-2025"),
 			"MumBis",					30.00,
 			"லிவ்-ஓ ",					12.00,
-			"தந்தையிடமிருந்து",					-1000.00,
+			"த.கொடுத்தது",					-1000.00,
 			"",						0.00,
 			"",						0.00,
 			"",						0.00,
@@ -1674,9 +1685,9 @@ Nov: [
 		[ formatDate("12-Nov-2025"),
 			"லிவ்-ஓ ",				24.00,
 			"கு.ப",				30.00,
-			"கேட்பரி.டைரி.மில்க்",				98.00,
+			"கே.டைரி.மில்க்",				98.00,
 			"இ.உணவு",				50.00,
-			"க.மி.க.கணக்கு",				142.00,
+			"க.மி.க.க",				142.00,
 			"",					0.00,
 			"",					0.00
 		],
@@ -1717,7 +1728,7 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("07-Nov-2025"),
-			"த.பயணச்சீட்டு",			69.00,
+			"த.ப.சீட்டு",			69.00,
 			"02நகல்",		15.00,
 			"மூ.கா.தொ வடிசாறு",			20.00,
 			"மூ.கா.தொ.ஊ",		100.00,
@@ -1735,7 +1746,7 @@ Nov: [
 			"",				0.00
 		],
 		[ formatDate("05-Nov-2025"),
-			"BreadMilk",			200.00,
+			"வெதுப்பி  பால்",			200.00,
 			"பா.ஸ்.வ.கா",			1098.00,
 			"",				0.00,
 			"",				0.00,
@@ -1746,7 +1757,7 @@ Nov: [
 		[ formatDate("04-Nov-2025"),
 			"காய்கறி",				108.00,
 			"இனிப்பு",			176.00,
-			"BreadMilk",			200.00,
+			"வெதுப்பி  பால்",			200.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -1763,7 +1774,7 @@ Nov: [
 		],
 		[ formatDate("02-Nov-2025"),
 			"அரிசி",				700.00,
-			"வாழை இலை",			10.00,
+			"வா.இலை",			10.00,
 			"காய்கறி",				70.00,
 			"",				0.00,
 			"",				0.00,
@@ -1841,7 +1852,7 @@ Oct: [
 			"MSPuri",			40.00,
 			"இ.உணவு",			40.00,
 			"BathBrush",			96.00,
-			"Milk",				80.00,
+			"பால்",				80.00,
 			"VaalaIlai",			330.00
 		],
 /*
@@ -1852,7 +1863,7 @@ mango leaf 50.00
 samandhi poo 40.00
 malli poo 60.00
 oil 80.00
-வாழை இலை 20.00
+வா.இலை/வாழை.இலை 20.00
 */
 		[ formatDate("20-Oct-2025"),
 			"Tea",				10.00,
@@ -1900,7 +1911,7 @@ oil 80.00
 			"",				0.00
 		],
 		[ formatDate("15-Oct-2025"),
-			"க.மி.க.கணக்கு",			174.00,
+			"க.மி.க.க",			174.00,
 			"3Roses",			345.00,
 			"DressRope",			120.00,
 			"Tea",				10.00,
@@ -1965,7 +1976,7 @@ oil 80.00
 		[ formatDate("08-Oct-2025"),
 			"சிற்றுண்டி",			80.00,
 			"இனிப்பு",			216.00,
-			"Milk",				0.00,
+			"பால்",				0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -1974,7 +1985,7 @@ oil 80.00
 		[ formatDate("07-Oct-2025"),
 			"கா.உணவு",			0.00,
 			"பா.ச.நி.லிஇணையம்",			1101.00,
-			"Milk",				0.00,
+			"பால்",				0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -1983,7 +1994,7 @@ oil 80.00
 		[ formatDate("06-Oct-2025"),
 			"கா.உணவு",			60.00,
 			"சிற்றுண்டி",			20.00,
-			"Milk",				82.00,
+			"பால்",				82.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2109,7 +2120,7 @@ Sep: [
 			"",				0.00
 		],
 		[ formatDate("14-Sep-2025"),
-			"க.மி.க.கணக்கு",			256.00,
+			"க.மி.க.க",			256.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2144,7 +2155,7 @@ Aug: [
 			"",				0.00
 		],
 		[ formatDate("22-Aug-2025"),
-			"க.மி.க.கணக்கு",			226.00,
+			"க.மி.க.க",			226.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2160,7 +2171,7 @@ Aug: [
 	],
 Jul: [
 		[ formatDate("14-Jul-2025"),
-			"க.மி.க.கணக்கு",			316.00,
+			"க.மி.க.க",			316.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2176,14 +2187,14 @@ Jul: [
 	],
 Jun: [
 		[ formatDate("17-Jun-2025"),
-			"க.மி.க.கணக்கு",			6.00,
+			"க.மி.க.க",			6.00,
 			"இனிப்பு",			217.00,
-			"எரிபொருள்/BngPetrol",			200.00,
+			"பெ.எரிபொருள்",			200.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("10-Jun-2025"),
-			"க.மி.க.கணக்கு",			100.00,
+			"க.மி.க.க",			100.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2207,7 +2218,7 @@ Jun: [
 May: [
 		[ formatDate("30-May-2025"),
 			"SchoolFees",			55000.00,
-			"க.மி.க.கணக்கு",			0.00,
+			"க.மி.க.க",			0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
@@ -2257,7 +2268,7 @@ Apr: [
 			"",				0.00
 		],
 		[ formatDate("15-Apr-2025"),
-			"க.மி.க.கணக்கு",			721.00,
+			"க.மி.க.க",			721.00,
 			"தொ.வை",				1000.00,
 			"",				0.00,
 			"",				0.00,
@@ -2429,7 +2440,7 @@ Apr: [
 													searchFood.includes("livo")	||
 													searchFood.includes("liveo")	||
 													searchFood.includes("tea")	||
-													searchFood.includes("milk")
+													searchFood.includes("பால்")
 											)
 											{
 												if( ( undefined !== r[i+1] ) && !isNaN( parseFloat(r[i+1]) ) )
@@ -2508,7 +2519,7 @@ Apr: [
 							if( snap.exists() )
 							{
 								data = snap.val();
-								message.textContent = "Loaded data from Firebase.";
+								message.textContent = "தரவுத்தளத்திலிருந்து சேமிக்கப்பட்ட அனைத்து தரவும் பெறப்பட்டது.";
 							}
 							else
 							{
@@ -2578,42 +2589,42 @@ Apr: [
 										<THEAD>\
 											<TR>\
 												<TH valign='top' align='right'>\
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date\
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;தேதி\
 												</TH>\
 												<TH valign='top' align='right'>\
-													Item\
+													பொருள்\
 												</TH>\
 												<TH valign='top' align='right'>\
-													Amount\
+													தொகை\
 												</TH>\
 												<TH valign='top' align='right'>\
-													Item\
+													பொருள்\
 												</TH>\
 												<TH valign='top' align='right'>\
-													Amount\
+													தொகை\
 												</TH>\
 												<TH valign='top' align='right'>\
-													Item</TH>\
+													பொருள்</TH>\
 												<TH valign='top' align='right'>\
-													Amount\
+													தொகை\
 												</TH>\
 												<TH valign='top' align='right'>\
-													Item\
+													பொருள்\
 												</TH>\
 												<TH valign='top' align='right'>\
-													Amount\
+													தொகை\
 												</TH>\
 												<TH valign='top' align='right'>\
-													Item\
+													பொருள்\
 												</TH>\
 												<TH valign='top' align='right'>\
-													Amount\
+													தொகை\
 												</TH>\
 												<TH valign='top' align='right'>\
-													Item\
+													பொருள்\
 												</TH>\
 												<TH valign='top' align='right'>\
-													Amount\
+													தொகை\
 												</TH>\
 												<TH valign='top' align='right'>\
 													Subtotal\
@@ -2804,7 +2815,7 @@ Apr: [
 						addBtn.addEventListener('click', addEntry);
 						saveDefaultBtn.addEventListener('click', async ()=>{
 							await set(rootRef, baseData);
-							message.textContent = "Default array saved to DB.";
+							message.textContent = "இயல்புநிலை வரிசை தரவுத்தளத்தில் சேமிக்கப்பட்டது.";
 							const snap = await get(child(ref(db), '/spending'));
 							const dataAll = snap.exists() ? snap.val() : baseData;
 							populateMonthSelect(Object.keys(dataAll));
@@ -2891,6 +2902,30 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
+					பொருள்
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Material/Item
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					தொகை
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Amount
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					பெ.எரிபொருள்
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Bengaluru Petrol/Diesel
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
 					எரிபொருள்
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
@@ -2899,8 +2934,8 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
-					சோ.கை.பெட்டி<BR>
-					சோப்பு கையாளும் பெட்டி
+					வ.கை.பெட்டி<BR>
+					வழலை கையாளும் பெட்டி
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
 					Soap handling box
@@ -3030,7 +3065,8 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
-					கேட்பரி.டைரி.மில்க்
+					கே.டைரி.பால்/மில்க்<BR>
+					கேட்பரி.டைரி.பால்/மில்க்
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
 					Cadbury.Dairy.Milk
@@ -3056,6 +3092,7 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
+					த.ப.சீட்டு<BR>
 					த.பயணச்சீட்டு<BR>
 					தர்மபுரி பயணச்சீட்டு
 				</TD>
@@ -3102,10 +3139,52 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
-					வாழை இலை
+					வா.இலை/<BR>
+					வாழை.இலை
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
 					Banana leaf
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					தேதி
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Date
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					இயல்புநிலை வரிசை தரவுத்தளத்தில் சேமிக்கப்பட்டது.
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Default array saved to DB.
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					தரவுத்தளத்திலிருந்து சேமிக்கப்பட்ட அனைத்து தரவும் பெறப்பட்டது.
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					All stored data was retrieved from the database.
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					தேவையற்ற செலவுகளைத் நாம் தடுப்பதன் மூலம் நமது பணத்தைச் சேமிக்க முடியும்.
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					We can save our money by preventing unnecessary expenses.
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					த.கொடுத்தது<BR>
+					தந்தை.கொடுத்தது.
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					From father.
 				</TD>
 			</TR>
 		</TABLE>
