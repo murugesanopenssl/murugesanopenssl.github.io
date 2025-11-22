@@ -27,6 +27,15 @@
 					button.innerHTML = 'Show GOVT Resources';
 				}
 			}
+window.onload = function() {
+    // Set both menus to be visible when the page loads
+    document.getElementById('financialResourcesMenu01').style.display = 'block';
+    document.getElementById('financialResourcesMenu02').style.display = 'block';
+    
+    // Optionally, you can change button text if menus are already shown
+    document.getElementById('toggleButton01').innerHTML = 'Close Financial Service Menu';
+    document.getElementById('toggleButton02').innerHTML = 'Close GOVT RESOURCE Menu';
+  };
 		</SCRIPT>
 	</HEAD>
 	<BODY style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
@@ -92,22 +101,85 @@
 					<!-- Financial Resources Menu (Left Column) -->
 					<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
 						<DIV id="financialResourcesMenu01" style="display: none; background-color: #f8f8f8; padding: 10px; border-top: 2px solid #ccc; margin-top: 10px;">
-							<BUTTON onclick="toggleSubmenu01()" style="background-color: #f44336; color: white; border: none; padding: 8px 16px; cursor: pointer; font-size: 16px; margin-bottom: 10px;">Close Financial Resources Menu</BUTTON>
+							Financial Service Menu
 							<H3>Financial Resources</H3>
+						<SCRIPT type='text/javascript'>
+							if( -1 != window.location.href.indexOf( "misinterest") )
+							{
+								document.write( "<A href='post-office-mis.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='orange'><B><U>Post Office MIS</B></U></A>");
+							}
+							else
+							{
+								document.write( "<A href='post-office-mis.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'>Post Office MIS</A>");
+							}
+						</SCRIPT>
+						<NOSCRIPT>
 							<A href="post-office-mis.html" style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">Post Office MIS</A>
+						</NOSCRIPT>
+						<SCRIPT type='text/javascript'>
+							if( -1 != window.location.href.indexOf( "nsc") )
+							{
+								document.write( "<A href='post-office-nsc.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='orange'><B><U>Post Office NSC</B></U></A>");
+							}
+							else
+							{
+								document.write( "<A href='post-office-nsc.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'>Post Office NSC</A>");
+							}
+						</SCRIPT>
+						<NOSCRIPT>
 							<A href="post-office-nsc.html" style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">Post Office NSC</A>
-							<A style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">SBI Fixed Deposit</A>
+						</NOSCRIPT>
+						<SCRIPT type='text/javascript'>
+							if( -1 != window.location.href.indexOf( "bgas") )
+							{
+								document.write( "<A href='Bharath_gas_booking_steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='orange'><B><U>Steps to book bharath gas online</B></U></FONT></A>");
+							}
+							else
+							{
+								document.write( "<A href='Bharath_gas_booking_steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'>Steps to book bharath gas online</A>");
+							}
+						</SCRIPT>
+						<NOSCRIPT>
+							<A href='Bharath_gas_booking_steps.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">Steps to book bharath gas online</A>
+						</NOSCRIPT>
+						<SCRIPT type='text/javascript'>
+							if( -1 != window.location.href.indexOf( "sbietdr") )
+							{
+								document.write( "<A href='SBI_ETDR_INTEREST.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='orange'><B><U>SBI Fixed Deposit</B></U></FONT></A>");
+							}
+							else
+							{
+								document.write( "<A href='SBI_ETDR_INTEREST.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'>SBI Fixed Deposit</A>");
+							}
+						</SCRIPT>
+						<NOSCRIPT>
+							<A href='SBI_ETDR_INTEREST.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">SBI Fixed Deposit</A>
+						</NOSCRIPT>
 						</DIV>
 					</TD>
 
 					<!-- GOVT Resources Menu (Right Column) -->
 					<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
 						<DIV id="financialResourcesMenu02" style="display: none; background-color: #f8f8f8; padding: 10px; border-top: 2px solid #ccc; margin-top: 10px;">
-							<BUTTON onclick="toggleSubmenu02()" style="background-color: #f44336; color: white; border: none; padding: 8px 16px; cursor: pointer; font-size: 16px; margin-bottom: 10px;">Close GOVT RESOURCE Menu</BUTTON>
+							GOVT RESOURCE Menu
 							<H3>GOVT Resources</H3>
+						<SCRIPT type='text/javascript'>
+							if( -1 != window.location.href.indexOf( "gdp") )
+							{
+								document.write( "<A href='earth_politics_or_general_age.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='orange'><B><U>India GDP</B></U></A>");
+							}
+							else
+							{
+								document.write( "<A href='earth_politics_or_general_age.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'>India GDP</A>");
+							}
+						</SCRIPT>
+						<NOSCRIPT>
 							<A href='earth_politics_or_general_age.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">India GDP</A>
+						</NOSCRIPT>
+							<!--
 							<A style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">GOVT Plan 2</A>
 							<A style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">GOVT Plan 3</A>
+							-->
 						</DIV>
 					</TD>
 				</TR>
