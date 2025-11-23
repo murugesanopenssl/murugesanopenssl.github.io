@@ -63,10 +63,10 @@
 						<A href='Visitor_count.html'>Visitor count</FONT></A>
 					</TD>
 					<TD valign='top' align='middle'>
-						<A href='tamil-calendar.html'><FONT color='#556677'>Tamil/Gregorian calendar</FONT></A>
+						<A href='tamil-calendar.html'><FONT color='#556677'>தமிழ்/Gregorian calendar</FONT></A>
 					</TD>
 					<TD style="text-align:middle;vertical-align:top;" bgcolor='orange'>
-						<A href='displayMoneyHelpMenu.html'><FONT color='white'>Money Help</FONT></A>
+						<A href='displayMoneyHelpMenu.html#gdp'><FONT color='white'>Money Help</FONT></A>
 					</TD>
 				</TR>
 			</TABLE>
@@ -948,6 +948,7 @@ let EachCountryEconomy = [
 	[                           "Tuvalu",         "000.000058",          "Oceania" ],
 ];
 let INR_DATA = [
+	[ "22-Nov-2025", "01", "89.641000" ],
 	[ "21-Nov-2025", "01", "88.692000" ],
 	[ "20-Nov-2025", "01", "88.487500" ],
 	[ "19-Nov-2025", "01", "88.557000" ],
@@ -1080,6 +1081,28 @@ let INR_DATA = [
 	{
 		switch( INR_DATA[i][0] )
 		{
+			case "21-Nov-2025":
+			case "13-Oct-2025":
+			case "27-Jul-2025":
+			case "05-May-2025":
+			case "21-Apr-2025":
+			case "01-Apr-2025":
+			case "31-Mar-2025":
+			case "03-Mar-2025":
+			case "24-Feb-2025":
+			case "20-Feb-2025":
+			case "31-Jan-2025":
+			case "01-Jan-2024":
+			case "01-Jan-2020":
+			case "01-Oct-2025":
+			case "30-Sep-2025":
+			case "31-Aug-2025":
+			case "03-Aug-2025":
+			case "19-May-2025":
+			case "01-Jan-2018":
+			case "01-Jan-2017":
+			case "01-Jan-2016":
+			case "01-Jan-2015":
 			case "20-Nov-2025":
 			case "19-Nov-2025":
 			case "09-Nov-2025":
@@ -1102,7 +1125,6 @@ let INR_DATA = [
 			case "19-Oct-2025":
 			case "18-Oct-2025":
 			case "01-Jan-2014":
-			case "31-Dec-2014":
 			case "17-Oct-2025":
 			case "16-Oct-2025":
 			case "01-Sep-2025":

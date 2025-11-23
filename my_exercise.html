@@ -1,61 +1,74 @@
+<!DOCTYPE html>
 <HTML lang="en">
 	<HEAD>
 		<META CHARSET="UTF-8">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<LINK href="MyMenu002.css" rel="stylesheet">
-		<META name="description" content="I resolved the issue of daily data insertion and am helping people free of cost using ChatGPT. I am one of the 1-2% of people on Earth who share solutions and contribute to collective learning.">
-		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<TITLE>Reduce body weight</TITLE>
-		<!--
-		<LINK rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		-->
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 		<DIV style="width:100%;display:block;margin:0;padding:0;">
-			<TABLE style="width:100%; margin:0; padding:0;">
+			<TABLE border='0' style="width:100%; margin:0; padding:0;">
+		<!-- Menu Bar -->
 			<SCRIPT type='text/javascript'>
-            document.querySelector('TABLE').appendChild(tableBody);
-				if( window.location.href.includes('save_money_and_lives.html') )
+				const now = new Date();
+				const istDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+				if( window.location.href.includes('index.html') )
 				{
-						document.write("<TR><TD valign='top' align='left'><A class='link-style' href='index.html' id='Homehref' valign='top' align='middle' style='color:blue'>Home</A></TD>");
+					document.write("<TR><TD onclick='toggleTable(event);' style='background-color:orange;text-align:middle;vertical-align:top;'><A id='Homehref' style='color:blue'>Home</A></TD>");
 				}
 				else
 				{
-						document.write("<TR><TD valign='top' align='left'><A class='link-style' href='index.html' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/save_money_and_lives.html' valign='top' align='middle' id='Homehref' style='color:blue'>Home</A></TD>");
+					document.write("<TR><TD style='text-align:middle;vertical-align:top;'><A class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' id='Homehref' style='color:blue'>Home</A></TD>");
 				}
-		function showHomeTable()
-		{
-			const homeTable = document.getElementById('HomeTable');
-			const preventWastage = document.getElementById('PreventWastage');
-			const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-			preventWastage.style.display = 'none';
-			categoryAmount.style.display = 'none';
-			homeTable.style.display = 'table';
-		}
-		</SCRIPT>
-			<TD valign='top' align='middle'><A href='spending.html' class='link-style' id='PreventWastagehref' style='color:blue'>PreventWastage</A></TD>
-			<TD valign='top' align='middle'><A href="save_money_and_lives.html">Save lives and money</A></TD>
-			<TD valign='top' align='middle' bgcolor='white'><A href='ShareKnowledgeTransferToPeople.html'><FONT color='black'><U>ShareKnowledgeTransferToPeople</FONT></U></A></TD>
-			<TD valign='top' align='middle' bgcolor='orange'><A>MyExercise</A></TD>
-			<TD style="text-align:middle;vertical-align:top;background-color:white;">
-				<SCRIPT type='text/javascript'>
-					if( -1 != window.location.href.indexOf("remove-blockages-kitchen-pvc-outflow-pipe.html") )
-					{
-						document.write("<A>Unclog Kitchen Drain</A>");
-					}
-					else
-					{
-						document.write("<A href='remove-blockages-kitchen-pvc-outflow-pipe.html'>Unclog Kitchen Drain</A>");
-					}
-				</SCRIPT>
-			</TD>
-			<TD valign='top' align='middle'><A href='Visitor_count.html'>Visitor count</FONT></A></TD>
-			<TD valign='top' align='middle'><A href='tamil-calendar.html'><FONT color='#556677'>Tamil/Gregorian calendar</FONT></A></TD>
-			<TD valign='top' align='middle'>
-				<A href='displayMoneyHelpMenu.html'><FONT color='#556677'>Money Help</FONT></A>
-			</TD>
-		</TR>
-    </DIV>
+				function showHomeTable()
+				{
+					const homeTable = document.getElementById('HomeTable');
+					const preventWastage = document.getElementById('PreventWastage');
+					const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+					preventWastage.style.display = 'none';
+					categoryAmount.style.display = 'none';
+					homeTable.style.display = 'table';
+				}
+			</SCRIPT>
+					<TD style='background-color:white;text-align:middle;vertical-align:top;'>
+						<A href='spending.html' onclick="toggleTable(event)" class="link-style" id="PreventWastagehref">PreventWastage</A>
+					</TD>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href="save_money_and_lives.html">Save lives and money</A>
+					</TD>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
+					</TD>
+					<TD style="background-color:orange;text-align:middle;vertical-align:top;">
+						<A>MyExercise</A>
+					</TD>
+					<TD style="text-align:middle;vertical-align:top;background-color:white;">
+						<SCRIPT type='text/javascript'>
+							if( -1 != window.location.href.indexOf("remove-blockages-kitchen-pvc-outflow-pipe.html") )
+							{
+								document.write("<A>Unclog Kitchen Drain</A>");
+							}
+							else
+							{
+								document.write("<A href='remove-blockages-kitchen-pvc-outflow-pipe.html'>Unclog Kitchen Drain</A>");
+							}
+						</SCRIPT>
+					</TD>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href='Visitor_count.html'>Visitor count</FONT></A>
+					</TD>
+					<TD valign='top' align='middle'>
+						<A href='tamil-calendar.html'><FONT color='#556677'>தமிழ்/Gregorian calendar</FONT></A>
+					</TD>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href='displayMoneyHelpMenu.html'><FONT color='#556677'>Money Help</FONT></A>
+					</TD>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href='poems/index.html'><FONT color='#556677'>My tamil poems</FONT></A>
+					</TD>
+				</TR>
+			</TABLE>
 	<SCRIPT type='text/javascript'>
 			function toggleTable()
 			{
@@ -101,6 +114,26 @@ b) bath brush at foot). "
 -->
 	<SCRIPT type='text/javascript'>
 		const exerciseData = [
+			{
+				date: "Sun 23-Nov-2025",
+				startTime: "08:36 AM",
+				endTime: "08:57 AM",
+				walkingTime: "21 minutes",
+				standingCrossBody: "Not yet",
+				lowerHips: "No",
+				disadvantages: "",
+				helpAtPain: ""
+			},
+			{
+				date: "Sat 22-Nov-2025",
+				startTime: "07:18 AM",
+				endTime: "07:50 AM",
+				walkingTime: "32 minutes",
+				standingCrossBody: "30 times touching both foot",
+				lowerHips: "No",
+				disadvantages: "",
+				helpAtPain: ""
+			},
 			{
 				date: "Fri 21-Nov-2025",
 				startTime: "07:29 AM",
@@ -225,15 +258,9 @@ b) bath brush at foot). "
 				}
 				if( entry.disadvantages )
 				{
-					if( undefined != typeof `${entry.disadvantages}` )
-					{
-						if( "Stopped doing exercise for 6 days." == `${entry.disadvantages}` )
-						{
 							tableHTML += entry.disadvantages && entry.disadvantages !== undefined 
 							? `<TD align="left" valign="top">${entry.disadvantages}</TD>`
 							: "<TD></TD>"; // If undefined or empty, leave empty cell
-						}
-					}
 				}
 				else
 				{
@@ -262,6 +289,9 @@ b) bath brush at foot). "
 		}
 		generateExerciseTable();
 	</SCRIPT>
+	<BR>
+	<BR>
+	ORIGINAL TABLE(RESOLVING IN PROGRESS)
 						<TABLE border='1' style='width:100%;'>
 							<TR>
 								<TD valign='top' align='left'>
