@@ -116,6 +116,16 @@ b) bath brush at foot). "
 		const exerciseData = [
 			{
 				date: "Mon 24-Nov-2025",
+				startTime: "03:34:00",
+				endTime: "03:40:07",
+				walkingTime: "06:07",
+				standingCrossBody: "No",
+				lowerHips: "No",
+				disadvantages: "Medicine for backside head pain 830.00.",
+				helpAtPain: ""
+			},
+			{
+				date: "Mon 24-Nov-2025",
 				startTime: "No",
 				endTime: "",
 				walkingTime: "",
@@ -246,7 +256,7 @@ b) bath brush at foot). "
 			exerciseData.forEach(entry => {
 				tableHTML += "<TR>";
 				tableHTML += `<TD align="left" valign="top">${entry.date}</TD>`;
-				if( "Mon 24-Nov-2025" == `${entry.date}` )
+				if( ( "Mon 24-Nov-2025" == `${entry.date}` ) && ( "Right leg foot 1.5% pain.<BR>Stopped my exercise<BR>due to backside head pain near left year." == entry.disadvantages ) )
 				{
 					tableHTML += entry.disadvantages && entry.disadvantages !== undefined 
 								? `<TD bgcolor='#00ff00' colspan='6' align="right" valign="top">${entry.disadvantages}</TD>`

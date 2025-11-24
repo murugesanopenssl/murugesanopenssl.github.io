@@ -173,7 +173,7 @@
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
-							15,64,719.00 &#8377; <!-- SAVEDAMT -->
+							15,64,797.00 &#8377; <!-- SAVEDAMT -->
 						</FONT>
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
@@ -193,7 +193,9 @@
 						SAVEDAMT_Fri_21_Nov_2025_a=11877.00;
 						SAVEDAMT_Fri_21_Nov_2025_b="11796.70";
 						SAVEDAMT_Fri_23_Nov_2025_a="12002.70";
-						SAVEDAMT=SAVEDAMT_Fri_23_Nov_2025_a;
+						SAVEDAMT_Mon_24_Nov_2025_a="12049.70";
+						SAVEDAMT_Mon_24_Nov_2025_b="12127.70";
+						SAVEDAMT=SAVEDAMT_Mon_24_Nov_2025_b;
 						DISP_SAVED_AMT=parseFloat(SAVEDAMT).toFixed(2);
 						DISP_SAVED_AMT = DISP_SAVED_AMT.replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
 						document.write( DISP_SAVED_AMT+" &#8377;");
@@ -266,7 +268,8 @@
 		-->
 			<NOSCRIPT>
 			<TABLE border='1'>
-			<TR> <TD valign='top' align='middle' bgcolor=cyan>
+			<TR>
+			<TD valign='top' align='middle' bgcolor=cyan>
 			<A href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' class="link-style" id='Homehref' style='color:blue'>Home</A>
 			<TD valign='top' align='right'>
 			<A>MoneyHelp01</A>
@@ -1609,13 +1612,13 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("24-Nov-2025"),
-			"தலைவலி",				830.00,
-			"ம.உணவு",				100.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00
+			"தலைவலி.ம",			830.00,
+			"ம.உணவு",			100.00,
+			"அ.சி",				60.00,
+			"மூ.கா.தொ.வ",	20.00,
+			"லிவ்-ஓ",			12.00,
+			"குளம்பி",			15.00,
+			"",				0.00
 		],
 		[ formatDate("23-Nov-2025"),
 			"மூ.கா.தொ.ம",				337.00,
@@ -1763,7 +1766,7 @@ Nov: [
 		[ formatDate("07-Nov-2025"),
 			"த.ப.சீட்டு",			69.00,
 			"02நகல்",		15.00,
-			"மூ.கா.தொ வடிசாறு",			20.00,
+			"மூ.கா.தொ.வ",			20.00,
 			"மூ.கா.தொ.ஊ",		100.00,
 			"",					0.00,
 			"",					0.00,
@@ -1828,7 +1831,7 @@ Oct: [
 		[ formatDate("31-Oct-2025"),
 			"சிற்றுண்டி",			18.00,
 			"இ.உணவு",			45.00,
-			"மூ.கா.தொ வடிசாறு",			40.00,
+			"மூ.கா.தொ.வ",			40.00,
 			"FeviQuick",			10.00,
 			"",				0.00,
 			"",				0.00,
@@ -1900,7 +1903,7 @@ oil 80.00
 */
 		[ formatDate("20-Oct-2025"),
 			"Tea",				10.00,
-			"மூ.கா.தொ வடிசாறு",			20.00,
+			"மூ.கா.தொ.வ",			20.00,
 			"மூ.கா.தொ Med",			404.00,
 			"",				0.00,
 			"",				0.00,
@@ -1910,7 +1913,7 @@ oil 80.00
 		[ formatDate("19-Oct-2025"),
 			"Auto",				20.00,
 			"Kool",				20.00,
-			"மூ.கா.தொ வடிசாறு",			20.00,
+			"மூ.கா.தொ.வ",			20.00,
 			"NSC",				1000.00,
 			"",				0.00,
 			"",				0.00,
@@ -1983,7 +1986,7 @@ oil 80.00
 			"BngToTn",			13.00,
 			"HosToDpi",			56.00,
 			"எரிபொருள்/DpiPetrol",			200.00,
-			"மூ.கா.தொ வடிசாறு",			20.00,
+			"மூ.கா.தொ.வ",			20.00,
 			"மூ.கா.தொ.ஊ",			610.00,
 			"GodTip",			10.00,
 			"இ.உணவு",			40.00
@@ -3330,10 +3333,10 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
-					தலைவலி
+					தலைவலி மருந்து
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
-					HeadAche
+					HeadAche Medicine
 				</TD>
 			</TR>
 			<TR>
@@ -3342,6 +3345,14 @@ Apr: [
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
 					Total amount spent including wasted amount
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					குளம்பி
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Coffee
 				</TD>
 			</TR>
 			<TR>
