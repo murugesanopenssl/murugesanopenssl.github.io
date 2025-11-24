@@ -101,9 +101,9 @@
 						Insert following data to exercise table.
 const baseRaw = {
 Dec: [
-		[ "14-Nov-2025",		// Display ddd dd-Mmm-yyyy format
-			"03:21 PM",		// exercise Start time
-			"04:06 PM",		// exercise end time
+		[ "14-Nov-2025",
+			"03:21 PM",
+			"04:06 PM",
 			"Right leg foot pain 10%<BR>No foot or thigh pain on next day morning.",
 			"Taken bath:<BR>
 a) water<BR>
@@ -115,14 +115,24 @@ b) bath brush at foot). "
 	<SCRIPT type='text/javascript'>
 		const exerciseData = [
 			{
+				date: "Mon 24-Nov-2025",
+				startTime: "No",
+				endTime: "",
+				walkingTime: "",
+				standingCrossBody: "",
+				lowerHips: "",
+				disadvantages: "Right leg foot 1.5% pain.<BR>Stopped my exercise<BR>due to backside head pain near left year.",
+				helpAtPain: "From Tue 24-Nov-2025, for four days,<BR>I stopped washing my hair during bath due to head pain."
+			},
+			{
 				date: "Sun 23-Nov-2025",
 				startTime: "08:36 AM",
 				endTime: "08:57 AM",
 				walkingTime: "21 minutes",
 				standingCrossBody: "No",
 				lowerHips: "No",
-				disadvantages: "<FONT color='red'>Right leg foot pain.</FONT>",
-				helpAtPain: "Applied Iodex before the sleep."
+				disadvantages: "<FONT color='red'>Right leg foot 2% pain.<BR>3% pain at the back side of my head<BR>near left ear<BR></FONT>",
+				helpAtPain: "Applied myself Iodex at right foot,<BR>before the sleep."
 			},
 			{
 				date: "Sat 22-Nov-2025",
@@ -131,8 +141,8 @@ b) bath brush at foot). "
 				walkingTime: "32 minutes",
 				standingCrossBody: "30 times touching both foot",
 				lowerHips: "No",
-				disadvantages: "",
-				helpAtPain: ""
+				disadvantages: "No",
+				helpAtPain: "no pain at body."
 			},
 			{
 				date: "Fri 21-Nov-2025",
@@ -141,8 +151,8 @@ b) bath brush at foot). "
 				walkingTime: "30 minutes",
 				standingCrossBody: "No",
 				lowerHips: "No",
-				disadvantages: "",
-				helpAtPain: ""
+				disadvantages: "No",
+				helpAtPain: "no pain at body."
 			},
 			{
 				date: "Fri 21-Nov-2025",
@@ -151,8 +161,8 @@ b) bath brush at foot). "
 				walkingTime: "32 minutes",
 				standingCrossBody: "No",
 				lowerHips: "No",
-				disadvantages: "",
-				helpAtPain: ""
+				disadvantages: "No",
+				helpAtPain: "no pain at body."
 			},
 			{
 				date: "Thu 20-Nov-2025",
@@ -161,7 +171,7 @@ b) bath brush at foot). "
 				walkingTime: "24 minutes",
 				standingCrossBody: "No",
 				lowerHips: "No",
-				disadvantages: "",
+				disadvantages: "No",
 				helpAtPain: "no pain at body."
 			},
 			{
@@ -224,9 +234,9 @@ b) bath brush at foot). "
 		{
 			let tableHTML = `<TABLE border="1" width="100%" cellpadding="5" cellspacing="0">
 			<TR>
-			<TD align="left" valign="top"><B>Exercise date</B></TD>
-			<TD align="left" valign="top"><B>Start time</B></TD>
-			<TD align="left" valign="top"><B>End time</B></TD>
+			<TD align="left" valign="top" style='width:130px;'><B>Exercise date</B></TD>
+			<TD align="left" valign="top" style='width:74px;'><B>Start time</B></TD>
+			<TD align="left" valign="top" style='width:74px;'><B>End time</B></TD>
 			<TD align="left" valign="top"><B>Walking time</B></TD>
 			<TD align="left" valign="top"><B>Standing Cross-Body Touch</B></TD>
 			<TD align="left" valign="top"><B>Lower your hips to try to touch the bottom of your foot</B></TD>
@@ -236,43 +246,98 @@ b) bath brush at foot). "
 			exerciseData.forEach(entry => {
 				tableHTML += "<TR>";
 				tableHTML += `<TD align="left" valign="top">${entry.date}</TD>`;
-				if( "test"+`${entry.startTime}`+"test" != "testundefinedtest" && "" != `${entry.startTime}` )
+				if( "Mon 24-Nov-2025" == `${entry.date}` )
 				{
-					tableHTML += `<TD align="left" valign="top">${entry.startTime}</TD>`;
+					tableHTML += entry.disadvantages && entry.disadvantages !== undefined 
+								? `<TD bgcolor='#00ff00' colspan='6' align="right" valign="top">${entry.disadvantages}</TD>`
+								: "<TD></TD>";
+					if( entry.helpAtPain && "" != `${entry.helpAtPain}` )
+					{
+						tableHTML += `<TD align="left" valign="top" bgcolor="red" style="color:white;">${entry.helpAtPain}</TD>`;
+					}
+					else
+					{
+						tableHTML += "<TD></TD>";
+					}
 				}
-				if( "test"+`${entry.endTime}`+"test" != "testundefinedtest" )
+				else if(
+					"Tue 18-Nov-2025" == entry.date
+				)
 				{
-					tableHTML += `<TD align="left" valign="top">${entry.endTime}</TD>`;
+					tableHTML += entry.disadvantages && entry.disadvantages !== undefined 
+								? `<TD bgcolor='#00ff00' colspan='7' rowspan='6' align="right" valign="bottom">${entry.disadvantages}</TD>`
+								: "<TD></TD>";
 				}
-				if( "test"+`${entry.walkingTime}`+"test" != "testundefinedtest" )
+				else if(	"Mon 17-Nov-2025" == entry.date ||
+							"Sun 16-Nov-2025" == entry.date ||
+							"Sat 15-Nov-2025" == entry.date ||
+							"Fri 14-Nov-2025" == entry.date ||
+							"Thu 13-Nov-2025" == entry.date
+				)
 				{
-					tableHTML += `<TD align="left" valign="top">${entry.walkingTime}</TD>`;
-				}
-				if( "test"+`${entry.standingCrossBody}`+"test" != "testundefinedtest" )
-				{
-					tableHTML += `<TD align="left" valign="top">${entry.standingCrossBody}</TD>`;
-				}
-				if( "test"+`${entry.lowerHips}`+"test" != "testundefinedtest" )
-				{
-					tableHTML += `<TD align="left" valign="top">${entry.lowerHips}</TD>`;
-				}
-				if( entry.disadvantages )
-				{
-							tableHTML += entry.disadvantages && entry.disadvantages !== undefined 
-							? `<TD align="left" valign="top">${entry.disadvantages}</TD>`
-							: "<TD></TD>"; // If undefined or empty, leave empty cell
-				}
-				else
-				{
-					tableHTML += "<TD></TD>";
-				}
-				if( entry.helpAtPain && "" != `${entry.helpAtPain}` )
-				{
-					tableHTML += `<TD align="left" valign="top" bgcolor="red" style="color:white;">${entry.helpAtPain}</TD>`;
 				}
 				else
 				{
-					tableHTML += "<TD></TD>";
+					if( "test"+`${entry.startTime}`+"test" != "testundefinedtest" && "" != `${entry.startTime}` )
+					{
+						tableHTML += `<TD align="left" valign="top">${entry.startTime}</TD>`;
+					}
+					if( "test"+`${entry.endTime}`+"test" != "testundefinedtest" )
+					{
+						tableHTML += `<TD align="left" valign="top">${entry.endTime}</TD>`;
+					}
+					if( "test"+`${entry.walkingTime}`+"test" != "testundefinedtest" )
+					{
+						tableHTML += `<TD align="left" valign="top">${entry.walkingTime}</TD>`;
+					}
+					if( "test"+`${entry.standingCrossBody}`+"test" != "testundefinedtest" )
+					{
+						tableHTML += `<TD align="left" valign="top">${entry.standingCrossBody}</TD>`;
+					}
+					if( "test"+`${entry.lowerHips}`+"test" != "testundefinedtest" )
+					{
+						tableHTML += `<TD align="left" valign="top">${entry.lowerHips}</TD>`;
+					}
+					if( entry.disadvantages )
+					{
+						if( "Stopped doing exercise for 6 days." == entry.disadvantages )
+						{
+								tableHTML += entry.disadvantages && entry.disadvantages !== undefined 
+								? `<TD bgcolor='#00ff00' rowspan='6' colspan='3' align="right" valign="top">${entry.disadvantages}</TD>`
+								: "<TD></TD>";
+						}
+						else if( "Left and right thigh pain" == entry.disadvantages )
+						{
+								tableHTML += entry.disadvantages && entry.disadvantages !== undefined 
+								? `<TD align="left" style='background-color:red;color:white;' valign="top">${entry.disadvantages}</TD>`
+								: "<TD></TD>";
+						}
+						else
+						{
+								tableHTML += entry.disadvantages && entry.disadvantages !== undefined 
+								? `<TD align="left" valign="top">${entry.disadvantages}</TD>`
+								: "<TD></TD>";
+						}
+					}
+					else
+					{
+						tableHTML += "<TD></TD>";
+					}
+					if( entry.helpAtPain && "" != `${entry.helpAtPain}` )
+					{
+						if( "no pain at body." == entry.helpAtPain )
+						{
+							tableHTML += `<TD align="left" valign="top" bgcolor="white" style="color:black;">${entry.helpAtPain}</TD>`;
+						}
+						else
+						{
+							tableHTML += `<TD align="left" valign="top" bgcolor="red" style="color:white;">${entry.helpAtPain}</TD>`;
+						}
+					}
+					else
+					{
+						tableHTML += "<TD></TD>";
+					}
 				}
 				tableHTML += "</TR>";
 			});
@@ -289,194 +354,5 @@ b) bath brush at foot). "
 		}
 		generateExerciseTable();
 	</SCRIPT>
-	<BR>
-	<BR>
-	ORIGINAL TABLE(RESOLVING IN PROGRESS)
-						<TABLE border='1' style='width:100%;'>
-							<TR>
-								<TD valign='top' align='left'>
-									Exercise date
-								</TD>
-								<TD valign='top' align='left'>
-									Start time
-								</TD>
-								<TD valign='top' align='left'>
-									End time
-								</TD>
-								<TD valign='top' align='left'>
-									Walking time
-								</TD>
-								<TD valign='top' align='left'>
-									Standing Cross-Body Touch
-								</TD>
-								<TD valign='top' align='left'>
-									Lower your hips<BR>
-									to try to touch the bottom of your foot.
-								</TD>
-								<TD valign='top' align='left'>
-									Disadvantages(if any)
-								</TD>
-								<TD valign='top' align='left'>
-									Help at pain
-								</TD>
-							</TR>
-							<TR>
-								<TD valign='top' align='left'>
-									Fri 21-Nov-2025
-								</TD>
-								<TD valign='top' align='left'>
-									07:29 AM
-								</TD>
-								<TD valign='top' align='left'>
-									07:59 AM
-								</TD>
-								<TD valign='top' align='left'>
-									30 minutes
-								</TD>
-								<TD valign='top' align='left'>
-									No
-								</TD>
-								<TD valign='top' align='left'>
-									No
-								</TD>
-								<TD valign='top' align='right' colspan='2'>
-								</TD>
-							</TR>
-							<TR>
-								<TD valign='top' align='left'>
-									Thu 20-Nov-2025
-								</TD>
-								<TD valign='top' align='left'>
-									06:30 AM
-								</TD>
-								<TD valign='top' align='left'>
-									06:54 AM
-								</TD>
-								<TD valign='top' align='left'>
-									24 minutes
-								</TD>
-								<TD valign='top' align='left'>
-									No
-								</TD>
-								<TD valign='top' align='left'>
-									No
-								</TD>
-								<TD valign='top' align='right' colspan='2'>
-									no pain at body.
-								</TD>
-							</TR>
-							<TR>
-								<TD valign='top' align='left'>
-									Wed 19-Nov-2025
-								</TD>
-								<TD valign='top' align='left'>
-									03:21 PM
-								</TD>
-								<TD valign='top' align='left'>
-									04:06 PM
-								</TD>
-								<TD valign='top' align='left'>
-									35 minutes
-								</TD>
-								<TD valign='top' align='left'>
-									No
-								</TD>
-								<TD valign='top' align='left'>
-									No
-								</TD>
-								<TD valign='top' align='left' style='background:red;color:white;'>
-									Right leg foot pain 10%<BR>
-									No foot or thigh pain on next day morning.
-								</TD>
-								<TD valign='top' align='left' style='background:red;color:white;'>
-									Taken bath:<BR>
-									a) water<BR>
-									b) soap<BR>
-									b) bath brush at foot).
-								</TD>
-							</TR>
-							<TR>
-								<TD>
-									Tue 18-Nov-2025
-								</TD>
-								<TD valign='bottom' align='right' rowspan='6' colspan='7' bgcolor='#00ff00'>
-									Stopped doing exercise for 6 days.
-								</TD>
-							</TR>
-							<TR>
-								<TD>
-									Mon 17-Nov-2025
-								</TD>
-							</TR>
-							<TR>
-								<TD>
-									Sun 16-Nov-2025
-								</TD>
-							</TR>
-							<TR>
-								<TD>
-									Sat 15-Nov-2025
-								</TD>
-							</TR>
-							<TR>
-								<TD>
-									Fri 14-Nov-2025
-								</TD>
-							</TR>
-							<TR>
-								<TD>
-									Thu 13-Nov-2025
-								</TD>
-							</TR>
-							<TR>
-								<TD valign='top' align='left'>
-									Wed 12-Nov-2025
-								</TD>
-								<TD valign='top' align='left'>
-									06:30 AM
-								</TD>
-								<TD valign='top' align='left'>
-									06:42 AM
-								</TD>
-								<TD valign='top' align='left'>
-									10 minutes
-								</TD>
-								<TD valign='top' align='left'>
-									No
-								</TD>
-								<TD valign='top' align='left' style='background:red;color:white;'>
-									15 seconds
-								</TD>
-								<TD valign='top' align='left' style='background:red;color:white;'>
-									Left and right thigh pain
-								</TD>
-							</TR>
-							<TR>
-								<TD valign='top' align='left'>
-									Tue 11-Nov-2025
-								</TD>
-								<TD valign='top' align='left'>
-									06:00 AM
-								</TD>
-								<TD valign='top' align='left'>
-									06:42 AM
-								</TD>
-								<TD valign='top' align='left'>
-									06 minutes
-								</TD>
-								<TD valign='top' align='left' style='background:red;color:white;'>
-									03 minutes
-								</TD>
-								<TD valign='top' align='left' style='background:red;color:white;'>
-									03 minutes
-								</TD>
-								<TD valign='top' align='left' style='background:red;color:white;'>
-									Left and right thigh pain
-								</TD>
-							</TR>
-						</TABLE>
-				</TD>
-			</TR>
-		</TABLE>
 	</BODY>
 </HTML>
