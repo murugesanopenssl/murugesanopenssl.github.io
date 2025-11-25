@@ -2019,7 +2019,7 @@ oil 80.00
 		],
 		[ formatDate("07-Oct-2025"),
 			"கா.உணவு",			0.00,
-			"பா.ச.நி.லிஇணையம்",			1101.00,
+			"பா.ச.நி.லி.இ",			1101.00,
 			"ம.பால்",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2165,7 +2165,7 @@ Sep: [
 		],
 		[ formatDate("04-Sep-2025"),
 			"",				0.00,
-			"பா.ச.நி.லிஇணையம்",		1042.00,
+			"பா.ச.நி.லி.இ",		1042.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2197,7 +2197,7 @@ Aug: [
 			"",				0.00
 		],
 		[ formatDate("30-Aug-2025"),
-			"பா.ச.நி.லிஇணையம்",		1042.00,
+			"பா.ச.நி.லி.இ",		1042.00,
 			"பொ.பா.தொ",			500.00,
 			"",				0.00,
 			"",				0.00,
@@ -2333,7 +2333,7 @@ Apr: [
 								const rows = baseRaw[month];
 								for( const r of rows )
 								{
-									if( "பா.ச.நி.லிஇணையம்" == r[3] )
+									if( "பா.ச.நி.லி.இ" == r[3] )
 									{
 										total = total + r[4];
 										break;
@@ -2700,7 +2700,8 @@ Apr: [
 							let BSNLNetAmt = 0;
 							let today = new Date();
 							today.setHours(0, 0, 0, 0);
-							for( const d of Object.keys( dailyMap ) )
+							//for( const d of Object.keys( dailyMap ) )
+							for( const d of Object.keys( dailyMap ).sort((a,b)=> new Date(b)-new Date(a)) )
 							{
 								const entries = dailyMap[d];
 								let subTotal = 0;
@@ -3102,6 +3103,7 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
+					பா.ச.நி.லிஇ<BR>
 					பா.ச.நி.லி.இ<BR>
 					பா.ச.நி.லி.இணையம்<BR>
 					பாரத் சஞ்சார் நிகாம் லிமிடெட் இணையம்
