@@ -5,7 +5,7 @@
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<LINK href="MyMenu002.css" rel="stylesheet">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
-		<TITLE>Human-AI Financial Solutions</TITLE>
+		<TITLE>Save without wasting money</TITLE>
 		<!--
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		-->
@@ -173,7 +173,7 @@
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
-							15,64,797.00 &#8377; <!-- SAVEDAMT -->
+							15,64,839.00 &#8377; <!-- SAVEDAMT -->
 						</FONT>
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
@@ -195,7 +195,8 @@
 						SAVEDAMT_Fri_23_Nov_2025_a="12002.70";
 						SAVEDAMT_Mon_24_Nov_2025_a="12049.70";
 						SAVEDAMT_Mon_24_Nov_2025_b="12127.70";
-						SAVEDAMT=SAVEDAMT_Mon_24_Nov_2025_b;
+						SAVEDAMT_Tue_25_Nov_2025_a="12212.70";
+						SAVEDAMT=SAVEDAMT_Tue_25_Nov_2025_a;
 						DISP_SAVED_AMT=parseFloat(SAVEDAMT).toFixed(2);
 						DISP_SAVED_AMT = DISP_SAVED_AMT.replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
 						document.write( DISP_SAVED_AMT+" &#8377;");
@@ -726,7 +727,7 @@
 கூட்டநெரிசலின் மூலம் உண்டாகக்கூடிய ஆபத்துகளிலிருந்து என் குடும்பத்தினரைவும்<BR>
 என்னையும் பாதுகாத்துள்ளேன்.<BR>
 கூட்டங்களுக்கு செல்லாமல்,<BR>
-என் இருசக்கர வாகனத்தில் எரிபொருள் செலவிடாமல் பணம் சேமித்துள்ளேன்.<BR>
+என் இருசக்கர வாகனத்தில் எரி செலவிடாமல் பணம் சேமித்துள்ளேன்.<BR>
 மாசுபட்ட காற்றை சுவாசிப்பதைத் தவிர்த்து,<BR>
 உடல்நலத்தை பாதுகாத்துள்ளேன்.<BR>
 மேலே குறிப்பிட்ட காரணங்களால் மறைமுகமாகவே பணம் சேமிக்கப்பட்டுள்ளது.<BR>
@@ -1418,90 +1419,89 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 			};
 			function toggleTable(event)
 			{
-			    event = event || window.event;
-			    event.preventDefault();
-			    const clickedId = event.target.id;
-			    const homeLink = document.getElementById('Homehref');
-			    const preventLink = document.getElementById('PreventWastagehref');
-			    const homeTable = document.getElementById('HomeTable');
-			    const preventWastage = document.getElementById('PreventWastage');
-			    const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-
-			    if( 'Homehref' === clickedId )
-			    {
-				if( 'none' === homeTable.style.display || '' === homeTable.style.display )
+				event = event || window.event;
+				event.preventDefault();
+				const clickedId = event.target.id;
+				const homeLink = document.getElementById('Homehref');
+				const preventLink = document.getElementById('PreventWastagehref');
+				const homeTable = document.getElementById('HomeTable');
+				const preventWastage = document.getElementById('PreventWastage');
+				const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+				if( 'Homehref' === clickedId )
 				{
-				    homeTable.style.display = 'table';
-				    preventWastage.style.display = 'none';
-				    categoryAmount.style.display = 'none';
-				    homeLink.style.color = 'blue';
-				    preventLink.style.color = 'white';
+					if( 'none' === homeTable.style.display || '' === homeTable.style.display )
+					{
+						homeTable.style.display = 'table';
+						preventWastage.style.display = 'none';
+						categoryAmount.style.display = 'none';
+						homeLink.style.color = 'blue';
+						preventLink.style.color = 'white';
+					}
+					else
+					{
+						homeTable.style.display = 'none';
+						categoryAmount.style.display = 'table';
+						preventWastage.style.display = 'none';
+						homeLink.style.color = 'blue';
+					}
 				}
+				else if( 'PreventWastagehref' === clickedId )
+				{
+					if( 'none' === preventWastage.style.display || '' === preventWastage.style.display )
+					{
+						preventWastage.style.display = 'table';
+						preventLink.style.color = 'white';
+						categoryAmount.style.display = 'none';
+						homeTable.style.display = 'none';
+					}
 				else
 				{
-				    homeTable.style.display = 'none';
-				    categoryAmount.style.display = 'table';
-				    preventWastage.style.display = 'none';
-				    homeLink.style.color = 'blue';
+					preventWastage.style.setProperty('display', 'none', 'important');
+					categoryAmount.style.display = 'table';
+					homeTable.style.display = 'none';
+					preventLink.style.color = 'blue';
 				}
-			    }
-			    else if( 'PreventWastagehref' === clickedId )
-			    {
-				if( 'none' === preventWastage.style.display || '' === preventWastage.style.display )
-				{
-				    preventWastage.style.display = 'table';
-				    preventLink.style.color = 'white';
-				    categoryAmount.style.display = 'none';
-				    homeTable.style.display = 'none';
-				}
-				else
-				{
-				    preventWastage.style.setProperty('display', 'none', 'important');
-				    categoryAmount.style.display = 'table';
-				    homeTable.style.display = 'none';
-				    preventLink.style.color = 'blue';
-				}
-			    }
+			}
 			}			</SCRIPT>
 				<TR>
 					<TD valign='top' align='middle'>
 						<H1><FONT size='5'>தேவையற்ற செலவுகளைத் நாம் தடுப்பதன் மூலம் நமது பணத்தைச் சேமிக்க முடியும்.</FONT></H1>
 						<SCRIPT type='text/javascript'>
-							mmm=(""+istDate).substr( 4,3);
+							EngMmm=(""+istDate).substr( 4,3);
 							yyyy=(""+istDate).substr( 11,4);
-							switch(mmm)
+							switch(EngMmm)
 							{
 								case "Apr":
-									mmm="ஏப்ரல்";
+									TamMmm="ஏப்ரல்";
 									break;
 								case "May":
-									mmm="மே";
+									TamMmm="மே";
 									break;
 								case "Jun":
-									mmm="ஜூன்";
+									TamMmm="ஜூன்";
 									break;
 								case "Jul":
-									mmm="ஜூலை";
+									TamMmm="ஜூலை";
 									break;
 								case "Aug":
-									mmm="ஆகஸ்ட்";
+									TamMmm="ஆகஸ்ட்";
 									break;
 								case "Sep":
-									mmm="செப்டம்பர்";
+									TamMmm="செப்டம்பர்";
 									break;
 								case "Oct":
-									mmm="அக்டோபர்";
+									TamMmm="அக்டோபர்";
 									break;
 								case "Nov":
-									mmm="நவம்பர்";
+									TamMmm="நவம்பர்";
 									break;
 								case "Dec":
-									mmm="டிசம்பர்";
+									TamMmm="டிசம்பர்";
 									break;
 							}
-							mmm_yyyy=mmm+"-"+yyyy;
-							// document.write( "<P>Default view shows <STRONG>"+mmm_yyyy+" if available. Use Add Entry to add data.</P>");
-							document.write( "<P>இயல்பாக, இணையப் பக்கம் நடப்பு மாதமான "+mmm_yyyy+" ஐ காட்டும். புதிய பதிவைச் சேர்க்க 'பதிவு சேர்க்கவும்' என்ற சொடுக்கியைச் சொடுக்க வேண்டும்.</P>");
+							Mmm_yyyy=TamMmm+"-"+yyyy;
+							// document.write( "<P>Default view shows <STRONG>"+Mmm_yyyy+" if available. Use Add Entry to add data.</P>");
+							document.write( "<P>இயல்பாக, இணையப் பக்கம் நடப்பு மாதமான "+Mmm_yyyy+" ஐ காட்டும். புதிய பதிவைச் சேர்க்க 'பதிவு சேர்க்கவும்' என்ற சொடுக்கியைச் சொடுக்க வேண்டும்.</P>");
 						</SCRIPT>
 						<NOSCRIPT>
 							<P>Default view shows <STRONG>ThisMonth-ThisYear</STRONG> if available. Use Add Entry to add data.</P>
@@ -1603,12 +1603,12 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("25-Nov-2025"),
-			"None",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
+			"கா.உணவு",				25.00,
+			"ம.உணவு",				0.00,
+			"இ.உணவு",				0.00,
+			"ஒட்டுப்பசை",				10.00,
+			"வ.பெ",					144.00,
+			"சிற்றுண்டி",				76.00,
 			"",					0.00
 		],
 		[ formatDate("24-Nov-2025"),
@@ -1617,8 +1617,7 @@ Nov: [
 			"அ.சி",				60.00,
 			"மூ.கா.தொ.வ",	20.00,
 			"லிவ்-ஓ",			12.00,
-			"குளம்பி",			15.00,
-			"",				0.00
+			"குளம்பி",			15.00
 		],
 		[ formatDate("23-Nov-2025"),
 			"மூ.கா.தொ.ம",				337.00,
@@ -1652,7 +1651,7 @@ Nov: [
 			"கா.உணவு",				60.00,
 			"அப்பா ஜியோ",				3599.00,
 			"ம.உணவு",				100.00,
-			"எரிபொருள்",				200.00,
+			"எரி",				200.00,
 			"வ.கை.பெட்டி",				100.00,
 			"",					0.00,
 			"",					0.00
@@ -1686,7 +1685,7 @@ Nov: [
 		[ formatDate("16-Nov-2025"),
 			"நீர்.கலசம்.வி",			371.00,
 			"இனிப்பு",				130.00,
-			"எரிபொருள்",				230.00,
+			"எரி",				230.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1703,7 +1702,7 @@ Nov: [
 		[ formatDate("14-Nov-2025"),
 			"அ.மாச்சில்லு",					30.00,
 			"லிவ்-ஓ ",					12.00,
-			"த.கொடுத்தது",					-1000.00,
+			"த.கொ",					-1000.00,
 			"",						0.00,
 			"",						0.00,
 			"",						0.00,
@@ -1721,7 +1720,7 @@ Nov: [
 		[ formatDate("12-Nov-2025"),
 			"லிவ்-ஓ ",				24.00,
 			"கு.ப",				30.00,
-			"கே.டைரி.மில்க்",				98.00,
+			"கே.டை.மி",				98.00,
 			"இ.உணவு",				50.00,
 			"க.மி.க.க",				142.00,
 			"",					0.00,
@@ -1755,7 +1754,7 @@ Nov: [
 			"",				0.00
 		],
 		[ formatDate("08-Nov-2025"),
-			"எரிபொருள்",			200.00,
+			"எரி",			200.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1801,7 +1800,7 @@ Nov: [
 		],
 		[ formatDate("03-Nov-2025"),
 			"சிற்றுண்டி",			30.00,
-			"எரிபொருள்",			210.00,
+			"எரி",			210.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -1880,7 +1879,7 @@ Oct: [
 			"இ.உணவு",			40.00,
 			"feviquick",			-10.00,
 			"Lemon",			5.00,
-			"எரிபொருள்",			220.00
+			"எரி",			220.00
 		],
 		[ formatDate("21-Oct-2025"),
 			"பயணச்சீட்டு",			183.00,
@@ -1931,7 +1930,7 @@ oil 80.00
 		[ formatDate("17-Oct-2025"),
 			"Tea",				10.00,
 			"சிற்றுண்டி",			40.00,
-			"எரிபொருள்",			200.00,
+			"எரி",			200.00,
 			"இ.உணவு",			105.00,
 			"மூ.கா.தொ Vapour",			200.00,
 			"இ.உணவு",			355.00,
@@ -1985,7 +1984,7 @@ oil 80.00
 		[ formatDate("11-Oct-2025"),
 			"BngToTn",			13.00,
 			"HosToDpi",			56.00,
-			"எரிபொருள்/DpiPetrol",			200.00,
+			"எரி/DpiPetrol",			200.00,
 			"மூ.கா.தொ.வ",			20.00,
 			"மூ.கா.தொ.ஊ",			610.00,
 			"GodTip",			10.00,
@@ -2068,7 +2067,7 @@ oil 80.00
 			"இ.உணவு",			70.00,
 			"இ.உணவு",			0.00,
 			"சிற்றுண்டி",			806.00,
-			"எரிபொருள்/NMPetrol",			250.00,
+			"எரி/NMPetrol",			250.00,
 			"",				0.00,
 			"",				0.00
 		],
@@ -2077,7 +2076,7 @@ oil 80.00
 			"இ.உணவு",			70.00,
 			"இ.உணவு",			30.00,
 			"பயணச்சீட்டு",			98.00,
-			"எரிபொருள்/SLPetrol",			50.00,
+			"எரி/SLPetrol",			50.00,
 			"SLWhelRep",			20.00,
 			"காய்கறி",				100.00
 		]
@@ -2225,7 +2224,7 @@ Jun: [
 		[ formatDate("17-Jun-2025"),
 			"க.மி.க.க",			6.00,
 			"இனிப்பு",			217.00,
-			"பெ.எரிபொருள்",			200.00,
+			"பெ.எரி",			200.00,
 			"",				0.00,
 			"",				0.00
 		],
@@ -2267,14 +2266,14 @@ May: [
 			"",				0.00
 		],
 		[ formatDate("21-May-2025"),
-			"எரிபொருள்/DPIPetrol",			250.00,
+			"எரி/DPIPetrol",			250.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("17-May-2025"),
-			"எரிபொருள்/DPIPetrol",			200.00,
+			"எரி/DPIPetrol",			200.00,
 			"DpiBigMart",			600.00,
 			"",				0.00,
 			"",				0.00,
@@ -2355,9 +2354,9 @@ Apr: [
 							const allMonths = Object.keys(baseRaw);
 							const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
 							const dt = new Date(ist);
-							const mmm = dt.toString().substr(4,3);
+							const EngMmm = dt.toString().substr(4,3);
 							const yyyy = dt.getFullYear();
-							const lastMonthKey = mmm + "-" + yyyy;
+							const lastMonthKey = EngMmm + "-" + yyyy;
 							for( const month in baseRaw )
 							{
 								const rows = baseRaw[month];
@@ -2374,7 +2373,7 @@ Apr: [
 										if( findThismonth.includes(last_mmm_yyyy) )
 										{
 											const searchPetrol = ("" + r[i]).toLowerCase();
-											if( searchPetrol.includes("எரிபொருள்") )
+											if( searchPetrol.includes("எரி") )
 											{
 												if( undefined != typeof r[i] )
 												{
@@ -2397,9 +2396,9 @@ Apr: [
 							const allMonths = Object.keys(baseRaw);
 							const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
 							const dt = new Date(ist);
-							const mmm = dt.toString().substr(4,3);
+							const EngMmm = dt.toString().substr(4,3);
 							const yyyy = dt.getFullYear();
-							const lastMonthKey = mmm + "-" + yyyy;
+							const lastMonthKey = EngMmm + "-" + yyyy;
 							for( const month in baseRaw )
 							{
 								const rows = baseRaw[month];
@@ -2450,9 +2449,9 @@ Apr: [
 							const allMonths = Object.keys(baseRaw);
 							const ist = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
 							const dt = new Date(ist);
-							const mmm = dt.toString().substr(4,3);
+							const EngMmm = dt.toString().substr(4,3);
 							const yyyy = dt.getFullYear();
-							const lastMonthKey = mmm + "-" + yyyy;
+							const lastMonthKey = EngMmm + "-" + yyyy;
 							for( const month in baseRaw )
 							{
 								const rows = baseRaw[month];
@@ -2711,7 +2710,7 @@ Apr: [
 								{
 									continue;
 								}
-								let rowHtml = `<TR><TD valign='top' style='width:10px;' align='right'>${d}</TD>`;
+								let rowHtml = `<TR><TD valign='top' style='width:5px;' align='right'>${d}</TD>`;
 								for( let i=0; 6 > i; ++i )
 								{
 									if( entries[i] )
@@ -2759,15 +2758,23 @@ Apr: [
 									}
 								}
 								const wastedStyle = wasted > 0 ? " style='background:red;color:white;'" : "";
-								if(0.00 == `${subTotal.toFixed(2)}` )
+								if(0.00 == subTotal.toFixed(2) )
 								{
 									rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
 												<TD valign='top' align='right' ${wastedStyle} bgcolor='#00ff00'>${wasted.toFixed(2)}</TD></TR>`;
 								}
 								else
 								{
-									rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
-												<TD valign='top' align='right' ${wastedStyle}>${wasted.toFixed(2)}</TD></TR>`;
+									if( 0.00 == wasted.toFixed(2) )
+									{
+										rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
+													<TD valign='top' align='right' bgcolor='#00ff00' ${wastedStyle}>${wasted.toFixed(2)}</TD></TR>`;
+									}
+									else
+									{
+										rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
+													<TD valign='top' align='right' ${wastedStyle}>${wasted.toFixed(2)}</TD></TR>`;
+									}
 								}
 
 								html += rowHtml;
@@ -2933,7 +2940,7 @@ Apr: [
 					அப்பா ஜியோ
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
-					Jio recharge for my father
+					Mobile recharge for my father
 				</TD>
 			</TR>
 			<TR>
@@ -2954,6 +2961,7 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
+					பெ.எரி<BR>
 					பெ.எரிபொருள்
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
@@ -2962,10 +2970,20 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
-					எரிபொருள்
+					எரி
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
 					Petrol/Diesel
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					வ.பெ<BR>
+					வ.பெட்டி<BR>
+					வழலை பெட்டி
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Soap box
 				</TD>
 			</TR>
 			<TR>
@@ -3105,8 +3123,8 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
-					கே.டைரி.பால்/மில்க்<BR>
-					கேட்பரி.டைரி.பால்/மில்க்
+					கே.டை.மி<BR>
+					கேட்பரி.டைரி.பால்/மில்க்<BR>
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
 					Cadbury.Dairy.Milk
@@ -3137,7 +3155,7 @@ Apr: [
 					தர்மபுரி பயணச்சீட்டு
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
-					 Travel ticket to dharmapuri
+					Travel ticket to dharmapuri
 				</TD>
 			</TR>
 			<TR>
@@ -3280,6 +3298,7 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
+					த.கொ<BR>
 					த.கொடுத்தது<BR>
 					தந்தை.கொடுத்தது.
 				</TD>
@@ -3316,7 +3335,7 @@ Apr: [
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
 					<SCRIPT>
-						document.write( "இயல்பாக, இணையப் பக்கம் நடப்பு மாதமான "+mmm+"-"+yyyy+" ஐ காட்டும். புதிய பதிவைச் சேர்க்க 'பதிவு சேர்க்கவும்' என்ற சொடுக்கியைச் சொடுக்க வேண்டும்.");
+						document.write( "இயல்பாக, இணையப் பக்கம் நடப்பு மாதமான "+TamMmm+"-"+yyyy+" ஐ காட்டும். புதிய பதிவைச் சேர்க்க 'பதிவு சேர்க்கவும்' என்ற சொடுக்கியைச் சொடுக்க வேண்டும்.");
 					</SCRIPT>
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
@@ -3357,6 +3376,16 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
+					ஒட்டுப்பசை<BR>
+					ஃபெவிகால்
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Fevicol<BR>
+					Fevicol
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
 					வீணான தொகை உட்பட செலவழிக்கப்பட்ட மொத்த தொகை
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
@@ -3364,5 +3393,73 @@ Apr: [
 				</TD>
 			</TR>
 		</TABLE>
+		<SCRIPT type='text/javascript'>
+			document.write( "<TABLE border='1'>\
+			<TR>\
+				<TD>\
+					TVS 2 WHEELER SBI INSURANCE.\
+				</TD>\
+				<TD>\
+					1098.00\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD>\
+					Monthly train ticket\
+				</TD>\
+				<TD>\
+					1000.00\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD>\
+					BSNL FIBERNET\
+				</TD>\
+				<TD>\
+					1042.00\
+				</TD>\
+			</TR>\
+			<TR style='background-color:#00ff00;'>\
+				<TD>\
+					PPF\
+				</TD>\
+				<TD>\
+					700.00\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD>\
+					Recurring deposit\
+				</TD>\
+				<TD>\
+					1000.00\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD>\
+					Father mobile recharge\
+				</TD>\
+				<TD>\
+					3599.00\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD>\
+					Head ache medicine\
+				</TD>\
+				<TD>\
+					830.00\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD>\
+					LARGER AMT TOTAL:\
+				</TD>\
+				<TD>\
+					9269.00\
+				</TD>\
+			</TR>\
+			</TABLE>");
+		</SCRIPT>
 	</BODY>
 </HTML>
