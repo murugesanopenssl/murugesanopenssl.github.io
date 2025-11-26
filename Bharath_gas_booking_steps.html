@@ -1,61 +1,51 @@
 <!DOCTYPE html>
-<HTML LANG="en">
+<HTML lang="en">
 	<HEAD>
 		<META CHARSET="UTF-8">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<LINK href="MyMenu002.css" rel="stylesheet">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<TITLE>Pay cylinder gas using IPPB account</TITLE>
-		<SCRIPT type="text/javascript">
-			function toggleSubmenu01() {
-				var submenu = document.getElementById('financialResourcesMenu01');
-				var button = document.getElementById('toggleButton01');
-				if ('none' === submenu.style.display) {
-					submenu.style.display = 'block';
-					button.innerHTML = 'Close Financial Service Menu';
-				} else {
-					submenu.style.display = 'none';
-					button.innerHTML = 'Show Financial Resources';
-				}
-			}
-			function toggleSubmenu02() {
-				var submenu = document.getElementById('financialResourcesMenu02');
-				var button = document.getElementById('toggleButton02');
-				if ('none' === submenu.style.display) {
-					submenu.style.display = 'block';
-					button.innerHTML = 'Close GOVT RESOURCE Menu';
-				} else {
-					submenu.style.display = 'none';
-					button.innerHTML = 'Show GOVT Resources';
-				}
-			}
-window.onload = function() {
-    // Set both menus to be visible when the page loads
-    document.getElementById('financialResourcesMenu01').style.display = 'block';
-    document.getElementById('financialResourcesMenu02').style.display = 'block';
-    
-    // Optionally, you can change button text if menus are already shown
-    document.getElementById('toggleButton01').innerHTML = 'Close Financial Service Menu';
-    document.getElementById('toggleButton02').innerHTML = 'Close GOVT RESOURCE Menu';
-  };
-		</SCRIPT>
 	</HEAD>
-	<BODY style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
-		<TABLE style="width: 100%; border-collapse: collapse; background-color: #f0f0f0; border: 1px solid #ccc;">
-			<TBODY>
-				<TR>
-					<TD style="background-color: white; text-align: center; vertical-align: top;">
-						<A href="index.html" style="text-decoration: none; color: blue; padding: 5px 10px;">Home</A>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV style="width:100%;display:block;margin:0;padding:0;">
+			<TABLE border='1' style="width:100%; margin:0; padding:0;">
+		<!-- Menu Bar -->
+			<SCRIPT type='text/javascript'>
+				const now = new Date();
+				const istDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+				if( window.location.href.includes('index.html') )
+				{
+					document.write("<TR><TD onclick='toggleTable(event);' style='background-color:orange;text-align:middle;vertical-align:top;'><A id='Homehref' style='color:blue'>Home</A></TD>");
+				}
+				else
+				{
+					document.write("<TR><TD style='text-align:middle;vertical-align:top;'><A class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' id='Homehref' style='color:blue'>Home</A></TD>");
+				}
+				function showHomeTable()
+				{
+					const homeTable = document.getElementById('HomeTable');
+					const preventWastage = document.getElementById('PreventWastage');
+					const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+					preventWastage.style.display = 'none';
+					categoryAmount.style.display = 'none';
+					homeTable.style.display = 'table';
+				}
+			</SCRIPT>
+			<NOSCRIPT>
+					<TR><TD style='text-align:middle;vertical-align:top;'><A class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' id='Homehref' style='color:blue'>Home</A></TD>
+			</NOSCRIPT>
+					<TD style='background-color:white;text-align:middle;vertical-align:top;'>
+						<A href='spending.html' onclick="toggleTable(event)" class="link-style" id="PreventWastagehref">PreventWastage</A>
 					</TD>
-					<TD style="padding: 10px; text-align: center;">
-						<A href="spending.html" onclick="toggleTable(event)" style="text-decoration: none; color: #000; padding: 5px 10px;" id="PreventWastagehref">Prevent Wastage</A>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href="save_money_and_lives.html">Save lives and money</A>
 					</TD>
-					<TD style="padding: 10px; text-align: center;">
-						<A href="save_money_and_lives.html" style="text-decoration: none; color: #000; padding: 5px 10px;">Save lives and money</A>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
 					</TD>
-					<TD style="padding: 10px; text-align: center;">
-						<A href="ShareKnowledgeTransferToPeople.html" style="text-decoration: none; color: #000; padding: 5px 10px; text-decoration: underline;">Share Knowledge Transfer</A>
-					</TD>
-					<TD style="padding: 10px; text-align: center;">
-						<A href="my_exercise.html" style="text-decoration: none; color: #000; padding: 5px 10px;">MyExercise</A>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href="my_exercise.html">MyExercise</A>
 					</TD>
 					<TD style="text-align:middle;vertical-align:top;background-color:white;">
 						<SCRIPT type='text/javascript'>
@@ -69,18 +59,20 @@ window.onload = function() {
 							}
 						</SCRIPT>
 					</TD>
-					<TD style="padding: 10px; text-align: center;">
-						<A href="Visitor_count.html" style="text-decoration: none; color: #000; padding: 5px 10px;">Visitor count</A>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href='Visitor_count.html'>Visitor count</FONT></A>
 					</TD>
-					<TD style="padding: 10px; text-align: center;">
-						<A href="tamil-calendar.html" style="text-decoration: none; color: #556677; padding: 5px 10px;">தமிழ்/Gregorian Calendar</A>
+					<TD valign='top' align='middle'>
+						<A href='tamil-calendar.html'><FONT color='#556677'>தமிழ்/Gregorian calendar</FONT></A>
 					</TD>
-					<TD style="padding: 10px; text-align: center;background-color:orange;">
-						<A href='displayMoneyHelpMenu.html#bgas' style="text-decoration: none; color: #556677; padding: 5px 10px;">Money Help</A>
+					<TD style="text-align:middle;vertical-align:top;background-color:orange;color:white;">
+						<A href='displayMoneyHelpMenu.html#bgas'><FONT color='#556677'>Money Help</FONT></A>
+					</TD>
+					<TD style="text-align:middle;vertical-align:top;">
+						<A href='poems/index.html'><FONT color='#556677'>My tamil poems</FONT></A>
 					</TD>
 				</TR>
-			</TBODY>
-		</TABLE>
+			</TABLE>
 <NOSCRIPT>
 <TABLE border='1'>
 <TR>
@@ -324,8 +316,9 @@ HOME
 			</TR>
 			<TR>
 				<TD valign='top' align='left'>
-					Note down the amount and do not click Make online payment.<BR>
-					Send that amount from your bank to IPPB account at post office.<BR>
+					Note down the amount.<BR>
+					<FONT color='red'>DO NOT CLICK MAKE ONLINE PAYMENT AT my.ebharatgas.com URL</FONT>.<BR>
+					Send that amount from your bank to your mobile IPPB account at your post office account.<BR>
 					Pay using IPPB account to cylinder using IPPB account at your mobile application.<BR>
 					After logon at IPPB<BR>
 					Click More button under Bill Payments<BR>
