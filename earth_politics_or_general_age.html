@@ -951,7 +951,8 @@ let EachCountryEconomy = [
 	[                           "Tuvalu",         "000.000058",          "Oceania" ],
 ];
 let INR_DATA = [
-	[ "26-Nov-2025", "01", "89.148000" ],
+	[ "27-Nov-2025", "01", "89.160500" ],
+	[ "26-Nov-2025", "01", "89.153000" ],
 	[ "25-Nov-2025", "01", "89.148000" ],
 	[ "24-Nov-2025", "01", "89.595000" ],
 	[ "22-Nov-2025", "01", "89.641000" ],
@@ -1087,6 +1088,7 @@ let INR_DATA = [
 	{
 		switch( INR_DATA[i][0] )
 		{
+			case "26-Nov-2025":
 			case "25-Nov-2025":
 			case "24-Nov-2025":
 			case "21-Nov-2025":
@@ -1271,7 +1273,7 @@ let INR_DATA = [
 			if( 'undefined' == typeof dispimag )
 			{
 				document.write( "<TD valign='top' align='left'>"+INR_DATA[i][2]+"</TD><TD valign='top' align='left'><FONT color='black'>HIGHEST VALUE</FONT></TD><TD valign='top' align='left' rowspan='47' style='background-color: cyan; color: black;'>");
-				document.write( "Data noted on 27-Oct-2025 10:33 PM IST");
+				document.write( "Data noted on Thu 20-Nov-2025 01:38:00 IST = Wed 19-Nov-2025 08:08:00 PM UTC");
 				dispimag="yes";
 				document.write( "<TABLE border='1' id='countriesEconomyTable'>");
 				document.write( "<TR>");
