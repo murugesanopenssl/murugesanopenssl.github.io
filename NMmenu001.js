@@ -1976,7 +1976,7 @@ if( -1 != inhale_hotwater_ent_url )
 else
 {
 	document.write( "<A style='display:block;' href='"+prefix_poemDir+"spending.html'><FONT color='white'><B><U>PreventWastage</B></U></FONT></A>");
-	document.write( "<A style='display:block;' href='"+prefix_poemDir+"Sustainable_Living.html'><FONT color='white'>Inhale hotwater ENT</FONT></A>");
+	document.write( "<A style='display:block;' href='"+prefix_poemDir+"Sustainable_Living.html'><FONT color='white'>Save lives and money</FONT></A>");
 }
 if( -1 != Health_tips_url )
 {
@@ -1994,7 +1994,6 @@ document.write( "</TD>");
 
 //#{
 document.write( "<TD valign='top' style='width:10px;' align='left'>");
-document.write( "<TABLE style='width:100%'><TR><TD valign='top' style='width:999px;' align='left'><A onmouseover='OpenMoneyHelp01()' onclick='OpenMoneyHelp01()' id='moneyhelp01'>SaveLives</A></TD></TR></TABLE>");
 document.write( "<DIV id='MoneyHelpPanel01' class='MoneyHelpSidePanel01'>");
 document.write( "<A href='javascript:void(0)' class='closebtn' onclick='CloseMoneyHelp()'>x</A>");
 if( -1 != mis_interest_url )
