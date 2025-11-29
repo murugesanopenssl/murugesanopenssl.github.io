@@ -1987,7 +1987,7 @@ document.write( "</TD>");
 
 // #{
 document.write( "<TD valign='top' style='width:183px;' align='left'>");
-document.write( "<TABLE style='width:100%'><TR><TD valign='top' align='left'><A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseover='OpenSBI_employee_never_help01()' onclick='OpenSBI_employee_never_help01()' id='SBI_employee_never_help01'>SBI EMP NEVER HELP</A></TD></TR></TABLE>");
+document.write( "<TABLE style='width:100%'><TR><TD valign='top' align='left'><A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseout='CloseHomeMenu();' onmouseover='OpenSBI_employee_never_help01()' onclick='OpenSBI_employee_never_help01()' id='SBI_employee_never_help01'>SBI EMP NEVER HELP</A></TD></TR></TABLE>");
 document.write( "<DIV id='SBI_employee_never_helpPanel01' class='SBI_employee_never_help01SidePanel01'>");
 document.write( "<A href='javascript:void(0)' class='closebtn' onclick='CloseMoneyHelp()'>x</A>");
 if( -1 != SBI_employee_never_help_url )
