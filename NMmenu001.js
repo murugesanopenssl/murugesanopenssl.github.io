@@ -1975,7 +1975,7 @@ if( -1 != inhale_hotwater_ent_url )
 }
 else
 {
-	document.write( "<A style='display:block;' href='"+prefix_poemDir+"Sustainable_Living.html'><FONT color='white'><B><U>PreventWastage</B></U></FONT></A>");
+	document.write( "<A style='display:block;' href='"+prefix_poemDir+"spending.html'><FONT color='white'><B><U>PreventWastage</B></U></FONT></A>");
 	document.write( "<A style='display:block;' href='"+prefix_poemDir+"Sustainable_Living.html'><FONT color='white'>Inhale hotwater ENT</FONT></A>");
 }
 if( -1 != Health_tips_url )
