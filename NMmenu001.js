@@ -41,753 +41,690 @@ function DISPLAY_REQUIRED_POSTOFFICE_INTEREST( selectedVal )
 	{
 		DefaultVal=selectedVal;
 	}
-	TABLENAME = document.getElementById("thirukkural_id").value;
-	formObj = document.getElementById("thirukkural_id");
-	if( 1 == TABLENAME )
+	if( document.getElementById("thirukkural_id") )
 	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_001_kadavuL_vaazhthu.html');
-		formObj.leaveCode[TABLENAME].selected = true;
-	}
-	else if( 2 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_002_vaan_siRappu.html');
-		formObj.leaveCode[TABLENAME-1].selected = false;
-		formObj.leaveCode[TABLENAME].selected = true;
-		formObj.leaveCode[TABLENAME+1].selected = false;
-	}
-	else if( 3 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_003_neethaar_perumai.html');
-		formObj.leaveCode[TABLENAME-1].selected = false;
-		formObj.leaveCode[TABLENAME].selected = true;
-		formObj.leaveCode[TABLENAME+1].selected = false;
-	}
-	else if( 4 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_004_aRan_valiyuRuthal.html');
-		formObj.leaveCode[TABLENAME-1].selected = false;
-		formObj.leaveCode[TABLENAME].selected = true;
-		formObj.leaveCode[TABLENAME+1].selected = false;
-	}
-	else if( 5 == TABLENAME )
-	{
-		var url = window.location.toString();
-		if( 'undefined' != typeof formObj.leaveCode )
+		TABLENAME = document.getElementById("thirukkural_id").value;
+		formObj = document.getElementById("thirukkural_id");
+		if( 1 == TABLENAME )
 		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_001_kadavuL_vaazhthu.html');
+			formObj.leaveCode[TABLENAME].selected = true;
+		}
+		else if( 2 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_002_vaan_siRappu.html');
 			formObj.leaveCode[TABLENAME-1].selected = false;
 			formObj.leaveCode[TABLENAME].selected = true;
 			formObj.leaveCode[TABLENAME+1].selected = false;
 		}
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_005_ilVaazhkkai.html');
-	}
-	else if( 6 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_006_vaazhkkaith_thuNainalam.html');
-	}
-	else if( 7 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_007_makkatpeRu.html');
-	}
-	else if( 8 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_008_anbudaimai.html');
-	}
-	else if( 9 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_009_virundhoembal.html');
-	}
-	else if( 10 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_010_iniyavai_kooRal.html');
-	}
-	else if( 11 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_011_sein_nanRi_aridhal.html');
-	}
-	else if( 12 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_012_naduvu_nilaimai.html');
-	}
-	else if( 13 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_013_adakkam_udaimai.html');
-	}
-	else if( 14 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_014_ozhukkam_udaimai.html');
-	}
-	else if( 15 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_015_piran_il_vizhaiyaamai.html');
-	}
-	else if( 16 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_016_poRai_udaimai.html');
-	}
-	else if( 17 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_017_azhukkaaRaamai.html');
-	}
-	else if( 18 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_018_veggaamai.html');
-	}
-	else if( 19 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_019_puRankooRaamai.html');
-	}
-	else if( 20 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_020_payanila_sollaamai.html');
-	}
-	else if( 21 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_021_theevinai_achcham.html');
-	}
-	else if( 22 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_022_oppuravu_aridhal.html');
-	}
-	else if( 23 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_023_eegai.html');
-	}
-	else if( 24 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_024_pughazh.html');
-	}
-	else if( 25 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_025_aruL_udaimai.html');
-	}
-	else if( 26 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_026_pulaal_maRuthal.html');
-	}
-	else if( 27 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_027_thavam.html');
-	}
-	else if( 28 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_028_kooda_ozhukkam.html');
-	}
-	else if( 29 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_029_kaLLaamai.html');
-	}
-	else if( 30 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_030_vaaimai.html');
-	}
-	else if( 31 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_031_vegulaamai.html');
-	}
-	else if( 32 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_032_innaa_seiyaamai.html');
-	}
-	else if( 33 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_033_kollaamai.html');
-	}
-	else if( 34 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_034_nilaiyaamai.html');
-	}
-	else if( 35 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_035_thuRavu.html');
-	}
-	else if( 36 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_036_mei_uNardhal.html');
-	}
-	else if( 37 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_037_avaa_aRuththal.html');
-	}
-	else if( 38 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_038_oozh.html');
-	}
-	else if( 39 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_039_iRai_maatchi.html');
-	}
-	else if( 40 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_040_kalvi.html');
-	}
-	else if( 41 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_041_kallaamai.html');
-	}
-	else if( 42 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_042_kaeLvi.html');
-	}
-	else if( 43 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_043_aRivudaimai.html');
-	}
-	else if( 44 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_044_kuTRam_kadidhal.html');
-	}
-	else if( 45 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_045_periyaaraith_thuNaiKodal.html');
-	}
-	else if( 46 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_046_sitRinam_saeraamai.html');
-	}
-	else if( 47 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_047_therindhu_seyalvagai.html');
-	}
-	else if( 48 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_048_vali_aRidhal.html');
-	}
-	else if( 49 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_049_kaalam_aRidhal.html');
-	}
-	else if( 50 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_050_idan_aRidhal.html');
-	}
-	else if( 51 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_051_therindhu_theLidhal.html');
-	}
-	else if( 52 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_052_therindhu_vinaiyaadal.html');
-	}
-	else if( 53 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_053_sutRam_thazhalaal.html');
-	}
-	else if( 54 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_054_pochchaavaamai.html');
-	}
-	else if( 55 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_055_sengoenmai.html');
-	}
-	else if( 56 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_056_kodungoenmai.html');
-	}
-	else if( 57 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_057_veruvandha_seiyaamai.html');
-	}
-	else if( 58 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_058_kaNNottam.html');
-	}
-	else if( 59 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_059_otRaadal.html');
-	}
-	else if( 60 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_060_ookkam_udaimai.html');
-	}
-	else if( 61 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_061_madi_inmai.html');
-	}
-	else if( 62 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_062_aaLvinai_udaimai.html');
-	}
-	else if( 63 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_063_idukkaN_azhiyaamai.html');
-	}
-	else if( 64 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_064_amaichu.html');
-	}
-	else if( 65 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_065_solvanmai.html');
-	}
-	else if( 66 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_066_vinaiththooimai.html');
-	}
-	else if( 67 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_067_vinaiththitpam.html');
-	}
-	else if( 68 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_068_vinay_seyalvagai.html');
-	}
-	else if( 69 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_069_thoodhu.html');
-	}
-	else if( 70 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_070_mannaraich_chaerndhu_ozhugal.html');
-	}
-	else if( 71 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_071_kuRippu_aridhal.html');
-	}
-	else if( 72 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_072_avai_aRidhal.html');
-	}
-	else if( 73 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_073_avai_anjaamai.html');
-	}
-	else if( 74 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_074_naadu.html');
-	}
-	else if( 75 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_075_araN.html');
-	}
-	else if( 76 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_076_poruL_seyalvagai.html');
-	}
-	else if( 77 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_077_padai_maatchi.html');
-	}
-	else if( 78 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_078_padai_cherukku.html');
-	}
-	else if( 79 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_079_natpu.html');
-	}
-	else if( 80 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_080_natpu_aaraaidhal.html');
-	}
-	else if( 81 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_081_pazhaimai.html');
-	}
-	else if( 82 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_082_thee_natpu.html');
-	}
-	else if( 83 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_083_koodaa_natpu.html');
-	}
-	else if( 84 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_084_paedhaimai.html');
-	}
-	else if( 85 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_085_pullaRivaaNmai.html');
-	}
-	else if( 86 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_086_igal.html');
-	}
-	else if( 87 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_087_pagai_maatchi.html');
-	}
-	else if( 88 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_088_pagaiththiram_theridhal.html');
-	}
-	else if( 89 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_089_utpagai.html');
-	}
-	else if( 90 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_090_periyaaraip_pizhaiyaamai.html');
-	}
-	else if( 91 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_091_peNvazhi_cheRal.html');
-	}
-	else if( 92 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_092_viraivil_magaLir.html');
-	}
-	else if( 93 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_093_kaL_uNNaamai.html');
-	}
-	else if( 94 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_094_soodhu.html');
-	}
-	else if( 95 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_095_marundhu.html');
-	}
-	else if( 96 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_096_kudimai.html');
-	}
-	else if( 97 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_097_maanam.html');
-	}
-	else if( 98 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_098_perumai.html');
-	}
-	else if( 99 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_099_saanRaaNmai.html');
-	}
-	else if( 100 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_100_paNbudaimai.html');
-	}
-	else if( 101 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_101_nanRiyil_selvam.html');
-	}
-	else if( 102 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_102_naaN_udaimai.html');
-	}
-	else if( 103 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_103_kudi_seyalvagai.html');
-	}
-	else if( 104 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_104_uzhavu.html');
-	}
-	else if( 105 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_105_nalguravu.html');
-	}
-	else if( 106 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_106_iravu.html');
-	}
-	else if( 107 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_107_iravachcham.html');
-	}
-	else if( 108 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_108_kayamai.html');
-	}
-	else if( 109 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_109_thagaiyaNangRuththal.html');
-	}
-	else if( 110 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_110_kuRippaRithal.html');
-	}
-	else if( 111 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_111_puNarchchi_magizhthal.html');
-	}
-	else if( 112 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_112_nalam_punaindhu_uraiththal.html');
-	}
-	else if( 113 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_113_kaadhaR_siRappu_uraiththal.html');
-	}
-	else if( 114 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_114_naaNunth_thuRavu_uraiththal.html');
-	}
-	else if( 115 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_115_alar_aRivuRuththal.html');
-	}
-	else if( 116 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_116_pirivaatRaamai.html');
-	}
-	else if( 117 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_117_padar_melindhu_irangal.html');
-	}
-	else if( 118 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_118_kaN_vidhuppu_azhidhal.html');
-	}
-	else if( 119 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_119_pasappu_uRu_paruvaral.html');
-	}
-	else if( 120 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_120_thanippadar_migudhi.html');
-	}
-	else if( 121 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_121_ninaindhavar_pulambal.html');
-	}
-	else if( 122 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_122_kanavu_nilai_uraiththal.html');
-	}
-	else if( 123 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_123_pozhuludhu_kaNdu_irangal.html');
-	}
-	else if( 124 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_124_uRuppu_nalan_azhidhal.html');
-	}
-	else if( 125 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_125_nenjodu_kiLaththal.html');
-	}
-	else if( 126 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_126_niRai_azhidhal.html');
-	}
-	else if( 127 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_127_avar_vayin_vidhumbal.html');
-	}
-	else if( 128 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_128_kuRippu_aRivuRaththal.html');
-	}
-	else if( 129 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_129_puNarchchi_vidhumbal.html');
-	}
-	else if( 130 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_130_nenjodu_pulaththal.html');
-	}
-	else if( 131 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_131_pulavi.html');
-	}
-	else if( 132 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_132_pulavi_nuNakkam.html');
-	}
-	else if( 133 == TABLENAME )
-	{
-		var url = window.location.toString();
-		window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_133_oodal_uvagai.html');
-	}
-}
-function isString(o)
-{
-	return typeof o == "string" || (typeof o == "object" && o.constructor === String);
-}
-function sortTable(ColNum)
-{
-	var table, rows, switching, i, x, y, shouldSwitch;
-	table = document.getElementById("myTable");
-	switching = true;
-	/*Make a loop that will continue until
-	no switching has been done:*/
-	while (switching)
-	{
-		//start by saying: no switching is done:
-		switching = false;
-		rows = table.rows;
-		/*Loop through all table rows (except the
-		first, which contains table headers):*/
-		PREVIOUS_MSG="";
-		PREVIOUS_TAG="";
-		for (i = 1; i < (rows.length - 1); i++)
+		else if( 3 == TABLENAME )
 		{
-			//start by saying there should be no switching:
-			shouldSwitch = false;
-			/*Get the two elements you want to compare,
-			one from current row and one from the next:*/
-			x = rows[i].getElementsByTagName("TD")[ColNum];
-			y = rows[i + 1].getElementsByTagName("TD")[ColNum];
-			//check if the two rows should switch place:
-			if( "00.00" == x.innerHTML )
-			{
-				PREVIOUS_TAG=x;
-				PREVIOUS_MSG=x.innerHTML="0.00";
-			}
-			if( isString(x.innerHTML) )
-			{
-				if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase())
-				{
-					//if so, mark as a switch and break the loop:
-					shouldSwitch = true;
-					break;
-				}
-			}
-			else
-			{
-				if(x.innerHTML > y.innerHTML )
-				{
-					//if so, mark as a switch and break the loop:
-					shouldSwitch = true;
-					break;
-				}
-			}
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_003_neethaar_perumai.html');
+			formObj.leaveCode[TABLENAME-1].selected = false;
+			formObj.leaveCode[TABLENAME].selected = true;
+			formObj.leaveCode[TABLENAME+1].selected = false;
 		}
-		if( "" != PREVIOUS_MSG )
+		else if( 4 == TABLENAME )
 		{
-			PREVIOUS_TAG.innerHTML="00.00";
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_004_aRan_valiyuRuthal.html');
+			formObj.leaveCode[TABLENAME-1].selected = false;
+			formObj.leaveCode[TABLENAME].selected = true;
+			formObj.leaveCode[TABLENAME+1].selected = false;
 		}
-		if(shouldSwitch)
+		else if( 5 == TABLENAME )
 		{
-			/*If a switch has been marked, make the switch
-			and mark that a switch has been done:*/
-			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			switching = true;
+			var url = window.location.toString();
+			if( 'undefined' != typeof formObj.leaveCode )
+			{
+				formObj.leaveCode[TABLENAME-1].selected = false;
+				formObj.leaveCode[TABLENAME].selected = true;
+				formObj.leaveCode[TABLENAME+1].selected = false;
+			}
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_005_ilVaazhkkai.html');
+		}
+		else if( 6 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_006_vaazhkkaith_thuNainalam.html');
+		}
+		else if( 7 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_007_makkatpeRu.html');
+		}
+		else if( 8 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_008_anbudaimai.html');
+		}
+		else if( 9 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_009_virundhoembal.html');
+		}
+		else if( 10 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_010_iniyavai_kooRal.html');
+		}
+		else if( 11 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_011_sein_nanRi_aridhal.html');
+		}
+		else if( 12 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_012_naduvu_nilaimai.html');
+		}
+		else if( 13 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_013_adakkam_udaimai.html');
+		}
+		else if( 14 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_014_ozhukkam_udaimai.html');
+		}
+		else if( 15 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_015_piran_il_vizhaiyaamai.html');
+		}
+		else if( 16 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_016_poRai_udaimai.html');
+		}
+		else if( 17 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_017_azhukkaaRaamai.html');
+		}
+		else if( 18 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_018_veggaamai.html');
+		}
+		else if( 19 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_019_puRankooRaamai.html');
+		}
+		else if( 20 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_020_payanila_sollaamai.html');
+		}
+		else if( 21 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_021_theevinai_achcham.html');
+		}
+		else if( 22 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_022_oppuravu_aridhal.html');
+		}
+		else if( 23 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_023_eegai.html');
+		}
+		else if( 24 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_024_pughazh.html');
+		}
+		else if( 25 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_025_aruL_udaimai.html');
+		}
+		else if( 26 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_026_pulaal_maRuthal.html');
+		}
+		else if( 27 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_027_thavam.html');
+		}
+		else if( 28 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_028_kooda_ozhukkam.html');
+		}
+		else if( 29 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_029_kaLLaamai.html');
+		}
+		else if( 30 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_030_vaaimai.html');
+		}
+		else if( 31 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_031_vegulaamai.html');
+		}
+		else if( 32 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_032_innaa_seiyaamai.html');
+		}
+		else if( 33 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_033_kollaamai.html');
+		}
+		else if( 34 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_034_nilaiyaamai.html');
+		}
+		else if( 35 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_035_thuRavu.html');
+		}
+		else if( 36 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_036_mei_uNardhal.html');
+		}
+		else if( 37 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_037_avaa_aRuththal.html');
+		}
+		else if( 38 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_038_oozh.html');
+		}
+		else if( 39 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_039_iRai_maatchi.html');
+		}
+		else if( 40 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_040_kalvi.html');
+		}
+		else if( 41 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_041_kallaamai.html');
+		}
+		else if( 42 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_042_kaeLvi.html');
+		}
+		else if( 43 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_043_aRivudaimai.html');
+		}
+		else if( 44 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_044_kuTRam_kadidhal.html');
+		}
+		else if( 45 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_045_periyaaraith_thuNaiKodal.html');
+		}
+		else if( 46 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_046_sitRinam_saeraamai.html');
+		}
+		else if( 47 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_047_therindhu_seyalvagai.html');
+		}
+		else if( 48 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_048_vali_aRidhal.html');
+		}
+		else if( 49 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_049_kaalam_aRidhal.html');
+		}
+		else if( 50 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_050_idan_aRidhal.html');
+		}
+		else if( 51 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_051_therindhu_theLidhal.html');
+		}
+		else if( 52 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_052_therindhu_vinaiyaadal.html');
+		}
+		else if( 53 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_053_sutRam_thazhalaal.html');
+		}
+		else if( 54 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_054_pochchaavaamai.html');
+		}
+		else if( 55 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_055_sengoenmai.html');
+		}
+		else if( 56 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_056_kodungoenmai.html');
+		}
+		else if( 57 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_057_veruvandha_seiyaamai.html');
+		}
+		else if( 58 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_058_kaNNottam.html');
+		}
+		else if( 59 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_059_otRaadal.html');
+		}
+		else if( 60 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_060_ookkam_udaimai.html');
+		}
+		else if( 61 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_061_madi_inmai.html');
+		}
+		else if( 62 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_062_aaLvinai_udaimai.html');
+		}
+		else if( 63 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_063_idukkaN_azhiyaamai.html');
+		}
+		else if( 64 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_064_amaichu.html');
+		}
+		else if( 65 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_065_solvanmai.html');
+		}
+		else if( 66 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_066_vinaiththooimai.html');
+		}
+		else if( 67 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_067_vinaiththitpam.html');
+		}
+		else if( 68 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_068_vinay_seyalvagai.html');
+		}
+		else if( 69 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_069_thoodhu.html');
+		}
+		else if( 70 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_070_mannaraich_chaerndhu_ozhugal.html');
+		}
+		else if( 71 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_071_kuRippu_aridhal.html');
+		}
+		else if( 72 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_072_avai_aRidhal.html');
+		}
+		else if( 73 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_073_avai_anjaamai.html');
+		}
+		else if( 74 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_074_naadu.html');
+		}
+		else if( 75 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_075_araN.html');
+		}
+		else if( 76 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_076_poruL_seyalvagai.html');
+		}
+		else if( 77 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_077_padai_maatchi.html');
+		}
+		else if( 78 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_078_padai_cherukku.html');
+		}
+		else if( 79 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_079_natpu.html');
+		}
+		else if( 80 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_080_natpu_aaraaidhal.html');
+		}
+		else if( 81 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_081_pazhaimai.html');
+		}
+		else if( 82 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_082_thee_natpu.html');
+		}
+		else if( 83 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_083_koodaa_natpu.html');
+		}
+		else if( 84 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_084_paedhaimai.html');
+		}
+		else if( 85 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_085_pullaRivaaNmai.html');
+		}
+		else if( 86 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_086_igal.html');
+		}
+		else if( 87 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_087_pagai_maatchi.html');
+		}
+		else if( 88 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_088_pagaiththiram_theridhal.html');
+		}
+		else if( 89 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_089_utpagai.html');
+		}
+		else if( 90 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_090_periyaaraip_pizhaiyaamai.html');
+		}
+		else if( 91 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_091_peNvazhi_cheRal.html');
+		}
+		else if( 92 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_092_viraivil_magaLir.html');
+		}
+		else if( 93 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_093_kaL_uNNaamai.html');
+		}
+		else if( 94 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_094_soodhu.html');
+		}
+		else if( 95 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_095_marundhu.html');
+		}
+		else if( 96 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_096_kudimai.html');
+		}
+		else if( 97 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_097_maanam.html');
+		}
+		else if( 98 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_098_perumai.html');
+		}
+		else if( 99 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_099_saanRaaNmai.html');
+		}
+		else if( 100 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_100_paNbudaimai.html');
+		}
+		else if( 101 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_101_nanRiyil_selvam.html');
+		}
+		else if( 102 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_102_naaN_udaimai.html');
+		}
+		else if( 103 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_103_kudi_seyalvagai.html');
+		}
+		else if( 104 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_104_uzhavu.html');
+		}
+		else if( 105 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_105_nalguravu.html');
+		}
+		else if( 106 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_106_iravu.html');
+		}
+		else if( 107 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_107_iravachcham.html');
+		}
+		else if( 108 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_108_kayamai.html');
+		}
+		else if( 109 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_109_thagaiyaNangRuththal.html');
+		}
+		else if( 110 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_110_kuRippaRithal.html');
+		}
+		else if( 111 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_111_puNarchchi_magizhthal.html');
+		}
+		else if( 112 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_112_nalam_punaindhu_uraiththal.html');
+		}
+		else if( 113 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_113_kaadhaR_siRappu_uraiththal.html');
+		}
+		else if( 114 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_114_naaNunth_thuRavu_uraiththal.html');
+		}
+		else if( 115 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_115_alar_aRivuRuththal.html');
+		}
+		else if( 116 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_116_pirivaatRaamai.html');
+		}
+		else if( 117 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_117_padar_melindhu_irangal.html');
+		}
+		else if( 118 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_118_kaN_vidhuppu_azhidhal.html');
+		}
+		else if( 119 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_119_pasappu_uRu_paruvaral.html');
+		}
+		else if( 120 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_120_thanippadar_migudhi.html');
+		}
+		else if( 121 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_121_ninaindhavar_pulambal.html');
+		}
+		else if( 122 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_122_kanavu_nilai_uraiththal.html');
+		}
+		else if( 123 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_123_pozhuludhu_kaNdu_irangal.html');
+		}
+		else if( 124 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_124_uRuppu_nalan_azhidhal.html');
+		}
+		else if( 125 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_125_nenjodu_kiLaththal.html');
+		}
+		else if( 126 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_126_niRai_azhidhal.html');
+		}
+		else if( 127 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_127_avar_vayin_vidhumbal.html');
+		}
+		else if( 128 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_128_kuRippu_aRivuRaththal.html');
+		}
+		else if( 129 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_129_puNarchchi_vidhumbal.html');
+		}
+		else if( 130 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_130_nenjodu_pulaththal.html');
+		}
+		else if( 131 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_131_pulavi.html');
+		}
+		else if( 132 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_132_pulavi_nuNakkam.html');
+		}
+		else if( 133 == TABLENAME )
+		{
+			var url = window.location.toString();
+			window.location.href = url.replace( CurrentThirukkuralName, 'thirukkural_133_oodal_uvagai.html');
 		}
 	}
 }
@@ -798,95 +735,209 @@ function isString(o)
 function sortTable(ColNum)
 {
 	var table, rows, switching, i, x, y, shouldSwitch;
-	table = document.getElementById("myTable");
-	switching = true;
-	/*Make a loop that will continue until
-	no switching has been done:*/
-	while (switching)
+	if( document.getElementById("myTable") )
 	{
-		//start by saying: no switching is done:
-		switching = false;
-		rows = table.rows;
-		/*Loop through all table rows (except the
-		first, which contains table headers):*/
-		PREVIOUS_MSG="";
-		PREVIOUS_TAG="";
-		for (i = 1; i < (rows.length - 1); i++)
+		table = document.getElementById("myTable");
+		switching = true;
+		/*Make a loop that will continue until
+		no switching has been done:*/
+		while (switching)
 		{
-			//start by saying there should be no switching:
-			shouldSwitch = false;
-			/*Get the two elements you want to compare,
-			one from current row and one from the next:*/
-			x = rows[i].getElementsByTagName("TD")[ColNum];
-			y = rows[i + 1].getElementsByTagName("TD")[ColNum];
-			//check if the two rows should switch place:
-			if( "00.00" == x.innerHTML )
+			//start by saying: no switching is done:
+			switching = false;
+			rows = table.rows;
+			/*Loop through all table rows (except the
+			first, which contains table headers):*/
+			PREVIOUS_MSG="";
+			PREVIOUS_TAG="";
+			for (i = 1; i < (rows.length - 1); i++)
 			{
-				PREVIOUS_TAG=x;
-				PREVIOUS_MSG=x.innerHTML="0.00";
-			}
-			if( isString(x.innerHTML) )
-			{
-				if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase())
+				//start by saying there should be no switching:
+				shouldSwitch = false;
+				/*Get the two elements you want to compare,
+				one from current row and one from the next:*/
+				x = rows[i].getElementsByTagName("TD")[ColNum];
+				y = rows[i + 1].getElementsByTagName("TD")[ColNum];
+				//check if the two rows should switch place:
+				if( "00.00" == x.innerHTML )
 				{
-					//if so, mark as a switch and break the loop:
-					shouldSwitch = true;
-					break;
+					PREVIOUS_TAG=x;
+					PREVIOUS_MSG=x.innerHTML="0.00";
+				}
+				if( isString(x.innerHTML) )
+				{
+					if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase())
+					{
+						//if so, mark as a switch and break the loop:
+						shouldSwitch = true;
+						break;
+					}
+				}
+				else
+				{
+					if(x.innerHTML > y.innerHTML )
+					{
+						//if so, mark as a switch and break the loop:
+						shouldSwitch = true;
+						break;
+					}
 				}
 			}
-			else
+			if( "" != PREVIOUS_MSG )
 			{
-				if(x.innerHTML > y.innerHTML )
-				{
-					//if so, mark as a switch and break the loop:
-					shouldSwitch = true;
-					break;
-				}
+				PREVIOUS_TAG.innerHTML="00.00";
+			}
+			if(shouldSwitch)
+			{
+				/*If a switch has been marked, make the switch
+				and mark that a switch has been done:*/
+				rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+				switching = true;
 			}
 		}
-		if( "" != PREVIOUS_MSG )
+	}
+}
+function isString(o)
+{
+	return typeof o == "string" || (typeof o == "object" && o.constructor === String);
+}
+function sortTable(ColNum)
+{
+	var table, rows, switching, i, x, y, shouldSwitch;
+	if( document.getElementById("myTable") )
+	{
+		table = document.getElementById("myTable");
+		switching = true;
+		/*Make a loop that will continue until
+		no switching has been done:*/
+		while (switching)
 		{
-			PREVIOUS_TAG.innerHTML="00.00";
-		}
-		if(shouldSwitch)
-		{
-			/*If a switch has been marked, make the switch
-			and mark that a switch has been done:*/
-			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			switching = true;
+			//start by saying: no switching is done:
+			switching = false;
+			rows = table.rows;
+			/*Loop through all table rows (except the
+			first, which contains table headers):*/
+			PREVIOUS_MSG="";
+			PREVIOUS_TAG="";
+			for (i = 1; i < (rows.length - 1); i++)
+			{
+				//start by saying there should be no switching:
+				shouldSwitch = false;
+				/*Get the two elements you want to compare,
+				one from current row and one from the next:*/
+				x = rows[i].getElementsByTagName("TD")[ColNum];
+				y = rows[i + 1].getElementsByTagName("TD")[ColNum];
+				//check if the two rows should switch place:
+				if( "00.00" == x.innerHTML )
+				{
+					PREVIOUS_TAG=x;
+					PREVIOUS_MSG=x.innerHTML="0.00";
+				}
+				if( isString(x.innerHTML) )
+				{
+					if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase())
+					{
+						//if so, mark as a switch and break the loop:
+						shouldSwitch = true;
+						break;
+					}
+				}
+				else
+				{
+					if(x.innerHTML > y.innerHTML )
+					{
+						//if so, mark as a switch and break the loop:
+						shouldSwitch = true;
+						break;
+					}
+				}
+			}
+			if( "" != PREVIOUS_MSG )
+			{
+				PREVIOUS_TAG.innerHTML="00.00";
+			}
+			if(shouldSwitch)
+			{
+				/*If a switch has been marked, make the switch
+				and mark that a switch has been done:*/
+				rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+				switching = true;
+			}
 		}
 	}
 }
 function WindowsHelp01()
 {
-	document.getElementById("EntHealthId01").style.height = "0";
-	document.getElementById("EntHealthId01").style.width = "0";
-	document.getElementById("MoneyHelpPanel01").style.height = "0";
-	document.getElementById("MoneyHelpPanel01").style.width = "0";
-	document.getElementById("MoneyHelpPanel02").style.height = "0";
-	document.getElementById("MoneyHelpPanel02").style.width = "0";
-	document.getElementById("MoneyHelpPanel03").style.height = "0";
-	document.getElementById("MoneyHelpPanel03").style.width = "0";
-	document.getElementById("MoneyHelpPanel04").style.height = "0";
-	document.getElementById("MoneyHelpPanel04").style.width = "0";
-	document.getElementById("MoneyHelpPanel05").style.height = "0";
-	document.getElementById("MoneyHelpPanel05").style.width = "0";
-	document.getElementById("WindowsHelpPanel01").style.height = MenuHeight_WindowsHelp01;
-	document.getElementById("WindowsHelpPanel01").style.width = MenuWidth_WindowsHelp01;
-	document.getElementById("MyselfPanel01").style.height = "0";
-	document.getElementById("MyselfPanel01").style.width = "0";
-	document.getElementById("PrivacyPolicyPanel01").style.height = "0";
-	document.getElementById("PrivacyPolicyPanel01").style.width = "0";
-	document.getElementById("MyPredictPanel01").style.height = "0";
-	document.getElementById("MyPredictPanel01").style.width = "0";
-	document.getElementById("AadhaarHelpPanel01").style.height = "0";
-	document.getElementById("AadhaarHelpPanel01").style.width = "0";
-	document.getElementById("GarbagesPanel01").style.height = "0";
-	document.getElementById("GarbagesPanel01").style.width = "0";
-	document.getElementById("HomePanel").style.height = "0";
-	document.getElementById("HomePanel").style.width = "0";
-	document.getElementById("SBI_employee_never_helpPanel01").style.height = "0";
-	document.getElementById("SBI_employee_never_helpPanel01").style.width = "0";
+	if( document.getElementById( "EntHealthId01" ) )
+	{
+		document.getElementById("EntHealthId01").style.height = "0";
+		document.getElementById("EntHealthId01").style.width = "0";
+	}
+	if( document.getElementById( "MoneyHelpPanel01" ) )
+	{
+		document.getElementById("MoneyHelpPanel01").style.height = "0";
+		document.getElementById("MoneyHelpPanel01").style.width = "0";
+	}
+	if( document.getElementById( "MoneyHelpPanel02" ) )
+	{
+		document.getElementById("MoneyHelpPanel02").style.height = "0";
+		document.getElementById("MoneyHelpPanel02").style.width = "0";
+	}
+	if( document.getElementById( "MoneyHelpPanel03" ) )
+	{
+		document.getElementById("MoneyHelpPanel03").style.height = "0";
+		document.getElementById("MoneyHelpPanel03").style.width = "0";
+	}
+	if( document.getElementById( "MoneyHelpPanel04" ) )
+	{
+		document.getElementById("MoneyHelpPanel04").style.height = "0";
+		document.getElementById("MoneyHelpPanel04").style.width = "0";
+	}
+	if( document.getElementById( "MoneyHelpPanel05" ) )
+	{
+		document.getElementById("MoneyHelpPanel05").style.height = "0";
+		document.getElementById("MoneyHelpPanel05").style.width = "0";
+	}
+	if( document.getElementById( "WindowsHelpPanel01" ) )
+	{
+		document.getElementById("WindowsHelpPanel01").style.height = MenuHeight_WindowsHelp01;
+		document.getElementById("WindowsHelpPanel01").style.width = MenuWidth_WindowsHelp01;
+	}
+	if( document.getElementById( "MyselfPanel01" ) )
+	{
+		document.getElementById("MyselfPanel01").style.height = "0";
+		document.getElementById("MyselfPanel01").style.width = "0";
+	}
+	if( document.getElementById( "PrivacyPolicyPanel01" ) )
+	{
+		document.getElementById("PrivacyPolicyPanel01").style.height = "0";
+		document.getElementById("PrivacyPolicyPanel01").style.width = "0";
+	}
+	if( document.getElementById( "MyPredictPanel01" ) )
+	{
+		document.getElementById("MyPredictPanel01").style.height = "0";
+		document.getElementById("MyPredictPanel01").style.width = "0";
+	}
+	if( document.getElementById( "AadhaarHelpPanel01" ) )
+	{
+		document.getElementById("AadhaarHelpPanel01").style.height = "0";
+		document.getElementById("AadhaarHelpPanel01").style.width = "0";
+	}
+	if( document.getElementById( "GarbagesPanel01" ) )
+	{
+		document.getElementById("GarbagesPanel01").style.height = "0";
+		document.getElementById("GarbagesPanel01").style.width = "0";
+	}
+	if( document.getElementById( "HomePanel" ) )
+	{
+		document.getElementById("HomePanel").style.height = "0";
+		document.getElementById("HomePanel").style.width = "0";
+	}
+	if( document.getElementById( "SBI_employee_never_helpPanel01" ) )
+	{
+		document.getElementById("SBI_employee_never_helpPanel01").style.height = "0";
+		document.getElementById("SBI_employee_never_helpPanel01").style.width = "0";
+	}
 }
 function PrivacyPolicy01()
 {
@@ -1045,6 +1096,7 @@ function GarbagesHelp01()
 }
 function OpenHealthTips()
 {
+	CloseHomeMenu();
 	document.getElementById("EntHealthId01").style.height = MenuHeight_HealthTips;
 	document.getElementById("EntHealthId01").style.width = MenuWidth_HealthTips;
 	document.getElementById("MoneyHelpPanel01").style.height = "0";
@@ -1169,34 +1221,76 @@ function OpenMoneyHelp05()
 }
 function OpenSBI_employee_never_help01()
 {
-	document.getElementById("SBI_employee_never_helpPanel01").style.height = MenuHeight_SBI_employee_never_help01;
-	document.getElementById("SBI_employee_never_helpPanel01").style.width = MenuWidth_SBI_employee_never_help01;
-	document.getElementById("HomePanel").style.height = "0";
-	document.getElementById("HomePanel").style.width = "0";
-	document.getElementById("EntHealthId01").style.height = "0";
-	document.getElementById("EntHealthId01").style.width = "0";
-	document.getElementById("MoneyHelpPanel01").style.height = "0";
-	document.getElementById("MoneyHelpPanel01").style.width = "0";
-	document.getElementById("MoneyHelpPanel02").style.height = "0";
-	document.getElementById("MoneyHelpPanel02").style.width = "0";
-	document.getElementById("MoneyHelpPanel03").style.height = "0";
-	document.getElementById("MoneyHelpPanel03").style.width = "0";
-	document.getElementById("MoneyHelpPanel04").style.height = "0";
-	document.getElementById("MoneyHelpPanel04").style.width = "0";
-	document.getElementById("MoneyHelpPanel05").style.height = "0";
-	document.getElementById("MoneyHelpPanel05").style.width = "0";
-	document.getElementById("GarbagesPanel01").style.height = "0";
-	document.getElementById("GarbagesPanel01").style.width = "0";
-	document.getElementById("WindowsHelpPanel01").style.height = "0";
-	document.getElementById("WindowsHelpPanel01").style.width = "0";
-	document.getElementById("MyselfPanel01").style.height = "0";
-	document.getElementById("MyselfPanel01").style.width = "0";
-	document.getElementById("PrivacyPolicyPanel01").style.height = "0";
-	document.getElementById("PrivacyPolicyPanel01").style.width = "0";
-	document.getElementById("AadhaarHelpPanel01").style.height = "0";
-	document.getElementById("AadhaarHelpPanel01").style.width = "0";
-	document.getElementById("MyPredictPanel01").style.height = "0";
-	document.getElementById("MyPredictPanel01").style.width = "0";
+	if( document.getElementById("SBI_employee_never_helpPanel01") )
+	{
+		document.getElementById("SBI_employee_never_helpPanel01").style.height = MenuHeight_SBI_employee_never_help01;
+		document.getElementById("SBI_employee_never_helpPanel01").style.width = MenuWidth_SBI_employee_never_help01;
+	}
+	if( document.getElementById("HomePanel") )
+	{
+		document.getElementById("HomePanel").style.height = "0";
+		document.getElementById("HomePanel").style.width = "0";
+	}
+	if( document.getElementById("EntHealthId01") )
+	{
+		document.getElementById("EntHealthId01").style.height = "0";
+		document.getElementById("EntHealthId01").style.width = "0";
+	}
+	if( document.getElementById("MoneyHelpPanel01") )
+	{
+		document.getElementById("MoneyHelpPanel01").style.height = "0";
+		document.getElementById("MoneyHelpPanel01").style.width = "0";
+	}
+	if( document.getElementById("MoneyHelpPanel02") )
+	{
+		document.getElementById("MoneyHelpPanel02").style.height = "0";
+		document.getElementById("MoneyHelpPanel02").style.width = "0";
+	}
+	if( document.getElementById("MoneyHelpPanel03") )
+	{
+		document.getElementById("MoneyHelpPanel03").style.height = "0";
+		document.getElementById("MoneyHelpPanel03").style.width = "0";
+	}
+	if( document.getElementById("MoneyHelpPanel04") )
+	{
+		document.getElementById("MoneyHelpPanel04").style.height = "0";
+		document.getElementById("MoneyHelpPanel04").style.width = "0";
+	}
+	if( document.getElementById("MoneyHelpPanel05") )
+	{
+		document.getElementById("MoneyHelpPanel05").style.height = "0";
+		document.getElementById("MoneyHelpPanel05").style.width = "0";
+	}
+	if( document.getElementById("GarbagesPanel01") )
+	{
+		document.getElementById("GarbagesPanel01").style.height = "0";
+		document.getElementById("GarbagesPanel01").style.width = "0";
+	}
+	if( document.getElementById("WindowsHelpPanel01") )
+	{
+		document.getElementById("WindowsHelpPanel01").style.height = "0";
+		document.getElementById("WindowsHelpPanel01").style.width = "0";
+	}
+	if( document.getElementById("MyselfPanel01") )
+	{
+		document.getElementById("MyselfPanel01").style.height = "0";
+		document.getElementById("MyselfPanel01").style.width = "0";
+	}
+	if( document.getElementById("PrivacyPolicyPanel01") )
+	{
+		document.getElementById("PrivacyPolicyPanel01").style.height = "0";
+		document.getElementById("PrivacyPolicyPanel01").style.width = "0";
+	}
+	if( document.getElementById("AadhaarHelpPanel01") )
+	{
+		document.getElementById("AadhaarHelpPanel01").style.height = "0";
+		document.getElementById("AadhaarHelpPanel01").style.width = "0";
+	}
+	if( document.getElementById("MyPredictPanel01") )
+	{
+		document.getElementById("MyPredictPanel01").style.height = "0";
+		document.getElementById("MyPredictPanel01").style.width = "0";
+	}
 }
 function OpenMoneyHelp04()
 {
@@ -1340,34 +1434,76 @@ function toggleTable()
 }
 function CloseHomeMenu()
 {
-	document.getElementById("GarbagesPanel01").style.height = "0";
-	document.getElementById("GarbagesPanel01").style.width = "0";
-	document.getElementById("WindowsHelpPanel01").style.height = "0";
-	document.getElementById("WindowsHelpPanel01").style.width = "0";
-	document.getElementById("MyselfPanel01").style.height = "0";
-	document.getElementById("MyselfPanel01").style.width = "0";
-	document.getElementById("PrivacyPolicyPanel01").style.height = "0";
-	document.getElementById("PrivacyPolicyPanel01").style.width = "0";
-	document.getElementById("AadhaarHelpPanel01").style.height = "0";
-	document.getElementById("AadhaarHelpPanel01").style.width = "0";
-	document.getElementById("MyPredictPanel01").style.height = "0";
-	document.getElementById("MyPredictPanel01").style.width = "0";
-	document.getElementById("HomePanel").style.height = "0";
-	document.getElementById("HomePanel").style.width = "0";
-	document.getElementById("EntHealthId01").style.height = "0";
-	document.getElementById("EntHealthId01").style.width = "0";
-	document.getElementById("MoneyHelpPanel01").style.width = "0";
-	document.getElementById("MoneyHelpPanel01").style.height = "0";
-	document.getElementById("MoneyHelpPanel02").style.height = "0";
-	document.getElementById("MoneyHelpPanel02").style.width = "0";
-	document.getElementById("MoneyHelpPanel03").style.height = "0";
-	document.getElementById("MoneyHelpPanel03").style.width = "0";
-	document.getElementById("MoneyHelpPanel04").style.height = "0";
-	document.getElementById("MoneyHelpPanel04").style.width = "0";
-	document.getElementById("MoneyHelpPanel05").style.height = "0";
-	document.getElementById("MoneyHelpPanel05").style.width = "0";
-	document.getElementById("SBI_employee_never_helpPanel01").style.height = "0";
-	document.getElementById("SBI_employee_never_helpPanel01").style.width = "0";
+	if( document.getElementById( "GarbagesPanel01" ) )
+	{
+		document.getElementById("GarbagesPanel01").style.height = "0";
+		document.getElementById("GarbagesPanel01").style.width = "0";
+	}
+	if( document.getElementById( "WindowsHelpPanel01" ) )
+	{
+		document.getElementById("WindowsHelpPanel01").style.height = "0";
+		document.getElementById("WindowsHelpPanel01").style.width = "0";
+	}
+	if( document.getElementById( "MyselfPanel01" ) )
+	{
+		document.getElementById("MyselfPanel01").style.height = "0";
+		document.getElementById("MyselfPanel01").style.width = "0";
+	}
+	if( document.getElementById( "PrivacyPolicyPanel01" ) )
+	{
+		document.getElementById("PrivacyPolicyPanel01").style.height = "0";
+		document.getElementById("PrivacyPolicyPanel01").style.width = "0";
+	}
+	if( document.getElementById( "AadhaarHelpPanel01" ) )
+	{
+		document.getElementById("AadhaarHelpPanel01").style.height = "0";
+		document.getElementById("AadhaarHelpPanel01").style.width = "0";
+	}
+	if( document.getElementById( "MyPredictPanel01" ) )
+	{
+		document.getElementById("MyPredictPanel01").style.height = "0";
+		document.getElementById("MyPredictPanel01").style.width = "0";
+	}
+	if( document.getElementById( "HomePanel" ) )
+	{
+		document.getElementById("HomePanel").style.height = "0";
+		document.getElementById("HomePanel").style.width = "0";
+	}
+	if( document.getElementById( "EntHealthId01" ) )
+	{
+		document.getElementById("EntHealthId01").style.height = "0";
+		document.getElementById("EntHealthId01").style.width = "0";
+	}
+	if( document.getElementById( "MoneyHelpPanel01" ) )
+	{
+		document.getElementById("MoneyHelpPanel01").style.width = "0";
+		document.getElementById("MoneyHelpPanel01").style.height = "0";
+	}
+	if( document.getElementById( "MoneyHelpPanel02" ) )
+	{
+		document.getElementById("MoneyHelpPanel02").style.height = "0";
+		document.getElementById("MoneyHelpPanel02").style.width = "0";
+	}
+	if( document.getElementById( "MoneyHelpPanel03" ) )
+	{
+		document.getElementById("MoneyHelpPanel03").style.height = "0";
+		document.getElementById("MoneyHelpPanel03").style.width = "0";
+	}
+	if( document.getElementById( "MoneyHelpPanel04" ) )
+	{
+		document.getElementById("MoneyHelpPanel04").style.height = "0";
+		document.getElementById("MoneyHelpPanel04").style.width = "0";
+	}
+	if( document.getElementById( "MoneyHelpPanel05" ) )
+	{
+		document.getElementById("MoneyHelpPanel05").style.height = "0";
+		document.getElementById("MoneyHelpPanel05").style.width = "0";
+	}
+	if( document.getElementById( "SBI_employee_never_helpPanel01" ) )
+	{
+		document.getElementById("SBI_employee_never_helpPanel01").style.height = "0";
+		document.getElementById("SBI_employee_never_helpPanel01").style.width = "0";
+	}
 }
 function CloseMoneyHelp()
 {
@@ -1684,11 +1820,14 @@ document.write( "<TABLE bgcolor='cyan' width='100%' border='1'>");
 						<TABLE style='width:100%'>\
 							<TR>\
 								<TD style='width:72px;' id='homepage' valign='top' align='left'>\
-									<A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseover='OpenHomeMenu()' onclick='toggleTable(event)' href='index.html'>Home</A>\
+									<A style='display:block;' onmouseover='OpenHomeMenu()' onclick='toggleTable(event)' href='index.html'>Home1</A>\
 								</TD>\
 							</TR>\
 						</TABLE>");
-		document.getElementById('homepage').style.backgroundColor='violet';
+		if( document.getElementById('homepage') )
+		{
+			document.getElementById('homepage').style.backgroundColor='violet';
+		}
 	}
 	else if( ( -1 != My_Drawings_url_01 ) || ( -1 != My_Drawings_url_02 ) )
 	{
@@ -1697,7 +1836,7 @@ document.write( "<TABLE bgcolor='cyan' width='100%' border='1'>");
 						<TABLE style='width:100%'>\
 							<TR>\
 								<TD style='width:72px;' id='homepage' valign='top' align='left'>\
-									<A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseover='OpenHomeMenu()' onclick='toggleTable(event)' href='index.html'>Home2 page</A>\
+									<A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseover='OpenHomeMenu()' onclick='toggleTable(event)' href='index.html'>Home2</A>\
 								</TD>\
 							</TR>\
 						</TABLE>");
@@ -1710,7 +1849,7 @@ document.write( "<TABLE bgcolor='cyan' width='100%' border='1'>");
 						<TABLE style='width:100%'>\
 							<TR>\
 								<TD style='width:72px;' id='homepage' valign='top' align='left'>\
-									<A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseover='OpenHomeMenu()' onclick='toggleTable(event)'>Home</A>\
+									<A style='display:block;' onmouseover='OpenHomeMenu()' onclick='toggleTable(event)'>Home3</A>\
 								</TD>\
 							</TR>\
 						</TABLE>");
@@ -1720,64 +1859,101 @@ document.write( "<TABLE bgcolor='cyan' width='100%' border='1'>");
 	document.write( "<A style='display:block;' href='javascript:void(0)' class='closebtn' onmouseleave='CloseHomeMenu();' onclick='CloseHomeMenu()'>x</A>");
 if( -1 == NMurugesan_cv_url )
 {
-	document.write( "<A style='display:block;'><A href='NMurugesan_cv.html'>Murugesan N cv</A>");
-	document.getElementById('homepage').style.backgroundColor='violet';
+	document.write( "<A style='display:block;' href='NMurugesan_cv.html'>Murugesan N cv</A>");
+	if( document.getElementById('homepage') )
+	{
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
 }
 else
 {
-	document.write( "<A style='display:block;'><B><U><FONT color='red'>NMurugesan CV</B></U></FONT>");
-	document.getElementById('homepage').style.backgroundColor='violet';
+	// document.write( "<A style='display:block;'><B><U><FONT color='red'>NMurugesan CV</B></U></FONT>");
+	document.write("<A style='display:block; color:red; font-weight:bold; text-decoration:underline;'>NMurugesan CV</A>");
+	if( document.getElementById('homepage') )
+	{
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
 }
 /*
 if( -1 == Achievement_url )
 {
 	document.write( "<A style='display:block;' href='"+prefix_poemDir+"murugesan_achievements.html'>My achievements</A>");
-	document.getElementById('homepage').style.backgroundColor='violet';
+	if( document.getElementById('homepage') )
+	{
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
 }
 else
 {
 	document.write( "<A style='display:block;'><B><U><FONT color='red'>My achievements</B></U></FONT>");
-	document.getElementById('homepage').style.backgroundColor='violet';
+	if( document.getElementById('homepage') )
+	{
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
 }
 if( -1 != Appreciation_Evidence_url )
 {
 	document.write( "<A style='display:block;'><B><U><FONT color='red'>APPRECIATION EVIDENCE</B></U></FONT>");
-	document.getElementById('homepage').style.backgroundColor='violet';
+	if( document.getElementById('homepage') )
+	{
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
 }
 else
 {
 	document.write( "<A style='display:block;' href='"+prefix_poemDir+"Appreciation_Evidence.html'>Appreciation evidence</A>");
-	document.getElementById('homepage').style.backgroundColor='violet';
+	if( document.getElementById('homepage') )
+	{
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
 }
 if( -1 != MyVote_Url )
 {
 	document.write( "<A style='display:block;'><B><U><FONT color='red'>MY VOTE COUNt</B></U></FONT>");
-	document.getElementById('homepage').style.backgroundColor='violet';
+	if( document.getElementById('homepage') )
+	{
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
 }
 else
 {
 	document.write( "<A style='display:block;' href='"+prefix_poemDir+"My_upvote.html'>My vote count</A>");
-	document.getElementById('homepage').style.backgroundColor='violet';
+	if( document.getElementById('homepage') )
+	{
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
 }
 if( -1 != Srinivasan_Ramanujan_Summation_url )
 {
 	document.write( "<A style='display:block;'><B><U><FONT color='red'>SUMMATION</B></U></FONT>");
-	document.getElementById('homepage').style.backgroundColor='violet';
+	if( document.getElementById('homepage') )
+	{
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
 }
 else
 {
 	document.write( "<A style='display:block;' href='"+prefix_poemDir+"Srinivasan_Ramanujan_Summation.html'>Summation</A>");
-	document.getElementById('homepage').style.backgroundColor='violet';
+	if( document.getElementById('homepage') )
+	{
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
 }
 if( -1 != Earth_Mathematics_Pre_kg_url )
 {
 	document.write( "<A style='display:block;'><B><U><FONT color='red'>MATHEMATICS PRE-KG</B></U></FONT>");
-	document.getElementById('homepage').style.backgroundColor='violet';
+	if( document.getElementById('homepage') )
+	{
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
 }
 else
 {
 	document.write( "<A style='display:block;' href='"+prefix_poemDir+"Earth-Mathematics-Pre-kg.html'>Mathematics PRE-KG</A>");
-	document.getElementById('homepage').style.backgroundColor='violet';
+	if( document.getElementById('homepage') )
+	{
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
 }
 }
 */
@@ -1818,7 +1994,7 @@ document.write( "</TD>");
 
 //#{
 document.write( "<TD valign='top' style='width:10px;' align='left'>");
-document.write( "<TABLE style='width:100%'><TR><TD valign='top' style='width:999px;' align='left'><A onmouseover='OpenMoneyHelp01()' onclick='OpenMoneyHelp01()' id='moneyhelp01'>Save lives and money</A></TD></TR></TABLE>");
+document.write( "<TABLE style='width:100%'><TR><TD valign='top' style='width:999px;' align='left'><A onmouseover='OpenMoneyHelp01()' onclick='OpenMoneyHelp01()' id='moneyhelp01'>SaveLives</A></TD></TR></TABLE>");
 document.write( "<DIV id='MoneyHelpPanel01' class='MoneyHelpSidePanel01'>");
 document.write( "<A href='javascript:void(0)' class='closebtn' onclick='CloseMoneyHelp()'>x</A>");
 if( -1 != mis_interest_url )
@@ -1829,7 +2005,7 @@ if( -1 != mis_interest_url )
 }
 else
 {
-	document.write( "<A style='display:block;' href='"+prefix_poemDir+"Sustainable_Living.html'>Save lives and money</A>");
+	document.write( "<A style='display:block;' href='"+prefix_poemDir+"Sustainable_Living.html'>SaveLives</A>");
 }
 if( -1 != nsc_interest_url )
 {
@@ -1986,22 +2162,49 @@ document.write( "</TD>");
 // #}
 
 // #{
+// document.write( "<TD valign='top' style='width:183px;' align='left'>");
+// document.write( "<TABLE style='width:100%'><TR><TD valign='top' align='left'><A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseout='CloseHomeMenu();' onmouseover='OpenSBI_employee_never_help01()' onclick='OpenSBI_employee_never_help01()' id='SBI_employee_never_help01'>SBI1 EMP NEVER HELP</A></TD></TR></TABLE>");
+// document.write( "<DIV id='SBI_employee_never_helpPanel01' class='SBI_employee_never_help01SidePanel01'>");
+// document.write( "<A href='javascript:void(0)' class='closebtn' onclick='CloseMoneyHelp()'>x</A>");
+// document.write( "<TD valign='top' style='width:183px;' align='left'>");
+// document.write( "<TABLE style='width:100%'><TR><TD valign='top' align='left'><A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseover='OpenSBI_employee_never_help01()' onclick='OpenSBI_employee_never_help01()' id='SBI_employee_never_help01'>SBI2 EMP NEVER HELP</A></TD></TR></TABLE>");
+// document.write( "<DIV id='SBI_employee_never_helpPanel01' class='SBI_employee_never_help01SidePanel01'>");
+// document.write( "<A href='javascript:void(0)' class='closebtn' onclick='CloseMoneyHelp()'>x</A>");
 document.write( "<TD valign='top' style='width:183px;' align='left'>");
-document.write( "<TABLE style='width:100%'><TR><TD valign='top' align='left'><A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseout='CloseHomeMenu();' onmouseover='OpenSBI_employee_never_help01()' onclick='OpenSBI_employee_never_help01()' id='SBI_employee_never_help01'>SBI EMP NEVER HELP</A></TD></TR></TABLE>");
+document.write( "<TABLE style='width:100%'><TR><TD valign='top' align='left'><A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseover='OpenSBI_employee_never_help01()' onclick='OpenSBI_employee_never_help01()' id='SBI_employee_never_help01'>SBI3 EMP NEVER HELP</A></TD></TR></TABLE>");
 document.write( "<DIV id='SBI_employee_never_helpPanel01' class='SBI_employee_never_help01SidePanel01'>");
 document.write( "<A href='javascript:void(0)' class='closebtn' onclick='CloseMoneyHelp()'>x</A>");
+
 if( -1 != SBI_employee_never_help_url )
 {
+	// document.write( "<A><FONT color='red'><B><U>Sbi employee never help</B></U></FONT></A>");
+	// document.getElementById('SBI_employee_never_help01').style.backgroundColor='violet';
+	// document.getElementById('homepage').style.backgroundColor='';
+	// document.write( "<A><FONT color='red'><B><U>Sbi employee never help</B></U></FONT></A>");
+	// document.getElementById('SBI_employee_never_help01').style.backgroundColor = 'violet';
+	// document.getElementById('homepage').style.backgroundColor = '';
 	document.write( "<A><FONT color='red'><B><U>Sbi employee never help</B></U></FONT></A>");
-	document.getElementById('SBI_employee_never_help01').style.backgroundColor='violet';
-	document.getElementById('homepage').style.backgroundColor='';
+	document.getElementById('SBI_employee_never_help01').style.backgroundColor = 'violet';
+	document.getElementById('homepage').style.backgroundColor = '';
 }
 else
 {
-	document.write( "<A href='"+prefix_poemDir+"SBI_employee_never_help.html'>SBI emp never help</A>");
+	// document.write( "<A href='"+prefix_poemDir+"SBI_employee_never_help.html'>SBI emp never help</A>");
+	document.write( "<A href='" + prefix_poemDir + "SBI_employee_never_help.html'>SBI emp never help</A>");
 }
 document.write( "</DIV>");
 document.write( "</TD>");
+setTimeout(function() {
+    const helpLink = document.getElementById('SBI_employee_never_help01');
+    if (helpLink) {
+        helpLink.addEventListener('mouseleave', function() {
+            CloseHomeMenu();
+        });
+        helpLink.addEventListener('mouseover', function() {
+            OpenSBI_employee_never_help01();
+        });
+    }
+}, 0); // Ensures the code runs after the DOM is fully updated
 // #}
 
 // #{
