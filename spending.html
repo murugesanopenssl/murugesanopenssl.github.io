@@ -23,7 +23,7 @@
 				}
 				else
 				{
-					document.write("<TR><TD style='text-align:middle;vertical-align:top;'><A class='link-style' href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' id='Homehref' style='color:blue'>Home</A></TD>");
+					document.write("<TR><TD style='text-align:middle;vertical-align:top;'><A class='link-style' href='index.html' id='Homehref' style='color:blue'>Home</A></TD>");
 				}
 				function showHomeTable()
 				{
@@ -187,7 +187,7 @@
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
 						<SCRIPT type='text/javascript'>
-						SAVEDAMT_Fri_28_Nov_2025_a="11701.70";
+						SAVEDAMT_Fri_28_Nov_2025_a="11701.72";
 						SAVEDAMT=SAVEDAMT_Fri_28_Nov_2025_a;
 						DISP_SAVED_AMT=parseFloat(SAVEDAMT).toFixed(2);
 						DISP_SAVED_AMT = DISP_SAVED_AMT.replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
@@ -233,7 +233,17 @@
 							targetDate.setHours(0,0,0,0); // start of target day
 
 							var timeDiff = targetDate - today;
-							var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1; // including today
+							EngMmm=(""+istDate).substr( 4,3);
+							yyyy=(""+istDate).substr( 11,4);
+							if( "Nov" == EngMmm || "Apr" == EngMmm || "Jun" == EngMmm || "Sep" == EngMmm )
+							{
+
+								var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24) ); // including today
+							}
+							else
+							{
+								var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24) + 1 ); // including today
+							}
 
 							var RequiredAmt = 55000.00 - SAVEDAMT;
 							var SAVE_PER_DAY = RequiredAmt / daysLeft;
@@ -263,7 +273,7 @@
 			<TABLE border='1'>
 			<TR>
 			<TD valign='top' align='middle' bgcolor=cyan>
-			<A href='/ExplorerPatcher-Exception-Windows-11-Home-Single-Language/index.html' class="link-style" id='Homehref' style='color:blue'>Home</A>
+			<A href='index.html' class="link-style" id='Homehref' style='color:blue'>Home</A>
 			<TD valign='top' align='right'>
 			<A>MoneyHelp01</A>
 			</TD>
@@ -1459,8 +1469,6 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 					<TD valign='top' align='middle'>
 						<H1><FONT size='5'>தேவையற்ற செலவுகளைத் நாம் தடுப்பதன் மூலம் நமது பணத்தைச் சேமிக்க முடியும்.</FONT></H1>
 						<SCRIPT type='text/javascript'>
-							EngMmm=(""+istDate).substr( 4,3);
-							yyyy=(""+istDate).substr( 11,4);
 							switch(EngMmm)
 							{
 								case "Apr":
@@ -1539,7 +1547,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 const baseRaw = {
 Dec: [
 		[ formatDate("30-Dec-2025"),
-			"கா.உணவு",					0.00,
+			"கா.உணவு",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1550,7 +1558,7 @@ Dec: [
 ],
 Nov: [
 		[ formatDate("30-Nov-2025"),
-			"கா.உணவு",					0.00,
+			"கா.உணவு",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1559,18 +1567,18 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("29-Nov-2025"),
-			"கா.உணவு",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
+			"கா.உணவு",				40.00,
+			"மி.கா.நா",				50.00,
+			"கை.க.தி",				190.00,
+			"தேநீர்",					10.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
 		],
 		[ formatDate("28-Nov-2025"),
-			"கா.உணவு",					0.00,
-			"",					0.00,
-			"",					0.00,
+			"ம.உணவு",				50.00,
+			"தொ.இ",					120.00,
+			"அ.உணவு",				50.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1823,24 +1831,24 @@ Oct: [
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			18.00,
 			"<A title='இரவு உணவு/Dinner'>இ.உணவு</A>",			45.00,
 			"மூ.கா.தொ.வ",			40.00,
-			"FeviQuick",			10.00,
+			"உ.ஒ.ப",			10.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("26-Oct-2025"),
-			"LaptopFan",			350.00,
-			"Repair",			0.00,
-			"NotTraced",			0.00,
-			"Till",				0.00,
-			"30-Oct-2025",			0.00,
+			"ம.மி.ப",			350.00,
+			"",			0.00,
+			"",			0.00,
+			"",				0.00,
+			"",			0.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("25-Oct-2025"),
-			"Train",			23.00,
+			"ரயில்",				23.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			80.00,
-			"MobCover",			200.00,
+			"கை.பா",			200.00,
 			"ஊறுகாய்",			240.00,
 			"",				0.00,
 			"",				0.00,
@@ -1849,7 +1857,7 @@ Oct: [
 		[ formatDate("24-Oct-2025"),
 			"பெ.பெ.போ.க",				23.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			80.00,
-			"MobCover",			200.00,
+			"கை.பா",			200.00,
 			"ஊறுகாய்",			240.00,
 			"",				0.00,
 			"",				0.00,
@@ -1875,7 +1883,7 @@ Oct: [
 		],
 		[ formatDate("21-Oct-2025"),
 			"பயணச்சீட்டு",			183.00,
-			"Tea",				10.00,
+			"தேநீர்",				10.00,
 			"MSPuri",			40.00,
 			"<A title='இரவு உணவு/Dinner'>இ.உணவு</A>",			40.00,
 			"BathBrush",			96.00,
@@ -1893,7 +1901,7 @@ oil 80.00
 வா.இலை/வாழை.இலை 20.00
 */
 		[ formatDate("20-Oct-2025"),
-			"Tea",				10.00,
+			"தேநீர்",				10.00,
 			"மூ.கா.தொ.வ",			20.00,
 			"மூ.கா.தொ Med",			404.00,
 			"",				0.00,
@@ -1912,7 +1920,7 @@ oil 80.00
 		],
 		[ formatDate("18-Oct-2025"),
 			"பயணச்சீட்டு",			417.00,
-			"Tea",				10.00,
+			"தேநீர்",				10.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -1920,7 +1928,7 @@ oil 80.00
 			"",				0.00
 		],
 		[ formatDate("17-Oct-2025"),
-			"Tea",				10.00,
+			"தேநீர்",				10.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			40.00,
 			"எரி",			200.00,
 			"<A title='இரவு உணவு/Dinner'>இ.உணவு</A>",			105.00,
@@ -1930,7 +1938,7 @@ oil 80.00
 		],
 		[ formatDate("16-Oct-2025"),
 			"<A title='காலை உணவு/Break fast'>கா.உணவு</A>",			105.00,
-			"Tea",				20.00,
+			"தேநீர்",				20.00,
 			"AdhaarUpdt",			200.00,
 			"பொ.பா.தொ",				50.00,
 			"",				0.00,
@@ -1941,14 +1949,14 @@ oil 80.00
 			"க.மி.க.க",			174.00,
 			"3Roses",			345.00,
 			"DressRope",			120.00,
-			"Tea",				10.00,
+			"தேநீர்",				10.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			60.00,
 			"தொ.வை",				1000.00,
 			"",				0.00
 		],
 		[ formatDate("14-Oct-2025"),
 			"LenseRepair",			900.00,
-			"Tea",				10.00,
+			"தேநீர்",				10.00,
 			"",				0.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			256.00,
 			"",				0.00,
@@ -1956,7 +1964,7 @@ oil 80.00
 			"",				0.00
 		],
 		[ formatDate("13-Oct-2025"),
-			"Tea",				20.00,
+			"தேநீர்",				20.00,
 			"மூ.கா.தொ",				100.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			23.00,
 			"",				0.00,
@@ -1965,7 +1973,7 @@ oil 80.00
 			"",				0.00
 		],
 		[ formatDate("12-Oct-2025"),
-			"Tea",				50.00,
+			"தேநீர்",				50.00,
 			"Poosari",			10.00,
 			"Soup",				20.00,
 			"2 மீரா",			156.00,
@@ -1976,7 +1984,7 @@ oil 80.00
 		[ formatDate("11-Oct-2025"),
 			"BngToTn",			13.00,
 			"HosToDpi",			56.00,
-			"எரி/DpiPetrol",			200.00,
+			"த.எரி",		200.00,
 			"மூ.கா.தொ.வ",			20.00,
 			"மூ.கா.தொ.ஊ",			610.00,
 			"GodTip",			10.00,
@@ -2059,7 +2067,7 @@ oil 80.00
 			"<A title='இரவு உணவு/Dinner'>இ.உணவு</A>",			70.00,
 			"<A title='இரவு உணவு/Dinner'>இ.உணவு</A>",			0.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			806.00,
-			"எரி/NMPetrol",			250.00,
+			"பெ.எரி",			250.00,
 			"",				0.00,
 			"",				0.00
 		],
@@ -2068,7 +2076,7 @@ oil 80.00
 			"<A title='இரவு உணவு/Dinner'>இ.உணவு</A>",			70.00,
 			"<A title='இரவு உணவு/Dinner'>இ.உணவு</A>",			30.00,
 			"பயணச்சீட்டு",			98.00,
-			"எரி/SLPetrol",			50.00,
+			"பெ.எரி",			50.00,
 			"SLWhelRep",			20.00,
 			"காய்கறி",				100.00
 		]
@@ -2097,7 +2105,7 @@ Sep: [
 			"<A title='இரவு உணவு/Dinner'>இ.உணவு</A>",			50.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			120.00,
 			"GarbDonate",			20.00,
-			"Tea",				10.00,
+			"தேநீர்",				10.00,
 			"SchoolFees",			55000.00,
 			"Harpic",			539.00
 		],
@@ -2258,14 +2266,14 @@ May: [
 			"",				0.00
 		],
 		[ formatDate("21-May-2025"),
-			"எரி/DPIPetrol",			250.00,
+			"த.எரி",			250.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("17-May-2025"),
-			"எரி/DPIPetrol",			200.00,
+			"த.எரி",			200.00,
 			"DpiBigMart",			600.00,
 			"",				0.00,
 			"",				0.00,
@@ -2466,7 +2474,7 @@ Apr: [
 													searchFood.includes("soup")	||
 													searchFood.includes("livo")	||
 													searchFood.includes("liveo")	||
-													searchFood.includes("tea")	||
+													searchFood.includes("தேநீர்")	||
 													searchFood.includes("பால்")
 											)
 											{
@@ -2940,10 +2948,10 @@ Apr: [
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
-					எரி
+					த.எரி
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
-					Petrol/Diesel
+					Dharmapuri Petrol/Diesel
 				</TD>
 			</TR>
 			<TR>
@@ -3116,7 +3124,8 @@ Apr: [
 					தேநீர்
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
-					Tea
+					Tea<BR>
+					to prevent sleeping during day time.
 				</TD>
 			</TR>
 			<TR>
@@ -3463,6 +3472,35 @@ Apr: [
 			</TR>\
 			<TR>\
 				<TD valign='top' align='right'>\
+					தொ.இ<BR>\
+					தொலைக்காட்சி இணைப்பு\
+				</TD>\
+				<TD valign='top' align='right'>\
+					Tv cable\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD valign='top' align='right'>\
+					ம.வி<BR>\
+					மடிக்கணினி விசிறி\
+				</TD>\
+				<TD valign='top' align='right'>\
+					Prevent ant using MSeal(clay) at Window door.\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD valign='top' align='right'>\
+					உ.ஒ.ப<BR>\
+					ஃபெவிக்விக்<BR>\
+					உடடனடியாக ஒட்டும் பசை \
+				</TD>\
+				<TD valign='top' align='right'>\
+					FeviQuick<BR>\
+					Instant Glue
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD valign='top' align='right'>\
 					எ.த.க<BR>\
 					எறும்பு தடுக்கும் களிமண்<BR>\
 					எறும்பு தடுக்கும் மண்(எம்சீல்)\
@@ -3474,10 +3512,55 @@ Apr: [
 			</TR>\
 			<TR>\
 				<TD valign='top' align='right'>\
-					LARGER AMT TOTAL:\
+					ரயில்\
 				</TD>\
 				<TD valign='top' align='right'>\
-					9269.00\
+					Train\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD valign='top' align='right'>\
+					அ.உணவு<BR>\
+					அப்பா.உணவு பாதுகாப்பு\
+				</TD>\
+				<TD valign='top' align='right'>\
+					Mobile cover\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD valign='top' align='right'>\
+					கை.பா<BR>\
+					கைபேசி பாதுகாப்பு\
+				</TD>\
+				<TD valign='top' align='right'>\
+					Mobile cover\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD valign='top' align='right'>\
+					கை.க.தி<BR>
+					கை கழுவும் திரவம்
+				</TD>\
+				<TD valign='top' align='right'>\
+					Electrical insulation tape
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD valign='top' align='right'>\
+					மி.கா.நா<BR>
+					மின் காப்பு நாடா
+				</TD>\
+				<TD valign='top' align='right'>\
+					Electrical insulation tape
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD valign='top' align='right'>\
+					ம.மி.ப<BR>\
+					மடிக்கணினி மின்விசிறி பழுதுபார்ப்பு\
+				</TD>\
+				<TD valign='top' align='right'>\
+					Laptop fan repair at dharmapuri\
 				</TD>\
 			</TR>\
 			</TABLE>");
