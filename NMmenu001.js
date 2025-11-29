@@ -29,7 +29,7 @@ MenuHeight_MyPredict01="133px";
 MenuWidth_MyPredict01="175px";
 MenuHeight_AadhaarHelp01="143px";
 MenuHeight_Garbages01="593px";
-MenuWidth="238px";
+MenuWidth="158px";
 DefaultVal=1;
 function DISPLAY_REQUIRED_POSTOFFICE_INTEREST( selectedVal )
 {
@@ -1267,6 +1267,8 @@ function OpenHomeMenu()
 {
 	document.getElementById("HomePanel").style.height = MenuHeight_HomePage01;
 	document.getElementById("HomePanel").style.width = MenuWidth;
+	document.getElementById("HomePanel").style.position = "0";
+	document.getElementById("HomePanel").style.zIndex = "0";	
 	document.getElementById("GarbagesPanel01").style.height = "0";
 	document.getElementById("GarbagesPanel01").style.width = "0";
 	document.getElementById("WindowsHelpPanel01").style.height = "0";
@@ -1675,26 +1677,50 @@ LPG_No_tips_delivery_url=location_url.indexOf( "LPG_No_tips_delivery.html");
 airtel_recharge_url=location_url.indexOf( "airtel_recharge.html");
 PostOfficeHolidays_url=location_url.indexOf( "PostOfficeHolidays.html");
 document.write( "<TABLE bgcolor='cyan' width='100%' border='1'>");
-if( -1 == HomePage_url && -1 == My_Drawings_url_01 )
-{
-	document.write( "<TR><TD valign='top' style='width:95px;' align='left'><TABLE style='width:100%'><TR><TD style='width:72px;' id='homepage' valign='top' align='left'><A style='display:block;' onmouseover='OpenHomeMenu()' onclick='toggleTable(event)' href='index.html'>Home</A></TD></TR></TABLE>");
-	document.getElementById('homepage').style.backgroundColor='violet';
-}
-else if( ( -1 != My_Drawings_url_01 ) || ( -1 != My_Drawings_url_02 ) )
-{
-	document.write( "<TR><TD valign='top' style='width:95px;' align='left'><TABLE style='width:100%'><TR><TD style='width:72px;' id='homepage' valign='top' align='left'><A style='display:block;' onmouseover='OpenHomeMenu()' onclick='toggleTable(event)' href='index.html'>Home2 page</A></TD></TR></TABLE>");
-	document.getElementById('homepage').style.backgroundColor='cyan';
-}
-else
-{
-	document.write( "<TR><TD valign='top' style='width:89px;' align='left'><TABLE style='width:100%'><TR><TD style='width:72px;' id='homepage' valign='top' align='left'><A style='display:block;' onmouseover='OpenHomeMenu()' onclick='toggleTable(event)'>Home</A></TD></TR></TABLE>");
-	document.getElementById('homepage').style.backgroundColor='white';
-}
-document.write( "<DIV id='HomePanel' class='HomePageSidePanel'>");
-document.write( "<A style='display:block;' href='javascript:void(0)' class='closebtn' onmouseout='CloseHomeMenu();' onclick='CloseHomeMenu()'>x</A>");
+	if( -1 == HomePage_url && -1 == My_Drawings_url_01 )
+	{
+		document.write( "<TR>\
+					<TD valign='top' style='width:95px;' align='left'>\
+						<TABLE style='width:100%'>\
+							<TR>\
+								<TD style='width:72px;' id='homepage' valign='top' align='left'>\
+									<A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseover='OpenHomeMenu()' onclick='toggleTable(event)' href='index.html'>Home</A>\
+								</TD>\
+							</TR>\
+						</TABLE>");
+		document.getElementById('homepage').style.backgroundColor='violet';
+	}
+	else if( ( -1 != My_Drawings_url_01 ) || ( -1 != My_Drawings_url_02 ) )
+	{
+		document.write( "<TR>\
+					<TD valign='top' style='width:95px;' align='left'>\
+						<TABLE style='width:100%'>\
+							<TR>\
+								<TD style='width:72px;' id='homepage' valign='top' align='left'>\
+									<A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseover='OpenHomeMenu()' onclick='toggleTable(event)' href='index.html'>Home2 page</A>\
+								</TD>\
+							</TR>\
+						</TABLE>");
+		document.getElementById('homepage').style.backgroundColor='cyan';
+	}
+	else
+	{
+		document.write( "<TR>\
+					<TD valign='top' style='width:89px;' align='left'>\
+						<TABLE style='width:100%'>\
+							<TR>\
+								<TD style='width:72px;' id='homepage' valign='top' align='left'>\
+									<A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseover='OpenHomeMenu()' onclick='toggleTable(event)'>Home</A>\
+								</TD>\
+							</TR>\
+						</TABLE>");
+		document.getElementById('homepage').style.backgroundColor='white';
+	}
+	document.write( "<DIV id='HomePanel' class='HomePageSidePanel'>");
+	document.write( "<A style='display:block;' href='javascript:void(0)' class='closebtn' onmouseleave='CloseHomeMenu();' onclick='CloseHomeMenu()'>x</A>");
 if( -1 == NMurugesan_cv_url )
 {
-	document.write( "<A style='display:block;'><A href='NMurugesan_cv.html'>NMURUGESAN CV</A>");
+	document.write( "<A style='display:block;'><A href='NMurugesan_cv.html'>Murugesan N cv</A>");
 	document.getElementById('homepage').style.backgroundColor='violet';
 }
 else
@@ -1792,7 +1818,7 @@ document.write( "</TD>");
 
 //#{
 document.write( "<TD valign='top' style='width:10px;' align='left'>");
-document.write( "<TABLE style='width:100%'><TR><TD valign='top' align='left'><A style='display:block;' onmouseover='OpenMoneyHelp01()' onclick='OpenMoneyHelp01()' id='moneyhelp01'>Save lives and money</A></TD></TR></TABLE>");
+document.write( "<TABLE style='width:100%'><TR><TD valign='top' style='width:999px;' align='left'><A onmouseover='OpenMoneyHelp01()' onclick='OpenMoneyHelp01()' id='moneyhelp01'>Save lives and money</A></TD></TR></TABLE>");
 document.write( "<DIV id='MoneyHelpPanel01' class='MoneyHelpSidePanel01'>");
 document.write( "<A href='javascript:void(0)' class='closebtn' onclick='CloseMoneyHelp()'>x</A>");
 if( -1 != mis_interest_url )
@@ -1961,7 +1987,7 @@ document.write( "</TD>");
 
 // #{
 document.write( "<TD valign='top' style='width:183px;' align='left'>");
-document.write( "<TABLE style='width:100%'><TR><TD valign='top' align='left'><A style='display:block;' onmouseover='OpenSBI_employee_never_help01()' onclick='OpenSBI_employee_never_help01()' id='SBI_employee_never_help01'>SBI EMP NEVER HELP</A></TD></TR></TABLE>");
+document.write( "<TABLE style='width:100%'><TR><TD valign='top' align='left'><A style='display:block;' onmouseleave='CloseHomeMenu();' onmouseover='OpenSBI_employee_never_help01()' onclick='OpenSBI_employee_never_help01()' id='SBI_employee_never_help01'>SBI EMP NEVER HELP</A></TD></TR></TABLE>");
 document.write( "<DIV id='SBI_employee_never_helpPanel01' class='SBI_employee_never_help01SidePanel01'>");
 document.write( "<A href='javascript:void(0)' class='closebtn' onclick='CloseMoneyHelp()'>x</A>");
 if( -1 != SBI_employee_never_help_url )
