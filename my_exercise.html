@@ -35,7 +35,7 @@
 		</DIV>
 		<TABLE style='background-color:white;color:black;width:100%;'>
 			<TR>
-				<TD style="text-align:left;vertical-align: top;">
+				<TD style="text-align:left;vertical-align:top;">
 					<DIV id="totalsTable"></DIV>
 						<SELECT id="monthSelect" onchange="generateExerciseTable();" style="font-size:16px;">
 						</SELECT>
@@ -56,14 +56,24 @@
 							],
 							Nov: [
 							{
+							date: "Sun 30-Nov-2025",
+							startTime: "05:37 AM",
+							endTime: "06:08 AM",
+							walkingTime: "31 Minutes",
+							standingCrossBody: "No",
+							lowerHips: "06 times",
+							disadvantages: "2% Right and left foot pain after walk.<BR>1% Right and left thigh pain",
+							helpAtPain: "Stopped Standing Cross-Body Touch.<BR>Increased 1 time at Lower hips.<BR>Increased Lower hips 1 time extra."
+							},
+							{
 							date: "Sat 29-Nov-2025",
 							startTime: "07:35 AM",
 							endTime: "08:10 AM",
 							walkingTime: "35 Minutes",
-							standingCrossBody: "05 times",
-							lowerHips: "No",
-							disadvantages: "Right and left thigh pain",
-							helpAtPain: "Reduced Cross-Body Touch 05 times.<BR>Stopped Lower hips"
+							standingCrossBody: "No",
+							lowerHips: "05 times",
+							disadvantages: "3% Right and left thigh pain",
+							helpAtPain: "Stopped Standing Cross-Body Touch.<BR>Reduced Lower hips to only 5 times"
 							},
 							{
 							date: "Fri 28-Nov-2025",
@@ -72,7 +82,7 @@
 							walkingTime: "30 Minutes",
 							standingCrossBody: "10 times",
 							lowerHips: "60 times",
-							disadvantages: "Right and left thigh pain",
+							disadvantages: "5% Right and left thigh pain",
 							helpAtPain: "Reduced Cross-Body Touch 10 times."
 							},
 							{
@@ -196,7 +206,7 @@
 							helpAtPain: ""
 							},
 							{
-							date:"Mon 17-Nov-2025"
+								date:"Mon 17-Nov-2025"
 							},
 							{
 							date:"Sun 16-Nov-2025"
@@ -297,26 +307,35 @@
 							let html=`
 							<TABLE border="1" width="100%" cellpadding="5">
 							<TR>
-							<TD><B>Exercise date</B></TD>
-							<TD><B>Start time</B></TD>
-							<TD><B>End time</B></TD>
-							<TD><B>Walking time</B></TD>
-							<TD><B>Standing Cross-Body</B></TD>
-							<TD><B>Lower hips</B></TD>
-							<TD><B>Disadvantages</B></TD>
-							<TD><B>Help at pain</B></TD>
+							<TD style="text-align:right;vertical-align:top;"><B>Exercise date</B></TD>
+							<TD style="text-align:right;vertical-align:top;"><B>Start time</B></TD>
+							<TD style="text-align:right;vertical-align:top;"><B>End time</B></TD>
+							<TD style="text-align:right;vertical-align:top;"><B>Walking time</B></TD>
+							<TD style="text-align:right;vertical-align:top;"><B>Standing Cross-Body</B></TD>
+							<TD style="text-align:right;vertical-align:top;"><B>Lower hips</B></TD>
+							<TD style="text-align:right;vertical-align:top;"><B>Disadvantages</B></TD>
+							<TD style="text-align:right;vertical-align:top;"><B>Help at pain</B></TD>
 							</TR>`;
 							rows.forEach(r=>{
 							html+=`<TR>
-							<TD>${r.date||""}</TD>
-							<TD>${r.startTime||""}</TD>
-							<TD>${r.endTime||""}</TD>
-							<TD>${r.walkingTime||""}</TD>
-							<TD>${r.standingCrossBody||""}</TD>
-							<TD>${r.lowerHips||""}</TD>`;
+							<TD style="text-align:right;vertical-align:top;">${r.date||""}</TD>`;
+							if(	"Tue 18-Nov-2025" !== `${r.date||""}`	&&
+								"Mon 17-Nov-2025" !== `${r.date||""}`	&&
+								"Sun 16-Nov-2025" !== `${r.date||""}`	&&
+								"Sat 15-Nov-2025" !== `${r.date||""}`	&&
+								"Fri 14-Nov-2025" !== `${r.date||""}`	&&
+								"Thu 13-Nov-2025" !== `${r.date||""}`
+							)
+							{
+								html+=`<TD style="text-align:right;vertical-align:top;">${r.startTime||""}</TD>
+								<TD style="text-align:right;vertical-align:top;">${r.endTime||""}</TD>
+								<TD style="text-align:right;vertical-align:top;">${r.walkingTime||""}</TD>
+								<TD style="text-align:right;vertical-align:top;">${r.standingCrossBody||""}</TD>
+								<TD style="text-align:right;vertical-align:top;">${r.lowerHips||""}</TD>`;
+							}
 							if( r.disadvantages && "Stopped doing exercise for 6 days." === r.disadvantages )
 							{
-								html+=`<TD colspan="2" rowspan="6" style="background-color:yellow;color:black;vertical-align:bottom;text-align:right;">${r.disadvantages}</TD>`;
+								html+=`<TD rowspan="6" colspan='7' style="background-color:yellow;color:black;vertical-align:bottom;text-align:right;">${r.disadvantages}</TD>`;
 							}
 							else if( r.disadvantages && "No" === r.disadvantages )
 							{
@@ -327,21 +346,57 @@
 							{
 								if(r.disadvantages)
 								{
-									html+=`<TD style="background-color:red;color:white;">${r.disadvantages}</TD>`;
+									html+=`<TD style="background-color:red;color:white;vertical-align:top;text-align:right;">${r.disadvantages}</TD>`;
 								}
 								else
 								{
-									html+=`<TD></TD>`;
+									if(		"Tue 18-Nov-2025" !== `${r.date||""}`	&&
+											"Mon 17-Nov-2025" !== `${r.date||""}`	&&
+											"Sun 16-Nov-2025" !== `${r.date||""}`	&&
+											"Sat 15-Nov-2025" !== `${r.date||""}`	&&
+											"Fri 14-Nov-2025" !== `${r.date||""}`	&&
+											"Thu 13-Nov-2025" !== `${r.date||""}`	
+									)
+									{
+										html+=`<TD style="text-align:right;vertical-align:top;"></TD>`;
+									}
 								}
 								if(r.helpAtPain)
 								{
-									html+=`<TD style="background-color:#00ff00;color:black;">${r.helpAtPain}</TD>`;
+									html+=`<TD style="background-color:#00ff00;color:black;vertical-align:top;text-align:right;">${r.helpAtPain}</TD>`;
 								}
 								else
 								{
-									html+=`<TD></TD>`;
+									if(		"Tue 18-Nov-2025" !== `${r.date||""}`	&&
+											"Mon 17-Nov-2025" !== `${r.date||""}`	&&
+											"Sun 16-Nov-2025" !== `${r.date||""}`	&&
+											"Sat 15-Nov-2025" !== `${r.date||""}`	&&
+											"Fri 14-Nov-2025" !== `${r.date||""}`	&&
+											"Thu 13-Nov-2025" !== `${r.date||""}`	
+									)
+									{
+										html+=`<TD style="text-align:right;vertical-align:top;"></TD>`;
+									}
 								}
 							}
+							/*
+							worst code from chatgpt
+							if( r.disadvantages && "Stopped doing exercise for 6 days." === r.disadvantages )
+							{
+								html+=`<TD rowspan="6" colspan="7" style="background-color:yellow;color:black;vertical-align:bottom;text-align:right;">${r.disadvantages}</TD>`;
+							}
+							else if( r.disadvantages && "No" === r.disadvantages )
+							{
+								html+=`<TD style="background-color:#00ff00;color:black;vertical-align:bottom;text-align:right;">${r.disadvantages}</TD>`;
+								html+=`<TD style="background-color:#00ff00;color:black;vertical-align:bottom;text-align:right;">${r.helpAtPain || ""}</TD>`;
+							}
+							else
+							{
+								html+=`<TD style="text-align:right;vertical-align:top;"></TD>`;
+								html+=`<TD style="text-align:right;vertical-align:top;"></TD>`;
+							}
+							worst code from chatgpt on Sun 30-Nov-2025
+							*/
 							html+=`</TR>`;
 							});
 							html+=`</TABLE>`;
