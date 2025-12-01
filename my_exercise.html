@@ -293,17 +293,24 @@
 							// let totalMin=0;
 							// exerciseData[sel].forEach(r=>{
 							let sel=document.getElementById("monthSelect").value;
-							let rows=[];
-							let totalMin=0;
-							let data = (sel === "all")
-								? Object.values(exerciseData).flat()
-								: exerciseData[sel];
-							data.forEach(r=>{
-							// if(isFutureDate(r.date)) return;
-							if(sel !== "all" && isFutureDate(r.date)) return;
-							rows.push(r);
-							totalMin+=extractMinutes(r.walkingTime);
-							});
+							let rows = [];
+let totalMin = 0;
+
+// rows shown = based on selected month
+let data = (sel === "all")
+    ? Object.values(exerciseData).flat()
+    : exerciseData[sel];
+
+data.forEach(r=>{
+    if(sel !== "all" && isFutureDate(r.date)) return;
+    rows.push(r);
+});
+
+// totals = always ALL months
+let allData = Object.values(exerciseData).flat();
+allData.forEach(r=>{
+    totalMin += extractMinutes(r.walkingTime);
+});
 							let totalHrs=Math.floor(totalMin/60);
 							let remMin=totalMin%60;
 							let totalDays=(totalHrs/24)+(remMin/(24*60));
