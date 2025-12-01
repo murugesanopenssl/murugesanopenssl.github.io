@@ -45,13 +45,13 @@
 							Dec: [
 							{
 							date: "Mon 01-Dec-2025",
-							startTime: "06:18 AM",
-							endTime: "06:48 AM",
-							walkingTime: "30 Minutes",
-							standingCrossBody: "10 times",
-							lowerHips: "60 times",
-							disadvantages: "Right and left thigh pain",
-							helpAtPain: "Reduced Cross-Body Touch 10 times."
+							startTime: "05:25 AM",
+							endTime: "05:50 AM",
+							walkingTime: "35 Minutes",
+							standingCrossBody: "No",
+							lowerHips: "05 times",
+							disadvantages: "3% Right foot pain before walking.",
+							helpAtPain: "After walking 1% right foot pain."
 							}
 							],
 							Nov: [
@@ -259,8 +259,11 @@
 						function isFutureDate(d)
 						{
 								if(!d) return false;
-								if(d.includes("Dec-2025")) return true;
-								if(d.includes("Dec") && d.includes("2025")) return true;
+								// if(d.includes("Dec-2025")) return true;
+								// if(d.includes("Dec") && d.includes("2025")) return true;
+								let today = new Date();
+								let entry = new Date(d.replace(/[^0-9A-Za-z- ]/g,""));
+								if(entry > today) return true;
 								return false;
 						}
 						function buildMonthSelect()
@@ -279,15 +282,25 @@
 							}
 							sel.innerHTML+=`<OPTION value="${m}">${label}</OPTION>`;
 							});
-							sel.value="Nov";
+							mmm=""+new Date();
+							mmm=mmm.substr( 4,3);
+							sel.value=mmm;
 						}
 						function generateExerciseTable()
 						{
+							// let sel=document.getElementById("monthSelect").value;
+							// let rows=[];
+							// let totalMin=0;
+							// exerciseData[sel].forEach(r=>{
 							let sel=document.getElementById("monthSelect").value;
 							let rows=[];
 							let totalMin=0;
-							exerciseData[sel].forEach(r=>{
-							if(isFutureDate(r.date)) return;
+							let data = (sel === "all")
+								? Object.values(exerciseData).flat()
+								: exerciseData[sel];
+							data.forEach(r=>{
+							// if(isFutureDate(r.date)) return;
+							if(sel !== "all" && isFutureDate(r.date)) return;
 							rows.push(r);
 							totalMin+=extractMinutes(r.walkingTime);
 							});
