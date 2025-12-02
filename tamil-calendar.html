@@ -3,14 +3,13 @@
 	<HEAD>
 		<META CHARSET="UTF-8">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
-		<META charset="UTF-8">
-		<LINK href="MyMenu002.css" rel="stylesheet">
-		<META name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamil and Gregorian Calendar</title>
-    <style>
-    </style>		<!--
-		<LINK rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		-->
+		<LINK href="github.io.css" rel="stylesheet">
+		<title>Tamil and Gregorian Calendar</title>
+		<SCRIPT src='text.js'>
+		</SCRIPT>
+		<SCRIPT type='text/javascript'>
+			writeMenu();
+		</SCRIPT>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 		<DIV style="width:100%;display:block;margin:0;padding:0;">
@@ -21,6 +20,7 @@
 				const tamilYear = currentYear + 3102;
 				const now = new Date();
 				const istDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+				/*
 				if( window.location.href.includes('index.html') )
 				{
 					document.write("<TR><TD style='text-align:middle;vertical-align:top;'><A href='index.html' class='link-style' id='Homehref' style='color:blue'>Home</A></TD>");
@@ -29,6 +29,7 @@
 				{
 					document.write("<TR><TD style='text-align:middle;vertical-align:top;'><A href='index.html' class='link-style' href='index.html' id='Homehref' style='color:blue'>Home</A></TD>");
 				}
+				*/
 				function showHomeTable()
 				{
 					const homeTable = document.getElementById('HomeTable');
@@ -39,6 +40,7 @@
 					homeTable.style.display = 'table';
 				}
 			</SCRIPT>
+				<!--
 					<TD style='background-color:white;text-align:middle;vertical-align:top;'>
 						<A href='spending.html' onclick="toggleTable(event)" class="link-style" id="PreventWastagehref">PreventWastage</A>
 					</TD>
@@ -51,8 +53,10 @@
 					<TD style="text-align:middle;vertical-align:top;">
 						<A href="my_exercise.html">MyExercise</A>
 					</TD>
+					-->
 			<TD style="text-align:middle;vertical-align:top;background-color:white;">
 				<SCRIPT type='text/javascript'>
+					/*
 					if( -1 != window.location.href.indexOf("remove-blockages-kitchen-pvc-outflow-pipe.html") )
 					{
 						document.write("<A>Unclog Kitchen Drain</A>");
@@ -61,7 +65,9 @@
 					{
 						document.write("<A href='remove-blockages-kitchen-pvc-outflow-pipe.html'>Unclog Kitchen Drain</A>");
 					}
+					*/
 				</SCRIPT>
+				<!--
 			</TD>
 					<TD style="text-align:middle;vertical-align:top;">
 						<A href='Visitor_count.html'>Visitor count</FONT></A>
@@ -76,6 +82,7 @@
 				</TR>
 			</TABLE>
 		</DIV>
+		-->
     <div style="display: flex; justify-content: space-between;">
         <!-- Left Column: Tamil Calendar -->
         <table style="width: 50%; border: 1px solid #000;" id="tamil-calendar" border='1' style="width: 48%;">

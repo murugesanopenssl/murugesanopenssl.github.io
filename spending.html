@@ -3,53 +3,7 @@
 	<HEAD>
 		<META CHARSET="UTF-8">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
-<STYLE type="text/css">
-.link-style
-{
-        color:orange;
-        text-decoration: none; /* Removes underline */
-        font-weight: bold; /* Optional: Makes it bold */
-        cursor: pointer; /* Changes the cursor to a pointer when hovering */
-}
-.menu {
-    position: relative;          /* crucial for absolute child positioning */
-    display: inline-block;
-    font-family: Arial;
-    font-size: 15px;
-    padding: 8px;
-    cursor: pointer;
-}
-
-/* Submenu (white, dropdown below the menu) */
-.submenu {
-    display: none;
-    position: absolute;
-    top: 100%;                  /* positions right below the menu */
-    left: 0;
-    background: #fff;
-    border: 1px solid black;
-    padding: 5px 0;
-    min-width: 180px;
-    z-index: 999;
-}
-
-.submenu a {
-    display: block;
-    padding: 6px 10px;
-    text-decoration: none;
-    color: black;
-}
-
-.submenu a:hover {
-    background: #e0e0e0;
-}
-
-/* Show menus on hover */
-.menu:hover .submenu {
-    display: block;
-}
-</STYLE>
-		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<LINK href="github.io.css" rel="stylesheet">
 		<TITLE>Save without wasting money</TITLE>
 		<SCRIPT src='text.js'>
 		</SCRIPT>
@@ -59,68 +13,6 @@
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 	<DIV style="width:100%;display:block;margin:0;padding:0;">
-			<TABLE border='1' style="width:100%; margin:0; padding:0;">
-		<!-- Menu Bar -->
-			<SCRIPT type='text/javascript'>
-				const now = new Date();
-				const istDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-				if( window.location.href.includes('index.html') )
-				{
-					document.write("<TR><TD onclick='toggleTable(event);' style='background-color:orange;text-align:middle;vertical-align:top;'><A id='Homehref' style='color:blue'>Home</A></TD>");
-				}
-				else
-				{
-					document.write("<TR><TD style='text-align:middle;vertical-align:top;'><A class='link-style' href='index.html' id='Homehref' style='color:blue'>Home</A></TD>");
-				}
-				function showHomeTable()
-				{
-					const homeTable = document.getElementById('HomeTable');
-					const preventWastage = document.getElementById('PreventWastage');
-					const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-					preventWastage.style.display = 'none';
-					categoryAmount.style.display = 'none';
-					homeTable.style.display = 'table';
-				}
-			</SCRIPT>
-					<TD style='background-color:white;text-align:left;vertical-align:top;'>
-						<A href='spending.html' onclick="toggleTable(event)" class="link-style" id="PreventWastagehref">PreventWastage</A>
-					</TD>
-					<TD style="text-align:middle;vertical-align:top;">
-						<A href="save_money_and_lives.html">Save lives and money</A>
-					</TD>
-					<TD style="text-align:middle;vertical-align:top;">
-						<A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A>
-					</TD>
-					<TD style="text-align:middle;vertical-align:top;">
-						<A href="my_exercise.html">MyExercise</A>
-					</TD>
-					<TD style="text-align:middle;vertical-align:top;background-color:white;">
-						<SCRIPT type='text/javascript'>
-							if( -1 != window.location.href.indexOf("remove-blockages-kitchen-pvc-outflow-pipe.html") )
-							{
-								document.write("<A>Unclog Kitchen Drain</A>");
-							}
-							else
-							{
-								document.write("<A href='remove-blockages-kitchen-pvc-outflow-pipe.html'>Unclog Kitchen Drain</A>");
-							}
-						</SCRIPT>
-					</TD>
-					<TD style="text-align:middle;vertical-align:top;">
-						<A href='Visitor_count.html'>Visitor count</FONT></A>
-					</TD>
-					<TD valign='top' align='middle'>
-						<A href='tamil-calendar.html'><FONT color='#556677'>தமிழ்/Gregorian calendar</FONT></A>
-					</TD>
-					<TD style="text-align:middle;vertical-align:top;">
-						<A href='displayMoneyHelpMenu.html'><FONT color='#556677'>Money Help</FONT></A>
-					</TD>
-					<TD style="text-align:middle;vertical-align:top;">
-						<A href='poems/index.html'><FONT color='#556677'>My tamil poems</FONT></A>
-					</TD>
-				</TR>
-			</TABLE>
-		<!-- Spending Table -->
 		<!--
 		#{
 		-->
@@ -320,7 +212,7 @@
 			<TABLE border='1'>
 			<TR>
 			<TD valign='top' align='middle' bgcolor=cyan>
-			<A href='index.html' class="link-style" id='Homehref' style='color:blue'>Home</A>
+			<A href='index.html' class="link-style" id='Homehref' style='color:blue'>Home3</A>
 			<TD valign='top' align='right'>
 			<A>MoneyHelp01</A>
 			</TD>
@@ -1594,7 +1486,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 const baseRaw = {
 Dec: [
 		[ formatDate("31-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1603,7 +1495,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("30-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1612,7 +1504,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("29-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1621,7 +1513,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("28-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1630,7 +1522,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("27-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1639,7 +1531,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("26-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1648,7 +1540,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("25-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1657,7 +1549,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("24-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1666,7 +1558,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("23-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1675,7 +1567,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("22-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1684,7 +1576,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("21-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1693,7 +1585,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("20-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1702,7 +1594,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("19-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1711,7 +1603,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("18-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1720,7 +1612,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("17-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1729,7 +1621,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("16-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1738,7 +1630,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("15-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1747,7 +1639,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("14-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1756,7 +1648,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("13-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1765,7 +1657,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("12-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1774,7 +1666,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("11-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1783,7 +1675,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("10-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1792,7 +1684,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("09-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1801,7 +1693,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("08-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1810,7 +1702,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("07-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1819,7 +1711,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("06-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1828,7 +1720,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("05-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1837,7 +1729,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("04-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1846,7 +1738,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("03-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1855,7 +1747,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("02-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Lunch'>ம.உணவு</A>",			60.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1864,7 +1756,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("01-Dec-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"காபி",					15.00,
 			"ஒ.வெ.இ.சா.வி",				75.00,
 			"",					0.00,
@@ -1875,7 +1767,7 @@ Dec: [
 ],
 Nov: [
 		[ formatDate("30-Nov-2025"),
-			"கா.உணவு",				0.00,
+			"<A title='Break fast'>கா.உணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1884,7 +1776,7 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("29-Nov-2025"),
-			"கா.உணவு",				40.00,
+			"<A title='Break fast'>கா.உணவு</A>",				40.00,
 			"மி.கா.நா",				50.00,
 			"கை.க.தி",				190.00,
 			"தேநீர்",					10.00,
@@ -1893,7 +1785,7 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("28-Nov-2025"),
-			"ம.உணவு",				50.00,
+			"<A title='Lunch'>ம.உணவு</A>",				50.00,
 			"தொ.இ",					120.00,
 			"அ.உணவு",				50.00,
 			"",					0.00,
@@ -1902,7 +1794,7 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("27-Nov-2025"),
-			"ம.உணவு",				120.00,
+			"<A title='Lunch'>ம.உணவு</A>",				120.00,
 			"வெட்டு அலகு",			200.00,
 			"அ.சி",					229.00,
 			"த.எரி",				200.00,
@@ -1921,7 +1813,7 @@ Nov: [
 		],
 		[ formatDate("25-Nov-2025"),
 			"<A title='காலை உணவு/Break fast'>கா.உணவு</A>",				25.00,
-			"ம.உணவு",								0.00,
+			"<A title='Lunch'>ம.உணவு</A>",								0.00,
 			"<A title='இரவு உணவு/Dinner'>இ.உணவு</A>",				100.00,
 			"<A title='ஒட்டுப்பசை/Fevicol'>ஒட்டுப்பசை</A>",				10.00,
 			"<A title='வழலை பெட்டி/Soap box'>வ.பெ</A>",				144.00,
@@ -1930,7 +1822,7 @@ Nov: [
 		],
 		[ formatDate("24-Nov-2025"),
 			"தலைவலி.ம",			830.00,
-			"ம.உணவு",			100.00,
+			"<A title='Lunch'>ம.உணவு</A>",			100.00,
 			"அ.சி",				60.00,
 			"மூ.கா.தொ.வ",	20.00,
 			"லிவ்-ஓ",			12.00,
@@ -1938,7 +1830,7 @@ Nov: [
 		],
 		[ formatDate("23-Nov-2025"),
 			"மூ.கா.தொ.ம",				337.00,
-			"ம.உணவு",				50.00,
+			"<A title='Lunch'>ம.உணவு</A>",				50.00,
 			"பசை",					10.00,
 			"02நகல்",					30.00,
 			"",					0.00,
@@ -1957,7 +1849,7 @@ Nov: [
 		],
 		[ formatDate("21-Nov-2025"),
 			"<A title='காலை உணவு/Break fast'>கா.உணவு</A>",			40.00,
-			"ம.உணவு",			45.00,
+			"<A title='Lunch'>ம.உணவு</A>",			45.00,
 			"<A title='இரவு உணவு/Dinner'>இ.உணவு</A>",			0.00,
 			"மூ.கா.தொ.ம",		292.62,
 			"பெ.பெ.போ",			23.00,
@@ -1967,7 +1859,7 @@ Nov: [
 		[ formatDate("20-Nov-2025"),
 			"<A title='காலை உணவு/Break fast'>கா.உணவு</A>",				60.00,
 			"அ.கை.சே.ப.தொ",				3599.00,
-			"ம.உணவு",				100.00,
+			"<A title='Lunch'>ம.உணவு</A>",				100.00,
 			"எரி",				200.00,
 			"வ.கை.பெட்டி",				100.00,
 			"",					0.00,
