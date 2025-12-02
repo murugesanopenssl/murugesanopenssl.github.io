@@ -19,14 +19,18 @@ function writeMenu()
 	{
 		document.write( `<TD style="text-align:right;vertical-align:top;" bgcolor='orange'>`);
 	}
-	document.write( `<DIV class="submenu">`);
+	document.write( `<DIV class="menu">`);
 	if( -1 == location_url.indexOf("index.html") )
 	{
 		document.write(	`<A href='index.html'>Home12</A>`);
 	}
 	else
 	{
-		document.write(	`<A>Home2</A>`);
+		document.write(	"Home12");
+		var submenu = document.querySelector('.submenu'); // Assuming there's a div with class 'submenu'
+		if (submenu) {
+			submenu.innerHTML = 'Home2'; // Add 'Home2' inside the submenu div
+		}
 	}
 	if( -1 != location_url.indexOf("NMurugesan_cv") )
 	{
@@ -58,17 +62,17 @@ function writeMenu()
 	document.write(		`<DIV class="menu">`);
 	if( -1 == location_url.indexOf("spending.html") && -1 == location_url.indexOf("displayMoneyHelpMenu") )
 	{
-		document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp</A>`);
+		document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp1</A>`);
 	}
 	else
 	{
 		if( -1 !== location_url.indexOf("displayMoneyHelpMenu"))
 		{
-			document.write(			`<A>Moneyhelp</A>`);
+			document.write(			`<A>Moneyhelp2</A>`);
 		}
 		else
 		{
-			document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp</A>`);
+			document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp3</A>`);
 		}
 	}
 	document.write(				`<DIV class="submenu">
