@@ -19,7 +19,7 @@ function writeMenu()
 	{
 		document.write( `<TD style="text-align:right;vertical-align:top;" bgcolor='orange'>`);
 	}
-	document.write( `<DIV class="menu">`);
+	document.write( `<DIV class="submenu">`);
 	if( -1 == location_url.indexOf("index.html") )
 	{
 		document.write(	`<A href='index.html'>Home12</A>`);
