@@ -4,6 +4,7 @@
 	text-decoration:none;
 	font-weight:bold;
 	cursor:pointer;
+	vertical-align: top;
 }
 .menu
 {
@@ -11,8 +12,8 @@
 	display:inline-block;
 	font-family:Arial;
 	font-size:15px;
-	padding:8px;
 	cursor:pointer;
+	vertical-align: top;
 }
 .submenu
 {
@@ -25,6 +26,7 @@
 	padding:5px 0;
 	z-index:999;
 	min-width:180px;
+	vertical-align: top;
 }
 .submenu a
 {
@@ -32,12 +34,30 @@
 	padding:6px 10px;
 	text-decoration:none;
 	color:black;
+	vertical-align: top;
 }
 .submenu a:hover
 {
 	background:#e0e0e0;
+	vertical-align: top;
 }
 .menu:hover .submenu
 {
 	display:block;
+	vertical-align: top;
+}
+.submenu.no-link
+{
+	position:static;
+	display:block;
+	background:none;
+	border:none;
+	padding:0;
+	min-width:auto;
+	vertical-align: top;
+}
+.menu.active-menu
+{
+	padding:0;
+	vertical-align: top;
 }

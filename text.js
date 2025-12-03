@@ -1,3 +1,29 @@
+const monthNamesTamil = {
+	"Jan": "ஜனவரி",
+	"Feb": "பிப்ரவரி",
+	"Mar": "மார்ச்",
+	"Apr": "ஏப்ரல்",
+	"May": "மே",
+	"Jun": "ஜூன்",
+	"Jul": "ஜூலை",
+	"Aug": "ஆகஸ்ட்",
+	"Sep": "செப்டம்பர்",
+	"Oct": "அக்டோபர்",
+	"Nov": "நவம்பர்",
+	"Dec": "டிசம்பர்"
+};
+function getChartTitle(selectedMonth, selectedYear)
+{
+	if( "ALL" === selectedMonth )
+	{
+		return `${selectedYear} வருடத்தின் மாதாந்திர மொத்த செலவு`;
+	}
+	else
+	{
+		const monthTamil = monthNamesTamil[selectedMonth] || selectedMonth;
+		return `${monthTamil}-${selectedYear} மாதாந்திர மொத்த செலவு`;
+	}
+}
 function writeMenu()
 {
 	location_url=window.location.href;
@@ -88,10 +114,15 @@ function writeMenu()
 	document.write(			`</DIV>
 						</DIV>
 					</TD>`);
-	if( -1 !== location_url.indexOf( "spending" ) )
+	if( -1 !== location_url.indexOf( "spending.html" ) )
 	{
 		document.write(			`<TD style="text-align:right;vertical-align:top;background-color:orange;">`);
 		document.write(		`<A onclick="toggleTable(event)" id="PreventWastagehref" style='text-color:white;'>Save Money Daily</A>`);
+	}
+	else if( -1 !== location_url.indexOf( "spending-chart.html" ) )
+	{
+		document.write(			`<TD style="text-align:right;vertical-align:top;background-color:orange;">`);
+		document.write(		`<A href='spending.html' onclick="toggleTable(event)" id="PreventWastagehref">Save Money Daily</A>`);
 	}
 	else
 	{
@@ -200,7 +231,7 @@ function writeMenu()
 		{
 			document.write(`
 				<TD style="text-align:right;vertical-align:top;background-color:orange;">
-					<DIV class="menu active-menu">
+					<DIV class="submenu no-link">
 						<DIV class="submenu no-link">Windows_ERR_HELP</DIV>
 					</DIV>
 				</TD>
@@ -210,7 +241,7 @@ function writeMenu()
 		{
 			document.write(`
 				<TD style="text-align:right;vertical-align:top;">
-					<DIV class="menu">
+					<DIV class="menu active-menu">
 						<A href="Windows_ERR_HELP.html">Windows_ERR_HELP</A>
 					</DIV>
 				</TD>
