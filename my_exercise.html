@@ -82,7 +82,29 @@
 						const exerciseData = {
 							Dec: [
 							{
-							date: "Mon 02-Dec-2025",
+							date: "Thu 04-Dec-2025",
+							startTime: "06:31 AM",
+							endTime: "07:33 AM",
+							walkingTime: "01 hour 02 minutes",
+							standingCrossBody: "No",
+							lowerHips: "10 times",
+							disadvantages: "5% Right foot pain before sleeping yesterday<BR>3% Right foot pain before walking.",
+							helpAtPain: "After walking 1% right foot pain after bath.",
+							FitCount: "7257"
+							},
+							{
+							date: "Wed 03-Dec-2025",
+							startTime: "07:00 AM",
+							endTime: "07:54 AM",
+							walkingTime: "54 Minutes",
+							standingCrossBody: "No",
+							lowerHips: "10 times",
+							disadvantages: "4% Right foot pain before sleeping yesterday<BR>4% Right foot pain before walking.<BR>Did not apply iodex. right foot Pain was 5%",
+							helpAtPain: "Forgot applying Iodex.",
+							FitCount: "7126"
+							},
+							{
+							date: "Tue 02-Dec-2025",
 							startTime: "06:33 AM",
 							endTime: "07:10 AM",
 							walkingTime: "37 Minutes",
@@ -451,7 +473,14 @@ allData.forEach(r=>{
 								}
 								if(r.FitCount)
 								{
-									html+=`<TD style="background-color:#00ff00;color:black;vertical-align:top;text-align:right;">${r.FitCount}</TD>`;
+									if( "Not counted" == `${r.FitCount}` )
+									{
+										html+=`<TD rowspan='23' style="background-color:orange;color:black;vertical-align:top;text-align:right;">${r.FitCount}</TD>`;
+									}
+									else
+									{
+										html+=`<TD style="background-color:#00ff00;color:black;vertical-align:top;text-align:right;">${r.FitCount}</TD>`;
+									}
 								}
 								else
 								{
@@ -463,7 +492,7 @@ allData.forEach(r=>{
 											"Thu 13-Nov-2025" !== `${r.date||""}`	
 									)
 									{
-										html+=`<TD style="text-align:right;vertical-align:top;"></TD>`;
+										// html+=`<TD style="text-align:right;vertical-align:top;"></TD>`;
 									}
 								}
 							}
