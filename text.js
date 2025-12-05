@@ -74,7 +74,13 @@ function writeMenu()
 	document.write(		`</DIV>
 						</DIV>
 					</TD>`);
-	if( -1 == location_url.indexOf("displayMoneyHelpMenu") )
+	if(	-1 == location_url.indexOf("displayMoneyHelpMenu") &&
+		-1 == location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps") &&
+		-1 == location_url.indexOf("Bharath_gas_booking_steps") &&
+		-1 == location_url.indexOf("post-office-nsc") &&
+		-1 == location_url.indexOf("SBI_ETDR_INTEREST") &&
+		-1 == location_url.indexOf("post-office-mis")
+	)
 	{
 		document.write(	`<TD style="text-align:right;vertical-align:top;">`);
 	}
@@ -83,13 +89,34 @@ function writeMenu()
 		document.write(	`<TD style="background-color:orange;text-align:right;vertical-align:top;">`);
 	}
 	document.write(		`<DIV class="menu">`);
-	if( -1 == location_url.indexOf("displayMoneyHelpMenu") )
+	if( -1 == location_url.indexOf("displayMoneyHelpMenu") &&
+		-1 == location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps") &&
+		-1 == location_url.indexOf("post-office-nsc") &&
+		-1 == location_url.indexOf("SBI_ETDR_INTEREST") &&
+		-1 == location_url.indexOf("post-office-mis")
+	)
 	{
 		document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp1</A>`);
 	}
+	else if( -1 !== location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps") )
+	{
+		document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp5</A>`);
+	}
+	else if(	-1 !== location_url.indexOf("post-office-mis") &&
+				-1 != location_url.indexOf("SBI_ETDR_INTEREST") &&
+				-1 != location_url.indexOf("post-office-nsc")
+	)
+	{
+		document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp6</A>`);
+	}
 	else
 	{
-		if( -1 !== location_url.indexOf("displayMoneyHelpMenu"))
+		if( -1 !== location_url.indexOf("displayMoneyHelpMenu") &&
+			-1 !== location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps") &&
+			-1 !== location_url.indexOf("post-office-nsc") &&
+			-1 !== location_url.indexOf("SBI_ETDR_INTEREST") &&
+			-1 !== location_url.indexOf("post-office-mis") 
+		)
 		{
 			document.write(			`<A>Moneyhelp2</A>`);
 		}
@@ -99,8 +126,8 @@ function writeMenu()
 		}
 	}
 	document.write(				`<DIV class="submenu">
-								<A href="displayMoneyHelpMenu.html">Financial Resource</A>
-								<A href="displayMoneyHelpMenu.html">Government Resource</A>`);
+								<A href="displayMoneyHelpMenu.html?#FinanceServices">Financial Resource</A>
+								<A href="displayMoneyHelpMenu.html?#GovtResourceMenu">Government Resource</A>`);
 	let currentPage = window.location.pathname.split("/").pop();
 	if( "spending.html" !== currentPage )
 	{

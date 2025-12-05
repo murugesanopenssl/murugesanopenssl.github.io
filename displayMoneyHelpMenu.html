@@ -4,6 +4,9 @@
 		<META CHARSET="UTF-8">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<LINK href="github.io.css" rel="stylesheet">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<TITLE>openssl speed -multi 900000000</TITLE>
 		<SCRIPT src='text.js'>
@@ -129,7 +132,22 @@ window.onload = function() {
 					<!-- Financial Resources Menu (Left Column) -->
 					<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
 						<DIV id="financialResourcesMenu01" style="display: none; background-color: #f8f8f8; padding: 10px; border-top: 2px solid #ccc; margin-top: 10px;">
+							<TABLE>
+							<TR>
+							<SCRIPT>
+								if( -1 != window.location.href.indexOf( "FinanceServices") )
+								{
+									document.write( "<TD style='background-color:orange;color:white;text-align:right;'>" );
+								}
+								else
+								{
+									document.write( "<TD style='background-color:black;color:white;text-align:right;'>" );
+								}
+							</SCRIPT>
 							Financial Service Menu
+							</TD>
+							</TR>
+							</TABLE>
 							<H3>Financial Resources</H3>
 						<SCRIPT type='text/javascript'>
 							if( -1 != window.location.href.indexOf( "misinterest") )
@@ -202,7 +220,21 @@ window.onload = function() {
 					<!-- GOVT Resources Menu (Right Column) -->
 					<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
 						<DIV id="financialResourcesMenu02" style="display: none; background-color: #f8f8f8; padding: 10px; border-top: 2px solid #ccc; margin-top: 10px;">
+							<TABLE>
+								<TR>
+							<SCRIPT>
+								if( -1 != window.location.href.indexOf( "GovtResourceMenu") )
+								{
+									document.write( "<TD style='background-color:orange;color:white;text-align:right;'>" );
+								}
+								else
+								{
+									document.write( "<TD style='background-color:black;color:white;text-align:right;'>" );
+								}
+							</SCRIPT>
 							GOVT RESOURCE Menu
+								</TR>
+							</TABLE>
 							<H3>GOVT Resources</H3>
 						<SCRIPT type='text/javascript'>
 							if( -1 != window.location.href.indexOf( "gdp") )
