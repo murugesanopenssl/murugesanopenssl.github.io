@@ -50,6 +50,11 @@ function writeMenu()
 		document.write( `<DIV class="menu" style="text-align:right; vertical-align:top;">`);
 		document.write(`Home`);
 	}
+	if( -1 !== location_url.indexOf("poems") )
+	{
+		document.write( `<DIV class="menu" style="text-align:right; vertical-align:top;">`);
+		document.write(`<A href='../index.html'>Home</A>`);
+	}
 	else
 	{
 		document.write( `<DIV class="menu" style="text-align:right; vertical-align:top;">`);
@@ -89,7 +94,11 @@ function writeMenu()
 		document.write(	`<TD style="background-color:orange;text-align:right;vertical-align:top;">`);
 	}
 	document.write(		`<DIV class="menu">`);
-	if( -1 == location_url.indexOf("displayMoneyHelpMenu") &&
+	if( -1 !== location_url.indexOf("poems") )
+	{
+		document.write(			`<A href='../displayMoneyHelpMenu.html'>Moneyhelp1</A>`);
+	}
+	else if( -1 == location_url.indexOf("displayMoneyHelpMenu") &&
 		-1 == location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps") &&
 		-1 == location_url.indexOf("post-office-nsc") &&
 		-1 == location_url.indexOf("SBI_ETDR_INTEREST") &&
@@ -120,14 +129,26 @@ function writeMenu()
 		{
 			document.write(			`<A>Moneyhelp2</A>`);
 		}
+		else if( -1 !== location_url.indexOf("poems") )
+		{
+			document.write(			`<A href='../displayMoneyHelpMenu.html'>Moneyhelp1</A>`);
+		}
 		else
 		{
 			document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp3</A>`);
 		}
 	}
-	document.write(				`<DIV class="submenu">
-								<A href="displayMoneyHelpMenu.html?#FinanceServices">Financial Resource</A>
-								<A href="displayMoneyHelpMenu.html?#GovtResourceMenu">Government Resource</A>`);
+	document.write(				`<DIV class="submenu">`);
+	if( -1 !== location_url.indexOf("poems") )
+	{
+		document.write(						`<A href="../displayMoneyHelpMenu.html?#FinanceServices">Financial Resource</A>`);
+		document.write(						`<A href="../displayMoneyHelpMenu.html?#GovtResourceMenu">Government Resource</A>`);
+	}
+	else
+	{
+		document.write(						`<A href="displayMoneyHelpMenu.html?#FinanceServices">Financial Resource</A>`);
+		document.write(						`<A href="displayMoneyHelpMenu.html?#GovtResourceMenu">Government Resource</A>`);
+	}
 	let currentPage = window.location.pathname.split("/").pop();
 	if( "spending.html" !== currentPage )
 	{
@@ -141,7 +162,12 @@ function writeMenu()
 	document.write(			`</DIV>
 						</DIV>
 					</TD>`);
-	if( -1 !== location_url.indexOf( "spending.html" ) )
+	if( -1 !== location_url.indexOf( "poem" ) )
+	{
+		document.write(			`<TD style="text-align:right;vertical-align:top;">`);
+		document.write(		`<A href='../spending.html' onclick="toggleTable(event)" id="PreventWastagehref">Save Money Daily</A>`);
+	}
+	else if( -1 !== location_url.indexOf( "spending.html" ) )
 	{
 		document.write(			`<TD style="text-align:right;vertical-align:top;background-color:orange;">`);
 		document.write(		`<A onclick="toggleTable(event)" id="PreventWastagehref" style='text-color:white;'>Save Money Daily</A>`);
@@ -169,6 +195,10 @@ function writeMenu()
 	{
 		document.write(`<DIV class="menu active-menu"><DIV class="submenu no-link">Share knowledge transfer</DIV></DIV>`);
 	}
+	else if( -1 !== location_url.indexOf("poems") )
+	{
+		document.write(`<DIV class="menu"><A href="../ShareKnowledgeTransferToPeople.html">Share knowledge transfer</A></DIV>`);
+	}
 	else
 	{
 		document.write(`<DIV class="menu"><A href="ShareKnowledgeTransferToPeople.html">Share knowledge transfer</A></DIV>`);
@@ -181,6 +211,16 @@ function writeMenu()
 			<TD style="text-align:right;vertical-align:top;background-color:orange;">
 				<DIV class="menu active-menu">
 					<DIV class="submenu no-link">Unclog Kitchen Drain</DIV>
+				</DIV>
+			</TD>
+		`);
+	}
+	else if( -1 !== location_url.indexOf("poems") )
+	{
+		document.write(`
+			<TD style="text-align:right;vertical-align:top;">
+				<DIV class="menu">
+					<A href="../remove-blockages-kitchen-pvc-outflow-pipe.html">Unclog Kitchen Drain</A>
 				</DIV>
 			</TD>
 		`);
@@ -201,6 +241,16 @@ function writeMenu()
 			<TD style="text-align:right;vertical-align:top;background-color:orange;">
 				<DIV class="menu active-menu">
 					<DIV class="submenu no-link">Visitor count</DIV>
+				</DIV>
+			</TD>
+		`);
+	}
+	else if( -1 !== location_url.indexOf("poems") )
+	{
+		document.write(`
+			<TD style="text-align:right;vertical-align:top;">
+				<DIV class="menu">
+					<A href="../Visitor_count.html">Visitor count</A>
 				</DIV>
 			</TD>
 		`);
@@ -226,9 +276,18 @@ function writeMenu()
 			</TD>
 		`);
 	}
+	else if( -1 !== location_url.indexOf("poems") )
+	{
+		document.write(`
+			<TD style="text-align:right;vertical-align:top;">
+				<DIV class="menu">
+					<A href="../tamil-calendar.html">Tamil/Gregorian calendar</A>
+				</DIV>
+			</TD>
+		`);
+	}
 	else
 	{
-		// Normal link version
 		document.write(`
 			<TD style="text-align:right;vertical-align:top;">
 				<DIV class="menu">
@@ -250,6 +309,10 @@ function writeMenu()
 		{
 			document.write( `My exercise`);
 		}
+		else if( -1 !== location_url.indexOf("poems") )
+		{
+			document.write( `<A href='../my_exercise.html'>My exercise</A>`);
+		}
 		else
 		{
 			document.write( `<A href='my_exercise.html'>My exercise</A>`);
@@ -260,6 +323,16 @@ function writeMenu()
 				<TD style="text-align:right;vertical-align:top;background-color:orange;">
 					<DIV class="submenu no-link">
 						<DIV class="submenu no-link">Windows_ERR_HELP</DIV>
+					</DIV>
+				</TD>
+			`);
+		}
+		else if( -1 !== location_url.indexOf("poems") )
+		{
+			document.write(`
+				<TD style="text-align:right;vertical-align:top;">
+					<DIV class="menu active-menu">
+						<A href="../Windows_ERR_HELP.html">Windows_ERR_HELP</A>
 					</DIV>
 				</TD>
 			`);
@@ -278,7 +351,7 @@ function writeMenu()
 		{
 			document.write( `</DIV>
 						</TD>
-						<TD style="text-align:right;vertical-align:top;">
+						<TD style="text-align:right;vertical-align:top;background-color:orange;">
 							<DIV class="menu">
 								<A href="poems/index.html">My tamil poems</A>
 								<DIV class="submenu">
