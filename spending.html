@@ -19,7 +19,7 @@
 		<!--
 		#{
 		-->
-		<TABLE id='CategoryAmountDetailsTab'>
+		<table id="CategoryAmountDetailsTab" style="display:none">
 			<THEAD>
 				<TR>
 					<TH valign='top' align='right'>Category last month</TH>
@@ -115,7 +115,7 @@
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
-							15,63,746.00 &#8377; <!-- SAVEDAMT -->
+							15,65,938.00 &#8377; <!-- SAVEDAMT -->
 						</FONT>
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
@@ -129,10 +129,7 @@
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
 						<SCRIPT type='text/javascript'>
-						SAVEDAMT_Thu_04_Dec_2025_a="17659.00";
-						SAVEDAMT_Thu_04_Dec_2025_b="28178.00";
-						SAVEDAMT_Fri_05_Dec_2025_a="28240.00";
-						SAVEDAMT=SAVEDAMT_Fri_05_Dec_2025_a;
+						SAVEDAMT=28509.00;
 						DISP_SAVED_AMT=parseFloat(SAVEDAMT).toFixed(2);
 						DISP_SAVED_AMT = DISP_SAVED_AMT.replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
 						document.write( DISP_SAVED_AMT+" &#8377;");
@@ -151,7 +148,6 @@
 						<Font color='#000080'>
 						<SCRIPT type='text/javascript'>
 						RequiredAmt=55000.00 - SAVEDAMT;
-						// document.write( RequiredAmt.toFixed(2)+" &#8377;");
 						document.write(RequiredAmt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " &#8377;");
 						</SCRIPT>
 						</FONT>
@@ -159,44 +155,29 @@
 					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
 						AMOUNT TO SAVE PER DAY:<BR>
 						<SCRIPT type='text/javascript'>
-							/*
 							var today = new Date();
-							var offset = 5.5;
-							today.setHours(today.getHours() + offset);
-							var targetDate = new Date('2025-12-14T00:00:00+05:30');
-							var timeDiff = targetDate - today;
-							var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
-							var RequiredAmt = 55000.00 - SAVEDAMT;
-							var SAVE_PER_DAY = RequiredAmt / daysLeft;
-							document.write(SAVE_PER_DAY.toFixed(2) + " &#8377;");
-							*/
-							var today = new Date();
-							today.setHours(0,0,0,0); // reset time to start of today
-
+							today.setHours(0,0,0,0);
 							var targetDate = new Date('2025-12-15T00:00:00+05:30');
-							targetDate.setHours(0,0,0,0); // start of target day
+							targetDate.setHours(0,0,0,0);
 							var timeDiff = targetDate - today;
 							const istDate = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
 							yyyy=(""+istDate).substr( 11,4);
 							EngMmm=( ( ""+( new Date( istDate ) ) ).substr( 4,3) );
 							if( "Nov" == EngMmm || "Apr" == EngMmm || "Jun" == EngMmm || "Sep" == EngMmm || "Dec" == EngMmm )
 							{
-
-								var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24) ); // including today
+								var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24) );
 							}
 							else
 							{
-								var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24) + 1 ); // including today
+								var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24) + 1 );
 							}
-
 							var RequiredAmt = 55000.00 - SAVEDAMT;
 							var SAVE_PER_DAY = RequiredAmt / daysLeft;
 							var formattedAmt = SAVE_PER_DAY.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 							if( 1 === formattedAmt.indexOf(',') )
 							{
-								formattedAmt = '0' + formattedAmt; // Add leading zero if necessary
+								formattedAmt = '0' + formattedAmt;
 							}
-							// document.write(SAVE_PER_DAY.toFixed(2) + " &#8377;");
 							document.write(formattedAmt + " &#8377;");
 					</SCRIPT>
 					</TD>
@@ -661,7 +642,7 @@
 		<!--
 		#}
 		-->
-		<TABLE id='HomeTable'>
+		<table id="HomeTable" style="display:none">
 			<TR>
 				<TD valign='top' align='left'>
 					<FONT color='red'><B><U>பொதுப் பிரமுகர் நிகழ்ச்சிகளில் கலந்து கொள்ளவில்லை</B></U><BR>
@@ -1144,7 +1125,6 @@ HONG KONG-BASED CHINESE MULTINATIONAL TECHNOLOGY COMPANY.
 <TR>
 	<TD valign='top' align='left'>RENAULT TRIBER/KIGER</TD>
 	<TD valign='top' align='left' colspan='3'>FROM RENAULT INDIA PRIVATE LIMITED</TD>
-
 </TR>
 <TR><TD valign='top' align='left'>MESWAK TOOTH PASTE<BR>DABUR INDIA LIMITED</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
 <TR><TD valign='top' align='left'>LENSKART</TD><TD valign='top' align='left' colspan='3'>FROM INDIA/ASIA</TD></TR>
@@ -1242,7 +1222,6 @@ HEADQUARTERED IN XIZHI, NEW TAIPEI CITY, TAIWAN</TD></TR>
 <TR bgcolor='pink'>
 	<TD valign='top' align='left'>HYUNDAI CARS</TD>
 	<TD valign='top' align='left' colspan='3'>FROM SOUTH KOERA</TD>
-
 </TR>
 <TR><TD valign='top' align='left'>TURBODRUM WASHING MACHINE</TD><TD valign='top' align='left' colspan='3'>FROM SOUTH KOREA</TD></TR>
 <TR><TD valign='top' align='left'>LG WASHING MACHINE</TD><TD valign='top' align='left' colspan='3'>FROM SOUTH KOREA</TD></TR>
@@ -1312,7 +1291,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 </TR>
 </TBODY>
 </TABLE>
-<TABLE id='PreventWastage'>
+<table id="PreventWastage" style="display:none">
 		<SCRIPT type='text/javascript'>
 			function getTodaysDate()
 			{
@@ -1327,42 +1306,27 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				var table = document.getElementById("PreventWastage").getElementsByTagName('tbody')[0];
 				var newRow = table.insertRow(table.rows.length);
 				var cell1 = newRow.insertCell(0);
-				// cell1.textContent = getTodaysDate();
-				// var cell2 = newRow.insertCell(1);
-				// cell2.textContent = "Enter reason";
-				// var cell3 = newRow.insertCell(2);
-				// cell3.textContent = "Enter amount";
 			}
 			window.onload = function()
-			{
-				addTodaysRow();
-				const preventWastageTable = document.getElementById("PreventWastage");
-				const homeTable = document.getElementById("HomeTable");
-				const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
-				const preventLink = document.getElementById("PreventWastagehref");
-				const homeLink = document.getElementById("Homehref");
-				document.getElementById("PreventWastagehref").style.color="black";
-				if( preventWastageTable )
-				{
-					preventWastageTable.style.display = "table";
-				}
-				if( homeTable )
-				{
-					homeTable.style.display = "none";
-				}
-				if( categoryAmountDetailsTab )
-				{
-					categoryAmountDetailsTab.style.display = "none";
-				}
-				if( preventLink )
-				{
-					// preventLink.style.color = "blue";
-				}
-				if( homeLink )
-				{
-					homeLink.style.color = "blue";
-				}
-			};
+{
+    addTodaysRow();
+    const preventWastageTable = document.getElementById("PreventWastage");
+    const homeTable = document.getElementById("HomeTable");
+    const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
+    if( preventWastageTable )
+    {
+	    preventWastageTable.style.display = "table";
+    }
+    if( homeTable )
+    {
+	    homeTable.style.display = "none";
+    }
+    if( categoryAmountDetailsTab )
+    {
+	    categoryAmountDetailsTab.style.display = "none";
+    }
+    showDefault();
+};
 			function toggleTable(event)
 			{
 				event = event || window.event;
@@ -1445,7 +1409,6 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 									break;
 							}
 							Mmm_yyyy=TamMmm+"-"+yyyy;
-							// document.write( "<P>Default view shows <STRONG>"+Mmm_yyyy+" if available. Use Add Entry to add data.</P>");
 							document.write( "<P>இயல்பாக, இணையப் பக்கம் நடப்பு மாதமான "+Mmm_yyyy+" ஐ காட்டும். புதிய பதிவைச் சேர்க்க 'பதிவு சேர்க்கவும்' என்ற சொடுக்கியைச் சொடுக்க வேண்டும்.</P>");
 						</SCRIPT>
 						<NOSCRIPT>
@@ -1700,7 +1663,7 @@ Dec: [
 		],
 		[ formatDate("08-Dec-2025"),
 			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
-			"",					0.00,
+			"<A title='சிற்றுண்டி/SNACKS'>சிற்றுண்டி</A>",				35.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1708,25 +1671,25 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("07-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
-			"",					0.00,
-			"",					0.00,
+			"<A title='BREAK FAST'>கா.உணவு</A>",					0.00,
+			"<A TITLE='அம்மா சிறு உண்டி/Mummy snak'>அ.சி</A>",			332.00,
+			"<A title=' காது, மூக்கு, தொண்டை வடிசாறு/ENT Soup'>மூ.கா.தொ.வட</A>",	20.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
 		],
 		[ formatDate("06-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
+			"<A title='அழுக்கு நீக்கும் பொருள்/வழலை/WASHING SOAP'>வழலை</A>",				117.00,
+			"<A TITLE='கைப்பேசி புறக்கவசம்/Mobile cover'>கை.ப</A>",					349.00,
+			"<A TITLE='கைப்பேசி திரை கண்ணாடி/Mobile tamper glass'>கை.தி.க</A>",					100.00,
+			"<A TITLE='தர்மபுரி எரி/Dharmapuri PETROL'>த.எரி</A>",					200.00,
+			"<A title='மர ஜன்னல் பூட்டு தாங்கி'>ம.ஜ.பூ.தா</A>",					24.00,
+			"<A title=' காது, மூக்கு, தொண்டை வடிசாறு/ENT Soup'>மூ.கா.தொ.வட</A>",					20.00,
 			"",					0.00
 		],
 		[ formatDate("05-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='வீட்டிலுருங்கள்/Stay at home'>வீட்டிலுரு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1736,9 +1699,9 @@ Dec: [
 		],
 		[ formatDate("04-Dec-2025"),
 			"<A title='BREAK FAST'>கா.உணவு</A>",	80.00,
-			"<A title='MONTHLY TRAIN TICKET'>மா.ர.ப</A>",				1000.00,
-			"<A title='TENDER COCONUT'>இளநீர்</A>",					40.00,
-			"<A title='SNACKS'>சிற்றுண்டி</A>",					65.00,
+			"<A title='மாதாந்திர ரயில் பயணச்சீட்டு/MONTHLY TRAIN TICKET'>மா.ர.ப</A>",				1000.00,
+			"<A title='இளநீர்/TENDER COCONUT'>இளநீர்</A>",					40.00,
+			"<A title='சிற்றுண்டி/SNACKS'>சிற்றுண்டி</A>",					65.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
@@ -1812,7 +1775,7 @@ Nov: [
 			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",				0.00,
 			"<A title='அம்மா மருந்து/Medicine for my mum.'>அ.ம</A>",				180.00,
 			"<A title='எறும்பு தடுக்கும் களிமண் MSEAL'>எ.த.க</A>",			60.00,
-			"மூ.கா.தொ.வட",				20.00,
+			"<A TITLE='காது, மூக்கு, தொண்டை வடிசாறு/ENT SOUP'>வடிசாறு</A>",				20.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
@@ -1858,13 +1821,13 @@ Nov: [
 			"<A title='LUNCH'>ம.உணவு</A>",			45.00,
 			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			0.00,
 			"<A TITLE='மூக்கு காது தொண்டை மருந்து/ENT medicine'>மூ.கா.தொ.ம</A>",		292.62,
-			"பெ.பெ.போ",			23.00,
+			"<A TITLE='பெங்களூரு பெருநகரப் போக்குவரத்துக் கழகம்/Bangalore Metropolitan Transport Corporation/BMTC'>பெ.பெ.போ</A>",			23.00,
 			"",					0.00,
 			"",					0.00
 		],
 		[ formatDate("20-Nov-2025"),
 			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",				60.00,
-			"அ.கை.சே.ப.தொ",				3599.00,
+			"<A title='அப்பா கைபேசி சேவையைப்புதுப்பிக்கும் தொகை/Father's mobile recharge'>அ.கை.தொ</A>",				3599.00,
 			"<A title='LUNCH'>ம.உணவு</A>",				100.00,
 			"எரி",				200.00,
 			"வ.கை.பெட்டி",				100.00,
@@ -1873,7 +1836,7 @@ Nov: [
 		],
 		[ formatDate("19-Nov-2025"),
 			"வி.போ",				90.00,
-			"பெ.பெ.போ.க",				24.00,
+			"<A TITLE='பெங்களூரு பெருநகரப் போக்குவரத்துக் கழகம்/Bangalore Metropolitan Transport Corporation/BMTC'>பெ.பெ.போ</A>",				24.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1889,7 +1852,7 @@ Nov: [
 			"",			0.00
 		],
 		[ formatDate("17-Nov-2025"),
-			"வீட்டிலுரு",				0.00,
+			"<A title='வீட்டிலுருங்கள்/Stay at home'>வீட்டிலுரு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1909,7 +1872,7 @@ Nov: [
 		[ formatDate("15-Nov-2025"),
 			"14நகல்",				15.00,
 			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",				60.00,
-			"<A TITLE='TRAVELLING TICKET'>பயணச்சீட்டு</A>",				115.00,	// 85.00 Soup 30.00
+			"<A TITLE='TRAVELLING TICKET'>பயணச்சீட்டு</A>",				115.00,
 			"குறிப்பேடு",				75.00,
 			"<A TITLE='VEGETABLES'>காய்கறி</A>",					172.00,
 			"தொ.வை",					1000.00
@@ -1960,9 +1923,9 @@ Nov: [
 			"",				0.00
 		],
 		[ formatDate("09-Nov-2025"),
-			"<A title='MONTHLY TRAIN TICKET'>மா.ர.ப</A>",			1000.00,
+			"<A title='மாதாந்திர ரயில் பயணச்சீட்டு/MONTHLY TRAIN TICKET'>மா.ர.ப</A>",			1000.00,
 			"<A TITLE='அம்மா சிறு உண்டி/Mummy snak'>அ.சி</A>",			166.00,
-			"குறிப்பேடு<BR>தேநீர் ",		532.00,
+			"குறிப்பேடு<BR>தேநீர்/TEA ",		532.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			40.00,
 			"",				0.00,
 			"",				0.00,
@@ -2070,7 +2033,7 @@ Oct: [
 			"",				0.00
 		],
 		[ formatDate("24-Oct-2025"),
-			"பெ.பெ.போ.க",				23.00,
+			"<A TITLE='பெங்களூரு பெருநகரப் போக்குவரத்துக் கழகம்/Bangalore Metropolitan Transport Corporation/BMTC'>பெ.பெ.போ</A>",				23.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			80.00,
 			"கை.பா",			200.00,
 			"ஊறுகாய்",			240.00,
@@ -2206,7 +2169,7 @@ oil 80.00
 			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			40.00
 		],
 		[ formatDate("10-Oct-2025"),
-			"பெ.பெ.போ.க",				25.00,
+			"<A TITLE='பெங்களூரு பெருநகரப் போக்குவரத்துக் கழகம்/Bangalore Metropolitan Transport Corporation/BMTC'>பெ.பெ.போ</A>",				25.00,
 			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			70.00,
 			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			70.00,
 			"",				0.00,
@@ -2215,7 +2178,7 @@ oil 80.00
 			"",				0.00
 		],
 		[ formatDate("09-Oct-2025"),
-			"பெ.பெ.போ.க",				25.00,
+			"<A TITLE='பெங்களூரு பெருநகரப் போக்குவரத்துக் கழகம்/Bangalore Metropolitan Transport Corporation/BMTC'>பெ.பெ.போ</A>",				25.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			120.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			50.00,
 			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			20.00,
@@ -2325,7 +2288,7 @@ Sep: [
 			"Harpic",			539.00
 		],
 		[ formatDate("27-Sep-2025"),
-			"வீட்டிலுரு",			0.00,
+			"<A title='வீட்டிலுருங்கள்/Stay at home'>வீட்டிலுரு</A>",				0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2603,7 +2566,6 @@ Apr: [
 						}
 						const lastPetrol = getLastMonthPetrolAmount();
 						document.getElementById("PetrolLastMonthValue").innerHTML = lastPetrol.toFixed(2) + " &#8377;";
-
 						let xeroxCopesVal =0;
 						function getLastMonthWastedAmount()
 						{
@@ -2630,7 +2592,6 @@ Apr: [
 										if( findThismonth.includes(last_mmm_yyyy) )
 										{
 											const searchFood = ("" + r[i]);
-											// const searchFood = ("" + r[i]).toLowerCase();
 											if( searchFood.includes("சிற்றுண்டி") )
 											{
 												if( ( undefined !== r[i+1] ) && !isNaN( parseFloat(r[i+1]) ) )
@@ -2706,7 +2667,6 @@ Apr: [
 						}
 						const lastFood = getLastMonthFoodAmount();
 						document.getElementById("FoodLastMonthValue").innerHTML = lastFood.toFixed(2) + " &#8377;";;
-
 						function monthKeyFromDateString( dstr )
 						{
 							try
@@ -2755,7 +2715,6 @@ Apr: [
 						const addBtn = document.getElementById('addBtn');
 						const saveDefaultBtn = document.getElementById('saveDefaultBtn');
 						const nowIST = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
-						// dateInput.valueAsDate = nowIST;
 						dateInput.value = new Date().toLocaleDateString("en-CA",{ timeZone:"Asia/Kolkata" });
 						function labelOf( mk )
 						{
@@ -2764,16 +2723,13 @@ Apr: [
 async function initAndLoad()
 {
     let online = navigator.onLine;
-
     let data;
-
     if( online )
     {
         try
         {
             message.textContent = "Loading data from Firebase...";
             const snap = await get( child( ref( db ), '/spending'));
-
             if( snap.exists() )
             {
                 data = snap.val();
@@ -2788,28 +2744,22 @@ async function initAndLoad()
         }
         catch( e )
         {
-            // Firebase failed even though navigator says online
             data = baseData;
             message.textContent = "Firebase error — loaded local array.";
         }
     }
     else
     {
-        // Totally offline
         data = baseData;
         message.textContent = "Offline — loaded local array.";
     }
-
-    // Continue same logic
     populateMonthSelect( Object.keys( data ) );
-
     const curMk = currentMonthKey();
     const keys = Object.keys( data || {} );
     const defaultMk = keys.find( k => k === curMk )
         || keys.find( k => k.startsWith( curMk.split('-')[0]) )
         || keys[0]
         || 'all';
-
     monthSelect.value = defaultMk;
 	monthSelect.focus();
     renderForSelected( data );
@@ -2850,11 +2800,15 @@ async function initAndLoad()
     const sel = monthSelect.value;
     let data = dataFromDB;
     
-    if (!data) {
+    if( !data )
+    {
         const snap = await get(child(ref(db), '/spending'));
-        if (snap.exists()) {
+        if( snap.exists() )
+	{
             data = snap.val();
-        } else {
+        }
+	else
+	{
             data = baseData;
         }
     }
@@ -2906,16 +2860,18 @@ async function initAndLoad()
                             <TH valign='top' align='right'>\
                                 Wasted\
                             </TH>\
+                            <TH valign='top' align='right'>\
+                                Weight\
+                            </TH>\
                         </TR>\
                     </THEAD>\
                 <TBODY>";
     
     const months = sel === 'all' ? Object.keys(data) : [sel];
     const dailyMap = {};
-
-    // Process the data and group by date
     for (const mk of months) {
-        if (!data[mk]) {
+        if( !data[mk] )
+	{
             continue;
         }
         
@@ -2924,8 +2880,10 @@ async function initAndLoad()
             for (let i = 1; row.length > i; i += 2) {
                 const item = row[i];
                 const amt = row[i + 1];
-                if (item && (amt !== undefined && amt !== null)) {
-                    if (!dailyMap[date]) {
+                if( item && ( undefined !== amt && null !== amt ) )
+		{
+                    if( !dailyMap[date] )
+		    {
                         dailyMap[date] = [];
                     }
                     dailyMap[date].push({ item, amt });
@@ -2933,70 +2891,85 @@ async function initAndLoad()
             }
         });
     }
-
     let grandTotal = 0;
     let grandWaste = 0;
     let BSNLNetAmt = 0;
     let today = new Date();
     today.setHours(0, 0, 0, 0);
-
-    // Loop through daily map and generate table rows
+    let indx=0;
     for (const d of Object.keys(dailyMap).sort((a, b) => new Date(b) - new Date(a))) {
         const entries = dailyMap[d];
         let subTotal = 0;
         let wasted = 0;
         let inputDate = new Date(d);
-
-        if (today < inputDate) {
+        if( today < inputDate )
+	{
             continue;
         }
-
         let rowHtml = `<TR><TD valign='top' style='width:5px;' align='right'>${d}</TD>`;
-        
         for (let i = 0; i < 6; ++i) {
-            if (entries[i]) {
+            if( entries[i] )
+	    {
                 const e = entries[i];
                 const isBSNLNet = /பா.ச.நி.லி/i.test(e.item);
                 const isSnack = /சிற்றுண்டி/i.test(e.item);
+                const stayAtHome = /வீட்டிலுரு/i.test(e.item);
                 const amtVal = parseFloat(e.amt) || 0;
                 const style = isSnack ? " style='background:red;color:white;'" : "";
-                const firstAmountStyle = i === 0 && isSnack ? "style='background:red;color:white;'" : "";
-
-                // Handle item with HTML (like <A> tags)
-                if (e.item.includes("<A") && e.item.includes("</A>")) {
-                    rowHtml += `<TD valign='top' align='right' ${isSnack ? style : ""}>${e.item}</TD>
-                                <TD valign='top' align='right' ${firstAmountStyle}>${amtVal.toFixed(2)}</TD>`;
-                } else {
+                let firstAmountStyle = i === 0 && isSnack ? "style='background:red;color:white;'" : "";
+		if( "" == firstAmountStyle )
+		{
+			firstAmountStyle = i === 0 && stayAtHome ? "style='background:#00ff00;color:white;'" : "";
+		}
+                if( e.item.includes("<A") && e.item.includes("</A>") )
+		{
                     rowHtml += `<TD valign='top' align='right' ${isSnack ? style : ""}>${e.item}</TD>
                                 <TD valign='top' align='right' ${firstAmountStyle}>${amtVal.toFixed(2)}</TD>`;
                 }
-
+		else
+		{
+                    rowHtml += `<TD valign='top' align='right' ${isSnack ? style : ""}>${e.item}</TD>
+                                <TD valign='top' align='right' ${firstAmountStyle}>${amtVal.toFixed(2)}</TD>`;
+                }
                 subTotal += amtVal;
-                if (isSnack) {
+                if( isSnack )
+		{
                     wasted += amtVal;
                 }
-                if (isBSNLNet) {
+                if( isBSNLNet )
+		{
                     BSNLNetAmt += amtVal;
                 }
-            } else {
+            }
+	    else
+	    {
                 rowHtml += "<TD valign='top' align='right'></TD><TD valign='top' align='right'></TD>";
             }
         }
-
         const wastedStyle = wasted > 0 ? " style='background:red;color:white;'" : "";
-        if (0.00 == subTotal.toFixed(2)) {
+        if( 0.00 == subTotal.toFixed(2) )
+	{
             rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
-                        <TD valign='top' align='right' ${wastedStyle} bgcolor='#00ff00'>${wasted.toFixed(2)}</TD></TR>`;
-        } else {
-            rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
-                        <TD valign='top' align='right' ${wastedStyle}>${wasted.toFixed(2)}</TD></TR>`;
+                        <TD valign='top' align='right' ${wastedStyle} bgcolor='#00ff00'>${wasted.toFixed(2)}</TD>`;
         }
-
+	else
+	{
+            rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
+                        <TD valign='top' align='right' ${wastedStyle}>${wasted.toFixed(2)}</TD>`;
+        }
+	if( 0 === indx )
+	{
+		if( "Mon 08-Dec-2025" == `${d}` )
+		{
+			rowHtml += `<TD valign='top' rowspan='9' bgcolor='orange' align='right'>95.8 KG<BR>AFTER BFAST<BR>AFTER 03 TEA</TD>`;
+			indx++;
+		}
+	}
+	rowHtml += `</TR>`;
         html += rowHtml;
         grandTotal += subTotal;
         grandWaste += wasted;
     }
-
     const totalAfterWaste = grandTotal - grandWaste;
     html += `<TR style='font-weight:bold;background:#ffe5e5;'>
                 <TD colspan='13' align='right'>வீணான தொகையைத் தவிர்த்து, செலவழித்த மொத்தத் தொகை:</TD>
@@ -3007,10 +2980,9 @@ async function initAndLoad()
                 <TD colspan='13' align='right'>வீணான தொகை உட்பட செலவழிக்கப்பட்ட மொத்த தொகை:</TD>
                 <TD valign='top' align='left'>${grandTotal.toFixed(2)}</TD>
                 <TD valign='top' align='left'></TD>
+                <TD valign='top' align='left'>96.5 KG<BR>AFTER LUNCH</TD>
               </TR>`;
     html += "</TABLE>";
-
-    // Set the HTML of the table container
     tableContainer.innerHTML = html;
 }
 						async function loadData() {
@@ -3039,7 +3011,6 @@ async function initAndLoad()
 								return;
 							}
 							const mk = monthKeyFromDateString(date);
-							// const mk = monthKeyFromDateString(rawDate);
 							const monthRef = ref(db, `spending/${mk}`);
 							const snap = await get(monthRef);
 							let monthArr = snap.exists() ? snap.val() : [];
@@ -3069,7 +3040,6 @@ async function initAndLoad()
 							itemInput.value = "";
 							amountInput.value = "";
 							const nowIST = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
-							// dateInput.valueAsDate = nowIST;
 							dateInput.value = new Date().toLocaleDateString("en-CA",{ timeZone:"Asia/Kolkata" });
 							message.textContent = "Saved entry and updated table.";
 						}
@@ -3190,6 +3160,16 @@ async function initAndLoad()
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
+					ம.ஜ.பூ.தா<BR>
+					மர ஜன்னல் பூட்டு தாங்கி
+				</TD>
+				<TD style="text-align:right;vertical-align:top;">
+					Wooden window locker holder
+				</TD>
+			</TR>
+			<TR>
+				<TD style="text-align:right;vertical-align:top;">
+					தர்மபுரி எரி<BR>
 					த.எரி
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
@@ -3855,11 +3835,3 @@ async function initAndLoad()
 		</SCRIPT>
 	</BODY>
 </HTML>
-<!--
-if (navigator.onLine) {
-}
-else
-{
-}
-later
--->
