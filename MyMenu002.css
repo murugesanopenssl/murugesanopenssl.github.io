@@ -33,6 +33,42 @@
 	font-size: 13px;
 }
 
+.MyExerciseTips
+{
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	height: 410px;
+	color: black;
+	top: 100;
+	left: 10;
+	background-color: orange;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 10px;
+}
+.MyExerciseTips a
+{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	display: block;
+	transition: 0.3s;
+}
+.MyExerciseTips a:hover
+{
+	color: #f1f1f1;
+}
+.MyExerciseTips .closebtn
+{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 13px;
+}
+
+
 .inhale_hotwater_ent
 {
 	width: 0;

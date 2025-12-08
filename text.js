@@ -48,21 +48,22 @@ function writeMenu()
 	if( -1 !== location_url.indexOf("index.html") && -1 === location_url.indexOf("poems") )
 	{
 		document.write( `<DIV class="menu" style="text-align:right; vertical-align:top;">`);
-		document.write(`Home`);
+		document.write(`Home1`);
 	}
-	if( -1 !== location_url.indexOf("poems") )
+	else if( -1 !== location_url.indexOf("poems") )
 	{
 		document.write( `<DIV class="menu" style="text-align:right; vertical-align:top;">`);
-		document.write(`<A href='../index.html'>Home</A>`);
+		document.write(`<A href='../index.html'>Home2</A>`);
 	}
 	else
 	{
 		document.write( `<DIV class="menu" style="text-align:right; vertical-align:top;">`);
-		document.write(`<A href='index.html'>Home</A>`);
+		document.write(`<A href='index.html'>Home3</A>`);
 	}
 	if( -1 != location_url.indexOf("NMurugesan_cv") )
 	{
-		document.write(		`<DIV class="submenu no-link">Murugesan2 N CV&nbsp;`);
+		// document.write(		`<DIV class="submenu no-link">Murugesan2 N CV&nbsp;`);
+		document.write(		`<DIV class="submenu"><A href="NMurugesan_cv.html">Murugesan3 N CV&nbsp;</A>`);
 	}
 	else
 	{
@@ -84,7 +85,8 @@ function writeMenu()
 		-1 == location_url.indexOf("Bharath_gas_booking_steps") &&
 		-1 == location_url.indexOf("post-office-nsc") &&
 		-1 == location_url.indexOf("SBI_ETDR_INTEREST") &&
-		-1 == location_url.indexOf("post-office-mis")
+		-1 == location_url.indexOf("post-office-mis") &&
+		-1 != location_url.indexOf("fd-and-savings-all-banks" )
 	)
 	{
 		document.write(	`<TD style="text-align:right;vertical-align:top;">`);
@@ -102,10 +104,11 @@ function writeMenu()
 		-1 == location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps") &&
 		-1 == location_url.indexOf("post-office-nsc") &&
 		-1 == location_url.indexOf("SBI_ETDR_INTEREST") &&
-		-1 == location_url.indexOf("post-office-mis")
+		-1 == location_url.indexOf("post-office-mis") &&
+		-1 == location_url.indexOf("fd-and-savings-all-banks" )
 	)
 	{
-		document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp1</A>`);
+		document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp2</A>`);
 	}
 	else if( -1 !== location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps") )
 	{
@@ -113,7 +116,8 @@ function writeMenu()
 	}
 	else if(	-1 !== location_url.indexOf("post-office-mis") &&
 				-1 != location_url.indexOf("SBI_ETDR_INTEREST") &&
-				-1 != location_url.indexOf("post-office-nsc")
+				-1 != location_url.indexOf("post-office-nsc")   &&
+				-1 != location_url.indexOf("fd-and-savings-all-banks" )
 	)
 	{
 		document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp6</A>`);
@@ -124,18 +128,21 @@ function writeMenu()
 			-1 !== location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps") &&
 			-1 !== location_url.indexOf("post-office-nsc") &&
 			-1 !== location_url.indexOf("SBI_ETDR_INTEREST") &&
-			-1 !== location_url.indexOf("post-office-mis") 
+			-1 !== location_url.indexOf("post-office-mis")  &&
+			-1 != location_url.indexOf("fd-and-savings-all-banks" )
 		)
 		{
-			document.write(			`<A>Moneyhelp2</A>`);
+			document.write(			`<A>Moneyhelp3</A>`);
 		}
-		else if( -1 !== location_url.indexOf("poems") )
+		else if( -1 !== location_url.indexOf("poems") &&
+					-1 != location_url.indexOf("fd-and-savings-all-banks" )
+		)
 		{
-			document.write(			`<A href='../displayMoneyHelpMenu.html'>Moneyhelp1</A>`);
+			document.write(			`<A href='../displayMoneyHelpMenu.html'>Moneyhelp4</A>`);
 		}
 		else
 		{
-			document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp3</A>`);
+			document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp4</A>`);
 		}
 	}
 	document.write(				`<DIV class="submenu">`);
@@ -385,4 +392,13 @@ function writeMenu()
 					</TR>
 				</TABLE>`);
 		}
+}
+// New code Sun 07-Dec-2025 01:19 PM
+function showDefault() 
+{
+    document.getElementById("CategoryAmountDetailsTab").style.display = "none";
+    document.getElementById("HomeTable").style.display = "none";
+
+    let p = document.getElementById("PreventWastage"); // <<— FIXED ID
+    if (p) p.style.display = "table";
 }
