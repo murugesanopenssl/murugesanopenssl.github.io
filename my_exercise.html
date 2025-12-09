@@ -3,52 +3,51 @@
 	<HEAD>
 		<META CHARSET="UTF-8">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
-<STYLE type="text/css">
-.link-style
-{
-        color:orange;
-        text-decoration: none; /* Removes underline */
-        font-weight: bold; /* Optional: Makes it bold */
-        cursor: pointer; /* Changes the cursor to a pointer when hovering */
-}
-.menu {
-    position: relative;          /* crucial for absolute child positioning */
-    display: inline-block;
-    font-family: Arial;
-    font-size: 15px;
-    padding: 8px;
-    cursor: pointer;
-}
-
-/* Submenu (white, dropdown below the menu) */
-.submenu {
-    display: none;
-    position: absolute;
-    top: 100%;                  /* positions right below the menu */
-    left: 0;
-    background: #fff;
-    border: 1px solid black;
-    padding: 5px 0;
-    min-width: 180px;
-    z-index: 999;
-}
-
-.submenu a {
-    display: block;
-    padding: 6px 10px;
-    text-decoration: none;
-    color: black;
-}
-
-.submenu a:hover {
-    background: #e0e0e0;
-}
-
-/* Show menus on hover */
-.menu:hover .submenu {
-    display: block;
-}
-</STYLE>
+		<STYLE type="text/css">
+			.link-style
+			{
+				color:orange;
+				text-decoration: none;
+				font-weight: bold;
+				cursor: pointer;
+			}
+			.menu
+			{
+				position: relative;
+				display: inline-block;
+				font-family: Arial;
+				font-size: 15px;
+				padding: 8px;
+				cursor: pointer;
+			}
+			.submenu
+			{
+				display: none;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				background: #fff;
+				border: 1px solid black;
+				padding: 5px 0;
+				min-width: 180px;
+				z-index: 999;
+			}
+			.submenu a
+			{
+				display: block;
+				padding: 6px 10px;
+				text-decoration: none;
+				color: black;
+			}
+			.submenu a:hover
+			{
+				background: #e0e0e0;
+			}
+			.menu:hover .submenu
+			{
+				display: block;
+			}
+		</STYLE>
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<TITLE>Reduce body weight</TITLE>
 		<SCRIPT src='text.js'>
@@ -68,6 +67,47 @@
 					<SCRIPT type='text/javascript'>
 						const exerciseData = {
 							Dec: [
+							{
+							date: "Mon 08-Dec-2025",
+							startTime: "06:11:00 AM",
+							endTime: "07:21:54 AM",
+							walkingTime: "01 hour 10 minutes 54 seconds",
+							standingCrossBody: "No",
+							lowerHips: "15 times",
+							disadvantages: "<ul>\
+										<li>1% pain in the right foot and 0% pain in the left foot before sleeping yesterday.</li>\
+										<li>1% right-foot pain and 1% left-foot pain before walking.</li>\
+							</ul>",
+							helpAtPain: "No Iodex.<BR>After walking 1% right foot pain and<BR> 0% left foot pain after bath.",
+							FitCount: "8435"
+							},
+							{
+							date: "Sun 07-Dec-2025",
+							startTime: "06:04:00 AM",
+							endTime: "07:05:09 AM",
+							walkingTime: "01 hour 06 minutes 54 seconds",
+							standingCrossBody: "No",
+							lowerHips: "03 times",
+							disadvantages: "<ul>\
+										<li>1% pain in the right foot and 1% pain in the left foot before sleeping yesterday.</li>\
+										<li>1% right-foot pain and 1% left-foot pain before walking.</li>\
+										<li>Lower hips: I slipped/fell backward by mistake.</li>\
+										<li>No problem in the head.</li>\
+							</ul>",
+							helpAtPain: "No Iodex.<BR>After walking 1% right foot pain and<BR> 1% left foot pain after bath.",
+							FitCount: "7985"
+							},
+							{
+							date: "Sat 06-Dec-2025",
+							startTime: "06:04:00 AM",
+							endTime: "07:05:09 AM",
+							walkingTime: "01 hour 05 minutes 09 seconds",
+							standingCrossBody: "No",
+							lowerHips: "15 times",
+							disadvantages: "3% Right foot and<BR>1% at left foot pain before sleeping yesterday<BR>1% Right foot pain and<BR>1% left foot pain before walking.",
+							helpAtPain: "Yesterday night did not apply Iodex<BR> at right foot and left foot.<BR>After walking 1% right foot pain and<BR> 1% left foot pain after bath.",
+							FitCount: "7704"
+							},
 							{
 							date: "Fri 05-Dec-2025",
 							startTime: "06:04:00 AM",
@@ -318,19 +358,39 @@
 							{
 								return 0;
 							}
-							t=t.toLowerCase();
-							if( t.includes("minute") )
+							t = t.toLowerCase();
+							let total = 0;
+							if( t.includes("hour") || t.includes("hr") )
 							{
-								let n=parseInt(t);
-								return isNaN(n)?0:n;
+								let h = parseInt(t);
+								if( !isNaN(h) )
+								{
+									total += h * 60;
+								}
 							}
-							return 0;
+							if( t.includes("minute") || t.includes("min") )
+							{
+								let part = t.split("hour").pop().split("hr").pop();
+								let m = parseInt(part);
+								if( !isNaN(m) )
+								{
+									total += m;
+								}
+							}
+							if(t.includes("second") || t.includes("sec") )
+							{
+								let part = t.split("minute").pop().split("min").pop();
+								let s = parseInt(part);
+								if( !isNaN(s) )
+								{
+									total += (s / 60);
+								}
+							}
+							return total;
 						}
 						function isFutureDate(d)
 						{
 								if(!d) return false;
-								// if(d.includes("Dec-2025")) return true;
-								// if(d.includes("Dec") && d.includes("2025")) return true;
 								let today = new Date();
 								let entry = new Date(d.replace(/[^0-9A-Za-z- ]/g,""));
 								if(entry > today) return true;
@@ -354,151 +414,125 @@
 							});
 							mmm=""+new Date();
 							mmm=mmm.substr( 4,3);
-							sel.value=mmm;
+							sel.value = "all";
+						}
+						function extractSeconds(t) {
+							if (!t) return 0;
+							t = t.toLowerCase();
+							let totalSec = 0;
+							let hMatch = t.match(/(\d+)\s*hour/);
+							let mMatch = t.match(/(\d+)\s*min/);
+							let sMatch = t.match(/(\d+)\s*(seconds|second|sec|secs)/);
+							if (hMatch) totalSec += parseInt(hMatch[1]) * 3600;
+							if (mMatch) totalSec += parseInt(mMatch[1]) * 60;
+							if (sMatch) totalSec += parseInt(sMatch[1]);
+							return totalSec;
 						}
 						function generateExerciseTable()
 						{
-							// let sel=document.getElementById("monthSelect").value;
-							// let rows=[];
-							// let totalMin=0;
-							// exerciseData[sel].forEach(r=>{
-							let sel=document.getElementById("monthSelect").value;
+							let sel = document.getElementById("monthSelect").value;
 							let rows = [];
-let totalMin = 0;
+							let totalSec = 0; // use seconds now
 
-// rows shown = based on selected month
-let data = (sel === "all")
-    ? Object.values(exerciseData).flat()
-    : exerciseData[sel];
+							let data = (sel === "all") ? Object.values(exerciseData).flat() : exerciseData[sel];
 
-data.forEach(r=>{
-    if(sel !== "all" && isFutureDate(r.date)) return;
-    rows.push(r);
-});
-
-// totals = always ALL months
-let allData = Object.values(exerciseData).flat();
-allData.forEach(r=>{
-    totalMin += extractMinutes(r.walkingTime);
-});
-							let totalHrs=Math.floor(totalMin/60);
-							let remMin=totalMin%60;
-							let totalDays=(totalHrs/24)+(remMin/(24*60));
-							totalDays=totalDays.toFixed(2);
-							let DispDays = totalDays < 10 ? totalDays+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Day": totalDays+" Days";
-							let DispTotalHrs = totalHrs < 10 ? "0" + totalHrs : totalHrs;
-							let DispTotalMin = remMin < 10 ? "0" + remMin : remMin;
-							document.getElementById("totalsTable").innerHTML=
-							`<TABLE border="1" width="100%">
-							<TR><TD valign='top' align='right'>Total exercise &nbsp;days</TD><TD valign='top' align='right'>${DispDays}</TD></TR>
-							<TR><TD valign='top' align='right'>Total exercise hours</TD><TD valign='top' align='right'>${DispTotalHrs}.00 &nbsp;&nbsp;&nbsp;hours</TD></TR>
-							<TR><TD valign='top' align='right'>Total exercise minutes</TD><TD valign='top' align='right'>${DispTotalMin}.00 minutes</TD></TR>
-							</TABLE><BR>`;
-							let html=`
-							<TABLE border="1" width="100%" cellpadding="5">
-							<TR>
-							<TD style="text-align:right;vertical-align:top;"><B>Exercise date</B></TD>
-							<TD style="text-align:right;vertical-align:top;"><B>Start time</B></TD>
-							<TD style="text-align:right;vertical-align:top;"><B>End time</B></TD>
-							<TD style="text-align:right;vertical-align:top;"><B>Walking time</B></TD>
-							<TD style="text-align:right;vertical-align:top;"><B>Standing Cross-Body</B></TD>
-							<TD style="text-align:right;vertical-align:top;"><B>Lower hips</B></TD>
-							<TD style="text-align:right;vertical-align:top;"><B>Disadvantages</B></TD>
-							<TD style="text-align:right;vertical-align:top;"><B>Help at pain</B></TD>
-							<TD style="text-align:right;vertical-align:top;"><B>Fit count</B></TD>
-							</TR>`;
-							rows.forEach(r=>{
-							html+=`<TR>
-							<TD style="text-align:right;vertical-align:top;">${r.date||""}</TD>`;
-							if(	"Tue 18-Nov-2025" !== `${r.date||""}`	&&
-								"Mon 17-Nov-2025" !== `${r.date||""}`	&&
-								"Sun 16-Nov-2025" !== `${r.date||""}`	&&
-								"Sat 15-Nov-2025" !== `${r.date||""}`	&&
-								"Fri 14-Nov-2025" !== `${r.date||""}`	&&
-								"Thu 13-Nov-2025" !== `${r.date||""}`
-							)
-							{
-								html+=`<TD style="text-align:right;vertical-align:top;">${r.startTime||""}</TD>
-								<TD style="text-align:right;vertical-align:top;">${r.endTime||""}</TD>
-								<TD style="text-align:right;vertical-align:top;">${r.walkingTime||""}</TD>
-								<TD style="text-align:right;vertical-align:top;">${r.standingCrossBody||""}</TD>
-								<TD style="text-align:right;vertical-align:top;">${r.lowerHips||""}</TD>`;
-							}
-							if( r.disadvantages && "Stopped doing exercise for 6 days." === r.disadvantages )
-							{
-								html+=`<TD rowspan="6" colspan='7' style="background-color:yellow;color:black;vertical-align:bottom;text-align:right;">${r.disadvantages}</TD>`;
-							}
-							else if( r.disadvantages && "No" === r.disadvantages )
-							{
-								html+=`<TD colspan="1" rowspan="1" style="background-color:#00ff00;color:black;vertical-align:bottom;text-align:right;">${r.disadvantages}</TD>`;
-								html+=`<TD style="background-color:#00ff00;color:black;vertical-align:bottom;text-align:right;">${r.helpAtPain || ""}</TD>`;
-							}
-							else
-							{
-								if(r.disadvantages)
-								{
-									html+=`<TD style="background-color:red;color:white;vertical-align:top;text-align:right;">${r.disadvantages}</TD>`;
-								}
-								else
-								{
-									if(		"Tue 18-Nov-2025" !== `${r.date||""}`	&&
-											"Mon 17-Nov-2025" !== `${r.date||""}`	&&
-											"Sun 16-Nov-2025" !== `${r.date||""}`	&&
-											"Sat 15-Nov-2025" !== `${r.date||""}`	&&
-											"Fri 14-Nov-2025" !== `${r.date||""}`	&&
-											"Thu 13-Nov-2025" !== `${r.date||""}`	
-									)
-									{
-										html+=`<TD style="text-align:right;vertical-align:top;"></TD>`;
-									}
-								}
-								if(r.helpAtPain)
-								{
-									html+=`<TD style="background-color:#00ff00;color:black;vertical-align:top;text-align:right;">${r.helpAtPain}</TD>`;
-								}
-								else
-								{
-									if(		"Tue 18-Nov-2025" !== `${r.date||""}`	&&
-											"Mon 17-Nov-2025" !== `${r.date||""}`	&&
-											"Sun 16-Nov-2025" !== `${r.date||""}`	&&
-											"Sat 15-Nov-2025" !== `${r.date||""}`	&&
-											"Fri 14-Nov-2025" !== `${r.date||""}`	&&
-											"Thu 13-Nov-2025" !== `${r.date||""}`	
-									)
-									{
-										html+=`<TD style="text-align:right;vertical-align:top;"></TD>`;
-									}
-								}
-								if(r.FitCount)
-								{
-									if( "Not counted" == `${r.FitCount}` )
-									{
-										html+=`<TD rowspan='23' style="background-color:orange;color:black;vertical-align:top;text-align:right;">${r.FitCount}</TD>`;
-									}
-									else
-									{
-										html+=`<TD style="background-color:#00ff00;color:black;vertical-align:top;text-align:right;">${r.FitCount}</TD>`;
-									}
-								}
-								else
-								{
-									if(		"Tue 18-Nov-2025" !== `${r.date||""}`	&&
-											"Mon 17-Nov-2025" !== `${r.date||""}`	&&
-											"Sun 16-Nov-2025" !== `${r.date||""}`	&&
-											"Sat 15-Nov-2025" !== `${r.date||""}`	&&
-											"Fri 14-Nov-2025" !== `${r.date||""}`	&&
-											"Thu 13-Nov-2025" !== `${r.date||""}`	
-									)
-									{
-										// html+=`<TD style="text-align:right;vertical-align:top;"></TD>`;
-									}
-								}
-							}
-							html+=`</TR>`;
+							data.forEach(r => {
+								if (sel !== "all" && isFutureDate(r.date)) return;
+								rows.push(r);
 							});
-							html+=`</TABLE>`;
-							document.getElementById("exerciseTable").innerHTML=html;
-						}
+
+							let allData = Object.values(exerciseData).flat();
+							allData.forEach(r => {
+								totalSec += extractSeconds(r.walkingTime);
+							});
+
+							// Convert total seconds to H:M:S
+							let totalHrs = Math.floor(totalSec / 3600);
+							let remSec = totalSec % 3600;
+							let totalMin = Math.floor(remSec / 60);
+							let totalSeconds = remSec % 60;
+
+							// Total exercise days
+							let totalDays = (totalHrs / 24) + (totalMin / (24 * 60)) + (totalSeconds / (24 * 3600));
+							totalDays = totalDays.toFixed(2);
+							let DispDays = totalDays < 10 ? totalDays + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Day" : totalDays + " Days";
+
+							// Display with leading zeros
+							let DispTotalHrs = totalHrs < 10 ? "0" + totalHrs : totalHrs;
+							let DispTotalMin = totalMin < 10 ? "0" + totalMin : totalMin;
+							let DispTotalSec = totalSeconds < 10 ? "0" + totalSeconds : totalSeconds;
+
+							document.getElementById("totalsTable").innerHTML =
+								`<TABLE border="1" width="100%">
+									<TR><TD valign='top' align='right'>Total exercise &nbsp;days</TD><TD valign='top' align='right'>${DispDays}</TD></TR>
+									<TR><TD valign='top' align='right'>Total exercise hours</TD><TD valign='top' align='right'>${DispTotalHrs} &nbsp;&nbsp;&nbsp;hours</TD></TR>
+									<TR><TD valign='top' align='right'>Total exercise minutes</TD><TD valign='top' align='right'>${DispTotalMin} minutes</TD></TR>
+									<TR><TD valign='top' align='right'>Total exercise seconds</TD><TD valign='top' align='right'>${DispTotalSec} seconds</TD></TR>
+								</TABLE><BR>`;
+
+							// Now generate your detailed table as before
+							let html = `
+								<TABLE border="1" width="100%" cellpadding="5">
+								<TR>
+									<TD style="text-align:right;vertical-align:top;width:121px;"><B>Exercise date</B></TD>
+									<TD style="text-align:right;vertical-align:top;"><B>Start time</B></TD>
+									<TD style="text-align:right;vertical-align:top;"><B>End time</B></TD>
+									<TD style="text-align:right;vertical-align:top;"><B>Walking time</B></TD>
+									<TD style="text-align:right;vertical-align:top;"><B>Standing Cross-Body</B></TD>
+									<TD style="text-align:right;vertical-align:top;"><B>Lower hips</B></TD>
+									<TD style="text-align:right;vertical-align:top;"><B>Disadvantages</B></TD>
+									<TD style="text-align:right;vertical-align:top;"><B>Help at pain</B></TD>
+									<TD style="text-align:right;vertical-align:top;"><B>Fit count</B></TD>
+								</TR>`;
+
+							rows.forEach(r => {
+								html += `<TR>
+									<TD style="text-align:right;vertical-align:top;">${r.date || ""}</TD>`;
+								if (
+									"Tue 18-Nov-2025" !== `${r.date || ""}` &&
+									"Mon 17-Nov-2025" !== `${r.date || ""}` &&
+									"Sun 16-Nov-2025" !== `${r.date || ""}` &&
+									"Sat 15-Nov-2025" !== `${r.date || ""}` &&
+									"Fri 14-Nov-2025" !== `${r.date || ""}` &&
+									"Thu 13-Nov-2025" !== `${r.date || ""}`
+								) {
+									html += `<TD style="text-align:right;vertical-align:top;">${r.startTime || ""}</TD>
+											 <TD style="text-align:right;vertical-align:top;">${r.endTime || ""}</TD>
+											 <TD style="text-align:right;vertical-align:top;">${r.walkingTime || ""}</TD>
+											 <TD style="text-align:right;vertical-align:top;">${r.standingCrossBody || ""}</TD>
+											 <TD style="text-align:right;vertical-align:top;">${r.lowerHips || ""}</TD>`;
+								}
+
+								if (r.disadvantages && "Stopped doing exercise for 6 days." === r.disadvantages) {
+									html += `<TD rowspan="6" colspan='7' style="background-color:yellow;color:black;vertical-align:bottom;text-align:right;">${r.disadvantages}</TD>`;
+								} else if (r.disadvantages && "No" === r.disadvantages) {
+									html += `<TD colspan="1" rowspan="1" style="background-color:#00ff00;color:black;vertical-align:bottom;text-align:right;">${r.disadvantages}</TD>`;
+								html += `<TD style="background-color:#00ff00;color:black;vertical-align:bottom;text-align:right;">${r.helpAtPain || ""}</TD>`;
+							} else {
+								if (r.disadvantages) {
+									html += `<TD style="background-color:red;color:white;vertical-align:top;text-align:right;">${r.disadvantages}</TD>`;
+								} else {
+									html += `<TD style="text-align:right;vertical-align:top;"></TD>`;
+								}
+								if (r.helpAtPain) {
+									html += `<TD style="background-color:#00ff00;color:black;vertical-align:top;text-align:right;">${r.helpAtPain}</TD>`;
+								} else {
+									html += `<TD style="text-align:right;vertical-align:top;"></TD>`;
+								}
+								if (r.FitCount) {
+									if ("Not counted" == `${r.FitCount}`) {
+										html += `<TD rowspan='23' style="background-color:orange;color:black;vertical-align:top;text-align:right;">${r.FitCount}</TD>`;
+									} else {
+										html += `<TD style="background-color:#00ff00;color:black;vertical-align:top;text-align:right;">${r.FitCount}</TD>`;
+									}
+								}
+							}
+							html += `</TR>`;
+						});
+
+    html += `</TABLE>`;
+    document.getElementById("exerciseTable").innerHTML = html;
+}
 						window.onload=function(){
 						buildMonthSelect();
 						generateExerciseTable();
