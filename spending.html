@@ -115,7 +115,7 @@
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
-							15,65,938.00 &#8377; <!-- SAVEDAMT -->
+							15,66,029.00 &#8377; <!-- SAVEDAMT -->
 						</FONT>
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
@@ -129,7 +129,7 @@
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
 						<SCRIPT type='text/javascript'>
-						SAVEDAMT=28509.00;
+						SAVEDAMT=28525.00;
 						DISP_SAVED_AMT=parseFloat(SAVEDAMT).toFixed(2);
 						DISP_SAVED_AMT = DISP_SAVED_AMT.replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
 						document.write( DISP_SAVED_AMT+" &#8377;");
@@ -142,7 +142,7 @@
 				</TR>
 				<TR>
 					<TD style="text-align:left; vertical-align:top; background-color: #FF9933; white-space: nowrap;">
-						To save for 10th fees on Sun 14-Dec-2025
+						To save for 10th fees on Fri 10-Jan-2026
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
@@ -157,13 +157,13 @@
 						<SCRIPT type='text/javascript'>
 							var today = new Date();
 							today.setHours(0,0,0,0);
-							var targetDate = new Date('2025-12-15T00:00:00+05:30');
+							var targetDate = new Date('2026-01-10T00:00:00+05:30');
 							targetDate.setHours(0,0,0,0);
 							var timeDiff = targetDate - today;
 							const istDate = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
 							yyyy=(""+istDate).substr( 11,4);
 							EngMmm=( ( ""+( new Date( istDate ) ) ).substr( 4,3) );
-							if( "Nov" == EngMmm || "Apr" == EngMmm || "Jun" == EngMmm || "Sep" == EngMmm || "Dec" == EngMmm )
+							if( "Nov" == EngMmm || "Apr" == EngMmm || "Jun" == EngMmm || "Sep" == EngMmm || "Dec" == EngMmm || "Jan" == EngMmm )
 							{
 								var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24) );
 							}
@@ -1308,25 +1308,25 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				var cell1 = newRow.insertCell(0);
 			}
 			window.onload = function()
-{
-    addTodaysRow();
-    const preventWastageTable = document.getElementById("PreventWastage");
-    const homeTable = document.getElementById("HomeTable");
-    const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
-    if( preventWastageTable )
-    {
-	    preventWastageTable.style.display = "table";
-    }
-    if( homeTable )
-    {
-	    homeTable.style.display = "none";
-    }
-    if( categoryAmountDetailsTab )
-    {
-	    categoryAmountDetailsTab.style.display = "none";
-    }
-    showDefault();
-};
+			{
+			    addTodaysRow();
+			    const preventWastageTable = document.getElementById("PreventWastage");
+			    const homeTable = document.getElementById("HomeTable");
+			    const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
+			    if( preventWastageTable )
+			    {
+				    preventWastageTable.style.display = "table";
+			    }
+			    if( homeTable )
+			    {
+				    homeTable.style.display = "none";
+			    }
+			    if( categoryAmountDetailsTab )
+			    {
+				    categoryAmountDetailsTab.style.display = "none";
+			    }
+			    showDefault();
+			};
 			function toggleTable(event)
 			{
 				event = event || window.event;
@@ -1635,35 +1635,34 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("11-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
-			"",					0.00,
-			"",					0.00,
+			"<A title='BREAK FAST'>கா.உணவு</A>",				40.00,
+			"<A title='மந்தப்படுத்தப்பட்ட பால்/Toned Milk'>ம.பா</A>",		20.00,
+			"<A title='மதிய உணவு/Lunch'>ம.உணவு</A>",			70.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
 		],
 		[ formatDate("10-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
+			"<A title='மந்தப்படுத்தப்பட்ட பால்/Toned Milk'>ம.பா</A>",		80.00,
+			"<A title='மதிய உணவு/Lunch'>ம.உணவு</A>",			40.00,
+			"<A title='இரவு உணவு/Dinner'>இ.உணவு</A>",			45.00,
+			"<A title='பசை/மந்தப்படுத்தப்பட்ட பால்/சோபா செட் பழுது/Quick fix/Milk/Sofa set cover'>பசை</A>",				217.00,
+			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			30.00,
 			"",					0.00
 		],
 		[ formatDate("09-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
+			"<A title='3.5% மந்தப்படுத்தப்பட்ட பால்/3.5% Toned Milk'>ம.பா</A>",	20.00,
+			"<A TITLE='பயணச்சீட்டு/TRAVELLING TICKET'>பயணச்சீட்டு</A>",		88.00,
+			"<A title='ம.உணவு/LUNCH'>ம.உணவு</A>",				40.00,
+			"<A TITLE='இ.உணவு/Dinner'>இ.உணவு</A>",				60.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
 		],
 		[ formatDate("08-Dec-2025"),
 			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
-			"<A title='சிற்றுண்டி/SNACKS'>சிற்றுண்டி</A>",				35.00,
+			"<A title='சிற்றுண்டி/SNACKS'>சிற்றுண்டி</A>",			35.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1716,7 +1715,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("02-Dec-2025"),
-			"<A title='LUNCH'>ம.உணவு</A>",			60.00,
+			"<A title='ம.உணவு/LUNCH'>ம.உணவு</A>",			60.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1810,7 +1809,7 @@ Nov: [
 		[ formatDate("22-Nov-2025"),
 			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			210.00,
 			"த.ப.சீட்டு",		56.00,
-			"ம.பால்",				130.00,
+			"<A title='3.0% மந்தப்படுத்தப்பட்ட பால்/3.0% Toned Milk'>ம.பா</A>",	130.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1959,7 +1958,7 @@ Nov: [
 			"",				0.00
 		],
 		[ formatDate("05-Nov-2025"),
-			"ம.பால்",			200.00,
+			"<A title='3.0% மந்தப்படுத்தப்பட்ட பால்/3.0% Toned Milk'>ம.பா</A>",	200.00,
 			"பா.ஸ்.வ.கா",			1098.00,
 			"",				0.00,
 			"",				0.00,
@@ -1970,7 +1969,7 @@ Nov: [
 		[ formatDate("04-Nov-2025"),
 			"<A TITLE='VEGETABLES'>காய்கறி</A>",				108.00,
 			"இனிப்பு",			176.00,
-			"ம.பால்",			200.00,
+			"<A title='3.0% மந்தப்படுத்தப்பட்ட பால்/3.0% Toned Milk'>ம.பா</A>",	200.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2065,7 +2064,7 @@ Oct: [
 			"MSPuri",			40.00,
 			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			40.00,
 			"BathBrush",			96.00,
-			"ம.பால்",				80.00,
+			"<A title='3.0% மந்தப்படுத்தப்பட்ட பால்/3.0% Toned Milk'>ம.பா</A>",	80.00,
 			"VaalaIlai",			330.00
 		],
 /*
@@ -2207,7 +2206,7 @@ oil 80.00
 		[ formatDate("06-Oct-2025"),
 			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			60.00,
 			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			20.00,
-			"ம.பால்",				82.00,
+			"<A title='3.0% மந்தப்படுத்தப்பட்ட பால்/3.0% Toned Milk'>ம.பா</A>",	82.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2957,13 +2956,20 @@ async function initAndLoad()
             rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
                         <TD valign='top' align='right' ${wastedStyle}>${wasted.toFixed(2)}</TD>`;
         }
-	if( 0 === indx )
+	if( "Wed 10-Dec-2025" == `${d}` )
 	{
-		if( "Mon 08-Dec-2025" == `${d}` )
-		{
-			rowHtml += `<TD valign='top' rowspan='9' bgcolor='orange' align='right'>95.8 KG<BR>AFTER BFAST<BR>AFTER 03 TEA</TD>`;
-			indx++;
-		}
+		rowHtml += `<TD valign='top' rowspan='1' bgcolor='orange' align='right'>95.0 KG</TD>`;
+		indx++;
+	}
+	if( "Mon 08-Dec-2025" == `${d}` )
+	{
+		rowHtml += `<TD valign='top' rowspan='1' bgcolor='orange' align='right'>95.8 KG</TD>`;
+		indx++;
+	}
+	if( "Tue 09-Dec-2025" == `${d}` )
+	{
+		rowHtml += `<TD valign='top' rowspan='1' bgcolor='orange' align='right'>95.0 KG</TD>`;
+		indx++;
 	}
 	rowHtml += `</TR>`;
         html += rowHtml;
@@ -3616,8 +3622,9 @@ async function initAndLoad()
 				</TD>
 			</TR>
 		</TABLE>
+		<A name='end'></A>
 		<SCRIPT type='text/javascript'>
-			document.write( "<TABLE border='1'>\
+			document.write( "<TABLE style='width:100%;' border='1'>\
 			<TR>\
 				<TD valign='top' align='right'>\
 					TVS 2 WHEELER SBI INSURANCE.\
@@ -3625,32 +3632,26 @@ async function initAndLoad()
 				<TD valign='top' align='right'>\
 					1098.00\
 				</TD>\
-			</TR>\
-			<TR>\
+			</TR>");
+			document.write( "<TR>\
 				<TD valign='top' align='right'>\
 					Monthly train ticket\
 				</TD>\
 				<TD valign='top' align='right'>\
 					1000.00\
 				</TD>\
-			</TR>\
-			<TR>\
+			</TR>");
+			document.write( "<TR>\
 				<TD valign='top' align='right'>\
 					BSNL FIBERNET\
 				</TD>\
 				<TD valign='top' align='right'>\
 					1042.00\
 				</TD>\
-			</TR>\
-			<TR style='background-color:#00ff00;'>\
-				<TD valign='top' align='right'>\
-					PPF\
-				</TD>\
-				<TD valign='top' align='right'>\
-					700.00\
-				</TD>\
-			</TR>\
-			<TR>\
+			</TR>");
+		</SCRIPT>
+		<SCRIPT type='text/javascript'>
+			document.write( "<TR>\
 				<TD valign='top' align='right'>\
 					Recurring deposit\
 				</TD>\
@@ -3719,7 +3720,7 @@ async function initAndLoad()
 				</TD>\
 				<TD valign='top' align='right'>\
 					FeviQuick<BR>\
-					Instant Glue
+					Instant Glue\
 				</TD>\
 			</TR>\
 			<TR>\
@@ -3779,7 +3780,7 @@ async function initAndLoad()
 			</TR>\
 			<TR>\
 				<TD valign='top' align='right'>\
-					மி.கா.நா<BR>
+					மி.கா.நா<BR>\
 					மின் காப்பு நாடா\
 				</TD>\
 				<TD valign='top' align='right'>\

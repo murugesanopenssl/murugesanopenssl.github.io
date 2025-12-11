@@ -14,21 +14,9 @@ body{font-family:Arial;background:#fafafa;padding:15px;}
 h2{font-size:20px;margin-bottom:20px;}
 select{width:100%;padding:8px;margin-bottom:20px;font-size:16px;}
 
-.circle{
-    width:220px;height:220px;
-    border-radius:50%;
-    position:relative;
-    margin:10px;
-}
-.text{
-    position:absolute;top:50%;left:50%;
-    transform:translate(-50%,-50%);
-    width:150px;
-    font-size:16px;
-    text-align:center;
-    font-weight:bold;
-    line-height:1.4;
-}
+.circle{width:220px;height:220px;border-radius:50%;position:relative;margin:10px;}
+.text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:150px;font-size:16px;text-align:center;font-weight:bold;line-height:1.4;}
+
 .red{background:conic-gradient(red var(--v), #eee 0%);}
 .orange{background:conic-gradient(orange var(--v), #eee 0%);}
 .pink{background:conic-gradient(pink var(--v), #eee 0%);}
@@ -39,44 +27,42 @@ select{width:100%;padding:8px;margin-bottom:20px;font-size:16px;}
 </head>
 
 <body>
-
 <script>writeMenu();</script>
 
 <div class="container">
 <h2 id="chartTitle">மாதாந்திர மொத்த செலவு</h2>
-
 <select id="monthSelect"></select>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr align="center">
-    <td><div class="circle orange" id="cFood"><div class="text" id="tFood"></div></div></td>
-    <td><div class="circle red" id="cWaste"><div class="text" id="tWaste"></div></div></td>
-    <td><div class="circle pink" id="cEri"><div class="text" id="tEri"></div></div></td>
+	<td><div class="circle orange" id="cFood"><div class="text" id="tFood"></div></div></td>
+	<td><div class="circle red" id="cWaste"><div class="text" id="tWaste"></div></div></td>
+	<td><div class="circle pink" id="cEri"><div class="text" id="tEri"></div></div></td>
 </tr>
 
 <tr align="center">
-    <td><div class="circle violet" id="cTravel"><div class="text" id="tTravel"></div></div></td>
-    <td><div class="circle cyan" id="cSchool"><div class="text" id="tSchool"></div></div></td>
-    <td><div class="circle cyan" id="csavedamt"><div class="text" id="tsavedamt"></div></div></td>
-    <td><div class="circle gray" id="cOther"><div class="text" id="tOther"></div></div></td>
+	<td><div class="circle violet" id="cTravel"><div class="text" id="tTravel"></div></div></td>
+	<td><div class="circle cyan" id="cSchool"><div class="text" id="tSchool"></div></div></td>
+	<td><div class="circle cyan" id="csavedamt"><div class="text" id="tsavedamt"></div></div></td>
+	<td><div class="circle gray" id="cOther"><div class="text" id="tOther"></div></div></td>
 </tr>
 </table>
-
 </div>
 
 <script type="module">
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
 import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
 
 const firebaseConfig={
-    apiKey:"AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
-    authDomain:"openmurugesan.firebaseapp.com",
-    databaseURL:"https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId:"openmurugesan",
-    storageBucket:"openmurugesan.firebasestorage.app",
-    messagingSenderId:"307675598593",
-    appId:"1:307675598593:web:4af163460ce2c3bc719500",
-    measurementId:"G-0MFK92PQMP"
+	apiKey:"AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+	authDomain:"openmurugesan.firebaseapp.com",
+	databaseURL:"https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+	projectId:"openmurugesan",
+	storageBucket:"openmurugesan.firebasestorage.app",
+	messagingSenderId:"307675598593",
+	appId:"1:307675598593:web:4af163460ce2c3bc719500",
+	measurementId:"G-0MFK92PQMP"
 };
 
 const app=initializeApp(firebaseConfig);
@@ -103,113 +89,118 @@ const tOther=document.getElementById("tOther");
 function extractMonth(d){const p=d.split("-");return p[1]+"-"+p[2];}
 
 async function loadChart(){
-    const snap=await get(child(ref(db),"/spending"));
-    if(!snap.exists())return;
+	const snap=await get(child(ref(db),"/spending"));
+	if(!snap.exists())return;
 
-    const data=snap.val();
-    const monthSet=new Set();
+	const data=snap.val();
+	const monthSet=new Set();
 
-    Object.values(data).forEach(rows=>{
-        rows.forEach(r=>monthSet.add(extractMonth(r[0])));
-    });
+	Object.values(data).forEach(rows=>{
+	rows.forEach(r=>monthSet.add(extractMonth(r[0])));
+	});
 
-    const months=Array.from(monthSet).sort((a,b)=>new Date("01-"+b)-new Date("01-"+a));
+	const months=Array.from(monthSet).sort((a,b)=>new Date("01-"+b)-new Date("01-"+a));
 
-    monthSelect.innerHTML=`<option value="ALL">ALL</option>`;
-months.forEach(m=>monthSelect.innerHTML+=`<option value="${m}">${m}</option>`);
+	monthSelect.innerHTML=`<option value="ALL">ALL</option>`;
+	months.forEach(m=>monthSelect.innerHTML+=`<option value="${m}">${m}</option>`);
 
-const curr="Dec-2025";
-if(months.includes(curr)) monthSelect.value=curr;
+	const d=new Date();
+	const mm=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+	const curr = mm[d.getMonth()] + "-" + d.getFullYear();
 
-monthSelect.focus();   // <<< enable keyboard up/down by default
+	if(months.includes(curr)) monthSelect.value=curr;
 
-updateChart(data);
-monthSelect.addEventListener("change",()=>updateChart(data));
+	updateChart(data);
+	monthSelect.addEventListener("change",()=>updateChart(data));
 }
 
-function updateChart(data){
-    const sel=monthSelect.value;
-	const chartTitle = document.getElementById("chartTitle");
+function updateChart(data)
+{
+    const sel = monthSelect.value;
+    const chartTitle = document.getElementById("chartTitle");
 
-	if( "ALL" === sel )
-	{
-		chartTitle.textContent = "இந்த ஆண்டு 2025க்கான செலவுத் தொகை.";
-	}
-	else
-	{
-		const parts = sel.split("-");
-		const eng = parts[0];
-		const yr  = parts[1];
-		const tamilMonths = {
-			"Jan":"ஜனவரி","Feb":"பிப்ரவரி","Mar":"மார்ச்","Apr":"ஏப்ரல்","May":"மே","Jun":"ஜூன்",
-			"Jul":"ஜூலை","Aug":"ஆகஸ்ட்","Sep":"செப்டம்பர்","Oct":"அக்டோபர்","Nov":"நவம்பர்","Dec":"டிசம்பர்"
-		};
-		const tamilMonth = tamilMonths[eng] || eng;
-		chartTitle.textContent = `${tamilMonth}-${yr} இல் செலவினத் தொகை`;
-	}
+    if (sel === "ALL") {
+        chartTitle.textContent = "இந்த ஆண்டு 2025க்கான செலவுத் தொகை.";
+    } else {
+        const parts = sel.split("-");
+        const tMap = {
+            "Jan":"ஜனவரி","Feb":"பிப்ரவரி","Mar":"மார்ச்","Apr":"ஏப்ரல்","May":"மே","Jun":"ஜூன்",
+            "Jul":"ஜூலை","Aug":"ஆகஸ்ட்","Sep":"செப்டம்பர்","Oct":"அக்டோபர்","Nov":"நவம்பர்","Dec":"டிசம்பர்"
+        };
+        chartTitle.textContent = `${tMap[parts[0]]}-${parts[1]} இல் செலவினத் தொகை`;
+    }
 
-    let wasted=0,food=0,eri=0,travel=0,school=0,other=0,total=0,savedamt=0;
+    let wasted=0, food=0, eri=0, travel=0, school=0, other=0, savedamt=0;
 
     Object.values(data).forEach(rows=>{
         rows.forEach(row=>{
             if(sel!=="ALL" && extractMonth(row[0])!==sel) return;
 
             for(let i=1;i<row.length;i+=2){
-                const item=row[i];
-                const amt=parseFloat(row[i+1])||0;
+                const item = row[i];
+                const amt  = parseFloat(row[i+1]) || 0;
 
-                if( item.toLowerCase().includes("snack") ){
-                    wasted+=amt;
+                const clean = item
+                    .normalize("NFKC")
+                    .replace(/[\s.\u200B\u00A0\uFEFF\u2060\u180E\u200C\u200D]/g,"")
+                    .trim();
+
+                if(item.toLowerCase().includes("snack")){
+                    wasted += amt;
                     continue;
                 }
-
-                total+=amt;
-
-                if( item.toLowerCase().includes("உணவு") || item==="மதிய உணவு" || item==="இரவு உணவு" || item==="தேநீர்" || item==="அ.சி")
-                    food+=amt;
+                if(item.toLowerCase().includes("உணவு") || item==="மதிய உணவு" || item==="இரவு உணவு" || item==="தேநீர்" || item==="அ.சி")
+                    food += amt;
                 else if(item.endsWith("எரி"))
-                    eri+=amt;
-                else if(item.includes("பயண") || item.toLowerCase().includes("dpi") || item.toLowerCase().includes("hosur") || item.toLowerCase().includes("bng") )
-                    travel+=amt;
-                else if( item.toLowerCase().includes("school") )
-                    school+=amt;
-                else if( item.includes("பொ.பா.தொ") || item.includes("தொ.வை") || item.includes("தே.சே.சா") || item.includes("மா.ர.ப") )
-                    savedamt+=amt;
+                    eri += amt;
+                else if(item.includes("பயண") || item.toLowerCase().includes("dpi") || item.toLowerCase().includes("hosur") || item.toLowerCase().includes("bng"))
+                    travel += amt;
+                else if(item.toLowerCase().includes("school"))
+                    school += amt;
+                else if( item.toLowerCase().includes("மா.ர.ப") )
+				{
+					if(0!=amt)
+					{
+						savedamt += amt;
+					}
+				}
                 else
-                    other+=amt;
+				{
+                    other += amt;
+				}
             }
         });
     });
 
-    let sum = food + eri + travel + school + other + savedamt;
+    const sum = food+eri+travel+school+other+savedamt;
 
-    let pFood   = sum?Math.round(food/sum*100):0;
-    let pWaste  = sum?Math.round(wasted/sum*100):0;
-    let pEri    = sum?Math.round(eri/sum*100):0;
-    let pTravel = sum?Math.round(travel/sum*100):0;
-    let pSchool = sum?Math.round(school/sum*100):0;
-    let psavedamt = sum?Math.round(savedamt/sum*100):0;  /* FIXED */
-    let pOther  = sum?Math.round(other/sum*100):0;
+    const pFood      = sum?Math.round(food/sum*100):0;
+    const pWaste     = sum?Math.round(wasted/sum*100):0;
+    const pEri       = sum?Math.round(eri/sum*100):0;
+    const pTravel    = sum?Math.round(travel/sum*100):0;
+    const pSchool    = sum?Math.round(school/sum*100):0;
+    const psavedamt  = sum?Math.round(savedamt/sum*100):0;
+    const pOther     = sum?Math.round(other/sum*100):0;
 
-    cFood.style.setProperty("--v", pFood+"%");
-    cWaste.style.setProperty("--v", pWaste+"%");
-    cEri.style.setProperty("--v", pEri+"%");
-    cTravel.style.setProperty("--v", pTravel+"%");
-    cSchool.style.setProperty("--v", pSchool+"%");
-    csavedamt.style.setProperty("--v", psavedamt+"%");
-    cOther.style.setProperty("--v", pOther+"%");
+    cFood.style.setProperty("--v",pFood+"%");
+    cWaste.style.setProperty("--v",pWaste+"%");
+    cEri.style.setProperty("--v",pEri+"%");
+    cTravel.style.setProperty("--v",pTravel+"%");
+    cSchool.style.setProperty("--v",pSchool+"%");
+    csavedamt.style.setProperty("--v",psavedamt+"%");
+    cOther.style.setProperty("--v",pOther+"%");
 
-    tFood.textContent="உணவு: "+pFood+"%";
-    tWaste.textContent="வீணான தொகை: "+pWaste+"%";
-    tEri.textContent="எரிபொருள்: "+pEri+"%";
-    tTravel.textContent="பயண: "+pTravel+"%";
-    tSchool.textContent="பள்ளிக்கூட கட்டணம்: "+pSchool+"%";
-    tsavedamt.textContent="சேமித்த தொகை: "+psavedamt+"%";
-    tOther.textContent="மற்றவை: "+pOther+"%";
+    tFood.innerHTML    = "உணவு: "+pFood+"%";
+    tWaste.innerHTML   = "வீணான தொகை: "+pWaste+"%";
+    tEri.innerHTML     = "எரிபொருள்: "+pEri+"%";
+    tTravel.innerHTML  = "பயணம்: "+pTravel+"%";
+    tSchool.innerHTML  = "பள்ளிக்கூட கட்டணம்: "+pSchool+"%";
+    tsavedamt.innerHTML= "சேமித்த தொகை: "+psavedamt+"%";
+    tOther.innerHTML   = "மற்றவை: "+pOther+"%";
 }
 
 loadChart();
-</script>
 
+</script>
 </body>
 </html>
