@@ -115,7 +115,7 @@
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
-							15,66,029.00 &#8377; <!-- SAVEDAMT -->
+							15,65,184.00 &#8377; <!-- SAVEDAMT -->
 						</FONT>
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
@@ -159,7 +159,7 @@
 							today.setHours(0,0,0,0);
 							var targetDate = new Date('2026-01-10T00:00:00+05:30');
 							targetDate.setHours(0,0,0,0);
-							var timeDiff = targetDate - today;
+							var timeDiff = targetDate - today + 1;
 							const istDate = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
 							yyyy=(""+istDate).substr( 11,4);
 							EngMmm=( ( ""+( new Date( istDate ) ) ).substr( 4,3) );
@@ -1626,13 +1626,12 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("12-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00
+			"<A title='மதிய உணவு/Lunch'>ம.உணவு</A>",  70.00,
+			"<A title='இ.உணவு/Dinner'>இ.உணவு</A>",		50.00,
+			"<A title='இருசக்கர வாகன பழுதுபார்ப்பு/2 wheeler repair'>இ.வா.ப",		520.00,
+			"",						0.00,
+			"",						0.00,
+			"",						0.00
 		],
 		[ formatDate("11-Dec-2025"),
 			"<A title='BREAK FAST'>கா.உணவு</A>",				40.00,
