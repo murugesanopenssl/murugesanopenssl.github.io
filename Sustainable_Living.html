@@ -3,55 +3,15 @@
 	<HEAD>
 		<META CHARSET="UTF-8">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
-		<LINK href="MyMenu002.css" rel="stylesheet">
-		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<LINK href="github.io.css" rel="stylesheet">
 		<TITLE>Sustainable Living</TITLE>
-		<!--
-		<LINK rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		-->
+		<SCRIPT src='text.js'>
+		</SCRIPT>
+		<SCRIPT type='text/javascript'>
+			writeMenu();
+		</SCRIPT>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-		<DIV style="width:100%;display:block;margin:0;padding:0;">
-			<TABLE border='1' style="width:100%; margin:0; padding:0;">
-			<SCRIPT type='text/javascript'>
-				document.write( "<TR><TD valign='top' align='middle'><A href='index.html' class='link-style' id='Homehref' style='color:blue'>Home</A></TD>");
-				function showHomeTable()
-				{
-					const homeTable = document.getElementById('HomeTable');
-					const preventWastage = document.getElementById('PreventWastage');
-					const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-					preventWastage.style.display = 'none';
-					categoryAmount.style.display = 'none';
-					homeTable.style.display = 'table';
-				}
-		</SCRIPT>
-				<TD valign='top' align='middle'><A href='spending.html' class='link-style' id='PreventWastagehref' style='color:blue'>PreventWastage</A></TD>
-				<TD valign='top' align='middle' bgcolor='orange'><A><FONT color='black'>Save lives and money</FONT></A></TD>
-				<TD valign='top' align='middle'><A href="ShareKnowledgeTransferToPeople.html"><U>ShareKnowledgeTransferToPeople</U></A></TD>
-				<TD valign='top' align='middle'><A href="my_exercise.html">MyExercise</A></TD>
-			<TD style="text-align:middle;vertical-align:top;background-color:white;">
-				<SCRIPT type='text/javascript'>
-					if( -1 != window.location.href.indexOf("remove-blockages-kitchen-pvc-outflow-pipe.html") )
-					{
-						document.write("<A>Unclog Kitchen Drain</A>");
-					}
-					else
-					{
-						document.write("<A href='remove-blockages-kitchen-pvc-outflow-pipe.html'>Unclog Kitchen Drain</A>");
-					}
-				</SCRIPT>
-			</TD>
-				<TD valign='top' align='middle'><A href='Visitor_count.html'>Visitor count</FONT></A></TD>
-				<TD valign='top' align='middle'><A href='tamil-calendar.html'><FONT color='#556677'>தமிழ்/Gregorian calendar</FONT></A></TD>
-				<TD valign='top' align='middle'>
-					<A href='displayMoneyHelpMenu.html'><FONT color='#556677'>Money Help</FONT></A>
-				</TD>
-				<TD style="text-align:middle;vertical-align:top;">
-					<A href='poems/index.html'><FONT color='#556677'>My tamil poems</FONT></A>
-				</TD>
-			</TR>
-		</TABLE>
-    </DIV>
 	<SCRIPT type='text/javascript'>
 			function toggleTable(event)
 			{
@@ -62,22 +22,18 @@
 				const preventLink = document.getElementById('PreventWastagehref');
 				const homeTable = document.getElementById('HomeTable');
 				const preventWastage = document.getElementById('PreventWastage');
-				const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-
 				if( 'Homehref' === clickedId )
 				{
 					if( 'none' === homeTable.style.display || '' === homeTable.style.display )
 					{
 						homeTable.style.display = 'table';
 						preventWastage.style.display = 'none';
-						categoryAmount.style.display = 'none';
 						homeLink.style.color = 'blue';
 						preventLink.style.color = 'blue';
 					}
 					else
 					{
 						homeTable.style.display = 'none';
-						categoryAmount.style.display = 'table';
 						preventWastage.style.display = 'none';
 						homeLink.style.color = 'blue';
 					}
@@ -88,136 +44,17 @@
 					{
 						preventWastage.style.display = 'table';
 						preventLink.style.color = 'blue';
-						categoryAmount.style.display = 'none';
 						homeTable.style.display = 'none';
 					}
 					else
 					{
 						preventWastage.style.setProperty('display', 'none', 'important');
-						categoryAmount.style.display = 'table';
 						homeTable.style.display = 'none';
 						preventLink.style.color = 'blue';
 					}
 				}
 			}
     </SCRIPT>
-	<!--
-	#{
-	-->
-    <TABLE style="border: 1px solid black; border-collapse: collapse;" id='CategoryAmountDetailsTab'>
-        <THEAD>
-            <TR>
-                <TH valign='top' align='right'>Category last month</TH>
-                <TH valign='top' align='right'>Amount during last month</TH>
-                <TH valign='top' align='right'>Details</TH>
-            </TR>
-        </THEAD>
-        <TBODY>
-            <!-- Example row -->
-            <TR>
-                <TD style="text-align:right;vertical-align:top;">
-			Rent
-		</TD>
-                <TD style="text-align:right;vertical-align:top;">
-			8333.33 &#8377;
-		</TD>
-                <TD style="text-align:right;vertical-align:top;">
-			Attibele Karnataka India
-		</TD>
-                <TD style="text-align:right;vertical-align:top;">
-			&nbsp;
-			&nbsp;
-			&nbsp;
-			&nbsp;
-			&nbsp;
-			&nbsp;
-		</TD>
-            </TR>
-            <TR>
-                <TD style="text-align:right;vertical-align:top;">
-			BSNL FIBERNET
-		</TD>
-                <TD style="text-align:right;vertical-align:top;">
-			&nbsp;1101.00 &#8377;
-		</TD>
-                <TD style="text-align:right;vertical-align:top;">
-			Two connections: 01) at Dharmapuri Tamilnadu 02) at Attibele Karnataka, India
-		</TD>
-            </TR>
-            <TR>
-                <TD style="text-align:right;vertical-align:top;">
-			Petrol
-		</TD>
-                <TD style="text-align:right;vertical-align:top;">
-			&nbsp;&nbsp;&nbsp;920.00 &#8377;
-		</TD>
-                <TD style="text-align:right;vertical-align:top;">
-			at Indian Oil petrol bunk to receive SBI rewards points and Indian Oil points, to buy 200.00 &#8377; or 400.00 &#8377;
-		</TD>
-            </TR>
-            <TR>
-                <TD style="text-align:right;vertical-align:top;">
-			Food
-		</TD>
-                <TD style="text-align:right;vertical-align:top;">
-			&nbsp;2227.00 &#8377;
-		</TD>
-                <TD style="text-align:right;vertical-align:top;">
-			Break fast/Lunch/Dinner/Soup/Milk/Tea
-		</TD>
-            </TR>
-            <TR style='backgroundcolor:red;'>
-                <TD style="text-align: right; vertical-align: top; background-color: red;color:white;">
-			Wasted amount
-		</TD>
-		<TD style="text-align: right; vertical-align: top; background-color: red;color:white;" id="WastedAmtValue">
-			1993.00 &#8377;
-		</TD>
-		<TD style="text-align: right; vertical-align: top; background-color: red;color:white;">
-			Snacks
-		</TD>
-            </TR>
-            <TR>
-                <TD style="text-align:right;vertical-align:top;">
-			xerox Copies(2025-2026) Total xerox copies = 56 pages
-		</TD>
-                <TD style="text-align:right;vertical-align:top;">
-			70.00 &#8377;
-		</TD>
-                <TD style="text-align:right;vertical-align:top;">
-			70.00 = ( 20 * 02.00 )
-			<!--
-			<BR>PAN, AADHAAR CARDS FRONT AND BACK = 02.00<BR>20 Black and white pages.<BR>00 Colour pages.<BR>
-			OTHER GARBAGE XEROX SHOP@DHARMAPURI/TN/INDIA:<BR>
-			-->
-			+ 10.00 + 5.00 + 15.00</TD>
-		</TD>
-            </TR>
-            <TR>
-                <TD style="text-align: right; vertical-align: top; background-color: #FF9933;">
-			Saved Amount
-		</TD>
-                <TD style="text-align: right; vertical-align: top; background-color: #FFFFFF;">
-					<Font color='#000080'>
-					1564719.00 &#8377; <!-- SAVEDAMT -->
-					</FONT>
-		</TD>
-                <TD style="text-align: right; vertical-align: top; background-color: #138808;">
-			Indian Government Savings and Investments (PPF, RD, NSC and POST-OFFICE-BALANCE)
-		</TD>
-            </TR>
-        </TBODY>
-    </TABLE>
-	<!--
-	#}
-	-->
-<!--
-	Menu name:
-		Save Money, Avoid Waste
--->
-	<!--
-	#{
-	-->
 <NOSCRIPT>
 <TABLE style="border: 1px solid black; border-collapse: collapse;">
 <TR> <TD valign='top' align='middle' bgcolor=cyan>
@@ -1571,9 +1408,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				const homeLink = document.getElementById('Homehref');
 				homeLink.style.color = 'blue';
 				const homeTable = document.getElementById("HomeTable");
-				const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
 				homeTable.style.display = "table";
-				categoryAmountDetailsTab.style.display = "none";
 			};
 		</SCRIPT>
 <TR>

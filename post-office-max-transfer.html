@@ -3,10 +3,16 @@
 	<HEAD>
 		<META CHARSET="UTF-8">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<META http-equiv="Pragma" content="no-cache" />
+		<META http-equiv="Expires" content="0" />
 		<LINK href="github.io.css" rel="stylesheet">
-		<TITLE>openssl speed -multi 900000000</TITLE>
-		<SCRIPT src='text.js'></SCRIPT>
-		<SCRIPT>writeMenu();</SCRIPT>
+		<TITLE>Max transfer per day from post office</TITLE>
+		<SCRIPT src='text.js'>
+		</SCRIPT>
+		<SCRIPT type='text/javascript'>
+			writeMenu();
+		</SCRIPT>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 	<!--
@@ -14,9 +20,9 @@
 	-->
 <NOSCRIPT>
 <TABLE border='1'>
-<TR> <TD valign='top' align='right' bgcolor='cyan'>
+<TR> <TD valign='top' align='right'>
 <A href='index.html'>HOME</A> </TD>
-<TD valign='top' align='right'>
+<TD valign='top' align='right' bgcolor='cyan'>
 	<A>MoneyHelp01</A>
 </TD>
 <TD valign='top' align='right'>
@@ -49,8 +55,8 @@
 </TR>
 <TR> <TD valign='top' align='right'>
 	<A HREF='NMurugesan_cv.html'>NMurugesan_cv</A>
-</TD> <TD valign='top' align='right'>
-			<A HREF='mis-interest.html' title='வல்லரசுபங்களிப்பு01'>வல்லரசுபங்களிப்பு</A>
+</TD> <TD valign='top' align='right' bgcolor='orange'>
+			<A title='வல்லரசுபங்களிப்பு01'>வல்லரசுபங்களிப்பு</A>
 </TD>
 <TD valign='top' align='right'>
 	<A HREF='BEST_BANK_TO_OPEN_FD.html'>BankForFd</A>
@@ -77,8 +83,8 @@
 	</TD>
 </TR>
 <TR>
-	<TD valign='top' align='right' bgcolor='orange'>
-			<A>openssl speed</A> </TD>
+	<TD valign='top' align='right'>
+			<A HREF='openssl_speed.html'>openssl speed</A> </TD>
 	<TD valign='top' align='right'>
 		<A HREF='nsc_interest.html' title='வல்லரசுபங்களிப்பு02'>வல்லரசுபங்களிப்பு</A>
 	</TD>
@@ -254,7 +260,7 @@
 	</TD>
 	<TD valign='top' align='right'></TD>
 	<TD valign='top' align='right'>
-		<A HREF='I_love_mathematics.html'>I <span style="color: red;">&#9829;</span> Mathematics</A>
+		<A HREF='I_love_mathematics.html'>I <SPAN style="color: red;">&#9829;</SPAN> Mathematics</A>
 	</TD>
 	<TD valign='top' align='right'>
 		<A HREF='Politician_assets.html'>PoliticianAssets</A>
@@ -457,120 +463,426 @@
 	<!--
 	#}
 	-->
-<TABLE BORDER='1' style="width:100%;height:100%;">
- 			<TBODY>
- 				<TR>
- 					<TD valign='top' align='left' style='width:124px;'>
-						Output after<BR>
-						after re-compiling
- 					</TD>
- 					<TD valign='top' align='left' colspan='2'>
-						/cygdrive/c/OpenSource/openssl [ 0 ]<BR>
-						$ /usr/bin/mv.exe -i apps/openssl.exe /usr/bin/openssl.Original.Thu-29-May-2025-10:32-PM.exe<BR>
-						/cygdrive/c/OpenSource/openssl [ 0 ]<BR>
-						$ /usr/bin/cp.exe -i apps/openssl.exe /usr/bin/openssl.exe<BR>
-						/cygdrive/c/OpenSource/openssl [ 0 ]<BR>
-						$ apps/openssl.exe speed -multi 900000000<BR>
-						speed: multi*sizeof(int) parameter less than zero. Could not allocate -694967296 bytes for fd buffer for do_multi
-						<HR>
-						C:\OpenSource\openssl> apps\openssl.exe speed -multi 900000000<BR>
-						speed: multi*sizeof(int) parameter less than zero. Could not allocate -694967296 bytes for fd buffer for do_multi<HR>
- 					</TD>
- 				</TR>
- 				<TR>
- 					<TD valign='top' align='left'>
-						SOURCE
- 					</TD>
- 					<TD valign='top' align='left'>
-						REPLACE:
- 					</TD>
- 					<TD valign='top' align='left'>
-						WITH:
- 					</TD>
- 				</TR>
- 				<TR>
- 					<TD valign='top' align='left'>
-						apps/speed.c
-					</TD>
- 					<TD valign='top' align='left'><PRE>static int do_multi(int multi, int size_num)
-{
-        int n;
-        int fd[2];
-        int *fds;
-        static char sep[] = ":";
-        // https://github.com/openssl/openssl/commit/8e51a340f40fc80331ddac19203ef7a3e7e02d1a
-        fds = app_malloc(sizeof(*fds) * multi, "fd buffer for do_multi");
-        for (n = 0; n < multi; ++n)</PRE>
-					</TD>
- 					<TD valign='top' align='left'><PRE>static int do_multi(int multi, int size_num)
-{
-        // murugesan openssl IDA290520252136
-        // ALWAYS INITIALIZE VARIABLES.
-        <FONT color='red'><B><U>int n = 0;</B></U>
-        <B><U>int fd[2] = { 0 };</B></U>
-        <B><U>int *fds = NULL;</B></U>
-        <B><U>static char sep[] = ":";</B></U></FONT>
-        // https://github.com/openssl/openssl/commit/8e51a340f40fc80331ddac19203ef7a3e7e02d1a
-        <FONT color='red'><B><U>if( 0 > sizeof(int) * multi )</B></U>
-        <B><U>{</B></U>
-		<B><U>printf( "app_malloc not allowed sizeof(int) %lu\n"\</B></U>
-			<B><U>"multi %lu\n"\</B></U>
-			<B><U>"sizeof(int) * multi: %lu\n",</B></U>
-			<B><U>sizeof(int),</B></U>
-			<B><U>multi,</B></U>
-			<B><U>sizeof(int) * multi );</B></U>
-                <B><U>exit(0);</B></U>
-        <B><U>}</B></U>
-	// BETTER TO USE sizeof(int) instead of using sizeof(*fds)
-        <B><U>// fds = app_malloc(sizeof(*fds) * multi, "fd buffer for do_multi");</B></U>
-        <B><U>fds = app_malloc(sizeof(int) * multi, "fd buffer for do_multi");</B></U>
-        // murugesan openssl IDA290520252136</FONT>
-        for (n = 0; n < multi; ++n)</PRE>
-					</TD>
- 				</TR>
-				<TR>
-					<TD valign='top' align='left'>
-					apps/lib/apps.c
-					</TD>
-					<TD valign='top' align='left'><PRE>void* app_malloc(int sz, const char *what)
-{
-    void *vp = OPENSSL_malloc(sz);
-    ...</PRE>
-		   			</TD>
-					<TD valign='top' align='left'><PRE>void* app_malloc(int sz, const char *what)
-{
-    // murugesan openssl IDA290520252136
-    <FONT color='red'><B><U>if ( 0 > sz )</B></U>
-    <B><U>{</B></U>
-        <B><U>app_bail_out( "%s: multi*sizeof(int) parameter less than zero. Could not allocate %d bytes for %s\n",</B></U>
-                     <B><U>opt_getprog(), sz, what);</B></U>
-    <B><U>}</B></U>
-    <FONT color='red'><B><U>if ( NULL == what )</B></U>
-    <B><U>{</B></U>
-        <B><U>app_bail_out( "NULL at second parameter. Could not allocate %d bytes for NULL\n",</B></U>
-                     <B><U>opt_getprog(), sz);</B></U>
-    <B><U>}</B></U>
-    <B><U>{</B></U>
-	    </FONT>
-    // murugesan openssl IDA290520252136
-            void *vp = OPENSSL_malloc(sz);
-            ...
-    // murugesan openssl IDA290520252136
-    <FONT color='red'><B><U>}</B></U></FONT>
-    // murugesan openssl IDA290520252136</PRE>
-		   			</TD>
-				</TR>
- 			</TBODY>
-		</TABLE>
-		<TABLE width='100%'>
-			<TBODY>
-				<TR ALIGN="Center" bgcolor="gray" height="2%">
- 						<TD ALIGN="centre" valign='top'><FONT SIZE="2" color="black">Site
-developed and maintained by Murugesan Technical Enterprise knowledge transfer
-solutions &copy; 1985 to 900000000/0(infinite). All rights reserved. <A HREF="./privacy.html" title="PrivacyPolicies at free website providers"><FONT COLOR="black"><U>
-PrivacyPolicy</U></FONT></A>
-      </FONT></TD>
- 				</TR>
- 			</TBODY>
-		</TABLE>
+<TABLE border='1' width='100%'>
+<TR>
+<TD valign='top' align='left'>
+Maximum amount we can transfer from post office to any post office account per day.
+</TD>
+<TD valign='top' align='left'>
+100000.00 INR
+</TD>
+</TR>
+<TR>
+<TD valign='top' align='left'>
+Maximum amount we can transfer from post office to any bank using NEFT(alone) per day.
+</TD>
+<TD valign='top' align='left'>
+100000.00 INR
+</TD>
+</TR>
+<TR>
+<TD valign='top' align='left'>
+Maximum amount we can transfer from post office to any bank AND other post office account using NEFT(alone) per day.
+</TD>
+<TD valign='top' align='left'>
+100000.00 INR
+</TD>
+</TR>
+<TR>
+<TD valign='top' align='left'>
+Maximum amount we can transfer from post office to any bank(NEFT) or other post office account per day.
+</TD>
+<TD valign='top' align='left'>
+100000.00 INR
+</TD>
+</TR>
+</TABLE>
+HENCE WE CANNOT TRANSFER MORE THAN ONE LAKH INR FROM OUR POST OFFICE ACCOUNT TO ANY OTHER ACCOUNTS.<BR>
+On Wed 10-Dec-2025, ASSUME THAT I FEEL TO TRANSFER 10LAKHS FROM MY POST OFFICE ACCOUNT TO:<BR>
+1) OTHER BANK (FIVE LAKHS INR)<BR>
+2) OTHER POST OFFICE ACCOUNT (FIVE LAKHS INR)<BR>
+I CAN TRANSFER USING FOLLOWING WAY ALONE:
+<TABLE border='1'>
+	<TR>
+		<TD ALIGN='right' valign='top' style='width:120px;'>
+			DATE
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			AMOUNT
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			FROM:
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			TO:
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			DELAY TIME:
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			REASON:
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			REQUIREMENT:
+		</TD>
+	</TR>
+	<TR>
+		<TD ALIGN='right' valign='top'>
+			Wed 10-Dec-2025
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			100000.00
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			MY POST OFFICE =&gt;
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			To any bank.
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			30 Minutes
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			Only one lakh transfer alone allowed from my post office account each day.
+		</TD>
+		<TD ALIGN='right' valign='top' rowspan='5'>
+			RECEIVER AT BANK RECEIVED<BR>
+			THE AMOUNT AFTER 30 MINUTES.
+		</TD>
+	</TR>
+	<TR>
+		<TD ALIGN='right' valign='top'>
+			Thu 11-Dec-2025
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			100000.00
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			MY POST OFFICE =&gt;
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			To any bank.
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			30 Minutes
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			Only one lakh transfer alone allowed from my post office account each day.
+		</TD>
+	</TR>
+	<TR>
+		<TD ALIGN='right' valign='top'>
+			Fri 12-Dec-2025
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			100000.00
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			MY POST OFFICE =&gt;
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			To any bank.
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			30 Minutes
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			Only one lakh transfer alone allowed from my post office account each day.
+		</TD>
+	</TR>
+	<TR>
+		<TD ALIGN='right' valign='top'>
+			Sat 13-Dec-2025
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			100000.00
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			MY POST OFFICE =&gt;
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			To any bank.
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			30 Minutes
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			Only one lakh transfer alone allowed from my post office account each day.
+		</TD>
+	</TR>
+	<TR>
+		<TD ALIGN='right' valign='top'>
+			Sun 14-Dec-2025
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			100000.00
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			MY POST OFFICE =&gt;
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			To any bank.
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			30 Minutes
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			Only one lakh transfer alone allowed from my post office account each day.
+		</TD>
+	</TR>
+	<TR>
+		<TD ALIGN='right' valign='top'>
+			Mon 15-Dec-2025
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			100000.00
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			MY POST OFFICE =&gt;
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			To any post office using post internet banking
+		</TD>
+		<TD ALIGN='right' valign='top' style='background-color:cyan;'>
+			Immediate transfer
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			Only one lakh transfer alone allowed from my post office account each day.
+		</TD>
+		<TD ALIGN='right' valign='top' rowspan='5'>
+			RECEIVER AT POST OFFICE<BR>
+			RECEIVED<BR>
+			ACTUAL AMOUNT ON<BR>
+			EACH DAY IMMEDIATELY
+		</TD>
+	</TR>
+	<TR>
+		<TD ALIGN='right' valign='top'>
+			Tue 16-Dec-2025
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			100000.00
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			MY POST OFFICE =&gt;
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			To any post office using post internet banking
+		</TD>
+		<TD ALIGN='right' valign='top' style='background-color:cyan;'>
+			Immediate transfer
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			Only one lakh transfer alone allowed from my post office account each day.
+		</TD>
+	</TR>
+	<TR>
+		<TD ALIGN='right' valign='top'>
+			Wed 17-Dec-2025
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			100000.00
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			MY POST OFFICE =&gt;
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			To any post office using post internet banking
+		</TD>
+		<TD ALIGN='right' valign='top' style='background-color:cyan;'>
+			Immediate transfer
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			Only one lakh transfer alone allowed from my post office account each day.
+		</TD>
+	</TR>
+	<TR>
+		<TD ALIGN='right' valign='top'>
+			Thu 18-Dec-2025
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			100000.00
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			MY POST OFFICE =&gt;
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			To any post office using post internet banking
+		</TD>
+		<TD ALIGN='right' valign='top' style='background-color:cyan;'>
+			Immediate transfer
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			Only one lakh transfer alone allowed from my post office account each day.
+		</TD>
+	</TR>
+	<TR>
+		<TD ALIGN='right' valign='top'>
+			Fri 19-Dec-2025
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			100000.00
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			MY POST OFFICE =&gt;
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			To any post office using post internet banking
+		</TD>
+		<TD ALIGN='right' valign='top' style='background-color:cyan;'>
+			Immediate transfer
+		</TD>
+		<TD ALIGN='right' valign='top'>
+			Only one lakh transfer alone allowed from my post office account each day.
+		</TD>
+	</TR>
+</TABLE>
+<TABLE WIDTH="100%">
+ <TBODY>
+ <TR ALIGN="Center" bgcolor="gray" height="2%">
+ <TD ALIGN="centre" valign="Top"><FONT SIZE="2" color="black">Site developed
+ and maintained by Murugesan Technical Enterprise knowledge transfer solutions
+ &copy; 1985 to 9000000000/0(infinite). All rights reserved. <A HREF="privacy.html" title="PrivacyPolicies at free website providers"><FONT COLOR="black"><U>
+ PrivacyPolicy</U></FONT></A>
+ </FONT></TD>
+ </TR>
+ </TBODY>
+</TABLE>
+		<script type="text/javascript">
+			const API_ENDPOINT = 'http://127.0.0.1:3000/api/interest-rate';
+			const USE_MOCK_DATA = true;
+			function formatDateIST(date)
+			{
+				const istOffset = 5.5 * 60 * 60 * 1000;
+				const istDate = new Date(date.getTime() + istOffset);
+				
+				const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+				const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+				
+				const dayName = days[istDate.getUTCDay()];
+				const day = istDate.getUTCDate();
+				const monthName = months[istDate.getUTCMonth()];
+				const year = istDate.getUTCFullYear();
+				
+				return `${dayName} ${day}-${monthName}-${year}`;
+			}
+			function showStatus(message, isError = false)
+			{
+				const statusDiv = document.getElementById('statusMessage');
+				statusDiv.innerText = message;
+				statusDiv.className = isError ? 'status error' : 'status';
+				statusDiv.style.display = 'block';
+			}
+			async function getInterestRate()
+			{
+				try
+				{
+					if( USE_MOCK_DATA )
+					{
+						await new Promise(resolve => setTimeout(resolve, 500));
+						const mockData = {
+							rate: "7.4"
+						};
+						const interestRate = mockData.rate;
+						const currentDate = formatDateIST(new Date());
+						document.getElementById('interestRate').innerText = interestRate;
+						document.getElementById('currentDate').innerText = currentDate;
+						return;
+					}
+					const response = await fetch(API_ENDPOINT);
+					if( !response.ok )
+					{
+						throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+					}
+					const data = await response.json();
+					if( !data || !data.rate )
+					{
+						throw new Error('Rate field missing in response!');
+					}
+					const interestRate = data.rate;
+					const currentDate = formatDateIST(new Date());
+					document.getElementById('interestRate').innerText = interestRate;
+					document.getElementById('currentDate').innerText = currentDate;
+				}
+				catch( error )
+				{
+					let errorMsg = 'Failed to fetch interest rate: ' + error.message;
+					if( error.message.includes('Failed to fetch') )
+					{
+						errorMsg += ' - Is your server running on port 3000?';
+					}
+					showStatus(errorMsg, true);
+					document.getElementById('interestRate').innerText = 'N/A';
+					document.getElementById('currentDate').innerText = 'N/A';
+				}
+			}
+			window.onload = function()
+			{
+				setTimeout(function()
+				{
+					getInterestRate().then(function()
+					{
+						setTimeout(function()
+						{
+							const interestRateValue = document.getElementById('interestRate').innerText;
+							const selectElement = document.getElementById('select_id');
+							if( selectElement && interestRateValue !== 'N/A' && interestRateValue !== 'Loading...' )
+							{
+								const rate = parseFloat(interestRateValue);
+								if( rate === 7.4 )
+								{
+									selectElement.value = 'SEVEN.FOUR';
+								}
+								else if( rate === 7.7 )
+								{
+									selectElement.value = 'SEVEN.SEVEN';
+								}
+								else if( rate === 7.8 )
+								{
+									selectElement.value = 'SEVEN.EIGHT';
+								}
+								else if( rate === 7.6 )
+								{
+									selectElement.value = 'SEVEN.SIX';
+								}
+								else if( rate === 7.5 )
+								{
+									selectElement.value = 'SEVEN.FIVE';
+								}
+								else if( rate === 7.3 )
+								{
+									selectElement.value = 'SEVEN.THREE';
+								}
+								else if( rate === 7.2 )
+								{
+									selectElement.value = 'SEVEN.TWO';
+								}
+								else if( rate === 7.1 )
+								{
+									selectElement.value = 'SEVEN.ONE';
+								}
+								else if( rate === 6.7 )
+								{
+									selectElement.value = 'SIX.SEVEN';
+								}
+								else if( rate === 6.6 )
+								{
+									selectElement.value = 'SIX.SIX';
+								}
+								else if( rate === 5.5 )
+								{
+									selectElement.value = 'FIVE.FIVE';
+								}
+								else
+								{
+									selectElement.value = 'SIX.SIX';
+								}
+								DISPLAY_REQUIRED_POSTOFFICE_INTEREST();
+							}
+						}, 100);
+					});
+				}, 1000);
+			};
+			</script>
+	</BODY>
 </HTML>
