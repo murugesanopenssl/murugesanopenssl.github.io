@@ -59,21 +59,21 @@ function writeMenu()
 	else
 	{
 		document.write( `<DIV class="menu" style="text-align:right; vertical-align:top;">`);
-		document.write(`<A href='index.html'>Home3</A>`);
+		document.write(`<A href='index.html'><FONT color='white'>Home3</FONT></A>`);
 	}
 	if( -1 != location_url.indexOf("Sustainable_Living") )
 	{
-		document.write(		`<DIV class="submenu">Sustainable Living&nbsp;`);
+		document.write(		`<DIV class="submenu"><FONT color='black'>Sustainable  Living</FONT>&nbsp;`);
 	}
 	else
 	{
 		if( -1 !== location_url.indexOf("poems") )
 		{
-			document.write(		`<DIV class="submenu"><A href="../Sustainable_Living.html">Sustainable Living&nbsp;</A>`);
+			document.write(		`<DIV class="submenu"><A href="../Sustainable_Living.html">Sustainable  Living&nbsp;</A>`);
 		}
 		else
 		{
-			document.write(		`<DIV class="submenu"><A href="Sustainable_Living.html">Sustainable Living&nbsp;</A>`);
+			document.write(		`<DIV class="submenu"><A href="Sustainable_Living.html">Sustainable  Living&nbsp;</A>`);
 		}
 	}
 	if( -1 != location_url.indexOf("NMurugesan_cv") )
@@ -94,7 +94,7 @@ function writeMenu()
 	}
 	if( -1 != location_url.indexOf("openssl_speed") )
 	{
-		document.write(		`<DIV class="submenu no-link">OpenSSL Speed&nbsp;`);
+		document.write(		`<DIV class="submenu no-link"><FONT color='black'>OpenSSL Speed</FONT>&nbsp;`);
 	}
 	else
 	{
@@ -165,6 +165,13 @@ function writeMenu()
 		-1 == location_url.indexOf("cygwin_laptop_battery_alert")		&&
 		-1 == location_url.indexOf("windows-network")				&&
 		-1 == location_url.indexOf("spending")					&&
+		-1 == location_url.indexOf("post-office-mis")				&&
+		-1 == location_url.indexOf("Increase-Daily-Salary")			&&
+		-1 == location_url.indexOf("post-office-nsc")				&&
+		-1 == location_url.indexOf("Bharath_gas_booking_steps")			&&
+		-1 == location_url.indexOf("SBI_ETDR_")					&&
+		-1 == location_url.indexOf("earth_politics_or_general_age")		&&
+		-1 == location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps")	&&
 		-1 == location_url.indexOf("Set-Unlimited-Windows-10-Network")		&&
 		-1 == location_url.indexOf("remove-blockages-kitchen-pvc-outflow-pipe")	&&
 		-1 == location_url.indexOf("ShareKnowledgeTransferToPeople")		&&
@@ -186,7 +193,7 @@ function writeMenu()
 		-1 == location_url.indexOf("fd-and-savings-all-banks" )
 	)
 	{
-		document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp2</A>`);
+		document.write(			`<A href='displayMoneyHelpMenu.html'><Font color='white'>Moneyhelp2</FONT></A>`);
 	}
 	else if(	-1 !== location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps")
 	)
@@ -226,7 +233,7 @@ function writeMenu()
 				-1 == location_url.indexOf("cygwin_laptop_battery_alert")   	
 			)
 			{
-				document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp7</A>`);
+				document.write(			`<A href='displayMoneyHelpMenu.html'><Font color='white'>Moneyhelp7</FONT></A>`);
 			}
 			else
 			{
@@ -234,21 +241,59 @@ function writeMenu()
 			}
 		}
 	}
-	document.write(				`<DIV class="submenu">`);
-	if( -1 !== location_url.indexOf("poems") )
-	{
-		document.write(						`<A href="../displayMoneyHelpMenu.html?#FinanceServices">Financial Resource</A>`);
-		document.write(						`<A href="../displayMoneyHelpMenu.html?#GovtResourceMenu">Government Resource</A>`);
-	}
-	else
-	{
-		document.write(						`<A href="displayMoneyHelpMenu.html?#FinanceServices">Financial Resource</A>`);
-		document.write(						`<A href="displayMoneyHelpMenu.html?#GovtResourceMenu">Government Resource</A>`);
-	}
-	let currentPage = window.location.pathname.split("/").pop();
-	document.write(			`</DIV>
-						</DIV>
-					</TD>`);
+document.write(`<DIV class="submenu">`);
+if( -1 !== location_url.indexOf("poems") )
+{
+	/* Financial Resource (with children) - using span for hover trigger */
+	document.write(`<SPAN style="position:relative;display:block;">`);
+	document.write(`<A href="../displayMoneyHelpMenu.html?#FinanceServices">Financial Resource</A>`);
+	document.write(`<DIV class="submenu" style="display:none;position:absolute;left:100%;top:0;background:#fff;border:1px solid black;padding:5px 0;z-index:999;min-width:180px;">`);
+	document.write(`<A href="../Increase-Daily-Salary.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">Increase Daily Salary</A>`);
+	document.write(`<A href="../post-office-nsc.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">Post Office NSC</A>`);
+	document.write(`<A href="../post-office-mis.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">Post Office MIS1</A>`);
+	document.write(`<A href="../Bharath_gas_booking_steps.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">Bharath Gas Online</A>`);
+	document.write(`<A href="../Indian-Oil-Cylinder-Booking-Online-Steps.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">Indian Gas Online</A>`);
+	document.write(`<A href="../SBI_ETDR_INTEREST.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">SBI Fixed Deposit</A>`);
+	document.write(`</DIV>`);
+	document.write(`</SPAN>`);
+	
+	/* Government Resource (with children) - using span for hover trigger */
+	document.write(`<SPAN style="position:relative;display:block;">`);
+	document.write(`<A href="../displayMoneyHelpMenu.html?#GovtResourceMenu">Government Resource</A>`);
+	document.write(`<DIV class="submenu" style="display:none;position:absolute;left:100%;top:0;background:#fff;border:1px solid black;padding:5px 0;z-index:999;min-width:180px;">`);
+	document.write(`<A href="../earth_politics_or_general_age.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">India GDP</A>`);
+	document.write(`</DIV>`);
+	document.write(`</SPAN>`);
+}
+else
+{
+	/* Financial Resource (with children) - using span for hover trigger */
+	document.write(`<SPAN style="position:relative;display:block;">`);
+	document.write(`<A href="displayMoneyHelpMenu.html?#FinanceServices">Financial Resource</A>`);
+	document.write(`<DIV class="submenu" style="display:none;position:absolute;left:100%;top:0;background:#fff;border:1px solid black;padding:5px 0;z-index:999;min-width:180px;">`);
+	document.write(`<A href="Increase-Daily-Salary.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">Increase Daily Salary</A>`);
+	document.write(`<A href="post-office-nsc.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">Post Office NSC</A>`);
+	document.write(`<A href="post-office-mis.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">Post Office MIS2</A>`);
+	document.write(`<A href="Bharath_gas_booking_steps.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">Bharath Gas Online</A>`);
+	document.write(`<A href="Indian-Oil-Cylinder-Booking-Online-Steps.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">Indian Gas Online</A>`);
+	document.write(`<A href="SBI_ETDR_INTEREST.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">SBI Fixed Deposit</A>`);
+	document.write(`</DIV>`);
+	document.write(`</SPAN>`);
+	
+	/* Government Resource (with children) - using span for hover trigger */
+	document.write(`<SPAN style="position:relative;display:block;">`);
+	document.write(`<A href="displayMoneyHelpMenu.html?#GovtResourceMenu">Government Resource</A>`);
+	document.write(`<DIV class="submenu" style="display:none;position:absolute;left:100%;top:0;background:#fff;border:1px solid black;padding:5px 0;z-index:999;min-width:180px;">`);
+	document.write(`<A href="earth_politics_or_general_age.html" style="display:block;padding:6px 10px;text-decoration:none;color:black;">India GDP</A>`);
+	document.write(`</DIV>`);
+	document.write(`</SPAN>`);
+}
+let currentPage = window.location.pathname.split("/").pop();
+document.write(`
+	</DIV>
+	</DIV>
+</TD>
+`);
 	if( -1 !== location_url.indexOf( "poem" ) )
 	{
 		document.write(			`<TD style="text-align:right;vertical-align:top;">`);
@@ -267,7 +312,7 @@ function writeMenu()
 	else
 	{
 		document.write(			`<TD style="text-align:right;vertical-align:top;">`);
-		document.write(		`<A href='spending.html' onclick="toggleTable(event)" id="PreventWastagehref">Prevent wasting money to save money</A>`);
+		document.write(		`<A href='spending.html' onclick="toggleTable(event)" id="PreventWastagehref"><FONT color='white'>Prevent wasting money to save money</FONT></A>`);
 	}
 	document.write(		`</TD>`);
 	if( -1 !== location_url.indexOf( "ShareKnowledgeTransferToPeople" ) )
@@ -288,7 +333,7 @@ function writeMenu()
 	}
 	else
 	{
-		document.write(`<DIV class="menu"><A href="ShareKnowledgeTransferToPeople.html">Share knowledge transfer</A></DIV>`);
+		document.write(`<DIV class="menu"><A href="ShareKnowledgeTransferToPeople.html"><FONT color='white'>Share knowledge transfer</FONT></A></DIV>`);
 	}
 	document.write(		`</DIV>
 					</TD>`);
@@ -317,7 +362,7 @@ function writeMenu()
 		document.write(`
 			<TD style="text-align:right;vertical-align:top;">
 				<DIV class="menu">
-					<A href="remove-blockages-kitchen-pvc-outflow-pipe.html">Unclog Kitchen Drain</A>
+					<A href="remove-blockages-kitchen-pvc-outflow-pipe.html"><FONT color='white'>Unclog Kitchen Drain</FONT></A>
 				</DIV>
 			</TD>
 		`);
@@ -347,7 +392,7 @@ function writeMenu()
 		document.write(`
 			<TD style="text-align:right;vertical-align:top;">
 				<DIV class="menu">
-					<A href="Visitor_count.html">Visitor count</A>
+					<A href="Visitor_count.html"><FONT color='white'>Visitor count</FONT></A>
 				</DIV>
 			</TD>
 		`);
@@ -358,7 +403,7 @@ function writeMenu()
 		document.write(`
 			<TD style="text-align:right;vertical-align:top;background-color:orange;">
 				<DIV class="menu active-menu">
-					<DIV class="submenu no-link">Tamil/Gregorian calendar</DIV>
+					<DIV class="submenu no-link"><FONT color='white'>Tamil/Gregorian calendar</FONT></DIV>
 				</DIV>
 			</TD>
 		`);
@@ -368,7 +413,7 @@ function writeMenu()
 		document.write(`
 			<TD style="text-align:right;vertical-align:top;">
 				<DIV class="menu">
-					<A href="../tamil-calendar.html">Tamil/Gregorian calendar</A>
+					<A href="../tamil-calendar.html"><FONT color='white'>Tamil/Gregorian calendar</FONT></A>
 				</DIV>
 			</TD>
 		`);
@@ -378,7 +423,7 @@ function writeMenu()
 		document.write(`
 			<TD style="text-align:right;vertical-align:top;">
 				<DIV class="menu">
-					<A href="tamil-calendar.html">Tamil/Gregorian calendar</A>
+					<A href="tamil-calendar.html"><FONT color='white'>Tamil/Gregorian calendar</FONT></A>
 				</DIV>
 			</TD>
 		`);
@@ -394,22 +439,22 @@ function writeMenu()
 		document.write( `	<DIV class="">`);
 		if( -1 !== location_url.indexOf("my_exercise") )
 		{
-			document.write( `My exercise`);
+			document.write( `<FONT color='white'>My exercise</FONT>`);
 		}
 		else if( -1 !== location_url.indexOf("poems") )
 		{
-			document.write( `<A href='../my_exercise.html'>My exercise</A>`);
+			document.write( `<A href='../my_exercise.html'><FONT color='white'>My exercise</FONT></A>`);
 		}
 		else
 		{
-			document.write( `<A href='my_exercise.html'>My exercise</A>`);
+			document.write( `<A href='my_exercise.html'><FONT color='white'>My exercise</FONT></A>`);
 		}
 		if( -1 !== location_url.indexOf("Windows_ERR_HELP") )
 		{
 			document.write(`
 				<TD style="text-align:right;vertical-align:top;background-color:orange;">
-					<DIV class="submenu no-link">
-						<DIV class="submenu no-link">Windows_ERR_HELP1</DIV>
+					<DIV class="menu active-menu">
+						<DIV class="submenu no-link"><FONT color='white'>Windows_ERR_HELP1</FONT></DIV>
 					</DIV>
 				</TD>
 			`);
@@ -419,7 +464,7 @@ function writeMenu()
 			document.write(`
 				<TD style="text-align:right;vertical-align:top;">
 					<DIV class="menu active-menu">
-						<A href="../Windows_ERR_HELP.html">Windows_ERR_HELP2</A>
+						<A href="../Windows_ERR_HELP.html"><FONT color='white'>Windows_ERR_HELP2</FONT></A>
 					</DIV>
 				</TD>
 			`);
@@ -435,7 +480,7 @@ function writeMenu()
 				document.write(`
 					<TD style="text-align:right;vertical-align:top;background-color:orange;">
 						<DIV class="menu active-menu">
-							<A href="Windows_ERR_HELP.html">Windows_ERR_HELP3</A>
+							<A href="Windows_ERR_HELP.html"><FONT color='white'>Windows_ERR_HELP3</FONT></A>
 						</DIV>
 					</TD>
 				`);
@@ -445,7 +490,7 @@ function writeMenu()
 				document.write(`
 					<TD style="text-align:right;vertical-align:top;">
 						<DIV class="menu active-menu">
-							<A href="Windows_ERR_HELP.html">Windows_ERR_HELP4</A>
+							<A href="Windows_ERR_HELP.html"><FONT color='white'>Windows_ERR_HELP4</FONT></A>
 						</DIV>
 					</TD>
 				`);
@@ -467,7 +512,7 @@ function writeMenu()
 						</TD>
 						<TD style="text-align:left;vertical-align:top;background-color:orange;">
 							<DIV class="menu">
-								<A href="`+privacyPolicyName+`">Privacy policy</A>
+								<A href="`+privacyPolicyName+`"><FONT color='white'>Privacy policy</FONT></A>
 							</DIV>
 						</TD>
 					</TR>
@@ -479,7 +524,7 @@ function writeMenu()
 						</TD>
 						<TD style="text-align:left;vertical-align:top;">
 							<DIV class="menu">
-									<A href="`+privacyPolicyName+`">Privacy policy</A>
+									<A href="`+privacyPolicyName+`"><FONT color='white'>Privacy policy</FONT></A>
 							</DIV>
 						</TD>
 					</TR>
