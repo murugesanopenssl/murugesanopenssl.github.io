@@ -11,6 +11,53 @@
 		<SCRIPT type='text/javascript'>
 			writeMenu();
 		</SCRIPT>
+		<style>
+			body {
+				background-color: #004C8F; /* HDFC Dark Blue */
+				color: #FFFFFF; /* White text */
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+			}
+			
+			h3 {
+				color: #FFFFFF;
+				border-bottom: 2px solid #FF6600; /* HDFC Orange accent */
+				padding-bottom: 10px;
+			}
+			
+			#financialResourcesMenu01, #financialResourcesMenu02 {
+				background-color: #0066CC !important; /* HDFC Light Blue */
+				color: #FFFFFF !important;
+				border: 2px solid #003D82 !important;
+				border-radius: 5px;
+			}
+			
+			#financialResourcesMenu01 a, #financialResourcesMenu02 a {
+				color: #FFCC00 !important; /* HDFC Gold/Yellow for links */
+				font-weight: bold;
+			}
+			
+			#financialResourcesMenu01 a:hover, #financialResourcesMenu02 a:hover {
+				color: #FF6600 !important; /* HDFC Orange on hover */
+				background-color: #003D82;
+				padding: 5px;
+				border-radius: 3px;
+			}
+			
+			button {
+				background-color: #003D82 !important; /* HDFC Header Blue */
+				color: #FFFFFF !important;
+				border: 2px solid #FF6600 !important; /* HDFC Orange border */
+				font-weight: bold;
+			}
+			
+			button:hover {
+				background-color: #FF6600 !important; /* HDFC Orange on hover */
+				color: #FFFFFF !important;
+				border: 2px solid #003D82 !important;
+			}
+		</style>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 <SCRIPT type="text/javascript">
@@ -50,10 +97,10 @@ window.onload = function() {
 		<TABLE>
 			<TR>
 				<TD style="padding: 10px; text-align:left;">
-					<BUTTON id="toggleButton01" onclick="toggleSubmenu01()" style="display: block; margin: 20px; background-color: #4CAF50; color: white; padding: 10px 20px; cursor: pointer; text-align: center; font-size: 18px; border: none; width: 100%; transition: background-color 0.3s;">Show Financial Resources</BUTTON>
+					<BUTTON id="toggleButton01" onclick="toggleSubmenu01()" style="display: block; margin: 20px; padding: 10px 20px; cursor: pointer; text-align: center; font-size: 18px; width: 100%; transition: background-color 0.3s;">Show Financial Resources</BUTTON>
 				</TD>
 				<TD style="padding: 10px; text-align:left;">
-					<BUTTON id="toggleButton02" onclick="toggleSubmenu02()" style="display: block; margin: 20px; background-color: #4CAF50; color: white; padding: 10px 20px; cursor: pointer; text-align: center; font-size: 18px; border: none; width: 100%; transition: background-color 0.3s;">Show GOVT Resources</BUTTON>
+					<BUTTON id="toggleButton02" onclick="toggleSubmenu02()" style="display: block; margin: 20px; padding: 10px 20px; cursor: pointer; text-align: center; font-size: 18px; width: 100%; transition: background-color 0.3s;">Show GOVT Resources</BUTTON>
 				</TD>
 			</TR>
 		</TABLE>
@@ -62,103 +109,99 @@ window.onload = function() {
 				<TR>
 					<!-- Financial Resources Menu (Left Column) -->
 					<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
-						<DIV id="financialResourcesMenu01" style="display: none; background-color: #f8f8f8; padding: 10px; border-top: 2px solid #ccc; margin-top: 10px;">
-							Financial Service Menu
+						<DIV id="financialResourcesMenu01" style="display: none; padding: 10px; margin-top: 10px;">
+							<span style="color: #FFCC00; font-weight: bold;">Financial Service Menu</span>
 							<H3>Financial Resources</H3>
 						<SCRIPT type='text/javascript'>
 							if( -1 != window.location.href.indexOf( "Increase-Daily-Salary") )
 							{
-								document.write( "<A href='Increase-Daily-Salary.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='blue'><B><U>Increase Daily Salary</B></U></A>");
+								document.write( "<A href='Increase-Daily-Salary.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Increase Daily Salary</B></U></A>");
 							}
 							else
 							{
-								document.write( "<A href='Increase-Daily-Salary.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='blue'><B><U>Increase Daily Salary</FONT></B></U></A>");
+								document.write( "<A href='Increase-Daily-Salary.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Increase Daily Salary</B></U></A>");
 							}
 							if( -1 != window.location.href.indexOf( "misinterest") )
 							{
-								document.write( "<A href='post-office-mis.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><B><U><FONT color='blue'>Post Office MIS</FONT></B></U></A>");
+								document.write( "<A href='post-office-mis.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Post Office MIS</B></U></A>");
 							}
 							else
 							{
-								document.write( "<A href='post-office-mis.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='blue'><B><U>Post Office MIS</FONT></A>");
+								document.write( "<A href='post-office-mis.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Post Office MIS</B></U></A>");
 							}
 						</SCRIPT>
 						<NOSCRIPT>
-							<A href="post-office-mis.html" style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;"><FONT color='blue'><B><U>Post Office MIS</FONT></A>
+							<A href="post-office-mis.html" style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;"><B><U>Post Office MIS</B></U></A>
 						</NOSCRIPT>
 						<SCRIPT type='text/javascript'>
 							if( -1 != window.location.href.indexOf( "nsc") )
 							{
-								document.write( "<A href='post-office-nsc.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='orange'><B><U><FONT color='blue'>Post Office NSC</FONT></B></U></A>");
+								document.write( "<A href='post-office-nsc.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Post Office NSC</B></U></A>");
 							}
 							else
 							{
-								document.write( "<A href='post-office-nsc.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='blue'>Post Office NSC</FONT></A>");
+								document.write( "<A href='post-office-nsc.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'>Post Office NSC</A>");
 							}
 						</SCRIPT>
 						<NOSCRIPT>
-							<A href="post-office-nsc.html" style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;"><FONT color='blue'>Post Office NSC</FONT></A>
+							<A href="post-office-nsc.html" style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;">Post Office NSC</A>
 						</NOSCRIPT>
 						<SCRIPT type='text/javascript'>
 							if( -1 != window.location.href.indexOf( "bgas") )
 							{
-								document.write( "<A href='Bharath_gas_booking_steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><B><U><FONT color='blue'>Steps to book bharath gas online</B></U></FONT></A>");
+								document.write( "<A href='Bharath_gas_booking_steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Steps to book bharath gas online</B></U></A>");
 							}
 							else
 							{
-								document.write( "<A href='Bharath_gas_booking_steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='blue'>Steps to book bharath gas online</A>");
+								document.write( "<A href='Bharath_gas_booking_steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'>Steps to book bharath gas online</A>");
 							}
 							if( -1 != window.location.href.indexOf( "igas") )
 							{
-								document.write( "<A href='Indian-Oil-Cylinder-Booking-Online-Steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><B><U><FONT color='blue'>Indian Oil Cylinder Booking Online Steps</B></U></FONT></A>");
+								document.write( "<A href='Indian-Oil-Cylinder-Booking-Online-Steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Indian Oil Cylinder Booking Online Steps</B></U></A>");
 							}
 							else
 							{
-								document.write( "<A href='Indian-Oil-Cylinder-Booking-Online-Steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='blue'>Indian Oil Cylinder Booking Online Steps</A>");
+								document.write( "<A href='Indian-Oil-Cylinder-Booking-Online-Steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'>Indian Oil Cylinder Booking Online Steps</A>");
 							}
 						</SCRIPT>
 						<NOSCRIPT>
-							<A href='Bharath_gas_booking_steps.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;"><FONT color='blue'>Steps to book bharath gas online</A>
-							<A href='Indian-Oil-Cylinder-Booking-Online-Steps.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;"><FONT color='blue'>Steps to book bharath gas online</A>
+							<A href='Bharath_gas_booking_steps.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;">Steps to book bharath gas online</A>
+							<A href='Indian-Oil-Cylinder-Booking-Online-Steps.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;">Indian Oil Cylinder Booking Online Steps</A>
 						</NOSCRIPT>
 						<SCRIPT type='text/javascript'>
 							if( -1 != window.location.href.indexOf( "sbietdr") )
 							{
-								document.write( "<A href='SBI_ETDR_INTEREST.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='blue'><B><U>SBI Fixed Deposit</B></U></FONT></A>");
+								document.write( "<A href='SBI_ETDR_INTEREST.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>SBI Fixed Deposit</B></U></A>");
 							}
 							else
 							{
-								document.write( "<A href='SBI_ETDR_INTEREST.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='blue'><B><U>SBI Fixed Deposit</B></U></FONT></A>");
+								document.write( "<A href='SBI_ETDR_INTEREST.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>SBI Fixed Deposit</B></U></A>");
 							}
 						</SCRIPT>
 						<NOSCRIPT>
-							<A href='SBI_ETDR_INTEREST.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">SBI Fixed Deposit</A>
+							<A href='SBI_ETDR_INTEREST.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;">SBI Fixed Deposit</A>
 						</NOSCRIPT>
 						</DIV>
 					</TD>
 
 					<!-- GOVT Resources Menu (Right Column) -->
 					<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
-						<DIV id="financialResourcesMenu02" style="display: none; background-color: #f8f8f8; padding: 10px; border-top: 2px solid #ccc; margin-top: 10px;">
-							GOVT RESOURCE Menu
+						<DIV id="financialResourcesMenu02" style="display: none; padding: 10px; margin-top: 10px;">
+							<span style="color: #FFCC00; font-weight: bold;">GOVT RESOURCE Menu</span>
 							<H3>GOVT Resources</H3>
 						<SCRIPT type='text/javascript'>
 							if( -1 != window.location.href.indexOf( "gdp") )
 							{
-								document.write( "<A href='earth_politics_or_general_age.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='blue'><B><U>India GDP</B></U></A>");
+								document.write( "<A href='earth_politics_or_general_age.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>India GDP</B></U></A>");
 							}
 							else
 							{
-								document.write( "<A href='earth_politics_or_general_age.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;'><FONT color='blue'><B><U>India GDP</B></U></A>");
+								document.write( "<A href='earth_politics_or_general_age.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>India GDP</B></U></A>");
 							}
 						</SCRIPT>
 						<NOSCRIPT>
-							<A href='earth_politics_or_general_age.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;"><FONT color='blue'><B><U>India GDP</B></U></A>
+							<A href='earth_politics_or_general_age.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;"><B><U>India GDP</B></U></A>
 						</NOSCRIPT>
-							<!--
-							<A style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">GOVT Plan 2</A>
-							<A style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none; color: #000;">GOVT Plan 3</A>
-							-->
 						</DIV>
 					</TD>
 				</TR>
