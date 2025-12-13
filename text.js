@@ -35,8 +35,9 @@ function writeMenu()
 		document.write(`<TD style="display:flex; justify-content:flex-end; align-items:flex-start; background:orange;">`);
 	}
 	else if(
-		-1 !== location_url.indexOf("NMurugesan_cv")	||
-		-1 !== location_url.indexOf("openssl_speed")	
+		-1 !== location_url.indexOf("NMurugesan_cv")		||
+		-1 !== location_url.indexOf("openssl_speed")		||
+		-1 !== location_url.indexOf("Sustainable_Living")	
 	)
 	{
 		document.write(`<TD style="text-align:right;vertical-align:top;" bgcolor='orange'>`);
@@ -60,6 +61,21 @@ function writeMenu()
 		document.write( `<DIV class="menu" style="text-align:right; vertical-align:top;">`);
 		document.write(`<A href='index.html'>Home3</A>`);
 	}
+	if( -1 != location_url.indexOf("Sustainable_Living") )
+	{
+		document.write(		`<DIV class="submenu">Sustainable Living&nbsp;`);
+	}
+	else
+	{
+		if( -1 !== location_url.indexOf("poems") )
+		{
+			document.write(		`<DIV class="submenu"><A href="../Sustainable_Living.html">Sustainable Living&nbsp;</A>`);
+		}
+		else
+		{
+			document.write(		`<DIV class="submenu"><A href="Sustainable_Living.html">Sustainable Living&nbsp;</A>`);
+		}
+	}
 	if( -1 != location_url.indexOf("NMurugesan_cv") )
 	{
 		// document.write(		`<DIV class="submenu no-link">Murugesan2 N CV&nbsp;`);
@@ -67,7 +83,14 @@ function writeMenu()
 	}
 	else
 	{
-		document.write(		`<DIV class="submenu"><A href="NMurugesan_cv.html">Murugesan3 N CV&nbsp;</A>`);
+		if( -1 !== location_url.indexOf("poems") )
+		{
+			document.write(		`<DIV class="submenu"><A href="../NMurugesan_cv.html">Murugesan3 N CV&nbsp;</A>`);
+		}
+		else
+		{
+			document.write(		`<DIV class="submenu"><A href="NMurugesan_cv.html">Murugesan3 N CV&nbsp;</A>`);
+		}
 	}
 	if( -1 != location_url.indexOf("openssl_speed") )
 	{
@@ -75,7 +98,14 @@ function writeMenu()
 	}
 	else
 	{
-		document.write(		`<DIV class="submenu"><A href="openssl_speed.html">OpenSSL Speed&nbsp;</A>`);
+		if( -1 !== location_url.indexOf("poems") )
+		{
+			document.write(		`<DIV class="submenu"><A href="../openssl_speed.html">OpenSSL Speed&nbsp;</A>`);
+		}
+		else
+		{
+			document.write(		`<DIV class="submenu"><A href="openssl_speed.html">OpenSSL Speed&nbsp;</A>`);
+		}
 	}
 	document.write(		`</DIV>
 						</DIV>
@@ -93,24 +123,73 @@ function writeMenu()
 	}
 	else
 	{
-		document.write(	`<TD style="background-color:orange;text-align:right;vertical-align:top;">`);
+		if(	-1 === location_url.indexOf("index")					  &&
+			-1 === location_url.indexOf("Sustainable_Living")			&&
+			-1 === location_url.indexOf("NMurugesan_cv")				&&
+			-1 === location_url.indexOf("spending")					&&
+			-1 == location_url.indexOf("ShareKnowledgeTransferToPeople")		&&
+			-1 == location_url.indexOf("Visitor_count")				&&
+			-1 == location_url.indexOf("my_exercise")				&&
+			-1 == location_url.indexOf("MyUniverseDream")				&&
+			-1 == location_url.indexOf("Windows_network_icon")			&&
+			-1 == location_url.indexOf("windows-network")				&&
+			-1 == location_url.indexOf("Set-Unlimited-Windows-10-Network")		&&
+			-1 == location_url.indexOf("Windows_ERR_HELP")				&&
+			-1 == location_url.indexOf("privacy")					&&
+			-1 == location_url.indexOf("tamil-calendar")				&&
+			-1 == location_url.indexOf("poems")					&&
+			-1 == location_url.indexOf("cygwin_laptop_battery_alert")		&&
+			-1 == location_url.indexOf("remove-blockages-kitchen-pvc-outflow-pipe")	&&
+			-1 === location_url.indexOf("openssl_speed")
+		)
+		{
+			document.write(	`<TD style="background-color:orange;text-align:right;vertical-align:top;">`);
+		}
+		else
+		{
+			document.write(	`<TD style="text-align:right;vertical-align:top;">`);
+		}
 	}
 	document.write(		`<DIV class="menu">`);
-	if( -1 !== location_url.indexOf("poems") )
+	if(	-1 == location_url.indexOf("poems")					&&
+		-1 == location_url.indexOf("privacy")					&&
+		-1 == location_url.indexOf("Sustainable_Living")			&&
+		-1 == location_url.indexOf("NMurugesan_cv")				&&
+		-1 == location_url.indexOf("openssl_speed")				&&
+		-1 == location_url.indexOf("displayMoneyHelpMenu")			&&
+		-1 == location_url.indexOf("Visitor_count")				&&
+		-1 == location_url.indexOf("tamil-calendar")				&&
+		-1 == location_url.indexOf("my_exercise")				&&
+		-1 == location_url.indexOf("Windows_ERR_HELP")				&&
+		-1 == location_url.indexOf("Windows_network_icon")			&&
+		-1 == location_url.indexOf("cygwin_laptop_battery_alert")		&&
+		-1 == location_url.indexOf("windows-network")				&&
+		-1 == location_url.indexOf("spending")					&&
+		-1 == location_url.indexOf("Set-Unlimited-Windows-10-Network")		&&
+		-1 == location_url.indexOf("remove-blockages-kitchen-pvc-outflow-pipe")	&&
+		-1 == location_url.indexOf("ShareKnowledgeTransferToPeople")		&&
+		-1 == location_url.indexOf("index")	
+	)
 	{
 		document.write(			`<A href='../displayMoneyHelpMenu.html'>Moneyhelp1</A>`);
 	}
-	else if( -1 == location_url.indexOf("displayMoneyHelpMenu") &&
-		-1 == location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps") &&
-		-1 == location_url.indexOf("post-office-nsc") &&
-		-1 == location_url.indexOf("SBI_ETDR_INTEREST") &&
-		-1 == location_url.indexOf("post-office-mis") &&
+	else if( -1 == location_url.indexOf("displayMoneyHelpMenu")			&&
+		-1 == location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps")	&&
+		-1 == location_url.indexOf("post-office-nsc")				&&
+		-1 == location_url.indexOf("SBI_ETDR_INTEREST")				&&
+		-1 == location_url.indexOf("post-office-mis")				&&
+		-1 == location_url.indexOf("spending")					&&
+		-1 == location_url.indexOf("windows-network")				&&
+		-1 == location_url.indexOf("poems")					&&
+		-1 == location_url.indexOf("cygwin_laptop_battery_alert")		&&
+		-1 == location_url.indexOf("ShareKnowledgeTransferToPeople")		&&
 		-1 == location_url.indexOf("fd-and-savings-all-banks" )
 	)
 	{
 		document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp2</A>`);
 	}
-	else if( -1 !== location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps") )
+	else if(	-1 !== location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps")
+	)
 	{
 		document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp5</A>`);
 	}
@@ -134,15 +213,25 @@ function writeMenu()
 		{
 			document.write(			`<A>Moneyhelp3</A>`);
 		}
-		else if( -1 !== location_url.indexOf("poems") &&
-					-1 != location_url.indexOf("fd-and-savings-all-banks" )
+		else if(	-1 !== location_url.indexOf("poems")			&&
+				-1 != location_url.indexOf("fd-and-savings-all-banks" )	&&
+				-1 != location_url.indexOf("spending" )
 		)
 		{
 			document.write(			`<A href='../displayMoneyHelpMenu.html'>Moneyhelp4</A>`);
 		}
 		else
 		{
-			document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp4</A>`);
+			if(	-1 == location_url.indexOf("ShareKnowledgeTransferToPeople")   &&
+				-1 == location_url.indexOf("cygwin_laptop_battery_alert")   	
+			)
+			{
+				document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp7</A>`);
+			}
+			else
+			{
+				document.write(			`<A href='displayMoneyHelpMenu.html'>Moneyhelp8</A>`);
+			}
 		}
 	}
 	document.write(				`<DIV class="submenu">`);
@@ -157,37 +246,28 @@ function writeMenu()
 		document.write(						`<A href="displayMoneyHelpMenu.html?#GovtResourceMenu">Government Resource</A>`);
 	}
 	let currentPage = window.location.pathname.split("/").pop();
-	if( "spending.html" !== currentPage )
-	{
-		// document.write(			`<A href="spending.html" onclick='toggleTable(event);'>Save1 Money Daily</A>`);
-	}
-	else
-	{
-		// document.write( `<A onclick='toggleTable(event);' style='display:block;'><B><U><FONT color='red'>Save1 Money Daily</B></U></FONT>`);
-		// document.write( `<A href='spending.html' onclick="toggleTable(event)" id="PreventWastagehref">Save2 Money Daily</A>`);
-	}
 	document.write(			`</DIV>
 						</DIV>
 					</TD>`);
 	if( -1 !== location_url.indexOf( "poem" ) )
 	{
 		document.write(			`<TD style="text-align:right;vertical-align:top;">`);
-		document.write(		`<A href='../spending.html' onclick="toggleTable(event)" id="PreventWastagehref">Save Money Daily</A>`);
+		document.write(		`<A href='../spending.html' onclick="toggleTable(event)" id="PreventWastagehref">Prevent wasting money to save money</A>`);
 	}
 	else if( -1 !== location_url.indexOf( "spending.html" ) )
 	{
 		document.write(			`<TD style="text-align:right;vertical-align:top;background-color:orange;">`);
-		document.write(		`<A onclick="toggleTable(event)" id="PreventWastagehref" style='text-color:white;'>Save Money Daily</A>`);
+		document.write(		`<A onclick="toggleTable(event)" id="PreventWastagehref" style='text-color:white;'>Prevent wasting money to save money</A>`);
 	}
 	else if( -1 !== location_url.indexOf( "spending-chart.html" ) )
 	{
 		document.write(			`<TD style="text-align:right;vertical-align:top;background-color:orange;">`);
-		document.write(		`<A href='spending.html' onclick="toggleTable(event)" id="PreventWastagehref">Save Money Daily</A>`);
+		document.write(		`<A href='spending.html' onclick="toggleTable(event)" id="PreventWastagehref">Prevent wasting money to save money</A>`);
 	}
 	else
 	{
 		document.write(			`<TD style="text-align:right;vertical-align:top;">`);
-		document.write(		`<A href='spending.html' onclick="toggleTable(event)" id="PreventWastagehref">Save Money Daily</A>`);
+		document.write(		`<A href='spending.html' onclick="toggleTable(event)" id="PreventWastagehref">Prevent wasting money to save money</A>`);
 	}
 	document.write(		`</TD>`);
 	if( -1 !== location_url.indexOf( "ShareKnowledgeTransferToPeople" ) )
@@ -329,7 +409,7 @@ function writeMenu()
 			document.write(`
 				<TD style="text-align:right;vertical-align:top;background-color:orange;">
 					<DIV class="submenu no-link">
-						<DIV class="submenu no-link">Windows_ERR_HELP</DIV>
+						<DIV class="submenu no-link">Windows_ERR_HELP1</DIV>
 					</DIV>
 				</TD>
 			`);
@@ -339,35 +419,55 @@ function writeMenu()
 			document.write(`
 				<TD style="text-align:right;vertical-align:top;">
 					<DIV class="menu active-menu">
-						<A href="../Windows_ERR_HELP.html">Windows_ERR_HELP</A>
+						<A href="../Windows_ERR_HELP.html">Windows_ERR_HELP2</A>
 					</DIV>
 				</TD>
 			`);
 		}
 		else
 		{
-			document.write(`
-				<TD style="text-align:right;vertical-align:top;">
-					<DIV class="menu active-menu">
-						<A href="Windows_ERR_HELP.html">Windows_ERR_HELP</A>
-					</DIV>
-				</TD>
-			`);
+			if(	-1 !== location_url.indexOf("Windows_network_icon")		||
+				-1 !== location_url.indexOf("cygwin_laptop_battery_alert")	||
+				-1 !== location_url.indexOf("Set-Unlimited-Windows-10-Network")	||
+				-1 !== location_url.indexOf("windows-network")			
+			)
+			{
+				document.write(`
+					<TD style="text-align:right;vertical-align:top;background-color:orange;">
+						<DIV class="menu active-menu">
+							<A href="Windows_ERR_HELP.html">Windows_ERR_HELP3</A>
+						</DIV>
+					</TD>
+				`);
+			}
+			else
+			{
+				document.write(`
+					<TD style="text-align:right;vertical-align:top;">
+						<DIV class="menu active-menu">
+							<A href="Windows_ERR_HELP.html">Windows_ERR_HELP4</A>
+						</DIV>
+					</TD>
+				`);
+			}
 		}
-		if( -1 !== location_url.indexOf("poems") )
+		if( -1 === location_url.indexOf("poems") )
+		{
+			privacyPolicyName='privacy.html';
+		}
+		else
+		{
+			privacyPolicyName='../privacy.html';
+		}
+		if(	-1 !== location_url.indexOf("poems")	||
+			-1 !== location_url.indexOf("privacy")	
+		)
 		{
 			document.write( `</DIV>
 						</TD>
-						<TD style="text-align:right;vertical-align:top;background-color:orange;">
+						<TD style="text-align:left;vertical-align:top;background-color:orange;">
 							<DIV class="menu">
-								<A href="poems/index.html">My tamil poems</A>
-								<DIV class="submenu">
-									<A href="1.html">My poem 01</A>
-									<A href="2.html">My poem 02</A>
-									<A href="3.html">My poem 03</A>
-									<A href="4.html">My poem 04</A>
-									<A href="5.html">My poem 05</A>
-								</DIV>
+								<A href="`+privacyPolicyName+`">Privacy policy</A>
 							</DIV>
 						</TD>
 					</TR>
@@ -377,16 +477,9 @@ function writeMenu()
 		{
 			document.write( `</DIV>
 						</TD>
-						<TD style="text-align:right;vertical-align:top;">
+						<TD style="text-align:left;vertical-align:top;">
 							<DIV class="menu">
-								<A href="poems/index.html">My tamil poems</A>
-								<DIV class="submenu">
-									<A href="poems/1.html">My poem 01</A>
-									<A href="poems/2.html">My poem 02</A>
-									<A href="poems/3.html">My poem 03</A>
-									<A href="poems/4.html">My poem 04</A>
-									<A href="poems/5.html">My poem 05</A>
-								</DIV>
+									<A href="`+privacyPolicyName+`">Privacy policy</A>
 							</DIV>
 						</TD>
 					</TR>
