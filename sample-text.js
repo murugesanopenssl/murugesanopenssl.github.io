@@ -1,7 +1,8 @@
 let Home1Toggle = false;
+
 const contentData = {
 	home: "Prevent-Service-Charge-Loss.html",
-	home1: "spending1.html",
+	home1: "spending.html",
 	home2: "home2.html",
 	home3: "home3.html",
 	programs: "programs.html",
@@ -30,10 +31,10 @@ const contentData = {
 	sectionC3: "sectionC3.html"
 };
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
 	const mainContent = document.getElementById('mainContent');
 	const topLinks = document.querySelectorAll('.main-menu > ul > li > a');
-	
+
 	function setActiveMenu(key, file) {
 		topLinks.forEach(link => {
 			link.style.backgroundColor = "";
@@ -42,173 +43,90 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 		const activeLink = document.querySelector(`.main-menu > ul > li > a[data-content="${key}"]`);
 		if(activeLink) {
-			if("Prevent-Service-Charge-Loss.html" === file || "spending1.html" === file) {
+			if(file === "Prevent-Service-Charge-Loss.html" || file === "spending.html") {
 				activeLink.style.backgroundColor = "orange";
 				activeLink.removeAttribute('href');
-			} else {
-				activeLink.style.backgroundColor = "";
-				activeLink.href = "#";
 			}
 		}
 	}
-	
+
 	function updateTableDisplay(key) {
-		const homeTable = document.getElementById("HomeTable");
-		const preventTable = document.getElementById("PreventWastage");
-		const categoryTable = document.getElementById("CategoryAmountDetailsTab");
-		
-		if(!preventTable || !categoryTable) {
-			return;
-		}
-		
-		if("home1" === key) {
-			if(Home1Toggle) {
-				preventTable.style.display = "table";
-				categoryTable.style.display = "none";
-			} else {
-				preventTable.style.display = "none";
-				categoryTable.style.display = "table";
-			}
-			if(homeTable) homeTable.style.display = "none";
-		} else if("home" === key) {
-			if(homeTable) homeTable.style.display = "none";
-			preventTable.style.display = "table";
-			categoryTable.style.display = "none";
-		}
+    const homeTable = document.getElementById("HomeTable");
+    const preventTable = document.getElementById("PreventWastage");
+    const categoryTable = document.getElementById("CategoryAmountDetailsTab");
+
+    if(!preventTable || !categoryTable) return;
+
+    // Reset all tables first
+    if(homeTable) homeTable.style.display = "none";
+    preventTable.style.display = "none";
+    categoryTable.style.display = "none";
+
+    if(key === "home1")
+	{
+        // categoryTable.style.display = "table";
+		Home1Toggle = true;
+    }
+	else if(key === "home")
+	{
+        preventTable.style.display = "table";
+    }
+}
+
+	function loadFile(key) {
+		const file = contentData[key];
+		if(!file) return;
+
+		if(key === "home1") Home1Toggle = !Home1Toggle;
+
+		setActiveMenu(key, file);
+
+		fetch(file)
+			.then(response => {
+				if(!response.ok) throw new Error("Failed to load: " + file);
+				return response.text();
+			})
+			.then(html => {
+				mainContent.innerHTML = html;
+
+				// Re-run scripts from fetched HTML
+				const parser = new DOMParser();
+				const doc = parser.parseFromString(html, 'text/html');
+				const scripts = doc.querySelectorAll('script');
+				scripts.forEach(oldScript => {
+					const newScript = document.createElement('script');
+					if(oldScript.src) newScript.src = oldScript.src;
+					else newScript.textContent = oldScript.textContent;
+					document.body.appendChild(newScript);
+				});
+
+				if(file === "spending.html" || file === "Prevent-Service-Charge-Loss.html") {
+					setTimeout(() => updateTableDisplay(key), 200);
+				}
+			})
+			.catch(err => {
+				mainContent.innerHTML = `<h1>Error</h1><p>${err.message}</p>`;
+			});
 	}
-	
-	document.querySelectorAll('[data-content]').forEach(item => {
-		item.addEventListener('click', function(e) {
+
+	// Attach click handlers
+	topLinks.forEach(link => {
+		link.addEventListener('click', e => {
 			e.preventDefault();
-			const key = this.dataset.content;
-			const file = contentData[key];
-			
-			if(!file) return;
-			
-			if("home1" === key) {
-				Home1Toggle = !Home1Toggle;
-			}
-			
-			setActiveMenu(key, file);
-			
-			if(file.endsWith('.html')) {
-				fetch(file)
-					.then(response => {
-						if(!response.ok) throw new Error("Failed to load: " + file);
-						return response.text();
-					})
-					.then(html => {
-						mainContent.innerHTML = html;
-						if(file === "spending1.html" || file === "Prevent-Service-Charge-Loss.html") {
-							setTimeout(() => {
-								updateTableDisplay(key);
-							}, 200);
-						}
-					})
-					.catch(err => {
-						mainContent.innerHTML = `<h1>Error</h1><p>${err.message}</p>`;
-					});
-			} else {
-				mainContent.innerHTML = "<h1>Content Not Found</h1>";
-			}
+			const key = link.dataset.content;
+			loadFile(key);
 		});
 	});
-	const defaultFile = "Prevent-Service-Charge-Loss.html";
-	setActiveMenu('home', defaultFile);
-	
-	fetch(defaultFile)
-		.then(response => {
-			if(!response.ok) {
-				throw new Error("Failed to load: " + defaultFile);
-			}
-			return response.text();
-		})
-		.then(html => {
-			mainContent.innerHTML = html;
-		})
-		.catch(err => {
-			mainContent.innerHTML = `<h1>Error</h1><p>${err.message}</p>`;
-		});
+
+	// Load default page
+	loadFile("home");
 });
+
+// Optional: global function to trigger spending.html manually
 function loadPage(event) {
-	file="spending1.html";
-    if (event) {
-        event.preventDefault();
-        event.stopPropagation();
-    }
-    
-    const mainContent = document.getElementById('mainContent');
-    if (!mainContent) return;
-
-    let key = 'home1';
-    if (file === 'Prevent-Service-Charge-Loss.html') {
-        key = 'home';
-    }
-    
-    const topLinks = document.querySelectorAll('.main-menu > ul > li > a');
-    topLinks.forEach(link => {
-        link.style.backgroundColor = "";
-        link.removeAttribute('disabled');
-        link.href = "#";
-    });
-    
-    const activeLink = document.querySelector(`.main-menu > ul > li > a[data-content="${key}"]`);
-    if(activeLink) {
-        if(file === "Prevent-Service-Charge-Loss.html" || file === "spending1.html") {
-            activeLink.style.backgroundColor = "orange";
-            activeLink.removeAttribute('href');
-        }
-    }
-
-    fetch(file)
-        .then(response => {
-            if(!response.ok) throw new Error("Failed to load: " + file);
-            return response.text();
-        })
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const bodyContent = doc.body.innerHTML;
-            
-            mainContent.innerHTML = bodyContent;
-            
-            const scripts = doc.querySelectorAll('script');
-            scripts.forEach(oldScript => {
-                const newScript = document.createElement('script');
-                if (oldScript.src) {
-                    newScript.src = oldScript.src;
-                } else {
-                    newScript.textContent = oldScript.textContent;
-                }
-                document.body.appendChild(newScript);
-            });
-            
-            if(file === "spending1.html" || file === "Prevent-Service-Charge-Loss.html") {
-                setTimeout(() => {
-                    const homeTable = document.getElementById("HomeTable");
-                    const preventTable = document.getElementById("PreventWastage");
-                    const categoryTable = document.getElementById("CategoryAmountDetailsTab");
-                    
-                    if(preventTable && categoryTable) {
-                        if(file === "spending1.html") {
-                            if(Home1Toggle) {
-                                preventTable.style.display = "table";
-                                categoryTable.style.display = "none";
-                            } else {
-                                preventTable.style.display = "none";
-                                categoryTable.style.display = "table";
-                            }
-                            if(homeTable) homeTable.style.display = "none";
-                        } else if(file === "Prevent-Service-Charge-Loss.html") {
-                            if(homeTable) homeTable.style.display = "none";
-                            preventTable.style.display = "table";
-                            categoryTable.style.display = "none";
-                        }
-                    }
-                }, 200);
-            }
-        })
-        .catch(err => {
-            mainContent.innerHTML = `<h1>Error</h1><p>${err.message}</p>`;
-        });
+	if(event) {
+		event.preventDefault();
+		event.stopPropagation();
+	}
+	loadFile('home1');
 }
