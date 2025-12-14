@@ -8,7 +8,7 @@
 		<meta http-equiv="Expires" content="0" />
 		<LINK href="github.io.css" rel="stylesheet">
 		<TITLE>Save1 without wasting money</TITLE>
-		<SCRIPT src='text.js'>
+		<SCRIPT src='test001.js'>
 		</SCRIPT>
 		<SCRIPT type='text/javascript'>
 			writeMenu();
@@ -125,7 +125,7 @@
 						&nbsp;1785.00 &#8377;
 					</TD>
 					<TD style="text-align:right;vertical-align:top;">
-						கா.உணவு/BREAK FAST/Bfast/இ.உணவு/DINNER/ம.உணவு/LUNCH/Soup/பால்/Milk/Tea
+						காஉணவு/BREAK FAST/Bfast/இஉணவு/DINNER/மஉணவு/LUNCH/Soup/பால்/Milk/Tea
 					</TD>
 				</TR>
 				<TR style='backgroundcolor:red;'>
@@ -136,7 +136,7 @@
 						2003.00 &#8377;
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: red;color:white;">
-						சிற்றுண்டி
+						சிஉண்டி
 					</TD>
 				</TR>
 				<TR>
@@ -162,7 +162,7 @@
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
-							15,65,184.00 &#8377; <!-- SAVEDAMT -->
+							15,67,321.00 &#8377; <!-- TOTAL SAVED AMOUNT -->
 						</FONT>
 					</TD>
 					<TD style="text-align:right;vertical-align:top; background-color: #138808;">
@@ -176,8 +176,8 @@
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
 						<SCRIPT type='text/javascript'>
-						SAVEDAMT=28525.00;
-						DISP_SAVED_AMT=parseFloat(SAVEDAMT).toFixed(2);
+						TEMP_SAVED_AMT=29231.00;
+						DISP_SAVED_AMT=parseFloat(TEMP_SAVED_AMT).toFixed(2);
 						DISP_SAVED_AMT = DISP_SAVED_AMT.replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
 						document.write( DISP_SAVED_AMT+" &#8377;");
 						</SCRIPT>
@@ -194,7 +194,7 @@
 					<TD style="text-align:right;vertical-align:top; background-color: #FFFFFF;">
 						<Font color='#000080'>
 						<SCRIPT type='text/javascript'>
-						RequiredAmt=55000.00 - SAVEDAMT;
+						RequiredAmt=55000.00 - TEMP_SAVED_AMT;
 						document.write(RequiredAmt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " &#8377;");
 						</SCRIPT>
 						</FONT>
@@ -218,7 +218,7 @@
 							{
 								var daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24) + 1 );
 							}
-							var RequiredAmt = 55000.00 - SAVEDAMT;
+							var RequiredAmt = 55000.00 - TEMP_SAVED_AMT;
 							var SAVE_PER_DAY = RequiredAmt / daysLeft;
 							var formattedAmt = SAVE_PER_DAY.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 							if( 1 === formattedAmt.indexOf(',') )
@@ -1083,10 +1083,10 @@ IS OWNED BY AN <B><U>INDIAN</B></U> COMPANY CALLED BISLERI INTERNATIONAL PVT. LT
 </TR>
 <TR>
 <TD valign='top' align='left'>
-MILTON கா.உணவு/Breakfast/இ.உணவு/DINNER/ம.உணவு/LUNCH BOX/WATER BOTTLE
+MILTON காஉணவு/Breakfast/இஉணவு/DINNER/மஉணவு/LUNCH BOX/WATER BOTTLE
 </TD>
 <TD valign='top' align='left' colspan='3'>
-THE COUNTRY OF ORIGIN FOR MILTON கா.உணவு/Breakfast/இ.உணவு/DINNER/ம.உணவு/LUNCH BOXES, INCLUDING THOSE MANUFACTURED BY HAMILTON HOUSEWARES P. LTD., IS <B><U>INDIA</B></U></TD></TR>
+THE COUNTRY OF ORIGIN FOR MILTON காஉணவு/Breakfast/இஉணவு/DINNER/மஉணவு/LUNCH BOXES, INCLUDING THOSE MANUFACTURED BY HAMILTON HOUSEWARES P. LTD., IS <B><U>INDIA</B></U></TD></TR>
 <TR>
 <TD valign='top' align='left'>
 PHONEPE ( NO TIPS )
@@ -1101,7 +1101,7 @@ PHONEPE WAS FOUNDED BY SAMEER NIGAM,<BR>
 RAHUL CHARI, AND BURZIN ENGINEER IN 2015</TD></TR>
 <TR>
 <TD valign='top' align='left'>
-CELLO கா.உணவு/Breakfast/இ.உணவு/DINNER/ம.உணவு/LUNCH BOXES.
+CELLO காஉணவு/Breakfast/இஉணவு/DINNER/மஉணவு/LUNCH BOXES.
 </TD>
 <TD valign='top' align='left' colspan='3'>
 MADE IN <B><U>INDIA</B></U></TD></TR>
@@ -1422,7 +1422,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 			}			</SCRIPT>
 				<TR>
 					<TD valign='top' align='middle'>
-						<a href="spending-chart.html">செலவு வரைபடத்தைப் பார்க்க</a><BR>
+						<a href="spending-chart.html"><FONT color='#00ff00'><B><U>செலவு வரைபடத்தைப் பார்க்க</B></U></FONT></a><BR>
 						<H1><FONT size='5'>தேவையற்ற செலவுகளைத் நாம் தடுப்பதன் மூலம் நமது பணத்தைச் சேமிக்க முடியும்.</FONT></H1>
 						<SCRIPT type='text/javascript'>
 							switch(EngMmm)
@@ -1466,7 +1466,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 						<SELECT id="monthSelect"></SELECT>
 						<LABEL for="dateInput">தேதி:</LABEL>
 						<INPUT type="date" id="dateInput" />
-						<INPUT type="text" id="itemInput" placeholder="பொருள் ( எ.கா: சிற்றுண்டி )" />
+						<INPUT type="text" id="itemInput" placeholder="பொருள் ( எ.கா: சிஉண்டி )" />
 						<INPUT type="number" id="amountInput" placeholder="தொகை" step="0.01" />
 						<BUTTON id="addBtn">பதிவு சேர்க்கவும்</BUTTON>
 						<BUTTON id="saveDefaultBtn">Save default array to DB</BUTTON>
@@ -1502,7 +1502,7 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 const baseRaw = {
 Dec: [
 		[ formatDate("31-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1511,7 +1511,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("30-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1520,7 +1520,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("29-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1529,7 +1529,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("28-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1538,7 +1538,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("27-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1547,7 +1547,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("26-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1556,7 +1556,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("25-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1565,7 +1565,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("24-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1574,7 +1574,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("23-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1583,7 +1583,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("22-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1592,7 +1592,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("21-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1601,7 +1601,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("20-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1610,7 +1610,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("19-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1619,7 +1619,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("18-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1628,7 +1628,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("17-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1637,7 +1637,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("16-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1646,7 +1646,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("15-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1655,35 +1655,35 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("14-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",					0.00,
+			"<A title=' காது, மூக்கு, தொண்டை வடிசாறு/ENT Soup'>மூ.கா.வ</A>",	120.00,
+			"<A TITLE='மகனின் தின்பண்டங்கள்/SonSnak'>ம.தின்</A>",					160.00,
+			"<A TITLE='க.மி.க.கணக்கு/Bangalore Electricity Supply Company Limited ELECTRIC BILL/BESCOM'>க.மி.க.க</A>",					199.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
 		],
 		[ formatDate("13-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
-			"",					0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			50.00,
+			"<A title='இஉணவு/Dinner'>இஉணவு</A>",				100.00,
+			"<A TITLE='தேநீர் வடிகட்டி/Tea strainer'>தேநீர்.வ</A>",	165.00,
+			"<A TITLE='தர்மபுரி எரி/Dharmapuri PETROL'>பெ.எரி</A>",		250.00,
+			"<A TITLE='தொடர் வைப்புத்தொகை/RECURRING DEPOSIT'>தொ.வை</A>",	1000.00,
 			"",					0.00
 		],
 		[ formatDate("12-Dec-2025"),
-			"<A title='மதிய உணவு/Lunch'>ம.உணவு</A>",  70.00,
-			"<A title='இ.உணவு/Dinner'>இ.உணவு</A>",		50.00,
+			"<A title='மதிய உணவு/Lunch'>மஉணவு</A>",  70.00,
+			"<A title='இஉணவு/Dinner'>இஉணவு</A>",		50.00,
 			"<A title='இருசக்கர வாகன பழுதுபார்ப்பு/2 wheeler repair'>இ.வா.ப",		520.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",	110.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",	110.00,
 			"",						0.00,
 			"",						0.00
 		],
 		[ formatDate("11-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				40.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				40.00,
 			"<A title='மந்தப்படுத்தப்பட்ட பால்/Toned Milk'>ம.பா</A>",		20.00,
-			"<A title='மதிய உணவு/Lunch'>ம.உணவு</A>",			70.00,
+			"<A title='மதிய உணவு/Lunch'>மஉணவு</A>",			70.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1691,24 +1691,24 @@ Dec: [
 		],
 		[ formatDate("10-Dec-2025"),
 			"<A title='மந்தப்படுத்தப்பட்ட பால்/Toned Milk'>ம.பா</A>",		80.00,
-			"<A title='மதிய உணவு/Lunch'>ம.உணவு</A>",			40.00,
-			"<A title='இரவு உணவு/Dinner'>இ.உணவு</A>",			45.00,
+			"<A title='மதிய உணவு/Lunch'>மஉணவு</A>",			40.00,
+			"<A title='இரவு உணவு/Dinner'>இஉணவு</A>",			45.00,
 			"<A title='பசை/மந்தப்படுத்தப்பட்ட பால்/சோபா செட் பழுது/Quick fix/Milk/Sofa set cover'>பசை</A>",				217.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			30.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			30.00,
 			"",					0.00
 		],
 		[ formatDate("09-Dec-2025"),
 			"<A title='3.5% மந்தப்படுத்தப்பட்ட பால்/3.5% Toned Milk'>ம.பா</A>",	20.00,
-			"<A TITLE='பயணச்சீட்டு/TRAVELLING TICKET'>பயணச்சீட்டு</A>",		88.00,
-			"<A title='ம.உணவு/LUNCH'>ம.உணவு</A>",				40.00,
-			"<A TITLE='இ.உணவு/Dinner'>இ.உணவு</A>",				60.00,
+			"<A TITLE='பயணச்சீட்டு/TRAVELLING TICKET'>ப.சீட்டு</A>",		88.00,
+			"<A title='மஉணவு/LUNCH'>மஉணவு</A>",				40.00,
+			"<A TITLE='இஉணவு/Dinner'>இஉணவு</A>",				60.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
 		],
 		[ formatDate("08-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
-			"<A title='சிற்றுண்டி/SNACKS'>சிற்றுண்டி</A>",			35.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
+			"<A title='சிஉண்டி/SNACKS'>சிஉண்டி</A>",			35.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1716,9 +1716,9 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("07-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",					0.00,
-			"<A TITLE='அம்மா சிறு உண்டி/Mummy snak'>அ.சி</A>",			332.00,
-			"<A title=' காது, மூக்கு, தொண்டை வடிசாறு/ENT Soup'>மூ.கா.தொ.வட</A>",	20.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",					0.00,
+			"<A TITLE='அம்மா சிஉண்டி/Mummy snak'>அ.சி</A>",			332.00,
+			"<A title=' காது, மூக்கு, தொண்டை வடிசாறு/ENT Soup'>மூ.கா.வ</A>",	20.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1730,7 +1730,7 @@ Dec: [
 			"<A TITLE='கைப்பேசி திரை கண்ணாடி/Mobile tamper glass'>கை.தி.க</A>",					100.00,
 			"<A TITLE='தர்மபுரி எரி/Dharmapuri PETROL'>த.எரி</A>",					200.00,
 			"<A title='மர ஜன்னல் பூட்டு தாங்கி'>ம.ஜ.பூ.தா</A>",					24.00,
-			"<A title=' காது, மூக்கு, தொண்டை வடிசாறு/ENT Soup'>மூ.கா.தொ.வட</A>",					20.00,
+			"<A title=' காது, மூக்கு, தொண்டை வடிசாறு/ENT Soup'>மூ.கா.வ</A>",					20.00,
 			"",					0.00
 		],
 		[ formatDate("05-Dec-2025"),
@@ -1743,25 +1743,25 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("04-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",	80.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",	80.00,
 			"<A title='மாதாந்திர ரயில் பயணச்சீட்டு/MONTHLY TRAIN TICKET'>மா.ர.ப</A>",				1000.00,
 			"<A title='இளநீர்/TENDER COCONUT'>இளநீர்</A>",					40.00,
-			"<A title='சிற்றுண்டி/SNACKS'>சிற்றுண்டி</A>",					65.00,
+			"<A title='சிஉண்டி/SNACKS'>சிஉண்டி</A>",					65.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
 		],
 		[ formatDate("03-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",	0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",	0.00,
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",					10.00,
-			"<A TITLE='அம்மா சிறு உண்டி/Mummy snak'>அ.சி</A>",					30.00,
+			"<A TITLE='அம்மா சிஉண்டி/Mummy snak'>அ.சி</A>",					30.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
 		],
 		[ formatDate("02-Dec-2025"),
-			"<A title='ம.உணவு/LUNCH'>ம.உணவு</A>",			60.00,
+			"<A title='மஉணவு/LUNCH'>மஉணவு</A>",			60.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1770,9 +1770,9 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("01-Dec-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"<A title='COFFEE'>காபி</A>",					15.00,
-			"<A title='ஒளி வெளிப்படுத்தும் இடைமுனைச் சாதன விளக்கு/L.E.D BULB'>ஒ.வெ.இ.சா.வி</A>",				75.00,
+			"<A title='ஒளி வெளிப்படுத்தும் இடைமுனைச் சாதன விளக்கு/L.E.D BULB'>ஒ.இ.சா.வி</A>",				75.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1781,7 +1781,7 @@ Dec: [
 ],
 Nov: [
 		[ formatDate("30-Nov-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -1790,7 +1790,7 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("29-Nov-2025"),
-			"<A title='BREAK FAST'>கா.உணவு</A>",				40.00,
+			"<A title='BREAK FAST'>காஉணவு</A>",				40.00,
 			"<A title='மின் காப்பு நாடா/Electrical insulation tape'>மி.கா.நா</A>",				50.00,
 			"<A TITLE='கை கழுவும் திரவம்/Hand wash'>கை.க.தி</A>",				190.00,
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",					10.00,
@@ -1799,7 +1799,7 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("28-Nov-2025"),
-			"<A title='LUNCH'>ம.உணவு</A>",				50.00,
+			"<A title='LUNCH'>மஉணவு</A>",				50.00,
 			"<A title='தொலைக்காட்சி இணைப்பு/TV CABLE'>தொ.இ</A>",	120.00,
 			"<A title='அப்பாவின் மதிய உணவு/FATHERS LUNCH'>அ.ம.உ</A>",				50.00,
 			"",					0.00,
@@ -1808,16 +1808,16 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("27-Nov-2025"),
-			"<A title='LUNCH'>ம.உணவு</A>",				120.00,
+			"<A title='LUNCH'>மஉணவு</A>",				120.00,
 			"<A TITLE='வெட்டு அலகு/CUTTING BLADE'>வெட்டு அலகு</A>",			200.00,
-			"<A TITLE='அம்மா சிறு உண்டி/Mummy snak'>அ.சி</A>",					229.00,
+			"<A TITLE='அம்மா சிஉண்டி/Mummy snak'>அ.சி</A>",					229.00,
 			"<A TITLE='தர்மபுரியில் வங்கப்பெற்ற எரிபொருள்/Petrol or Diesel bought at Dharmapuri'>த.எரி</A>",				200.00,
 			"சலவைத்தூள்",				429.00,
 			"லிவ்-ஓ",				20.00,
 			"",					0.00
 		],
 		[ formatDate("26-Nov-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",				0.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",				0.00,
 			"<A title='அம்மா மருந்து/Medicine for my mum.'>அ.ம</A>",				180.00,
 			"<A title='எறும்பு தடுக்கும் களிமண் MSEAL'>எ.த.க</A>",			60.00,
 			"<A TITLE='காது, மூக்கு, தொண்டை வடிசாறு/ENT SOUP'>வடிசாறு</A>",				20.00,
@@ -1826,25 +1826,25 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("25-Nov-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",				25.00,
-			"<A title='LUNCH'>ம.உணவு</A>",								0.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",				100.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",				25.00,
+			"<A title='LUNCH'>மஉணவு</A>",								0.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",				100.00,
 			"<A title='ஒட்டுப்பசை/Fevicol'>ஒட்டுப்பசை</A>",				10.00,
 			"<A title='வழலை பெட்டி/Soap box'>வ.பெ</A>",				144.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",				76.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",				76.00,
 			"அ.ம",					289.00
 		],
 		[ formatDate("24-Nov-2025"),
 			"தலைவலி.ம",			830.00,
-			"<A title='LUNCH'>ம.உணவு</A>",			100.00,
-			"<A TITLE='அம்மா சிறு உண்டி/Mummy snak'>அ.சி</A>",				60.00,
-			"மூ.கா.தொ.வ",	20.00,
+			"<A title='LUNCH'>மஉணவு</A>",			100.00,
+			"<A TITLE='அம்மா சிஉண்டி/Mummy snak'>அ.சி</A>",				60.00,
+			"மூ.கா.வ",	20.00,
 			"லிவ்-ஓ",			12.00,
 			"குளம்பி",			15.00
 		],
 		[ formatDate("23-Nov-2025"),
-			"<A TITLE='மூக்கு காது தொண்டை மருந்து/ENT medicine'>மூ.கா.தொ.ம</A>",				337.00,
-			"<A title='LUNCH'>ம.உணவு</A>",				50.00,
+			"<A TITLE='மூக்கு காது தொண்டை மருந்து/ENT medicine'>மூ.கா.ம</A>",				337.00,
+			"<A title='LUNCH'>மஉணவு</A>",				50.00,
 			"பசை",					10.00,
 			"02நகல்",					30.00,
 			"",					0.00,
@@ -1853,7 +1853,7 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("22-Nov-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			210.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			210.00,
 			"த.ப.சீட்டு",		56.00,
 			"<A title='3.0% மந்தப்படுத்தப்பட்ட பால்/3.0% Toned Milk'>ம.பா</A>",	130.00,
 			"",					0.00,
@@ -1862,18 +1862,18 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("21-Nov-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			40.00,
-			"<A title='LUNCH'>ம.உணவு</A>",			45.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			0.00,
-			"<A TITLE='மூக்கு காது தொண்டை மருந்து/ENT medicine'>மூ.கா.தொ.ம</A>",		292.62,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			40.00,
+			"<A title='LUNCH'>மஉணவு</A>",			45.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			0.00,
+			"<A TITLE='மூக்கு காது தொண்டை மருந்து/ENT medicine'>மூ.கா.ம</A>",		292.62,
 			"<A TITLE='பெங்களூரு பெருநகரப் போக்குவரத்துக் கழகம்/Bangalore Metropolitan Transport Corporation/BMTC'>பெ.பெ.போ</A>",			23.00,
 			"",					0.00,
 			"",					0.00
 		],
 		[ formatDate("20-Nov-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",				60.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",				60.00,
 			"<A title='அப்பா கைபேசி சேவையைப்புதுப்பிக்கும் தொகை/Father's mobile recharge'>அ.கை.தொ</A>",				3599.00,
-			"<A title='LUNCH'>ம.உணவு</A>",				100.00,
+			"<A title='LUNCH'>மஉணவு</A>",				100.00,
 			"எரி",				200.00,
 			"வ.கை.பெட்டி",				100.00,
 			"",					0.00,
@@ -1889,10 +1889,10 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("18-Nov-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",				50.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",				35.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",				50.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",				45.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",				50.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",				35.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",				50.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",				45.00,
 			"பல் தூரிகை",				19.00,
 			"",			0.00
 		],
@@ -1906,7 +1906,7 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("16-Nov-2025"),
-			"நீர்.கலசம்.வி",			371.00,
+			"<A TITLE='நீர்.கலசம்.வி/Water can or vicks'>நீ.க.வி</A>",			371.00,
 			"இனிப்பு",				130.00,
 			"எரி",				230.00,
 			"",					0.00,
@@ -1916,14 +1916,14 @@ Nov: [
 		],
 		[ formatDate("15-Nov-2025"),
 			"14நகல்",				15.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",				60.00,
-			"<A TITLE='TRAVELLING TICKET'>பயணச்சீட்டு</A>",				115.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",				60.00,
+			"<A TITLE='TRAVELLING TICKET'>ப.சீட்டு</A>",				115.00,
 			"குறிப்பேடு",				75.00,
 			"<A TITLE='VEGETABLES'>காய்கறி</A>",					172.00,
 			"தொ.வை",					1000.00
 		],
 		[ formatDate("14-Nov-2025"),
-			"அ.மாச்சில்லு",					30.00,
+			"<A title='அ.மாச்சில்லு/Mother biscuit'>அ.மா</A>",					30.00,
 			"லிவ்-ஓ ",					12.00,
 			"த.கொ",					-1000.00,
 			"",						0.00,
@@ -1932,19 +1932,19 @@ Nov: [
 			"",						0.00
 		],
 		[ formatDate("13-Nov-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",				40.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",				40.00,
 			"20நகல்",				40.00,
 			"வ.து.ச",				80.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",				40.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",				40.00,
 			"பொ.பா.தொ",					700.00,
-			"பா.ச.நி.லி.இ",			1042.00,
+			"பா.ச.இ",			1042.00,
 			"",					0.00
 		],
 		[ formatDate("12-Nov-2025"),
 			"லிவ்-ஓ ",				24.00,
 			"கு.ப",				30.00,
 			"கே.டை.மி",				98.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",				50.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",				50.00,
 			"க.மி.க.க",				142.00,
 			"",					0.00,
 			"",					0.00
@@ -1969,9 +1969,9 @@ Nov: [
 		],
 		[ formatDate("09-Nov-2025"),
 			"<A title='மாதாந்திர ரயில் பயணச்சீட்டு/MONTHLY TRAIN TICKET'>மா.ர.ப</A>",			1000.00,
-			"<A TITLE='அம்மா சிறு உண்டி/Mummy snak'>அ.சி</A>",			166.00,
+			"<A TITLE='அம்மா சிஉண்டி/Mummy snak'>அ.சி</A>",			166.00,
 			"குறிப்பேடு<BR>தேநீர்/TEA ",		532.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			40.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			40.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
@@ -1988,14 +1988,14 @@ Nov: [
 		[ formatDate("07-Nov-2025"),
 			"த.ப.சீட்டு",			69.00,
 			"02நகல்",		15.00,
-			"மூ.கா.தொ.வ",			20.00,
-			"மூ.கா.தொ.ஊ",		100.00,
+			"மூ.கா.வ",			20.00,
+			"மூ.கா.ஊ",		100.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
 		],
 		[ formatDate("06-Nov-2025"),
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			40.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			40.00,
 			"ஊறுகாய்",			203.00,
 			"",				0.00,
 			"",				0.00,
@@ -2022,7 +2022,7 @@ Nov: [
 			"",				0.00
 		],
 		[ formatDate("03-Nov-2025"),
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			30.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			30.00,
 			"எரி",			210.00,
 			"",				0.00,
 			"",				0.00,
@@ -2040,20 +2040,20 @@ Nov: [
 			"",				0.00
 		],
 		[ formatDate("01-Nov-2025"),
-			"<A TITLE='TRAVELLING TICKET'>பயணச்சீட்டு</A>",			69.00,
+			"<A TITLE='TRAVELLING TICKET'>ப.சீட்டு</A>",			69.00,
 			"<A TITLE='VEGETABLES'>காய்கறி</A>",			107.00,
 			"அரிசி",			360.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			55.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			30.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			55.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			30.00,
 			"",				0.00,
 			"",				0.00
 		]
 ],
 Oct: [
 		[ formatDate("31-Oct-2025"),
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			18.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			45.00,
-			"மூ.கா.தொ.வ",			40.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			18.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			45.00,
+			"மூ.கா.வ",			40.00,
 			"உ.ஒ.ப",			10.00,
 			"",				0.00,
 			"",				0.00,
@@ -2070,7 +2070,7 @@ Oct: [
 		],
 		[ formatDate("25-Oct-2025"),
 			"ரயில்",				23.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			80.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			80.00,
 			"கை.பா",			200.00,
 			"ஊறுகாய்",			240.00,
 			"",				0.00,
@@ -2079,7 +2079,7 @@ Oct: [
 		],
 		[ formatDate("24-Oct-2025"),
 			"<A TITLE='பெங்களூரு பெருநகரப் போக்குவரத்துக் கழகம்/Bangalore Metropolitan Transport Corporation/BMTC'>பெ.பெ.போ</A>",				23.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			80.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			80.00,
 			"கை.பா",			200.00,
 			"ஊறுகாய்",			240.00,
 			"",				0.00,
@@ -2087,7 +2087,7 @@ Oct: [
 			"",				0.00
 		],
 		[ formatDate("23-Oct-2025"),
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			80.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			80.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2099,16 +2099,16 @@ Oct: [
 			"Haircut",			60.00,
 			"Earset",			150.00,
 			"",				0.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			40.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			40.00,
 			"feviquick",			-10.00,
 			"Lemon",			5.00,
 			"எரி",			220.00
 		],
 		[ formatDate("21-Oct-2025"),
-			"<A TITLE='TRAVELLING TICKET'>பயணச்சீட்டு</A>",			183.00,
+			"<A TITLE='TRAVELLING TICKET'>ப.சீட்டு</A>",			183.00,
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",				10.00,
 			"MSPuri",			40.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			40.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			40.00,
 			"BathBrush",			96.00,
 			"<A title='3.0% மந்தப்படுத்தப்பட்ட பால்/3.0% Toned Milk'>ம.பா</A>",	80.00,
 			"VaalaIlai",			330.00
@@ -2125,8 +2125,8 @@ oil 80.00
 */
 		[ formatDate("20-Oct-2025"),
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",				10.00,
-			"மூ.கா.தொ.வ",			20.00,
-			"மூ.கா.தொ Med",			404.00,
+			"மூ.கா.வ",			20.00,
+			"மூ.கா.ம",			404.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2135,14 +2135,14 @@ oil 80.00
 		[ formatDate("19-Oct-2025"),
 			"Auto",				20.00,
 			"Kool",				20.00,
-			"மூ.கா.தொ.வ",			20.00,
+			"மூ.கா.வ",			20.00,
 			"<A TITLE='தேசிய சேமிப்பு சான்றிதழ்/NATIONAL SAVINGS CERTIFICATE'>தே.சே.சா</A>",			1000.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("18-Oct-2025"),
-			"<A TITLE='TRAVELLING TICKET'>பயணச்சீட்டு</A>",			417.00,
+			"<A TITLE='TRAVELLING TICKET'>ப.சீட்டு</A>",			417.00,
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",				10.00,
 			"",				0.00,
 			"",				0.00,
@@ -2152,15 +2152,15 @@ oil 80.00
 		],
 		[ formatDate("17-Oct-2025"),
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",				10.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			40.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			40.00,
 			"எரி",			200.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			105.00,
-			"மூ.கா.தொ Vapour",			200.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			355.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			105.00,
+			"<A Title='மூ.கா.தொ.ம/ENT vapour'>மூ.கா.நீ</A>",			200.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			355.00,
 			"",				0.00
 		],
 		[ formatDate("16-Oct-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			105.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			105.00,
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",				20.00,
 			"AdhaarUpdt",			200.00,
 			"பொ.பா.தொ",				50.00,
@@ -2173,7 +2173,7 @@ oil 80.00
 			"3Roses",			345.00,
 			"DressRope",			120.00,
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",				10.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			60.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			60.00,
 			"தொ.வை",				1000.00,
 			"",				0.00
 		],
@@ -2181,15 +2181,15 @@ oil 80.00
 			"LenseRepair",			900.00,
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",				10.00,
 			"",				0.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			256.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			256.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("13-Oct-2025"),
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",				20.00,
-			"மூ.கா.தொ",				100.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			23.00,
+			"மூ.கா",				100.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			23.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2201,22 +2201,22 @@ oil 80.00
 			"Soup",				20.00,
 			"2 மீரா",			156.00,
 			"PantTailor",			30.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			10.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			10.00,
 			"லிவ்-ஓ ",				10.00
 		],
 		[ formatDate("11-Oct-2025"),
 			"BngToTn",			13.00,
 			"HosToDpi",			56.00,
 			"த.எரி",		200.00,
-			"மூ.கா.தொ.வ",			20.00,
-			"மூ.கா.தொ.ஊ",			610.00,
+			"மூ.கா.வ",			20.00,
+			"மூ.கா.ஊ",			610.00,
 			"GodTip",			10.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			40.00
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			40.00
 		],
 		[ formatDate("10-Oct-2025"),
 			"<A TITLE='பெங்களூரு பெருநகரப் போக்குவரத்துக் கழகம்/Bangalore Metropolitan Transport Corporation/BMTC'>பெ.பெ.போ</A>",				25.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			70.00,
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			70.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			70.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			70.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2224,15 +2224,15 @@ oil 80.00
 		],
 		[ formatDate("09-Oct-2025"),
 			"<A TITLE='பெங்களூரு பெருநகரப் போக்குவரத்துக் கழகம்/Bangalore Metropolitan Transport Corporation/BMTC'>பெ.பெ.போ</A>",				25.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			120.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			50.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			20.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			120.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			50.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			20.00,
 			"IGCSE_SSLC",			35000.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("08-Oct-2025"),
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			80.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			80.00,
 			"இனிப்பு",			216.00,
 			"ம.பால்",				0.00,
 			"",				0.00,
@@ -2241,8 +2241,8 @@ oil 80.00
 			"",				0.00
 		],
 		[ formatDate("07-Oct-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			0.00,
-			"பா.ச.நி.லி.இ",			1101.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			0.00,
+			"பா.ச.இ",			1101.00,
 			"ம.பால்",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2250,8 +2250,8 @@ oil 80.00
 			"",				0.00
 		],
 		[ formatDate("06-Oct-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			60.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			20.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			60.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			20.00,
 			"<A title='3.0% மந்தப்படுத்தப்பட்ட பால்/3.0% Toned Milk'>ம.பா</A>",	82.00,
 			"",				0.00,
 			"",				0.00,
@@ -2259,46 +2259,46 @@ oil 80.00
 			"",				0.00
 		],
 		[ formatDate("05-Oct-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			0.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			0.00,
 			"இனிப்பு",			617.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			30.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			30.00,
 			"<A TITLE='VEGETABLES'>காய்கறி</A>",				60.00,
 			"NoTea",			0.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			45.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			45.00,
 			"",				0.00
 		],
 		[ formatDate("04-Oct-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			60.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			60.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			80.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			60.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			60.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			80.00,
 			"<A TITLE='VEGETABLES'>காய்கறி</A>",				330.00,
 			"MSSnac",			35.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			240.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			240.00,
 			"NoTea",			0.00
 		],
 		[ formatDate("03-Oct-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			140.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			70.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			80.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			140.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			70.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			80.00,
 			"TvsRepair",			581.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("02-Oct-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			130.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			70.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			0.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			806.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			130.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			70.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			0.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			806.00,
 			"பெ.எரி",			250.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("01-Oct-2025"),
 			"பொ.பா.தொ",			550.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			70.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			30.00,
-			"<A TITLE='TRAVELLING TICKET'>பயணச்சீட்டு</A>",			98.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			70.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			30.00,
+			"<A TITLE='TRAVELLING TICKET'>ப.சீட்டு</A>",			98.00,
 			"பெ.எரி",			50.00,
 			"SLWhelRep",			20.00,
 			"<A TITLE='VEGETABLES'>காய்கறி</A>",				100.00
@@ -2306,30 +2306,30 @@ oil 80.00
 	],
 Sep: [
 		[ formatDate("30-Sep-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			0.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			0.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			60.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			0.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			0.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			60.00,
 			"ToHosur",			13.00,
 			"ToDpi",			56.00,
 			"BngGas",			857.00,
 			"Digest",			20.00
 		],
 		[ formatDate("29-Sep-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			70.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			60.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			407.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			70.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			60.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			407.00,
 			"<A TITLE='VEGETABLES'>காய்கறி</A>",				916.00,
-			"மூ.கா.தொ Dr",			200.00,
-			"மூ.கா.தொ Med",			634.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			25.00
+			"<A TITLE='மூக்கு காது தொடை  மருத்துவர்/ENT Doctor'>மூ.கா.ம</A>",			200.00,
+			"<A TITLE='மூக்கு காது தொடை மருந்து'>மூ.கா.ம</A>",			634.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			25.00
 		],
 		[ formatDate("28-Sep-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			50.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			50.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			120.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			50.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			50.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			120.00,
 			"GarbDonate",			20.00,
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",				10.00,
-			"SchoolFees",			55000.00,
+			"<A TITLE='பள்ளி கட்டணம்/SchoolFees>ப.கட்டணம்</A>",			55000.00,
 			"Harpic",			539.00
 		],
 		[ formatDate("27-Sep-2025"),
@@ -2342,26 +2342,26 @@ Sep: [
 			"",				0.00
 		],
 		[ formatDate("26-Sep-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			50.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			50.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			250.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			50.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			50.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			50.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			250.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			50.00,
 			"<A TITLE='VEGETABLES'>காய்கறி</A>",				466.00,
 			"SLBigMrt",			249.00,
 			"MPURI",			35.00
 		],
 		[ formatDate("25-Sep-2025"),
-			"<A title='காலை உணவு/BREAK FAST'>கா.உணவு</A>",			50.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			50.00,
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			50.00,
+			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",			50.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			50.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			50.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00
 		],
 		[ formatDate("24-Sep-2025"),
-			"<A title='இரவு உணவு/DINNER'>இ.உணவு</A>",			40.00,
-			"<A title='சிற்றுண்டி/Snacks'>சிற்றுண்டி</A>",			150.00,
+			"<A title='இரவு உணவு/DINNER'>இஉணவு</A>",			40.00,
+			"<A title='சிஉண்டி/Snacks'>சிஉண்டி</A>",			150.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2388,7 +2388,7 @@ Sep: [
 		],
 		[ formatDate("04-Sep-2025"),
 			"",				0.00,
-			"பா.ச.நி.லி.இ",		1042.00,
+			"பா.ச.இ",		1042.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2420,7 +2420,7 @@ Aug: [
 			"",				0.00
 		],
 		[ formatDate("30-Aug-2025"),
-			"பா.ச.நி.லி.இ",		1042.00,
+			"பா.ச.இ",		1042.00,
 			"பொ.பா.தொ",			500.00,
 			"",				0.00,
 			"",				0.00,
@@ -2459,7 +2459,7 @@ Jun: [
 			"",				0.00
 		],
 		[ formatDate("02-Jun-2025"),
-			"த.இ.உணவு",			252.00,
+			"த.இஉணவு",			252.00,
 			"",				0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2475,7 +2475,7 @@ Jun: [
 	],
 May: [
 		[ formatDate("30-May-2025"),
-			"SchoolFees",			55000.00,
+			"<A TITLE='பள்ளி கட்டணம்/SchoolFees>ப.கட்டணம்</A>",			55000.00,
 			"க.மி.க.க",			0.00,
 			"",				0.00,
 			"",				0.00,
@@ -2556,7 +2556,7 @@ Apr: [
 								const rows = baseRaw[month];
 								for( const r of rows )
 								{
-									if( "பா.ச.நி.லி.இ" == r[3] )
+									if( "பா.ச.இ" == r[3] )
 									{
 										total = total + r[4];
 										break;
@@ -2637,7 +2637,7 @@ Apr: [
 										if( findThismonth.includes(last_mmm_yyyy) )
 										{
 											const searchFood = ("" + r[i]);
-											if( searchFood.includes("சிற்றுண்டி") )
+											if( searchFood.includes("சிஉண்டி") )
 											{
 												if( ( undefined !== r[i+1] ) && !isNaN( parseFloat(r[i+1]) ) )
 												{
@@ -2689,9 +2689,9 @@ Apr: [
 										if( findThismonth.includes(last_mmm_yyyy) )
 										{
 											const searchFood = ("" + r[i]).toLowerCase();
-											if(		searchFood.includes("கா.உணவு")	||
-													searchFood.includes("ம.உணவு")	||
-													searchFood.includes("<A title='இரவு உணவு/DINNER'>இ.உணவு</A>")	||
+											if(		searchFood.includes("காஉணவு")	||
+													searchFood.includes("மஉணவு")	||
+													searchFood.includes("<A title='இரவு உணவு/DINNER'>இஉணவு</A>")	||
 													searchFood.includes("soup")	||
 													searchFood.includes("livo")	||
 													searchFood.includes("liveo")	||
@@ -2862,51 +2862,49 @@ async function initAndLoad()
                     <THEAD>\
                         <TR>\
                             <TH valign='top' align='right'>\
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;தேதி\
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A TITLE='தேதி/Date'>தேதி</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                பொருள்\
+                                <A TITLE='பொருள்/Item'>பொருள்</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                தொகை\
+                                <A TITLE='தொகை/Amount'>தொகை</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                பொருள்\
+                                <A TITLE='பொருள்/Item'>பொருள்</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                தொகை\
+                                <A TITLE='தொகை/Amount'>தொகை</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                பொருள்</TH>\
+                                <A TITLE='பொருள்/Item'>பொருள்</A>\
+				</TH>\
                             <TH valign='top' align='right'>\
-                                தொகை\
+                                <A TITLE='தொகை/Amount'>தொகை</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                பொருள்\
+                                <A TITLE='பொருள்/Item'>பொருள்</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                தொகை\
+                                <A TITLE='தொகை/Amount'>தொகை</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                பொருள்\
+                                <A TITLE='பொருள்/Item'>பொருள்</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                தொகை\
+                                <A TITLE='தொகை/Amount'>தொகை</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                பொருள்\
+                                <A TITLE='பொருள்/Item'>பொருள்</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                தொகை\
+                                <A TITLE='தொகை/Amount'>தொகை</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                Subtotal\
+                                <A TITLE='மொத்த துணைத்தொகை/Sub total'>து.தொகை</A>\
                             </TH>\
                             <TH valign='top' align='right'>\
-                                Wasted\
-                            </TH>\
-                            <TH valign='top' align='right'>\
-                                Weight\
+                                <A TITLE='வீணான தொகை/Wasted amount'>வீணானது</A>\
                             </TH>\
                         </TR>\
                     </THEAD>\
@@ -2957,7 +2955,7 @@ async function initAndLoad()
 	    {
                 const e = entries[i];
                 const isBSNLNet = /பா.ச.நி.லி/i.test(e.item);
-                const isSnack = /சிற்றுண்டி/i.test(e.item);
+                const isSnack = /சிஉண்டி/i.test(e.item);
                 const stayAtHome = /வீட்டிலுரு/i.test(e.item);
                 const amtVal = parseFloat(e.amt) || 0;
                 const style = isSnack ? " style='background:red;color:white;'" : "";
@@ -3002,21 +3000,6 @@ async function initAndLoad()
             rowHtml += `<TD valign='top' align='left'>${subTotal.toFixed(2)}</TD>
                         <TD valign='top' align='right' ${wastedStyle}>${wasted.toFixed(2)}</TD>`;
         }
-	if( "Wed 10-Dec-2025" == `${d}` )
-	{
-		rowHtml += `<TD valign='top' rowspan='1' bgcolor='orange' align='right'>95.0 KG</TD>`;
-		indx++;
-	}
-	if( "Mon 08-Dec-2025" == `${d}` )
-	{
-		rowHtml += `<TD valign='top' rowspan='1' bgcolor='orange' align='right'>95.8 KG</TD>`;
-		indx++;
-	}
-	if( "Tue 09-Dec-2025" == `${d}` )
-	{
-		rowHtml += `<TD valign='top' rowspan='1' bgcolor='orange' align='right'>95.0 KG</TD>`;
-		indx++;
-	}
 	rowHtml += `</TR>`;
         html += rowHtml;
         grandTotal += subTotal;
@@ -3024,15 +3007,14 @@ async function initAndLoad()
     }
     const totalAfterWaste = grandTotal - grandWaste;
     html += `<TR style='font-weight:bold;background:#ffe5e5;'>
-                <TD colspan='13' align='right'>வீணான தொகையைத் தவிர்த்து, செலவழித்த மொத்தத் தொகை:</TD>
-                <TD style='vertical-align:top;text-align:right;'>${totalAfterWaste.toFixed(2)}</TD>
-                <TD style='vertical-align:top;text-align:right;background-color:red;color:white;'>${grandWaste.toFixed(2)}</TD>
+                <TD colspan='13' align='right'><FONT color='black'>வீணான தொகையைத் தவிர்த்து, செலவழித்த மொத்தத் தொகை:</FONT></TD>
+                <TD style='vertical-align:top;text-align:right;'><FONT color='black'>${totalAfterWaste.toFixed(2)}</FONT></TD>
+                <TD style='vertical-align:top;text-align:right;background-color:red;color:white;'><FONT color='black'>${grandWaste.toFixed(2)}</FONT></TD>
               </TR>`;
     html += `<TR style='font-weight:bold;background:#c7f9cc;'>
-                <TD colspan='13' align='right'>வீணான தொகை உட்பட செலவழிக்கப்பட்ட மொத்த தொகை:</TD>
-                <TD valign='top' align='left'>${grandTotal.toFixed(2)}</TD>
+                <TD colspan='13' align='right'><FONT color='black'>வீணான தொகை உட்பட செலவழிக்கப்பட்ட மொத்த தொகை:</FONT></TD>
+                <TD valign='top' align='right'><FONT color='black'>${grandTotal.toFixed(2)}</FONT></TD>
                 <TD valign='top' align='left'></TD>
-                <TD valign='top' align='left'>96.5 KG</TD>
               </TR>`;
     html += "</TABLE>";
     tableContainer.innerHTML = html;
@@ -3129,7 +3111,7 @@ async function initAndLoad()
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
-					ம.உணவு<BR>
+					மஉணவு<BR>
 					மதிய உணவு
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
@@ -3138,7 +3120,7 @@ async function initAndLoad()
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
-					இ.உணவு<BR>
+					இஉணவு<BR>
 					இரவு உணவு
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
@@ -3147,6 +3129,7 @@ async function initAndLoad()
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
+					மூ.கா.ம<BR>
 					மூ.கா.தொ.ம<BR>
 					மூக்கு காது தொண்டை மருந்து
 				</TD>
@@ -3156,6 +3139,7 @@ async function initAndLoad()
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
+					மூ.கா.ஊ<BR>
 					மூ.கா.தொ.ஊ<BR>
 					மூ.கா.தொ ஊசி<BR>
 					மூக்கு காது தொண்டை ஊசி
@@ -3204,7 +3188,7 @@ async function initAndLoad()
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
 					பெ.எரி<BR>
-					பெ.எரிபொருள்
+					பெங்களூரு எரிபொருள்
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
 					Bengaluru Petrol/Diesel
@@ -3249,7 +3233,7 @@ async function initAndLoad()
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
-					சிற்றுண்டி
+					சிஉண்டி
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
 					Snacks
@@ -3355,8 +3339,8 @@ async function initAndLoad()
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
 					பா.ச.நி.லிஇ<BR>
-					பா.ச.நி.லி.இ<BR>
-					பா.ச.நி.லி.இணையம்<BR>
+					பா.ச.இ<BR>
+					பா.ச.இணையம்<BR>
 					பாரத் சஞ்சார் நிகாம் லிமிடெட் இணையம்
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
@@ -3414,7 +3398,8 @@ async function initAndLoad()
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
-					மூ.கா.தொ.வட<BR>
+					மூ.கா.வ<BR>
+					மூ.கா.தொ.வ<BR>
 					மூ.கா.தொ வடிசாறு<BR>
 					காது, மூக்கு, தொண்டை வடிசாறு
 				</TD>
@@ -3435,7 +3420,7 @@ async function initAndLoad()
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
 					அ.சி<BR>
-					அம்மா சிறு உண்டி
+					அம்மா சிஉண்டி
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
 					Mummy's snacks
@@ -3485,7 +3470,7 @@ async function initAndLoad()
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
-						<a href="spending-chart.html">செலவு வரைபடத்தைப் பார்க்க</a><BR>
+						<a href="spending-chart.html"><FONT color='red'><B><U>செலவு வரைபடத்தைப் பார்க்க</B></U></FONT></a><BR>
 					தேவையற்ற செலவுகளைத் நாம் தடுப்பதன் மூலம் நமது பணத்தைச் சேமிக்க முடியும்.
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
@@ -3544,6 +3529,7 @@ async function initAndLoad()
 			</TR>
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
+					அ.மா<BR>
 					அ.மாச்சில்லு<BR>
 					அ.பிஸ்கட்<BR>
 					அம்மா.பிஸ்கட்
@@ -3653,7 +3639,7 @@ async function initAndLoad()
 			<TR>
 				<TD style="text-align:right;vertical-align:top;">
 					காலை உணவு<BR>
-					கா.உணவு
+					காஉணவு
 				</TD>
 				<TD style="text-align:right;vertical-align:top;">
 					BREAK FAST
@@ -3728,7 +3714,7 @@ async function initAndLoad()
 					சலவைத்தூள்\
 				</TD>\
 				<TD valign='top' align='right'>\
-					Washing powder 02 KG\
+					Washing powder 02 KILOGRAM/கிலோ\
 				</TD>\
 			</TR>\
 			<TR>\
@@ -3843,7 +3829,7 @@ async function initAndLoad()
 			</TR>\
 			<TR>\
 				<TD valign='top' align='right'>\
-					ஒ.வெ.இ.சா.வி<BR>\
+					ஒ.இ.சா.வி<BR>\
 					ஒளி வெளிப்படுத்தும் இடைமுனைச் சாதன விளக்கு\
 				</TD>\
 				<TD valign='top' align='right'>\
@@ -3867,6 +3853,32 @@ async function initAndLoad()
 				</TD>\
 				<TD valign='top' align='right'>\
 					NATIONAL SAVINGS CERTIFICATE\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD valign='top' align='right'>\
+					து.தொகை<BR>\
+					மொத்த துணைத்தொகை\
+				</TD>\
+				<TD valign='top' align='right'>\
+					Sub total\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD valign='top' align='right'>\
+					வீணானது\
+				</TD>\
+				<TD valign='top' align='right'>\
+					Wasted amount\
+				</TD>\
+			</TR>\
+			<TR>\
+				<TD valign='top' align='right'>\
+					ப.கட்டணம்<BR>\
+					பள்ளி கட்டணம்\
+				</TD>\
+				<TD valign='top' align='right'>\
+					School fees\
 				</TD>\
 			</TR>\
 			<TR>\
