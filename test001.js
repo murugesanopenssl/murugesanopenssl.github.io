@@ -59,7 +59,7 @@ function writeMenu()
 	else
 	{
 		document.write( `<DIV class="menu" style="text-align:right; vertical-align:top;">`);
-		document.write(`<A href='index.html'><FONT color='white'>Home3</FONT></A>`);
+		document.write(`<A href='index.html'><FONT color='black'>Home3</FONT></A>`);
 	}
 	if( -1 != location_url.indexOf("Sustainable_Living") )
 	{
@@ -193,7 +193,7 @@ function writeMenu()
 		-1 == location_url.indexOf("fd-and-savings-all-banks" )
 	)
 	{
-		document.write(			`<A href='displayMoneyHelpMenu.html'><Font color='white'>Moneyhelp2</FONT></A>`);
+		document.write(			`<A href='displayMoneyHelpMenu.html'><Font color='black'>Moneyhelp2</FONT></A>`);
 	}
 	else if(	-1 !== location_url.indexOf("Indian-Oil-Cylinder-Booking-Online-Steps")
 	)
@@ -233,7 +233,7 @@ function writeMenu()
 				-1 == location_url.indexOf("cygwin_laptop_battery_alert")   	
 			)
 			{
-				document.write(			`<A href='displayMoneyHelpMenu.html'><Font color='white'>Moneyhelp7</FONT></A>`);
+				document.write(			`<A href='displayMoneyHelpMenu.html'><Font color='black'>Moneyhelp7</FONT></A>`);
 			}
 			else
 			{
@@ -302,7 +302,7 @@ document.write(`
 	else if( -1 !== location_url.indexOf( "spending.html" ) )
 	{
 		document.write(			`<TD style="text-align:right;vertical-align:top;background-color:orange;">`);
-		document.write(		`<A onclick="toggleTable(event)" id="PreventWastagehref" style='text-color:white;'>Prevent wasting money to save money</A>`);
+		document.write(		`<A onclick="toggleTable(event)" id="PreventWastagehref" style='text-color:black;'>Prevent wasting money to save money</A>`);
 	}
 	else if( -1 !== location_url.indexOf( "spending-chart.html" ) )
 	{
@@ -312,7 +312,7 @@ document.write(`
 	else
 	{
 		document.write(			`<TD style="text-align:right;vertical-align:top;">`);
-		document.write(		`<A href='spending.html' onclick="toggleTable(event)" id="PreventWastagehref"><FONT color='white'>Prevent wasting money to save money</FONT></A>`);
+		document.write(		`<A href='spending.html' onclick="toggleTable(event)" id="PreventWastagehref"><FONT color='black'>Prevent wasting money to save money</FONT></A>`);
 	}
 	document.write(		`</TD>`);
 	if( -1 !== location_url.indexOf( "ShareKnowledgeTransferToPeople" ) )
@@ -333,7 +333,7 @@ document.write(`
 	}
 	else
 	{
-		document.write(`<DIV class="menu"><A href="ShareKnowledgeTransferToPeople.html"><FONT color='white'>Share knowledge transfer</FONT></A></DIV>`);
+		document.write(`<DIV class="menu"><A href="ShareKnowledgeTransferToPeople.html"><FONT color='black'>Share knowledge transfer</FONT></A></DIV>`);
 	}
 	document.write(		`</DIV>
 					</TD>`);
@@ -362,7 +362,7 @@ document.write(`
 		document.write(`
 			<TD style="text-align:right;vertical-align:top;">
 				<DIV class="menu">
-					<A href="remove-blockages-kitchen-pvc-outflow-pipe.html"><FONT color='white'>Unclog Kitchen Drain</FONT></A>
+					<A href="remove-blockages-kitchen-pvc-outflow-pipe.html"><FONT color='black'>Unclog Kitchen Drain</FONT></A>
 				</DIV>
 			</TD>
 		`);
@@ -392,7 +392,7 @@ document.write(`
 		document.write(`
 			<TD style="text-align:right;vertical-align:top;">
 				<DIV class="menu">
-					<A href="Visitor_count.html"><FONT color='white'>Visitor count</FONT></A>
+					<A href="Visitor_count.html"><FONT color='black'>Visitor count</FONT></A>
 				</DIV>
 			</TD>
 		`);
@@ -403,7 +403,7 @@ document.write(`
 		document.write(`
 			<TD style="text-align:right;vertical-align:top;background-color:orange;">
 				<DIV class="menu active-menu">
-					<DIV class="submenu no-link"><FONT color='white'>Tamil/Gregorian calendar</FONT></DIV>
+					<DIV class="submenu no-link"><FONT color='black'>Tamil/Gregorian calendar</FONT></DIV>
 				</DIV>
 			</TD>
 		`);
@@ -413,7 +413,7 @@ document.write(`
 		document.write(`
 			<TD style="text-align:right;vertical-align:top;">
 				<DIV class="menu">
-					<A href="../tamil-calendar.html"><FONT color='white'>Tamil/Gregorian calendar</FONT></A>
+					<A href="../tamil-calendar.html"><FONT color='black'>Tamil/Gregorian calendar</FONT></A>
 				</DIV>
 			</TD>
 		`);
@@ -423,7 +423,7 @@ document.write(`
 		document.write(`
 			<TD style="text-align:right;vertical-align:top;">
 				<DIV class="menu">
-					<A href="tamil-calendar.html"><FONT color='white'>Tamil/Gregorian calendar</FONT></A>
+					<A href="tamil-calendar.html"><FONT color='black'>Tamil/Gregorian calendar</FONT></A>
 				</DIV>
 			</TD>
 		`);
@@ -439,22 +439,22 @@ document.write(`
 		document.write( `	<DIV class="">`);
 		if( -1 !== location_url.indexOf("my_exercise") )
 		{
-			document.write( `<FONT color='white'>My exercise</FONT>`);
+			document.write( `<FONT color='black'>My exercise</FONT>`);
 		}
 		else if( -1 !== location_url.indexOf("poems") )
 		{
-			document.write( `<A href='../my_exercise.html'><FONT color='white'>My exercise</FONT></A>`);
+			document.write( `<A href='../my_exercise.html'><FONT color='black'>My exercise</FONT></A>`);
 		}
 		else
 		{
-			document.write( `<A href='my_exercise.html'><FONT color='white'>My exercise</FONT></A>`);
+			document.write( `<A href='my_exercise.html'><FONT color='black'>My exercise</FONT></A>`);
 		}
 		if( -1 !== location_url.indexOf("Windows_ERR_HELP") )
 		{
 			document.write(`
 				<TD style="text-align:right;vertical-align:top;background-color:orange;">
 					<DIV class="menu active-menu">
-						<DIV class="submenu no-link"><FONT color='white'>Windows_ERR_HELP1</FONT></DIV>
+						<DIV class="submenu no-link"><FONT color='black'>Windows_ERR_HELP1</FONT></DIV>
 					</DIV>
 				</TD>
 			`);
@@ -464,7 +464,7 @@ document.write(`
 			document.write(`
 				<TD style="text-align:right;vertical-align:top;">
 					<DIV class="menu active-menu">
-						<A href="../Windows_ERR_HELP.html"><FONT color='white'>Windows_ERR_HELP2</FONT></A>
+						<A href="../Windows_ERR_HELP.html"><FONT color='black'>Windows_ERR_HELP2</FONT></A>
 					</DIV>
 				</TD>
 			`);
@@ -480,7 +480,7 @@ document.write(`
 				document.write(`
 					<TD style="text-align:right;vertical-align:top;background-color:orange;">
 						<DIV class="menu active-menu">
-							<A href="Windows_ERR_HELP.html"><FONT color='white'>Windows_ERR_HELP3</FONT></A>
+							<A href="Windows_ERR_HELP.html"><FONT color='black'>Windows_ERR_HELP3</FONT></A>
 						</DIV>
 					</TD>
 				`);
@@ -490,7 +490,7 @@ document.write(`
 				document.write(`
 					<TD style="text-align:right;vertical-align:top;">
 						<DIV class="menu active-menu">
-							<A href="Windows_ERR_HELP.html"><FONT color='white'>Windows_ERR_HELP4</FONT></A>
+							<A href="Windows_ERR_HELP.html"><FONT color='black'>Windows_ERR_HELP4</FONT></A>
 						</DIV>
 					</TD>
 				`);
@@ -512,7 +512,7 @@ document.write(`
 						</TD>
 						<TD style="text-align:left;vertical-align:top;background-color:orange;">
 							<DIV class="menu">
-								<A href="`+privacyPolicyName+`"><FONT color='white'>Privacy policy</FONT></A>
+								<A href="`+privacyPolicyName+`"><FONT color='black'>Privacy policy</FONT></A>
 							</DIV>
 						</TD>
 					</TR>
@@ -524,7 +524,7 @@ document.write(`
 						</TD>
 						<TD style="text-align:left;vertical-align:top;">
 							<DIV class="menu">
-									<A href="`+privacyPolicyName+`"><FONT color='white'>Privacy policy</FONT></A>
+									<A href="`+privacyPolicyName+`"><FONT color='black'>Privacy policy</FONT></A>
 							</DIV>
 						</TD>
 					</TR>
