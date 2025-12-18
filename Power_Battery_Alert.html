@@ -1,9 +1,15 @@
-<!DOCTYPE HTML>
+<!--
+https://www.tamildailycalendar.com/tamil_monthly_calendar.php?month=12&year=2025&Submit=Submit
+-->
+<!DOCTYPE html>
 <HTML lang="en">
 	<HEAD>
-		<LINK href='MyMenu002.css' rel="stylesheet">
-		<TITLE>murugesan openssl profile</TITLE>
-		<META name="viewport" content="width=device-width, initial-scale=1">
+		<META CHARSET="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<LINK href="github.io.css" rel="stylesheet">
+		<TITLE>Power battery alert</TITLE>
+		<SCRIPT src='NMmenu001.js'></SCRIPT>
+		<SCRIPT type='text/javascript'>writeMenu();</SCRIPT>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 <NOSCRIPT>
@@ -209,207 +215,885 @@ HOME
 </TR>
 </TABLE>
 </NOSCRIPT>
-		<SCRIPT type="text/javascript" src=".\NMmenu053.js">
+		<SCRIPT type="text/javascript" src=".\NMmenu001.js">
 		</SCRIPT>
 		<TABLE border="1" style="height:100%;width:100%">
 			<TBODY>
 				<TR>
 					<TD valign='top' align='left'>
-						 <A href='Windows_ERR_HELP.html#1b'>Back to Windows_ERR_HELP</FONT></A>
-				<PRE>#!/bin/mksh
-<FONT color='red'><B>#SHELL SCRIPT TO OPEN notepad.exe AT WINDOWS WHEN LAPTOP POWER BATTERY IS 98% OR 25%
-#REMOVE OR ADD PLUG AT LAPTOP TO REMOVE THIS ALERT MESSAGE PROVIDED USING notepad.exe.</B></FONT>
-POWEROFF=1
-#WMIC.exe Path Win32_Battery Get BatteryStatus =&gt; 1 =&gt; LAPTOP POWER IS OFF
-#WMIC.exe Path Win32_Battery Get BatteryStatus =&gt; 2 =&gt; LAPTOP POWER IS ON
-POWERON=2
-SLEEPTIME=10
-unset -f HANDLETASKMGR
-HANDLETASKMGR ()
-{
-	if [ "" = "$BATTERY_PERCENTAGE_AVAILABLE" ]
-	then
-		BATTERY_PERCENTAGE_AVAILABLE=$(/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe Path Win32_Battery Get EstimatedChargeRemaining 2&gt;&1 |\
-		/usr/bin/awk '{
-			if( 2 == NR )
-			{
-				printf( "%d", substr( $1, 1, length( $0) -1 ) );
-			}
-		}')
-	fi
-	if [ $BATTERY_PERCENTAGE_AVAILABLE -le 25 ]
-	then
-		CURRENTPOWERSTAT=$(/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe Path Win32_Battery Get BatteryStatus 2&gt;&1 |\
-		/usr/bin/awk '{
-			if( 2 == NR )
-			{
-				printf( "%d", $1);
-			}
-		}')
-		/cygdrive/c/Windows/System32/wbem/WMIC.exe Path Win32_Battery Get BatteryStatus 2&gt;&1 | /usr/bin/tr -d "\r" | /usr/bin/grep 2 &gt;/dev/null 2&gt;&1
-		Ret=$?
-		if [ 0 -eq $Ret ]
-		then
-			export POWER="ON"
-		else
-			export POWER="OFF"
-		fi
-		if [ $POWEROFF -eq $CURRENTPOWERSTAT ]
-		then
-			/cygdrive/c/WINDOWS/system32/taskkill.exe /f /im notepad.exe &gt;/dev/null 2&gt;&1
-			/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe Path Win32_Battery Get EstimatedChargeRemaining 2&gt;&1 |\
-			/usr/bin/tr -d "\r" 2&gt;&1 |\
-			/usr/bin/awk '2 == NR { printf( "ADD    POWER PLUG\nBATTERY PERCENTAGE_01 %s%%\nPOWER IS %s", $1, ENVIRON["POWER"] ); }' >/home/murugesan_openssl/PowerPercentage.txt
-			/cygdrive/c/WINDOWS/system32/cmd.exe /c "start /max C:\\Windows\\System32\\notepad.exe C:\\cygwin\\home\\murugesan_openssl\\PowerPercentage.txt" &gt;/dev/null 2&gt;&1 &
-			/usr/bin/touch /tmp/TASKMGR.txt
-			SLEEPTIME=10
-		else
-			if [ -f /tmp/TASKMGR.txt ]
-			then
-				/usr/bin/rm /tmp/TASKMGR.txt
-			fi
-			/cygdrive/c/WINDOWS/system32/taskkill.exe /f /im notepad.exe &gt;/dev/null 2&gt;&1
-			SLEEPTIME=60
-			return 1
-		fi
-	elif [ $BATTERY_PERCENTAGE_AVAILABLE -ge 98 ]
-	then
-		CURRENTPOWERSTAT=$(/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe Path Win32_Battery Get BatteryStatus 2&gt;&1 |\
-		/usr/bin/awk '{
-			if( 2 == NR )
-			{
-				printf( "%d", $1);
-			}
-		}')
-		/cygdrive/c/Windows/System32/wbem/WMIC.exe Path Win32_Battery Get BatteryStatus 2&gt;&1 | /usr/bin/tr -d "\r" | /usr/bin/grep 2 &gt;/dev/null 2&gt;&1
-		Ret=$?
-		if [ 0 -eq $Ret ]
-		then
-			export POWER="ON"
-		else
-			export POWER="OFF"
-		fi
-		if [ $CURRENTPOWERSTAT -eq $POWERON ]
-		then
-			/cygdrive/c/WINDOWS/system32/taskkill.exe /f /im notepad.exe &gt;/dev/null 2&gt;&1
-			/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe Path Win32_Battery Get EstimatedChargeRemaining 2&gt;&1 |\
-			/usr/bin/tr -d "\r" | /usr/bin/awk '2 == NR { printf( "REMOVE POWER PLUG\nBATTERY PERCENTAGE_02 %s%%\nPOWER IS %s", $1, ENVIRON["POWER"] ); }' >/home/murugesan_openssl/PowerPercentage.txt
-			/cygdrive/c/WINDOWS/system32/cmd.exe /c "start /max C:\\Windows\\System32\\notepad.exe C:\\cygwin\\home\\murugesan_openssl\\PowerPercentage.txt" &gt;/dev/null 2&gt;&1 &
-			/usr/bin/touch /tmp/TASKMGR.txt
-			SLEEPTIME=10
-		else
-			if [ -f /tmp/TASKMGR.txt ]
-			then
-				/usr/bin/rm /tmp/TASKMGR.txt
-			fi
-			/cygdrive/c/WINDOWS/system32/taskkill.exe /f /im notepad.exe &gt;/dev/null 2&gt;&1
-			SLEEPTIME=60
-			return 1
-		fi
-	fi
-}
-while [ 1 ]
-do
-	BATTERY_PERCENTAGE_AVAILABLE=$(/cygdrive/c/Windows/System32/wbem/WMIC.exe Path Win32_Battery Get EstimatedChargeRemaining 2&gt;&1 |\
-	/usr/bin/awk '{
-		if( 2 == NR )
-		{
-			printf( "%d", $1);
-		}
-	}')
-	if [ $BATTERY_PERCENTAGE_AVAILABLE -le 20 ]
-	then
-		CURRENTPOWERSTAT=$(/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe Path Win32_Battery Get BatteryStatus 2&gt;&1 |\
-		/usr/bin/awk '{
-			if( 2 == NR )
-			{
-				printf( "%d", $1);
-			}
-		}')
-		if [ $CURRENTPOWERSTAT -eq $POWEROFF ]
-		then
-			/cygdrive/c/Windows/System32/wbem/WMIC.exe Path Win32_Battery Get BatteryStatus 2&gt;&1 | /usr/bin/tr -d "\r" | /usr/bin/grep 2 &gt;/dev/null 2&gt;&1
-			Ret=$?
-			if [ 0 -eq $Ret ]
-			then
-				export POWER="ON"
-			else
-				export POWER="OFF"
-			fi
-			/cygdrive/c/WINDOWS/system32/taskkill.exe /f /im notepad.exe &gt;/dev/null 2&gt;&1
-			/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe Path Win32_Battery Get EstimatedChargeRemaining 2&gt;&1 | /usr/bin/tr -d "\r" | /usr/bin/awk '2 == NR { printf( "BATTERY PERCENTAGE_03 %s%%\nPOWER IS %s\n", $1, ENVIRON["POWER"] ); }' >/home/murugesan_openssl/PowerPercentage.txt
-			/cygdrive/c/WINDOWS/system32/cmd.exe /c "start /max C:\\Windows\\System32\\notepad.exe C:\\cygwin\\home\\murugesan_openssl\\PowerPercentage.txt" &gt;/dev/null 2&gt;&1 &
-			/usr/bin/touch /tmp/TASKMGR.txt
-			SLEEPTIME=10
-		else
-			if [ -f /tmp/TASKMGR.txt ]
-			then
-				/usr/bin/rm /tmp/TASKMGR.txt
-			fi
-			/cygdrive/c/WINDOWS/system32/taskkill.exe /f /im notepad.exe &gt;/dev/null 2&gt;&1 &
-			SLEEPTIME=60
-			continue
-		fi
-	elif [ $BATTERY_PERCENTAGE_AVAILABLE -ge 99 ]
-	then
-		CURRENTPOWERSTAT=$(/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe Path Win32_Battery Get BatteryStatus 2&gt;&1 |\
-		/usr/bin/awk '{
-			if( 2 == NR )
-			{
-				printf( "%d", $1);
-			}
-		}')
-		if [ $CURRENTPOWERSTAT -eq $POWERON ]
-		then
-			/cygdrive/c/Windows/System32/wbem/WMIC.exe Path Win32_Battery Get BatteryStatus 2&gt;&1 | /usr/bin/tr -d "\r" | /usr/bin/grep 2 &gt;/dev/null 2&gt;&1
-			Ret=$?
-			if [ 0 -eq $Ret ]
-			then
-				export POWER="ON"
-			else
-				export POWER="OFF"
-			fi
-			/cygdrive/c/WINDOWS/system32/taskkill.exe /f /im notepad.exe &gt;/dev/null 2&gt;&1
-			/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe Path Win32_Battery Get EstimatedChargeRemaining 2&gt;&1 | /usr/bin/tr -d "\r" | /usr/bin/awk '2 == NR { printf( "BATTERY PERCENTAGE_04 %s%%\nPOWER IS %s\n", $1, ENVIRON["POWER"] ); }' >/home/murugesan_openssl/PowerPercentage.txt
-			/cygdrive/c/WINDOWS/system32/cmd.exe /c "start /max C:\\Windows\\System32\\notepad.exe C:\\cygwin\\home\\murugesan_openssl\\PowerPercentage.txt" &gt;/dev/null 2&gt;&1 &
-			/usr/bin/touch /tmp/TASKMGR.txt
-			SLEEPTIME=10
-		else
-			if [ -f /tmp/TASKMGR.txt ]
-			then
-				/usr/bin/rm /tmp/TASKMGR.txt
-			fi
-			/cygdrive/c/WINDOWS/system32/taskkill.exe /f /im notepad.exe &gt;/dev/null 2&gt;&1 &
-			SLEEPTIME=60
-			continue
-		fi
-	fi
-	for ONSECOND in {1..5}
+						 <A href='Windows_ERR_HELP.html#1b'><FONT color='#00ff00'>Back to Windows_ERR_HELP</FONT></A><BR>
+						 01) /home/${LOGNAME}/handlemsedge.sh<BR>#!/bin/bash
+<PRE>#01) Clean temporary files at Windows
+export LOGNAME="$USERNAME"
+/cygdrive/c/Windows/System32/tasklist.exe 2>&1 | /usr/bin/tr -d "\r" 2>&1 | /usr/bin/grep vcxsrv.exe
+Ret=$?
+if [[ 0 -eq $Ret ]]
+then
+	/cygdrive/c/Windows/System32/taskkill.exe /f /im vcxsrv.exe >/dev/null 2>&1
+	for files in $(/usr/bin/ls -trd /cygdrive/c/Users/${LOGNAME}/AppData/Local/Temp/VCXSrv* 2>/dev/null)
 	do
-		HANDLETASKMGR
-		Ret=$?
-		if [ 1 -eq $Ret ]
+		if [[ -f "${files}" ]]
 		then
-			break
-		fi
-		if [ -d /cygdrive/c/Users/myDB/AppData/Local/Adobe ]
+			/usr/bin/rm "${files}"
+		elif [[ -d "${files}" ]]
 		then
-			/usr/bin/rm -rf /cygdrive/c/Users/myDB/AppData/Local/Adobe &gt;/dev/null 2&gt;&1 &
+			/usr/bin/rm -rf "${files}"
 		fi
-		if [ -f /cygdrive/c/Users/myDB/AppData/Local/PUTTY.RND ]
-		then
-			/usr/bin/rm -f /cygdrive/c/Users/myDB/AppData/Local/PUTTY.RND &gt;/dev/null 2&gt;&1 &
-		fi
-		/cygdrive/c/Windows/System32/reg.exe query "HKCU\Software\Microsoft\CTF\LangBar" 2&gt;&1 |\
-		/usr/bin/tr -d "\r" 2&gt;&1 |\
-		/usr/bin/grep "ShowStatus" 2&gt;&1 |\
-		/usr/bin/grep "0x4" &gt;/dev/null 2&gt;&1
-		Ret=$?
-		if [ 0 -ne $Ret ]
-		then
-			/cygdrive/c/Windows/System32/reg.exe add "HKCU\Software\Microsoft\CTF\LangBar" /f /v ShowStatus /t REG_DWORD /d 4 &gt;/dev/null 2&gt;&1
-			echo Yes | /cygdrive/c/Windows/System32/reg.exe add "HKCU\Software\Microsoft\CTF\LangBar" /f /v ShowStatus /t REG_DWORD /d 4 &gt;/dev/null 2&gt;&1
-		fi
-		/usr/bin/sleep $SLEEPTIME
 	done
+fi
+#02) Disable MpsSvc windows service
+/cygdrive/c/Windows/System32/sc.exe config MpsSvc start= disabled >/dev/null 2>&1
+if [[ -f /cygdrive/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe ]]
+then
+	/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "Set-ExecutionPolicy Unrestricted" >/dev/null 2>&1
+fi
+/cygdrive/c/Windows/System32/sc.exe config MpsSvc start= disabled >/dev/null 2>&1
+/cygdrive/c/Windows/System32/sc.exe config MpsSvc start= disabled >/dev/null 2>&1
+/cygdrive/c/Windows/System32/sc.exe config MpsSvc start= disabled >/dev/null 2>&1
+export LOGNAME="$USERNAME"
+#03) Remove invalid firefox links at Windows.
+if [[ -f '/cygdrive/c/Users/${LOGNAME}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/firefox.lnk' ]]
+then
+	/usr/bin/rm '/cygdrive/c/Users/${LOGNAME}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/firefox.lnk'
+fi
+if [[ -f '/cygdrive/c/Users/${LOGNAME}/appdata/Roaming/Microsoft/windows/Start Menu/Programs/Firefox Private Browsing.lnk' ]]
+then
+	/usr/bin/rm '/cygdrive/c/Users/${LOGNAME}/appdata/Roaming/Microsoft/windows/Start Menu/Programs/Firefox Private Browsing.lnk'
+fi
+#04) START firefox.exe
+/home/${LOGNAME}/kill-firefox-services.sh >/dev/null 2>&1
+/usr/bin/stat -c "%a" /home/${LOGNAME}/handlemsedge.sh 2>&1 |\
+/usr/bin/grep -E 755 >/dev/null 2>&1
+Ret=$?
+if [[ 0 -ne $Ret ]]
+then
+        /usr/bin/chmod u+rwx /home/${LOGNAME}/handlemsedge.sh
+        /usr/bin/chmod g+rx /home/${LOGNAME}/handlemsedge.sh
+        /usr/bin/chmod g-w /home/${LOGNAME}/handlemsedge.sh
+        /usr/bin/chmod o+rx /home/${LOGNAME}/handlemsedge.sh
+        /usr/bin/chmod g-w /home/${LOGNAME}/handlemsedge.sh
+fi
+/cygdrive/c/Windows/System32/sc.exe query cygsshd 2>&1 |\
+/usr/bin/tr -d "\r" 2>&1 |\
+/usr/bin/grep -E "STATE.*RUNNING" 2>&1 |\
+/usr/bin/grep -E -v "^$" >/dev/null 2>&1
+Ret=$?
+if [[ 0 -ne $Ret ]]
+then
+        /cygdrive/c/Windows/System32/sc.exe stop cygsshd >/dev/null 2>&1
+        /cygdrive/c/Windows/System32/sc.exe start cygsshd >/dev/null 2>&1 &
+fi
+
+#05) START putty.exe
+#{
+	/cygdrive/c/Windows/System32/curl.exe ipinfo.io 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep -E "postal.*625520|postal.*562114" >/dev/null 2>&1
+	Ret=$?
+	Ret=0
+	if [[ 0 -eq $Ret ]]
+	then
+		/cygdrive/c/Windows/System32/NETSTAT.EXE -nato 2>&1 |\
+		/usr/bin/tr -d "\r" 2>&1 |\
+		/usr/bin/grep -E ":22.*LISTENING" 2>&1 |\
+		/usr/bin/grep -E -v "^$" >/dev/null 2>&1
+		NETSTATRET=$?
+		if [[ 0 -eq $NETSTATRET ]]
+		then
+			/cygdrive/c/Windows/System32/tasklist.exe 2>&1 |\
+			/usr/bin/tr -d "\r" 2>&1 |\
+			/usr/bin/grep putty.exe 2>&1 |\
+			/usr/bin/grep -E -v "sleep|bash|grep|tasklist.exe|tr|^$" >/dev/null 2>&1
+			Ret=$?
+			if [[ 0 -eq $Ret ]]
+			then
+				PUTTY_EXE_CNT=$(/cygdrive/c/Windows/System32/tasklist.exe 2>&1 |\
+				/usr/bin/tr -d "\r" 2>&1 |\
+				/usr/bin/grep -E -v "sleep|bash|wc.exe|grep|tasklist.exe|tr|^$" 2>&1 |\
+				/usr/bin/grep putty.exe 2>&1 |\
+				/usr/bin/wc -l)
+			else
+				PUTTY_EXE_CNT=0
+			fi
+			if [[ 3 -gt $PUTTY_EXE_CNT ]]
+			then
+				/cygdrive/c/Windows/System32/cmd.exe /c "START /MAX C:/cygwin/home/${LOGNAME}/puttyexe/putty.exe $LOGNAME@127.0.0.1 -pw thindu@Dinesh56" >/dev/null 2>&1 &
+			fi
+		else
+			/cygdrive/c/Windows/System32/cmd.exe /c "START /MAX C:/cygwin/bin/bash.exe" >/dev/null 2>&1 &
+		fi
+	fi
+#}
+
+#06) START thunderbird.exe no need to start always to prevent wastage of internet usage.
+# I have disabled thunderbird.exe to startup on Mon 20-Oct-2025 IST
+if [[ "y" = "${ENBLETHUNDERBIRD}" ]]
+then
+	if [[ -f /cygdrive/c/Thunderbird/thunderbird.exe ]]
+	then
+		/cygdrive/c/Windows/System32/Wbem/WMIC.exe NIC Where "Not NetConnectionStatus Is Null And NetEnabled='TRUE'"  Get Name 2>&1 |\
+		/usr/bin/grep -E "No Instance" >/dev/null 2>&1
+		NETWORK_CONNECTED=$?
+		if [[ 0 -ne $NETWORK_CONNECTED ]]
+		then
+			/cygdrive/c/Windows/System32/tasklist.exe 2>&1 |\
+			/usr/bin/tr -d "\r" 2>&1 |\
+			/usr/bin/grep olk.exe 2>&1 |\
+			/usr/bin/grep -E -v "^$" >/dev/null 2>&1
+			Ret=$?
+			if [[ 0 -ne $Ret ]]
+			then
+				/cygdrive/c/Windows/System32/tasklist.exe 2>&1 |\
+				/usr/bin/tr -d "\r" 2>&1 |\
+				/usr/bin/grep -E "thunderbird" >/dev/null 2>&1
+				Ret=$?
+				if [[ 0 -ne $Ret ]]
+				then
+					/cygdrive/c/Thunderbird/thunderbird.exe >/dev/null 2>&1 &
+				fi
+			fi
+		fi
+	fi
+fi
+#Wait for putty.exe to at startup.
+#Hence sleep for 2 seconds and close useless apps
+while [[ 1 ]]
+do
+	/cygdrive/c/Windows/System32/tasklist.exe 2>&1 | /usr/bin/tr -d "\r" 2>&1 | /usr/bin/grep vcxsrv.exe
+	Ret=$?
+	if [[ 0 -eq $Ret ]]
+	then
+		/cygdrive/c/Windows/System32/taskkill.exe /f /im vcxsrv.exe >/dev/null 2>&1
+		for files in $(/usr/bin/ls -trd /cygdrive/c/Users/${LOGNAME}/AppData/Local/Temp/VCXSrv* 2>/dev/null)
+		do
+			if [[ -f "${files}" ]]
+			then
+				/usr/bin/rm "${files}"
+			elif [[ -d "${files}" ]]
+			then
+				/usr/bin/rm -rf "${files}"
+			fi
+		done
+	fi
+	/cygdrive/c/Windows/System32/tasklist.exe 2>&1 | /usr/bin/tr -d "\r" 2>&1 | /usr/bin/grep putty.exe 2>&1 |\
+	/usr/bin/grep -E -v "^$" >/dev/null 2>&1
+	Ret=$?
+	if [[ 0 -eq $Ret ]]
+	then
+		break
+	fi
+	/usr/bin/sleep 1
+done
+if [[ -f /usr/bin/adb.exe ]]
+then
+        /cygdrive/c/Windows/System32/tasklist.exe 2>&1 |\
+        /usr/bin/tr -d "\r" 2>&1 |\
+        /usr/bin/grep -E adb.exe 2>&1 |\
+        /usr/bin/grep -E -v "^$" >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -ne $Ret ]]
+        then
+                /usr/bin/adb.exe devices >/dev/null 2>&1 &
+        fi
+fi
+if [[ -f /home/${LOGNAME}/checkbattery.sh ]]
+then
+        source /home/${LOGNAME}/checkbattery.sh >/dev/null 2>&1 &
+fi
+/cygdrive/c/Windows/System32/tasklist.exe 2>&1 |\
+/usr/bin/tr -d "\r" 2>&1 |\
+/usr/bin/grep -E firefox.exe 2>&1 |\
+/usr/bin/grep -E -v "^$" >/dev/null 2>&1
+Ret=$?
+if [[ 0 -ne $Ret ]]
+then
+	if [[ -f "/cygdrive/c/PROGRA~1/MozillaFirefox/firefox.exe" ]]
+	then
+		/cygdrive/c/Windows/System32/cmd.exe /c "C:/PROGRA~1/MozillaFirefox/firefox.exe" >/dev/null 2>&1 &
+	elif [[ -f "/cygdrive/c/PROGRA~1/Microsoft Office/root/vfs/ProgramFilesX86/Mozilla Firefox/firefox.exe" ]]
+	then
+		/cygdrive/c/Windows/System32/cmd.exe /c "C:/PROGRA~1/Microsoft Office/root/vfs/ProgramFilesX86/Mozilla Firefox/firefox.exe" >/dev/null 2>&1 &
+	fi
+else
+	/cygdrive/c/Windows/System32/taskkill.exe /f /im firefox.exe >/dev/null 2>&1
+	if [[ -f "/cygdrive/c/PROGRA~1/MozillaFirefox/firefox.exe" ]]
+	then
+		/cygdrive/c/Windows/System32/cmd.exe /c "C:/PROGRA~1/MozillaFirefox/firefox.exe" >/dev/null 2>&1 &
+	elif [[ -f "/cygdrive/c/PROGRA~1/Microsoft Office/root/vfs/ProgramFilesX86/Mozilla Firefox/firefox.exe" ]]
+	then
+		/cygdrive/c/Windows/System32/cmd.exe /c "C:/PROGRA~1/Microsoft Office/root/vfs/ProgramFilesX86/Mozilla Firefox/firefox.exe" >/dev/null 2>&1 &
+	fi
+fi
+#/cygdrive/c/Windows/System32/taskkill.exe /f /im conhost.exe >/dev/null 2>&1 &
+#/cygdrive/c/Windows/System32/taskkill.exe /f /im cmd.exe >/dev/null 2>&1 &
+#/cygdrive/c/Windows/System32/taskkill.exe /f /im sh.exe >/dev/null 2>&1 &
+for files in \
+"$(/usr/bin/ls -trd /cygdrive/c/PROGRA~1\WindowsApps\Mozilla.Firefox*\VFS\ProgramFiles\Firefox Package Root\firefox.exe 2>/dev/null)" \
+"$(/usr/bin/ls -trd /cygdrive/c/PROGRA~1\WindowsApps\Mozilla.Firefox*\VFS\ProgramFiles\Firefox Package Root\firefox.exe.sig 2>/dev/null)" \
+"/cygdrive/c/Users/${LOGNAME}/AppData/Local/Microsoft/WindowsApps/firefox.exe" \
+"$(/usr/bin/ls -trd /cygdrive/c/Users/${LOGNAME}/AppData/Local/Microsoft/WindowsApps/Mozilla.Firefox*/firefox.exe 2>/dev/null)" \
+"/cygdrive/c/Users/${LOGNAME}/AppData/Local/Packages/Microsoft.Windows.Search_cw5n1h2txyewy/LocalState/AppIconCache/125/{6D809377-6AF0-444B-8957-A3773F02200E}_MozillaFirefox_firefox_exe.gz"
+do
+        if [[ -f "$files" ]]
+        then
+                /usr/bin/rm "$files"
+        fi
 done</PRE>
+</TD>
+</TR>
+<TR>
+<TD>
+Contents of /home/${LOGNAME}/kill-firefox-services.sh
+<PRE>#!/bin/bash
+/cygdrive/c/Windows/System32/tasklist.exe 2>&1 |\
+/usr/bin/tr -d "\r" 2>&1 |\
+/usr/bin/grep -E "firefox.*Services" 2>&1 |\
+/usr/bin/grep -E -v "^$" >/dev/null 2>&1
+Ret=$?
+if [[ 0 -eq $Ret ]]
+then
+        #/cygdrive/c/Windows/System32/taskkill.exe /f /im firefox.exe >/dev/null 2>&1
+        for firefoxServicePid in \
+        $(/cygdrive/c/Windows/System32/tasklist.exe 2>&1 |\
+        /usr/bin/tr -d "\r" 2>&1 |\
+        /usr/bin/grep -E "firefox.*Services" 2>&1 |\
+        /usr/bin/grep -E -v "^$" 2>&1 |\
+        /usr/bin/awk '{
+                printf( "%s\n", $2);
+        }')
+        do
+                /cygdrive/c/Windows/System32/tasklist.exe 2>&1 |\
+                /usr/bin/tr -d "\r" 2>&1 |\
+                /usr/bin/grep "$firefoxServicePid" >/dev/null 2>&1
+                Ret=$?
+                if [[ 0 -eq $Ret ]]
+                then
+                        /cygdrive/c/Windows/System32/taskkill.exe /F /PID $firefoxServicePid
+                fi
+        done
+fi
+</PRE>
+</TD>
+</TR>
+<TR>
+<TD>
+Contents of checkbattery.sh
+<PRE>#!/bin/bash
+unalias HandlePrefetchFiles >/dev/null 2>&1
+unset -f HandlePrefetchFiles
+HandlePrefetchFiles ()
+{
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/*.pf >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/*.pf >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/DIFF.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/DIFF.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/ICACLS.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/ICACLS.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/SVCHOST.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/SVCHOST.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/UNAME.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/UNAME.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/HEAD.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/HEAD.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/FIREFOX.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/FIREFOX.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/TEXTPAD.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/TEXTPAD.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/SSHD.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/SSHD.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/PUTTY.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/PUTTY.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/GZIP.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/GZIP.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/GAWK.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/GAWK.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/LS.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/LS.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/SSHD-AUTH.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/SSHD-AUTH.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/ADB.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/ADB.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/RM.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/RM.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/SLEEP.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/SLEEP.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/WMIC.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/WMIC.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/SSHD-SESSION.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/SSHD-SESSION.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/PS.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/PS.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/DATE.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/DATE.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/TAIL.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/TAIL.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/SORT.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/SORT.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/TR.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/TR.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/SED.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/SED.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/CLEAR.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/CLEAR.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/STARTUP.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/STARTUP.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/BASH.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/BASH.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/GREP.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/GREP.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/SH.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/SH.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/VIM.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/VIM.EXE* >/dev/null 2>&1 &
+        fi
+        /usr/bin/ls -tr /cygdrive/c/Windows/Prefetch/STAT.EXE* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/STAT.EXE* >/dev/null 2>&1 &
+        fi
+}
+unalias HandleMobilePercentage >/dev/null 2>&1
+unset -f HandleMobilePercentage
+HandleMobilePercentage ()
+{
+        /usr/bin/adb.exe devices 2>&1 |\
+        /usr/bin/tr -d "\r" 2>&1 |\
+        /usr/bin/grep -E -v "List of devices|^$" >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                MOBILE_POWER_PERCENT=$(/usr/bin/adb.exe shell dumpsys battery 2>&1 |\
+                /usr/bin/tr -d "\r" 2>&1 |\
+                /usr/bin/grep -E level |\
+                /usr/bin/awk '{
+                        printf( "%s", $NF);
+                }')
+                echo $MOBILE_POWER_PERCENT
+                if [[ 98 -le $MOBILE_POWER_PERCENT ]]
+                then
+                        /cygdrive/c/WINDOWS/system32/taskkill.exe /f /im brave.exe >/dev/null 2>&1
+                        echo "<TABLE border='1'><TR><TD valign='top' align='left'>ALERT MESSAGE</TD><TD valign='top' align='left' bgcolor='red'>REMOVE POWER CABLE AT MOBILE NOW</TD></TR><TR><TD valign='top' align='left'>POWER_STATUS</TD><TD valign='top' align='left'>ON</TD></TR><TR><TD valign='top' align='left'>MOBILE_POWER_PERCENT</TD><TD valign='top' align='left'>$MOBILE_POWER_PERCENT%</TD></TR></TABLE>" > /home/$LOGNAME/MobilePower.txt
+                fi
+        fi
+}
+
+#01) {
+# Search following inside textpad.exe at following json files
+# C:\Users\%USERNAME%\AppData\Local\Mozilla\Firefox\Profiles\4cyi3tlb.default-release\activity-stream.contile.json
+# https:\/\/[a-z|0-9|\/|\.|-|_|-|\?|-|=|-]*
+# 02) Manually remove using without automation after opening firefox.exe:
+# /usr/bin/rm -rf /cygdrive/c/Users/$LOGNAME/AppData/Local/Mozilla/Firefox/Profiles/*/cache*
+for jsonfiles in \
+activity-stream.contile.json \
+activity-stream.discovery_stream.json
+do
+        if [[ -f /home/$LOGNAME/firefox/${LOGNAME}.${jsonfiles} ]]
+        then
+                if [[ -f /cygdrive/c/Users/$LOGNAME/AppData/Local/Mozilla/Firefox/Profiles/4cyi3tlb.default-release/${jsonfiles} ]]
+                then
+                        /usr/bin/diff /cygdrive/c/Users/$LOGNAME/AppData/Local/Mozilla/Firefox/Profiles/4cyi3tlb.default-release/${jsonfiles} /home/$LOGNAME/firefox/${LOGNAME}.${jsonfiles} >/dev/null 2>&1
+                        Ret=$?
+                        if [[ 0 -ne $Ret ]]
+                        then
+                                /usr/bin/cp /home/$LOGNAME/firefox/${LOGNAME}.${jsonfiles} /cygdrive/c/Users/$LOGNAME/AppData/Local/Mozilla/Firefox/Profiles/4cyi3tlb.default-release/${jsonfiles}
+                        fi
+                fi
+        fi
+done
+#01) }
+# Search following inside textpad.exe at following json files
+
+#03) {
+# Remove opera cache files
+if [[ -d /cygdrive/c/Users/$LOGNAME/AppData/Local/OPERAS~1/OPERAS~1/Default ]]
+then
+        cd /cygdrive/c/Users/$LOGNAME/AppData/Local/OPERAS~1/OPERAS~1/Default
+        if [[ -d "Cache" ]]
+        then
+                /usr/bin/rm -rf "Cache"
+        fi
+        if [[ -d "System Cache" ]]
+        then
+                /usr/bin/rm -rf "System Cache"
+        fi
+        cd /cygdrive/c/Users/MURUGE~2/AppData/Local/OPERAS~1/OPERAS~1/Default
+        if [[ -d "Cache" ]]
+        then
+                /usr/bin/rm -rf "Cache"
+        fi
+        if [[ -d "System Cache" ]]
+        then
+                /usr/bin/rm -rf "System Cache"
+        fi
+fi
+#03) }
+# Remove opera cache files
+
+
+/usr/bin/ls -ltrd /cygdrive/c/PROGRA~1/WindowsApps/Mozilla.Firefox* >/dev/null 2>&1
+Ret=$?
+if [[ 0 -eq $Ret ]]
+then
+        for mozilladir in $(/usr/bin/ls -trd /usr/bin/ls -ltrd /cygdrive/c/PROGRA~1/WindowsApps/Mozilla.Firefox* 2>/dev/null)
+        do
+                if [[ -d "${mozilladir}" ]]
+                then
+                        cd "${mozilladir}"
+                        for files in \
+                        "/cygdrive/c/Users/$LOGNAME/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/firefox.lnk" \
+                        "${mozilladir}/VFS/ProgramFiles/Firefox Package Root/crashreporter.exe" \
+                        "${mozilladir}/VFS/ProgramFiles/Firefox Package Root/default-browser-agent.exe" \
+                        "${mozilladir}/VFS/ProgramFiles/Firefox Package Root/maintenanceservice_installer.exe" \
+                        "${mozilladir}/VFS/ProgramFiles/Firefox Package Root/maintenanceservice.exe" \
+                        "${mozilladir}/VFS/ProgramFiles/Firefox Package Root/nmhproxy.exe" \
+                        "${mozilladir}/VFS/ProgramFiles/Firefox Package Root/plugin-container.exe.sig" \
+                        "${mozilladir}/VFS/ProgramFiles/Firefox Package Root/plugin-container.exe" \
+                        "${mozilladir}/VFS/ProgramFiles/Firefox Package Root/pingsender.exe" \
+                        "${mozilladir}/VFS/ProgramFiles/Firefox Package Root/private_browsing.exe" \
+                        "${mozilladir}/VFS/ProgramFiles/Firefox Package Root/updater.exe"
+                        do
+                                if [[ -f "$files" ]]
+                                then
+                                        /usr/bin/rm "$files"
+                                fi
+                        done
+                        if [[ -d "${mozilladir}/VFS/ProgramFiles/Firefox Package Root" ]]
+                        then
+                                /usr/bin/rm -rf "${mozilladir}/VFS/ProgramFiles/Firefox Package Root"
+                        fi
+                fi
+        done
+fi
+if [[ -f "/cygdrive/c/Users/$LOGNAME/AppData/Local/Microsoft/WindowsApps/firefox.exe" ]]
+then
+        echo /usr/bin/rm "/cygdrive/Users/$LOGNAME/AppData/Local/Microsoft/WindowsApps/firefox.exe"
+        /usr/bin/rm "/cygdrive/Users/$LOGNAME/AppData/Local/Microsoft/WindowsApps/firefox.exe"
+fi
+for files in $(/usr/bin/ls -trd /cygdrive/c/Users/$LOGNAME/AppData/Local/Microsoft/WindowsApps/Mozilla.* 2>/dev/null)
+do
+	if [[ -f "$files" ]]
+	then
+		/usr/bin/rm -f "$files" >/dev/null 2>&1
+	elif [[ -d "$files" ]]
+	then
+		/usr/bin/rm -rf "$files" >/dev/null 2>&1
+	fi
+done
+if [[ -f /cygdrive/c/Users/$LOGNAME/AppData/Local/Microsoft/WindowsApps/firefox.exe ]]
+then
+        /usr/bin/rm -f /cygdrive/c/Users/$LOGNAME/AppData/Local/Microsoft/WindowsApps/firefox.exe
+elif [[ -L /cygdrive/c/Users/$LOGNAME/AppData/Local/Microsoft/WindowsApps/firefox.exe ]]
+then
+        /usr/bin/rm -f /cygdrive/c/Users/$LOGNAME/AppData/Local/Microsoft/WindowsApps/firefox.exe
+elif [[ -f /cygdrive/c/Users/$LOGNAME/AppData/Local/Microsoft/WindowsApps/firefox.exe ]]
+then
+        /usr/bin/rm -rf /cygdrive/c/Users/$LOGNAME/AppData/Local/Microsoft/WindowsApps/firefox.exe
+fi
+#04) START BATTERY ALERT PROGRAM. FOLLOWING LOOP TO OPEN brave.exe FOR BATTERY ALERTS AT LAPTOP
+#05) START BATTERY ALERT PROGRAM. FOLLOWING LOOP TO OPEN brave.exe FOR MOBILE CHARGING BATTERY ALERTS AT LAPTOP
+#{
+while [[ 1 ]]
+do
+        /cygdrive/c/Windows/system32/tasklist.exe 2>&1 | /usr/bin/tr -d "\r" 2>&1 | /usr/bin/grep a.out >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /cygdrive/c/Windows/system32/taskkill.exe /f /im a.out >/dev/null 2>&1
+                for files in $(/usr/bin/ls -trd /cygdrive/c/Users/$LOGNAME/AppData/Local/Temp/VCXSrv* 2>/dev/null)
+                do
+                        if [[ -f "${files}" ]]
+                        then
+                                /usr/bin/rm "${files}"
+                        elif [[ -d "${files}" ]]
+                        then
+                                /usr/bin/rm -rf "${files}"
+                        fi
+                done
+        fi
+        /cygdrive/c/Windows/system32/tasklist.exe 2>&1 | /usr/bin/tr -d "\r" 2>&1 | /usr/bin/grep vcxsrv.exe >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /cygdrive/c/Windows/system32/taskkill.exe /f /im vcxsrv.exe >/dev/null 2>&1
+                for files in $(/usr/bin/ls -trd /cygdrive/c/Users/$LOGNAME/AppData/Local/Temp/VCXSrv* 2>/dev/null)
+                do
+                        if [[ -f "${files}" ]]
+                        then
+                                /usr/bin/rm "${files}"
+                        elif [[ -d "${files}" ]]
+                        then
+                                /usr/bin/rm -rf "${files}"
+                        fi
+                done
+        fi
+        /cygdrive/c/Windows/system32/tasklist.exe 2>&1 | /usr/bin/tr -d "\r" 2>&1 | /usr/bin/grep "ollama app.exe" 2>&1 |\
+        /usr/bin/grep -E -v "^$" >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /cygdrive/c/Windows/system32/taskkill.exe /f /im "ollama app.exe" >/dev/null 2>&1
+        fi
+        for googleCache in $(/usr/bin/ls -trd /cygdrive/c/Users/$LOGNAME/AppData/Local/Mozilla/firefox/Profiles/*/safebrowsing/google* 2>/dev/null)
+        do
+                if [[ -f "${googleCache}" ]]
+                then
+                        /usr/bin/rm -f "${googleCache}" >/dev/null 2>&1
+                elif [[ -L "${googleCache}" ]]
+                then
+                        /usr/bin/rm -f "${googleCache}" >/dev/null 2>&1
+                elif [[ -L "${googleCache}" ]]
+                then
+                        /usr/bin/rm -rf "${googleCache}" >/dev/null 2>&1
+                elif [[ -d "${googleCache}" ]]
+                then
+                        /usr/bin/rm -rf "${googleCache}" >/dev/null 2>&1
+                fi
+        done
+        if [[ -d /cygdrive/c/Windows/Prefetch/ReadyBoot ]]
+        then
+                /usr/bin/rm -rf /cygdrive/c/Windows/Prefetch/ReadyBoot >/dev/null 2>&1
+        elif [[ -f /cygdrive/c/Windows/Prefetch/ReadyBoot ]]
+        then
+                /usr/bin/rm -f /cygdrive/c/Windows/Prefetch/ReadyBoot >/dev/null 2>&1
+        fi
+        for WinTempFiles in $(/usr/bin/ls -trd /cygdrive/c/Windows/Temp/*.log /cygdrive/c/Windows/Temp/*.tmp 2>/dev/null)
+        do
+                if [[ -f "${WinTempFiles}" ]]
+                then
+                        /usr/bin/rm "${WinTempFiles}" >/dev/null 2>&1
+                fi
+                if [[ -f "${WinTempFiles}" ]]
+                then
+                        /usr/bin/file "${WinTempFiles}" 2>&1 |\
+                        /usr/bin/grep empty >/dev/null 2>&1
+                        Ret=$?
+                        if [[ 0 -ne $Ret ]]
+                        then
+                                echo -ne "" > "${WinTempFiles}"
+                        fi
+                fi
+        done
+        HandlePrefetchFiles
+        for files in \
+        "/cygdrive/c/PROGRA~1\WindowsApps\Mozilla.Firefox_138.0.4.0_x64__n80bbvh6b1yt2\VFS\ProgramFiles\Firefox Package Root\firefox.exe" \
+        "/cygdrive/c/PROGRA~1\WindowsApps\Mozilla.Firefox_138.0.4.0_x64__n80bbvh6b1yt2\VFS\ProgramFiles\Firefox Package Root\firefox.exe.sig" \
+        "/cygdrive/c/Users/${LOGNAME}\AppData\Local\Microsoft\WindowsApps\firefox.exe" \
+        "/cygdrive/c/Users/${LOGNAME}\AppData\Local\Microsoft\WindowsApps\Mozilla.Firefox_n80bbvh6b1yt2\firefox.exe" \
+        "/cygdrive/c/Users/${LOGNAME}\AppData\Local\Packages\Microsoft.Windows.Search_cw5n1h2txyewy\LocalState\AppIconCache\125\{6D809377-6AF0-444B-8957-A3773F02200E}_MozillaFirefox_firefox_exe.gz"
+        do
+                if [[ -f "$files" ]]
+                then
+                        /usr/bin/rm "$files"
+                fi
+        done
+        POWER_STATUS=$(/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe Path Win32_Battery Get BatteryStatus 2>&1 |\
+        /usr/bin/tr -d "\r" 2>&1 |\
+        /usr/bin/grep -E -v "BatteryStatus|^$")
+        POWER_PERCENT=$(/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe path Win32_Battery get EstimatedChargeRemaining /value 2>&1 | /usr/bin/tr -d "\r" | /usr/bin/grep -E -v "^$" | /usr/bin/awk -F'=' '{ print $NF}')
+        if [[ 98 -le $POWER_PERCENT && 2 -eq $POWER_STATUS ]]
+        then
+                if [[ -f /home/$LOGNAME/$AUTOMATION_DIRECTORY/AddPlug.html ]]
+                then
+                        /usr/bin/rm /home/$LOGNAME/$AUTOMATION_DIRECTORY/AddPlug.html
+                fi
+                /cygdrive/c/WINDOWS/system32/taskkill.exe /f /im brave.exe >/dev/null 2>&1
+                echo "<TABLE border='1'><TR><TD valign='top' align='left'>ALERT MESSAGE</TD><TD valign='top' align='left' bgcolor='red'>REMOVE POWER CABLE AT LAPTOP NOW</TD></TR><TR><TD valign='top' align='left'>POWER_STATUS</TD><TD valign='top' align='left'>ON</TD></TR><TR><TD valign='top' align='left'>POWER_PERCENT</TD><TD valign='top' align='left'>$POWER_PERCENT%</TD></TR>" > /home/$LOGNAME/$AUTOMATION_DIRECTORY/RemovePlug.html
+                if [[ "xterm" != "$TERM" ]]
+                then
+                        if [[ -f /cygdrive/c/PROGRA~1/BraveSoftware/Brave-Browser/Application/brave.exe ]]
+                        then
+                                /cygdrive/c/Windows/system32/cmd.exe /c START /MAX C:/PROGRA~1/BraveSoftware/Brave-Browser/Application/brave.exe "F:/cygwin/home/$LOGNAME/$AUTOMATION_DIRECTORY/RemovePlug.html" &
+                        fi
+                fi
+        elif [[ 25 -ge $POWER_PERCENT && 1 -eq $POWER_STATUS ]]
+        then
+                if [[ -f /home/$LOGNAME/$AUTOMATION_DIRECTORY/RemovePlug.html ]]
+                then
+                        /usr/bin/rm /home/$LOGNAME/$AUTOMATION_DIRECTORY/RemovePlug.html
+                fi
+                /cygdrive/c/WINDOWS/system32/taskkill.exe /f /im brave.exe >/dev/null 2>&1
+                echo -e "<HTML><TITLE>SWITCH ON POWER</TITLE><BODY><TABLE border='1'><TR><TD valign='top' align='left'>ALERT MESSAGE</TD><TD valign='top' align='left'>ADD POWER CABLE AT LAPTOP NOW</TD></TR><TR><TD valign='top' align='left'>POWER_STATUS</TD><TD valign='top' align='left'>OFF</TD></TR><TR><TD valign='top' align='left'>POWER_PERCENT</TD><TD valign='top' align='left' bgcolor='#00ff00'>$POWER_PERCENT%</TD></TR></TABLE></BODY></HTML>" > /home/$LOGNAME/$AUTOMATION_DIRECTORY/AddPlug.html
+                if [[ "xterm" != "$TERM" ]]
+                then
+                        if [[ -f /cygdrive/c/PROGRA~1/BraveSoftware/Brave-Browser/Application/brave.exe ]]
+                        then
+                                /cygdrive/c/Windows/system32/cmd.exe /c START /MAX C:/PROGRA~1/BraveSoftware/Brave-Browser/Application/brave.exe "F:/cygwin/home/$LOGNAME/$AUTOMATION_DIRECTORY/AddPlug.html" &
+                        fi
+                fi
+        elif [[ 25 -ge $POWER_PERCENT && 1 -eq $POWER_STATUS ]]
+        then
+                /cygdrive/c/WINDOWS/system32/tasklist.exe 2>&1 |\
+                /usr/bin/tr -d "\r" |\
+                /usr/bin/grep -E "notepad\.exe" 2>&1 |\
+                /usr/bin/grep -E -v "^$" >/dev/null 2>&1
+                Ret=$?
+                if [[ 0 -eq $Ret ]]
+                then
+                        /cygdrive/c/WINDOWS/system32/taskkill.exe /f /im brave.exe >/dev/null 2>&1
+                fi
+        fi
+        if [[ -d /cygdrive/c/Users/$LOGNAME/Favorites/Links/Search ]]
+        then
+                /usr/bin/rm -rf /cygdrive/c/Users/$LOGNAME/Favorites/Links/Search
+        fi
+        if [[ -f /home/$LOGNAME/bash.exe.stackdump ]]
+        then
+                /usr/bin/rm /home/$LOGNAME/bash.exe.stackdump
+        fi
+        for WindowsIniOrInvalidExeFiles in \
+        /cygdrive/c/Users/$LOGNAME/cygwin/home/$LOGNAME/GEOCIT~1/$LOGNAME/TECHNI~1/Linux/desktop.ini \
+        /cygdrive/c/Users/$LOGNAME/Favorites/Links/desktop.ini \
+        /cygdrive/c/Users/$LOGNAME/DOCUME~1/MYWEBS~1/OPENSS~1/Technical/Linux/desktop.ini \
+        /cygdrive/c/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/DOCUME~1/MYWEBS~1/OPENSS~1/TECHNI~1/Linux/desktop.ini \
+        /cygdrive/c/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/DOCUME~1/MYWEBS~1/OPENSS~1/TECHNI~1/Linux/desktop.ini \
+        /cygdrive/c/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/DOCUME~1/MYWEBS~1/OPENSS~1/TECHNI~1/Linux/desktop.ini \
+        /cygdrive/c/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/DOCUME~1/MYWEBS~1/OPENSS~1/TECHNI~1/Linux/desktop.ini \
+        /cygdrive/c/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/DOCUME~1/MYWEBS~1/OPENSS~1/TECHNI~1/Linux/desktop.ini \
+        $(/usr/bin/ls -trd /cygdrive/c/PROGRA~1/MozillaFirefox/crashreporter.exe.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/crashreporter.exe \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/default-browser-agent.exe.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/default-browser-agent.exe \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/firefox.exe.sig.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/firefox.exe.sig \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/maintenanceservice.exe.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/maintenanceservice.exe \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/maintenanceservice_installer.exe.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/maintenanceservice_installer.exe \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/minidump-analyzer.exe.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/minidump-analyzer.exe \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/nmhproxy.exe.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/nmhproxy.exe \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/pingsender.exe.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/pingsender.exe \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/plugin-container.exe.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/plugin-container.exe \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/plugin-container.exe.sig.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/plugin-container.exe.sig \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/private_browsing.exe.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/private_browsing.exe \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/uninstall/helper.exe.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/uninstall/helper.exe \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/updater.exe.gz \
+        /cygdrive/c/PROGRA~1/MozillaFirefox/updater.exe \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer.exe.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer.exe \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer_helper_64.exe.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer_helper_64.exe \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/notification_helper.exe.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/notification_helper.exe \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera.exe.sig.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera.exe.sig \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_crashreporter.exe.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_crashreporter.exe \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_gx_splash.exe.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_gx_splash.exe \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer.exe.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer.exe \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/notification_helper.exe.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/notification_helper.exe \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer_helper_64.exe.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer_helper_64.exe \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera.exe.sig.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera.exe.sig \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera.exe.tgz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera.exe \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_crashreporter.exe.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_crashreporter.exe \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_gx_splash.exe.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_gx_splash.exe \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/autoupdate/opera_autoupdate.exe.gz \
+        /cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/autoupdate/opera_autoupdate.exe 2>/dev/null)
+        do
+                if [[ -f "$WindowsIniOrInvalidExeFiles" ]]
+                then
+                        /usr/bin/rm "$WindowsIniOrInvalidExeFiles"
+                fi
+        done
+        HandleMobilePercentage
+        /usr/bin/find /cygdrive/c/Windows/Temp 2>&1 | /usr/bin/grep -E -v "^$|^/cygdrive/c/Windows/Temp$"
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -rf /cygdrive/c/Windows/Temp/* >/dev/null 2>&1
+        fi
+        /usr/bin/ls -ltrd /cygdrive/c/Windows/Temp/.* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -rf /cygdrive/c/Windows/Temp/.* >/dev/null 2>&1
+        fi
+        /usr/bin/ls -ltrd /cygdrive/c/Users/$LOGNAME/AppData/Local/Temp/OUTLOOK.* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -rf /cygdrive/c/Users/$LOGNAME/AppData/Local/Temp/OUTLOOK.* >/dev/null 2>&1
+        fi
+        /usr/bin/find /cygdrive/c/Windows/Prefetch 2>&1 | /usr/bin/grep -E -v "^$|^/cygdrive/c/Windows/Prefetch$"
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -rf /cygdrive/c/Windows/Prefetch/* >/dev/null 2>&1
+        fi
+        /usr/bin/ls -ltrd /cygdrive/c/Windows/Prefetch/.* >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /usr/bin/rm -rf /cygdrive/c/Windows/Prefetch/.* >/dev/null 2>&1
+        fi
+        for googleCache in $(/usr/bin/ls -trd /cygdrive/c/Users/$LOGNAME/AppData/Local/Mozilla/firefox/Profiles/*/safebrowsing/google* 2>/dev/null)
+        do
+                if [[ -f "${googleCache}" ]]
+                then
+                        /usr/bin/rm -f "${googleCache}" >/dev/null 2>&1
+                elif [[ -L "${googleCache}" ]]
+                then
+                        /usr/bin/rm -f "${googleCache}" >/dev/null 2>&1
+                elif [[ -L "${googleCache}" ]]
+                then
+                        /usr/bin/rm -rf "${googleCache}" >/dev/null 2>&1
+                elif [[ -d "${googleCache}" ]]
+                then
+                        /usr/bin/rm -rf "${googleCache}" >/dev/null 2>&1
+                fi
+        done
+        /usr/bin/sleep 3
+        /cygdrive/c/Windows/system32/tasklist.exe 2>&1 |\
+        /usr/bin/tr -d "\r" 2>&1 |\
+        /usr/bin/grep brave.exe 2>&1 |\
+        /usr/bin/grep -E -v "^$" >/dev/null 2>&1
+        Ret=$?
+        if [[ 0 -eq $Ret ]]
+        then
+                /cygdrive/c/Windows/system32/taskkill.exe /f /im brave.exe >/dev/null 2>&1
+        fi
+done
+#}</PRE>
+</TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>

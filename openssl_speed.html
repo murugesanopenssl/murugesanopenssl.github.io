@@ -5,7 +5,7 @@
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<LINK href="github.io.css" rel="stylesheet">
 		<TITLE>openssl speed -multi 900000000</TITLE>
-		<SCRIPT src='test001.js'></SCRIPT>
+		<SCRIPT src='NMmenu001.js'></SCRIPT>
 		<SCRIPT>writeMenu();</SCRIPT>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
@@ -587,12 +587,12 @@
 					<TD valign='top' align='left'><PRE>void* app_malloc(int sz, const char *what)
 {
     // murugesan openssl IDA290520252136
-    <FONT color='red'><B><U>if ( 0 > sz )</B></U>
+    <FONT color='#00ff00'><B><U>if ( 0 > sz )</B></U>
     <B><U>{</B></U>
         <B><U>app_bail_out( "%s: multi*sizeof(int) parameter less than zero. Could not allocate %d bytes for %s\n",</B></U>
                      <B><U>opt_getprog(), sz, what);</B></U>
     <B><U>}</B></U>
-    <FONT color='red'><B><U>if ( NULL == what )</B></U>
+    <FONT color='#00ff00'><B><U>if ( NULL == what )</B></U>
     <B><U>{</B></U>
         <B><U>app_bail_out( "NULL at second parameter. Could not allocate %d bytes for NULL\n",</B></U>
                      <B><U>opt_getprog(), sz);</B></U>
@@ -603,7 +603,7 @@
             void *vp = OPENSSL_malloc(sz);
             ...
     // murugesan openssl IDA290520252136
-    <FONT color='red'><B><U>}</B></U></FONT>
+    <FONT color='#00ff00'><B><U>}</B></U></FONT>
     // murugesan openssl IDA290520252136</PRE>
 		   			</TD>
 				</TR>

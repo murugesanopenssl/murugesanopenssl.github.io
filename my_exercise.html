@@ -5,60 +5,116 @@
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<LINK href="github.io.css" rel="stylesheet">
 		<TITLE>Reduce body weight</TITLE>
-		<SCRIPT src='test001.js'>
+<STYLE type="text/css">
+	body {
+		background-color: #004b8d; /* HDFC main blue */
+		color: #eaf2fb;
+		font-family: Arial, sans-serif;
+		margin: 0;
+		padding: 0;
+	}
+
+	/* Header / menu */
+	.language-toggle {
+		background-color: #003a6c;
+		padding: 15px;
+		text-align: center;
+	}
+
+	.toggle-btn {
+		background-color: #005fa3;
+		color: #eaf2fb;
+		border: 1px solid #7fb3d5;
+		padding: 8px 18px;
+		margin: 0 5px;
+		border-radius: 3px;
+		cursor: pointer;
+		font-weight: bold;
+		font-size: 14px;
+	}
+
+	.toggle-btn:hover {
+		background-color: #0073c6;
+	}
+
+	.toggle-btn.active {
+		background-color: #0073c6;
+		border: 1px solid #b3d7ff;
+	}
+
+	/* Main content blocks */
+	.content-section {
+		background-color: #005fa3;
+		padding: 20px;
+		margin: 10px;
+		border-radius: 2px;
+		border: 1px solid #7fb3d5;
+	}
+
+	h1 {
+		color: #b3d7ff;
+		border-bottom: 2px solid #7fb3d5;
+		padding-bottom: 10px;
+	}
+
+	/* Tips / info boxes */
+	.tip {
+		margin: 15px 0;
+		padding: 15px;
+		background-color: #003a6c;
+		border: 1px solid #7fb3d5;
+		border-radius: 3px;
+	}
+
+	.tip-title {
+		color: #b3d7ff;
+		font-weight: bold;
+		font-size: 16px;
+		margin-bottom: 8px;
+	}
+
+	/* Tables */
+	table {
+		border-collapse: collapse;
+		background-color: #005fa3;
+		color: #eaf2fb;
+	}
+
+	td, th {
+		border: 1px solid #7fb3d5;
+		padding: 6px;
+		font-size: 14px;
+		background-color: #005fa3;
+	}
+
+	/* Row variations */
+	tr:nth-child(even) td {
+		background-color: #004f8a;
+	}
+
+	tr:nth-child(odd) td {
+		background-color: #005fa3;
+	}
+
+	/* Status colors (still blue-only) */
+	.highlight {
+		background-color: #0073c6 !important;
+		color: #eaf2fb !important;
+		font-weight: bold;
+	}
+
+	.hidden {
+		display: none;
+	}
+</STYLE>
+		<SCRIPT src='NMmenu001.js'>
 		</SCRIPT>
 		<SCRIPT type='text/javascript'>
 			writeMenu();
+			writeFinanceSidePanel();
 		</SCRIPT>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-		<style>
-			body {
-				background-color: #004C8F; /* HDFC Dark Blue */
-				color: #FFFFFF; /* White text */
-				font-family: Arial, sans-serif;
-				margin: 0;
-				padding: 0;
-			}
-			
-			h3 {
-				color: #FFFFFF;
-				border-bottom: 2px solid #FF6600; /* HDFC Orange accent */
-				padding-bottom: 10px;
-			}
-			
-			#financialResourcesMenu01, #financialResourcesMenu02 {
-				background-color: #0066CC !important; /* HDFC Light Blue */
-				color: #FFFFFF !important;
-				border: 2px solid #003D82 !important;
-				border-radius: 5px;
-			}
-			
-			#financialResourcesMenu01 a, #financialResourcesMenu02 a {
-				color: #FFCC00 !important; /* HDFC Gold/Yellow for links */
-				font-weight: bold;
-			}
-			
-			#financialResourcesMenu01 a:hover, #financialResourcesMenu02 a:hover {
-				color: #FF6600 !important; /* HDFC Orange on hover */
-				background-color: #003D82;
-				padding: 5px;
-				border-radius: 3px;
-			}
-			
-			button {
-				background-color: #003D82 !important; /* HDFC Header Blue */
-				color: #FFFFFF !important;
-				border: 2px solid #FF6600 !important; /* HDFC Orange border */
-				font-weight: bold;
-			}
-			
-			button:hover {
-				background-color: #FF6600 !important; /* HDFC Orange on hover */
-				color: #FFFFFF !important;
-				border: 2px solid #003D82 !important;
-			}
-		</style>
 		<TABLE style='background-color:white;color:black;width:100%;'>
 			<TR>
 				<TD style="text-align:left;vertical-align:top;">
@@ -70,16 +126,57 @@
 						const exerciseData = {
 							Dec: [
 							{
+							date: "Wed 17-Dec-2025",
+							startTime: "03:00:00 PM",
+							endTime: "03:29:32 PM",
+							walkingTime: "00 hour 29 minutes 32 seconds",
+							standingCrossBody: "0 time",
+							lowerHips: "0 time",
+							disadvantages: "<UL>\
+										<LI>Since I have fear on sprain at my right foot ankle I did less time of exercise today.<BR>\
+							</UL>",
+							helpAtPain: "Applied IODEX during morning and after noon times.",
+							FitCount: "3270"
+							},
+							{
+							date: "Tue 16-Dec-2025",
+							startTime: "04:01:00 PM",
+							endTime: "05:20:51 AM",
+							walkingTime: "01 hour 19 minutes 51 seconds",
+							standingCrossBody: "0 times",
+							lowerHips: "5 times",
+							disadvantages: "<UL>\
+										<LI>5% pain in the right foot after walking.<BR>\
+I sprained at my right ankle.<BR>Yesterday night more pain to walk.<BR>Applied IODEX.</LI>\
+							</UL>",
+							helpAtPain: "When I wake up on Wed 17-Dec-2025, 2% pain at right ankle.",
+							FitCount: "9753"
+							},
+							{
+							date: "Mon 15-Dec-2025",
+							startTime: "09:20:00 AM",
+							endTime: "10:41:17 AM",
+							walkingTime: "01 hour 21 minutes 17 seconds",
+							standingCrossBody: "0 times",
+							lowerHips: "5 times",
+							disadvantages: "<UL>\
+										<LI>1% pain in the right foot before walking.<BR>1% sprain at my right ankle during wakeup time.</LI>\
+										<LI>1% right-foot pain after walking.</LI>\
+							</UL>",
+							helpAtPain: "No pain at right ankle after walk.<BR>1% right foot pain after bath.",
+							FitCount: "9499"
+							},
+							{
 							date: "Sun 14-Dec-2025",
 							startTime: "08:13:00 AM",
 							endTime: "09:31:26 AM",
 							walkingTime: "01 hour 18 minutes 26 seconds",
 							standingCrossBody: "0 times",
 							lowerHips: "3 time",
-							disadvantages: "<ul>\
-										<li>1% pain in the right foot before walking.<BR>I sprained at my right ankle.</li>\
-										<li>1% right-foot pain after walking.</li>\
-							</ul>",
+							disadvantages: "<UL>\
+										<LI>1% pain in the right foot before walking.<BR>I sprained at my right ankle.</LI>\
+										<LI>1% right-foot pain after walking.</LI>\
+							</UL>",
 							helpAtPain: "Applied IODEX 3 times yesterday and 1 time today.1% right foot pain after bath.",
 							FitCount: "9102"
 							},
@@ -90,10 +187,10 @@
 							walkingTime: "01 hour 13 minutes 29 seconds",
 							standingCrossBody: "10 times",
 							lowerHips: "0 time",
-							disadvantages: "<ul>\
-										<li>1% pain in the right foot before walking.</li>\
-										<li>1% right-foot pain after walking.</li>\
-							</ul>",
+							disadvantages: "<UL>\
+										<LI>1% pain in the right foot before walking.</LI>\
+										<LI>1% right-foot pain after walking.</LI>\
+							</UL>",
 							helpAtPain: "After walking 1% right foot pain after bath.",
 							FitCount: "10222"
 							},
@@ -104,10 +201,10 @@
 							walkingTime: "00 hour 27 minutes 13 seconds",
 							standingCrossBody: "10 times",
 							lowerHips: "0 time",
-							disadvantages: "<ul>\
-										<li>1% pain in the right foot before walking.</li>\
-										<li>1% right-foot pain after walking.</li>\
-							</ul>",
+							disadvantages: "<UL>\
+										<LI>1% pain in the right foot before walking.</LI>\
+										<LI>1% right-foot pain after walking.</LI>\
+							</UL>",
 							helpAtPain: "After walking 1% right foot pain and<BR> 0% left foot pain after bath.",
 							FitCount: "2916<BR>TOTALLY:<BR>10456<BR>ON Fri 12-Dec-2025"
 							},
@@ -118,10 +215,10 @@
 							walkingTime: "01 hour 03 minutes 32 seconds",
 							standingCrossBody: "No",
 							lowerHips: "0 time",
-							disadvantages: "<ul>\
-										<li>1% pain in the right foot before sleeping yesterday.</li>\
-										<li>1% right-foot pain before walking.</li>\
-							</ul>",
+							disadvantages: "<UL>\
+										<LI>1% pain in the right foot before sleeping yesterday.</LI>\
+										<LI>1% right-foot pain before walking.</LI>\
+							</UL>",
 							helpAtPain: "After walking 1% right foot pain and<BR> 0% left foot pain after bath.",
 							FitCount: "7540"
 							},
@@ -132,10 +229,10 @@
 							walkingTime: "00 hour 58 minutes 29 seconds",
 							standingCrossBody: "No",
 							lowerHips: "20 times",
-							disadvantages: "<ul>\
-										<li>1% pain in the right foot before sleeping yesterday.</li>\
-										<li>1% right-foot pain before walking.</li>\
-							</ul>",
+							disadvantages: "<UL>\
+										<LI>1% pain in the right foot before sleeping yesterday.</LI>\
+										<LI>1% right-foot pain before walking.</LI>\
+							</UL>",
 							helpAtPain: "Iodex at right leg bend before sleep.<BR>After walking 1% right foot pain and<BR> 0% left foot pain after bath.",
 							FitCount: "7094"
 							},
@@ -146,10 +243,10 @@
 							walkingTime: "01 hour 00 minutes 46 seconds",
 							standingCrossBody: "No",
 							lowerHips: "15 times",
-							disadvantages: "<ul>\
-										<li>1% pain in the right foot before sleeping yesterday.</li>\
-										<li>1% right-foot pain before walking.</li>\
-							</ul>",
+							disadvantages: "<UL>\
+										<LI>1% pain in the right foot before sleeping yesterday.</LI>\
+										<LI>1% right-foot pain before walking.</LI>\
+							</UL>",
 							helpAtPain: "Iodex at right leg bend before sleep.<BR>After walking 1% right foot pain and<BR> 0% left foot pain after bath.",
 							FitCount: "7030"
 							},
@@ -160,10 +257,10 @@
 							walkingTime: "00 hour 30 minutes 00 seconds",
 							standingCrossBody: "No",
 							lowerHips: "15 times",
-							disadvantages: "<ul>\
-										<li>1% pain in the right foot before sleeping yesterday.</li>\
-										<li>1% right-foot pain before walking.</li>\
-							</ul>",
+							disadvantages: "<UL>\
+										<LI>1% pain in the right foot before sleeping yesterday.</LI>\
+										<LI>1% right-foot pain before walking.</LI>\
+							</UL>",
 							helpAtPain: "After walking 1% right foot pain.",
 							FitCount: "3504"
 							},
@@ -174,10 +271,10 @@
 							walkingTime: "01 hour 10 minutes 54 seconds",
 							standingCrossBody: "No",
 							lowerHips: "15 times",
-							disadvantages: "<ul>\
-										<li>1% pain in the right foot and 0% pain in the left foot before sleeping yesterday.</li>\
-										<li>1% right-foot pain and 1% left-foot pain before walking.</li>\
-							</ul>",
+							disadvantages: "<UL>\
+										<LI>1% pain in the right foot and 0% pain in the left foot before sleeping yesterday.</LI>\
+										<LI>1% right-foot pain and 1% left-foot pain before walking.</LI>\
+							</UL>",
 							helpAtPain: "No Iodex.<BR>After walking 1% right foot pain and<BR> 0% left foot pain after bath.",
 							FitCount: "8435"
 							},
@@ -188,12 +285,12 @@
 							walkingTime: "01 hour 06 minutes 54 seconds",
 							standingCrossBody: "No",
 							lowerHips: "03 times",
-							disadvantages: "<ul>\
-										<li>1% pain in the right foot and 1% pain in the left foot before sleeping yesterday.</li>\
-										<li>1% right-foot pain and 1% left-foot pain before walking.</li>\
-										<li>Lower hips: I slipped/fell backward by mistake.</li>\
-										<li>No problem in the head.</li>\
-							</ul>",
+							disadvantages: "<UL>\
+										<LI>1% pain in the right foot and 1% pain in the left foot before sleeping yesterday.</LI>\
+										<LI>1% right-foot pain and 1% left-foot pain before walking.</LI>\
+										<LI>Lower hips: I slipped/fell backward by mistake.</LI>\
+										<LI>No problem in the head.</LI>\
+							</UL>",
 							helpAtPain: "No Iodex.<BR>After walking 1% right foot pain and<BR> 1% left foot pain after bath.",
 							FitCount: "7985"
 							},
@@ -546,24 +643,22 @@
 								totalSec += extractSeconds(r.walkingTime);
 							});
 
-							// Convert total seconds to H:M:S
 							let totalHrs = Math.floor(totalSec / 3600);
 							let remSec = totalSec % 3600;
 							let totalMin = Math.floor(remSec / 60);
 							let totalSeconds = remSec % 60;
 
-							// Total exercise days
 							let totalDays = (totalHrs / 24) + (totalMin / (24 * 60)) + (totalSeconds / (24 * 3600));
 							totalDays = totalDays.toFixed(2);
 							let DispDays = totalDays < 10 ? totalDays + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Day" : totalDays + " Days";
 
-							// Display with leading zeros
 							let DispTotalHrs = totalHrs < 10 ? "0" + totalHrs : totalHrs;
 							let DispTotalMin = totalMin < 10 ? "0" + totalMin : totalMin;
 							let DispTotalSec = totalSeconds < 10 ? "0" + totalSeconds : totalSeconds;
 
 							document.getElementById("totalsTable").innerHTML =
 								`<TABLE border="1" width="100%">
+									<TR><TD valign='top' align='middle' colspan='4'><FONT color='white'>On Tue 11-Nov-2025 IST, I HAVE PLANNED TO STOP USING GYM TO PREVENT WASTAGE OF MY MONEY,<BR>AND TO TAKE CARE OF THE AMOUNT TO BUY MEDICINES WHEN I NEED THEM.</FONT></TD></TR>
 									<TR><TD valign='top' align='right'>Total exercise &nbsp;days</TD><TD valign='top' align='right'>${DispDays}</TD></TR>
 									<TR><TD valign='top' align='right'>Total exercise hours</TD><TD valign='top' align='right'>${DispTotalHrs} &nbsp;&nbsp;&nbsp;hours</TD></TR>
 									<TR><TD valign='top' align='right'>Total exercise minutes</TD><TD valign='top' align='right'>${DispTotalMin} minutes</TD></TR>
@@ -574,7 +669,7 @@
 							let html = `
 								<TABLE border="1" width="100%" cellpadding="5">
 								<TR>
-									<TD style="text-align:right;vertical-align:top;width:121px;"><B>Exercise date</B></TD>
+									<TD style="text-align:right;vertical-align:top;width:130px;"><B>Exercise date</B></TD>
 									<TD style="text-align:right;vertical-align:top;"><B>Start time</B></TD>
 									<TD style="text-align:right;vertical-align:top;"><B>End time</B></TD>
 									<TD style="text-align:right;vertical-align:top;"><B>Walking time</B></TD>
@@ -584,7 +679,6 @@
 									<TD style="text-align:right;vertical-align:top;"><B>Help at pain</B></TD>
 									<TD style="text-align:right;vertical-align:top;"><B>Fit count</B></TD>
 								</TR>`;
-
 							rows.forEach(r => {
 								html += `<TR>
 									<TD style="text-align:right;vertical-align:top;">${r.date || ""}</TD>`;
@@ -602,13 +696,15 @@
 											 <TD style="text-align:right;vertical-align:top;">${r.standingCrossBody || ""}</TD>
 											 <TD style="text-align:right;vertical-align:top;">${r.lowerHips || ""}</TD>`;
 								}
-
+								if (Object.keys(r).length === 1 && r.date) return;
 								if (r.disadvantages && "Stopped doing exercise for 6 days." === r.disadvantages) {
 									html += `<TD rowspan="6" colspan='7' style="background-color:yellow;color:black;vertical-align:bottom;text-align:right;">${r.disadvantages}</TD>`;
 								} else if (r.disadvantages && "No" === r.disadvantages) {
 									html += `<TD colspan="1" rowspan="1" style="background-color:#00ff00;color:black;vertical-align:bottom;text-align:right;">${r.disadvantages}</TD>`;
 								html += `<TD style="background-color:#00ff00;color:black;vertical-align:bottom;text-align:right;">${r.helpAtPain || ""}</TD>`;
-							} else {
+								}
+								else
+								{
 								if (r.disadvantages) {
 									html += `<TD style="background-color:red;color:white;vertical-align:top;text-align:right;">${r.disadvantages}</TD>`;
 								} else {

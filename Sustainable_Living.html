@@ -5,7 +5,7 @@
 <META name="viewport" content="width=device-width, initial-scale=1.0">
 <LINK href="github.io.css" rel="stylesheet">
 <TITLE>Sustainable Living</TITLE>
-<SCRIPT src='test001.js'></SCRIPT>
+<SCRIPT src='NMmenu001.js'></SCRIPT>
 <SCRIPT type='text/javascript'>writeMenu();</SCRIPT>
 <style>
 body{background-color:#004C8F;color:#FFF;font-family:Arial,sans-serif;margin:0;padding:0}
@@ -20,22 +20,47 @@ button:hover{background-color:#F60!important;border:2px solid #003D82!important}
 </HEAD>
 <BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 <SCRIPT>
-function toggleLanguage(lang){
-const eng=document.querySelectorAll('.english-content');
-const tam=document.querySelectorAll('.tamil-content');
-const engBtn=document.getElementById('englishBtn');
-const tamBtn=document.getElementById('tamilBtn');
-if(lang==='english'){
-eng.forEach(el=>el.style.display='block');
-tam.forEach(el=>el.style.display='none');
-engBtn.classList.add('active');
-tamBtn.classList.remove('active');
-}else{
-eng.forEach(el=>el.style.display='none');
-tam.forEach(el=>el.style.display='block');
-tamBtn.classList.add('active');
-engBtn.classList.remove('active');
-}
+function toggleLanguage(lang) {
+    const eng = document.querySelectorAll('.english-content');
+    const tam = document.querySelectorAll('.tamil-content');
+    const engBtn = document.getElementById('englishBtn');
+    const tamBtn = document.getElementById('tamilBtn');
+    
+    if (lang === 'english') {
+        eng.forEach(el => el.style.display = 'block');
+        tam.forEach(el => el.style.display = 'none');
+        engBtn.classList.add('active');
+        tamBtn.classList.remove('active');
+    } else {
+        eng.forEach(el => el.style.display = 'none');
+        tam.forEach(el => el.style.display = 'block');
+        tamBtn.classList.add('active');
+        engBtn.classList.remove('active');
+    }
+    
+    // Dynamically update the "Meera Shampoo" text based on selected language
+    const meeraShampooEnglish = document.getElementById('meera-shampoo-english');
+    const meeraShampooTamil = document.getElementById('meera-shampoo-tamil');
+    const suntvEnglish = document.getElementById('sun-tv-english');
+    const suntvTamil = document.getElementById('sun-tv-tamil');
+    const BISLERIEnglish = document.getElementById('BISLERI-english');
+    const BISLERITamil = document.getElementById('BISLERI-tamil');
+    
+    if (lang === 'english') {
+        meeraShampooEnglish.style.display = 'inline';
+        meeraShampooTamil.style.display = 'none';
+        suntvEnglish.style.display = 'inline';
+        suntvTamil.style.display = 'none';
+        BISLERIEnglish.style.display = 'inline';
+        BISLERITamil.style.display = 'none';
+    } else {
+        meeraShampooEnglish.style.display = 'none';
+        meeraShampooTamil.style.display = 'inline';
+        suntvEnglish.style.display = 'none';
+        suntvTamil.style.display = 'inline';
+        BISLERIEnglish.style.display = 'none';
+        BISLERITamil.style.display = 'inline';
+    }
 }
 </SCRIPT>
 
@@ -80,14 +105,43 @@ India banned Coca-Cola and Pepsi (News: Thu 28-Aug-2025 IST), however it is not 
 <TR bgcolor='red'><TD style='background-color:red;color:white'>AQUAFINA</TD><TD style='background-color:red;color:white'>PEPSICO - UNITED STATES</TD></TR>
 <TR bgcolor='red'><TD style='background-color:red;color:white'>gpay (63.00 TIPS FROM GPAY IF SPENDING  155000.00 INR, HOWEVER 375.00 TIPS IF SPENDING SAME AMOUNT 155000.00 USING SBI DEBIT CARD)</TD><TD style='background-color:red;color:white'>Google - UNITED STATES (Mountain View, California)</TD></TR>
 <TR bgcolor='red'><TD style='background-color:red;color:white'>DELL LAPTOP/MOUSE</TD><TD style='background-color:red;color:white'>Michael Dell - AMERICAN businessman</TD></TR>
-<TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>CORPORATION CHENNAI TAMILNADU INDIA</TD><TD><FONT color='black'>FROM INDIA/ASIA</A></TD></TR>
-<TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>statisticstimes.com, cleartax, TATA SKY, tutorialspoint.com, naukri.com</TD><TD><FONT color='black'>FROM INDIA/ASIA</A></TD></TR>
+<TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>
+CORPORATION CHENNAI TAMILNADU INDIA/மாநகராட்சி சென்னை தமிழ்நாடு இந்தியா
+</TD><TD><FONT color='black'>FROM INDIA/ASIA</A></TD></TR>
+<TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>
+statisticstimes.com, cleartax, TATA SKY, tutorialspoint.com, naukri.com/புள்ளிவிவர நேரங்கள், கிளியர்டாக்ஸ், டாடா ஸ்கை, டுடோரியல்ஸ்பாயிண்ட், நௌக்ரி
+</TD><TD><FONT color='black'>FROM INDIA/ASIA</A></TD></TR>
 <TR bgcolor='#00ff00'><TD style='background-color:#00ff00;color:black'>BSNL FIBERNET/PREPAID/POSTPAID</TD><TD><FONT color='black'>FROM INDIA/ASIA</A> - 571.00 INR/month 3300GB, 471.00 INR/month 1000GB</TD></TR>
-<TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>I ACTIV NAPKIN, SUN NETWORK (KALANITHI MARAN 30289.00 CROREPATHI), LION DATES, RUPA VEST, LUX SOAP, VENUS VEST</TD><TD><FONT color='black'>FROM INDIA/ASIA</A></TD></TR>
-<TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>MEERA SHAMPOO</TD><TD><FONT color='black'><FONT color='black'>CAVINKARE PVT. LTD - INDIAN COMPANY</FONT></TD></TR>
+<TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>
+<div class="english-content">
+    <span id="sun-tv-english">I ACTIV NAPKIN, SUN NETWORK (KALANITHI MARAN 30289.00 CROREPATHI), LION DATES, RUPA VEST, LUX SOAP, VENUS VEST/ஐ ஆக்டிவ் நாப்கின், சன் நெட்வொர்க் (கலாநிதி மாறன் 30289.00 கோடிஸ்வரர்), லயன் பேரீச்சம்பழம், ரூபா பனியன், லக்ஸ் சோப், வீனஸ் பனியன்
+</span>
+</div>
+<div class="tamil-content">
+    <span id="sun-tv-tamil">ஐ ஆக்டிவ் நாப்கின், சன் நெட்வொர்க் (கலாநிதி மாறன் 30289.00 கோடிஸ்வரர்), லயன் பேரீச்சம்பழம், ரூபா பனியன், லக்ஸ் சோப், வீனஸ் பனியன்
+/I ACTIV NAPKIN, SUN NETWORK (KALANITHI MARAN 30289.00 CROREPATHI), LION DATES, RUPA VEST, LUX SOAP, VENUS VEST</span>
+</div>
+
+</TD><TD><FONT color='black'>FROM INDIA/ASIA</A></TD></TR>
+<TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>
+<div class="english-content">
+    <span id="meera-shampoo-english">MEERA SHAMPOO/மீரா சீயநெய்</span>
+</div>
+<div class="tamil-content">
+    <span id="meera-shampoo-tamil">மீரா சீயநெய்/MEERA SHAMPOO</span>
+</div>
+</TD><TD><FONT color='black'><FONT color='black'>CAVINKARE PVT. LTD - INDIAN COMPANY</FONT></TD></TR>
 <TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>Sunfeast (biscuits not oil), FORTUNE OIL</TD><TD><FONT color='black'>ADANI WILMAR/ITC FOODS - INDIAN</FONT></TD></TR>
 <TR bgcolor='yellow'><TD style='background-color:yellow;color:black'><FONT color='black'>KARTHIKA SHAMPOO, MTR FOODS/PICKLE</FONT></TD><TD><FONT color='black'>CAVINKARE/Orkla (Norwegian parent) - INDIA</FONT></TD></TR>
-<TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>BISLERI</TD><TD><FONT color='black'>BISLERI INTERNATIONAL PVT. LTD - INDIAN</FONT></TD></TR>
+<TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>
+<div class="english-content">
+    <span id="BISLERI-english">BISLERI/பிஸ்லெரி</span>
+</div>
+<div class="tamil-content">
+    <span id="BISLERI-tamil">பிஸ்லெரி/BISLERI</span>
+</div>
+
+</TD><TD><FONT color='black'>BISLERI INTERNATIONAL PVT. LTD - INDIAN</FONT></TD></TR>
 <TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>MILTON LUNCH BOX/WATER BOTTLE</TD><TD><FONT color='black'>Hamilton Housewares - INDIA</FONT></TD></TR>
 <TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>PHONEPE (NO TIPS)</TD><TD><FONT color='black'>INDIAN COMPANY - Bengaluru (Walmart stake)</FONT></TD></TR>
 <TR bgcolor='yellow'><TD style='background-color:yellow;color:black'>CELLO LUNCH BOXES</TD><TD><FONT color='black'>MADE IN INDIA</FONT></TD></TR>
@@ -179,12 +233,18 @@ cell2.innerHTML=date;
 cell3.innerHTML="Category";
 cell4.innerHTML="0.00 ₹";
 }
-window.onload=function(){
-addTodaysRow();
-const homeLink=document.getElementById('Homehref');
-if(homeLink){homeLink.style.color='blue';}
-const homeTable=document.getElementById("HomeTable");
-if(homeTable){homeTable.style.display="table";}
+
+window.onload = function() {
+    toggleLanguage('tamil'); // Set Tamil as the default language on page load.
+    addTodaysRow();
+    const homeLink = document.getElementById('Homehref');
+    if (homeLink) {
+        homeLink.style.color = 'blue';
+    }
+    const homeTable = document.getElementById("HomeTable");
+    if (homeTable) {
+        homeTable.style.display = "table";
+    }
 };
 </SCRIPT>
 <TR></TR>

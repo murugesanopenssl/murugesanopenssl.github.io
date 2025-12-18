@@ -6,202 +6,170 @@
 		<LINK href="github.io.css" rel="stylesheet">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<TITLE>Money Help Menu</TITLE>
-		<SCRIPT src='test001.js'>
+		<SCRIPT src='NMmenu001.js'>
 		</SCRIPT>
 		<SCRIPT type='text/javascript'>
 			writeMenu();
 		</SCRIPT>
-		<style>
-			body {
-				background-color: #004C8F; /* HDFC Dark Blue */
-				color: #FFFFFF; /* White text */
+		<STYLE type='text/css'>
+			body
+			{
+				background-color: #004C8F;
+				color: #FFFFFF;
 				font-family: Arial, sans-serif;
 				margin: 0;
 				padding: 0;
 			}
-			
-			h3 {
+			h3
+			{
 				color: #FFFFFF;
-				border-bottom: 2px solid #FF6600; /* HDFC Orange accent */
+				border-bottom: 2px solid #FF6600;
 				padding-bottom: 10px;
 			}
-			
-			#financialResourcesMenu01, #financialResourcesMenu02 {
-				background-color: #0066CC !important; /* HDFC Light Blue */
+			#financialResourcesMenu01, #financialResourcesMenu02
+			{
+				background-color: #0066CC !important;
 				color: #FFFFFF !important;
 				border: 2px solid #003D82 !important;
 				border-radius: 5px;
 			}
-			
-			#financialResourcesMenu01 a, #financialResourcesMenu02 a {
-				color: #FFCC00 !important; /* HDFC Gold/Yellow for links */
+			#financialResourcesMenu01 a, #financialResourcesMenu02 a
+			{
+				color: #FFCC00 !important;
 				font-weight: bold;
 			}
-			
-			#financialResourcesMenu01 a:hover, #financialResourcesMenu02 a:hover {
-				color: #FF6600 !important; /* HDFC Orange on hover */
+			#financialResourcesMenu01 a:hover, #financialResourcesMenu02 a:hover
+			{
+				color: #FF6600 !important;
 				background-color: #003D82;
 				padding: 5px;
 				border-radius: 3px;
 			}
-			
-			button {
-				background-color: #003D82 !important; /* HDFC Header Blue */
+			button
+			{
+				background-color: #003D82 !important;
 				color: #FFFFFF !important;
-				border: 2px solid #FF6600 !important; /* HDFC Orange border */
+				border: 2px solid #FF6600 !important;
 				font-weight: bold;
 			}
-			
-			button:hover {
-				background-color: #FF6600 !important; /* HDFC Orange on hover */
+			button:hover
+			{
+				background-color: #FF6600 !important;
 				color: #FFFFFF !important;
 				border: 2px solid #003D82 !important;
 			}
-		</style>
+		</STYLE>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-<SCRIPT type="text/javascript">
-			function toggleSubmenu01() {
+		<SCRIPT type="text/javascript">
+			function toggleSubmenu01()
+			{
 				var submenu = document.getElementById('financialResourcesMenu01');
 				var button = document.getElementById('toggleButton01');
-				if ('none' === submenu.style.display) {
+				if( 'none' === submenu.style.display )
+				{
 					submenu.style.display = 'block';
 					button.innerHTML = 'Close Financial Service Menu';
-				} else {
+				}
+				else
+				{
 					submenu.style.display = 'none';
 					button.innerHTML = 'Show Financial Resources';
 				}
 			}
-			function toggleSubmenu02() {
+			function toggleSubmenu02()
+			{
 				var submenu = document.getElementById('financialResourcesMenu02');
 				var button = document.getElementById('toggleButton02');
-				if ('none' === submenu.style.display) {
+				if ('none' === submenu.style.display)
+				{
 					submenu.style.display = 'block';
 					button.innerHTML = 'Close GOVT RESOURCE Menu';
-				} else {
+				}
+				else
+				{
 					submenu.style.display = 'none';
 					button.innerHTML = 'Show GOVT Resources';
 				}
 			}
-window.onload = function() {
-    // Set both menus to be visible when the page loads
-    document.getElementById('financialResourcesMenu01').style.display = 'block';
-    document.getElementById('financialResourcesMenu02').style.display = 'block';
-    
-    // Optionally, you can change button text if menus are already shown
-    document.getElementById('toggleButton01').innerHTML = 'Close Financial Service Menu';
-    document.getElementById('toggleButton02').innerHTML = 'Close GOVT RESOURCE Menu';
-  };
+			window.onload = function()
+			{
+				document.getElementById('financialResourcesMenu01').style.display = 'block';
+				document.getElementById('financialResourcesMenu02').style.display = 'block';
+				document.getElementById('toggleButton01').innerHTML = 'Close Financial Service Menu';
+				document.getElementById('toggleButton02').innerHTML = 'Close GOVT RESOURCE Menu';
+			 };
 		</SCRIPT>
 		<DIV style="width:100%;display:block;margin:0;padding:0;">
-		<TABLE>
-			<TR>
-				<TD style="padding: 10px; text-align:left;">
-					<BUTTON id="toggleButton01" onclick="toggleSubmenu01()" style="display: block; margin: 20px; padding: 10px 20px; cursor: pointer; text-align: center; font-size: 18px; width: 100%; transition: background-color 0.3s;">Show Financial Resources</BUTTON>
-				</TD>
-				<TD style="padding: 10px; text-align:left;">
-					<BUTTON id="toggleButton02" onclick="toggleSubmenu02()" style="display: block; margin: 20px; padding: 10px 20px; cursor: pointer; text-align: center; font-size: 18px; width: 100%; transition: background-color 0.3s;">Show GOVT Resources</BUTTON>
-				</TD>
-			</TR>
-		</TABLE>
-		<TABLE>
-			<TBODY>
+			<TABLE>
 				<TR>
-					<!-- Financial Resources Menu (Left Column) -->
-					<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
-						<DIV id="financialResourcesMenu01" style="display: none; padding: 10px; margin-top: 10px;">
-							<span style="color: #FFCC00; font-weight: bold;">Financial Service Menu</span>
-							<H3>Financial Resources</H3>
-						<SCRIPT type='text/javascript'>
-							if( -1 != window.location.href.indexOf( "Increase-Daily-Salary") )
-							{
-								document.write( "<A href='Increase-Daily-Salary.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Increase Daily Salary</B></U></A>");
-							}
-							else
-							{
-								document.write( "<A href='Increase-Daily-Salary.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Increase Daily Salary</B></U></A>");
-							}
-							if( -1 != window.location.href.indexOf( "misinterest") )
-							{
-								document.write( "<A href='post-office-mis.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Post Office MIS</B></U></A>");
-							}
-							else
-							{
-								document.write( "<A href='post-office-mis.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Post Office MIS</B></U></A>");
-							}
-						</SCRIPT>
-						<NOSCRIPT>
-							<A href="post-office-mis.html" style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;"><B><U>Post Office MIS</B></U></A>
-						</NOSCRIPT>
-						<SCRIPT type='text/javascript'>
-							if( -1 != window.location.href.indexOf( "nsc") )
-							{
-								document.write( "<A href='post-office-nsc.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Post Office NSC</B></U></A>");
-							}
-							else
-							{
-								document.write( "<A href='post-office-nsc.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'>Post Office NSC</A>");
-							}
-						</SCRIPT>
-						<NOSCRIPT>
-							<A href="post-office-nsc.html" style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;">Post Office NSC</A>
-						</NOSCRIPT>
-						<SCRIPT type='text/javascript'>
-							if( -1 != window.location.href.indexOf( "bgas") )
-							{
-								document.write( "<A href='Bharath_gas_booking_steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Steps to book bharath gas online</B></U></A>");
-							}
-							else
-							{
-								document.write( "<A href='Bharath_gas_booking_steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'>Steps to book bharath gas online</A>");
-							}
-							if( -1 != window.location.href.indexOf( "igas") )
-							{
-								document.write( "<A href='Indian-Oil-Cylinder-Booking-Online-Steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Indian Oil Cylinder Booking Online Steps</B></U></A>");
-							}
-							else
-							{
-								document.write( "<A href='Indian-Oil-Cylinder-Booking-Online-Steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'>Indian Oil Cylinder Booking Online Steps</A>");
-							}
-						</SCRIPT>
-						<NOSCRIPT>
-							<A href='Bharath_gas_booking_steps.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;">Steps to book bharath gas online</A>
-							<A href='Indian-Oil-Cylinder-Booking-Online-Steps.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;">Indian Oil Cylinder Booking Online Steps</A>
-						</NOSCRIPT>
-						<SCRIPT type='text/javascript'>
-							if( -1 != window.location.href.indexOf( "sbietdr") )
-							{
-								document.write( "<A href='SBI_ETDR_INTEREST.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>SBI Fixed Deposit</B></U></A>");
-							}
-							else
-							{
-								document.write( "<A href='SBI_ETDR_INTEREST.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>SBI Fixed Deposit</B></U></A>");
-							}
-						</SCRIPT>
-						<NOSCRIPT>
-							<A href='SBI_ETDR_INTEREST.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;">SBI Fixed Deposit</A>
-						</NOSCRIPT>
-						</DIV>
+					<TD style="padding: 10px; text-align:left;">
+						<BUTTON id="toggleButton01" onclick="toggleSubmenu01()" style="display: block; margin: 20px; padding: 10px 20px; cursor: pointer; text-align: center; font-size: 18px; width: 100%; transition: background-color 0.3s;">Show Financial Resources</BUTTON>
 					</TD>
-
-					<!-- GOVT Resources Menu (Right Column) -->
-					<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
-						<DIV id="financialResourcesMenu02" style="display: none; padding: 10px; margin-top: 10px;">
-							<span style="color: #FFCC00; font-weight: bold;">GOVT RESOURCE Menu</span>
-							<H3>GOVT Resources</H3>
-						<SCRIPT type='text/javascript'>
-							if( -1 != window.location.href.indexOf( "gdp") )
-							{
-								document.write( "<A href='earth_politics_or_general_age.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>India GDP</B></U></A>");
-							}
-							else
-							{
-								document.write( "<A href='earth_politics_or_general_age.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>India GDP</B></U></A>");
-							}
-						</SCRIPT>
-						<NOSCRIPT>
-							<A href='earth_politics_or_general_age.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;"><B><U>India GDP</B></U></A>
-						</NOSCRIPT>
+					<TD style="padding: 10px; text-align:left;">
+						<BUTTON id="toggleButton02" onclick="toggleSubmenu02()" style="display: block; margin: 20px; padding: 10px 20px; cursor: pointer; text-align: center; font-size: 18px; width: 100%; transition: background-color 0.3s;">Show GOVT Resources</BUTTON>
+					</TD>
+				</TR>
+			</TABLE>
+			<TABLE>
+				<TBODY>
+					<TR>
+						<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
+							<DIV id="financialResourcesMenu01" style="display: none; padding: 10px; margin-top: 10px;">
+								<SPAN style="color: #FFCC00; font-weight: bold;">Financial Service Menu</SPAN>
+								<H3>Financial Resources</H3>
+								<SCRIPT type='text/javascript'>
+									if( -1 != window.location.href.indexOf( "Increase-Daily-Salary") )
+									{
+										document.write( "<A href='Increase-Daily-Salary.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Increase Daily Salary</B></U></A>");
+									}
+									else
+									{
+										document.write( "<A href='Increase-Daily-Salary.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Increase Daily Salary</B></U></A>");
+									}
+								</SCRIPT>
+								<SCRIPT type='text/javascript'>
+									if( -1 != window.location.href.indexOf( "bgas") )
+									{
+										document.write( "<A href='Pay_Book_Bharat_gas_online.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Steps to book bharath gas online</B></U></A>");
+									}
+									else
+									{
+										document.write( "<A href='Pay_Book_Bharat_gas_online.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'>Steps to book bharath gas online</A>");
+									}
+									if( -1 != window.location.href.indexOf( "igas") )
+									{
+										document.write( "<A href='Indian-Oil-Cylinder-Booking-Online-Steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>Indian Oil Cylinder Booking Online Steps</B></U></A>");
+									}
+									else
+									{
+										document.write( "<A href='Indian-Oil-Cylinder-Booking-Online-Steps.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'>Indian Oil Cylinder Booking Online Steps</A>");
+									}
+								</SCRIPT>
+								<NOSCRIPT>
+									<A href='Pay_Book_Bharat_gas_online.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;">Steps to book bharath gas online</A>
+									<A href='Indian-Oil-Cylinder-Booking-Online-Steps.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;">Indian Oil Cylinder Booking Online Steps</A>
+								</NOSCRIPT>
+							</DIV>
+						</TD>
+						<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
+							<DIV id="financialResourcesMenu02" style="display: none; padding: 10px; margin-top: 10px;">
+								<SPAN style="color: #FFCC00; font-weight: bold;">GOVT RESOURCE Menu</SPAN>
+								<H3>GOVT Resources</H3>
+								<SCRIPT type='text/javascript'>
+									if( -1 != window.location.href.indexOf( "gdp") )
+									{
+										document.write( "<A href='earth_politics_or_general_age.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>India GDP</B></U></A>");
+									}
+									else
+									{
+										document.write( "<A href='earth_politics_or_general_age.html' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;'><B><U>India GDP</B></U></A>");
+									}
+								</SCRIPT>
+								<NOSCRIPT>
+									<A href='earth_politics_or_general_age.html' style="display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;"><B><U>India GDP</B></U></A>
+								</NOSCRIPT>
+							</DIV>
 						</DIV>
 					</TD>
 				</TR>
