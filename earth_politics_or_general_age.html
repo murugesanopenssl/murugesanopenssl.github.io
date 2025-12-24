@@ -9,7 +9,7 @@
 		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 		<META http-equiv="Pragma" content="no-cache">
 		<META http-equiv="Expires" content="0">
-		<SCRIPT src='NMmenu004.js'>
+		<SCRIPT src='NMmenu010.js'>
 		</SCRIPT>
 		<SCRIPT type='text/javascript'>
 			writeMenu();
@@ -101,7 +101,7 @@ rankings</A> </TD> <TD valign='top' align='left'> <A HREF='.\MyProfileViewers.ht
 </TD> </TR> </TABLE>
 </NOSCRIPT>
 <SCRIPT type="text/javascript">
-	function DisplayYearToExpire( WAIT_YEARS )
+	function DisplayYearToExpire( WAIT_YEARS, name )
 	{
 		if( 1 == WAIT_YEARS)
 		{
@@ -114,6 +114,27 @@ rankings</A> </TD> <TD valign='top' align='left'> <A HREF='.\MyProfileViewers.ht
 		else
 		{
 			document.write( "<TD valign='top' align='left'>"+WAIT_YEARS+" MORE YEARS TO REACH 100TH AGE DURING THE YEAR:"+(required_date_yyyy+AGE_EXPIRY_COUNT));
+		}
+		if( 'undefined' != typeof name )
+		{
+			switch( name )
+			{
+				case "S RAMADOSS":
+					document.write( "<BR>Vanniyar community,<BR> a Backward Class (BC) caste in Tamil Nadu,<BR> India, known for its agricultural roots,<BR> and he founded the Pattali Makkal Katchi (PMK) party to politically represent this community.");
+					break;
+				case "SONIA GANDHI":
+					document.write( "<BR>Roman Catholic Christian family in Italy<BR>and does not belong to any Indian caste.");
+					break;
+				case "DONALD JOHN TRUMP":
+					document.write( "<BR>Donald John Trump is a Christian,<BR>specifically a Protestant, just like his father, Fred Trump.");
+					break;
+				case "M.K.STALIN":
+					document.write( "<BR>M.K.STALIN belongs to the Muthuraja community, which is classified as a Backward Class (BC) in Tamil Nadu.");
+					break;
+				case "RAHUL GANDHI":
+					document.write( "<BR>RAHUL GANDHI identifies as Hindu due to his father's (Rajiv Gandhi) Hindu background,<BR> even though he was born to a Christian mother.");
+					break;
+			}
 		}
 	}
 	ddd_dd_mmm_yyyy=new Date();
@@ -2111,7 +2132,7 @@ USA</TD>");
 										WAIT_YEARS="0"+WAIT_YEARS;
 									}
 									document.write( "</TD><TD valign='top' align='right' bgcolor='red'>INDIA</TD>");
-									DisplayYearToExpire( WAIT_YEARS );
+									DisplayYearToExpire( WAIT_YEARS, "RAHUL GANDHI" );
 									break;
 								case "N MURUGESAN":
 									document.write( "ALIVE ");
@@ -2120,7 +2141,7 @@ USA</TD>");
 										WAIT_YEARS="0"+WAIT_YEARS;
 									}
 									document.write( "</TD><TD valign='top' align='right' bgcolor='cyan'><FONT color='black'>INDIA</TD>");
-									DisplayYearToExpire( WAIT_YEARS );
+									DisplayYearToExpire( WAIT_YEARS, "N MURUGESAN" );
 									break;
 								case "EDAPPADI.K.PALANISWAMI":
 									document.write( "ALIVE ");
@@ -2138,7 +2159,7 @@ USA</TD>");
 										WAIT_YEARS="0"+WAIT_YEARS;
 									}
 									document.write( "</TD><TD valign='top' align='right' bgcolor='yellow'><FONT color='black'>P.M.K TAMILNADU</FONT></TD>");
-									DisplayYearToExpire( WAIT_YEARS );
+									DisplayYearToExpire( WAIT_YEARS, "ANBUMANI RAMADOSS" );
 									break;
 								case "KANIMOZHI KARUNANIDHI":
 									document.write( "ALIVE ");
@@ -2165,7 +2186,7 @@ USA</TD>");
 										WAIT_YEARS="0"+WAIT_YEARS;
 									}
 									document.write( "</TD><TD valign='top' align='right' bgcolor='red'>D.M.K TAMILNADU</TD>");
-									DisplayYearToExpire( WAIT_YEARS );
+									DisplayYearToExpire( WAIT_YEARS, "M.K.STALIN" );
 									break;
 								case "RAJINIKANTH":
 									document.write( "ALIVE ");
@@ -2219,7 +2240,7 @@ USA</TD>");
 										WAIT_YEARS="0"+WAIT_YEARS;
 									}
 									document.write( "</TD><TD valign='top' align='right' bgcolor='red'>UNITED STATES OF AMERICA</TD>");
-									DisplayYearToExpire( WAIT_YEARS );
+									DisplayYearToExpire( WAIT_YEARS, "DONALD JOHN TRUMP" );
 									break;
 								case "INCUMBENT HASAN AKHUND":
 									document.write( "ALIVE ");
@@ -2258,7 +2279,7 @@ USA</TD>");
 									{
 										document.write( "</TD><TD valign='top' align='right' bgcolor='yellow'><FONT color='black'>INDIA<BR><FONT color='black'>P.M.K TAMILNADU</TD>");
 									}
-									DisplayYearToExpire( WAIT_YEARS );
+									DisplayYearToExpire( WAIT_YEARS, "S RAMADOSS" );
 									break;
 								case "POPE LEO XIV<BR>ROBERT FRANCIS PREVOST":
 									document.write( "ALIVE ");
@@ -2306,7 +2327,7 @@ USA</TD>");
 									{
 										document.write( "</TD><TD valign='top' align='right' bgcolor='red'>INDIA</TD>");
 									}
-									DisplayYearToExpire( WAIT_YEARS );
+									DisplayYearToExpire( WAIT_YEARS, "SONIA GANDHI" );
 									break;
 								default:
 									document.write( "EXPIRED");
