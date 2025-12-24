@@ -111,90 +111,63 @@ function toggleSubmenu02()
 				};
 				xhr.send();
 			}
-			function loadHomeContent(event )
+			function loadMainContent(event )
 			{
 				event.preventDefault();
-				var xhr = new XMLHttpRequest();
-				var url = "handle-ATM-card-privileges.html";
-				xhr.open( "GET", url, true );
-				xhr.responseType = "document";
-				xhr.onload = function()
-				{
-					if( 200 === xhr.status )
-					{
-						var content = xhr.response.documentElement.innerHTML;
-						document.querySelector( ".main-content" ).innerHTML = content;
-						document.querySelector( ".sidebar-header #life-finance-helper" ).setAttribute( "href", "#" );
-						document.querySelector( ".sidebar-header #life-finance-helper" ).setAttribute( "onclick", "loadMainContent(event )" );
-					}
-					else
-					{
-						alert( "Failed to load content: " + xhr.status );
-					}
-				};
-				xhr.onerror = function()
-				{
-					alert( "Request error occurred." );
-				};
-				xhr.send();
+				var originalContent = `<HEADER class="content-header">
+							<H1>Welcome to Life Finance Helper1</H1>
+							<P class="tagline">Empowering financial literacy for low and middle-class families</P>
+				</HEADER>
+				<SECTION class="hero-section">
+						<TABLE class="content-table">
+							<TR>
+								<TD class="content-column">
+									<DIV class="mission-card">
+										<H2>Our Mission</H2>
+										<P>
+											After 2019, I noticed increasing financial difficulties among low and middle-class families. This website shares practical information to help people handle money issues throughout their lifetime.
+										</P>
+									</DIV>
+								</TD>
+								<TD class="content-column">
+									<DIV class="purpose-card">
+										<H2>Our Purpose</H2>
+										<P>
+											Based on the challenges people face, this site provides comprehensive guidance on banking, spending management, utilities, and technology - all aimed at helping you make better financial decisions and live more comfortably.
+										</P>
+									</DIV>
+								</TD>
+							<TD class="content-column">
+								<DIV class="feature-box">
+									<DIV class="feature-icon">&#x1F3E6;</DIV>
+									<H3>Banking Solutions</H3>
+									<P>Learn about Post Office schemes, FD interest rates, inter-bank transfers, and more.</P>
+								</DIV>
+							</TD>
+							</TR>
+							<TR>
+							<TD class="content-column">
+								<DIV class="feature-box">
+									<DIV class="feature-icon">&#x1F4B0;</DIV>
+										<H3>Smart Spending</H3>
+										<P>Track your daily expenses, visualize spending patterns, and discover saving strategies.</P>
+									</DIV>
+								</TD>
+								<TD class="content-column">
+									<DIV class="feature-box">
+										<DIV class="feature-icon">&#x1F527;</DIV>
+										<H3>Practical Utilities</H3>
+										<P>Home maintenance tips and knowledge sharing for everyday household problems.</P>
+									</DIV>
+								</TD>
+							</TR>
+						</TABLE>
+				</SECTION>
+				`;
+				document.querySelector( ".main-content" ).innerHTML = originalContent;
+				document.querySelector( ".sidebar-header #life-finance-helper" ).removeAttribute( "href" );
+				document.querySelector( ".sidebar-header #life-finance-helper" ).removeAttribute( "onclick" );
 			}
-function loadMainContent(event )
-{
-	event.preventDefault();
-	var originalContent = `<HEADER class="content-header">
-				<H1>Welcome to Life Finance Helper1</H1>
-				<P class="tagline">Empowering financial literacy for low and middle-class families</P>
-	</HEADER>
-	<SECTION class="hero-section">
-			<TABLE class="content-table">
-				<TR>
-					<TD class="content-column">
-						<DIV class="mission-card">
-							<H2>Our Mission</H2>
-							<P>
-								After 2019, I noticed increasing financial difficulties among low and middle-class families. This website shares practical information to help people handle money issues throughout their lifetime.
-							</P>
-						</DIV>
-					</TD>
-					<TD class="content-column">
-						<DIV class="purpose-card">
-							<H2>Our Purpose</H2>
-							<P>
-								Based on the challenges people face, this site provides comprehensive guidance on banking, spending management, utilities, and technology - all aimed at helping you make better financial decisions and live more comfortably.
-							</P>
-						</DIV>
-					</TD>
-				<TD class="content-column">
-					<DIV class="feature-box">
-						<DIV class="feature-icon">&#x1F3E6;</DIV>
-						<H3>Banking Solutions</H3>
-						<P>Learn about Post Office schemes, FD interest rates, inter-bank transfers, and more.</P>
-					</DIV>
-				</TD>
-				</TR>
-				<TR>
-				<TD class="content-column">
-					<DIV class="feature-box">
-						<DIV class="feature-icon">&#x1F4B0;</DIV>
-							<H3>Smart Spending</H3>
-							<P>Track your daily expenses, visualize spending patterns, and discover saving strategies.</P>
-						</DIV>
-					</TD>
-					<TD class="content-column">
-						<DIV class="feature-box">
-							<DIV class="feature-icon">&#x1F527;</DIV>
-							<H3>Practical Utilities</H3>
-							<P>Home maintenance tips and knowledge sharing for everyday household problems.</P>
-						</DIV>
-					</TD>
-				</TR>
-			</TABLE>
-	</SECTION>
-	`;
-	document.querySelector( ".main-content" ).innerHTML = originalContent;
-	document.querySelector( ".sidebar-header #life-finance-helper" ).removeAttribute( "href" );
-	document.querySelector( ".sidebar-header #life-finance-helper" ).removeAttribute( "onclick" );
-}
 document.addEventListener( 'DOMContentLoaded', function()
 {
 	const navItems = document.querySelectorAll( '.nav-item' );
@@ -388,190 +361,175 @@ restoreMenuState();
 window.addEventListener( 'beforeunload', saveMenuState );
 }
 );
-function loadHomeContent(event, htmlFileName )
-{
-	console.log( "=== loadHomeContent called ===" );
-	console.log( "Loading file:", htmlFileName );
-	if( "HandleBankAMB.html" == htmlFileName )
-	{
-		document.title = "ATM Card exception usage";
-	}
-	else if( "displayMoneyHelpMenu.html" == htmlFileName )
-	{
-		document.title = "Money Help Menu";
-	}
-	else if( "post-office-mis.html" == htmlFileName )
-	{
-		document.title = "Post Office MIS";
-	}
-	else if( "spending.html" == htmlFileName )
-	{
-		document.title = "Daily Spending";
-		console.log( "Setting title to 'Daily Spending'" );
-	}
-	else if( "my_exercise.html" == htmlFileName )
-	{
-		document.title = "My exercise";
-	}
-	else if( "SavedAmt.html" == htmlFileName )
-	{
-		document.title = "My saved amount";
-	}
-	event.preventDefault();
-	var xhr = new XMLHttpRequest();
-	var url = htmlFileName;
-	xhr.open( "GET", url, true );
-	xhr.responseType = "text";
-	xhr.onload = function()
-	{
-		console.log( "XHR onload - status:", xhr.status );
-		if(200 === xhr.status )
-		{
-			var content = xhr.responseText;
-			console.log( "Content loaded, length:", content.length );
-			content = content.replace(/<SCRIPT>\s*DisplayMainMenu\(\);\s*<\/SCRIPT>/gi, '' );
-			content = content.replace(/DisplayMainMenu\(\);?/gi, '' );
-			const mainContent = document.querySelector( ".main-content" );
-			console.log( "Main content area:", mainContent ? "FOUND" : "NOT FOUND" );
-			if( mainContent )
+			function loadHomeContent(event, htmlFileName )
 			{
-				mainContent.innerHTML = content;
-				if (htmlFileName === "my_exercise.html") {
-					console.log("=== Initializing My Exercise page ===");
-					if (typeof generateExerciseTable === "function") {
-						generateExerciseTable();
+				console.log("=== loadHomeContent called ===");
+				console.log("Loading file:", htmlFileName);
+				
+				if ("HandleBankAMB.html" == htmlFileName) {
+					document.title = "ATM Card exception usage";
+				} else if ("displayMoneyHelpMenu.html" == htmlFileName) {
+					document.title = "Money Help Menu";
+				} else if ("post-office-mis.html" == htmlFileName) {
+					document.title = "Post Office MIS";
+				} else if ("spending.html" == htmlFileName) {
+					document.title = "Daily Spending";
+					console.log("Setting title to 'Daily Spending'");
+				} else if ("my_exercise.html" == htmlFileName) {
+					document.title = "My exercise";
+				} else if ("SavedAmt.html" == htmlFileName) {
+					document.title = "My saved amount";
+				}
+				
+				event.preventDefault();
+				var xhr = new XMLHttpRequest();
+				var url = htmlFileName;
+				xhr.open("GET", url, true);
+				xhr.responseType = "text";
+				
+				xhr.onload = function() {
+					console.log("XHR onload - status:", xhr.status);
+					if (200 === xhr.status) {
+						var content = xhr.responseText;
+						console.log("Content loaded, length:", content.length);
+						
+						content = content.replace(/<SCRIPT>\s*DisplayMainMenu\(\);\s*<\/SCRIPT>/gi, '');
+						content = content.replace(/DisplayMainMenu\(\);?/gi, '');
+						
+						const mainContent = document.querySelector(".main-content");
+						console.log("Main content area:", mainContent ? "FOUND" : "NOT FOUND");
+						
+						if (mainContent) {
+							mainContent.innerHTML = content;
+							
+							// Process and execute scripts
+							var tempDiv = document.createElement('div');
+							tempDiv.innerHTML = content;
+							var scripts = tempDiv.querySelectorAll('script');
+							console.log("Found", scripts.length, "script tags");
+							
+							scripts.forEach(function(script, index) {
+								console.log("Processing script", index + 1);
+								var newScript = document.createElement('script');
+								
+								if (script.src) {
+									console.log("External script:", script.src);
+									newScript.src = script.src;
+									if (script.src.includes('firebase')) {
+										console.log("Firebase script detected");
+										newScript.onload = function() {
+											console.log("Firebase script loaded:", script.src);
+										};
+									}
+								} else {
+									var scriptText = script.textContent;
+									if (!scriptText.includes('DisplayMainMenu')) {
+										console.log("Inline script, length:", scriptText.length);
+										
+										// CRITICAL FIX: Replace window.onload with immediate execution
+										if (htmlFileName === "my_exercise.html") {
+											scriptText = scriptText.replace(
+												/window\.onload\s*=\s*function\s*\(\s*\)\s*\{/g,
+												'(function(){'
+											);
+											scriptText = scriptText.replace(/\}\s*;\s*$/, '})();');
+										}
+										
+										newScript.textContent = scriptText;
+									} else {
+										console.log("Skipping DisplayMainMenu script");
+									}
+								}
+								
+								if (script.type) {
+									newScript.type = script.type;
+								}
+								document.body.appendChild(newScript);
+							});
+							
+							console.log("All scripts processed");
+							
+							// Special handling for my_exercise.html
+							if (htmlFileName === "my_exercise.html") {
+								console.log("=== Initializing My Exercise page ===");
+								setTimeout(function() {
+									if (typeof buildMonthSelect === "function") {
+										console.log("Calling buildMonthSelect()");
+										buildMonthSelect();
+									}
+									if (typeof generateExerciseTable === "function") {
+										console.log("Calling generateExerciseTable()");
+										generateExerciseTable();
+									} else {
+										console.warn("generateExerciseTable() not found!");
+									}
+								}, 100);
+							}
+							
+							// Special handling for spending.html
+							if (htmlFileName === "spending.html") {
+								console.log("=== Special handling for spending.html ===");
+								setTimeout(function() {
+									console.log("Timeout 1 (500ms) - checking for elements...");
+									const preventTable = document.getElementById("PreventWastage");
+									const homeTable = document.getElementById("HomeTable");
+									const catTable = document.getElementById("CategoryAmountDetailsTab");
+									console.log("PreventWastage:", preventTable ? "EXISTS" : "MISSING");
+									console.log("HomeTable:", homeTable ? "EXISTS" : "MISSING");
+									console.log("CategoryAmountDetailsTab:", catTable ? "EXISTS" : "MISSING");
+									
+									if (typeof window.initSpendingPage === 'function') {
+										console.log("Calling window.initSpendingPage()");
+										window.initSpendingPage();
+									} else if (typeof initSpendingPage === 'function') {
+										console.log("Calling initSpendingPage()");
+										initSpendingPage();
+									} else {
+										console.error("initSpendingPage NOT FOUND!");
+										if (typeof window.initAndLoad === 'function') {
+											console.log("Calling window.initAndLoad() directly");
+											window.initAndLoad();
+										} else if (typeof initAndLoad === 'function') {
+											console.log("Calling initAndLoad() directly");
+											initAndLoad();
+										} else {
+											console.error("initAndLoad NOT FOUND either!");
+										}
+									}
+								}, 500);
+							}
+						}
+						
+						let lifeFinanceHelperLink = document.querySelector(".sidebar-header #life-finance-helper");
+						if (lifeFinanceHelperLink) {
+							lifeFinanceHelperLink.setAttribute("href", "#");
+							lifeFinanceHelperLink.setAttribute("onclick", "loadMainContent(event)");
+						}
+						
+						document.querySelectorAll(".nav-item").forEach(item => {
+							item.classList.remove("active");
+						});
+						
+						let activeLink = document.querySelector(`[onclick*="${htmlFileName}"]`);
+						if (activeLink) {
+							activeLink.closest(".nav-item").classList.add("active");
+						}
+						
+						console.log("=== loadHomeContent complete ===");
 					} else {
-						console.warn("generateExerciseTable() not found!");
+						console.error("XHR failed with status:", xhr.status);
+						alert("Failed to load content: " + xhr.status);
 					}
-				}
+				};
+				
+				xhr.onerror = function() {
+					console.error("XHR error occurred");
+					alert("Request error occurred.");
+				};
+				
+				console.log("Sending XHR request...");
+				xhr.send();
 			}
-			if( htmlFileName === "spending.html" )
-			{
-				console.log( "=== Special handling for spending.html ===" );
-				setTimeout(function()
-					{
-						console.log( "Timeout 1 (500ms ) - checking for elements..." );
-						const preventTable = document.getElementById( "PreventWastage" );
-						const homeTable = document.getElementById( "HomeTable" );
-						const catTable = document.getElementById( "CategoryAmountDetailsTab" );
-						console.log( "PreventWastage:", preventTable ? "EXISTS" : "MISSING" );
-						console.log( "HomeTable:", homeTable ? "EXISTS" : "MISSING" );
-						console.log( "CategoryAmountDetailsTab:", catTable ? "EXISTS" : "MISSING" );
-						if( typeof window.initSpendingPage === 'function' )
-						{
-							console.log( "Calling window.initSpendingPage()" );
-							window.initSpendingPage();
-						}
-						else if( typeof initSpendingPage === 'function' )
-						{
-							console.log( "Calling initSpendingPage()" );
-							initSpendingPage();
-						}
-						else
-						{
-							console.error( "initSpendingPage NOT FOUND!" );
-							if( typeof window.initAndLoad === 'function' )
-							{
-								console.log( "Calling window.initAndLoad() directly" );
-								window.initAndLoad();
-							}
-							else if( typeof initAndLoad === 'function' )
-							{
-							console.log( "Calling initAndLoad() directly" );
-							initAndLoad();
-							}
-							else
-							{
-							console.error( "initAndLoad NOT FOUND either!" );
-							}
-						}
-					},
-				500);
-				setTimeout(function()
-					{
-						console.log( "Timeout 2 (1000ms ) - second attempt..." );
-						if( 'function' === typeof window.initAndLoad )
-						{
-							console.log( "Second attempt: calling window.initAndLoad()" );
-							window.initAndLoad();
-						}
-					},
-				1000);
-			}
-			var tempDiv = document.createElement( 'div' );
-			tempDiv.innerHTML = content;
-			var scripts = tempDiv.querySelectorAll( 'script' );
-			console.log( "Found", scripts.length, "script tags" );
-			scripts.forEach(function(script, index )
-				{
-					console.log( "Processing script", index + 1);
-					var newScript = document.createElement( 'script' );
-					if( script.src )
-					{
-						console.log( "External script:", script.src );
-						newScript.src = script.src;
-						if( script.src.includes( 'firebase' ) )
-						{
-							console.log( "Firebase script detected" );
-							newScript.onload = function()
-							{
-								console.log( "Firebase script loaded:", script.src );
-							};
-						}
-					}
-					else
-					{
-						var scriptText = script.textContent;
-						if( !scriptText.includes( 'DisplayMainMenu' ) )
-						{
-							console.log( "Inline script, length:", scriptText.length );
-							newScript.textContent = scriptText;
-						}
-						else
-						{
-							console.log( "Skipping DisplayMainMenu script" );
-						}
-					}
-					if( script.type )
-					{
-						newScript.type = script.type;
-					}
-					document.body.appendChild(newScript );
-				}
-			);
-			console.log( "All scripts processed" );
-			let lifeFinanceHelperLink = document.querySelector( ".sidebar-header #life-finance-helper" );
-			if( lifeFinanceHelperLink )
-			{
-				lifeFinanceHelperLink.setAttribute( "href", "#" );
-				lifeFinanceHelperLink.setAttribute( "onclick", "loadMainContent(event )" );
-			}
-			document.querySelectorAll( ".nav-item" ).forEach( item =>
-				{
-					item.classList.remove( "active" );
-				}
-			);
-			let activeLink = document.querySelector(`[onclick*="${htmlFileName}"]`);
-			if( activeLink )
-			{
-				activeLink.closest( ".nav-item" ).classList.add( "active" );
-			}
-			console.log( "=== loadHomeContent complete ===" );
-		}
-		else
-		{
-			console.error( "XHR failed with status:", xhr.status );
-			alert( "Failed to load content: " + xhr.status );
-		}
-	};
-	xhr.onerror = function()
-	{
-		console.error( "XHR error occurred" );
-		alert( "Request error occurred." );
-	};
-	console.log( "Sending XHR request..." );
-	xhr.send();
-}
 function DispIndx(tdcolor )
 {
 	if( 'undefined' == typeof indx )
@@ -656,7 +614,7 @@ function DisplayMainMenu()
 	}
 	if( -1 !== location_url.indexOf( "index.html" ) )
 	{
-		document.write( "<H2><A id='life-finance-helper'>Life Finance Helper2</A></H2>" );
+		document.write( "<H2><A id='life-finance-helper'><FONT color='#FFD700'><B><U>Life Finance Helper2</B></U></FONT></A></H2>" );
 	}
 	else
 	{
@@ -666,20 +624,29 @@ function DisplayMainMenu()
 	<NAV class="sidebar-nav">
 		<UL class="nav-list">
 			<LI class="nav-item">
-				<A href="#" onclick="MainPageHomeLoadContent(event, 'HandleBankAMB.html' )" class="nav-link">
+				<A class="nav-link">
 					<SPAN class="nav-icon">&#127974;</SPAN>
-					<SPAN class="nav-text"><FONT color='black'>AtmTips</FONT></SPAN>
+					<SPAN class="nav-text"><FONT color='black'>Handle Money Errs</FONT></SPAN>
 					<SPAN class="nav-arrow">&gt;</SPAN>
 				</A>
 				<UL class="submenu">
 					<LI>
-						<A href="#" onclick="loadHomeContent(event, 'displayMoneyHelpMenu.html' )" class="nav-link">Money Help1</A>
-						<UL class="submenu-level-2">
-							<LI><A href="#" onclick='window.open( "Increase-Daily-Salary.html" );'>Increase Daily Salary</A></LI>
-							<LI><A href="#" onclick='window.open( "Bharath_gas_booking_steps.html" );'>Bharath gas online booking steps</A></LI>
-							<LI><A href="#" onclick='window.open( "Indian-Oil-Cylinder-Booking-Online-Steps.html" );'>Indian Oil gas online booking steps</A></LI>
-							<LI><A href="#" onclick='window.open( "Disp-all-gdp.html" );'>GDP / Economic Output</A></LI>
-						</UL>
+						<A href="#" onclick="javascript:loadHomeContent(event, 'HandleBankAMB.html');" class="nav-link">AtmTips0</A>
+					</LI>
+					<LI>
+						<A href="#" onclick="javascript:loadHomeContent(event, 'displayMoneyHelpMenu.html');" class="nav-link">Money Help0</A>
+					</LI>
+					<LI>
+						<A href="#" onclick="javascript:loadHomeContent(event, 'Increase-Daily-Salary.html');" class="nav-link">Increase daily salary</A>
+					</LI>
+					<LI>
+						<A href="#" onclick="javascript:loadHomeContent(event, 'Bharath_gas_booking_steps.html');" class="nav-link">Bharath gas online booking steps</A>
+					</LI>
+					<LI>
+						<A href="#" onclick="javascript:loadHomeContent(event, 'Indian-Oil-Cylinder-Booking-Online-Steps.html');" class="nav-link">Indian oil gas online booking steps</A>
+					</LI>
+					<LI>
+						<A href="#" onclick="javascript:loadHomeContent(event, 'my_exercise.html');" class="nav-link">My01 exercise</A>
 					</LI>
 				</UL>
 			</LI>
@@ -705,25 +672,25 @@ function DisplayMainMenu()
 	</UL>
 	</LI>
 	<LI class="nav-item">
-	<A href="#" class="nav-link">
-	<SPAN class="nav-icon">&#x1F4B0;</SPAN>
-	<SPAN class="nav-text"><FONT color='black'>Spending</FONT></SPAN>
-	<SPAN class="nav-arrow">&gt;</SPAN>
-	</A>
-	<UL class="submenu">
-		<LI>
-			<A href=#"" onclick="javascript:window.open('spending.html');" class="nav-link">Daily spending</A>
-		</LI>
-		<LI>
-			<A href="#" onclick="javascript:loadHomeContent(event, 'SavedAmt.html');" class="nav-link">Saved amount</A>
-		</LI>
-		<LI>
-			<A href="#" onclick="javascript:window.open('spending-chart.html');" class="nav-link">Spending chat</A>
-		</LI>
-		<LI>
-			<A href="#" onclick="javascript:window.open('my_exercise.html');" class="nav-link">My exercise</A>
-		</LI>
-	</UL>
+		<A href="#" class="nav-link">
+			<SPAN class="nav-icon">&#x1F4B0;</SPAN>
+			<SPAN class="nav-text"><FONT color='black'>Spending</FONT></SPAN>
+			<SPAN class="nav-arrow">&gt;</SPAN>
+		</A>
+		<UL class="submenu">
+			<LI>
+				<A href=#"" onclick="javascript:window.open('spending.html');" class="nav-link">Daily spending</A>
+			</LI>
+			<LI>
+				<A href="#" onclick="javascript:loadHomeContent(event, 'SavedAmt.html');" class="nav-link">Saved amount</A>
+			</LI>
+			<LI>
+				<A href="#" onclick="javascript:window.open('spending-chart.html');" class="nav-link">Spending chat</A>
+			</LI>
+			<LI>
+				<A href="#" onclick="javascript:loadHomeContent(event, 'my_exercise.html');" class="nav-link">My exercise</A>
+			</LI>
+		</UL>
 	</LI>
 	<LI class="nav-item">
 	<A href="#" class="nav-link">
