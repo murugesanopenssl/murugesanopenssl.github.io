@@ -1,0 +1,2676 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<LINK href='github.io.css' rel="stylesheet">
+		<META content="MSHTML 6.00.2800.1400" name="GENERATOR">
+		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<META http-equiv="Pragma" content="no-cache">
+		<META http-equiv="Expires" content="0">
+		<TITLE>
+			putty.exe Settings at Windows
+		</TITLE>
+	</HEAD>
+	<BODY topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+		<SCRIPT type="text/javascript" src="NMmenu006.js">
+		</SCRIPT>
+		<SCRIPT type='text/javascript'>
+			writeMenu();
+		</SCRIPT>
+		<TABLE border='1' style="height:100%;" width="100%">
+			<TBODY>
+				<TR>
+					<TD valign="top" bgcolor="white">
+						putty.exe Settings at Windows<BR>
+						<A href='Windows_ERR_HELP.html#putty_settings'>Windows_ERR_HELP</A>
+					</TD>
+				</TR>
+				<TR>
+					<TD valign=top style="text-align: left;">
+<PRE>#!/bin/bash
+OS_NAME=$(/usr/bin/uname -s | /usr/bin/sed "s/-[0-9].*\.[0-9].*-[0-9].*$//;")
+MODEL_NAME=$(/usr/bin/uname -m)
+REL_NAME=$(/usr/bin/uname -r | /usr/bin/sed "s/-[0-9].*\.$MODEL//;")
+unalias DispResult >/dev/null 2>&1
+unset -f DispResult
+DispResult ()
+{
+	echo "$@" |\
+	/usr/bin/awk '{
+		if( 6 <= NF )
+		{
+			printf( "%-27s %-10s %s %s %-48s validation %s\n", $1, $2, $3, $4, $5, $6);
+		}
+		else if( 4 <= NF )
+		{
+			printf( "%-27s %-10s %-63s validation %s\n", $1, $2, $3, $4);
+		}
+		else
+		{
+			if( "Courier_New" == $3 )
+			{
+				printf( "%-27s %-10s %-63s validation %s\n", $1, $2, "", "Courier New");
+			}
+			else
+			{
+				printf( "%-27s %-10s %-63s validation %s\n", $1, $2, "", $3);
+			}
+		}
+	}'
+	Ret=$?
+	return $Ret
+}
+for EachPuttySettingsUser in \
+"Default%20Settings" \
+$LOGNAME@127.0.0.1
+do
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep Present 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		echo "reg.exe add \"HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser\" /f /v Present /t REG_DWORD /d \"0x1\""
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Present /t REG_DWORD /d "0x1"
+	else
+		DispResult Present REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep HostName 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		echo "reg.exe add \"HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser\" /f /v HostName /t REG_SZ"
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v HostName /t REG_SZ
+	else
+		DispResult HostName REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep LogFileName 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "C:\\\Users\\\$LOGNAME\\\&H_&M_&Y_&T\.txt" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LogFileName /t REG_SZ /d "C:\Users\$LOGNAME\&H_&M_&Y_&T.txt"
+	else
+		DispResult LogFileName REG_SZ "C:\\Users\\$LOGNAME\\&H_&M_&Y_&T.txt" PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep LogType 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LogType /t REG_DWORD /d "0x0"
+	else
+		DispResult LogType REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep LogFileClash 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0xffffffff" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		echo "reg.exe add \"HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser\" /f /v LogFileClash /t REG_DWORD /d \"0xffffffff\""
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LogFileClash /t REG_DWORD /d "0xffffffff"
+	else
+		DispResult LogFileClash REG_DWORD 0xffffffff PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "LogFlush" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LogFlush /t REG_DWORD /d "0x1"
+	else
+		DispResult LogFlush REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SSHLogOmitPasswords" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SSHLogOmitPasswords /t REG_DWORD /d "0x1"
+	else
+		DispResult LogFlush REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SSHLogOmitData" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SSHLogOmitData /t REG_DWORD /d "0x0"
+	else
+		DispResult LogFlush REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Protocol" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "ssh" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Protocol /t REG_SZ /d "ssh"
+	else
+		DispResult Protocol REG_SZ ssh PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "PortNumber" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x16" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v PortNumber /t REG_DWORD /d "0x16"
+	else
+		DispResult PortNumber REG_DWORD 0x16 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "CloseOnExit" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WarnOnClose /t REG_DWORD /d "0x1"
+	else
+		DispResult WarnOnClose REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "PingInterval" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v PingInterval /t REG_DWORD /d "0x0"
+	else
+		DispResult PingInterval REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "PingIntervalSecs" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v PingIntervalSecs /t REG_DWORD /d "0x0"
+	else
+		DispResult PingIntervalSecs REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "TCPNoDelay" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v TCPNoDelay /t REG_DWORD /d "0x1"
+	else
+		DispResult TCPNoDelay REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "TCPKeepalives" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v TCPKeepalives /t REG_DWORD /d "0x0"
+	else
+		DispResult TCPKeepalives REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "TerminalType" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "xterm" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v TerminalType /t REG_SZ /d "xterm"
+	else
+		DispResult TCPKeepalives REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "TerminalSpeed" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "38400,38400" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v TerminalSpeed /t REG_SZ /d "38400,38400"
+	else
+		DispResult TCPKeepalives REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "TerminalModes" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "CS7=A,CS8=A,DISCARD=A,DSUSP=A,ECHO=A,ECHOCTL=A,ECHOE=A,ECHOK=A,ECHOKE=A,ECHONL=A,EOF=A,EOL=A,EOL2=A,ERASE=A,FLUSH=A,ICANON=A,ICRNL=A,IEXTEN=A,IGNCR=A,IGNPAR=A,IMAXBEL=A,INLCR=A,INPCK=A,INTR=A,ISIG=A,ISTRIP=A,IUCLC=A,IUTF8=A,IXANY=A,IXOFF=A,IXON=A,KILL=A,LNEXT=A,NOFLSH=A,OCRNL=A,OLCUC=A,ONLCR=A,ONLRET=A,ONOCR=A,OPOST=A,PARENB=A,PARMRK=A,PARODD=A,PENDIN=A,QUIT=A,REPRINT=A,START=A,STATUS=A,STOP=A,SUSP=A,SWTCH=A,TOSTOP=A,WERASE=A,XCASE=A" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v TerminalModes /t REG_SZ /d "CS7=A,CS8=A,DISCARD=A,DSUSP=A,ECHO=A,ECHOCTL=A,ECHOE=A,ECHOK=A,ECHOKE=A,ECHONL=A,EOF=A,EOL=A,EOL2=A,ERASE=A,FLUSH=A,ICANON=A,ICRNL=A,IEXTEN=A,IGNCR=A,IGNPAR=A,IMAXBEL=A,INLCR=A,INPCK=A,INTR=A,ISIG=A,ISTRIP=A,IUCLC=A,IUTF8=A,IXANY=A,IXOFF=A,IXON=A,KILL=A,LNEXT=A,NOFLSH=A,OCRNL=A,OLCUC=A,ONLCR=A,ONLRET=A,ONOCR=A,OPOST=A,PARENB=A,PARMRK=A,PARODD=A,PENDIN=A,QUIT=A,REPRINT=A,START=A,STATUS=A,STOP=A,SUSP=A,SWTCH=A,TOSTOP=A,WERASE=A,XCASE=A"
+	else
+		DispResult TCPKeepalives REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "AddressFamily" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v AddressFamily /t REG_DWORD /d "0x0"
+	else
+		DispResult TCPKeepalives REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ProxyExcludeList" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ProxyExcludeList /t REG_SZ
+	else
+		DispResult ProxyExcludeList REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ProxyDNS" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ProxyDNS /t REG_DWORD /d "0x1"
+	else
+		DispResult ProxyDNS REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ProxyLocalhost" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ProxyLocalhost /t REG_DWORD /d "0x0"
+	else
+		DispResult ProxyDNS REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ProxyMethod" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ProxyMethod /t REG_DWORD /d "0x0"
+	else
+		DispResult ProxyDNS REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ProxyHost" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "proxy" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ProxyHost /t REG_SZ /d "proxy"
+	else
+		DispResult ProxyHost REG_SZ proxy PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ProxyPort" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x50" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ProxyPort /t REG_DWORD /d "0x50"
+	else
+		DispResult ProxyPort REG_DWORD 0x50 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ProxyUsername" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ProxyUsername /t REG_SZ
+	else
+		DispResult ProxyUsername REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ProxyPassword" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ProxyPassword /t REG_SZ
+	else
+		DispResult ProxyPassword REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ProxyTelnetCommand" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "connect %host %port\\\n" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ProxyTelnetCommand /t REG_SZ /d "connect %host %port\\\n"
+	else
+		DispResult ProxyTelnetCommand REG_SZ "connect %%host %%port\\n" PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ProxyLogToTerm" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ProxyLogToTerm /t REG_DWORD /d "0x1"
+	else
+		DispResult ProxyLogToTerm REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Environment" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Environment /t REG_SZ
+	else
+		DispResult Environment REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "UserName" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v UserName /t REG_SZ
+	else
+		DispResult UserName REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "UserNameFromEnvironment" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v UserNameFromEnvironment /t REG_DWORD /d "0x0"
+	else
+		DispResult UserNameFromEnvironment REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "LocalUserName" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LocalUserName /t REG_SZ
+	else
+		DispResult LocalUserName REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "NoPTY" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v NoPTY /t REG_DWORD /d "0x0"
+	else
+		DispResult NoPTY REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Compression" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Compression /t REG_DWORD /d "0x0"
+	else
+		DispResult Compression REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "TryAgent" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v TryAgent /t REG_DWORD /d "0x1"
+	else
+		DispResult TryAgent REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "AgentFwd" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v AgentFwd /t REG_DWORD /d "0x0"
+	else
+		DispResult AgentFwd REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "GssapiFwd" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v GssapiFwd /t REG_DWORD /d "0x0"
+	else
+		DispResult GssapiFwd REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ChangeUsername" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ChangeUsername /t REG_DWORD /d "0x0"
+	else
+		DispResult ChangeUsername REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Cipher" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "aes,chacha20,blowfish,3des,WARN,arcfour,des" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Cipher /t REG_SZ /d "aes,chacha20,blowfish,3des,WARN,arcfour,des"
+	else
+		DispResult Cipher REG_SZ aes,chacha20,blowfish,3des,WARN,arcfour,des PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "KEX" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v KEX /t REG_SZ /d "ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1"
+	else
+		DispResult KEX REG_SZ ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "HostKey" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "ed25519,ecdsa,rsa,dsa,WARN" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v HostKey /t REG_SZ /d "ed25519,ecdsa,rsa,dsa,WARN"
+	else
+		DispResult HostKey REG_SZ ed25519,ecdsa,rsa,dsa,WARN PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "RekeyTime" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x3c" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v RekeyTime /t REG_DWORD /d "0x3c"
+	else
+		DispResult RekeyTime REG_DWORD 0x3c PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "RekeyBytes" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "1G" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v RekeyBytes /t REG_SZ /d "1G"
+	else
+		DispResult RekeyBytes REG_SZ 1G PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SshNoAuth" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SshNoAuth /t REG_DWORD /d "0x0"
+	else
+		DispResult SshNoAuth REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SshBanner" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SshBanner /t REG_DWORD /d "0x1"
+	else
+		DispResult SshBanner REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "AuthTIS" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v AuthTIS /t REG_DWORD /d "0x0"
+	else
+		DispResult AuthTIS REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "AuthKI" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v AuthKI /t REG_DWORD /d "0x1"
+	else
+		DispResult AuthKI REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "AuthGSSAPI" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v AuthGSSAPI /t REG_DWORD /d "0x1"
+	else
+		DispResult AuthGSSAPI REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "GSSLibs" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "gssapi32,sspi,custom" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v GSSLibs /t REG_SZ /d "gssapi32,sspi,custom"
+	else
+		DispResult GSSLibs REG_SZ gssapi32,sspi,custom PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "GSSCustom" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v GSSCustom /t REG_SZ
+	else
+		DispResult GSSCustom REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SshNoShell" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SshNoShell /t REG_DWORD /d "0x0"
+	else
+		DispResult SshNoShell REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SshProt" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x3" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SshProt /t REG_DWORD /d "0x3"
+	else
+		DispResult SshProt REG_DWORD 0x3 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "LogHost" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LogHost /t REG_SZ
+	else
+		DispResult LogHost REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SSH2DES" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SSH2DES /t REG_DWORD /d "0x0"
+	else
+		DispResult SSH2DES REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "PublicKeyFile" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v PublicKeyFile /t REG_SZ
+	else
+		DispResult PublicKeyFile REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "RemoteCommand" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v RemoteCommand /t REG_SZ
+	else
+		DispResult RemoteCommand REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "RFCEnviron" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v RFCEnviron /t REG_DWORD /d "0x0"
+	else
+		DispResult RFCEnviron REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "PassiveTelnet" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v PassiveTelnet /t REG_DWORD /d "0x0"
+	else
+		DispResult PassiveTelnet REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BackspaceIsDelete" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BackspaceIsDelete /t REG_DWORD /d "0x1"
+	else
+		DispResult BackspaceIsDelete REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "RXVTHomeEnd" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v RXVTHomeEnd /t REG_DWORD /d "0x0"
+	else
+		DispResult RXVTHomeEnd REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "LinuxFunctionKeys" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LinuxFunctionKeys /t REG_DWORD /d "0x0"
+	else
+		DispResult LinuxFunctionKeys REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "NoApplicationKeys" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v NoApplicationKeys /t REG_DWORD /d "0x0"
+	else
+		DispResult NoApplicationKeys REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "NoApplicationCursors" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v NoApplicationCursors /t REG_DWORD /d "0x0"
+	else
+		DispResult NoApplicationCursors REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "NoMouseReporting" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v NoMouseReporting /t REG_DWORD /d "0x0"
+	else
+		DispResult NoMouseReporting REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "NoRemoteResize" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v NoRemoteResize /t REG_DWORD /d "0x0"
+	else
+		DispResult NoRemoteResize REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "NoAltScreen" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v NoAltScreen /t REG_DWORD /d "0x0"
+	else
+		DispResult NoAltScreen REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "NoRemoteWinTitle" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v NoRemoteWinTitle /t REG_DWORD /d "0x0"
+	else
+		DispResult NoRemoteWinTitle REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "NoRemoteClearScroll" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v NoRemoteClearScroll /t REG_DWORD /d "0x0"
+	else
+		DispResult NoRemoteClearScroll REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "RemoteQTitleAction" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v RemoteQTitleAction /t REG_DWORD /d "0x1"
+	else
+		DispResult RemoteQTitleAction REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "NoDBackspace" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v NoDBackspace /t REG_DWORD /d "0x0"
+	else
+		DispResult NoDBackspace REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "NoRemoteCharset" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v NoRemoteCharset /t REG_DWORD /d "0x0"
+	else
+		DispResult NoRemoteCharset REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ApplicationCursorKeys" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ApplicationCursorKeys /t REG_DWORD /d "0x0"
+	else
+		DispResult ApplicationCursorKeys REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ApplicationKeypad" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ApplicationKeypad /t REG_DWORD /d "0x0"
+	else
+		DispResult ApplicationKeypad REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "NetHackKeypad" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v NetHackKeypad /t REG_DWORD /d "0x0"
+	else
+		DispResult NetHackKeypad REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "AltF4" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v AltF4 /t REG_DWORD /d "0x1"
+	else
+		DispResult AltF4 REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "AltSpace" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v AltSpace /t REG_DWORD /d "0x1"
+	else
+		DispResult AltSpace REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "AltOnly" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v AltOnly /t REG_DWORD /d "0x0"
+	else
+		DispResult AltOnly REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ComposeKey" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ComposeKey /t REG_DWORD /d "0x0"
+	else
+		DispResult ComposeKey REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "CtrlAltKeys" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v CtrlAltKeys /t REG_DWORD /d "0x1"
+	else
+		DispResult CtrlAltKeys REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "TelnetKey" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v TelnetKey /t REG_DWORD /d "0x0"
+	else
+		DispResult TelnetKey REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "TelnetRet" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v TelnetRet /t REG_DWORD /d "0x1"
+	else
+		DispResult TelnetRet REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "LocalEcho" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x2" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LocalEcho /t REG_DWORD /d "0x2"
+	else
+		DispResult LocalEcho REG_DWORD 0x2 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "LocalEdit" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x2" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LocalEdit /t REG_DWORD /d "0x2"
+	else
+		DispResult LocalEdit REG_DWORD 0x2 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Answerback" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "PuTTY" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Answerback /t REG_SZ /d "PuTTY"
+	else
+		DispResult Answerback REG_DWORD PuTTY PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "AlwaysOnTop" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v AlwaysOnTop /t REG_DWORD /d "0x0"
+	else
+		DispResult AlwaysOnTop REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "FullScreenOnAltEnter" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v FullScreenOnAltEnter /t REG_DWORD /d "0x0"
+	else
+		DispResult FullScreenOnAltEnter REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "HideMousePtr" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v HideMousePtr /t REG_DWORD /d "0x0"
+	else
+		DispResult HideMousePtr REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SunkenEdge" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SunkenEdge /t REG_DWORD /d "0x0"
+	else
+		DispResult SunkenEdge REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "WindowBorder" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WindowBorder /t REG_DWORD /d "0x1"
+	else
+		DispResult WindowBorder REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "CurType" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v CurType /t REG_DWORD /d "0x0"
+	else
+		DispResult CurType REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BlinkCur" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BlinkCur /t REG_DWORD /d "0x0"
+	else
+		DispResult BlinkCur REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Beep" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Beep /t REG_DWORD /d "0x1"
+	else
+		DispResult Beep REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BeepInd" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BeepInd /t REG_DWORD /d "0x0"
+	else
+		DispResult BeepInd REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BellWaveFile" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BellWaveFile /t REG_SZ
+	else
+		DispResult BellWaveFile REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BellOverload" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BellOverload /t REG_DWORD /d "0x1"
+	else
+		DispResult BellOverload REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BellOverloadN" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x5" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BellOverloadN /t REG_DWORD /d "0x5"
+	else
+		DispResult BellOverloadN REG_DWORD 0x5 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BellOverloadT" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x7d0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BellOverloadT /t REG_DWORD /d "0x7d0"
+	else
+		DispResult BellOverloadT REG_DWORD 0x7d0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BellOverloadS" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1388" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BellOverloadS /t REG_DWORD /d "0x1388"
+	else
+		DispResult BellOverloadS REG_DWORD 0x1388 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ScrollbackLines" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x3b9ac9ff" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ScrollbackLines /t REG_DWORD /d "0x3b9ac9ff"
+	else
+		DispResult ScrollbackLines REG_DWORD 0x3b9ac9ff PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "DECOriginMode" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v DECOriginMode /t REG_DWORD /d "0x0"
+	else
+		DispResult DECOriginMode REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "AutoWrapMode" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v AutoWrapMode /t REG_DWORD /d "0x1"
+	else
+		DispResult AutoWrapMode REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "LFImpliesCR" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LFImpliesCR /t REG_DWORD /d "0x0"
+	else
+		DispResult LFImpliesCR REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "CRImpliesLF" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v CRImpliesLF /t REG_DWORD /d "0x0"
+	else
+		DispResult CRImpliesLF REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "DisableArabicShaping" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v DisableArabicShaping /t REG_DWORD /d "0x0"
+	else
+		DispResult DisableArabicShaping REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "DisableBidi" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v DisableBidi /t REG_DWORD /d "0x0"
+	else
+		DispResult DisableBidi REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "WinNameAlways" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WinNameAlways /t REG_DWORD /d "0x1"
+	else
+		DispResult WinNameAlways REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "WinTitle" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "$OS_NAME" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WinTitle /t REG_SZ /d "$LOGNAME@127.0.0.1 OS $OS_NAME MODEL $MODEL REL $REL_NAME"
+	else
+		DispResult WinTitle REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "TermWidth" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x50" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v TermWidth /t REG_DWORD /d "0x50"
+	else
+		DispResult TermWidth REG_DWORD 0x50 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "TermHeight" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x18" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v TermHeight /t REG_DWORD /d "0x18"
+	else
+		DispResult TermHeight REG_DWORD 0x18 PASS
+	fi
+	#echo read Font
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Font" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "Courier New" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Font /t REG_SZ /d "Courier New"
+	else
+		DispResult Font REG_DWORD "Courier_New" PASS
+	fi
+	#echo read Font
+	#read
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "FontIsBold" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v FontIsBold /t REG_DWORD /d "0x0"
+	else
+		DispResult FontIsBold REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "FontCharSet" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v FontCharSet /t REG_DWORD /d "0x0"
+	else
+		DispResult FontCharSet REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "FontHeight" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x10" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v FontHeight /t REG_DWORD /d "0x10"
+	else
+		DispResult FontHeight REG_DWORD 0x10 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "FontQuality" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v FontQuality /t REG_DWORD /d "0x0"
+	else
+		DispResult FontQuality REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "FontVTMode" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x4" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v FontVTMode /t REG_DWORD /d "0x4"
+	else
+		DispResult FontVTMode REG_DWORD 0x4 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "UseSystemColours" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v UseSystemColours /t REG_DWORD /d "0x0"
+	else
+		DispResult UseSystemColours REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "TryPalette" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v TryPalette /t REG_DWORD /d "0x0"
+	else
+		DispResult TryPalette REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ANSIColour" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ANSIColour /t REG_DWORD /d "0x1"
+	else
+		DispResult ANSIColour REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Xterm256Colour" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Xterm256Colour /t REG_DWORD /d "0x1"
+	else
+		DispResult Xterm256Colour REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BoldAsColour" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BoldAsColour /t REG_DWORD /d "0x1"
+	else
+		DispResult BoldAsColour REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour0" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "187,187,187" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour0 /t REG_SZ /d "187,187,187"
+	else
+		DispResult Colour0 REG_SZ 187,187,187 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour1" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "255,255,255" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour1 /t REG_SZ /d "255,255,255"
+	else
+		DispResult Colour1 REG_SZ 255,255,255 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour2" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "0,0,0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour2 /t REG_SZ /d "0,0,0"
+	else
+		DispResult Colour2 REG_SZ 0,0,0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour3" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "85,85,85" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour3 /t REG_SZ /d "85,85,85"
+	else
+		DispResult Colour3 REG_SZ 85,85,85 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour4" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "0,0,0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour4 /t REG_SZ /d "0,0,0"
+	else
+		DispResult Colour4 REG_SZ 0,0,0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour5" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "0,255,0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour5 /t REG_SZ /d "0,255,0"
+	else
+		DispResult Colour5 REG_SZ 0,255,0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour6" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "0,0,0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour6 /t REG_SZ /d "0,0,0"
+	else
+		DispResult Colour6 REG_SZ 0,0,0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour7" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "85,85,85" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour7 /t REG_SZ /d "85,85,85"
+	else
+		DispResult Colour7 REG_SZ 85,85,85 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour8" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "187,0,0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour8 /t REG_SZ /d "187,0,0"
+	else
+		DispResult Colour8 REG_SZ 187,0,0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour9" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "255,85,85" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour9 /t REG_SZ /d "255,85,85"
+	else
+		DispResult Colour9 REG_SZ 255,85,85 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour10" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "0,187,0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour10 /t REG_SZ /d "0,187,0"
+	else
+		DispResult Colour10 REG_SZ 0,187,0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour11" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "85,255,85" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour11 /t REG_SZ /d "85,255,85"
+	else
+		DispResult Colour11 REG_SZ 85,255,85 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour12" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "187,187,0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour12 /t REG_SZ /d "187,187,0"
+	else
+		DispResult Colour12 REG_SZ 187,187,0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour13" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "255,255,85" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour13 /t REG_SZ /d "255,255,85"
+	else
+		DispResult Colour13 REG_SZ 255,255,85 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour14" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "0,0,187" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour14 /t REG_SZ /d "0,0,187"
+	else
+		DispResult Colour14 REG_SZ 0,0,187 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour15" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "85,85,255" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour15 /t REG_SZ /d "85,85,255"
+	else
+		DispResult Colour15 REG_SZ 85,85,255 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour16" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "187,0,187" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour16 /t REG_SZ /d "187,0,187"
+	else
+		DispResult Colour16 REG_SZ 187,0,187 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour17" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "255,85,255" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour17 /t REG_SZ /d "255,85,255"
+	else
+		DispResult Colour17 REG_SZ 255,85,255 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour18" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "0,187,187" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour18 /t REG_SZ /d "0,187,187"
+	else
+		DispResult Colour18 REG_SZ 0,187,187 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour19" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "85,255,255" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour19 /t REG_SZ /d "85,255,255"
+	else
+		DispResult Colour19 REG_SZ 85,255,255 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour20" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "187,187,187" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour20 /t REG_SZ /d "187,187,187"
+	else
+		DispResult Colour20 REG_SZ 187,187,187 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Colour21" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "255,255,255" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Colour21 /t REG_SZ /d "255,255,255"
+	else
+		DispResult Colour21 REG_SZ 255,255,255 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "RawCNP" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v RawCNP /t REG_DWORD /d "0x0"
+	else
+		DispResult RawCNP REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "PasteRTF" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v PasteRTF /t REG_DWORD /d "0x0"
+	else
+		DispResult PasteRTF REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "MouseIsXterm" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v MouseIsXterm /t REG_DWORD /d "0x0"
+	else
+		DispResult MouseIsXterm REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "RectSelect" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v RectSelect /t REG_DWORD /d "0x0"
+	else
+		DispResult RectSelect REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "MouseOverride" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v MouseOverride /t REG_DWORD /d "0x1"
+	else
+		DispResult MouseOverride REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Wordness0" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Wordness0 /t REG_SZ /d "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
+	else
+		DispResult Wordness0 REG_SZ 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Wordness32" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "0,1,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Wordness32 /t REG_SZ /d "0,1,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1"
+	else
+		DispResult Wordness32 REG_SZ 0,1,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Wordness64" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,2" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Wordness64 /t REG_SZ /d "1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,2"
+	else
+		DispResult Wordness64 REG_SZ 1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,2 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Wordness96" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Wordness96 /t REG_SZ /d "1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1"
+	else
+		DispResult Wordness96 REG_SZ 1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Wordness128" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Wordness128 /t REG_SZ /d "1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"
+	else
+		DispResult Wordness128 REG_SZ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Wordness160" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Wordness160 /t REG_SZ /d "1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"
+	else
+		DispResult Wordness160 REG_SZ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Wordness192" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Wordness192 /t REG_SZ /d "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2"
+	else
+		DispResult Wordness192 REG_SZ 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Wordness224" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Wordness224 /t REG_SZ /d "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2"
+	else
+		DispResult Wordness224 REG_SZ 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "LineCodePage" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "UTF-8" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LineCodePage /t REG_SZ /d "UTF-8"
+	else
+		DispResult LineCodePage REG_DWORD UTF-8 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "CJKAmbigWide" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v CJKAmbigWide /t REG_DWORD /d "0x0"
+	else
+		DispResult CJKAmbigWide REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "UTF8Override" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v UTF8Override /t REG_DWORD /d "0x1"
+	else
+		DispResult UTF8Override REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "Printer" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v Printer /t REG_SZ
+	else
+		DispResult Printer REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "CapsLockCyr" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v CapsLockCyr /t REG_DWORD /d "0x0"
+	else
+		DispResult CapsLockCyr REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ScrollBar" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ScrollBar /t REG_DWORD /d "0x1"
+	else
+		DispResult ScrollBar REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ScrollBarFullScreen" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ScrollBarFullScreen /t REG_DWORD /d "0x0"
+	else
+		DispResult ScrollBarFullScreen REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ScrollOnKey" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ScrollOnKey /t REG_DWORD /d "0x0"
+	else
+		DispResult ScrollOnKey REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ScrollOnDisp" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ScrollOnDisp /t REG_DWORD /d "0x1"
+	else
+		DispResult ScrollOnDisp REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "EraseToScrollback" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v EraseToScrollback /t REG_DWORD /d "0x1"
+	else
+		DispResult EraseToScrollback REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "LockSize" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LockSize /t REG_DWORD /d "0x0"
+	else
+		DispResult LockSize REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BCE" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BCE /t REG_DWORD /d "0x1"
+	else
+		DispResult BCE REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BlinkText" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BlinkText /t REG_DWORD /d "0x0"
+	else
+		DispResult BlinkText REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "X11Forward" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v X11Forward /t REG_DWORD /d "0x1"
+	else
+		DispResult X11Forward REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "X11Display" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v X11Display /t REG_SZ
+	else
+		DispResult X11Display REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "X11AuthType" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v X11AuthType /t REG_DWORD /d "0x1"
+	else
+		DispResult X11AuthType REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "X11AuthFile" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v X11AuthFile /t REG_SZ
+	else
+		DispResult X11AuthFile REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "LocalPortAcceptAll" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LocalPortAcceptAll /t REG_DWORD /d "0x0"
+	else
+		DispResult LocalPortAcceptAll REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "RemotePortAcceptAll" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v RemotePortAcceptAll /t REG_DWORD /d "0x0"
+	else
+		DispResult RemotePortAcceptAll REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "PortForwardings" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v PortForwardings /t REG_SZ
+	else
+		DispResult PortForwardings REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugIgnore1" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugIgnore1 /t REG_DWORD /d "0x0"
+	else
+		DispResult BugIgnore1 REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugPlainPW1" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugPlainPW1 /t REG_DWORD /d "0x0"
+	else
+		DispResult BugPlainPW1 REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugRSA1" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugRSA1 /t REG_DWORD /d "0x0"
+	else
+		DispResult BugRSA1 REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugIgnore2" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugIgnore2 /t REG_DWORD /d "0x0"
+	else
+		DispResult BugIgnore2 REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugHMAC2" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugHMAC2 /t REG_DWORD /d "0x0"
+	else
+		DispResult BugHMAC2 REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugDeriveKey2" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugDeriveKey2 /t REG_DWORD /d "0x0"
+	else
+		DispResult BugDeriveKey2 REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugRSAPad2" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugRSAPad2 /t REG_DWORD /d "0x0"
+	else
+		DispResult BugRSAPad2 REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugPKSessID2" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugPKSessID2 /t REG_DWORD /d "0x0"
+	else
+		DispResult BugPKSessID2 REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugRekey2" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugRekey2 /t REG_DWORD /d "0x0"
+	else
+		DispResult BugRekey2 REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugMaxPkt2" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugMaxPkt2 /t REG_DWORD /d "0x0"
+	else
+		DispResult BugMaxPkt2 REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugOldGex2" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugOldGex2 /t REG_DWORD /d "0x0"
+	else
+		DispResult BugOldGex2 REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugWinadj" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugWinadj /t REG_DWORD /d "0x0"
+	else
+		DispResult BugWinadj REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BugChanReq" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BugChanReq /t REG_DWORD /d "0x0"
+	else
+		DispResult BugChanReq REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "StampUtmp" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v StampUtmp /t REG_DWORD /d "0x1"
+	else
+		DispResult StampUtmp REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "LoginShell" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v LoginShell /t REG_DWORD /d "0x1"
+	else
+		DispResult LoginShell REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ScrollbarOnLeft" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ScrollbarOnLeft /t REG_DWORD /d "0x0"
+	else
+		DispResult ScrollbarOnLeft REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BoldFont" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BoldFont /t REG_SZ
+	else
+		DispResult BoldFont REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BoldFontIsBold" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BoldFontIsBold /t REG_DWORD /d "0x0"
+	else
+		DispResult BoldFontIsBold REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BoldFontCharSet" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BoldFontCharSet /t REG_DWORD /d "0x0"
+	else
+		DispResult BoldFontCharSet REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "BoldFontHeight" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v BoldFontHeight /t REG_DWORD /d "0x0"
+	else
+		DispResult BoldFontHeight REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "WideFont" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WideFont /t REG_SZ
+	else
+		DispResult WideFont REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "WideFontIsBold" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WideFontIsBold /t REG_DWORD /d "0x0"
+	else
+		DispResult WideFontIsBold REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "WideFontCharSet" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WideFontCharSet /t REG_DWORD /d "0x0"
+	else
+		DispResult WideFontCharSet REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "WideFontHeight" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WideFontHeight /t REG_DWORD /d "0x0"
+	else
+		DispResult WideFontHeight REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "WideBoldFont" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WideBoldFont /t REG_SZ
+	else
+		DispResult WideBoldFont REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "WideBoldFontIsBold" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WideBoldFontIsBold /t REG_DWORD /d "0x0"
+	else
+		DispResult WideBoldFontIsBold REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "WideBoldFontCharSet" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WideBoldFontCharSet /t REG_DWORD /d "0x0"
+	else
+		DispResult WideBoldFontCharSet REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "WideBoldFontHeight" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WideBoldFontHeight /t REG_DWORD /d "0x0"
+	else
+		DispResult WideBoldFontHeight REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ShadowBold" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ShadowBold /t REG_DWORD /d "0x0"
+	else
+		DispResult ShadowBold REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ShadowBoldOffset" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ShadowBoldOffset /t REG_DWORD /d "0x1"
+	else
+		DispResult ShadowBoldOffset REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SerialLine" 2>&1 |\
+	/usr/bin/grep REG_SZ 2>&1 |\
+	/usr/bin/grep "COM1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SerialLine /t REG_SZ /d "COM1"
+	else
+		DispResult SerialLine REG_SZ COM1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SerialSpeed" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x2580" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SerialSpeed /t REG_DWORD /d "0x2580"
+	else
+		DispResult SerialSpeed REG_DWORD 0x2580 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SerialDataBits" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x8" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SerialDataBits /t REG_DWORD /d "0x8"
+	else
+		DispResult SerialDataBits REG_DWORD 0x8 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SerialStopHalfbits" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x2" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SerialStopHalfbits /t REG_DWORD /d "0x2"
+	else
+		DispResult SerialStopHalfbits REG_DWORD 0x2 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SerialParity" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SerialParity /t REG_DWORD /d "0x0"
+	else
+		DispResult SerialParity REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "SerialFlowControl" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SerialFlowControl /t REG_DWORD /d "0x1"
+	else
+		DispResult SerialFlowControl REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "WindowClass" 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v WindowClass /t REG_SZ
+	else
+		DispResult WindowClass REG_SZ PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ConnectionSharing" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x0" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ConnectionSharing /t REG_DWORD /d "0x0"
+	else
+		DispResult ConnectionSharing REG_DWORD 0x0 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ConnectionSharingUpstream" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ConnectionSharingUpstream /t REG_DWORD /d "0x1"
+	else
+		DispResult ConnectionSharingUpstream REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep "ConnectionSharingDownstream" 2>&1 |\
+	/usr/bin/grep REG_DWORD 2>&1 |\
+	/usr/bin/grep "0x1" >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v ConnectionSharingDownstream /t REG_DWORD /d "0x1"
+	else
+		DispResult ConnectionSharingDownstream REG_DWORD 0x1 PASS
+	fi
+	/cygdrive/c/WINDOWS/system32/reg.exe query "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" 2>&1 |\
+	/usr/bin/tr -d "\r" 2>&1 |\
+	/usr/bin/grep SSHManualHostKeys 2>&1 |\
+	/usr/bin/grep REG_SZ >/dev/null 2>&1
+	Ret=$?
+	if [ 0 -ne $Ret ]
+	then
+		/cygdrive/c/WINDOWS/system32/reg.exe add "HKCU\Software\SimonTatham\PuTTY\Sessions\\$EachPuttySettingsUser" /f /v SSHManualHostKeys /t REG_SZ
+	else
+		DispResult SSHManualHostKeys REG_SZ PASS
+	fi
+done</PRE>
+					</TD>
+				</TR>
+		<NOSCRIPT>
+		</TABLE>
+			<TABLE width="100%">
+			<TR align="center" bgcolor="gray" height="2%">
+			<TD align=centre Valign="top"><FONT size="2" color=black>Site developed and maintained by Murugesan Technical Enterprise knowledge transfer solutions &#169; 1985 to 900000000/0(infinite). All rights reserved. <A href=".\privacy.html" title="PrivacyPolicies at free website providers"><FONT color=black><U>PrivacyPolicy</U></FONT></A></FONT></FONT></TD>
+			</TR>
+			</TABLE>
+		</NOSCRIPT>
+		<SCRIPT type="text/javascript">
+			// if( "file" != document.location.href.substring(0,4) )
+			{
+				document.write( "<TABLE width='100%'><TBODY>\
+										<TR align='center' bgcolor='gray' height='2%'>\
+											<TD align=centre Valign='top'><FONT size='2' color=black>Site developed and maintained by Murugesan Technical Enterprise knowledge transfer solutions &#169; 1985 to 900000000/0(infinite). All rights reserved. <A href='privacy.html' title='PrivacyPolicies at free website providers'><FONT color=black><U>PrivacyPolicy</U></FONT></A></FONT></FONT></TD>\
+										</TR>\
+									</TBODY>\
+								</TABLE>");
+			}
+		</SCRIPT>
+	</BODY>
+</HTML>

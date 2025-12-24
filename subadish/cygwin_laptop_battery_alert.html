@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META CHARSET="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<LINK href="github.io.css" rel="stylesheet">
+		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<META http-equiv="Pragma" content="no-cache">
+		<META http-equiv="Expires" content="0">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>LAPTOP BATTERY ALERT</TITLE>
+		<SCRIPT src='NMmenu006.js'>
+		</SCRIPT>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<SCRIPT type='text/javascript'>
+			writeMenu();
+		</SCRIPT>
+<TABLE BORDER="1" style="height: 100%; width: 100%; ">
+ 			<TBODY>
+     <TR>
+		<TD VALIGN="TOP" ALIGN="LEFT" COLSPAN="2">/*<BR>
+	USUALLY CHILDRENS/90% OF LAPTOP USERS NEVER SWITCH ON/OFF LAPTOP POWER.<BR>
+	<B><U><FONT color='red'>REASON: OVER CHARGING LAPTOP/MOBILE/ANY INSTRUMENTS USED TO WASTE OUR MONEY TO BUY NEW BATTERY</FONT></B></U><BR>
+	IF LAPTOP HAVE STARTED HANDLING THIS ALERT MESSAGE USING shell script, notepad.exe NEVER OPEN AT FRONT.<BR>
+	HENCE HANDLE THOSE EXCEPTION USING C++ BACKGROUND PROGRAM AT ANY OPERATING SYSTEM USING LAPTOP.<BR>
+	TO OPEN notepad.exe AT FRONT SIDE.<BR>
+	*/<BR>
+<PRE>#include &lt;sys/wait.h&gt;
+#include &lt;string.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;iostream&gt;
+using&nbsp;namespace&nbsp;std;
+#include &lt;stdlib.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;unistd.h&gt;
+int&nbsp;pid&nbsp;=&nbsp;0;
+int&nbsp;main(int&nbsp;argc,&nbsp;const&nbsp;char**&nbsp;argv)
+{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct&nbsp;sigaction&nbsp;act&nbsp;=&nbsp;{&nbsp;0,&nbsp;0&nbsp;};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;act.sa_handler&nbsp;=&nbsp;SIG_IGN;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;act.sa_flags&nbsp;=&nbsp;0;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;CONSOLE&nbsp;REFERRING&nbsp;TERMINAL&nbsp;AT&nbsp;WINDOWS
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;TERMINAL&nbsp;REFERRING&nbsp;TERMINAL&nbsp;AT&nbsp;UNIX/Linux/AIX/HP-UX/SunOS/Unix&nbsp;ORIENTED&nbsp;OPERATING&nbsp;SYSTEMS.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigaction(&nbsp;SIGTTIN,&nbsp;&act,&nbsp;(struct&nbsp;sigaction*)0);&nbsp;//&nbsp;STOP&nbsp;HANDLING&nbsp;INPUT&nbsp;&nbsp;SIGNALS&nbsp;FROM&nbsp;CONSOLE/TERMINAL
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigaction(&nbsp;SIGTTOU,&nbsp;&act,&nbsp;(struct&nbsp;sigaction*)0);&nbsp;//&nbsp;STOP&nbsp;HANDLING&nbsp;OUTPUT&nbsp;SIGNALS&nbsp;FROM&nbsp;CONSOLE/TERMINAL
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigaction(&nbsp;SIGTSTP,&nbsp;&act,&nbsp;(struct&nbsp;sigaction*)0);&nbsp;//&nbsp;STOP&nbsp;HANDLING&nbsp;CONSOLE/TERMINAL&nbsp;INPUT
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;signal(&nbsp;SIGCHLD,&nbsp;SIG_IGN);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigemptyset(&act.sa_mask);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout.flush();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close(0);&nbsp;//&nbsp;CLOSE&nbsp;INPUT&nbsp;CONSOLE/TERMINAL
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close(1);&nbsp;//&nbsp;CLOSE&nbsp;OUTPUT&nbsp;CONSOLE/TERMINAL
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close(2);&nbsp;//&nbsp;CLOSE&nbsp;ERROR&nbsp;CONSOLE/TERMINAL
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pid&nbsp;=&nbsp;fork();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;0&nbsp;!=&nbsp;pid&nbsp;)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(0);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(&nbsp;-1&nbsp;==&nbsp;pid&nbsp;)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(errno);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setsid();&nbsp;//&nbsp;BECOME&nbsp;PROCESS&nbsp;GROUP&nbsp;LEADER.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;signal(&nbsp;SIGCHLD,&nbsp;SIG_IGN);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pid&nbsp;=&nbsp;fork();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;0&nbsp;!=&nbsp;pid&nbsp;)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(0);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(&nbsp;-1&nbsp;==&nbsp;pid&nbsp;)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(errno);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;1&nbsp;==&nbsp;argc&nbsp;)&nbsp;//&nbsp;STARTUP&nbsp;PROGRAM&nbsp;WITHOUT&nbsp;ANY&nbsp;ARGUMENTS.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pid&nbsp;=&nbsp;fork();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;0&nbsp;!=&nbsp;pid&nbsp;)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;sysRet&nbsp;=&nbsp;system(&nbsp;"\
+/usr/bin/stat&nbsp;-c&nbsp;\"%a\"&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh&nbsp;2&gt;&1&nbsp;|\
+/usr/bin/grep&nbsp;-E&nbsp;755&nbsp;&gt;/dev/null&nbsp;2&gt;&1;\
+Ret=$?;\
+if&nbsp;[[&nbsp;0&nbsp;-ne&nbsp;$Ret&nbsp;]];\
+then\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;u+rwx&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;g+rx&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;g-w&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;o+rx&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;g-w&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh;\
+fi;\
+/usr/bin/stat&nbsp;-c&nbsp;\"%a\"&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/checkbattery.sh&nbsp;2&gt;&1&nbsp;|\
+/usr/bin/grep&nbsp;-E&nbsp;755&nbsp;&gt;/dev/null&nbsp;2&gt;&1;\
+Ret=$?;\
+if&nbsp;[[&nbsp;0&nbsp;-ne&nbsp;$Ret&nbsp;]];\
+then\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;u+rwx&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/checkbattery.sh;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;g+rx&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/checkbattery.sh;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;g-w&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/checkbattery.sh;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;o+rx&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/checkbattery.sh;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;g-w&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/checkbattery.sh;\
+fi;\
+/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh&nbsp;&");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(0);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;sysRet&nbsp;)&nbsp;//&nbsp;REMOVE&nbsp;COMPILER&nbsp;WARNING&nbsp;MESSAGE.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(0);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(&nbsp;-1&nbsp;==&nbsp;pid&nbsp;)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(&nbsp;errno);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(&nbsp;errno);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0;
+}
+</PRE>
+/*<BR>
+$ /usr/bin/make.exe<BR>
+$ # During release mode use -O3 option when using gcc/g++/gcc.exe/g++.exe/aCC/xlC/CC/cc|c++|CC|ec++|cxx compilers.<BR>
+$ # During bug/development mode use -O0 option when using gcc/g++/gcc.exe/g++.exe/aCC/xlC/CC/cc|c++|CC|ec++|cxx compilers.<BR>
+$ g++ -Wall startup.cpp -o "/cygdrive/c/Users/$LOGNAME/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/startup.exe"<BR>
+$ #Use  -std=c++11 /... based on your compiler/STL usage.<BR>
+$ /usr/bin/make<BR>
+/cygdrive/c/Users/$LOGNAME/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/startup.exe is up to date<BR>
+$ # Logout and relogin.<BR>
+$ # startup.exe program require following files / directories:<BR>
+$ # a) ~/handlemsedge.sh<BR>
+$ # b) ~/mis-int-alert.sh<BR>
+$ # c) ~/checkbattery.sh<BR>
+$ # d) /cygdrive/c/PROGRA~1/MozillaFirefox/firefox.exe<BR>
+$ # e) /cygdrive/c/PROGRA~1/BraveSoftware/Brave-Browser/Application/brave.exe<BR>
+$ # f) C:/cygwin/home/$LOGNAME<BR>
+$ # g) C:/cygwin/home/$LOGNAME/kill-firefox-services.sh<BR>
+$ /usr/bin/cat "/home/$LOGNAME/handlemsedge.sh"<BR>
+<PRE>#!/bin/bash
+export&nbsp;AUTOMATION_DIRECTORY=""
+export&nbsp;LOGNAME="$USER"
+asd
+#03)&nbsp;START&nbsp;firefox.exe
+/home/$LOGNAME/$AUTOMATION_DIRECTORY/kill-firefox-services.sh&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+/usr/bin/stat&nbsp;-c&nbsp;"%a"&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh&nbsp;2&gt;&1&nbsp;|\
+/usr/bin/grep&nbsp;-E&nbsp;755&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+Ret=$?
+if&nbsp;[[&nbsp;0&nbsp;-ne&nbsp;$Ret&nbsp;]]
+then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;u+rwx&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;g+rx&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;g-w&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;o+rx&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/chmod&nbsp;g-w&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/handlemsedge.sh
+fi
+/cygdrive/c/Windows/system32/sc.exe&nbsp;query&nbsp;cygsshd&nbsp;2&gt;&1&nbsp;|\
+/usr/bin/tr&nbsp;-d&nbsp;"\r"&nbsp;2&gt;&1&nbsp;|\
+/usr/bin/grep&nbsp;-E&nbsp;"STATE.*RUNNING"&nbsp;2&gt;&1&nbsp;|\
+/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"^$"&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+Ret=$?
+if&nbsp;[[&nbsp;0&nbsp;-ne&nbsp;$Ret&nbsp;]]
+then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/sc.exe&nbsp;stop&nbsp;cygsshd
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/sc.exe&nbsp;start&nbsp;cygsshd
+fi
+#02)&nbsp;START&nbsp;putty.exe
+if&nbsp;[[&nbsp;"xterm"&nbsp;!=&nbsp;"$TERM"&nbsp;]]
+then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/cmd.exe&nbsp;/c&nbsp;START&nbsp;/MAX&nbsp;%HOME%/$AUTOMATION_DIRECTORY/puttyexe/putty.exe&nbsp;$LOGNAME@127.0.0.1&nbsp;-pw&nbsp;thindu@Dinesh56&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+fi
+if&nbsp;[[&nbsp;-f&nbsp;/usr/bin/adb.exe&nbsp;]]
+then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/tasklist.exe&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/tr&nbsp;-d&nbsp;"\r"&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;adb.exe&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"^$"&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret=$?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-eq&nbsp;$Ret&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/adb.exe&nbsp;devices&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+fi
+while&nbsp;[[&nbsp;1&nbsp;]]
+do
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/tasklist.exe&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/tr&nbsp;-d&nbsp;"\r"&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;putty.exe&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"^$"&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret=$?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-eq&nbsp;$Ret&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-f&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/firefox.exe&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/firefox.exe&nbsp;"F:/cygwin/home/$LOGNAME/$AUTOMATION_DIRECTORY/Components.html"&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-f&nbsp;/cygdrive/f/Thunderbird/thunderbird.exe&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/f/Thunderbird/thunderbird.exe&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/sleep&nbsp;1
+done
+if&nbsp;[[&nbsp;-f&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/mis-int-alert.sh&nbsp;]]
+then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/mis-int-alert.sh&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/checkbattery.sh&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+fi
+#Wait&nbsp;for&nbsp;putty.exe&nbsp;to&nbsp;at&nbsp;startup.
+#Hence&nbsp;sleep&nbsp;for&nbsp;2&nbsp;seconds&nbsp;and&nbsp;close&nbsp;useless&nbsp;apps
+/usr/bin/sleep&nbsp;2
+/cygdrive/c/Windows/system32/taskkill.exe&nbsp;/f&nbsp;/im&nbsp;conhost.exe&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+/cygdrive/c/Windows/system32/taskkill.exe&nbsp;/f&nbsp;/im&nbsp;cmd.exe&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+/cygdrive/c/Windows/system32/taskkill.exe&nbsp;/f&nbsp;/im&nbsp;sh.exe&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+</PRE>
+<HR>
+<PRE>$ /usr/bin/cat ~/mis-int-alert.sh
+#!/bin/bash
+export&nbsp;AUTOMATION_DIRECTORY=""
+export&nbsp;LOGNAME="$USER"
+/home/$LOGNAME/$AUTOMATION_DIRECTORY/kill-firefox-services.sh&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+DD=$(/usr/bin/date&nbsp;"+%d")
+MMM=$(/usr/bin/date&nbsp;"+%b")
+YYYY=$(/usr/bin/date&nbsp;"+%Y")
+export&nbsp;AUTOMATION_DIRECTORY=""
+export&nbsp;LOGNAME=$USER
+#if&nbsp;[[&nbsp;-f&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/checkbattery.sh&nbsp;]]
+#then
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/checkbattery.sh&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+#fi
+if&nbsp;[[&nbsp;"xterm"&nbsp;!=&nbsp;"$TERM"&nbsp;]]
+then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/tasklist.exe&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/tr&nbsp;-d&nbsp;"\r"&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;"msedge.exe"&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"^$"&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret=$?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-eq&nbsp;$Ret&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/taskkill.exe&nbsp;/f&nbsp;/im&nbsp;msedge.exe&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;-ne&nbsp;"
+$LOGNAME@127.0.0.1&nbsp;$PWD&nbsp;[&nbsp;$?&nbsp;]\n$&nbsp;mis-int-alert.sh\n"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DDD=$(/usr/bin/date&nbsp;"+%a")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DD=$(/usr/bin/date&nbsp;"+%d")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MMM=$(/usr/bin/date&nbsp;"+%b")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YYYY=$(/usr/bin/date&nbsp;"+%Y")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;$DDD&nbsp;in
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Mon")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;[[&nbsp;1&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SLEEP_TIME=$((&nbsp;$(/usr/bin/date&nbsp;--date="$DD-$MMM-$YYYY&nbsp;09:00&nbsp;PM"&nbsp;"+%s")&nbsp;-&nbsp;$(/usr/bin/date&nbsp;"+%s")&nbsp;))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-lt&nbsp;$SLEEP_TIME&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/sleep&nbsp;"$SLEEP_TIME"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/cmd.exe&nbsp;/c&nbsp;"START&nbsp;/MAX&nbsp;C:/PROGRA~2/Microsoft/Edge/Application/msedge.exe&nbsp;file:///C:/cygwin/home/$USER/$AUTOMATION_DIRECTORY/MIS-INTEREST-ALERT/MIS-INTEREST-ALERT-Mon_ALERT.html"&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Tue")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;[[&nbsp;1&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SLEEP_TIME=$((&nbsp;$(/usr/bin/date&nbsp;--date="$DD-$MMM-$YYYY&nbsp;08:50&nbsp;PM"&nbsp;"+%s")&nbsp;-&nbsp;$(/usr/bin/date&nbsp;"+%s")&nbsp;))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-lt&nbsp;$SLEEP_TIME&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/sleep&nbsp;"$SLEEP_TIME"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/cmd.exe&nbsp;/c&nbsp;"START&nbsp;/MAX&nbsp;C:/PROGRA~2/Microsoft/Edge/Application/msedge.exe&nbsp;file:///C:/cygwin/home/$USER/$AUTOMATION_DIRECTORY/MIS-INTEREST-ALERT/MIS-INTEREST-ALERT-Tue_ALERT.html"&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Wed")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;[[&nbsp;1&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Wed&nbsp;21-May-2025&nbsp;Not&nbsp;received&nbsp;at&nbsp;08:39&nbsp;PM
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Wed&nbsp;21-May-2025&nbsp;Not&nbsp;received&nbsp;at&nbsp;08:51&nbsp;PM
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;SLEEP_TIME=$((&nbsp;$(/usr/bin/date&nbsp;--date="$DD-$MMM-$YYYY&nbsp;08:37&nbsp;PM"&nbsp;"+%s")&nbsp;-&nbsp;$(/usr/bin/date&nbsp;"+%s")&nbsp;))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SLEEP_TIME=$((&nbsp;$(/usr/bin/date&nbsp;--date="$DD-$MMM-$YYYY&nbsp;09:10&nbsp;PM"&nbsp;"+%s")&nbsp;-&nbsp;$(/usr/bin/date&nbsp;"+%s")&nbsp;))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-lt&nbsp;$SLEEP_TIME&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/sleep&nbsp;"$SLEEP_TIME"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/cmd.exe&nbsp;/c&nbsp;"START&nbsp;/MAX&nbsp;C:/PROGRA~2/Microsoft/Edge/Application/msedge.exe&nbsp;file:///C:/cygwin/home/$USER/$AUTOMATION_DIRECTORY/MIS-INTEREST-ALERT/MIS-INTEREST-ALERT-Wed_ALERT.html"&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Thu")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;[[&nbsp;1&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SLEEP_TIME=$((&nbsp;$(/usr/bin/date&nbsp;--date="$DD-$MMM-$YYYY&nbsp;09:02&nbsp;PM"&nbsp;"+%s")&nbsp;-&nbsp;$(/usr/bin/date&nbsp;"+%s")&nbsp;))
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SLEEP_TIME=$((&nbsp;$(/usr/bin/date&nbsp;--date="$DD-$MMM-$YYYY&nbsp;10:15&nbsp;PM"&nbsp;"+%s")&nbsp;-&nbsp;$(/usr/bin/date&nbsp;"+%s")&nbsp;))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SLEEP_TIME=$((&nbsp;$(/usr/bin/date&nbsp;--date="$DD-$MMM-$YYYY&nbsp;10:05&nbsp;PM"&nbsp;"+%s")&nbsp;-&nbsp;$(/usr/bin/date&nbsp;"+%s")&nbsp;))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-lt&nbsp;$SLEEP_TIME&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/sleep&nbsp;"$SLEEP_TIME"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/cmd.exe&nbsp;/c&nbsp;"START&nbsp;/MAX&nbsp;C:/PROGRA~2/Microsoft/Edge/Application/msedge.exe&nbsp;file:///C:/cygwin/home/$USER/$AUTOMATION_DIRECTORY/MIS-INTEREST-ALERT/MIS-INTEREST-ALERT-Thu_ALERT.html"&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Fri")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;[[&nbsp;1&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SLEEP_TIME=$((&nbsp;$(/usr/bin/date&nbsp;--date="$DD-$MMM-$YYYY&nbsp;09:02&nbsp;PM"&nbsp;"+%s")&nbsp;-&nbsp;$(/usr/bin/date&nbsp;"+%s")&nbsp;))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-lt&nbsp;$SLEEP_TIME&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/sleep&nbsp;"$SLEEP_TIME"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/cmd.exe&nbsp;/c&nbsp;"START&nbsp;/MAX&nbsp;C:/PROGRA~2/Microsoft/Edge/Application/msedge.exe&nbsp;file:///C:/cygwin/home/$USER/$AUTOMATION_DIRECTORY/MIS-INTEREST-ALERT/MIS-INTEREST-ALERT-Fri_ALERT.html"&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Sat")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;[[&nbsp;1&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SLEEP_TIME=$((&nbsp;$(/usr/bin/date&nbsp;--date="$DD-$MMM-$YYYY&nbsp;10:04&nbsp;PM"&nbsp;"+%s")&nbsp;-&nbsp;$(/usr/bin/date&nbsp;"+%s")&nbsp;))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-lt&nbsp;$SLEEP_TIME&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/sleep&nbsp;"$SLEEP_TIME"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/cmd.exe&nbsp;/c&nbsp;"START&nbsp;/MAX&nbsp;C:/PROGRA~2/Microsoft/Edge/Application/msedge.exe&nbsp;file:///C:/cygwin/home/$USER/$AUTOMATION_DIRECTORY/MIS-INTEREST-ALERT/MIS-INTEREST-ALERT-Sat_ALERT.html"&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Sun")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;[[&nbsp;1&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SLEEP_TIME=$((&nbsp;$(/usr/bin/date&nbsp;--date="$DD-$MMM-$YYYY&nbsp;07:44&nbsp;PM"&nbsp;"+%s")&nbsp;-&nbsp;$(/usr/bin/date&nbsp;"+%s")&nbsp;))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-lt&nbsp;$SLEEP_TIME&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/sleep&nbsp;"$SLEEP_TIME"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/cmd.exe&nbsp;/c&nbsp;"START&nbsp;/MAX&nbsp;C:/PROGRA~2/Microsoft/Edge/Application/msedge.exe&nbsp;file:///C:/cygwin/home/$USER/$AUTOMATION_DIRECTORY/MIS-INTEREST-ALERT/MIS-INTEREST-ALERT-Sun_ALERT.html"&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;esac
+fi
+</PRE>
+<HR>
+<PRE>
+#!/bin/bash
+if&nbsp;[[&nbsp;-f&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/mis-int-alert.sh&nbsp;]]
+then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/ps&nbsp;-eaf&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;mis-int&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret=$?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-ne&nbsp;$Ret&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/ps&nbsp;-eaf&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;mis-int&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"^$"&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret=$?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-ne&nbsp;$Ret&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/mis-int-alert.sh&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/tasklist.exe&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/tr&nbsp;-d&nbsp;"\r"&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;checkbattery&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"^$"&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret=$?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-ne&nbsp;$Ret&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/ps&nbsp;-eaf&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;checkbattery&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"^$"&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret=$?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-ne&nbsp;$Ret&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/checkbattery.sh&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+fi
+#01)&nbsp;START&nbsp;APACHE-TOMCAT
+if&nbsp;[[&nbsp;-f&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/apache-tomcat-11.0.0-M19/bin/startup.sh&nbsp;]]
+then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/ps&nbsp;-eaf&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;java&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"^$"&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret=$?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-ne&nbsp;$Ret&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/WINDOWS/system32/tasklist.exe&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/tr&nbsp;-d&nbsp;"\r"&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;"java\.exe"&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"^$"&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret=$?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-ne&nbsp;$Ret&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/home/$LOGNAME/$AUTOMATION_DIRECTORY/apache-tomcat-11.0.0-M19/bin/startup.sh&nbsp;&gt;/dev/null&nbsp;2&gt;&1&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+fi
+if&nbsp;[[&nbsp;-d&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/OPERAS~1/OPERAS~1/Default&nbsp;]]
+then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/OPERAS~1/OPERAS~1/Default
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-d&nbsp;"Cache"&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rm&nbsp;-rf&nbsp;"Cache"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-d&nbsp;"System&nbsp;Cache"&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rm&nbsp;-rf&nbsp;"System&nbsp;Cache"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd&nbsp;/cygdrive/c/Users/MURUGE~2/AppData/Local/OPERAS~1/OPERAS~1/Default
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-d&nbsp;"Cache"&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rm&nbsp;-rf&nbsp;"Cache"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-d&nbsp;"System&nbsp;Cache"&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rm&nbsp;-rf&nbsp;"System&nbsp;Cache"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+fi
+unalias&nbsp;HandleMobilePercentage&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+unset&nbsp;-f&nbsp;HandleMobilePercentage
+HandleMobilePercentage&nbsp;()
+{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/adb.exe&nbsp;devices&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/tr&nbsp;-d&nbsp;"\r"&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"List&nbsp;of&nbsp;devices|^$"&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret=$?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-eq&nbsp;$Ret&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MOBILE_POWER_PERCENT=$(/usr/bin/adb.exe&nbsp;shell&nbsp;dumpsys&nbsp;battery&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/tr&nbsp;-d&nbsp;"\r"&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;level&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/awk&nbsp;'{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&nbsp;"%s",&nbsp;$NF);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}')
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;$MOBILE_POWER_PERCENT
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;98&nbsp;-le&nbsp;$MOBILE_POWER_PERCENT&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/WINDOWS/system32/taskkill.exe&nbsp;/f&nbsp;/im&nbsp;brave.exe&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"ALERT&nbsp;MESSAGE:&nbsp;REMOVE&nbsp;POWER&nbsp;CABLE&nbsp;AT&nbsp;MOBILE&nbsp;NOW\nPOWER_STATUS:&nbsp;ON\nMOBILE_POWER_PERCENT&nbsp;$MOBILE_POWER_PERCENT%"&nbsp;&gt;&nbsp;/home/$LOGNAME/MobilePower.txt
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+}
+#04)&nbsp;START&nbsp;BATTERY&nbsp;ALERT&nbsp;PROGRAM.&nbsp;FOLLOWING&nbsp;LOOP&nbsp;TO&nbsp;OPEN&nbsp;brave.exe&nbsp;FOR&nbsp;BATTERY&nbsp;ALERTS&nbsp;AT&nbsp;LAPTOP
+#05)&nbsp;START&nbsp;BATTERY&nbsp;ALERT&nbsp;PROGRAM.&nbsp;FOLLOWING&nbsp;LOOP&nbsp;TO&nbsp;OPEN&nbsp;brave.exe&nbsp;FOR&nbsp;MOBILE&nbsp;CHARGING&nbsp;BATTERY&nbsp;ALERTS&nbsp;AT&nbsp;LAPTOP
+while&nbsp;[[&nbsp;1&nbsp;]]
+do
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;POWER_STATUS=$(/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe&nbsp;Path&nbsp;Win32_Battery&nbsp;Get&nbsp;BatteryStatus&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/tr&nbsp;-d&nbsp;"\r"&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"BatteryStatus|^$")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;POWER_PERCENT=$(/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe&nbsp;path&nbsp;Win32_Battery&nbsp;get&nbsp;EstimatedChargeRemaining&nbsp;/value&nbsp;2&gt;&1&nbsp;|&nbsp;/usr/bin/tr&nbsp;-d&nbsp;"\r"&nbsp;|&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"^$"&nbsp;|&nbsp;/usr/bin/awk&nbsp;-F'='&nbsp;'{&nbsp;print&nbsp;$NF}')
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;98&nbsp;-le&nbsp;$POWER_PERCENT&nbsp;&&&nbsp;2&nbsp;-eq&nbsp;$POWER_STATUS&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-f&nbsp;/home/$LOGNAME/AddPlug.html&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rm&nbsp;/home/$LOGNAME/AddPlug.html
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/WINDOWS/system32/taskkill.exe&nbsp;/f&nbsp;/im&nbsp;brave.exe&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"ALERT&nbsp;MESSAGE:&nbsp;REMOVE&nbsp;POWER&nbsp;CABLE&nbsp;AT&nbsp;LAPTOP&nbsp;NOW\nPOWER_STATUS:&nbsp;ON\nPOWER_PERCENT&nbsp;$POWER_PERCENT%"&nbsp;&gt;&nbsp;/home/$LOGNAME/RemovePlug.html
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;"xterm"&nbsp;!=&nbsp;"$TERM"&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-f&nbsp;/cygdrive/c/PROGRA~1/BraveSoftware/Brave-Browser/Application/brave.exe&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/cmd.exe&nbsp;/c&nbsp;START&nbsp;/MAX&nbsp;C:/PROGRA~1/BraveSoftware/Brave-Browser/Application/brave.exe&nbsp;"F:/cygwin/home/$LOGNAME/RemovePlug.html"&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;[[&nbsp;25&nbsp;-ge&nbsp;$POWER_PERCENT&nbsp;&&&nbsp;1&nbsp;-eq&nbsp;$POWER_STATUS&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-f&nbsp;/home/$LOGNAME/RemovePlug.html&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rm&nbsp;/home/$LOGNAME/RemovePlug.html
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/WINDOWS/system32/taskkill.exe&nbsp;/f&nbsp;/im&nbsp;brave.exe&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;-e&nbsp;"&lt;HTML&gt;&lt;TITLE&gt;SWITCH&nbsp;ON&nbsp;POWER&lt;/TITLE&gt;&lt;BODY&gt;&lt;TABLE&nbsp;border='1'&gt;&lt;TR&gt;&lt;TD&gt;ALERT&nbsp;MESSAGE:&nbsp;ADD&nbsp;POWER&nbsp;CABLE&nbsp;AT&nbsp;LAPTOP&nbsp;NOW&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD&gt;POWER_STATUS:&nbsp;OFF&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;POWER_PERCENT&lt;/TD&gt;&lt;TD&gt;$POWER_PERCENT%&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;"&nbsp;&gt;&nbsp;/home/$LOGNAME/AddPlug.html
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;"xterm"&nbsp;!=&nbsp;"$TERM"&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-f&nbsp;/cygdrive/c/PROGRA~1/BraveSoftware/Brave-Browser/Application/brave.exe&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/cmd.exe&nbsp;/c&nbsp;START&nbsp;/MAX&nbsp;C:/PROGRA~1/BraveSoftware/Brave-Browser/Application/brave.exe&nbsp;"F:/cygwin/home/$LOGNAME/AddPlug.html"&nbsp;&
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;[[&nbsp;25&nbsp;-ge&nbsp;$POWER_PERCENT&nbsp;&&&nbsp;1&nbsp;-eq&nbsp;$POWER_STATUS&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/WINDOWS/system32/tasklist.exe&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/tr&nbsp;-d&nbsp;"\r"&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;"notepad\.exe"&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"^$"&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret=$?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-eq&nbsp;$Ret&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/WINDOWS/system32/taskkill.exe&nbsp;/f&nbsp;/im&nbsp;brave.exe&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-d&nbsp;/cygdrive/c/Users/$LOGNAME/Favorites/Links/Search&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rm&nbsp;-rf&nbsp;/cygdrive/c/Users/$LOGNAME/Favorites/Links/Search
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-f&nbsp;/home/$LOGNAME/bash.exe.stackdump&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rm&nbsp;/home/$LOGNAME/bash.exe.stackdump
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;WindowsIniOrInvalidExeFiles&nbsp;in&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/cygwin/home/$LOGNAME/GEOCIT~1/$LOGNAME/TECHNI~1/Linux/desktop.ini&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/Favorites/Links/desktop.ini&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/DOCUME~1/MYWEBS~1/OPENSS~1/Technical/Linux/desktop.ini&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/DOCUME~1/MYWEBS~1/OPENSS~1/TECHNI~1/Linux/desktop.ini&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/DOCUME~1/MYWEBS~1/OPENSS~1/TECHNI~1/Linux/desktop.ini&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/DOCUME~1/MYWEBS~1/OPENSS~1/TECHNI~1/Linux/desktop.ini&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/DOCUME~1/MYWEBS~1/OPENSS~1/TECHNI~1/Linux/desktop.ini&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/$LOGNAME/Users/$LOGNAME/DOCUME~1/MYWEBS~1/OPENSS~1/TECHNI~1/Linux/desktop.ini&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(/usr/bin/ls&nbsp;-trd&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/crashreporter.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/crashreporter.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/default-browser-agent.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/default-browser-agent.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/firefox.exe.sig.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/firefox.exe.sig&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/maintenanceservice.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/maintenanceservice.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/maintenanceservice_installer.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/maintenanceservice_installer.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/minidump-analyzer.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/minidump-analyzer.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/nmhproxy.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/nmhproxy.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/pingsender.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/pingsender.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/plugin-container.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/plugin-container.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/plugin-container.exe.sig.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/plugin-container.exe.sig&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/private_browsing.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/private_browsing.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/uninstall/helper.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/uninstall/helper.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/updater.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/PROGRA~1/MozillaFirefox/updater.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer_helper_64.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer_helper_64.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/notification_helper.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/notification_helper.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera.exe.sig.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera.exe.sig&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_crashreporter.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_crashreporter.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_gx_splash.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_gx_splash.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/notification_helper.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/notification_helper.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer_helper_64.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/installer_helper_64.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera.exe.sig.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera.exe.sig&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera.exe.tgz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_crashreporter.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_crashreporter.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_gx_splash.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/*/opera_gx_splash.exe&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/autoupdate/opera_autoupdate.exe.gz&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Users/$LOGNAME/AppData/Local/Programs/Opera/autoupdate/opera_autoupdate.exe&nbsp;2&gt;/dev/null)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;-f&nbsp;"$WindowsIniOrInvalidExeFiles"&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rm&nbsp;"$WindowsIniOrInvalidExeFiles"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HandleMobilePercentage
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/sleep&nbsp;3
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/tasklist.exe&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/tr&nbsp;-d&nbsp;"\r"&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;brave.exe&nbsp;2&gt;&1&nbsp;|\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/grep&nbsp;-E&nbsp;-v&nbsp;"^$"&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret=$?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;[[&nbsp;0&nbsp;-eq&nbsp;$Ret&nbsp;]]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cygdrive/c/Windows/system32/taskkill.exe&nbsp;/f&nbsp;/im&nbsp;brave.exe&nbsp;&gt;/dev/null&nbsp;2&gt;&1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi
+done
+</PRE>
+  								</TD>
+  							</TBODY>
+  						</TABLE>
+  <NOSCRIPT>
+  </TABLE>
+  <TABLE width="100%"> 			<TR align="center" bgcolor="gray"
+height="2%"> 			<TD align=centre Valign="top"><FONT size="2" color=black>Site
+developed and maintained by murugesan_openssl Technical Enterprise knowledge transfer
+solutions &#169; 1985 to 900000000/0 (INFINITE). All rights reserved. <A href=".\privacy.html"
+title="PrivacyPolicies at free website providers"><FONT color=black><U>PrivacyPolicy</U></FONT></A></FONT></FONT></TD>
+ 			</TR> 			</TABLE> 		</NOSCRIPT>
+  <SCRIPT TYPE="text/javascript">
+			{
+				document.write( "<TABLE width='100%'><TBODY>\
+										<TR align='center' bgcolor='gray' height='2%'>\
+											<TD align=centre Valign='top'><FONT size='2' color=black>Site developed and maintained by murugesan_openssl Technical Enterprise knowledge transfer solutions &#169; 1985 to 900000000/0 (INFINITE). All rights reserved. <A href='privacy.html' title='PrivacyPolicies at free website providers'><FONT color=black><U>PrivacyPolicy</U></FONT></A></FONT></FONT></TD>\
+										</TR>\
+									</TBODY>\
+								</TABLE>");
+			}
+		</SCRIPT>
+</TABLE>
+</body>
+</HTML>
