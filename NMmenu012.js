@@ -618,7 +618,7 @@ function DisplayMainMenu()
 	}
 	else
 	{
-		document.write( "<H2><A id='life-finance-helper'><FONT color='black'>Life Finance Helper3</FONT></A></H2>" );
+		document.write( "<H2><A id='life-finance-helper'><FONT color='#FFD700'><B><U>Life Finance Helper3</FONT></B></U></A></H2>" );
 	}
 	document.write( `</DIV>
 	<NAV class="sidebar-nav">
@@ -637,7 +637,7 @@ function DisplayMainMenu()
 						<A href="#" onclick="javascript:loadHomeContent(event, 'displayMoneyHelpMenu.html');" class="nav-link">Money Help0</A>
 					</LI>
 					<LI>
-						<A href="#" onclick="javascript:loadHomeContent(event, 'Increase-Daily-Salary.html');" class="nav-link">Increase daily salary</A>
+						<A href="#" onclick='javascript:window.open("Increase-Daily-Salary.html");' class="nav-link"><FONT color='#00ff00'>Increase daily salary</FONT></A>
 					</LI>
 					<LI>
 						<A href="#" onclick="javascript:loadHomeContent(event, 'Bharath_gas_booking_steps.html');" class="nav-link">Bharath gas online booking steps</A>
@@ -663,13 +663,13 @@ function DisplayMainMenu()
 	</A>
 	<UL class="submenu">
 	<LI>
-		<A href="#" onclick="javascript:loadHomeContent(event, 'post-office-mis.html');" class="nav-link">Post office MIS</A>
+		<A href="#" onclick='javascript:window.open("post-office-mis.html");' class="nav-link"><FONT color='#00ff00'>Post office MIS</FONT></A>
 	</LI>
 	<LI>
-		<A href="#" onclick="javascript:loadHomeContent(event, 'post-office-nsc.html');" class="nav-link">Post office NSC</A>
+		<A href="#" onclick='javascript:window.open("post-office-nsc.html");' class="nav-link"><FONT color='#00ff00'>Post office NSC</FONT></A>
 	</LI>
 	<LI>
-		<A href="#" onclick="javascript:loadHomeContent(event, 'SBI_ETDR_INTEREST.html');" class="nav-link">SBi FD INTEREST</A>
+		<A href="#" onclick='javascript:window.open("SBI_ETDR_INTEREST.html");' class="nav-link"><FONT color='#00ff00'>SBi FD INTEREST</FONT></A>
 	</LI>
 	<LI>
 		<A href="#" onclick="javascript:loadHomeContent(event, 'Indian-bank-to-other-bank.html');" class="nav-link">Indian bank transfer err</A>
@@ -687,13 +687,13 @@ function DisplayMainMenu()
 		</A>
 		<UL class="submenu">
 			<LI>
-				<A href="#" onclick="javascript:loadHomeContent(event, 'spending.html');" class="nav-link">Daily spending</A>
+				<A href="#" onclick='javascript:window.open("spending.html");' class="nav-link"><FONT color='#00ff00'>Daily spending</FONT></A>
 			</LI>
 			<LI>
 				<A href="#" onclick="javascript:loadHomeContent(event, 'SavedAmt.html');" class="nav-link">Saved amount</A>
 			</LI>
 			<LI>
-				<A href="#" onclick="javascript:loadHomeContent(event, 'spending-chart.html');" class="nav-link">Spending chart</A>
+				<A href="#" onclick='javascript:window.open("spending-chart.html");' class="nav-link"><FONT color='#00ff00'>Spending chart</FONT></A>
 			</LI>
 			<LI>
 				<A href="#" onclick="javascript:loadHomeContent(event, 'my_exercise.html');" class="nav-link">My exercise</A>
@@ -707,9 +707,15 @@ function DisplayMainMenu()
 	<SPAN CLASS="NAV-ARROW">&gt;</SPAN>
 	</A>
 	<UL class="submenu">
-	<LI><A href="#">Share knowledge transfer</A></LI>
-	<LI><A href="#">Kitchen Drain</A></LI>
-	<LI><A href="#">Washing Machine</A></LI>
+	<LI>
+		<A href="#" onclick='javascript:window.open("ShareKnowledgeTransferToPeople.html");' class="nav-link"><FONT color='#00ff00'>Share knowledge transfer</FONT></A>
+	</LI>
+	<LI>
+		<A href="#" onclick='javascript:window.open("remove-blockages-kitchen-pvc-outflow-pipe.html");' class="nav-link"><FONT color='#00ff00'>Kitchen Drain</FONT></A>
+	</LI>
+	<LI>
+		<A href="#" onclick='javascript:window.open("washing-machine-repair.html");' class="nav-link"><FONT color='#00ff00'>Washing Machine</FONT></A>
+	</LI>
 	</UL>
 	</LI>
 	<LI class="nav-item">
@@ -719,39 +725,57 @@ function DisplayMainMenu()
 	<SPAN class="nav-arrow">&gt;</SPAN>
 	</A>
 	<UL class="submenu">
-	<LI><A href="#" onclick='javascript:window.open("Windows_ERR_HELP.html");'>Windows Help</A></LI>
-	<LI><A href="#">Windows Network</A></LI>
-	<LI><A href="#">Battery Alert</A></LI>
-	<LI><A href="#">Putty Logs</A></LI>
+	<LI><A href="#" onclick='javascript:window.open("Windows_ERR_HELP.html");'><FONT color='#00ff00'>Windows Help</FONT></A></LI>
+	<LI>
+		<A href="#" onclick='javascript:window.open("Windows_network_icon.html");' class="nav-link"><FONT color='#00ff00'>Windows Network</FONT></A>
+	</LI>
+	<LI>
+		<A href="#" onclick='javascript:window.open("Power_Battery_Alert.html");' class="nav-link"><FONT color='#00ff00'>Laptop battery alert</FONT></A>
+	</LI>
+	<LI>
+		<A href="#" onclick='javascript:window.open("PuttyLog.html");' class="nav-link"><FONT color='#00ff00'>Putty logs</FONT></A>
+	</LI>
 	</UL>
 	</LI>
 	<LI class="nav-item">
 	<A onclick='window.open( "Visitor_count.html" );' class="nav-link">
 	<SPAN class="nav-icon">&#x1F465;</SPAN>
-	<SPAN class="nav-text"><FONT color='black'>VisitorCnt</FONT></SPAN>
+	<SPAN class="nav-text"><FONT color='#00ff00'>VisitorCnt</FONT></SPAN>
 	</A>
 	<UL class="submenu">
-	<LI><A href="#" onclick='window.open("earth_politics_or_general_age.html");'>Earth politics</A></LI>
+	<LI>
+		<A href="#" onclick='window.open("earth_politics_or_general_age.html");'><FONt color='#00ff00'>Earth politics</FONT></A>
+	</LI>
 	</UL>
 	</LI>
 	<LI class="nav-item">
 	<A onclick='window.open( "tamil-calendar.html" );' class="nav-link">
 	<SPAN class="nav-icon">&#x1F4C5;</SPAN>
-	<SPAN class="nav-text"><FONT color='black'>Calendar</FONT></SPAN>
+	<SPAN class="nav-text"><FONT color='#00ff00'>Calendar</FONT></SPAN>
 	</A>
 	</LI>
 	<LI class="nav-item">
 	<A href="#" class="nav-link">
-	<SPAN class="nav-icon"><DIV class="info-box">i</DIV> </SPAN>
+	<SPAN class="nav-icon"><DIV class="info-box"></DIV> </SPAN>
 	<SPAN class="nav-text"><FONT color='black'>About</FONT></SPAN>
 	<SPAN class="nav-arrow">&gt;</SPAN>
 	</A>
 	<UL class="submenu">
-	<LI><A href='#' onclick='window.open( "NMurugesan_cv.html" );'>My Profile</A></LI>
-	<LI><A href='#' onclick='window.open( "openssl_speed.html" );'>openssl.exe speed</A></LI>
-	<LI><A href='#' onclick='window.open( "murugesan_achievements.html" );'>Achievements</A></LI>
-	<LI><A href='#' onclick='window.open( "Sustainable_Living.html" );'>Sustainable Living</A></LI>
-	<LI><A href='#' onclick='window.open( "privacy.html" );'>Privacy Policy</A></LI>
+	<LI>
+		<A href='#' onclick='window.open( "NMurugesan_cv.html" );'><FONT color='#00ff00'>My Profile</FONT></A>
+	</LI>
+	<LI>
+		<A href='#' onclick='window.open( "openssl_speed.html" );'><FONT color='#00ff00'><FONT color='#00ff00'>openssl.exe speed</FONT></A>
+	</LI>
+	<LI>
+		<A href='#' onclick='window.open( "murugesan_achievements.html" );'><FONT color='#00ff00'>My achievements</FONT></A>
+	</LI>
+	<LI>
+		<A href='#' onclick='window.open( "Sustainable_Living.html" );'><FONT color='#00ff00'>Sustainable Living</FONT></A>
+	</LI>
+	<LI>
+		<A href="#" onclick="javascript:loadHomeContent(event, 'privacy.html');" class="nav-link">Privacy policy</A>
+	</LI>
 	</UL>
 	</LI>
 	</UL>
