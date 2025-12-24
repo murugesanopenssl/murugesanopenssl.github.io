@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>Windows Defender High CPU Usage</TITLE>
+		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<META http-equiv="Pragma" content="no-cache">
+		<META http-equiv="Expires" content="0">
+		<LINK rel="stylesheet" href="hai-style.css">
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<SCRIPT src="NMmenu009.js"></SCRIPT>
+		<DIV class="container">
+			<SCRIPT>
+				DisplayMainMenu();
+			</SCRIPT>
+<PRE>
+<B>Resolving Windows Defender High CPU Usage (MsMpEng.exe)
+Background</B>
+I searched for "murugesan openssl" on google.co.uk.
+I chose google.co.uk because I worked with Hill Jason at GXS (Global Exchange Services) from 2004 to 2013. He's from the UK and appreciated my debugging skills using gdb/gdb.exe/dbx in C and C++ programming at any operating system.
+I received an award from the GXS CEO in 2008. Despite never having met him in person, I learnt a great deal from his technical expertise.
+<B>Issue Identified</B>
+I found this Microsoft support thread posted on Thu 14-Mar-2024 11:12 AM IST:
+<A href='' onclick='window.open("https://learn.microsoft.com/en-us/answers/questions/4054454/unable-to-stop-msmpeng-exe-windows-11-even-after-m");'>https://learn.microsoft.com/en-us/answers/questions/4054454/unable-to-stop-msmpeng-exe-windows-11-even-after-m</A>
+This issue affects both Windows 11 and Windows 10 Pro. Please note that Windows 10 is no longer officially supported by Microsoft.
+<B>Solution: Step-by-Step Instructions
+1. Enable Safe Mode</B>
+
+Open C:\Windows\System32\msconfig.exe
+Select the "Boot" tab
+Tick "Safe boot"
+Set timeout to 3 seconds
+Click "Apply"
+Restart your computer
+
+<B>2. Terminate the Process in Safe Mode</B>
+
+Open Command Prompt as Administrator
+Run: C:\Windows\System32&gt; C:\Windows\System32\tasklist.exe | C:\Windows\System32\findstr.exe MsMpEng.exe
+If output appears, run:
+C:\Windows\System32\taskkill.exe /f /im MsMpEng.exe
+
+<B>3. Disable Windows Defender Services</B>
+
+Open services.msc
+Disable the following services:
+
+Windows Defender Advanced Threat Protection Service
+Windows Defender Firewall
+
+
+
+Note: You may not be able to change the status of:
+
+Microsoft Defender Antivirus Service
+Microsoft Defender Core Service
+
+However, you can locate the executable files from these services at:
+
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MpDefenderCoreService.exe
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25060.7-0\MpDefenderCoreService.exe
+
+<B>4. Delete or gzip Defender Files</B>
+In Command Prompt(Administrator at safe mode):
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0&gt; DEL /P "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe"
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe, Delete (Y/N)? Y
+C:\ProgramData\Microsoft\Windows Defender\Platform&gt; DEL /P "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe"
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe, Delete (Y/N)? Y
+C:\ProgramData\Microsoft\Windows Defender\Platform&gt; DEL /P "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MpDefenderCoreService.exe"
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MpDefenderCoreService.exe, Delete (Y/N)? Y
+C:\ProgramData\Microsoft\Windows Defender\Platform&gt; DEL /P "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25060.7-0\MpDefenderCoreService.exe"
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25060.7-0\MpDefenderCoreService.exe, Delete (Y/N)? Y
+
+
+C:\Windows\System32&gt; CD /D C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0&gt; chown.exe murugesan -R .
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0&gt; chgrp.exe openssl -R .
+
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0&gt; DEL /P MsMpEng.exe
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe, Delete (Y/N)? Y
+
+5. Exit Safe Mode
+
+Open C:\Windows\System32\msconfig.exe
+Select the "Boot" tab
+Untick "Safe boot"
+Keep timeout at 3 seconds
+Click "Apply"
+Restart your computer
+
+Result
+After completing these steps, my Windows system no longer experiences hanging or memory management issues caused by Windows Defender.
+Future Updates
+I will update this guide at:
+https://murugesanopenssl.github.io/Windows_ERR_HELP.html
+This will be done once I've completed all other menu bar functionality fixes.
+Why I'm Sharing This
+I'm from Dharmapuri, which translates to "Dharma-puri" — the place of righteous duty. In keeping with this principle, I believe in sharing knowledge freely, without charge.
+Location: Dharmapuri, Tamil Nadu, India, Asia, Earth, Solar System, Current Universe
+
+bash.exe:
+<TABLE style='background-color:black;color:white;'>
+<TR>
+<TD>
+$ rm -i /cygdrive/c/Windows/System32/bash.exe
+/bin/rm: remove regular file '/cygdrive/c/Windows/System32/bash.exe'? y
+$ rm -i /cygdrive/c/Windows/WinSxS/amd64_microsoft-windows-lxss-bash_31bf3856ad364e35_10.0.19041.5794_none_b42e587f71e90738/bash.exe
+/bin/rm: remove regular file '/cygdrive/c/Windows/WinSxS/amd64_microsoft-windows-lxss-bash_31bf3856ad364e35_10.0.19041.5794_none_b42e587f71e90738/bash.exe'? y
+$ rm -i "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"
+/bin/rm: remove regular file "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"? y
+$ rm -i "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"
+/bin/rm: remove regular file "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"? y
+$ rm -i "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MpDefenderCoreService.exe"
+/bin/rm: remove regular file "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MpDefenderCoreService.exe"? y
+$ rm -i "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25060.7-0/MpDefenderCoreService.exe"
+/bin/rm: remove regular file "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25060.7-0/MpDefenderCoreService.exe"? y
+$ rm -i "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"
+/bin/rm: remove regular file "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"? y
+</TD>
+</TR>
+</TABLE>
+
+Note: This guide involves disabling Windows Defender. Please ensure you have alternative antivirus protection in place before proceeding.
+
+<HR>
+<HR>
+I have Validated Task Manager from 2024 to 2025(one year) = you can understand my testing count (after 18 years of experience at ERP testing and development across all platforms)...
+Open Task Manager and navigated to the Details tab and confirmed that MsMpEng.exe was causing high CPU usage.
+Automated scheduled scan used to run <B><U>auto</B></U>matically like <B><U>2 wheeler/Car/Aeroplane</B></U> matically.
+I have seen the hight CPU usage at taskmgr.exe.
+I havetried the following also using powershell.exe(Administrator)
+Hence I did as per my comment?
+	&gt;&gt; Safe Mode:
+	&gt;&gt; If you need to stop MsMpEng.exe, boot into Safe Mode and
+	&gt;&gt; use the command taskkill.exe /f /im MsMpEng.exe to terminate the process.
+</PRE>

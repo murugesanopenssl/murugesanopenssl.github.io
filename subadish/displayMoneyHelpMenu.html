@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META CHARSET="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<LINK href="hai-style.css" rel="stylesheet">
+		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<META http-equiv="Pragma" content="no-cache">
+		<META http-equiv="Expires" content="0">
+		<TITLE>Money Help Menu</TITLE>
+		<STYLE type="text/css">
+			body
+			{
+				background-color: #004b8d;
+				color: #eaf2fb;
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+			}
+			.toggle-btn
+			{
+				background-color: #005fa3;
+				color: #eaf2fb;
+				border: 1px solid #7fb3d5;
+				padding: 8px 18px;
+				margin: 0 5px;
+				border-radius: 3px;
+				cursor: pointer;
+				font-weight: bold;
+				font-size: 14px;
+			}
+			.toggle-btn:hover
+			{
+				background-color: #0073c6;
+			}
+			table
+			{
+				border-collapse: collapse;
+				background-color: #005fa3;
+				color: #eaf2fb;
+				width: 100%;
+			}
+			td, th
+			{
+				border: 1px solid #7fb3d5;
+				padding: 6px;
+				font-size: 14px;
+				background-color: #005fa3;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV style="width:100%;display:block;margin:0;padding:0;">
+			<TABLE>
+				<TR>
+					<TD style="padding: 10px; text-align:left;">
+						<BUTTON id="toggleButton01" onclick="toggleSubmenu01()" class="toggle-btn" style="display: block; margin: 20px; padding: 10px 20px; cursor: pointer; text-align: center; font-size: 18px; width: 100%; transition: background-color 0.3s;">Close Financial Service Menu</BUTTON>
+					</TD>
+					<TD style="padding: 10px; text-align:left;">
+						<BUTTON id="toggleButton02" onclick="toggleSubmenu02()" class="toggle-btn" style="display: block; margin: 20px; padding: 10px 20px; cursor: pointer; text-align: center; font-size: 18px; width: 100%; transition: background-color 0.3s;">Close GOVT RESOURCE Menu</BUTTON>
+					</TD>
+				</TR>
+			</TABLE>
+			<TABLE>
+				<TBODY>
+					<TR>
+						<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
+							<DIV id="financialResourcesMenu01" style="display: block; padding: 10px; margin-top: 10px;">
+								<SPAN style="color: #FFCC00; font-weight: bold;">Financial Service Menu</SPAN>
+								<H3>Financial Resources</H3>
+								<A href='#' onclick='javascript:window.open("Increase-Daily-Salary.html");' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;color:#00ff00;'><B><U>Increase Daily Salary</B></U></A>
+								<A href='#' onclick='window.open("Pay_Book_Bharat_gas_online.html");' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;color:#00ff00;'><B><U>Steps to book bharath gas online</B></U></A>
+								<A href='#' onclick='window.open("Indian-Oil-Cylinder-Booking-Online-Steps.html");' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;color:#00ff00;'><B><U>Indian Oil Cylinder Booking Online Steps</B></U></A>
+							</DIV>
+						</TD>
+						<TD style="padding: 10px; text-align:left; width:50%; vertical-align:top;">
+							<DIV id="financialResourcesMenu02" style="display: block; padding: 10px; margin-top: 10px;">
+								<SPAN style="color: #FFCC00; font-weight: bold;">GOVT RESOURCE Menu</SPAN>
+								<H3>GOVT Resources</H3>
+								<A href='#' onclick='window.open("earth_politics_or_general_age.html");' style='display: block; text-align: left; margin: 5px 0; padding: 5px; text-decoration: none;color:#00ff00;'><B><U>India GDP</B></U></A>
+							</DIV>
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+		</DIV>
+		<SCRIPT type="text/javascript">
+			function toggleSubmenu01()
+			{
+				var submenu = document.getElementById('financialResourcesMenu01');
+				var button = document.getElementById('toggleButton01');
+				if( 'none' === submenu.style.display )
+				{
+					submenu.style.display = 'block';
+					button.innerHTML = 'Close Financial Service Menu';
+				}
+				else
+				{
+					submenu.style.display = 'none';
+					button.innerHTML = 'Show Financial Resources';
+				}
+			}
+			function toggleSubmenu02()
+			{
+				var submenu = document.getElementById('financialResourcesMenu02');
+				var button = document.getElementById('toggleButton02');
+				if( 'none' === submenu.style.display )
+				{
+					submenu.style.display = 'block';
+					button.innerHTML = 'Close GOVT RESOURCE Menu';
+				}
+				else
+				{
+					submenu.style.display = 'none';
+					button.innerHTML = 'Show GOVT Resources';
+				}
+			}
+		</SCRIPT>
+	</BODY>
+</HTML>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<META http-equiv="Pragma" content="no-cache">
+		<META http-equiv="Expires" content="0">
+		<META CHARSET="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<LINK rel="stylesheet" href="hai-style.css">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>செலவு வரைபடம்</TITLE>
+		<SCRIPT src='NMmenu009.js'></SCRIPT>
+		<SCRIPT type='text/javascript'>
+			writeMenu();
+		</SCRIPT>
+		<STYLE type='text/css'>
+			body
+			{
+				font-family: Arial, sans-serif;
+				background-color: #004C8F;
+				color: #FFFFFF;
+				padding:0;
+				margin:0;
+			}
+			.container
+			{
+				max-width:800px;
+				margin:auto;
+				padding:10px;
+				text-align:center;
+			}
+			h2
+			{
+				font-size:20px;
+				margin-bottom:20px;
+				color:#FFFFFF;
+				border-bottom:2px solid #FF6600; /* orange accent */
+				padding-bottom:8px;
+			}
+			select
+			{
+				width:100%;
+				padding:8px;
+				margin-bottom:20px;
+				font-size:16px;
+				background:#003D82;
+				color:#FFFFFF;
+				border:2px solid #FF6600;
+				border-radius:5px;
+			}
+			.circle
+			{
+				width:220px;
+				height:220px;
+				border-radius:50%;
+				position:relative;
+				margin:10px auto;
+				box-shadow: 0 0 10px rgba(0,0,0,0.5);
+			}
+			.text
+			{
+				position:absolute;
+				top:50%;
+				left:50%;
+				transform:translate(-50%,-50%);
+				width:160px;
+				font-size:16px;
+				text-align:center;
+				font-weight:bold;
+				line-height:1.4;
+				color:#000080;
+				background:#FFFFFF;
+				padding:6px;
+				border-radius:8px;
+			}
+			.red
+			{
+				background:conic-gradient(red var(--v), #eee 0%);
+			}
+			.orange
+			{
+				background:conic-gradient(orange var(--v), #eee 0%);
+			}
+			.pink
+			{
+				background:conic-gradient(pink var(--v), #eee 0%);
+			}
+			.violet
+			{
+				background:conic-gradient(violet var(--v), #eee 0%);
+			}
+			.cyan
+			{
+				background:conic-gradient(cyan var(--v), #eee 0%);
+			}
+			.gray
+			{
+				background:conic-gradient(gray var(--v), #eee 0%);
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV style="width:100%;display:block;margin:0;padding:0;">
+			<DIV class="container" style="margin-top:20px;">
+				<H2 id="chartTitle"><A id='spendingid' href='spending.html'>மாதாந்திர மொத்த செலவு</A></H2>
+				<SELECT id="monthSelect"></SELECT>
+				<TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+					<TR align="center">
+						<TD valign='top' align='left'><DIV class="circle orange" id="cFood"><DIV class="text" id="tFood"></DIV></DIV></TD>
+						<TD valign='top' align='left'><DIV class="circle red" id="cWaste"><DIV class="text" id="tWaste"></DIV></DIV></TD>
+						<TD valign='top' align='left'><DIV class="circle pink" id="cEri"><DIV class="text" id="tEri"></DIV></DIV></TD>
+					</TR>
+					<TR align="center">
+						<TD valign='top' align='left'><DIV class="circle violet" id="cTravel"><DIV class="text" id="tTravel"></DIV></DIV></TD>
+						<TD valign='top' align='left'><DIV class="circle cyan" id="cSchool"><DIV class="text" id="tSchool"></DIV></DIV></TD>
+						<TD valign='top' align='left'><DIV class="circle cyan" id="csavedamt"><DIV class="text" id="tsavedamt"></DIV></DIV></TD>
+						<TD valign='top' align='left'><DIV class="circle gray" id="cOther"><DIV class="text" id="tOther"></DIV></DIV></TD>
+					</TR>
+				</TABLE>
+			</DIV>
+			<SCRIPT type="module">
+				import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+				import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+				const firebaseConfig= {
+				apiKey:"AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+				authDomain:"openmurugesan.firebaseapp.com",
+				databaseURL:"https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+				projectId:"openmurugesan",
+				storageBucket:"openmurugesan.firebasestorage.app",
+				messagingSenderId:"307675598593",
+				appId:"1:307675598593:web:4af163460ce2c3bc719500",
+				measurementId:"G-0MFK92PQMP"
+				};
+				const app=initializeApp(firebaseConfig);
+				const db=getDatabase(app);
+				const monthSelect=document.getElementById("monthSelect");
+				const cFood=document.getElementById("cFood");
+				const cWaste=document.getElementById("cWaste");
+				const cEri=document.getElementById("cEri");
+				const cTravel=document.getElementById("cTravel");
+				const cSchool=document.getElementById("cSchool");
+				const csavedamt=document.getElementById("csavedamt");
+				const cOther=document.getElementById("cOther");
+				const tFood=document.getElementById("tFood");
+				const tWaste=document.getElementById("tWaste");
+				const tEri=document.getElementById("tEri");
+				const tTravel=document.getElementById("tTravel");
+				const tSchool=document.getElementById("tSchool");
+				const tsavedamt=document.getElementById("tsavedamt");
+				const tOther=document.getElementById("tOther");
+				function extractMonth(d){const p=d.split("-");return p[1]+"-"+p[2];}
+			async function loadChart()
+			{
+				const snap=await get(child(ref(db),"/spending"));
+				if(!snap.exists())return;
+				const data=snap.val();
+				const monthSet=new Set();
+				Object.values(data).forEach( rows=>
+					{
+						rows.forEach(r=>monthSet.add(extractMonth(r[0])));
+					}
+				);
+				const months=Array.from(monthSet).sort((a,b)=>new Date("01-"+b)-new Date("01-"+a));
+				monthSelect.innerHTML=`<OPTION value="ALL">ALL</OPTION>`;
+				months.forEach(m=>monthSelect.innerHTML+=`<OPTION value="${m}">${m}</OPTION>`);
+				const d=new Date();
+				const mm=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+				const curr = mm[d.getMonth()] + "-" + d.getFullYear();
+				if(months.includes(curr)) monthSelect.value=curr;
+				updateChart(data);
+				monthSelect.addEventListener("change",()=>updateChart(data));
+			}
+			function updateChart(data)
+			{
+			    const sel = monthSelect.value;
+			    let spendingHref = document.getElementById("spendingid");
+			    if( spendingHref )
+			    {
+				    spendingHref.href = "spending.html";
+			    }
+			    const chartTitle = document.getElementById("chartTitle");
+			    if (sel === "ALL")
+				{
+					spendingHref.textContent = "இந்த ஆண்டு 2025க்கான செலவுத் தொகை.";
+			    }
+				else
+				{
+				const parts = sel.split("-");
+				const tMap = {
+				    "Jan":"ஜனவரி","Feb":"பிப்ரவரி","Mar":"மார்ச்","Apr":"ஏப்ரல்","May":"மே","Jun":"ஜூன்",
+				    "Jul":"ஜூலை","Aug":"ஆகஸ்ட்","Sep":"செப்டம்பர்","Oct":"அக்டோபர்","Nov":"நவம்பர்","Dec":"டிசம்பர்"
+					};
+					spendingHref.textContent = `${tMap[parts[0]]}-${parts[1]} இல் செலவினத் தொகை`;
+			    }
+			    let wasted=0, food=0, eri=0, travel=0, school=0, other=0, savedamt=0;
+			    Object.values(data).forEach(rows=>{
+				rows.forEach(row=>{
+				    if(sel!=="ALL" && extractMonth(row[0])!==sel) return;
+				    for(let i=1;i<row.length;i+=2){
+					const item = row[i];
+					const amt  = parseFloat(row[i+1]) || 0;
+					const clean = item
+					    .normalize("NFKC")
+					    .replace(/[\s.\u200B\u00A0\uFEFF\u2060\u180E\u200C\u200D]/g,"")
+					    .trim();
+					if(item.toLowerCase().includes("snack")){
+					    wasted += amt;
+					    continue;
+					}
+					if( item.toLowerCase().includes("மா.ர.ப") )
+					{
+						if(0!=amt)
+						{
+							savedamt += amt;
+						}
+					}
+					else if(item.toLowerCase().includes("உணவு") || item==="மதிய உணவு" || item==="இரவு உணவு" || item==="தேநீர்" || item==="அ.சி")
+					    food += amt;
+					else if(item.includes("எரி"))
+					    eri += amt;
+					else if(item.includes("பயண") || item.toLowerCase().includes("dpi") || item.toLowerCase().includes("hosur") || item.toLowerCase().includes("bng"))
+					    travel += amt;
+					else if(item.toLowerCase().includes("school"))
+					    school += amt;
+					else if( item.toLowerCase().includes("தொ.வை") )
+					{
+						if(0!=amt)
+						{
+							savedamt += amt;
+						}
+					}
+					else
+					{
+					    other += amt;
+					}
+				    }
+				});
+			    });
+			    const sum = food+eri+travel+school+other+savedamt;
+			    const pFood      = sum?Math.round(food/sum*100):0;
+			    const pWaste     = sum?Math.round(wasted/sum*100):0;
+			    const pEri       = sum?Math.round(eri/sum*100):0;
+			    const pTravel    = sum?Math.round(travel/sum*100):0;
+			    const pSchool    = sum?Math.round(school/sum*100):0;
+			    const psavedamt  = sum?Math.round(savedamt/sum*100):0;
+			    const pOther     = sum?Math.round(other/sum*100):0;
+			    cFood.style.setProperty("--v",pFood+"%");
+			    cWaste.style.setProperty("--v",pWaste+"%");
+			    cEri.style.setProperty("--v",pEri+"%");
+			    cTravel.style.setProperty("--v",pTravel+"%");
+			    cSchool.style.setProperty("--v",pSchool+"%");
+			    csavedamt.style.setProperty("--v",psavedamt+"%");
+			    cOther.style.setProperty("--v",pOther+"%");
+			    tFood.innerHTML    = "உணவு: "+pFood+"%";
+			    tWaste.innerHTML   = "வீணான தொகை: "+pWaste+"%";
+			    tEri.innerHTML     = "எரிபொருள்: "+pEri+"%";
+			    tTravel.innerHTML  = "பயணம்: "+pTravel+"%";
+			    tSchool.innerHTML  = "பள்ளிக்கூட கட்டணம்: "+pSchool+"%";
+			    tsavedamt.innerHTML= "சேமித்த தொகை: "+psavedamt+"%";
+			    tOther.innerHTML   = "மற்றவை: "+pOther+"%";
+			}
+			loadChart();
+		</SCRIPT>
+	</BODY>
+</HTML>
