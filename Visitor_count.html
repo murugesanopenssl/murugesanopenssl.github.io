@@ -8,8 +8,7 @@
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<LINK href="github.io.css" rel="stylesheet">
 		<TITLE>User access count</TITLE>
-		<SCRIPT src='NMmenu012.js'>
-		</SCRIPT>
+		<SCRIPT src='NMmenu013.js'></SCRIPT>
 		<SCRIPT type='text/javascript'>
 			writeMenu();
 		</SCRIPT>
@@ -51,14 +50,14 @@
 			}
 			button
 			{
-				background-color: #003D82 !important; /* HDFC Header Blue */
+				background-color: #003D82 !important;
 				color: #FFFFFF !important;
-				border: 2px solid #FF6600 !important; /* HDFC Orange border */
+				border: 2px solid #FF6600 !important;
 				font-weight: bold;
 			}
 			button:hover
 			{
-				background-color: #FF6600 !important; /* HDFC Orange on hover */
+				background-color: #FF6600 !important;
 				color: #FFFFFF !important;
 				border: 2px solid #003D82 !important;
 			}
@@ -66,11 +65,21 @@
 		<TABLE border='1' style='width:100%;'>
 			<THEAD>
 				<TR>
-					<TH>User Count for https://murugesanopenssl.github.io</TH>
-					<TH>Country</TH>
+					<TH>User Count at https://murugesanopenssl.github.io</TH>
+					<TH>Metric</TH>
+					<TH>Description</TH>
 				</TR>
 			</THEAD>
 			<TBODY id="tbody"></TBODY>
+		</TABLE>
+		<TABLE border='1' style='width:100%;margin-top:20px;'>
+			<THEAD>
+				<TR>
+					<TH>Metric</TH>
+					<TH>Value</TH>
+				</TR>
+			</THEAD>
+			<TBODY id="metrics"></TBODY>
 		</TABLE>
 		<SCRIPT type="module">
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -85,39 +94,423 @@
 				appId: "1:307675598593:web:4af163460ce2c3bc719500",
 				measurementId: "G-0MFK92PQMP"
 			};
-			const app = initializeApp(firebaseConfig);
-			const db = getDatabase(app);
-			const tbody = document.getElementById("tbody");
-			const id = "VISIT-" + Date.now();
+			const app = initializeApp( firebaseConfig );
+			const db = getDatabase( app );
+			const tbody = document.getElementById( "tbody" );
+			const metricsTbody = document.getElementById( "metrics" );
 			const bow = navigator.userAgent;
+			let deviceCounts = { Desktop: 0, Mobile: 0, Tablet: 0 };
 			const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-			const ctry = (tz.includes("Kolkata") || tz.includes("Calcutta")) ? "INDIA" : "Location: UNKNOWN – location for these users is not available due to VPN, proxy, or privacy settings on their device.";
-			push( ref(db, "userAccess"),
+			const ctry = tz.includes( "Kolkata" ) ? "INDIA" : "UNKNOWN"; 
+			const desc = ( "INDIA" === ctry )
+				? "Derived from browser timezone ( Asia/Kolkata / Asia/Calcutta )"
+				: "Location hidden due to VPN/proxy/privacy";
+			async function detectAndStoreBrowser()
+			{
+				let browserName = "Unknown";
+				const ua = bow.toLowerCase();
+				
+				// Detect device type
+				let deviceType = "Desktop";
+				let deviceModel = "Unknown";
+				let osName = "Unknown";
+				
+				// Mobile detection
+				if( /mobile|iphone|ipod|android.*mobile/i.test(bow) )
 				{
-					browser: bow,
-					country: ctry,
-					timezone: tz,
-					timestamp: Date.now()
+					deviceType = "Mobile";
 				}
-			);
-			onValue( ref(db, "userAccess"), snap =>
+				else if( /tablet|ipad|android(?!.*mobile)/i.test(bow) )
+				{
+					deviceType = "Tablet";
+				}
+				
+				// OS detection
+				if( ua.includes("windows") )
+				{
+					osName = "Windows";
+					if( ua.includes("windows nt 10.0") ) osName = "Windows 10/11";
+					else if( ua.includes("windows nt 6.3") ) osName = "Windows 8.1";
+					else if( ua.includes("windows nt 6.2") ) osName = "Windows 8";
+				}
+				else if( ua.includes("android") )
+				{
+					osName = "Android";
+					const androidMatch = ua.match(/android (\d+)/);
+					if( androidMatch ) osName = "Android " + androidMatch[1];
+				}
+				else if( ua.includes("iphone") )
+				{
+					osName = "iOS (iPhone)";
+				}
+				else if( ua.includes("ipad") )
+				{
+					osName = "iOS (iPad)";
+				}
+				else if( ua.includes("mac os x") )
+				{
+					osName = "macOS";
+				}
+				else if( ua.includes("linux") )
+				{
+					osName = "Linux";
+				}
+				
+				// Device model detection (mainly for mobile)
+				if( ua.includes("iphone") )
+				{
+					deviceModel = "iPhone";
+				}
+				else if( ua.includes("ipad") )
+				{
+					deviceModel = "iPad";
+				}
+				else if( ua.includes("samsung") )
+				{
+					deviceModel = "Samsung";
+				}
+				else if( ua.includes("pixel") )
+				{
+					deviceModel = "Google Pixel";
+				}
+				
+				// Screen size
+				const screenWidth = window.screen.width;
+				const screenHeight = window.screen.height;
+				const screenResolution = `${screenWidth}x${screenHeight}`;
+				
+				if( ua.includes("firefox/") && ua.includes("gecko/") )
+				{
+					browserName = "Firefox";
+				}
+				else if( ua.includes("edg/") )
+				{
+					browserName = "Edge";
+				}
+				else if( ua.includes("gtmetrix") )
+				{
+					browserName = "GTmetrix Bot";
+				}
+				else if( ua.includes("headlesschrome") )
+				{
+					browserName = "Headless Chrome Bot";
+				}
+				else if( ua.includes("chrome/") )
+				{
+					browserName = "Chrome";
+					
+					if( 'undefined' !== typeof navigator?.brave )
+					{
+						try
+						{
+							const isBrave = await navigator.brave.isBrave();
+							if( isBrave )
+							{
+								browserName = "Brave";
+							}
+						}
+						catch(e)
+						{
+						}
+					}
+				}
+				else if( ua.includes("safari/") && !ua.includes("chrome/") )
+				{
+					browserName = "Safari";
+				}
+				
+				push( ref( db, "userAccess" ),
+					{
+						browser: bow,
+						browserName: browserName,
+						deviceType: deviceType,
+						deviceModel: deviceModel,
+						osName: osName,
+						screenResolution: screenResolution,
+						country: ctry,
+						timezone: tz,
+						timestamp: Date.now()
+					}
+				);
+			}
+			
+			detectAndStoreBrowser();
+			onValue( ref( db, "userAccess" ), snap =>
 				{
 					tbody.innerHTML = "";
-					let counts = {};
-
-					snap.forEach(child => {
-					let raw = child.val().country;
-					let finalC = (raw === "INDIA") ? "INDIA" : "Location: UNKNOWN – location for these users is not available due to VPN, proxy, or privacy settings on their device.";
-					counts[finalC] = (counts[finalC] || 0) + 1;
-					});
-
-					Object.keys(counts).forEach( country =>
+					metricsTbody.innerHTML = "";
+					const countryCnt = {};
+					const usersSet = new Set();
+					const browserCnt = {};
+					let visitsToday = 0;
+					const today = new Date().toDateString();
+					snap.forEach( child =>
 						{
-							tbody.innerHTML += `
-							<TR>
-							<TD valign='top' align='right'>${String(counts[country]).padStart(4,"0")}</TD>
-							<TD valign='top' align='right'>${country}</TD>
+							const ua = child.val().browser.toLowerCase();
+							if( /mobile|iphone|android/.test( ua ) )
+							{
+								deviceCounts.Mobile++;
+							}
+							else if( /tablet|ipad/.test( ua ) )
+							{
+								deviceCounts.Tablet++;
+							}
+							else
+							{
+								deviceCounts.Desktop++;
+							}
+							const val = child.val();
+							const visitorKey = child.key
+							usersSet.add( visitorKey );
+							const visitDate = new Date( val.timestamp ).toDateString();
+							if( today === visitDate )
+							{
+								++visitsToday;
+							}
+							function getBrowserName(ua)
+							{
+								ua = ua.toLowerCase();
+								
+								if( ua.includes("firefox/") && ua.includes("gecko/") )
+								{
+									return "Firefox";
+								}
+								if( ua.includes("edg/") )
+								{
+									return "Edge";
+								}
+								if( ua.includes("gtmetrix") )
+								{
+									return "GTmetrix Bot";
+								}
+								if( ua.includes("headlesschrome") )
+								{
+									return "Headless Chrome Bot";
+								}
+								if( ua.includes("chrome/") )
+								{
+									return "Chrome";
+								}
+								if( ua.includes("safari/") && !ua.includes("chrome/") )
+								{
+									return "Safari";
+								}
+								return "Unknown";
+							}
+							const browser = val.browserName || getBrowserName( val.browser );
+							browserCnt[browser] = 1 + ( browserCnt[browser] || 0 );
+							const categories = [
+								{ value: val.country, description: val.country === "INDIA" ? "Derived from browser timezone ( Asia/Kolkata )" : "Location hidden due to VPN/proxy/privacy" },
+								{ value: val.country === "INDIA" ? "India" : null, description: "Country name resolved from Geo/IP source" },
+								{ value: val.country === "INDIA" ? "IN" : null, description: "ISO 3166-1 alpha-2 country code" },
+								{ value: val.timezone === "Asia/Calcutta" ? "Asia/Calcutta" : null, description: "IANA timezone identifier reported by browser" }
+							];
+							categories.forEach( cat =>
+								{
+									if( cat.value )
+									{
+										countryCnt[cat.value] = 1 + ( countryCnt[cat.value] || 0 );
+									}
+								}
+							);
+						}
+					);
+					Object.keys( countryCnt ).forEach( c =>
+						{
+							let desc;
+							switch( c )
+							{
+								case "INDIA":
+									desc = "Derived from browser timezone ( Asia/Kolkata )";
+									break;
+								case "India":
+									desc = "Country name resolved from Geo/IP source";
+									break;
+								case "IN":
+									desc = "ISO 3166-1 alpha-2 country code";
+									break;
+								case "Asia/Calcutta":
+									desc = "IANA timezone identifier reported by browser";
+									break;
+								case "UNKNOWN":
+									desc = "Location hidden due to VPN/proxy/privacy";
+									break;
+								default:
+									desc = "Aggregated visitor location value";
+							}
+							tbody.innerHTML += `<TR>
+								<TD align='middle'>${String( countryCnt[c] ).padStart( 4, "0" ) }</TD>
+								<TD align='right'>${ c }</TD>
+								<TD align='right'>${ desc }</TD>
 							</TR>`;
+						}
+					);
+					const totalVisits = snap.size;
+					const uniqueVisitors = usersSet.size;
+					const topBrowser = Object.keys( browserCnt ).reduce( ( a, b ) => browserCnt[a] > browserCnt[b] ? a : b, "" );
+					const metrics = [
+						{ name: "Total Visits", value: totalVisits },
+						{ name: "Unique Visitors", value: uniqueVisitors },
+						{ name: "Visits Today", value: visitsToday },
+						{ 
+							name: "Browsers accessing this page", 
+							value: `<TABLE border='1' style='width:100%; margin-top:10px;'>
+		<THEAD>
+			<TR>
+				<TH valign='top' align='right'>Browser name</TH>
+				<TH valign='top' align='right'>Count</TH>
+			</TR>
+		</THEAD>
+		<TBODY>
+		${Object.keys(browserCnt).map(b =>
+			{
+				let browserPath = "";
+				const ua = "";
+				switch(b)
+				{
+					case "Firefox":
+						browserPath = "firefox/firefox.exe";
+						break;
+					case "Edge":
+						browserPath = "Windows msedge.exe";
+						break;
+					case "Chrome":
+						browserPath = "chrome/chrome.exe";
+						break;
+					case "Brave":
+						browserPath = "brave/brave.exe";
+						break;
+					case "Safari":
+						browserPath = "Safari.app/Contents/MacOS/Safari";
+						break;
+					case "GTmetrix Bot":
+						const bow = navigator.userAgent;
+						const ua = bow.toLowerCase();
+						if( ua.includes("windows") ) browserPath = "windows/gtmetrix-agent.exe";
+						else if( ua.includes("mac") ) browserPath = "macos/gtmetrix-agent";
+						else if( ua.includes("x11") || ua.includes("linux") ) browserPath = "linux/gtmetrix-agent";
+						else browserPath = "unknown-os/gtmetrix-agent";
+						break;
+					case "Headless Chrome Bot":
+						if( 'undefined' != typeof navigator )
+						{
+							if( 'undefined' != typeof navigator.userAgent )
+							{
+								const bow = navigator.userAgent;
+								const ua = bow.toLowerCase();
+								if( ua.includes("windows") )
+								{
+									browserPath = "windows/headless-chrome.exe";
+								}
+								else if( ua.includes("mac") )
+								{
+									browserPath = "macos/headless-chrome";
+								}
+								else if( ua.includes("x11") || ua.includes("linux") )
+								{
+									browserPath = "linux/headless-chrome";
+								}
+								else
+								{
+									browserPath = "*ANY-os/headless-chrome";
+								}
+							}
+						}
+						else
+						{
+							browserPath = "*ANY/headless-chrome";
+						}
+						break;
+					default:
+						browserPath = b;
+				}
+				return `<TR>
+					<TD valign='top' align='right'>${browserPath}</TD>
+					<TD valign='top' align='right'>${browserCnt[b]}</TD>
+				</TR>`;
+			}
+		).join("")}
+</TBODY>
+	</TABLE>` 
+}
+					];
+					metrics.forEach( m =>
+						{
+							metricsTbody.innerHTML += `
+							<TR>
+								<TD valign='top' align='right'>${m.name}</TD>
+								<TD valign='top' align='right'>${m.value}</TD>
+							</TR>`;
+						}
+					);
+					const deviceDetails = { Desktop: [], Mobile: [], Tablet: [] };
+					snap.forEach( child =>
+						{
+							const val = child.val();
+							const devType = val.deviceType || "Desktop";
+							const devModel = val.deviceModel || "Unknown";
+							const osName = val.osName || "Unknown";
+							const screenRes = val.screenResolution || "Unknown";
+							
+							if( deviceDetails[devType] )
+							{
+								deviceDetails[devType].push({
+									model: devModel,
+									os: osName,
+									screen: screenRes
+								});
+							}
+						}
+					);
+					Object.keys( deviceCounts ).forEach( dev =>
+						{
+							metricsTbody.innerHTML += `<TR>
+									<TD align='right'>${dev}</TD>
+									<TD align='right'>${deviceCounts[dev]}</TD>
+								</TR>`;
+							
+							if( deviceDetails[dev] && deviceDetails[dev].length > 0 )
+							{
+								const uniqueDevices = {};
+								deviceDetails[dev].forEach( d =>
+									{
+										const key = `${d.model} (${d.os}) - ${d.screen}`;
+										uniqueDevices[key] = (uniqueDevices[key] || 0) + 1;
+									}
+								);
+								
+								metricsTbody.innerHTML += `<TR>
+									<TD colspan='2'>
+										<TABLE border='1' style='width:100%; margin-top:5px;'>
+											<THEAD>
+												<TR>
+													<TH valign='top' align='right'>Device Model</TH>
+													<TH valign='top' align='right'>OS</TH>
+													<TH valign='top' align='right'>Screen</TH>
+													<TH valign='top' align='right'>Count</TH>
+												</TR>
+											</THEAD>
+											<TBODY>
+												${Object.keys(uniqueDevices).map( key =>
+													{
+														const parts = key.split(" (");
+														const model = parts[0];
+														const rest = parts[1].split(") - ");
+														const os = rest[0];
+														const screen = rest[1];
+														return `<TR>
+															<TD align='right'>${model}</TD>
+															<TD align='right'>${os}</TD>
+															<TD align='right'>${screen}</TD>
+															<TD align='right'>${uniqueDevices[key]}</TD>
+														</TR>`;
+													}
+												).join("")}
+											</TBODY>
+										</TABLE>
+									</TD>
+								</TR>`;
+							}
 						}
 					);
 				}
