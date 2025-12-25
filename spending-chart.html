@@ -181,7 +181,9 @@
 			    const chartTitle = document.getElementById("chartTitle");
 			    if (sel === "ALL")
 				{
-					spendingHref.textContent = "இந்த ஆண்டு 2025க்கான செலவுத் தொகை.";
+					const yr = new Date().getFullYear();
+					spendingHref.textContent = "இந்த ஆண்டு "+yyyy+"க்கான செலவுத் தொகை.";
+					spendingHref.style.color = 'white';
 			    }
 				else
 				{
@@ -191,6 +193,7 @@
 				    "Jul":"ஜூலை","Aug":"ஆகஸ்ட்","Sep":"செப்டம்பர்","Oct":"அக்டோபர்","Nov":"நவம்பர்","Dec":"டிசம்பர்"
 					};
 					spendingHref.textContent = `${tMap[parts[0]]}-${parts[1]} இல் செலவினத் தொகை`;
+					spendingHref.style.color = 'white';
 			    }
 			    let wasted=0, food=0, eri=0, travel=0, school=0, other=0, savedamt=0;
 			    Object.values(data).forEach(rows=>{
