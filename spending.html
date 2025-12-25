@@ -1561,7 +1561,7 @@ Dec: [
 			"<A title='இரவு உணவு/Dinner'>இஉணவு</A>",			325.00,
 			"<A TITLE='மதிய உணவு/Lunch'>மஉணவு</A>",				490.00,
 			"<A TITLE='குறிப்பாட்டிற்கான ஒட்டும் குறிப்பட்டைகள்/Adhesive labels for notes and vessel'>பா.அட்டை</A>",					254.00,
-			"",					0.00,
+			"<A TITLE='அத்திபள்ளி பெங்களூரு (இந்தியா) உள்ள லென்ஸ்கார்ட் கடையில், கண்ணாடிக்கான மூக்குத் தாங்கிகள் இலவசமாக வழங்கப்பட்டன/free of cost NOSE PADS provided by lensekart at attibele bengaluru/India'>மூக்குத் தாங்கி</A>",					0.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00
@@ -2961,10 +2961,11 @@ async function initAndLoad()
 										const isBSNLNet = /பா.ச.நி.லி/i.test(e.item);
 										const isSnack = /சிஉண்டி/i.test(e.item);
 										const isHairCut = /மு.வெ/i.test(e.item);
+										const lenseKart = /மூக்குத் தாங்கி/i.test(e.item);
 										const is2WheelRepairBargain = /பேரம் பேசிய பிறகு இருசக்கர வாகன பழுதுபார்ப்ப/i.test(e.item);
 										const stayAtHome = /வீட்டிலுரு/i.test(e.item);
 										const amtVal = parseFloat(e.amt) || 0;
-										const hairStyle = isHairCut ? " style='background:#00ff00;color:white;'" : "";
+										const hairStyle = isHairCut ? " style='background:#00ff00;color:white;'" : lenseKart ? " style='background:#00ff00;color:white;'" : "";
 										const Bargained2WheelerStyle = is2WheelRepairBargain ? " style='background:#00ff00;color:white;'" : "";
 										const style = isSnack ? " style='background:red;color:white;'" : "";
 										let firstAmountStyle = i === 0 && isSnack ? "style='background:red;color:white;'" : "";
