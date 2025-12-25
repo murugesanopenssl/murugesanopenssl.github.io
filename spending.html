@@ -1373,54 +1373,54 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				showDefault();
 			};
 			function toggleTable(event)
-{
-    event = event || window.event;
-    event.preventDefault();
-    const clickedId = event.target.id;
-    const homeLink = document.getElementById('Homehref');
-    const preventLink = document.getElementById('PreventWastagehref');
-    const homeTable = document.getElementById('HomeTable');
-    const preventWastage = document.getElementById('PreventWastage');
-    const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-    
-    if( 'Homehref' === clickedId )
-    {
-        if( 'none' === homeTable.style.display || '' === homeTable.style.display )
-        {
-            homeTable.style.display = 'table';
-            preventWastage.style.display = 'none';
-            categoryAmount.style.display = 'none';
-            homeLink.style.color = 'black';  // Changed from 'blue' to 'black'
-            preventLink.style.color = 'blue';
-        }
-        else
-        {
-            homeTable.style.display = 'none';
-            categoryAmount.style.display = 'none';  // Hide category table
-            preventWastage.style.display = 'table';  // Show prevent wastage
-            homeLink.style.color = 'blue';
-            preventLink.style.color = 'black';
-        }
-    }
-    else if( 'PreventWastagehref' === clickedId )
-    {
-        if( 'none' === preventWastage.style.display || '' === preventWastage.style.display )
-        {
-            preventWastage.style.display = 'table';
-            preventLink.style.color = 'black';
-            categoryAmount.style.display = 'none';
-            homeTable.style.display = 'none';
-        }
-        else
-        {
-            preventWastage.style.display = 'none';
-            categoryAmount.style.display = 'none';  // Hide category table
-            homeTable.style.display = 'table';  // Show home table
-            preventLink.style.color = 'blue';
-            homeLink.style.color = 'black';
-        }
-    }
-}
+			{
+				event = event || window.event;
+				event.preventDefault();
+				const clickedId = event.target.id;
+				const homeLink = document.getElementById('Homehref');
+				const preventLink = document.getElementById('PreventWastagehref');
+				const homeTable = document.getElementById('HomeTable');
+				const preventWastage = document.getElementById('PreventWastage');
+				const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+				
+				if( 'Homehref' === clickedId )
+				{
+					if( 'none' === homeTable.style.display || '' === homeTable.style.display )
+					{
+						homeTable.style.display = 'table';
+						preventWastage.style.display = 'none';
+						categoryAmount.style.display = 'none';
+						homeLink.style.color = 'black';  // Changed from 'blue' to 'black'
+						preventLink.style.color = 'blue';
+					}
+					else
+					{
+						homeTable.style.display = 'none';
+						categoryAmount.style.display = 'none';  // Hide category table
+						preventWastage.style.display = 'table';  // Show prevent wastage
+						homeLink.style.color = 'blue';
+						preventLink.style.color = 'black';
+					}
+				}
+				else if( 'PreventWastagehref' === clickedId )
+				{
+					if( 'none' === preventWastage.style.display || '' === preventWastage.style.display )
+					{
+						preventWastage.style.display = 'table';
+						preventLink.style.color = 'black';
+						categoryAmount.style.display = 'none';
+						homeTable.style.display = 'none';
+					}
+					else
+					{
+						preventWastage.style.display = 'none';
+						categoryAmount.style.display = 'none';  // Hide category table
+						homeTable.style.display = 'table';  // Show home table
+						preventLink.style.color = 'blue';
+						homeLink.style.color = 'black';
+					}
+				}
+			}
 			</SCRIPT>
 				<TR>
 					<TD valign='top' align='middle'>
@@ -1558,7 +1558,7 @@ Dec: [
 			"",					0.00
 		],
 		[ formatDate("25-Dec-2025"),
-			"",								0.00,
+			"<A title='இரவு உணவு/Dinner'>இஉணவு</A>",			325.00,
 			"<A TITLE='மதிய உணவு/Lunch'>மஉணவு</A>",				490.00,
 			"<A TITLE='குறிப்பாட்டிற்கான ஒட்டும் குறிப்பட்டைகள்/Adhesive labels for notes and vessel'>பா.அட்டை</A>",					254.00,
 			"",					0.00,
