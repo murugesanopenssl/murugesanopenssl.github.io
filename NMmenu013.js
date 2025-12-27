@@ -637,16 +637,13 @@ function DisplayMainMenu()
 						<A href="#" onclick="javascript:loadHomeContent(event, 'displayMoneyHelpMenu.html');" class="nav-link">Money Help0</A>
 					</LI>
 					<LI>
-						<A href="#" onclick='javascript:window.open("Increase-Daily-Salary.html");' class="nav-link"><FONT color='#00ff00'>Increase daily salary</FONT></A>
+						<A href="#" onclick="javascript:loadHomeContent(event, 'Increase-Daily-Salary.html');" class="nav-link">Increase daily salary</A>
 					</LI>
 					<LI>
 						<A href="#" onclick="javascript:loadHomeContent(event, 'Bharath_gas_booking_steps.html');" class="nav-link">Bharath gas online booking steps</A>
 					</LI>
 					<LI>
 						<A href="#" onclick="javascript:loadHomeContent(event, 'Indian-Oil-Cylinder-Booking-Online-Steps.html');" class="nav-link">Indian oil gas online booking steps</A>
-					</LI>
-					<LI>
-						<A href="#" onclick="javascript:loadHomeContent(event, 'my_exercise.html');" class="nav-link">My01 exercise</A>
 					</LI>
 				</UL>
 			</LI>
@@ -663,13 +660,13 @@ function DisplayMainMenu()
 	</A>
 	<UL class="submenu">
 	<LI>
-		<A href="#" onclick='javascript:window.open("post-office-mis.html");' class="nav-link"><FONT color='#00ff00'>Post office MIS</FONT></A>
+		<A href="#" onclick="javascript:loadHomeContent(event, 'post-office-mis.html');" class="nav-link">Post office MIS</A>
 	</LI>
 	<LI>
 		<A href="#" onclick='javascript:window.open("post-office-nsc.html");' class="nav-link"><FONT color='#00ff00'>Post office NSC</FONT></A>
 	</LI>
 	<LI>
-		<A href="#" onclick='javascript:window.open("SBI_ETDR_INTEREST.html");' class="nav-link"><FONT color='#00ff00'>SBi FD INTEREST</FONT></A>
+		<A href="#" onclick="javascript:loadHomeContent(event, 'SBI_ETDR_INTEREST.html');" class="nav-link">SBI FD INTEREST</A>
 	</LI>
 	<LI>
 		<A href="#" onclick="javascript:loadHomeContent(event, 'Indian-bank-to-other-bank.html');" class="nav-link">Indian bank transfer err</A>

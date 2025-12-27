@@ -82,12 +82,7 @@
 						Attibele Karnataka India
 					</TD>
 					<TD style="text-align:right;vertical-align:top;">
-						&nbsp;
-						&nbsp;
-						&nbsp;
-						&nbsp;
-						&nbsp;
-						&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</TD>
 				</TR>
 				<TR>
@@ -1382,7 +1377,6 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 				const homeTable = document.getElementById('HomeTable');
 				const preventWastage = document.getElementById('PreventWastage');
 				const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
-				
 				if( 'Homehref' === clickedId )
 				{
 					if( 'none' === homeTable.style.display || '' === homeTable.style.display )
@@ -1390,14 +1384,14 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 						homeTable.style.display = 'table';
 						preventWastage.style.display = 'none';
 						categoryAmount.style.display = 'none';
-						homeLink.style.color = 'black';  // Changed from 'blue' to 'black'
+						homeLink.style.color = 'black';
 						preventLink.style.color = 'blue';
 					}
 					else
 					{
 						homeTable.style.display = 'none';
-						categoryAmount.style.display = 'none';  // Hide category table
-						preventWastage.style.display = 'table';  // Show prevent wastage
+						categoryAmount.style.display = 'none';
+						preventWastage.style.display = 'table';
 						homeLink.style.color = 'blue';
 						preventLink.style.color = 'black';
 					}
@@ -1414,8 +1408,8 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 					else
 					{
 						preventWastage.style.display = 'none';
-						categoryAmount.style.display = 'none';  // Hide category table
-						homeTable.style.display = 'table';  // Show home table
+						categoryAmount.style.display = 'none';
+						homeTable.style.display = 'table';
 						preventLink.style.color = 'blue';
 						homeLink.style.color = 'black';
 					}
@@ -1475,6 +1469,34 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 					</DIV>
 					<DIV id="message" aria-live="polite"></DIV>
 					<DIV id="tableContainer"></DIV>
+					<SCRIPT type="text/javascript">
+						let online = false;
+						if( window.navigator )
+						{
+							if( window.navigator.onLine )
+							{
+								loadData();
+								online = true;
+							}
+						}
+						else if( navigator )
+						{
+							if( navigator.onLine )
+							{
+								online = true;
+							}
+						}
+					</SCRIPT>
+					<SCRIPT type="module">
+						if( false == online )
+						{
+							alert("You are offline");
+						}
+						else
+						{
+							alert("You are online");
+						}
+					</SCRIPT>
 					<SCRIPT type="module">
 						function formatDate( dateStr )
 						{
@@ -1552,8 +1574,8 @@ Dec: [
 			"<A TITLE='அம்மா உண்டி/Mummy Snk'>அ.சி</A>",				120.00,
 			"<A title='காலை உணவு/BREAK FAST'>காஉணவு</A>",				55.00,
 			"<A TITLE='பெங்களூரு எரிபொருள்/Bengaluru Petrol'>பெ.எரி</A>",		250.00,
-			"",					0.00,
-			"",					0.00,
+			"<A TITLE='மதிய உணவு/Lunch'>மஉணவு</A>",					254.00,
+			"<A TITLE='bedsheet'>BedSheet</A>",					2000.00,
 			"",					0.00
 		],
 		[ formatDate("25-Dec-2025"),
@@ -2751,7 +2773,16 @@ Apr: [
 							}
 							return out;
 						}
-						const baseData = normalizeBase( baseRaw );
+						let baseData;
+						try
+						{
+							baseData = normalizeBase(baseRaw);
+						}
+						catch(e)
+						{
+							console.error("Error normalizing data:", e);
+							baseData = baseRaw;
+						}
 						const monthSelect = document.getElementById('monthSelect');
 						const dateInput = document.getElementById('dateInput');
 						const itemInput = document.getElementById('itemInput');
@@ -2766,67 +2797,75 @@ Apr: [
 						{
 							return mk;
 						}
-async function initAndLoad()
-{
-	let online = navigator.onLine;
-	let data;
-	if( online )
-	{
-		try
-		{
-			message.textContent = "Loading data from Firebase...";
-			const snap = await get( child( ref( db ), '/spending'));
-			if( snap.exists() )
-			{
-				data = snap.val();
-				message.textContent = "தரவுத்தளத்திலிருந்து சேமிக்கப்பட்ட அனைத்து தரவும் பெறப்பட்டது.";
-			}
-			else
-			{
-				await set( rootRef, baseData );
-				data = baseData;
-				message.textContent = "DB empty and saved local array to DB.";
-			}
-		}
-		catch( e )
-		{
-			data = baseData;
-			message.textContent = "Firebase error and loaded local array.";
-		}
-	}
-	else
-	{
-		data = baseData;
-		message.textContent = "Offline and loaded local array.";
-	}
-	populateMonthSelect( Object.keys( data ) );
-	const curMk = currentMonthKey();
-	const keys = Object.keys( data || {} );
-	const defaultMk = keys.find( k => k === curMk )
-	|| keys.find( k => k.startsWith( curMk.split('-')[0]) )
-	|| keys[0]
-	|| 'all';
-	monthSelect.value = defaultMk;
-	monthSelect.focus();
-	renderForSelected( data );
-}
-						function populateMonthSelect(monthKeys) {
+						async function initAndLoad()
+						{
+							let data = "";
+							if( online )
+							{
+								try
+								{
+									message.textContent = "Loading data from Firebase...";
+									const timeoutPromise = new Promise((_, reject) => 
+										setTimeout(() => reject(new Error('Firebase timeout')), 5000)
+									);
+									const fetchPromise = get(child(ref(db), '/spending'));
+									const snap = await Promise.race([fetchPromise, timeoutPromise]);
+									if( snap.exists() )
+									{
+										data = snap.val();
+										message.textContent = "தரவுதளத்திலிருந்து சேமிக்கப்பட்ட அனைத்து தரவும் பெறப்பட்டது.";
+									}
+									else
+									{
+										await set(rootRef, baseData);
+										data = baseData;
+										message.textContent = "DB empty and saved local array to DB.";
+									}
+								}
+								catch(e)
+								{
+									console.error("Firebase error:", e);
+									data = baseData;
+									message.textContent = "Firebase error - using local data.";
+								}
+							}
+							else
+							{
+								data = baseData;
+								message.textContent = "Offline - loaded local array.";
+							}
+							const monthKeys = Object.keys(data);
+							populateMonthSelect(monthKeys);
+							const curMk = currentMonthKey();
+							const keys = monthKeys;
+							const defaultMk = keys.find(k => k === curMk)
+								|| keys.find(k => k.startsWith(curMk.split('-')[0]))
+								|| keys[0]
+								|| 'all';
+							monthSelect.value = defaultMk;
+							monthSelect.focus();
+							await renderForSelected(data);
+						}
+						function populateMonthSelect(monthKeys)
+						{
 							monthSelect.innerHTML="";
 							const optAll = document.createElement('option');
 							optAll.value = 'all';
 							optAll.textContent = 'All Months';
 							monthSelect.appendChild(optAll);
-							monthKeys.sort((a, b) => {
-								const [monthA, yearA] = a.split('-');
-								const [monthB, yearB] = b.split('-');
-								const monthIndexA = new Date(`${monthA} 1, ${yearA}`).getMonth();
-								const monthIndexB = new Date(`${monthB} 1, ${yearB}`).getMonth();
-								if( yearA !== yearB )
+							monthKeys.sort( (a, b) =>
 								{
-									return yearB - yearA;
+									const [monthA, yearA] = a.split('-');
+									const [monthB, yearB] = b.split('-');
+									const monthIndexA = new Date(`${monthA} 1, ${yearA}`).getMonth();
+									const monthIndexB = new Date(`${monthB} 1, ${yearB}`).getMonth();
+									if( yearA !== yearB )
+									{
+										return yearB - yearA;
+									}
+									return monthIndexB - monthIndexA;
 								}
-								return monthIndexB - monthIndexA;
-							});
+							);
 							for( const mk of monthKeys )
 							{
 								const opt = document.createElement('option');
@@ -2920,17 +2959,18 @@ async function initAndLoad()
 								data[mk].forEach( row =>
 									{
 										const date = row[0];
-										for (let i = 1; row.length > i; i += 2) {
-										const item = row[i];
-										const amt = row[i + 1];
-										if( item && ( undefined !== amt && null !== amt ) )
+										for( let i = 1; row.length > i; i += 2)
 										{
-										if( !dailyMap[date] )
-										{
-										dailyMap[date] = [];
-										}
-										dailyMap[date].push({ item, amt });
-										}
+											const item = row[i];
+											const amt = row[i + 1];
+											if( item && ( undefined !== amt && null !== amt ) )
+											{
+												if( !dailyMap[date] )
+												{
+												dailyMap[date] = [];
+												}
+												dailyMap[date].push({ item, amt });
+											}
 										}
 									}
 								);
@@ -3098,9 +3138,18 @@ async function initAndLoad()
 							renderForSelected(dataAll);
 						});
 						monthSelect.addEventListener('change', async ()=>{
-							const snap = await get(child(ref(db), '/spending'));
-							const dataAll = snap.exists() ? snap.val() : baseData;
-							renderForSelected(dataAll);
+							let data;
+							try
+							{
+								const snap = await get(child(ref(db), '/spending'));
+								data = snap.exists() ? snap.val() : baseData;
+							}
+							catch(e)
+							{
+								console.error("Error loading data on change:", e);
+								data = baseData;
+							}
+							renderForSelected(data);
 						});
 						initAndLoad();
 					</SCRIPT>
