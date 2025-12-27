@@ -1,151 +1,112 @@
 <META charset="UTF-8">
 <META name="viewport" content="width=device-width, initial-scale=1.0">
-<TITLE>
-	Financial Life Management Hub
-</TITLE>
+<TITLE>Financial Life Management Hub</TITLE>
 <META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <META http-equiv="Pragma" content="no-cache">
 <META http-equiv="Expires" content="0">
 <LINK rel="stylesheet" href="hai-style.css">
-<TABLE border='1' style='width:100%;background-color:blue;color:white;'>
-	<TR>
-	        <TD valign='top' align='left'>
-	                Category
-	        </TD>
-	        <TD valign='top' align='left'>
-	                Amount
-	        </TD>
-	        <TD valign='top' align='left'>
-	                Details
-	        </TD>
-	</TR>
-	<TR>
-	        <TD valign='top' align='left'>
-	                Rent
-	        </TD>
-	        <TD valign='top' align='right'>
-	                8333.33 &#8377;
-	        </TD>
-	        <TD valign='top' align='left'>
-	                Attibele Karnataka India
-	        </TD>
-	</TR>
-	<TR>
-	        <TD valign='top' align='left'>
-	                பா.ச.நி.லி/BSNL FIBERNET
-	        </TD>
-	        <TD valign='top' align='right'>
-	                1101.00 &#8377;
-	        </TD>
-	        <TD valign='top' align='left'>
-	                Two connections: 01) at Dharmapuri Tamilnadu 02) at Attibele Karnataka, India
-	        </TD>
-	</TR>
-	<TR>
-	        <TD valign='top' align='left'>
-	                Petrol
-	        </TD>
-	        <TD valign='top' align='right'>
-	                1040.00 &#8377;
-	        </TD>
-	        <TD valign='top' align='left'>
-	                at Indian Oil petrol bunk to receive SBI rewards points and Indian Oil points, to buy 200.00 &#8377; or 400.00 &#8377;
-	        </TD>
-	</TR>
-	<TR>
-	        <TD valign='top' align='left'>
-	                Food
-	        </TD>
-	        <TD valign='top' align='right'>
-	                2022.00 &#8377;
-	        </TD>
-	        <TD valign='top' align='left'>
-	                காஉணவு/BREAK FAST/Bfast/இஉணவு/DINNER/மஉணவு/LUNCH/Soup/பால்/Milk/Tea
-	        </TD>
-	</TR>
-	<TR>
-	        <TD valign='top' align='left'>
-	                Wasted amount
-	        </TD>
-	        <TD valign='top' align='right'>
-	                706.00 &#8377;
-	        </TD>
-	        <TD valign='top' align='left'>
-	                சிஉண்டி
-	        </TD>
-	</TR>
-	<TR>
-	        <TD valign='top' align='left'>
-	                நகல் எண்(2025-2026)<BR>
-	                மொத்த நகல் எண்<BR>
-	                56 pages<BR>
-	                REASON:<BR>
-	                IF XEROX COUNT EXCEEDS 100 PAGES PER YEAR<BR>
-	                BUY PRINTER CATRIDGE
-	        </TD>
-	        <TD valign='top' align='right'>
-	                100.00 &#8377;
-	        </TD>
-	        <TD valign='top' align='left'>
-	                70.00 = ( 20 * 02.00 ) + 10.00 + 5.00 + 15.00
-	        </TD>
-	</TR>
-	<TR>
-	        <TD valign='top' align='left'>
-	                Saved amount
-	        </TD>
-	        <TD valign='top' align='right'>
-	                <SPAN id="totalSavedAmt"></SPAN> &#8377;
-	        </TD>
-	        <TD valign='top' align='left'>
-	                Indian Government Savings and Investments (பொ.தொ/PPF, மறு நேரடி வைப்பு/RD, NSC, MIS and POST-OFFICE-BALANCE)
-	        </TD>
-	</TR>
-	<TR>
-	        <TD valign='top' align='left'>
-	                Temporarily saved amount
-	        </TD>
-	        <TD valign='top' align='right'>
-	                <SPAN id="tempSavedAmt"></SPAN> &#8377;
-	        </TD>
-	        <TD valign='top' align='left'>
-	                01. SSLC EXAM FEES AND INDIAN GOVERNMENT BANK SBI ETDR<BR>
-	                02. POST OFFICE BALANCE HANDLING <A TITLE='MINUMUM AVAILABLE BALANCE 600.00'><FONT color='orange'>MAB</FONT></A> AND <FONT color='orange'><FONT TITLE='AVERAGE MINUMUM BALANCE = EACH DAY LAST BALANCE * 365 / 1200 INTEREST RECEIVED ONCE IN A YEAR.'>AMB</FONT></FONT>.
-	        </TD>
-	</TR>
-	<TR>
-	        <TD valign='top' align='left'>
-	                To save for 10th fees on Fri 10-Jan-2026
-	        </TD>
-	        <TD valign='top' align='right'>
-	                55,000.00 &#8377;
-	        </TD>
-	        <TD valign='top' align='left'>
-	                AMOUNT TO SAVE PER DAY:<BR>
-	                <SPAN id="savePerDay"></SPAN> &#8377;
-	        </TD>
-	        <SCRIPT type="text/javascript">
-	var TOTAL_SAVED_AMT = 1566152.00;
-	var TEMP_SAVED_AMT  = 29406.00;
+<TABLE border='1' style='width:100%;background-color:#003366;color:white;'>
 
-	document.getElementById("totalSavedAmt").textContent =
-	TOTAL_SAVED_AMT.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+<TR style='background-color:#001f33;'>
+<TD valign='top' align='right'>செலவு வகை/Category</TD><TD valign='top' style='width:30px;' align='right'>தொகை/Amount</TD><TD valign='top' align='right'>விவரங்கள்/Details (தமிழ் / English)</TD>
+</TR>
 
-	document.getElementById("tempSavedAmt").textContent =
-	TEMP_SAVED_AMT.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+<TR>
+<TD valign='top' align='right'>வாடகை/Rent</TD>
+<TD align='right'>8333.33 ரூ/&#8377;</TD>
+<TD valign='top' align='right'>
+<B>தமிழில்:</B> அத்திப்பள்ளி, கர்நாடகா, இந்தியாவில் அமைந்துள்ள வீட்டின் மாத வாடகை.<BR>
+<B>English:</B> Rent for the property located at Attibele, Karnataka, India.
+</TD>
+</TR>
 
-	var today = new Date();
-	today.setHours(0,0,0,0);
+<TR>
+<TD valign='top' align='right'>பா.ச.நி.லி/BSNL Fibernet</TD>
+<TD align='right'>1101.00 ரூ/&#8377;</TD>
+<TD valign='top' align='right'>
+<B>தமிழில்:</B> பா.ச.நி.லி (பாரத் சஞ்சார் நிகம் லிமிடெட்) இணைய இணைப்புகள் :<BR>
+01) தர்மபுரி, தமிழ்நாடு இந்தியா
+02) அத்திப்பள்ளி, கர்நாடகா இந்தியா
+<B>English:</B> Two BSNL broadband connections:
+(1) Dharmapuri, Tamil Nadu India.
+(2) Attibele, Karnataka India.
+</TD>
+</TR>
+<TR>
+<TD valign='top' align='right'>பெட்ரோல்/Petrol</TD>
+<TD align='right'>1040.00 ரூ/&#8377;</TD>
+<TD valign='top' align='right'>
+<B>தமிழில்:</B> இந்தியன் ஆயில் எரிபொருள் நிலையத்தில் வாகன எரிபொருள் வாங்கப்பட்டது.<BR>
+வங்கி மற்றும் எண்ணெய் நிறுவன ஊக்கப் புள்ளிகள் பெறுவதற்காக.<BR>
+<B>English:</B> Fuel purchased at Indian Oil petrol bunk to earn bank and oil company reward points.
+</TD>
+</TR>
+<TR>
+<TD valign='top' align='right'>உணவு/Food</TD>
+<TD align='right'>2022.00 ரூ/&#8377;</TD>
+<TD valign='top' align='right'>
+<B>தமிழில்:</B> காலை உணவு, மதிய உணவு, இரவு உணவு, பால், தேநீர், சூப்.<BR>
+<B>English:</B> Breakfast, lunch, dinner, milk, tea, and soup expenses.
+</TD>
+</TR>
 
-	var targetDate = new Date('2026-01-10T00:00:00+05:30');
-	targetDate.setHours(0,0,0,0);
+<TR>
+<TD valign='top' align='right'>வீணான செலவு/Wasted Amount</TD>
+<TD align='right'>706.00 ரூ/&#8377;</TD>
+<TD valign='top' align='right'>
+<B>தமிழில்:</B>
+	தேவையற்ற அல்லது தவிர்க்கக்கூடிய செலவுகள்.<BR>
+<B>English:</B> Unnecessary or avoidable expenses.
+</TD>
+</TR>
 
-	var daysLeft = Math.ceil((targetDate - today) / (1000 * 60 * 60 * 24)) + 1;
-	var requiredAmt = 55000 - TEMP_SAVED_AMT;
-	var savePerDay = requiredAmt / daysLeft;
+<TR>
+<TD valign='top' align='right'>நகல் செலவு/Xerox</TD>
+<TD align='right'>100.00 ரூ/&#8377;</TD>
+<TD valign='top' align='right'>
+<B>தமிழில்:</B> 2025–2026 ஆம் ஆண்டிற்கான நகல் செலவுகள் (56 பக்கங்கள்).<BR>
+<B>English:</B> Xerox expenses for the year 2025–2026 (56 pages).
+</TD>
+</TR>
 
-	document.getElementById("savePerDay").textContent =
-	savePerDay.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+<TR>
+<TD valign='top' align='right'>சேமித்த தொகை/Saved Amount</TD>
+<TD align='right'><SPAN id='totalSavedAmt'></SPAN> ரூ/&#8377;</TD>
+<TD valign='top' align='right'>
+<B>தமிழில்:</B> இந்திய அரசின் சேமிப்பு மற்றும் முதலீடுகள் (PPF, RD, NSC, MIS, அஞ்சல் சேமிப்பு).<BR>
+<B>English:</B> Indian Government savings and investments (PPF, RD, NSC, MIS, Post Office).
+</TD>
+</TR>
+
+<TR>
+<TD valign='top' align='right'>தற்காலிக சேமிப்பு/Temporary Savings</TD>
+<TD align='right'><SPAN id='tempSavedAmt'></SPAN> ரூ/&#8377;</TD>
+<TD valign='top' align='right'>
+<B>தமிழில்:</B> SSLC தேர்வு கட்டணம் மற்றும் SBI ETDR + அஞ்சல் கணக்கு இருப்பு.<BR>
+<B>English:</B> SSLC exam fees fund and SBI ETDR plus Post Office balance.
+</TD>
+</TR>
+
+<TR>
+<TD valign='top' align='right'>10ம் வகுப்பு கட்டணம்/10th Fees Target</TD>
+<TD align='right'>55,000.00 ரூ/&#8377;</TD>
+<TD valign='top' align='right'>
+<B>தமிழில்:</B> 10-ஜனவரி-2026க்கு மகனின் பள்ளி கட்டணம் சேமிக்க வேண்டிய தினசரி தொகை:<BR>
+<B>English:</B> Daily amount required to save for son's school fees by 10-Jan-2026:<BR>
+<SPAN id='savePerDay'></SPAN> ரூ/&#8377;
+</TD>
+</TR>
+
+<SCRIPT type='text/javascript'>
+var TOTAL_SAVED_AMT = 1566047.00;
+var TEMP_SAVED_AMT  = 29441.00;
+document.getElementById('totalSavedAmt').textContent = TOTAL_SAVED_AMT.toLocaleString('en-IN',{minimumFractionDigits:2});
+document.getElementById('tempSavedAmt').textContent  = TEMP_SAVED_AMT.toLocaleString('en-IN',{minimumFractionDigits:2});
+var today = new Date(); today.setHours(0,0,0,0);
+var targetDate = new Date('2026-01-10T00:00:00+05:30'); targetDate.setHours(0,0,0,0);
+var daysLeft = Math.ceil((targetDate - today)/(1000*60*60*24)) + 1;
+var savePerDay = (55000 - TEMP_SAVED_AMT) / daysLeft;
+document.getElementById('savePerDay').textContent = savePerDay.toLocaleString('en-IN',{minimumFractionDigits:2});
 </SCRIPT>
-	</TR>
+
 </TABLE>
