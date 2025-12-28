@@ -1,3 +1,354 @@
+// Add this function at the TOP of your NMmenu016.js file
+// Call it once when the page loads
+
+(function injectDisabledLinkStyles() {
+    // Check if styles already injected
+    if (document.getElementById('disabled-link-styles')) {
+        return;
+    }
+    
+    const style = document.createElement('style');
+    style.id = 'disabled-link-styles';
+    style.textContent = `
+        /* Disabled navigation link styling */
+        .nav-item a[style*="not-allowed"],
+        .submenu a[style*="not-allowed"] {
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+            opacity: 0.5 !important;
+            text-decoration: none !important;
+            color: #888 !important;
+            background-color: rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        /* Prevent hover effects on disabled links */
+        .nav-item a[style*="not-allowed"]:hover,
+        .submenu a[style*="not-allowed"]:hover {
+            background-color: rgba(0, 0, 0, 0.1) !important;
+            color: #888 !important;
+            padding-left: 20px !important;
+        }
+        
+        /* Visual indicator for disabled state */
+        .nav-item a[style*="not-allowed"]::after,
+        .submenu a[style*="not-allowed"]::after {
+            content: " 🚫";
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+    `;
+    document.head.appendChild(style);
+    console.log('✓ Disabled link styles injected');
+})();
+
+// Now your existing functions go here...
+// function showDefault() { ... }
+// function loadHomeContent() { ... }
+// etc.
+
+// Add at the top of NMmenu016.js
+let firebaseScriptsLoaded = false;
+let firebaseInitialized = false;
+function handleSpendingPage() {
+    console.log("=== Handling spending.html ===");
+    
+    const messageDiv = document.getElementById("message");
+    if (messageDiv) {
+        messageDiv.textContent = "Initializing...";
+    }
+    
+    // Check if Firebase is already loaded
+    if (typeof firebase !== 'undefined' && firebase.database) {
+        console.log("Firebase already available, reinitializing...");
+        firebaseInitialized = false; // Reset flag
+        initializeSpendingApp();
+        return;
+    }
+    
+    // Load Firebase scripts if not already loaded
+    if (!firebaseScriptsLoaded) {
+        console.log("Loading Firebase scripts...");
+        loadFirebaseScripts(() => {
+            console.log("Firebase scripts loaded successfully");
+            firebaseScriptsLoaded = true;
+            initializeSpendingApp();
+        });
+    } else {
+        // Scripts loaded but Firebase not initialized yet
+        waitForFirebase(() => {
+            initializeSpendingApp();
+        });
+    }
+}
+
+function loadFirebaseScripts(callback) {
+    // Remove any existing Firebase scripts first
+    const existingScripts = document.querySelectorAll('script[src*="firebase"]');
+    existingScripts.forEach(script => {
+        console.log("Removing existing Firebase script:", script.src);
+        script.remove();
+    });
+    
+    // Load Firebase App first
+    const appScript = document.createElement('script');
+    appScript.src = 'https://www.gstatic.com/firebasejs/11.0.1/firebase-app-compat.js';
+    appScript.onload = () => {
+        console.log("Firebase App script loaded");
+        
+        // Then load Firebase Database
+        const dbScript = document.createElement('script');
+        dbScript.src = 'https://www.gstatic.com/firebasejs/11.0.1/firebase-database-compat.js';
+        dbScript.onload = () => {
+            console.log("Firebase Database script loaded");
+            callback();
+        };
+        dbScript.onerror = () => {
+            console.error("Failed to load Firebase Database script");
+            alert("Failed to load Firebase Database. Please check your internet connection.");
+        };
+        document.head.appendChild(dbScript);
+    };
+    appScript.onerror = () => {
+        console.error("Failed to load Firebase App script");
+        alert("Failed to load Firebase. Please check your internet connection.");
+    };
+    document.head.appendChild(appScript);
+}
+
+function waitForFirebase(callback, maxAttempts = 20) {
+    let attempts = 0;
+    const checkInterval = setInterval(() => {
+        attempts++;
+        console.log("Waiting for Firebase... attempt", attempts);
+        
+        if (typeof firebase !== 'undefined' && firebase.database) {
+            console.log("✓ Firebase available!");
+            clearInterval(checkInterval);
+            callback();
+        } else if (attempts >= maxAttempts) {
+            console.error("Firebase not available after", attempts, "attempts");
+            clearInterval(checkInterval);
+            const messageDiv = document.getElementById("message");
+            if (messageDiv) {
+                messageDiv.textContent = "Error: Firebase failed to load. Please refresh the page.";
+            }
+            alert("Firebase initialization timeout.\n\nPlease refresh the page (F5).");
+        }
+    }, 300);
+}
+
+function initializeSpendingApp() {
+    console.log("=== Initializing spending app ===");
+    
+    const messageDiv = document.getElementById("message");
+    if (messageDiv) {
+        messageDiv.textContent = "Loading data from Firebase...";
+    }
+    
+    // Wait a bit for DOM to settle
+    setTimeout(() => {
+        // Execute the spending.html initialization code
+        if (typeof window.initAndLoad === 'function') {
+            console.log("Calling window.initAndLoad()");
+            window.initAndLoad();
+        } else if (typeof initAndLoad === 'function') {
+            console.log("Calling initAndLoad()");
+            initAndLoad();
+        } else {
+            console.error("initAndLoad function not found!");
+            
+            // Try to extract and execute inline scripts
+            const scripts = document.querySelectorAll('.main-content script');
+            console.log("Found", scripts.length, "scripts in main-content");
+            
+            scripts.forEach((script, index) => {
+                if (!script.src) {
+                    console.log("Executing inline script", index);
+                    try {
+                        eval(script.textContent);
+                    } catch (error) {
+                        console.error("Error executing script", index, ":", error);
+                    }
+                }
+            });
+            
+            // Try again after script execution
+            setTimeout(() => {
+                if (typeof window.initAndLoad === 'function') {
+                    window.initAndLoad();
+                } else if (typeof initAndLoad === 'function') {
+                    initAndLoad();
+                } else {
+                    console.error("Still can't find initAndLoad!");
+                    if (messageDiv) {
+                        messageDiv.textContent = "Error: Failed to initialize. Please refresh the page.";
+                    }
+                }
+            }, 500);
+        }
+    }, 100);
+}
+
+function processPageScripts(content, htmlFileName) {
+    var tempDiv = document.createElement('div');
+    tempDiv.innerHTML = content;
+    var scripts = tempDiv.querySelectorAll('script');
+    console.log("Found", scripts.length, "script tags");
+    
+    scripts.forEach(function(script, index) {
+        console.log("Processing script", index + 1);
+        var newScript = document.createElement('script');
+        
+        if (script.src) {
+            console.log("External script:", script.src);
+            newScript.src = script.src;
+        } else {
+            var scriptText = script.textContent;
+            if (!scriptText.includes('DisplayMainMenu')) {
+                console.log("Inline script, length:", scriptText.length);
+                
+                if (htmlFileName === "my_exercise.html") {
+                    scriptText = scriptText.replace(
+                        /window\.onload\s*=\s*function\s*\(\s*\)\s*\{/g,
+                        '(function() {'
+                    );
+                    scriptText = scriptText.replace(/\}\s*;\s*$/, '})();');
+                }
+                
+                newScript.textContent = scriptText;
+            } else {
+                console.log("Skipping DisplayMainMenu script");
+                return;
+            }
+        }
+        
+        if (script.type) {
+            newScript.type = script.type;
+        }
+        
+        document.body.appendChild(newScript);
+    });
+    
+    // Special handling for my_exercise.html
+    if (htmlFileName === "my_exercise.html") {
+        console.log("=== Initializing My Exercise page ===");
+        setTimeout(function() {
+            if (typeof buildMonthSelect === 'function') {
+                console.log("Calling buildMonthSelect()");
+                buildMonthSelect();
+            }
+            if (typeof generateExerciseTable === 'function') {
+                console.log("Calling generateExerciseTable()");
+                generateExerciseTable();
+            } else {
+                console.warn("generateExerciseTable() not found!");
+            }
+        }, 100);
+    }
+}
+
+function updateNavigationState(htmlFileName) {
+    // Update "Life Finance Helper" link
+    let lifeFinanceHelperLink = document.querySelector(".sidebar-header #life-finance-helper");
+    if (lifeFinanceHelperLink) {
+        lifeFinanceHelperLink.setAttribute("href", "#");
+        lifeFinanceHelperLink.setAttribute("onclick", "loadMainContent(event)");
+    }
+    
+    // Reset ALL nav links first (re-enable everything)
+    document.querySelectorAll(".nav-item a, .submenu a").forEach(link => {
+        // Restore original attributes if they exist
+        if (link.dataset.originalHref) {
+            link.setAttribute("href", link.dataset.originalHref);
+            delete link.dataset.originalHref;
+        }
+        if (link.dataset.originalOnclick) {
+            link.setAttribute("onclick", link.dataset.originalOnclick);
+            delete link.dataset.originalOnclick;
+        }
+        
+        // Reset styles to enabled state
+        link.style.cursor = "";
+        link.style.textDecoration = "";
+        link.style.pointerEvents = "";
+        link.style.color = "";
+        link.style.opacity = "";
+        link.style.backgroundColor = "";
+        
+        // Remove disabled class if exists
+        link.classList.remove("disabled-link");
+    });
+    
+    // Remove active class from all nav items
+    document.querySelectorAll(".nav-item").forEach(item => {
+        item.classList.remove("active");
+    });
+    
+    // Find and disable the current page's link
+    let activeLink = document.querySelector(`[onclick*="${htmlFileName}"]`);
+    if (activeLink) {
+        // Mark parent nav-item as active
+        const parentNavItem = activeLink.closest(".nav-item");
+        if (parentNavItem) {
+            parentNavItem.classList.add("active");
+        }
+        
+        // Save original attributes before disabling
+        const originalHref = activeLink.getAttribute("href");
+        const originalOnclick = activeLink.getAttribute("onclick");
+        
+        if (originalHref) {
+            activeLink.dataset.originalHref = originalHref;
+        }
+        if (originalOnclick) {
+            activeLink.dataset.originalOnclick = originalOnclick;
+        }
+        
+        // Disable the link (make it non-clickable)
+        activeLink.removeAttribute("href");
+        activeLink.removeAttribute("onclick");
+        
+        // Visual feedback - make it look disabled
+        activeLink.style.cursor = "not-allowed";
+        activeLink.style.textDecoration = "none";
+        activeLink.style.pointerEvents = "none";
+        activeLink.style.color = "#888";
+        activeLink.style.opacity = "0.5";
+        activeLink.style.backgroundColor = "rgba(0,0,0,0.1)";
+        activeLink.classList.add("disabled-link");
+        
+        console.log("✓ Disabled link for currently displayed page:", htmlFileName);
+    }
+}
+
+// Keep all your other existing functions...
+// (showDefault, getTodaysDate, addTodaysRow, toggleSubmenu01, etc.)
+
+// Add CSS for disabled links
+(function addDisabledLinkStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .disabled-link {
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+            opacity: 0.5 !important;
+            text-decoration: none !important;
+            color: #888 !important;
+            background-color: rgba(0,0,0,0.1) !important;
+        }
+        
+        .disabled-link:hover {
+            background-color: rgba(0,0,0,0.1) !important;
+            color: #888 !important;
+        }
+        
+        .nav-item.active > .nav-link {
+            background: rgba(255, 255, 255, 0.1);
+            padding-left: 25px;
+        }
+    `;
+    document.head.appendChild(style);
+})();
 function showDefault()
 {
 	if( document.getElementById( "CategoryAmountDetailsTab" ) )
@@ -362,237 +713,256 @@ function loadMainContent( event )
 				window.addEventListener( 'beforeunload', saveMenuState );
 				}
 			);
-			function loadHomeContent( event, htmlFileName )
-			{
-				console.log( "=== loadHomeContent called ===" );
-				console.log( "Loading file:", htmlFileName );
-				if( "HandleBankAMB.html" == htmlFileName )
-				{
-					document.title = "ATM Card exception usage";
-				}
-				else if( "displayMoneyHelpMenu.html" == htmlFileName )
-				{
-					document.title = "Money Help Menu";
-				}
-				else if( "post-office-mis.html" == htmlFileName )
-				{
-					document.title = "Post Office MIS";
-				}
-				else if( "spending.html" == htmlFileName )
-				{
-					document.title = "Daily Spending";
-					console.log( "Setting title to 'Daily Spending'" );
-				}
-				else if( "my_exercise.html" == htmlFileName )
-				{
-					document.title = "My exercise";
-				}
-				else if( "SavedAmt.html" == htmlFileName )
-				{
-					document.title = "My saved amount";
-				}
-				event.preventDefault();
-				var xhr = new XMLHttpRequest();
-				var url = htmlFileName;
-				xhr.open( "GET", url, true );
-				xhr.responseType = "text";
-				xhr.onload = function() {
-					console.log( "XHR onload - status:", xhr.status );
-					if( 200 === xhr.status )
-					{
-						var content = xhr.responseText;
-						console.log( "Content loaded, length:", content.length );
-						content = content.replace(/<SCRIPT>\s*DisplayMainMenu\(\);\s*<\/SCRIPT>/gi, '' );
-						content = content.replace(/DisplayMainMenu\(\);?/gi, '' );
-						const mainContent = document.querySelector( ".main-content" );
-						console.log( "Main content area:", mainContent ? "FOUND" : "NOT FOUND" );
-						if( mainContent )
-						{
-							mainContent.innerHTML = content;
-							// Process and execute scripts
-							var tempDiv = document.createElement( 'div' );
-							tempDiv.innerHTML = content;
-							var scripts = tempDiv.querySelectorAll( 'script' );
-							console.log( "Found", scripts.length, "script tags" );
-							scripts.forEach( function( script, index )
-								{
-									console.log( "Processing script", index + 1 );
-									var newScript = document.createElement( 'script' );
-									if( script.src )
-									{
-										console.log( "External script:", script.src );
-										newScript.src = script.src;
-										if( script.src.includes( 'firebase' ) )
-										{
-											console.log( "Firebase script detected" );
-											newScript.onload = function() {
-												console.log( "Firebase script loaded:", script.src );
-											};
-										}
-									} else {
-										var scriptText = script.textContent;
-										if( !scriptText.includes( 'DisplayMainMenu' ) )
-										{
-											console.log( "Inline script, length:", scriptText.length );
-											if( "my_exercise.html" === htmlFileName )
-											{
-												scriptText = scriptText.replace(
-													/window\.onload\s*=\s*function\s*\(\s*\)\s*\{/g,
-													'( function() {'
-												);
-												scriptText = scriptText.replace(/\}\s*;\s*$/, '})();' );
-											}
-											newScript.textContent = scriptText;
-										}
-										else
-										{
-											console.log( "Skipping DisplayMainMenu script" );
-										}
-									}
-									if( script.type )
-									{
-										newScript.type = script.type;
-									}
-									document.body.appendChild( newScript );
-								}
-							);
-							console.log( "All scripts processed" );
-							if( "my_exercise.html" === htmlFileName )
-							{
-								console.log( "=== Initializing My Exercise page ===" );
-								setTimeout( function()
-									{
-										if( "function" === typeof buildMonthSelect )
-										{
-											console.log( "Calling buildMonthSelect()" );
-											buildMonthSelect();
-										}
-										if( "function" === typeof generateExerciseTable )
-										{
-											console.log( "Calling generateExerciseTable()" );
-											generateExerciseTable();
-										}
-										else
-										{
-											console.warn( "generateExerciseTable() not found!" );
-										}
-									}, 100
-								);
-							}
-							if( "spending.html" === htmlFileName )
-							{
-								console.log( "=== Special handling for spending.html ===" );
-								setTimeout( function()
-									{
-										console.log( "Timeout 1 ( 500ms ) - checking for elements..." );
-										const preventTable = document.getElementById( "PreventWastage" );
-										const homeTable = document.getElementById( "HomeTable" );
-										const catTable = document.getElementById( "CategoryAmountDetailsTab" );
-										console.log( "PreventWastage:", preventTable ? "EXISTS" : "MISSING" );
-										console.log( "HomeTable:", homeTable ? "EXISTS" : "MISSING" );
-										console.log( "CategoryAmountDetailsTab:", catTable ? "EXISTS" : "MISSING" );
-										if( 'function' === typeof window.initSpendingPage )
-										{
-											console.log( "Calling window.initSpendingPage()" );
-											window.initSpendingPage();
-										}
-										else if( 'function' === typeof initSpendingPage )
-										{
-											console.log( "Calling initSpendingPage()" );
-											initSpendingPage();
-										}
-										else
-										{
-											console.error( "initSpendingPage NOT FOUND!" );
-											if( 'function' === typeof window.initAndLoad )
-											{
-												console.log( "Calling window.initAndLoad() directly" );
-												window.initAndLoad();
-											}
-											else if( 'function' === typeof initAndLoad )
-											{
-												console.log( "Calling initAndLoad() directly" );
-												initAndLoad();
-											}
-											else
-											{
-												console.error( "initAndLoad NOT FOUND either!" );
-											}
-										}
-									}, 500
-								);
-							}
-						}
-						let lifeFinanceHelperLink = document.querySelector( ".sidebar-header #life-finance-helper" );
-						if( lifeFinanceHelperLink )
-						{
-							lifeFinanceHelperLink.setAttribute( "href", "#" );
-							lifeFinanceHelperLink.setAttribute( "onclick", "loadMainContent( event )" );
-						}
-						document.querySelectorAll( ".nav-item a" ).forEach( link =>
-							{
-								link.style.cursor = "pointer";
-								link.style.textDecoration = "underline";
-								link.style.pointerEvents = "auto";
-								if( link.dataset.originalHref )
-								{
-									link.setAttribute( "href", link.dataset.originalHref );
-								}
-								if( link.dataset.originalOnclick )
-								{
-									link.setAttribute( "onclick", link.dataset.originalOnclick );
-								}
-							}
-						);
-						let activeLink = document.querySelector( `[onclick*="${htmlFileName}"]`);
-						if( activeLink )
-						{
-							activeLink.closest( ".nav-item" ).classList.add( "active" );
-							if(
-								(
-								 	"HandleBankAMB.html" === htmlFileName		&&
-									"AtmTips0" === activeLink.textContent.trim()
-								)	||
-								(
-								 	"displayMoneyHelpMenu.html" === htmlFileName	&&
-									"Money Help0"	=== activeLink.textContent.trim()
-								)	||
-								( htmlFileName === "Increase-Daily-Salary.html"						&& activeLink.textContent.trim() === "Increase daily salary" )					||
-								( htmlFileName === "Bharath_gas_booking_steps.html"					&& activeLink.textContent.trim() === "Bharath gas online booking steps" )		||
-								( htmlFileName === "Indian-Oil-Cylinder-Booking-Online-Steps.html"	&& activeLink.textContent.trim() === "Indian oil gas online booking steps" )
-							)
-							{
-								if( !activeLink.dataset.originalHref )
-								{
-									activeLink.dataset.originalHref = activeLink.getAttribute( "href" );
-								}
-								if( !activeLink.dataset.originalOnclick )
-								{
-									activeLink.dataset.originalOnclick = activeLink.getAttribute( "onclick" );
-								}
-								activeLink.removeAttribute( "href" );
-								activeLink.removeAttribute( "onclick" );
-								activeLink.style.cursor = "text";
-								activeLink.style.textDecoration = "none";
-								activeLink.style.pointerEvents = "auto"; // allow text selection
-							}
-						}
-						console.log( "=== loadHomeContent complete ===" );
-					}
-					else
-					{
-						console.error( "XHR failed with status:", xhr.status );
-						alert( "Failed to load content: " + xhr.status );
-					}
-				};
-				xhr.onerror = function()
-				{
-					console.error( "XHR error occurred" );
-					alert( "Request error occurred." );
-				};
-				console.log( "Sending XHR request..." );
-				xhr.send();
-			}
+			function loadHomeContent(event, htmlFileName) {
+    console.log("=== loadHomeContent called ===");
+    console.log("Loading file:", htmlFileName);
+    
+    // Set document title
+    if ("HandleBankAMB.html" == htmlFileName) {
+        document.title = "ATM Card exception usage";
+    } else if ("displayMoneyHelpMenu.html" == htmlFileName) {
+        document.title = "Money Help Menu";
+    } else if ("post-office-mis.html" == htmlFileName) {
+        document.title = "Post Office MIS";
+    } else if ("spending.html" == htmlFileName) {
+        document.title = "Daily Spending";
+        console.log("Setting title to 'Daily Spending'");
+    } else if ("my_exercise.html" == htmlFileName) {
+        document.title = "My exercise";
+    } else if ("SavedAmt.html" == htmlFileName) {
+        document.title = "My saved amount";
+    }
+    
+    event.preventDefault();
+    
+    var xhr = new XMLHttpRequest();
+    var url = htmlFileName;
+    xhr.open("GET", url, true);
+    xhr.responseType = "text";
+    
+    xhr.onload = function() {
+        console.log("XHR onload - status:", xhr.status);
+        if (200 === xhr.status) {
+            var content = xhr.responseText;
+            console.log("Content loaded, length:", content.length);
+            content = content.replace(/<SCRIPT>\s*DisplayMainMenu\(\);\s*<\/SCRIPT>/gi, '');
+            content = content.replace(/DisplayMainMenu\(\);?/gi, '');
+            
+            const mainContent = document.querySelector(".main-content");
+            console.log("Main content area:", mainContent ? "FOUND" : "NOT FOUND");
+            
+            if (mainContent) {
+                mainContent.innerHTML = content;
+                
+                // Process and execute scripts
+                var tempDiv = document.createElement('div');
+                tempDiv.innerHTML = content;
+                var scripts = tempDiv.querySelectorAll('script');
+                console.log("Found", scripts.length, "script tags");
+                
+                scripts.forEach(function(script, index) {
+                    console.log("Processing script", index + 1);
+                    var newScript = document.createElement('script');
+                    
+                    if (script.src) {
+                        console.log("External script:", script.src);
+                        newScript.src = script.src;
+                        if (script.src.includes('firebase')) {
+                            console.log("Firebase script detected");
+                            newScript.onload = function() {
+                                console.log("Firebase script loaded:", script.src);
+                            };
+                        }
+                    } else {
+                        var scriptText = script.textContent;
+                        if (!scriptText.includes('DisplayMainMenu')) {
+                            console.log("Inline script, length:", scriptText.length);
+                            if ("my_exercise.html" === htmlFileName) {
+                                scriptText = scriptText.replace(
+                                    /window\.onload\s*=\s*function\s*\(\s*\)\s*\{/g,
+                                    '(function() {'
+                                );
+                                scriptText = scriptText.replace(/\}\s*;\s*$/, '})();');
+                            }
+                            newScript.textContent = scriptText;
+                        } else {
+                            console.log("Skipping DisplayMainMenu script");
+                        }
+                    }
+                    
+                    if (script.type) {
+                        newScript.type = script.type;
+                    }
+                    document.body.appendChild(newScript);
+                });
+                
+                console.log("All scripts processed");
+                
+                if ("my_exercise.html" === htmlFileName) {
+                    console.log("=== Initializing My Exercise page ===");
+                    setTimeout(function() {
+                        if ("function" === typeof buildMonthSelect) {
+                            console.log("Calling buildMonthSelect()");
+                            buildMonthSelect();
+                        }
+                        if ("function" === typeof generateExerciseTable) {
+                            console.log("Calling generateExerciseTable()");
+                            generateExerciseTable();
+                        } else {
+                            console.warn("generateExerciseTable() not found!");
+                        }
+                    }, 100);
+                }
+                
+                if ("spending.html" === htmlFileName) {
+                    console.log("=== Special handling for spending.html ===");
+                    
+                    // First, check if Firebase compat scripts are already loaded
+                    const existingFirebaseApp = document.querySelector('script[src*="firebase-app-compat"]');
+                    const existingFirebaseDB = document.querySelector('script[src*="firebase-database-compat"]');
+                    
+                    if (existingFirebaseApp || existingFirebaseDB) {
+                        console.log("Removing existing Firebase compat scripts");
+                        if (existingFirebaseApp) existingFirebaseApp.remove();
+                        if (existingFirebaseDB) existingFirebaseDB.remove();
+                    }
+                    
+                    // Wait for scripts to load and execute
+                    setTimeout(function() {
+                        console.log("Checking Firebase compat availability...");
+                        
+                        // Show loading message
+                        const messageDiv = document.getElementById("message");
+                        if (messageDiv) {
+                            messageDiv.textContent = "Loading Firebase...";
+                        }
+                        
+                        // Wait for Firebase compat to be available
+                        let checkCount = 0;
+                        const checkFirebase = setInterval(function() {
+                            checkCount++;
+                            console.log("Check attempt", checkCount, "- typeof firebase:", typeof firebase);
+                            
+                            if (typeof firebase !== 'undefined' && firebase.database) {
+                                console.log("✓ Firebase compat is available!");
+                                clearInterval(checkFirebase);
+                                
+                                // Now call initAndLoad
+                                setTimeout(function() {
+                                    if (typeof window.initAndLoad === 'function') {
+                                        console.log("Calling window.initAndLoad()");
+                                        window.initAndLoad();
+                                    } else if (typeof initAndLoad === 'function') {
+                                        console.log("Calling initAndLoad()");
+                                        initAndLoad();
+                                    } else {
+                                        console.error("initAndLoad function not found!");
+                                        if (messageDiv) {
+                                            messageDiv.textContent = "Error: Initialization function not found";
+                                        }
+                                    }
+                                }, 100);
+                                
+                            } else if (checkCount >= 20) {
+                                console.error("Firebase compat not loaded after 6 seconds");
+                                clearInterval(checkFirebase);
+                                
+                                if (messageDiv) {
+                                    messageDiv.textContent = "Error: Firebase failed to load. Please refresh the page.";
+                                }
+                                alert("Firebase initialization timeout.\n\nPlease refresh the page (F5) or open spending.html directly.");
+                            } else {
+                                console.log("Waiting for Firebase compat... attempt", checkCount);
+                            }
+                        }, 300); // Check every 300ms
+                        
+                    }, 500);
+                }
+            }
+            
+            // Update Life Finance Helper link
+            let lifeFinanceHelperLink = document.querySelector(".sidebar-header #life-finance-helper");
+            if (lifeFinanceHelperLink) {
+                lifeFinanceHelperLink.setAttribute("href", "#");
+                lifeFinanceHelperLink.setAttribute("onclick", "loadMainContent(event)");
+            }
+            
+            // FIRST: Re-enable ALL links
+            document.querySelectorAll(".nav-item a, .submenu a").forEach(link => {
+                link.style.cursor = "pointer";
+                link.style.textDecoration = "underline";
+                link.style.pointerEvents = "auto";
+                link.style.color = "";
+                link.style.opacity = "";
+                link.style.backgroundColor = "";
+                
+                if (link.dataset.originalHref) {
+                    link.setAttribute("href", link.dataset.originalHref);
+                }
+                if (link.dataset.originalOnclick) {
+                    link.setAttribute("onclick", link.dataset.originalOnclick);
+                }
+            });
+            
+            // SECOND: Find the active link and disable it
+            let activeLink = document.querySelector(`[onclick*="${htmlFileName}"]`);
+            if (activeLink) {
+                activeLink.closest(".nav-item").classList.add("active");
+                
+                // Check if this is a page that should have its link disabled
+                const shouldDisableLink = 
+                    (htmlFileName === "HandleBankAMB.html" && activeLink.textContent.trim() === "AtmTips0") ||
+                    (htmlFileName === "displayMoneyHelpMenu.html" && activeLink.textContent.trim() === "Money Help0") ||
+                    (htmlFileName === "Increase-Daily-Salary.html" && activeLink.textContent.trim() === "Increase daily salary") ||
+                    (htmlFileName === "Bharath_gas_booking_steps.html" && activeLink.textContent.trim() === "Bharath gas online booking steps") ||
+                    (htmlFileName === "Indian-Oil-Cylinder-Booking-Online-Steps.html" && activeLink.textContent.trim() === "Indian oil gas online booking steps") ||
+                    (htmlFileName === "spending.html" && activeLink.textContent.trim() === "Daily spending");
+                
+                if (shouldDisableLink) {
+                    console.log("Disabling link for:", activeLink.textContent.trim());
+                    
+                    // Save original attributes
+                    if (!activeLink.dataset.originalHref) {
+                        activeLink.dataset.originalHref = activeLink.getAttribute("href") || "#";
+                    }
+                    if (!activeLink.dataset.originalOnclick) {
+                        activeLink.dataset.originalOnclick = activeLink.getAttribute("onclick") || "";
+                    }
+                    
+                    // Disable the link
+                    activeLink.removeAttribute("href");
+                    activeLink.removeAttribute("onclick");
+                    activeLink.style.cursor = "not-allowed";
+                    activeLink.style.textDecoration = "none";
+                    activeLink.style.pointerEvents = "none";
+                    activeLink.style.color = "#888";
+                    activeLink.style.opacity = "0.5";
+                    activeLink.style.backgroundColor = "rgba(0,0,0,0.1)";
+                    
+                    // Special logging for spending.html
+                    if (htmlFileName === "spending.html") {
+                        console.log("✓ Daily spending link disabled successfully");
+                        console.log("Link href:", activeLink.getAttribute("href"));
+                        console.log("Link onclick:", activeLink.getAttribute("onclick"));
+                    }
+                }
+            }
+            
+            console.log("=== loadHomeContent complete ===");
+        } else {
+            console.error("XHR failed with status:", xhr.status);
+            alert("Failed to load content: " + xhr.status);
+        }
+    };
+    
+    xhr.onerror = function() {
+        console.error("XHR error occurred");
+        alert("Request error occurred.");
+    };
+    
+    console.log("Sending XHR request...");
+    xhr.send();
+}
 function DispIndx( tdcolor )
 {
 	if( 'undefined' == typeof indx )
@@ -747,7 +1117,7 @@ function DisplayMainMenu()
 		</A>
 		<UL class="submenu">
 			<LI>
-				<A href="#" onclick='javascript:window.open( "spending.html" );' class="nav-link"><FONT color='#00ff00'>Daily spending</FONT></A>
+				<A href="#" id="spending" onclick="javascript:loadHomeContent( event, 'spending.html' );" class="nav-link">Daily spending</A>
 			</LI>
 			<LI>
 				<A href="#" onclick="javascript:loadHomeContent( event, 'SavedAmt.html' );" class="nav-link">Saved amount</A>
