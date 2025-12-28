@@ -191,3 +191,23 @@ body
 	background: rgba(255, 255, 255, 0.1);
 	padding-left: 25px;
 }
+/* Add this to hai-style.css or insert it in NMmenu016.js */
+
+/* Disabled navigation link styling */
+.nav-item a[style*="not-allowed"],
+.submenu a[style*="not-allowed"] {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+    text-decoration: none !important;
+    color: #888 !important;
+    background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Prevent hover effects on disabled links */
+.nav-item a[style*="not-allowed"]:hover,
+.submenu a[style*="not-allowed"]:hover {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    color: #888 !important;
+    padding-left: 20px !important; /* Don't shift on hover */
+}
