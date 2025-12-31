@@ -1093,7 +1093,7 @@ function DisplayMainMenu()
 	</A>
 	<UL class="submenu">
 	<LI>
-		<A href="#" onclick="javascript:loadHomeContent( event, 'post-office-mis.html' );" class="nav-link">Post office MIS</A>
+		<A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>Post office MIS</FONT></A>
 	</LI>
 	<LI>
 		<A href="#" onclick='javascript:window.open( "post-office-nsc.html" );' class="nav-link"><FONT color='#00ff00'>Post office NSC</FONT></A>
@@ -1117,7 +1117,7 @@ function DisplayMainMenu()
 		</A>
 		<UL class="submenu">
 			<LI>
-				<A href="#" id="spending" onclick="javascript:loadHomeContent( event, 'spending.html' );" class="nav-link">Daily spending</A>
+				<A href="#" id="spending" onclick="javascript:window.open( 'spending.html' );" class="nav-link"><FONT color='#00ff00'>Daily spending</FONT></A>
 			</LI>
 			<LI>
 				<A href="#" onclick="javascript:loadHomeContent( event, 'SavedAmt.html' );" class="nav-link">Saved amount</A>
