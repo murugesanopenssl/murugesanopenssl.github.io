@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Economies by GDP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .highlight-india {
+            background-color: #ffe680;
+        }
+
+        #loadingMessage {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            display: none;
+        }
+
+        #errorMessage {
+            color: red;
+            text-align: center;
+            font-size: 18px;
+            display: none;
+        }
+
+        #statsBox {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .rank {
+            width: 5%;
+        }
+
+        .gdp-amount {
+            text-align: right;
+        }
+
+        em {
+            font-style: italic;
+            color: #666;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        #showingCount {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Top 10 Countries by GDP</h1>
+        <div id="statsBox">
+            <p>Total countries: <span id="totalCount">0</span></p>
+            <p>Last updated: <span id="lastUpdate">N/A</span></p>
+        </div>
+
+        <div id="loadingMessage">Loading data...</div>
+        <div id="errorMessage"></div>
+
+        <table id="countriesEconomyTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Country</th>
+                    <th>GDP (in USD Billions)</th>
+                    <th>Country</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody id="gdpTableBody">
+                <!-- Table rows will be inserted here -->
+            </tbody>
+        </table>
+
+        <p>Showing top <span id="showingCount">0</span> countries.</p>
+    </div>
+
+    <script>
+        let allCountriesData = [];
+
+        // Fetching and parsing the data
+        async function loadGDPData() {
+            const loadingDiv = document.getElementById('loadingMessage');
+            const errorDiv = document.getElementById('errorMessage');
+            const table = document.getElementById('countriesEconomyTable');
+            loadingDiv.style.display = 'block';
+            errorDiv.style.display = 'none';
+            table.style.display = 'none';
+
+            try {
+                const apiUrl = 'https://en.wikipedia.org/w/api.php?action=parse&page=List_of_countries_by_GDP_(nominal)&prop=text&formatversion=2&format=json&origin=*';
+                const response = await fetch(apiUrl);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                parseGDPDataFromAPI(data.parse.text);
+            } catch (error) {
+                console.error('Error loading GDP data:', error);
+                errorDiv.textContent = `Error loading data: ${error.message}. Using fallback method...`;
+                errorDiv.style.display = 'block';
+                loadFallbackData(); // Use fallback data in case of failure
+            }
+        }
+
+        // Parse GDP data from API
+        function parseGDPDataFromAPI(htmlText) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlText, 'text/html');
+            allCountriesData = [];
+            const tables = doc.querySelectorAll('table.wikitable');
+
+            for (let table of tables) {
+                const rows = table.querySelectorAll('tr');
+
+                for (let i = 1; i < rows.length && i < 200; i++) {
+                    const cells = rows[i].querySelectorAll('td, th');
+                    if (cells.length < 3) continue;
+
+                    let rank = cells[0].textContent.trim();
+                    let countryCell = cells[0];
+                    let gdpCell = cells[2];
+                    let country = '';
+                    const link = countryCell.querySelector('a');
+                    if (link) {
+                        country = link.textContent.trim();
+                    } else {
+                        country = countryCell.textContent.trim();
+                    }
+                    country = country
+                        .replace(/\[.*?\]/g, '')  // Remove footnotes like [1], etc.
+                        .replace(/\(.*?\)/g, '')  // Remove any content in parentheses
+                        .replace(/\s+/g, ' ')     // Normalize spaces
+                        .trim();
+
+                    let gdpText = gdpCell.textContent.trim();
+
+                    // Clean up GDP string: remove any non-numeric characters (commas, etc.)
+                    gdpText = gdpText.replace(/[^\d\.]/g, '');  // Keep only numbers and decimal points
+
+                    if (!gdpText) continue;
+
+                    const rankNum = parseInt(rank.replace(/[^\d]/g, ''));  // Clean rank number, remove non-numeric
+                    const gdpNum = parseFloat(gdpText);  // Convert GDP to a float number (for USD)
+
+                    if (rankNum > 0 && country && gdpNum > 0 && country.length > 1 && country.length < 50) {
+                        allCountriesData.push({
+                            rank: rankNum,
+                            country: country,
+                            gdpUSD: gdpNum, // Store GDP in USD (in billions for this case)
+                            gdpFormatted: formatUSDNumber(gdpNum), // Format the number
+                        });
+                    }
+                }
+
+                // Sort countries by rank (ascending order)
+                allCountriesData.sort((a, b) => a.rank - b.rank);
+
+                // Display only the top 10 countries
+                allCountriesData = allCountriesData.slice(0, 10);
+
+                // Update stats and display GDP table
+                if (allCountriesData.length > 0) {
+                    updateStats();
+                    displayGDPTable();
+                } else {
+                    throw new Error('No valid data found');
+                }
+            }
+        }
+
+        // Format GDP values in USD (in billions)
+        function formatUSDNumber(num) {
+            return num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }
+
+        // Update the stats section
+        function updateStats() {
+            document.getElementById('statsBox').style.display = 'block';
+            document.getElementById('totalCount').textContent = allCountriesData.length;
+            document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
+        }
+
+        // Display the GDP table
+        function displayGDPTable(filteredData = null) {
+            const tbody = document.getElementById('gdpTableBody');
+            const table = document.getElementById('countriesEconomyTable');
+            const loadingDiv = document.getElementById('loadingMessage');
+            tbody.innerHTML = '';
+            const dataToDisplay = filteredData || allCountriesData;
+
+            if (dataToDisplay.length === 0) {
+                loadingDiv.textContent = 'No data to display';
+                return;
+            }
+
+            document.getElementById('showingCount').textContent = dataToDisplay.length;
+            dataToDisplay.forEach(item => {
+                const row = document.createElement('tr');
+
+                // Highlight India row
+                if (item.country.toLowerCase().includes('india')) {
+                    row.className = 'highlight-india';
+                }
+
+                // Rank
+                const rankCell = document.createElement('td');
+                rankCell.className = 'rank';
+                rankCell.textContent = String(item.rank).padStart(2, '0');
+                row.appendChild(rankCell);
+
+                // Country
+                const countryCell = document.createElement('td');
+                countryCell.textContent = item.country;
+                row.appendChild(countryCell);
+
+                // GDP
+                const gdpCell = document.createElement('td');
+                gdpCell.className = 'gdp-amount';
+                gdpCell.textContent = '$' + item.gdpFormatted + ' Billion';
+                row.appendChild(gdpCell);
+
+                // Country again (for some reason, repeating the country column)
+                const countryCell2 = document.createElement('td');
+                countryCell2.textContent = item.country;
+                row.appendChild(countryCell2);
+
+                // Notes
+                const notesCell = document.createElement('td');
+                if (item.rank <= 10) {
+                    notesCell.innerHTML = '<EM>Top 10 Economies</EM>';
+                }
+                if (item.country.toLowerCase().includes('india')) {
+                    notesCell.innerHTML = '<STRONG>🇮🇳 Target: Surpass Japan by 2032</STRONG>';
+                }
+                row.appendChild(notesCell);
+
+                tbody.appendChild(row);
+            });
+
+            loadingDiv.style.display = 'none';
+            table.style.display = 'table';
+        }
+
+        // Fallback data for testing or in case of error
+        function loadFallbackData() {
+            allCountriesData = [
+                { rank: 1, country: 'United States', gdpUSD: 29.168, gdpFormatted: formatUSDNumber(29.168) },
+                { rank: 2, country: 'China', gdpUSD: 18.532, gdpFormatted: formatUSDNumber(18.532) },
+                { rank: 3, country: 'Japan', gdpUSD: 4.110, gdpFormatted: formatUSDNumber(4.110) },
+                { rank: 4, country: 'Germany', gdpUSD: 4.708, gdpFormatted: formatUSDNumber(4.708) },
+                { rank: 5, country: 'India', gdpUSD: 3.047, gdpFormatted: formatUSDNumber(3.047) },
+                { rank: 6, country: 'United Kingdom', gdpUSD: 3.495, gdpFormatted: formatUSDNumber(3.495) },
+                { rank: 7, country: 'France', gdpUSD: 3.130, gdpFormatted: formatUSDNumber(3.130) },
+                { rank: 8, country: 'Italy', gdpUSD: 2.328, gdpFormatted: formatUSDNumber(2.328) },
+                { rank: 9, country: 'Brazil', gdpUSD: 2.331, gdpFormatted: formatUSDNumber(2.331) },
+                { rank: 10, country: 'Canada', gdpUSD: 2.242, gdpFormatted: formatUSDNumber(2.242) }
+            ];
+
+            updateStats();
+            displayGDPTable();
+        }
+
+        // Call to load data on page load
+        window.addEventListener('load', function () {
+            loadGDPData();
+        });
+    </script>
+</body>
+
+</html>
