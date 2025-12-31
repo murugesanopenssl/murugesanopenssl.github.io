@@ -198,44 +198,51 @@
 			    let wasted=0, food=0, eri=0, travel=0, school=0, other=0, savedamt=0;
 			    Object.values(data).forEach(rows=>{
 				rows.forEach(row=>{
-				    if(sel!=="ALL" && extractMonth(row[0])!==sel) return;
-				    for(let i=1;i<row.length;i+=2){
-					const item = row[i];
-					const amt  = parseFloat(row[i+1]) || 0;
-					const clean = item
-					    .normalize("NFKC")
-					    .replace(/[\s.\u200B\u00A0\uFEFF\u2060\u180E\u200C\u200D]/g,"")
-					    .trim();
-					if(item.toLowerCase().includes("snack")){
-					    wasted += amt;
-					    continue;
-					}
-					if( item.toLowerCase().includes("மா.ர.ப") )
+				    if( sel!=="ALL" && extractMonth(row[0])!==sel )
 					{
-						if(0!=amt)
-						{
-							savedamt += amt;
+						return;
+					}
+				    for(let i=1;i<row.length;i+=2)
+					{
+						const item = row[i];
+						const amt  = parseFloat(row[i+1]) || 0;
+						const clean = item
+							.normalize("NFKC")
+							.replace(/[\s.\u200B\u00A0\uFEFF\u2060\u180E\u200C\u200D]/g,"")
+							.trim();
+						if(item.toLowerCase().includes("snack")){
+							wasted += amt;
+							continue;
 						}
-					}
-					else if(item.toLowerCase().includes("உணவு") || item==="மதிய உணவு" || item==="இரவு உணவு" || item==="தேநீர்" || item==="அ.சி")
-					    food += amt;
-					else if(item.includes("எரி"))
-					    eri += amt;
-					else if(item.includes("பயண") || item.toLowerCase().includes("dpi") || item.toLowerCase().includes("hosur") || item.toLowerCase().includes("bng"))
-					    travel += amt;
-					else if(item.toLowerCase().includes("school"))
-					    school += amt;
-					else if( item.toLowerCase().includes("தொ.வை") )
-					{
-						if(0!=amt)
+						if( item.toLowerCase().includes("மா.ர.ப") )
 						{
-							savedamt += amt;
+							if(0!=amt)
+							{
+								savedamt += amt;
+							}
 						}
-					}
-					else
-					{
-					    other += amt;
-					}
+						else if(item.toLowerCase().includes("உணவு") || item==="மதிய உணவு" || item==="இரவு உணவு" || item==="தேநீர்" || item==="அ.சி")
+							food += amt;
+						else if(item.includes("எரி"))
+							eri += amt;
+						else if(item.includes("பயண") || item.toLowerCase().includes("dpi") || item.toLowerCase().includes("hosur") || item.toLowerCase().includes("bng"))
+							travel += amt;
+						// else if( ( item.toLowerCase().includes("school") && ( -1 == row[0].indexOf("அத்திபள்ளி") ) ) || ( "ALL" == sel ) )
+						else if( item.toLowerCase().includes("school") || sel === "ALL" )
+						{
+							school += amt;
+						}
+						else if( item.toLowerCase().includes("தொ.வை") )
+						{
+							if(0!=amt)
+							{
+								savedamt += amt;
+							}
+						}
+						else
+						{
+							other += amt;
+						}
 				    }
 				});
 			    });
