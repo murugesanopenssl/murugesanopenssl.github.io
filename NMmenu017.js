@@ -1099,7 +1099,7 @@ function DisplayMainMenu()
 		<A href="#" onclick='javascript:window.open( "post-office-nsc.html" );' class="nav-link"><FONT color='#00ff00'>Post office NSC</FONT></A>
 	</LI>
 	<LI>
-		<A href="#" onclick="javascript:loadHomeContent( event, 'SBI_ETDR_INTEREST.html' );" class="nav-link">SBI FD INTEREST</A>
+		<A href="#" onclick='javascript:window.open( "SBI_ETDR_INTEREST.html" );' class="nav-link"><FONT color='#00ff00'>SBI FD INTEREST</FONT></A>
 	</LI>
 	<LI>
 		<A href="#" onclick="javascript:loadHomeContent( event, 'Indian-bank-to-other-bank.html' );" class="nav-link">Indian bank transfer err</A>
