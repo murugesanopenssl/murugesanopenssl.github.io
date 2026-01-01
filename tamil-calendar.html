@@ -12,9 +12,45 @@ https://www.tamildailycalendar.com/tamil_monthly_calendar.php?month=12&year=2025
 		<LINK href="github.io.css" rel="stylesheet">
 		<TITLE>Tamil and Gregorian Calendar</TITLE>
 		<SCRIPT src='NMmenu022.js'></SCRIPT>
-		<SCRIPT type='text/javascript'>writeMenu();</SCRIPT>
+		<SCRIPT type='text/javascript'>
+			writeMenu();
+		</SCRIPT>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<SCRIPT>
+			document.addEventListener( "DOMContentLoaded", () =>
+				{
+					// Initialize the month selector as usual
+					populateMonthSelector();
+					document.getElementById("monthSelector").addEventListener("change", onMonthChange);
+					onMonthChange(); // Ensure the calendars are rendered on initial load
+
+					// Add keydown event listener for arrow keys
+					document.addEventListener('keydown', (event) => {
+						const selector = document.getElementById("monthSelector");
+						const options = selector.options;
+						const currentIndex = selector.selectedIndex;
+
+						// If the month selector has options, handle arrow key navigation
+						if (options.length > 0) {
+							if (event.key === 'ArrowDown') {
+								// Move to next month (down arrow)
+								if (currentIndex < options.length - 1) {
+									selector.selectedIndex = currentIndex + 1;
+									onMonthChange(); // Call the change event handler to update calendars
+								}
+							} else if (event.key === 'ArrowUp') {
+								// Move to previous month (up arrow)
+								if (currentIndex > 0) {
+									selector.selectedIndex = currentIndex - 1;
+									onMonthChange(); // Call the change event handler to update calendars
+								}
+							}
+						}
+					});
+				}
+			);
+		</SCRIPT>
 		<STYLE type='text/css'>
 			body
 			{
@@ -116,10 +152,14 @@ https://www.tamildailycalendar.com/tamil_monthly_calendar.php?month=12&year=2025
 				{
 					const selector = document.getElementById("monthSelector");
 					selector.innerHTML = "";
-					const currentYear = new Date().getFullYear();
-					let startYear = currentYear;
-					let startMonth = 0;
-					for( let i = 0; 12 > i; ++i)
+
+					const currentDate = new Date();
+					const currentYear = currentDate.getFullYear();
+					const currentMonth = currentDate.getMonth();
+
+					let startYear = currentMonth >= 3 ? currentYear : currentYear - 1;
+					let startMonth = 3;
+					for( let i = 0; i <= (currentYear - startYear) * 12 + currentMonth - startMonth; ++i)
 					{
 						const month = (startMonth + i) % 12;
 						const year = startYear + Math.floor((startMonth + i) / 12);
@@ -127,7 +167,21 @@ https://www.tamildailycalendar.com/tamil_monthly_calendar.php?month=12&year=2025
 						const option = document.createElement("option");
 						option.value = `${year}-${month}`;
 						option.text = `${monthName}-${year}`;
-						if( ( 0 === month ) && ( ( (currentYear + 1) === year )  ) )
+						if( ( currentYear === year ) && ( currentMonth === month ) )
+						{
+							option.selected = true;
+						}
+						selector.appendChild(option);
+					}
+					for(let i = 0; i <= 2; i++)
+					{
+						const month = i;
+						const monthName = new Date(currentYear, month).toLocaleString('default', { month: 'short' });
+
+						const option = document.createElement("option");
+						option.value = `${currentYear}-${month}`;
+						option.text = `${monthName}-${currentYear}`;
+						if( currentMonth === month )
 						{
 							option.selected = true;
 						}
@@ -233,7 +287,7 @@ https://www.tamildailycalendar.com/tamil_monthly_calendar.php?month=12&year=2025
 						let tamilDay = day;
 						switch( month )
 						{
-							case 10: // November (Gregorian)
+							case 10:
 								if( 16 >= day )
 								{
 									tamilMonth = "ஐப்பசி";
@@ -245,7 +299,7 @@ https://www.tamildailycalendar.com/tamil_monthly_calendar.php?month=12&year=2025
 									tamilDay = day - 16;
 								}
 								break;
-							case 11: // December (Gregorian)
+							case 11:
 								if( 15 >= day )
 								{
 									tamilMonth = "கார்த்திகை";
@@ -257,7 +311,7 @@ https://www.tamildailycalendar.com/tamil_monthly_calendar.php?month=12&year=2025
 									tamilDay = day - 15;
 								}
 								break;
-							case 0: // January (Gregorian)
+							case 0:
 								if( 14 >= day )
 								{
 									tamilMonth = "மார்கழி";
@@ -265,8 +319,8 @@ https://www.tamildailycalendar.com/tamil_monthly_calendar.php?month=12&year=2025
 								}
 								else
 								{
-									tamilMonth = "தை"; // Tamil Month "தை"
-									tamilDay = day - 14; // Tamil days 1-14 of "தை"
+									tamilMonth = "தை";
+									tamilDay = day - 14;
 								}
 								break;
 						}
