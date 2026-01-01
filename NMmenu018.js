@@ -1158,7 +1158,12 @@ function DisplayMainMenu()
 	<SPAN class="nav-arrow">&gt;</SPAN>
 	</A>
 	<UL class="submenu">
-	<LI><A href="#" onclick='javascript:window.open( "Windows_ERR_HELP.html" );'><FONT color='#00ff00'>Windows Help</FONT></A></LI>
+	<LI>
+		<A href="#" onclick='javascript:window.open( "TamilLetters.html" );'><FONT color='#00ff00'>Tamil letters</FONT></A>
+	</LI>
+	<LI>
+		<A href="#" onclick='javascript:window.open( "Windows_ERR_HELP.html" );'><FONT color='#00ff00'>Windows Help</FONT></A>
+	</LI>
 	<LI>
 		<A href="#" onclick='javascript:window.open( "Windows_network_icon.html" );' class="nav-link"><FONT color='#00ff00'>Windows Network</FONT></A>
 	</LI>
@@ -1220,7 +1225,7 @@ function DisplayMainMenu()
 	<DIV id='sidefoot-content'>
 	<DIV class="sidebar-footer">`);
 	yyyy=new Date().getFullYear();
-	document.write( "&copy; "+yyyy+" Life Finance Helper4" );
+	document.write( "<FONT color='black'>&copy; "+yyyy+" Life Finance Helper4</FONT>" );
 	document.write( `<NOSCRIPT>`);
 	document.write( `<P>&copy; 900000000 Life Finance Helper5</P>
 	</NOSCRIPT>
