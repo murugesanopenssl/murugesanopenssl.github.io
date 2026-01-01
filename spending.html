@@ -1,91 +1,105 @@
 <!DOCTYPE html>
 <HTML>
-<HEAD>
-	<META CHARSET="UTF-8">
-	<META name="viewport" content="width=device-width, initial-scale=1.0">
-	<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-	<META http-equiv="Pragma" content="no-cache" />
-	<META http-equiv="Expires" content="0" />
-	<TITLE>Daily Spending Tracker</TITLE>
-	<SCRIPT>
-	function deleteAllCookies() {
-    document.cookie.split(';').forEach(cookie => {
-        const eqPos = cookie.indexOf('=');
-        const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
-        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    });
-}
-window.onload = async () => {
-    deleteAllCookies();
-};
-	</SCRIPT>
-	<STYLE type='text/css'>
-		body {
-			background-color: #004C8F;
-			color: #FFFFFF;
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-		}
-		h3 {
-			color: #FFFFFF;
-			border-bottom: 2px solid #FF6600;
-			padding-bottom: 10px;
-		}
-		.controls {
-			margin: 20px 0;
-			padding: 10px;
-			background-color: #0066CC;
-			border-radius: 5px;
-		}
-		.controls label {
-			margin-right: 10px;
-			font-weight: bold;
-		}
-		.controls input, .controls select, .controls button {
-			margin: 5px;
-			padding: 8px;
-			border-radius: 3px;
-			border: 1px solid #003D82;
-		}
-		.controls button {
-			background-color: #003D82;
-			color: #FFFFFF;
-			font-weight: bold;
-			cursor: pointer;
-		}
-		.controls button:hover {
-			background-color: #FF6600;
-		}
-		#message {
-			padding: 10px;
-			margin: 10px 0;
-			background-color: #0066CC;
-			border-radius: 5px;
-			font-weight: bold;
-		}
-		table {
-			width: 100%;
-			border-collapse: collapse;
-			margin: 20px 0;
-		}
-		table, th, td {
-			border: 1px solid #FFFFFF;
-		}
-		th, td {
-			padding: 8px;
-			text-align: right;
-		}
-		th {
-			background-color: #003D82;
-			font-weight: bold;
-		}
-		tr:nth-child(even) {
-			background-color: #0066CC;
-		}
-	</STYLE>
-</HEAD>
-<BODY>
+	<HEAD>
+		<META CHARSET="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<META http-equiv="Pragma" content="no-cache" />
+		<META http-equiv="Expires" content="0" />
+		<TITLE>Daily Spending Tracker</TITLE>
+		<SCRIPT type='text/javascript'>
+			function deleteAllCookies()
+			{
+			    document.cookie.split(';').forEach(cookie => {
+				const eqPos = cookie.indexOf('=');
+				const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+				document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+			    });
+			}
+			window.onload = async () => {
+			    deleteAllCookies();
+			};
+		</SCRIPT>
+		<STYLE type='text/css'>
+			body
+			{
+				background-color: #004C8F;
+				color: #FFFFFF;
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+			}
+			h3
+			{
+				color: #FFFFFF;
+				border-bottom: 2px solid #FF6600;
+				padding-bottom: 10px;
+			}
+			.controls
+			{
+				margin: 20px 0;
+				padding: 10px;
+				background-color: #0066CC;
+				border-radius: 5px;
+			}
+			.controls label
+			{
+				margin-right: 10px;
+				font-weight: bold;
+			}
+			.controls input, .controls select, .controls button
+			{
+				margin: 5px;
+				padding: 8px;
+				border-radius: 3px;
+				border: 1px solid #003D82;
+			}
+			.controls button
+			{
+				background-color: #003D82;
+				color: #FFFFFF;
+				font-weight: bold;
+				cursor: pointer;
+			}
+			.controls button:hover
+			{
+				background-color: #FF6600;
+			}
+			#message
+			{
+				padding: 10px;
+				margin: 10px 0;
+				background-color: #0066CC;
+				border-radius: 5px;
+				font-weight: bold;
+			}
+			table
+			{
+				width: 100%;
+				border-collapse: collapse;
+				margin: 20px 0;
+			}
+			table, th, td
+			{
+				border: 1px solid #FFFFFF;
+			}
+			th, td
+			{
+				padding: 8px;
+				text-align: right;
+			}
+			th
+			{
+				background-color: #003D82;
+				font-weight: bold;
+			}
+			tr:nth-child(even)
+			{
+				background-color: #0066CC;
+			}
+		</STYLE>
+	</HEAD>
+<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 	<TABLE>
 		<TR>
 			<TD>
@@ -93,21 +107,16 @@ window.onload = async () => {
 	I HAVE STOPPED BUYING MILK FROM Wed 31-Dec-2025 IST<BR>
 	<H1><A href='spending-chart.html'><FONT color='#00ff00'>செலவு வரைபடத்தைப் பார்க்க</FONT></A></H1>
 	<P>தேவையற்ற செலவுகளைத் நாம் தடுப்பதன் மூலம் நமது பணத்தைச் சேமிக்க முடியும்.</P>
-	
 	<DIV class="controls">
 		<LABEL for="monthSelect">காண:</LABEL>
 		<SELECT id="monthSelect"></SELECT>
-		
 		<LABEL for="dateInput">தேதி:</LABEL>
 		<INPUT type="date" id="dateInput" />
-		
 		<INPUT type="text" id="itemInput" placeholder="பொருள் ( எ.கா: சிஉண்டி )" />
 		<INPUT type="number" id="amountInput" placeholder="தொகை" step="0.01" />
-		
 		<BUTTON id="addBtn">பதிவு சேர்க்கவும்</BUTTON>
 		<BUTTON id="saveDefaultBtn">Save default array to DB</BUTTON>
 	</DIV>
-	
 	<DIV id="message" aria-live="polite"></DIV>
 	<DIV id="tableContainer"></DIV>
 	<SCRIPT type='text/javascript'>
@@ -118,11 +127,8 @@ window.onload = async () => {
 	</SCRIPT>
 	<SCRIPT src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app-compat.js"></SCRIPT>
 	<SCRIPT src="https://www.gstatic.com/firebasejs/11.0.1/firebase-database-compat.js"></SCRIPT>
-	
 	<SCRIPT type="text/javascript">
 		console.log("=== Starting spending.html initialization ===");
-		
-		// Initialize Firebase
 		const firebaseConfig = {
 			apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
 			authDomain: "openmurugesan.firebaseapp.com",
@@ -133,10 +139,7 @@ window.onload = async () => {
 			appId: "1:307675598593:web:4af163460ce2c3bc719500",
 			measurementId: "G-0MFK92PQMP"
 		};
-		
-		// Check if Firebase is already initialized
 		let app, db, rootRef;
-
 try {
     if (!firebase.apps || firebase.apps.length === 0) {
         app = firebase.initializeApp(firebaseConfig);
@@ -153,7 +156,6 @@ try {
 } catch (error) {
     console.error("Firebase initialization error:", error);
     
-    // If initialization fails, try to get existing instance
     try {
         app = firebase.app();
         db = firebase.database();
@@ -164,10 +166,7 @@ try {
         alert("Firebase initialization failed. Please refresh the page (F5).");
     }
 }
-		
 		console.log("Firebase database reference created");
-		
-		// Helper function to format dates
 		function formatDate(dateStr) {
 			const date = new Date(dateStr.split("-").reverse().join("-"));
 			const weekday = date.toLocaleString('en-GB', { weekday: 'short' });
@@ -177,8 +176,6 @@ try {
 			const year = date.getFullYear();
 			return `${weekday} ${day}-${month}-${year}`;
 		}
-		
-		// Your base data (keeping first few entries as example)
 						const baseRaw = {
 Dec: [
 		[ formatDate("01-Jan-2026"),
@@ -1233,8 +1230,6 @@ Apr: [
 		]
 	]
 };
-		
-		// Normalize base data
 		function normalizeBase(raw) {
 			const out = {};
 			for (const k in raw) {
@@ -1259,9 +1254,7 @@ Apr: [
 			}
 			return out;
 		}
-		
 		let baseData = normalizeBase(baseRaw);
-		
 		const monthSelect = document.getElementById('monthSelect');
 		const dateInput = document.getElementById('dateInput');
 		const itemInput = document.getElementById('itemInput');
@@ -1270,17 +1263,13 @@ Apr: [
 		const message = document.getElementById('message');
 		const addBtn = document.getElementById('addBtn');
 		const saveDefaultBtn = document.getElementById('saveDefaultBtn');
-		
-		// Set today's date
 		dateInput.value = new Date().toLocaleDateString("en-CA", { timeZone:"Asia/Kolkata" });
-		
 		function populateMonthSelect(monthKeys) {
 			monthSelect.innerHTML = "";
 			const optAll = document.createElement('option');
 			optAll.value = 'all';
 			optAll.textContent = 'All Months';
 			monthSelect.appendChild(optAll);
-			
 			monthKeys.sort((a, b) => {
 				const [monthA, yearA] = a.split('-');
 				const [monthB, yearB] = b.split('-');
@@ -1289,7 +1278,6 @@ Apr: [
 				if (yearA !== yearB) return yearB - yearA;
 				return monthIndexB - monthIndexA;
 			});
-			
 			for (const mk of monthKeys) {
 				const opt = document.createElement('option');
 				opt.value = mk;
@@ -1297,19 +1285,16 @@ Apr: [
 				monthSelect.appendChild(opt);
 			}
 		}
-		
 		function currentMonthKey() {
 			const d = new Date();
 			const mo = d.toLocaleString('en-US', {month:'short'});
 			const yr = d.getFullYear();
 			return mo + "-" + yr;
 		}
-		
 		async function renderForSelected(dataFromDB) {
 			console.log("renderForSelected called");
 			const sel = monthSelect.value;
 			let data = dataFromDB;
-			
 			if (!data) {
 				try {
 					const snapshot = await rootRef.once('value');
@@ -1323,7 +1308,6 @@ Apr: [
 					data = baseData;
 				}
 			}
-			
 			let html = `<TABLE border='1' style='width:100%;white-space:nowrap;font-size:14px;'>
 				<THEAD>
 					<TR>
@@ -1339,10 +1323,8 @@ Apr: [
 					</TR>
 				</THEAD>
 				<TBODY>`;
-			
 			const months = sel === 'all' ? Object.keys(data) : [sel];
 			const dailyMap = {};
-			
 			for (const mk of months) {
 				if (!data[mk]) continue;
 				data[mk].forEach(row => {
@@ -1350,36 +1332,32 @@ Apr: [
 					for (let i = 1; i < row.length; i += 2) {
 						const item = row[i];
 						const amt = row[i + 1];
-						if (item && (amt !== undefined && amt !== null)) {
+						// if (item && (amt !== undefined && amt !== null))
+						if (item && !isNaN(amt))
+						{
 							if (!dailyMap[date]) dailyMap[date] = [];
 							dailyMap[date].push({ item, amt });
 						}
 					}
 				});
 			}
-			
 			let grandTotal = 0;
 			let grandWaste = 0;
 			const today = new Date();
 			today.setHours(0, 0, 0, 0);
-			
 			for (const d of Object.keys(dailyMap).sort((a, b) => new Date(b) - new Date(a))) {
 				const entries = dailyMap[d];
 				let subTotal = 0;
 				let wasted = 0;
 				const inputDate = new Date(d);
-				
 				if (inputDate > today) continue;
-				
 				let rowHtml = `<TR><TD valign='top' align='right'>${d}</TD>`;
-				
 				for (let i = 0; i < 6; i++) {
 					if (entries[i]) {
 						const e = entries[i];
 						const isSnack = /சிஉண்டி/i.test(e.item);
 						const amtVal = parseFloat(e.amt) || 0;
 						const style = isSnack ? " style='background:red;color:white;'" : "";
-						
 						rowHtml += `<TD${style}>${e.item}</TD><TD${style}>${amtVal.toFixed(2)}</TD>`;
 						subTotal += amtVal;
 						if (isSnack) wasted += amtVal;
@@ -1387,42 +1365,33 @@ Apr: [
 						rowHtml += "<TD valign='top' align='right'></TD><TD valign='top' align='right'></TD>";
 					}
 				}
-				
 				const wastedStyle = wasted > 0 ? " style='background:red;color:white;'" : "";
 				rowHtml += `<TD valign='top' align='right'>${subTotal.toFixed(2)}</TD><TD${wastedStyle}>${wasted.toFixed(2)}</TD></TR>`;
 				html += rowHtml;
-				
-				grandTotal += subTotal;
-				grandWaste += wasted;
+				grandTotal = parseFloat(grandTotal.toFixed(2)) + parseFloat(subTotal.toFixed(2));
+				grandWaste = parseFloat(grandWaste.toFixed(2)) + parseFloat(wasted.toFixed(2));
 			}
-			
 			const totalAfterWaste = grandTotal - grandWaste;
 			html += `<TR style='font-weight:bold;background:blue;'>
 				<TD colspan='13' align='right'>வீணான தொகையைத் தவிர்த்து, செலவழித்த மொத்தத் தொகை:</TD>
 				<TD valign='top' align='right'>${totalAfterWaste.toFixed(2)}</TD>
 				<TD style='background-color:red;color:white;'>${grandWaste.toFixed(2)}</TD>
 			</TR>`;
-			
 			html += `<TR style='font-weight:bold;background:blue;'>
 				<TD colspan='13' align='right'>வீணான தொகை உட்பட செலவழிக்கப்பட்ட மொத்த தொகை:</TD>
 				<TD valign='top' align='right'>${grandTotal.toFixed(2)}</TD>
 				<TD valign='top' align='right'></TD>
 			</TR>`;
-			
 			html += "</TBODY></TABLE>";
 			tableContainer.innerHTML = html;
-			
 			console.log("Table rendered successfully");
 		}
-		
 		async function initAndLoad() {
 			console.log("=== initAndLoad called ===");
 			message.textContent = "Loading data from Firebase...";
-			
 			try {
 				const snapshot = await rootRef.once('value');
 				let data;
-				
 				if (snapshot.exists()) {
 					data = snapshot.val();
 					message.textContent = "தரவுத்தளத்திலிருந்து சேமிக்கப்பட்ட அனைத்து தரவும் பெறப்பட்டது.";
@@ -1431,19 +1400,15 @@ Apr: [
 					data = baseData;
 					message.textContent = "DB empty and saved local array to DB.";
 				}
-				
 				const monthKeys = Object.keys(data);
 				populateMonthSelect(monthKeys);
-				
 				const curMk = currentMonthKey();
 				const defaultMk = monthKeys.find(k => k === curMk) 
 					|| monthKeys.find(k => k.startsWith(curMk.split('-')[0]))
 					|| monthKeys[0] 
 					|| 'all';
-				
 				monthSelect.value = defaultMk;
 				await renderForSelected(data);
-				
 			} catch (error) {
 				console.error("Firebase error:", error);
 				message.textContent = "Firebase error - using local data.";
@@ -1452,26 +1417,21 @@ Apr: [
 				await renderForSelected(baseData);
 			}
 		}
-		
 		async function addEntry() {
 			const rawDate = dateInput.value;
 			const date = formatDate(rawDate.split("-").reverse().join("-"));
 			const item = itemInput.value.trim();
 			const amount = parseFloat(amountInput.value);
-			
 			if (!rawDate || !item || Number.isNaN(amount)) {
 				alert("Please enter Date, Item and Amount.");
 				return;
 			}
-			
 			const parts = date.split("-");
 			const mk = parts[1] + "-" + parts[2];
-			
 			try {
 				const monthRef = rootRef.child(mk);
 				const snapshot = await monthRef.once('value');
 				let monthArr = snapshot.exists() ? snapshot.val() : [];
-				
 				let foundIndex = -1;
 				for (let i = 0; i < monthArr.length; i++) {
 					if (monthArr[i][0] === date) {
@@ -1479,75 +1439,68 @@ Apr: [
 						break;
 					}
 				}
-				
 				if (foundIndex >= 0) {
 					monthArr[foundIndex].push(item, amount);
 				} else {
 					monthArr.push([date, item, amount]);
 				}
-				
 				const allSnapshot = await rootRef.once('value');
 				let dataAll = allSnapshot.exists() ? allSnapshot.val() : baseData;
 				dataAll[mk] = monthArr;
-				
 				await rootRef.set(dataAll);
-				
 				populateMonthSelect(Object.keys(dataAll));
 				monthSelect.value = mk;
 				await renderForSelected(dataAll);
-				
 				itemInput.value = "";
 				amountInput.value = "";
 				dateInput.value = new Date().toLocaleDateString("en-CA", { timeZone:"Asia/Kolkata" });
 				message.textContent = "Saved entry and updated table.";
-				
 			} catch (error) {
 				console.error("Error adding entry:", error);
 				message.textContent = "Error saving entry: " + error.message;
 			}
 		}
-		
-		addBtn.addEventListener('click', addEntry);
-		
-		saveDefaultBtn.addEventListener('click', async () => {
-			try {
-				await rootRef.set(baseData);
-				message.textContent = "இயல்புநிலை வரிசை தரவுத்தளத்தில் சேமிக்கப்பட்டது.";
-				const snapshot = await rootRef.once('value');
-				const dataAll = snapshot.exists() ? snapshot.val() : baseData;
-				populateMonthSelect(Object.keys(dataAll));
-				const curMk = currentMonthKey();
-				monthSelect.value = curMk;
-				renderForSelected(dataAll);
-			} catch (error) {
-				console.error("Error saving default data:", error);
-				message.textContent = "Error: " + error.message;
+			addBtn.addEventListener('click', addEntry);
+			saveDefaultBtn.addEventListener('click', async () => 
+				{
+					try {
+						await rootRef.set(baseData);
+						message.textContent = "இயல்புநிலை வரிசை தரவுத்தளத்தில் சேமிக்கப்பட்டது.";
+						const snapshot = await rootRef.once('value');
+						const dataAll = snapshot.exists() ? snapshot.val() : baseData;
+						populateMonthSelect(Object.keys(dataAll));
+						const curMk = currentMonthKey();
+						monthSelect.value = curMk;
+						renderForSelected(dataAll);
+					} catch (error) {
+						console.error("Error saving default data:", error);
+						message.textContent = "Error: " + error.message;
+					}
+				}
+			);
+			monthSelect.addEventListener('change', async () =>
+				{
+					try {
+						const snapshot = await rootRef.once('value');
+						const data = snapshot.exists() ? snapshot.val() : baseData;
+						renderForSelected(data);
+					} catch (error) {
+						console.error("Error loading data on change:", error);
+						renderForSelected(baseData);
+					}
+				}
+			);
+			console.log("Setting up initialization...");
+			if( 'loading' === document.readyState )
+			{
+				document.addEventListener('DOMContentLoaded', initAndLoad);
 			}
-		});
-		
-		monthSelect.addEventListener('change', async () => {
-			try {
-				const snapshot = await rootRef.once('value');
-				const data = snapshot.exists() ? snapshot.val() : baseData;
-				renderForSelected(data);
-			} catch (error) {
-				console.error("Error loading data on change:", error);
-				renderForSelected(baseData);
+			else
+			{
+				initAndLoad();
 			}
-		});
-		
-		// Initialize on load
-		console.log("Setting up initialization...");
-		if (document.readyState === 'loading') {
-			document.addEventListener('DOMContentLoaded', initAndLoad);
-		} else {
-			initAndLoad();
-		}
-		
-		// Make initAndLoad available globally for dynamic loading
-		window.initAndLoad = initAndLoad;
-		
-		console.log("=== spending.html setup complete ===");
-	</SCRIPT>
-</BODY>
+			window.initAndLoad = initAndLoad;
+			console.log("=== spending.html setup complete ===");
+		</SCRIPT>
+	</BODY>
 </HTML>

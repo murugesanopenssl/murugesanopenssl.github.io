@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<HEAD>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top 10 Economies by GDP</title>
-    <style>
+    <TITLE>Top 10 Economies by GDP</TITLE>
+    <STYLE type='text/css'>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -80,40 +80,40 @@
         #showingCount {
             font-weight: bold;
         }
-    </style>
-</head>
+    </STYLE>
+</HEAD>
 
-<body>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 
-    <div class="container">
+    <DIV class="container">
         <h1>Top 10 Countries by GDP</h1>
-        <div id="statsBox">
-            <p>Total countries: <span id="totalCount">0</span></p>
-            <p>Last updated: <span id="lastUpdate">N/A</span></p>
-        </div>
+        <DIV id="statsBox">
+            <P>Total countries: <span id="totalCount">0</SPAN></P>
+            <P>Last updated: <span id="lastUpdate">N/A</SPAN></P>
+        </DIV>
 
-        <div id="loadingMessage">Loading data...</div>
-        <div id="errorMessage"></div>
+        <DIV id="loadingMessage">Loading data...</DIV>
+        <DIV id="errorMessage"></DIV>
 
         <table id="countriesEconomyTable" style="display: none;">
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Country</th>
-                    <th>GDP (in USD Billions)</th>
-                    <th>Country</th>
-                    <th>Notes</th>
-                </tr>
-            </thead>
+            <THEAD>
+                <TR>
+                    <TH>Rank</TH>
+                    <TH>Country</TH>
+                    <TH>GDP (in USD Billions)</TH>
+                    <TH>Country</TH>
+                    <TH>Notes</TH>
+                </TR>
+            </THEAD>
             <tbody id="gdpTableBody">
                 <!-- Table rows will be inserted here -->
-            </tbody>
-        </table>
+            </TBODY>
+        </TABLE>
 
-        <p>Showing top <span id="showingCount">0</span> countries.</p>
-    </div>
+        <P>Showing top <span id="showingCount">0</SPAN> countries.</P>
+    </DIV>
 
-    <script>
+    <SCRIPT type='text/javascript'>
         let allCountriesData = [];
 
         // Fetching and parsing the data
@@ -305,7 +305,7 @@
         window.addEventListener('load', function () {
             loadGDPData();
         });
-    </script>
-</body>
+    </SCRIPT>
+</BODY>
 
-</html>
+</HTMLhtml>

@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<HEAD>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spending Tracker (Firebase Connected)</title>
-<style>
+<TITLE>Spending Tracker (Firebase Connected)</TITLE>
+<STYLE type='text/css'>
   body { font-family: Arial, sans-serif; margin: 20px; }
   table { width: 100%; border-collapse: collapse; margin-top: 20px; }
   th, td { border: 1px solid #aaa; padding: 8px; text-align: left; }
   th { background: #f2f2f2; }
   input, select, button { margin: 5px; padding: 8px; }
-</style>
-</head>
-<body>
+</STYLE>
+</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 <h2>💰 Spending Tracker - Firebase Integrated</h2>
 
-<div>
-  <label for="monthSelect">Select Month:</label>
+<DIV>
+  <LABEL for="monthSelect">Select Month:</LABEL>
   <select id="monthSelect">
-    <option value="current" selected>Current Month</option>
-    <option value="all">All Months</option>
-  </select>
-</div>
+    <option value="current" selected>Current Month</OPTION>
+    <option value="all">All Months</OPTION>
+  </SELECT>
+</DIV>
 
-<div>
+<DIV>
   <input type="date" id="dateInput">
   <input type="text" id="itemInput" placeholder="Item">
   <input type="number" id="amountInput" placeholder="Amount">
-  <button onclick="addEntry()">➕ Add Entry</button>
-</div>
+  <BUTTON onclick="addEntry()">➕ Add Entry</BUTTON>
+</DIV>
 
-<div id="spendingTable"></div>
+<DIV id="spendingTable"></DIV>
 
-<noscript>
-  <p>This app requires JavaScript to run.</p>
-</noscript>
+<NOSCRIPT>
+  <P>This app requires JavaScript to run.</P>
+</NOSCRIPT>
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
@@ -80,7 +80,7 @@
 
   function displayData(data) {
     const selected = document.getElementById('monthSelect').value;
-    let html = "<table><tr><th>Date</th><th>Item</th><th>Amount</th></tr>";
+    let html = "<TABLE><TR><TH>Date</TH><TH>Item</TH><TH>Amount</TH></TR>";
     const months = selected === "all" ? Object.keys(data) : [currentMonth];
     months.forEach(m => {
       if (data[m]) {
@@ -89,12 +89,12 @@
           for (let i = 1; i < row.length; i += 2) {
             const item = row[i];
             const amt = row[i + 1];
-            if (item && amt) html += `<tr><td>${date}</td><td>${item}</td><td>${amt}</td></tr>`;
+            if (item && amt) html += `<TR><TD VALIGN='TOP' ALIGN='LEFT'>${date}</TD><TD VALIGN='TOP' ALIGN='LEFT'>${item}</TD><TD VALIGN='TOP' ALIGN='LEFT'>${amt}</TD></TR>`;
           }
         });
       }
     });
-    html += "</table>";
+    html += "</TABLE>";
     document.getElementById("spendingTable").innerHTML = html;
   }
 
@@ -121,7 +121,7 @@
 
   document.getElementById("monthSelect").addEventListener("change", loadData);
   window.addEventListener("load", loadData);
-</script>
+</SCRIPT>
 
-</body>
-</html>
+</BODY>
+</HTMLhtml>
