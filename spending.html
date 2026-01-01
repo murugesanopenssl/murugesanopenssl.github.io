@@ -91,7 +91,7 @@ window.onload = async () => {
 			<TD>
 		நான் புதன் 31-2025-டிசம்பர், முதல் பால் வாங்குவதை நிறுத்திவிட்டேன்.<BR>
 	I HAVE STOPPED BUYING MILK FROM Wed 31-Dec-2025 IST<BR>
-	<H1>செலவு வரைபடத்தைப் பார்க்க</H1>
+	<H1><A href='spending-chart.html'><FONT color='#00ff00'>செலவு வரைபடத்தைப் பார்க்க</FONT></A></H1>
 	<P>தேவையற்ற செலவுகளைத் நாம் தடுப்பதன் மூலம் நமது பணத்தைச் சேமிக்க முடியும்.</P>
 	
 	<DIV class="controls">
@@ -181,6 +181,15 @@ try {
 		// Your base data (keeping first few entries as example)
 						const baseRaw = {
 Dec: [
+		[ formatDate("01-Jan-2026"),
+			"<A title='காலை உணவு/BREAK FAST'>உணவு</A>",				60.00,
+			"",				0.00,
+			"",					0.00,
+			"",					0.00,
+			"",					0.00,
+			"",					0.00,
+			"",					0.00
+		],
 		[ formatDate("31-Dec-2025"),
 			"",				0.00,
 			"",					0.00,
@@ -1388,13 +1397,13 @@ Apr: [
 			}
 			
 			const totalAfterWaste = grandTotal - grandWaste;
-			html += `<TR style='font-weight:bold;background:#ffe5e5;'>
+			html += `<TR style='font-weight:bold;background:blue;'>
 				<TD colspan='13' align='right'>வீணான தொகையைத் தவிர்த்து, செலவழித்த மொத்தத் தொகை:</TD>
 				<TD valign='top' align='right'>${totalAfterWaste.toFixed(2)}</TD>
 				<TD style='background-color:red;color:white;'>${grandWaste.toFixed(2)}</TD>
 			</TR>`;
 			
-			html += `<TR style='font-weight:bold;background:#c7f9cc;'>
+			html += `<TR style='font-weight:bold;background:blue;'>
 				<TD colspan='13' align='right'>வீணான தொகை உட்பட செலவழிக்கப்பட்ட மொத்த தொகை:</TD>
 				<TD valign='top' align='right'>${grandTotal.toFixed(2)}</TD>
 				<TD valign='top' align='right'></TD>

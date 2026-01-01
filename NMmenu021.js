@@ -1,45 +1,43 @@
-// Add this function at the TOP of your NMmenu016.js file
-// Call it once when the page loads
-
-(function injectDisabledLinkStyles() {
-    // Check if styles already injected
-    if (document.getElementById('disabled-link-styles')) {
-        return;
-    }
-    
-    const style = document.createElement('style');
-    style.id = 'disabled-link-styles';
-    style.textContent = `
-        /* Disabled navigation link styling */
-        .nav-item a[style*="not-allowed"],
-        .submenu a[style*="not-allowed"] {
-            cursor: not-allowed !important;
-            pointer-events: none !important;
-            opacity: 0.5 !important;
-            text-decoration: none !important;
-            color: #888 !important;
-            background-color: rgba(0, 0, 0, 0.1) !important;
-        }
-        
-        /* Prevent hover effects on disabled links */
-        .nav-item a[style*="not-allowed"]:hover,
-        .submenu a[style*="not-allowed"]:hover {
-            background-color: rgba(0, 0, 0, 0.1) !important;
-            color: #888 !important;
-            padding-left: 20px !important;
-        }
-        
-        /* Visual indicator for disabled state */
-        .nav-item a[style*="not-allowed"]::after,
-        .submenu a[style*="not-allowed"]::after {
-            content: " 🚫";
-            font-size: 0.8em;
-            margin-left: 5px;
-        }
-    `;
-    document.head.appendChild(style);
-    console.log('✓ Disabled link styles injected');
-})();
+(	function injectDisabledLinkStyles()
+	{
+		if (document.getElementById('disabled-link-styles')) {
+			return;
+		}
+		
+		const style = document.createElement('style');
+		style.id = 'disabled-link-styles';
+		style.textContent = `
+			/* Disabled navigation link styling */
+			.nav-item a[style*="not-allowed"],
+			.submenu a[style*="not-allowed"] {
+				cursor: not-allowed !important;
+				pointer-events: none !important;
+				opacity: 0.5 !important;
+				text-decoration: none !important;
+				color: #888 !important;
+				background-color: rgba(0, 0, 0, 0.1) !important;
+			}
+			
+			/* Prevent hover effects on disabled links */
+			.nav-item a[style*="not-allowed"]:hover,
+			.submenu a[style*="not-allowed"]:hover {
+				background-color: rgba(0, 0, 0, 0.1) !important;
+				color: #888 !important;
+				padding-left: 20px !important;
+			}
+			
+			/* Visual indicator for disabled state */
+			.nav-item a[style*="not-allowed"]::after,
+			.submenu a[style*="not-allowed"]::after {
+				content: " 🚫";
+				font-size: 0.8em;
+				margin-left: 5px;
+			}
+		`;
+		document.head.appendChild(style);
+		console.log('✓ Disabled link styles injected');
+	}
+)();
 
 // Now your existing functions go here...
 // function showDefault() { ... }
