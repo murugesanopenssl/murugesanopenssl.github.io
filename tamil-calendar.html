@@ -116,8 +116,9 @@ https://www.tamildailycalendar.com/tamil_monthly_calendar.php?month=12&year=2025
 				{
 					const selector = document.getElementById("monthSelector");
 					selector.innerHTML = "";
-					let startYear = today.getMonth() >= 3 ? currentYear : currentYear - 1;
-					let startMonth = 3;
+					const currentYear = new Date().getFullYear();
+					let startYear = currentYear;
+					let startMonth = 0;
 					for( let i = 0; 12 > i; ++i)
 					{
 						const month = (startMonth + i) % 12;
@@ -126,7 +127,7 @@ https://www.tamildailycalendar.com/tamil_monthly_calendar.php?month=12&year=2025
 						const option = document.createElement("option");
 						option.value = `${year}-${month}`;
 						option.text = `${monthName}-${year}`;
-						if( ( 11 === month ) && ( year === 2025 ) )
+						if( ( 0 === month ) && ( ( (currentYear + 1) === year )  ) )
 						{
 							option.selected = true;
 						}
