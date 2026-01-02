@@ -1,0 +1,831 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<TITLE>Loan Payment Schedule</TITLE>
+		<STYLE type='text/css'>
+			BODY
+			{
+				font-family: 'Courier New', monospace;
+				margin: 0px;
+				background-color: #f5f5f5;
+			}
+			H2
+			{
+				color: #333;
+				border-bottom: 3px solid #DAA520;
+				padding-bottom: 10px;
+				margin: 20px;
+			}
+			H3
+			{
+				color: #555;
+				margin-top: 30px;
+				background-color: #DAA520;
+				color: white;
+				padding: 10px;
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+			TABLE
+			{
+				border-collapse: collapse;
+				background-color: white;
+				box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+				margin-bottom: 30px;
+			}
+			TH
+			{
+				background-color: #DAA520;
+				color: white;
+				padding: 12px;
+				text-align: right;
+				font-weight: bold;
+				border: 1px solid #B8860B;
+			}
+			TD
+			{
+				border: 1px solid #ddd;
+				color: black;
+				padding: 8px;
+				text-align: right;
+			}
+			TR:nth-child(even)
+			{
+				background-color: #f9f9f9;
+			}
+			TR:hover
+			{
+				background-color: #fff3cd;
+			}
+			.info-box
+			{
+				background-color: #e8f5e9;
+				padding: 15px;
+				margin: 20px;
+				border-radius: 5px;
+				border-left: 5px solid #DAA520;
+				font-family: 'Courier New', monospace;
+			}
+			.paid-row
+			{
+				background-color: #d4edda !important;
+				font-weight: bold;
+			}
+			.interest-row
+			{
+				background-color: #fff3cd !important;
+				font-weight: bold;
+				color: #856404;
+			}
+			.monthly-payment-row
+			{
+				background-color: #ffd9b3 !important;
+				font-weight: bold;
+				color: #cc5200;
+			}
+			.summary-row
+			{
+				background-color: #DAA520 !important;
+				color: white;
+				font-weight: bold;
+			}
+			.summary-table
+			{
+				margin: 20px;
+			}
+			.header-row
+			{
+				background-color: #4a4a4a !important;
+				color: white;
+				font-weight: bold;
+			}
+		</STYLE>
+		<SCRIPT type='text/javascript'>
+			var dailyMonthlyInfo = {};
+			var weeklyMonthlyInfo = {};
+			var variableMonthlyInfo = {};
+			var dailyInterestRate = 0.005;
+			function formatDate(date)
+			{
+				var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+				var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+				var dayName = days[date.getDay()];
+				var day = date.getDate();
+				var dayStr = String(day);
+				if(10 > day)
+				{
+					dayStr = '0' + dayStr;
+				}
+				var monthName = months[date.getMonth()];
+				var year = date.getFullYear();
+				return dayName + ' ' + dayStr + '-' + monthName + '-' + year;
+			}
+			function numberToWords(num)
+			{
+				var ones = ['', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE'];
+				var tens = ['', '', 'TWENTY', 'THIRTY', 'FORTY', 'FIFTY', 'SIXTY', 'SEVENTY', 'EIGHTY', 'NINETY'];
+				var teens = ['TEN', 'ELEVEN', 'TWELVE', 'THIRTEEN', 'FOURTEEN', 'FIFTEEN', 'SIXTEEN', 'SEVENTEEN', 'EIGHTEEN', 'NINETEEN'];
+				if(0 == num)
+				{
+					return 'ZERO';
+				}
+				var crore = Math.floor(num / 10000000);
+				num = num % 10000000;
+				var lakh = Math.floor(num / 100000);
+				num = num % 100000;
+				var thousand = Math.floor(num / 1000);
+				num = num % 1000;
+				var hundred = Math.floor(num / 100);
+				num = num % 100;
+				var result = '';
+				if(0 < crore)
+				{
+					result += ones[crore] + ' CRORE ';
+				}
+				if(0 < lakh)
+				{
+					if(10 > lakh)
+					{
+						result += ones[lakh] + ' LAKH ';
+					}
+					else if(20 > lakh)
+					{
+						result += teens[lakh - 10] + ' LAKH ';
+					}
+					else
+					{
+						var tensDigit = Math.floor(lakh / 10);
+						var onesDigit = lakh % 10;
+						if(0 < onesDigit)
+						{
+							result += tens[tensDigit] + ' ' + ones[onesDigit] + ' LAKH ';
+						}
+						else
+						{
+							result += tens[tensDigit] + ' LAKH ';
+						}
+					}
+				}
+				if(0 < thousand)
+				{
+					if(10 > thousand)
+					{
+						result += ones[thousand] + ' THOUSAND ';
+					}
+					else if(20 > thousand)
+					{
+						result += teens[thousand - 10] + ' THOUSAND ';
+					}
+					else
+					{
+						var tensDigit = Math.floor(thousand / 10);
+						var onesDigit = thousand % 10;
+						if(0 < onesDigit)
+						{
+							result += tens[tensDigit] + ' ' + ones[onesDigit] + ' THOUSAND ';
+						}
+						else
+						{
+							result += tens[tensDigit] + ' THOUSAND ';
+						}
+					}
+				}
+				if(0 < hundred)
+				{
+					result += ones[hundred] + ' HUNDRED ';
+				}
+				if(0 < num)
+				{
+					if(10 > num)
+					{
+						result += ones[num];
+					}
+					else if(20 > num)
+					{
+						result += teens[num - 10];
+					}
+					else
+					{
+						var tensDigit = Math.floor(num / 10);
+						var onesDigit = num % 10;
+						if(0 < onesDigit)
+						{
+							result += tens[tensDigit] + ' ' + ones[onesDigit];
+						}
+						else
+						{
+							result += tens[tensDigit];
+						}
+					}
+				}
+				return result.trim();
+			}
+			function calculateDuration(startDate, endDate)
+			{
+				var years = endDate.getFullYear() - startDate.getFullYear();
+				var months = endDate.getMonth() - startDate.getMonth();
+				var days = endDate.getDate() - startDate.getDate();
+				if(0 > days)
+				{
+					months--;
+					var prevMonth = new Date(endDate.getFullYear(), endDate.getMonth(), 0);
+					days += prevMonth.getDate();
+				}
+				if(0 > months)
+				{
+					years--;
+					months += 12;
+				}
+				var result = '';
+				if(0 < years)
+				{
+					result += years + ' year';
+					if(1 < years)
+					{
+						result += 's';
+					}
+				}
+				if(0 < months)
+				{
+					if('' != result)
+					{
+						result += ' +';
+					}
+					result += months + ' month';
+					if(1 < months)
+					{
+						result += 's';
+					}
+				}
+				if(0 < days)
+				{
+					if('' != result)
+					{
+						result += ' +';
+					}
+					result += days + ' day';
+					if(1 < days)
+					{
+						result += 's';
+					}
+				}
+				return result;
+			}
+			function isLeapYear(year)
+			{
+				if(0 == year % 4)
+				{
+					if(0 == year % 100)
+					{
+						if(0 == year % 400)
+						{
+							return true;
+						}
+						return false;
+					}
+					return true;
+				}
+				return false;
+			}
+			function getMonthlyAmount(month, year)
+			{
+				return 3100;
+			}
+			function generateDailyMonthlyPaymentTable()
+			{
+				var startDate = new Date('2026-01-03');
+				var principal = 107845.00;
+				var paidAmount = 15422.00;
+				var table = document.getElementById('dailyMonthlyTable');
+				var currentDate = new Date(startDate);
+				var totalPaid = paidAmount;
+				var outstanding = principal;
+				var dayCount = 0;
+				var totalInterest = 0;
+				var row = table.insertRow(-1);
+				row.className = 'paid-row';
+				var cell1 = row.insertCell(0);
+				var cell2 = row.insertCell(1);
+				var cell3 = row.insertCell(2);
+				var cell4 = row.insertCell(3);
+				cell1.innerHTML = '-';
+				cell2.innerHTML = 'Already Paid';
+				cell3.innerHTML = '₹15,422.00';
+				cell4.innerHTML = '₹107,845.00';
+				while(0.01 < outstanding)
+				{
+					if(10 == currentDate.getDate())
+					{
+						var monthlyPayment = 5000.00;
+						if(monthlyPayment > outstanding)
+						{
+							monthlyPayment = outstanding;
+							outstanding = 0;
+						}
+						else
+						{
+							outstanding -= monthlyPayment;
+						}
+						totalPaid += monthlyPayment;
+						var row = table.insertRow(-1);
+						row.className = 'monthly-payment-row';
+						var cell1 = row.insertCell(0);
+						var cell2 = row.insertCell(1);
+						var cell3 = row.insertCell(2);
+						var cell4 = row.insertCell(3);
+						cell1.innerHTML = 'MONTHLY';
+						cell2.innerHTML = formatDate(currentDate);
+						cell3.innerHTML = '₹' + monthlyPayment.toFixed(2);
+						cell4.innerHTML = '₹' + outstanding.toFixed(2);
+						if(0.01 > outstanding)
+						{
+							break;
+						}
+					}
+					var dailyInterest = outstanding * dailyInterestRate;
+					totalInterest += dailyInterest;
+					var row = table.insertRow(-1);
+					row.className = 'interest-row';
+					var cell1 = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					cell1.innerHTML = '-';
+					cell2.innerHTML = formatDate(currentDate) + ' INT';
+					cell3.innerHTML = '₹' + dailyInterest.toFixed(2);
+					cell4.innerHTML = '₹' + outstanding.toFixed(2);
+					var payment = 100.00;
+					if(payment > outstanding)
+					{
+						payment = outstanding;
+						outstanding = 0;
+					}
+					else
+					{
+						outstanding -= payment;
+					}
+					totalPaid += payment;
+					dayCount++;
+					var row = table.insertRow(-1);
+					var cell1 = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					cell1.innerHTML = dayCount;
+					cell2.innerHTML = formatDate(currentDate);
+					cell3.innerHTML = '₹' + payment.toFixed(2);
+					cell4.innerHTML = '₹' + outstanding.toFixed(2);
+					currentDate.setDate(currentDate.getDate() + 1);
+				}
+				var summaryRow = table.insertRow(-1);
+				summaryRow.className = 'summary-row';
+				var sumCell1 = summaryRow.insertCell(0);
+				var sumCell2 = summaryRow.insertCell(1);
+				var sumCell3 = summaryRow.insertCell(2);
+				var sumCell4 = summaryRow.insertCell(3);
+				sumCell1.colSpan = 2;
+				sumCell1.innerHTML = 'TOTAL';
+				sumCell3.innerHTML = '₹' + (totalPaid + totalInterest).toFixed(2);
+				sumCell4.innerHTML = '₹0.00';
+				var finalDate = new Date(currentDate.getTime() - 86400000);
+				dailyMonthlyInfo.finalDate = formatDate(finalDate);
+				dailyMonthlyInfo.totalAmount = totalPaid + totalInterest;
+				dailyMonthlyInfo.totalInterest = totalInterest;
+				dailyMonthlyInfo.duration = calculateDuration(new Date('2026-01-03'), finalDate);
+				dailyMonthlyInfo.amountWords = numberToWords(Math.floor(totalPaid + totalInterest));
+				document.getElementById('info1').innerHTML = 'Days: ' + dayCount + ' | Final: ' + dailyMonthlyInfo.finalDate + ' | Total: ₹' + (totalPaid + totalInterest).toFixed(2) + ' | Interest: ₹' + totalInterest.toFixed(2);
+			}
+			function generateWeeklyMonthlyPaymentTable()
+			{
+				var startDate = new Date('2026-01-03');
+				var principal = 107845.00;
+				var paidAmount = 15422.00;
+				var table = document.getElementById('weeklyMonthlyTable');
+				var currentDate = new Date(startDate);
+				var totalPaid = paidAmount;
+				var outstanding = principal;
+				var weekCount = 0;
+				var totalInterest = 0;
+				var row = table.insertRow(-1);
+				row.className = 'paid-row';
+				var cell1 = row.insertCell(0);
+				var cell2 = row.insertCell(1);
+				var cell3 = row.insertCell(2);
+				var cell4 = row.insertCell(3);
+				cell1.innerHTML = '-';
+				cell2.innerHTML = 'Already Paid';
+				cell3.innerHTML = '₹15,422.00';
+				cell4.innerHTML = '₹107,845.00';
+				var lastWeeklyDate = new Date(startDate);
+				lastWeeklyDate.setDate(lastWeeklyDate.getDate() - 7);
+				var lastMonth = -1;
+				while(0.01 < outstanding)
+				{
+					var nextWeeklyDate = new Date(lastWeeklyDate);
+					nextWeeklyDate.setDate(nextWeeklyDate.getDate() + 7);
+					var monthlyDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 10);
+					if(lastMonth != currentDate.getMonth() && monthlyDate >= currentDate && 10 == currentDate.getDate())
+					{
+						lastMonth = currentDate.getMonth();
+						var monthlyPayment = 5000.00;
+						if(monthlyPayment > outstanding)
+						{
+							monthlyPayment = outstanding;
+							outstanding = 0;
+						}
+						else
+						{
+							outstanding -= monthlyPayment;
+						}
+						totalPaid += monthlyPayment;
+						var row = table.insertRow(-1);
+						row.className = 'monthly-payment-row';
+						var cell1 = row.insertCell(0);
+						var cell2 = row.insertCell(1);
+						var cell3 = row.insertCell(2);
+						var cell4 = row.insertCell(3);
+						cell1.innerHTML = 'MONTHLY';
+						cell2.innerHTML = formatDate(currentDate);
+						cell3.innerHTML = '₹' + monthlyPayment.toFixed(2);
+						cell4.innerHTML = '₹' + outstanding.toFixed(2);
+						if(0.01 > outstanding)
+						{
+							break;
+						}
+					}
+					else if(nextWeeklyDate <= currentDate)
+					{
+						var payment = 700.00;
+						if(payment > outstanding)
+						{
+							payment = outstanding;
+							outstanding = 0;
+						}
+						else
+						{
+							outstanding -= payment;
+						}
+						totalPaid += payment;
+						weekCount++;
+						lastWeeklyDate = new Date(nextWeeklyDate);
+						var row = table.insertRow(-1);
+						var cell1 = row.insertCell(0);
+						var cell2 = row.insertCell(1);
+						var cell3 = row.insertCell(2);
+						var cell4 = row.insertCell(3);
+						cell1.innerHTML = weekCount;
+						cell2.innerHTML = formatDate(currentDate);
+						cell3.innerHTML = '₹' + payment.toFixed(2);
+						cell4.innerHTML = '₹' + outstanding.toFixed(2);
+						if(0.01 > outstanding)
+						{
+							break;
+						}
+					}
+					var dailyInterest = outstanding * dailyInterestRate;
+					totalInterest += dailyInterest;
+					currentDate.setDate(currentDate.getDate() + 1);
+				}
+				var summaryRow = table.insertRow(-1);
+				summaryRow.className = 'summary-row';
+				var sumCell1 = summaryRow.insertCell(0);
+				var sumCell2 = summaryRow.insertCell(1);
+				var sumCell3 = summaryRow.insertCell(2);
+				var sumCell4 = summaryRow.insertCell(3);
+				sumCell1.colSpan = 2;
+				sumCell1.innerHTML = 'TOTAL';
+				sumCell3.innerHTML = '₹' + (totalPaid + totalInterest).toFixed(2);
+				sumCell4.innerHTML = '₹0.00';
+				weeklyMonthlyInfo.finalDate = formatDate(currentDate);
+				weeklyMonthlyInfo.totalAmount = totalPaid + totalInterest;
+				weeklyMonthlyInfo.totalInterest = totalInterest;
+				weeklyMonthlyInfo.duration = calculateDuration(new Date('2026-01-03'), currentDate);
+				weeklyMonthlyInfo.amountWords = numberToWords(Math.floor(totalPaid + totalInterest));
+				document.getElementById('info2').innerHTML = 'Weeks: ' + weekCount + ' | Final: ' + weeklyMonthlyInfo.finalDate + ' | Total: ₹' + (totalPaid + totalInterest).toFixed(2) + ' | Interest: ₹' + totalInterest.toFixed(2);
+			}
+			function generateVariableMonthlyPaymentTable()
+			{
+				var startDate = new Date('2026-01-07');
+				var principal = 107845.00;
+				var paidAmount = 15422.00;
+				var table = document.getElementById('variableMonthlyTable');
+				var currentDate = new Date(startDate);
+				var totalPaid = paidAmount;
+				var outstanding = principal;
+				var monthCount = 0;
+				var totalInterest = 0;
+				var row = table.insertRow(-1);
+				row.className = 'paid-row';
+				var cell1 = row.insertCell(0);
+				var cell2 = row.insertCell(1);
+				var cell3 = row.insertCell(2);
+				var cell4 = row.insertCell(3);
+				cell1.innerHTML = '-';
+				cell2.innerHTML = 'Already Paid';
+				cell3.innerHTML = '₹15,422.00';
+				cell4.innerHTML = '₹107,845.00';
+				while(0.01 < outstanding)
+				{
+					var monthlyPayment = 5000.00;
+					if(monthlyPayment > outstanding)
+					{
+						monthlyPayment = outstanding;
+						outstanding = 0;
+					}
+					else
+					{
+						outstanding -= monthlyPayment;
+					}
+					totalPaid += monthlyPayment;
+					monthCount++;
+					var row = table.insertRow(-1);
+					row.className = 'monthly-payment-row';
+					var cell1 = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					cell1.innerHTML = monthCount + ' (7th)';
+					cell2.innerHTML = formatDate(currentDate);
+					cell3.innerHTML = '₹' + monthlyPayment.toFixed(2);
+					cell4.innerHTML = '₹' + outstanding.toFixed(2);
+					if(0.01 > outstanding)
+					{
+						break;
+					}
+					var nextMonth = currentDate.getMonth() + 1;
+					var nextYear = currentDate.getFullYear();
+					if(11 < nextMonth)
+					{
+						nextMonth = 0;
+						nextYear++;
+					}
+					var firstDayNextMonth = new Date(nextYear, nextMonth, 1);
+					var daysToFirst = Math.floor((firstDayNextMonth - currentDate) / 86400000);
+					for(var d = 0; daysToFirst > d; d++)
+					{
+						var dailyInterest = outstanding * dailyInterestRate;
+						totalInterest += dailyInterest;
+					}
+					var month = firstDayNextMonth.getMonth() + 1;
+					var year = firstDayNextMonth.getFullYear();
+					var payment = getMonthlyAmount(month, year);
+					if(payment > outstanding)
+					{
+						payment = outstanding;
+						outstanding = 0;
+					}
+					else
+					{
+						outstanding -= payment;
+					}
+					totalPaid += payment;
+					var row = table.insertRow(-1);
+					var cell1 = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					cell1.innerHTML = monthCount + ' (1st)';
+					cell2.innerHTML = formatDate(firstDayNextMonth);
+					cell3.innerHTML = '₹' + payment.toFixed(2);
+					cell4.innerHTML = '₹' + outstanding.toFixed(2);
+					if(0.01 > outstanding)
+					{
+						break;
+					}
+					var daysTo7th = 6;
+					for(var d = 0; daysTo7th > d; d++)
+					{
+						var dailyInterest = outstanding * dailyInterestRate;
+						totalInterest += dailyInterest;
+					}
+					currentDate = new Date(nextYear, nextMonth, 7);
+				}
+				var summaryRow = table.insertRow(-1);
+				summaryRow.className = 'summary-row';
+				var sumCell1 = summaryRow.insertCell(0);
+				var sumCell2 = summaryRow.insertCell(1);
+				var sumCell3 = summaryRow.insertCell(2);
+				var sumCell4 = summaryRow.insertCell(3);
+				sumCell1.colSpan = 2;
+				sumCell1.innerHTML = 'TOTAL MONTHS: ' + monthCount;
+				sumCell3.innerHTML = '₹' + (totalPaid + totalInterest).toFixed(2);
+				sumCell4.innerHTML = '₹0.00';
+				variableMonthlyInfo.finalDate = formatDate(currentDate);
+				variableMonthlyInfo.totalAmount = totalPaid + totalInterest;
+				variableMonthlyInfo.totalInterest = totalInterest;
+				variableMonthlyInfo.duration = calculateDuration(new Date('2026-01-07'), currentDate);
+				variableMonthlyInfo.amountWords = numberToWords(Math.floor(totalPaid + totalInterest));
+				document.getElementById('info3').innerHTML = 'Months: ' + monthCount + ' | Final: ' + variableMonthlyInfo.finalDate + ' | Total: ₹' + (totalPaid + totalInterest).toFixed(2) + ' | Interest: ₹' + totalInterest.toFixed(2);
+			}
+			function populateSummaryTable()
+			{
+				var table = document.getElementById('summaryTable');
+				var schedules = [
+					{
+						name: 'Fixed Monthly Payment',
+						amount: '₹5000/7th + ₹3100/1st',
+						finalDate: variableMonthlyInfo.finalDate,
+						totalAmount: variableMonthlyInfo.totalAmount,
+						totalInterest: variableMonthlyInfo.totalInterest,
+						duration: variableMonthlyInfo.duration,
+						amountWords: variableMonthlyInfo.amountWords,
+						link: '#table3'
+					},
+					{
+						name: 'Weekly + Monthly (10th)',
+						amount: '₹700/week + ₹5000/month',
+						finalDate: weeklyMonthlyInfo.finalDate,
+						totalAmount: weeklyMonthlyInfo.totalAmount,
+						totalInterest: weeklyMonthlyInfo.totalInterest,
+						duration: weeklyMonthlyInfo.duration,
+						amountWords: weeklyMonthlyInfo.amountWords,
+						link: '#table2'
+					},
+					{
+						name: 'Daily + Monthly (10th)',
+						amount: '₹100/day + ₹5000/month',
+						finalDate: dailyMonthlyInfo.finalDate,
+						totalAmount: dailyMonthlyInfo.totalAmount,
+						totalInterest: dailyMonthlyInfo.totalInterest,
+						duration: dailyMonthlyInfo.duration,
+						amountWords: dailyMonthlyInfo.amountWords,
+						link: '#table1'
+					}
+				];
+				schedules.sort(function(a, b)
+				{
+					return a.totalAmount - b.totalAmount;
+				});
+				for(var i = 0; schedules.length > i; i++)
+				{
+					var row = table.insertRow(-1);
+					var c1 = row.insertCell(0);
+					var c2 = row.insertCell(1);
+					var c3 = row.insertCell(2);
+					var c4 = row.insertCell(3);
+					var c5 = row.insertCell(4);
+					var c6 = row.insertCell(5);
+					var c7 = row.insertCell(6);
+					c1.innerHTML = schedules[i].name;
+					c2.innerHTML = schedules[i].amount;
+					c3.innerHTML = schedules[i].finalDate;
+					c4.innerHTML = '₹' + schedules[i].totalAmount.toFixed(2) + '<BR>' + schedules[i].amountWords;
+					c5.innerHTML = '₹' + schedules[i].totalInterest.toFixed(2);
+					c6.innerHTML = schedules[i].duration;
+					c7.innerHTML = '<A href="' + schedules[i].link + '">VIEW</A>';
+					if(0 == i)
+					{
+						row.style.backgroundColor = '#d4edda';
+						row.style.fontWeight = 'bold';
+					}
+					else if(schedules.length - 1 == i)
+					{
+						row.style.backgroundColor = '#f8d7da';
+					}
+				}
+			}
+			function initializeTables()
+			{
+				generateDailyMonthlyPaymentTable();
+				generateWeeklyMonthlyPaymentTable();
+				generateVariableMonthlyPaymentTable();
+				populateSummaryTable();
+			}
+			window.onload = function()
+			{
+				initializeTables();
+			};
+		</SCRIPT>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV style='background-color:#28a745;color:blue;padding:20px;margin:20px;text-align:center;font-size:18px;font-weight:bold;border-radius:10px;'>
+			Assume that loan (1,19,000.00 INR)applied on Mon 10-Nov-2025<BR>
+			We can pay the loan amount using following ways:<BR>
+			<TABLE style='background-color:#28a745;width:100%;'>
+				<TR>
+					<TD>
+						Pay 3100.00 ON 01-MMM-YYYY of each month<BR>
+						Pay 5000.00 ON 07-MMM-YYYY of each month
+					</TD>
+					<TD>
+						TOTAL AMOUNT TO PAY: 2,28,422.38 INR
+					</TD>
+					<TD>
+						MORE PROFTABLE/<BR>
+						LEAST LOSS
+					</TD>
+				</TR>
+				<TR style='background-color:#28a745;'>
+					<TD>
+						Pay 100.00 DURING EACH DAY<BR>
+						Pay 5000.00 ON 07-MMM-YYYY of each month
+					</TD>
+					<TD>
+						TOTAL AMOUNT TO PAY: 2,30,448.38 INR
+					</TD>
+					<TD>
+						LESS LOSS
+					</TD>
+				</TR>
+				<TR style='background-color:#28a745;'>
+					<TD>
+						Pay 700.00 DURING EACH WEEK<BR>
+						Pay 5000.00 ON 07-MMM-YYYY of each month
+					</TD>
+					<TD>
+						TOTAL AMOUNT TO PAY: 4,12,144.38 INR
+					</TD>
+					<TD>
+						MORE LOSS
+					</TD>
+				</TR>
+			</TABLE>
+			Fixed Monthly Payment (₹5000 on 7th + ₹3100 on 1st) => MOST PROFITABLE gold loan payment strategy for all gold or any loan customers on Earth!
+		</DIV>
+		<A name='top'></A>
+		<TABLE border='1' style='width:100%;' class='summary-table'>
+			<TR class='header-row'>
+				<TD valign='top' align='right'>
+					PAYMENT SCHEDULE
+				</TD>
+				<TD valign='top' align='right'>
+					AMOUNT
+				</TD>
+				<TD valign='top' align='right'>
+					FINAL DATE
+				</TD>
+				<TD valign='top' align='right'>
+					TOTAL AMOUNT
+				</TD>
+				<TD valign='top' align='right'>
+					TOTAL INTEREST
+				</TD>
+				<TD valign='top' align='right'>
+					DURATION
+				</TD>
+				<TD valign='top' align='right'>
+					GOTO TABLE
+				</TD>
+			</TR>
+			<TBODY id='summaryTable'>
+			</TBODY>
+		</TABLE>
+		<H2>Gold Loan Payment Schedule</H2>
+		<DIV class='info-box'>
+			<STRONG>Loan Amount:</STRONG> ₹1,19,000.00 (Mon 10-Nov-2025)<BR>
+			<STRONG>Already Paid:</STRONG> ₹15,422.00<BR>
+			<STRONG>Current Principal:</STRONG> ₹1,07,845.00<BR>
+			<STRONG>Interest on:</STRONG> ₹60.00 (Fri 02-Jan-2026)<BR>
+			<STRONG>Daily Interest Rate:</STRONG> 0.5% (₹539.23/day on ₹107,845)
+		</DIV>
+		
+		<H3>3) Fixed ₹5,000.00 on 7th + ₹3,100.00 on 1st</H3>
+		<DIV class='info-box' id='info3'>Calculating...</DIV>
+		<TABLE border='1' width='100%'>
+			<THEAD>
+				<TR>
+					<TH>Month #</TH>
+					<TH>Payment Date</TH>
+					<TH>Amount Paid</TH>
+					<TH>Outstanding</TH>
+				</TR>
+			</THEAD>
+			<TBODY id='variableMonthlyTable'>
+			</TBODY>
+		</TABLE>
+	</BODY>
+</HTML>1) Daily ₹100.00 + Monthly ₹5,000.00 on 10th</H3>
+		<DIV class='info-box' id='info1'>Calculating...</DIV>
+		<TABLE border='1' width='100%'>
+			<THEAD>
+				<TR>
+					<TH>Day #</TH>
+					<TH>Payment Date</TH>
+					<TH>Amount Paid</TH>
+					<TH>Outstanding</TH>
+				</TR>
+			</THEAD>
+			<TBODY id='dailyMonthlyTable'>
+			</TBODY>
+		</TABLE>
+		
+		<A name='table2'></A>
+		<H3>2) Weekly ₹700.00 + Monthly ₹5,000.00 on 10th</H3>
+		<DIV class='info-box' id='info2'>Calculating...</DIV>
+		<TABLE border='1' width='100%'>
+			<THEAD>
+				<TR>
+					<TH>Week #</TH>
+					<TH>Payment Date</TH>
+					<TH>Amount Paid</TH>
+					<TH>Outstanding</TH>
+				</TR>
+			</THEAD>
+			<TBODY id='weeklyMonthlyTable'>
+			</TBODY>
+		</TABLE>
+		<DIV style='text-align:center;margin:20px;'>
+			<A href='#top' style='background-color:#007bff;color:white;padding:10px 20px;text-decoration:none;border-radius:5px;font-weight:bold;'>BACK TO TOP</A>
+		</DIV>
+		
+		<H3>
