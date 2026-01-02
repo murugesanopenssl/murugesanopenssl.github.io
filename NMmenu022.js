@@ -1117,6 +1117,9 @@ function DisplayMainMenu()
 		<A href="#" onclick='javascript:window.open( "post-office-nsc.html" );' class="nav-link"><FONT color='#00ff00'>Post office NSC</FONT></A>
 	</LI>
 	<LI>
+		<A href="#" onclick="javascript:loadHomeContent( event, 'why-to-open-fixed-deposit.html' );" class="nav-link">Why Fixed deposit?</A>
+	</LI>
+	<LI>
 		<A href="#" onclick='javascript:window.open( "SBI_ETDR_INTEREST.html" );' class="nav-link"><FONT color='#00ff00'>SBI FD INTEREST</FONT></A>
 	</LI>
 	<LI>

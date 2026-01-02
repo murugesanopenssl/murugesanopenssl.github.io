@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<!--
+		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<META http-equiv="Pragma" content="no-cache">
+		<META http-equiv="Expires" content="0">
+		-->
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>Why to Open a Fixed Deposit?</TITLE>
+		<STYLE type='text/css'>
+			body
+			{
+				font-family: Arial, sans-serif;
+				margin: 20px;
+				background-color: #f4f4f9;
+				color: #333;
+			}
+			h1
+			{
+				color: #2c3e50;
+				text-align: center;
+			}
+			.content
+			{
+				background-color: #fff;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+			ul
+			{
+				margin-top: 5px;
+				margin-left: 20px;
+			}
+			li
+			{
+				margin-bottom: 5px;
+			}
+			table
+			{
+				width: 100%;
+				margin-top: 20px;
+				border-collapse: collapse;
+			}
+			th
+			{
+				padding: 12px;
+				text-align: middle;
+				border: 1px solid #ddd;
+			}
+			th
+			{
+				background-color: #2c3e50;
+				color: white;
+			}
+			tr:nth-child(even)
+			{
+				background-color: #f9f9f9;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY>
+		<H1>Steps to do after opening a fixed deposit?</H1>
+		<TABLE border='1' style='width:100%;'>
+			<TR>
+				<TD valign='top' align='left' style='color:black;'>
+					Use an automated shell script at localhost.<BR>
+					This script will display an alarm after login when using putty.exe %USERNAME%@127.0.0.1<BR><BR>
+					<b>Script Notifications:</b><BR>
+					- Tomorrow's fixed deposit xxxx is closing.<BR>
+					- Today's fixed deposit xxxx is closing. Pre-close this fixed deposit if not closed after 08:00 AM.<BR>
+					- At SBI this error used to happen some times, pre-closing fixed deposit on actual closing date as per remainder, never have any fine.<BR>
+					Use this automated shell script inside <code>~/.bashrc</code> or <code>~/.mkshrc</code> or the related default shell profile file.
+				</TD>
+			</TR>
+		</TABLE>
+		<H1>Why Should You Open a Fixed Deposit?</H1>
+		<DIV class="content"  style='color:black;'>
+			<P>Opening a fixed deposit (FD) can help you plan and secure your future expenses, ensuring that you have funds when needed the most. Below are some reasons why opening an FD is a good idea:</P>
+			<TABLE id="fd-table">
+				<TR>
+					<TH valign='top' align='middle'>Index</TH>
+					<TH valign='top' align='middle'>Purpose</TH>
+					<TH valign='top' align='middle'>Description</TH>
+				</TR>
+			</TABLE>
+		</DIV>
+		<SCRIPT type='text/javascript'>
+			function formatDate(date)
+			{
+				const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+				const day = String(date.getDate()).padStart(2, '0');
+				const month = months[date.getMonth()];
+				const year = date.getFullYear();
+				return `${day}-${month}-${year}`;
+			}
+			function getSpecificDate(day, month, yearOffset = 0)
+			{
+				const today = new Date();
+				const date = new Date(today.getFullYear() + yearOffset, month, day);
+				if( date < today )
+				{
+					date.setFullYear(today.getFullYear() + 1);
+				}
+				return date;
+			}
+			function formatIndex(index)
+			{
+				return String(index).padStart(2, '0');
+			}
+			const currentDate = new Date();
+			const table = document.getElementById('fd-table');
+			const data = [
+				{index: 1, purpose: "Pay monthly house rent on <B>02-MMM-YYYY</B> of each month.", description: "1st task - Monthly rent"},
+				{index: 2, purpose: "Pay school fees of <B>₹55,000</B> on the following dates: <UL><LI>Friday, <B id='school-fee-1'></B></LI><LI>Sunday, <B id='school-fee-2'></B></LI><LI><B id='school-fee-3'></B></LI></UL>", description: "2nd task - School fees payments"},
+				{index: 3, purpose: "Pay chit fund to buy a gold coin for 11 months on <B>09-MMM-YYYY</B>.", description: "3rd task - Chit fund for gold coin"},
+				{index: 4, purpose: "Pay BSNL fibernet bill on <B id='bsnl-bill'></B> and similar dates(14-Mmm-YYYY) during each month.", description: "4th task - BSNL fibernet bill payment"},
+				{index: 5, purpose: "Purchase medicines which will expire after <B>dd-MMM-YYYY</B>.", description: "5th task - Medicine purchases"},
+				{index: 6, purpose: "Renew 2-wheeler insurance one day before the expiry date.", description: "6th task - 2-wheeler insurance renewal"},
+				{index: 7, purpose: "Complete emission testing one day before the expiry date.", description: "7th task - Emission testing"},
+				{index: 8, purpose: "Pay LIC premiums one day before the expiry date.", description: "8th task - LIC premium payment"},
+				{index: 9, purpose: "Set aside gift amounts for the following holidays: <UL><LI>New year</LI><LI>Christmas</LI><LI>Ramjan</LI><LI>Deepavali</LI><LI>Pongal</LI><LI>Aayudhai Poojai</LI><LI>Mahathma Gandhi's Birthday</LI><LI>Republic Day</LI><LI>Independence Day</LI></UL>", description: "9th task - Gift amounts for holidays"},
+				{index: 10, purpose: "Plan for pre-scheduled travel to your parent's house during holidays.", description: "10th task - Travel planning"},
+				{index: 11, purpose: "Purchase new shoes or slippers after 1, 2, or 3 years for your children.", description: "11th task - Purchase children's shoes"},
+				{index: 12, purpose: "Buy new school or college bags after 1, 2, or 3 years for children/students.", description: "12th task - Buy school/college bags"},
+				{index: 13, purpose: "Pay for PRE-KG/L.K.G/U.K.G/.../SSLC, +2, or degree exam fees to government/private schools.", description: "13th task - Exam fee payment"},
+				{index: 14, purpose: "Pay current bill on <B id='current-bill'></B> of the current month.", description: "14th task - Pay current bill"},
+				{index: 15, purpose: "Automated bash script to inform the closure date of Fixed Deposit.<BR>1) Tomorrow's fixed deposit closing date.<BR>2) Today's fixed deposit closing date<BR>3) if your fixed deposit not closed after 08:00 AM, perform pre-close FD which used to close without having any fine/loss at SBI on actual closing date.<BR>Use this automated shell script inside ~/.bashrc file<BR>Usage: putty.exe %USERNAME%@127.0.0.1", description: "15th task - FD Closure Notification"}
+			];
+			data.forEach( item =>
+				{
+					const row = document.createElement('TR');
+					const indexCell = document.createElement('TD');
+					const purposeCell = document.createElement('TD');
+					const descriptionCell = document.createElement('TD');
+					indexCell.innerText = formatIndex(item.index);
+					indexCell.setAttribute('valign', 'top');
+					indexCell.setAttribute('align', 'middle');
+					purposeCell.innerHTML = item.purpose;
+					descriptionCell.innerText = item.description;
+					purposeCell.setAttribute('valign', 'top');
+					purposeCell.setAttribute('align', 'left');
+					descriptionCell.setAttribute('valign', 'top');
+					indexCell.style.border = '1px solid #ddd';
+					purposeCell.style.border = '1px solid #ddd';
+					descriptionCell.style.border = '1px solid #ddd';
+					row.appendChild(indexCell);
+					row.appendChild(purposeCell);
+					row.appendChild(descriptionCell);
+					table.appendChild(row);
+				}
+			);
+			document.getElementById('school-fee-1').innerText = formatDate(getSpecificDate(30, 4));
+			document.getElementById('school-fee-2').innerText = formatDate(getSpecificDate(28, 8));
+			document.getElementById('school-fee-3').innerText = formatDate(getSpecificDate(30, 0, 1));
+			document.getElementById('bsnl-bill').innerText = formatDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), 14));
+			document.getElementById('current-bill').innerText = formatDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), 15));
+		</SCRIPT>
+	</BODY>
+</HTML>
