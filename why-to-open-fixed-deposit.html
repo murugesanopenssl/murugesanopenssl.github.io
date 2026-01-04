@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <HTML lang="en">
 	<HEAD>
-		<!--
-		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-		<META http-equiv="Pragma" content="no-cache">
-		<META http-equiv="Expires" content="0">
-		-->
 		<META charset="UTF-8">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<TITLE>Why to Open a Fixed Deposit?</TITLE>
@@ -63,7 +58,7 @@
 	</HEAD>
 	<BODY>
 		<H1>Why Should You Open a Fixed Deposit?</H1>
-		<DIV class="content"  style='color:black;'>
+		<DIV class="content" style='color:black;'>
 			<P>Opening a fixed deposit (FD) can help you plan and secure your future expenses, ensuring that you have funds when needed the most. Below are some reasons why opening an FD is a good idea:</P>
 			<TABLE id="fd-table">
 				<TR>
@@ -82,20 +77,47 @@
 				const year = date.getFullYear();
 				return `${day}-${month}-${year}`;
 			}
+
 			function getSpecificDate(day, month, yearOffset = 0)
 			{
 				const today = new Date();
 				const date = new Date(today.getFullYear() + yearOffset, month, day);
-				if( date < today )
+				if (date < today)
 				{
 					date.setFullYear(today.getFullYear() + 1);
 				}
 				return date;
 			}
+
 			function formatIndex(index)
 			{
 				return String(index).padStart(2, '0');
 			}
+
+			// Adjust to your parents' bill months
+			function getParentBillDate(currentMonth)
+			{
+				const billMonths = [1, 3, 5, 7, 9, 11]; // Feb (1), Apr (3), Jun (5), Aug (7), Oct (9), Dec (11)
+				let billDate = '';
+				// Determine the next bill date based on the current month
+				if (billMonths.includes(currentMonth))
+				{
+					if (currentMonth === 1) billDate = formatDate(getSpecificDate(22, 1)); // Feb
+					else if (currentMonth === 3) billDate = formatDate(getSpecificDate(22, 3)); // Apr
+					else if (currentMonth === 5) billDate = formatDate(getSpecificDate(22, 5)); // Jun
+					else if (currentMonth === 7) billDate = formatDate(getSpecificDate(22, 7)); // Aug
+					else if (currentMonth === 9) billDate = formatDate(getSpecificDate(27, 9)); // Oct
+					else if (currentMonth === 11) billDate = formatDate(getSpecificDate(21, 11)); // Dec
+				}
+				else
+				{
+					// If it's not the month for the bill, get the next month's bill date
+					const nextBillMonth = billMonths.find(month => month > currentMonth) || billMonths[0];
+					billDate = formatDate(getSpecificDate(22, nextBillMonth));
+				}
+				return billDate;
+			}
+
 			const currentDate = new Date();
 			const table = document.getElementById('fd-table');
 			const data = [
@@ -107,42 +129,68 @@
 				{index: 6, purpose: "Renew 2-wheeler insurance one day before the expiry date.", description: "6th task - 2-wheeler insurance renewal"},
 				{index: 7, purpose: "Complete emission testing one day before the expiry date.", description: "7th task - Emission testing"},
 				{index: 8, purpose: "Pay LIC premiums one day before the expiry date.", description: "8th task - LIC premium payment"},
-				{index: 9, purpose: "Set aside gift amounts for the following holidays: <UL><LI>New year</LI><LI>Christmas</LI><LI>Ramjan</LI><LI>Deepavali</LI><LI>Pongal</LI><LI>Aayudhai Poojai</LI><LI>Mahathma Gandhi's Birthday</LI><LI>Republic Day</LI><LI>Independence Day</LI></UL>", description: "9th task - Gift amounts for holidays"},
+				{index: 9, purpose: "Set aside gift amounts for the following holidays:\
+					<TABLE border='1'>\
+						<TR>\
+							<TD>New year</TD>\
+							<TD>Christmas</TD>\
+							<TD>Ramjan</TD>\
+							<TD>Deepavali</TD>\
+							<TD>Pongal</TD>\
+							<TD>Aayudhai Poojai</TD>\
+						</TR>\
+						<TR>\
+							<TD>Mahathma Gandhi's Birthday</TD>\
+							<TD>Republic Day</TD>\
+							<TD>Independence Day</TD>\
+							<TD>Birth Day</TD>\
+							<TD>Marriage anniversary Day</TD>\
+							<TD>Donation Day ( atleast one time a year)</TD>\
+						</TR>\
+					</TABLE>", description: "9th task - Gift amounts for holidays"},
 				{index: 10, purpose: "Plan for pre-scheduled travel to your parent's house during holidays.", description: "10th task - Travel planning"},
 				{index: 11, purpose: "Purchase new shoes or slippers after 1, 2, or 3 years for your children.", description: "11th task - Purchase children's shoes"},
 				{index: 12, purpose: "Buy new school or college bags after 1, 2, or 3 years for children/students.", description: "12th task - Buy school/college bags"},
 				{index: 13, purpose: "Pay for PRE-KG/L.K.G/U.K.G/.../SSLC, +2, or degree exam fees to government/private schools.", description: "13th task - Exam fee payment"},
-				{index: 14, purpose: "Pay current bill on <B id='current-bill'></B> of the current month.", description: "14th task - Pay current bill"},
-				{index: 15, purpose: "Automated bash script to inform the closure date of Fixed Deposit.<BR>1) Tomorrow's fixed deposit closing date.<BR>2) Today's fixed deposit closing date<BR>3) if your fixed deposit not closed after 08:00 AM, perform pre-close FD which used to close without having any fine/loss at SBI on actual closing date.<BR>Use this automated shell script inside ~/.bashrc file<BR>Usage: putty.exe %USERNAME%@127.0.0.1", description: "15th task - FD Closure Notification"}
+				{index: 14, purpose: "Pay current bill on <B id='current-bill'></B> of each month 14-Mmm-YYYY.", description: "14th task - Pay current bill"},
+				{index: 15, purpose: "Pay <FONT color='#00ff00'><B><U>current bill for parents</FONT></B></U> on <B id='parent-bill'></B>.", description: "15th task - Pay current bill for parents"},
+				{index: 16, purpose: "Replace lense once in a year on <B id='lense-task1'></B>.", description: "16th task - Replace lense once in a year."},
+				{index: 17, purpose: "<FONT color='#00ff00'><B><U>Replace mother's lense</B></U></FONT> once in a year on <B id='lense-task2'></B>.", description: "17th task - Replace lense once in a year."},
+				{index: 18, purpose: "<FONT color='#00ff00'><B><U>Replace father's lense</B></U></FONT> once in a year on <B id='lense-task3'></B>.", description: "18th task - Replace lense once in a year."},
+				{index: 19, purpose: "Automated bash script to inform the closure date of Fixed Deposit.<BR>1) Tomorrow's fixed deposit closing date.<BR>2) Today's fixed deposit closing date<BR>3) if your fixed deposit not closed after 08:00 AM, perform pre-close FD which used to close without having any fine/loss at SBI on actual closing date.<BR>Use this automated shell script inside ~/.bashrc file<BR>Usage: putty.exe %USERNAME%@127.0.0.1", description: "19th task - FD Closure Notification"}
 			];
-			data.forEach( item =>
-				{
-					const row = document.createElement('TR');
-					const indexCell = document.createElement('TD');
-					const purposeCell = document.createElement('TD');
-					const descriptionCell = document.createElement('TD');
-					indexCell.innerText = formatIndex(item.index);
-					indexCell.setAttribute('valign', 'top');
-					indexCell.setAttribute('align', 'middle');
-					purposeCell.innerHTML = item.purpose;
-					descriptionCell.innerText = item.description;
-					purposeCell.setAttribute('valign', 'top');
-					purposeCell.setAttribute('align', 'left');
-					descriptionCell.setAttribute('valign', 'top');
-					indexCell.style.border = '1px solid #ddd';
-					purposeCell.style.border = '1px solid #ddd';
-					descriptionCell.style.border = '1px solid #ddd';
-					row.appendChild(indexCell);
-					row.appendChild(purposeCell);
-					row.appendChild(descriptionCell);
-					table.appendChild(row);
-				}
-			);
-			document.getElementById('school-fee-1').innerText = formatDate(getSpecificDate(30, 4));
-			document.getElementById('school-fee-2').innerText = formatDate(getSpecificDate(28, 8));
+
+			data.forEach(item =>
+			{
+				const row = document.createElement('TR');
+				const indexCell = document.createElement('TD');
+				const purposeCell = document.createElement('TD');
+				const descriptionCell = document.createElement('TD');
+				indexCell.innerText = formatIndex(item.index);
+				indexCell.setAttribute('valign', 'top');
+				indexCell.setAttribute('align', 'middle');
+				purposeCell.innerHTML = item.purpose;
+				descriptionCell.innerText = item.description;
+				purposeCell.setAttribute('valign', 'top');
+				purposeCell.setAttribute('align', 'left');
+				descriptionCell.setAttribute('valign', 'top');
+				indexCell.style.border = '1px solid #ddd';
+				purposeCell.style.border = '1px solid #ddd';
+				descriptionCell.style.border = '1px solid #ddd';
+				row.appendChild(indexCell);
+				row.appendChild(purposeCell);
+				row.appendChild(descriptionCell);
+				table.appendChild(row);
+			});
+			document.getElementById('lense-task1').innerText = formatDate(getSpecificDate(2, 3, 0));
+			document.getElementById('lense-task2').innerText = formatDate(getSpecificDate(2, 3, 0));
+			document.getElementById('lense-task3').innerText = formatDate(getSpecificDate(2, 3, 0));
+			document.getElementById('school-fee-1').innerText = formatDate(getSpecificDate(30, 4, 0));
+			document.getElementById('school-fee-2').innerText = formatDate(getSpecificDate(28, 8, 0));
 			document.getElementById('school-fee-3').innerText = formatDate(getSpecificDate(30, 0, 1));
 			document.getElementById('bsnl-bill').innerText = formatDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), 14));
-			document.getElementById('current-bill').innerText = formatDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), 15));
+			document.getElementById('parent-bill').innerText = getParentBillDate(currentDate.getMonth());
+			document.getElementById('current-bill').innerText = formatDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), 14));
 		</SCRIPT>
 	</BODY>
 </HTML>
