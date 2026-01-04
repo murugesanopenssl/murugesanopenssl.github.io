@@ -207,15 +207,6 @@ function processPageScripts(content, htmlFileName) {
             var scriptText = script.textContent;
             if (!scriptText.includes('DisplayMainMenu')) {
                 console.log("Inline script, length:", scriptText.length);
-                
-                if (htmlFileName === "my_exercise.html") {
-                    scriptText = scriptText.replace(
-                        /window\.onload\s*=\s*function\s*\(\s*\)\s*\{/g,
-                        '(function() {'
-                    );
-                    scriptText = scriptText.replace(/\}\s*;\s*$/, '})();');
-                }
-                
                 newScript.textContent = scriptText;
             }
 		else
@@ -231,25 +222,6 @@ function processPageScripts(content, htmlFileName) {
         
         document.body.appendChild(newScript);
     });
-    
-    // Special handling for my_exercise.html
-    if (htmlFileName === "my_exercise.html") {
-        console.log("=== Initializing My Exercise page ===");
-        setTimeout(function() {
-            if (typeof buildMonthSelect === 'function') {
-                console.log("Calling buildMonthSelect()");
-                buildMonthSelect();
-            }
-            if (typeof generateExerciseTable === 'function') {
-                console.log("Calling generateExerciseTable()");
-                generateExerciseTable();
-            }
-		else
-		{
-                console.warn("generateExerciseTable() not found!");
-            }
-        }, 100);
-    }
 }
 
 function updateNavigationState(htmlFileName) {
@@ -736,9 +708,6 @@ function loadMainContent( event )
 					document.title = "Daily Spending";
 					console.log("Setting title to 'Daily Spending'");
 				}
-				else if ("my_exercise.html" == htmlFileName) {
-					document.title = "My exercise";
-				}
 				else if ("SavedAmt.html" == htmlFileName) {
 					document.title = "My saved amount";
 				}
@@ -788,13 +757,6 @@ function loadMainContent( event )
 				var scriptText = script.textContent;
 				if (!scriptText.includes('DisplayMainMenu')) {
 				console.log("Inline script, length:", scriptText.length);
-				if ("my_exercise.html" === htmlFileName) {
-				scriptText = scriptText.replace(
-				/window\.onload\s*=\s*function\s*\(\s*\)\s*\{/g,
-				'(function() {'
-				);
-				scriptText = scriptText.replace(/\}\s*;\s*$/, '})();');
-				}
 				newScript.textContent = scriptText;
 				}
 				else {
@@ -809,23 +771,6 @@ function loadMainContent( event )
 				});
 
 				console.log("All scripts processed");
-
-				if ("my_exercise.html" === htmlFileName) {
-				console.log("=== Initializing My Exercise page ===");
-				setTimeout(function() {
-				if ("function" === typeof buildMonthSelect) {
-				console.log("Calling buildMonthSelect()");
-				buildMonthSelect();
-				}
-				if ("function" === typeof generateExerciseTable) {
-				console.log("Calling generateExerciseTable()");
-				generateExerciseTable();
-				}
-				else {
-				console.warn("generateExerciseTable() not found!");
-				}
-				}, 100);
-				}
 
 				if ("spending.html" === htmlFileName) {
 				console.log("=== Special handling for spending.html ===");
@@ -1120,7 +1065,7 @@ function DisplayMainMenu()
 		<A href="#" onclick='javascript:window.open( "post-office-nsc.html" );' class="nav-link"><FONT color='#00ff00'>Post office NSC</FONT></A>
 	</LI>
 	<LI>
-		<A href="#" onclick="javascript:loadHomeContent( event, 'why-to-open-fixed-deposit.html' );" class="nav-link">Why Fixed deposit?</A>
+		<A href="#" onclick="javascript:window.open( 'why-to-open-fixed-deposit.html' );" class="nav-link"><FONT color='#00ff00'>Why Fixed deposit?</FONT></A>
 	</LI>
 	<LI>
 		<A href="#" onclick='javascript:window.open( "SBI_ETDR_INTEREST.html" );' class="nav-link"><FONT color='#00ff00'>SBI FD INTEREST</FONT></A>
@@ -1154,9 +1099,6 @@ function DisplayMainMenu()
 			</LI>
 			<LI>
 				<A href="#" onclick='javascript:window.open( "spending-chart.html" );' class="nav-link"><FONT color='#00ff00'>Spending chart</FONT></A>
-			</LI>
-			<LI>
-				<A href="#" onclick="javascript:loadHomeContent( event, 'my_exercise.html' );" class="nav-link">My exercise</A>
 			</LI>
 		</UL>
 	</LI>
