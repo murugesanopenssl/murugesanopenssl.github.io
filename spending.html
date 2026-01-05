@@ -239,8 +239,8 @@
 						const baseRaw = {
 Jan: [
 		[ formatDate("05-Jan-2026"),
-			"<A TITLE='testing'>testing</A>",				1.00,
-			"<A TITLE='நன்கொடை/Donation'>நன்கொடை</A>",			0.00,
+			"<A TITLE='லிவ்-ஓ/Live-O for digestion'>லிவ்-ஓ</A>",			13.00,
+			"<A TITLE='இயந்திர ஆட்டுக்கல்/ஆட்டுரல்/Grinder'>ஆட்டுரல்</A>",			140.00,
 			"<A TITLE='தேநீர்/Tea'>தேநீர்</A>",				0.00,
 			"<A TITLE='கால்சட்டை/PantRepair'>கால்சட்டை</A>",			0.00,
 			"<A TITLE='தர்மபுரி எரி/Dharmapuri PETROL'>எரி</A>",				0.00,
@@ -1467,8 +1467,8 @@ Apr: [
 				const wastedStyle = wasted > 0 ? " style='background:red;color:white;'" : "";
 				rowHtml += `<TD valign='top' align='right'>${subTotal.toFixed(2)}</TD><TD${wastedStyle}>${wasted.toFixed(2)}</TD></TR>`;
 				html += rowHtml;
-				grandTotal = parseFloat(grandTotal.toFixed(2)) + parseFloat(subTotal.toFixed(2));
-				grandWaste = parseFloat(grandWaste.toFixed(2)) + parseFloat(wasted.toFixed(2));
+				grandTotal = Math.round((grandTotal + subTotal) * 100) / 100;
+				grandWaste = Math.round((grandWaste + wasted) * 100) / 100;
 			}
 			const totalAfterWaste = grandTotal - grandWaste;
 			html += `<TR style='font-weight:bold;background:blue;'>
