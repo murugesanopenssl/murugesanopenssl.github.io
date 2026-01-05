@@ -6,6 +6,7 @@
 		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 		<META http-equiv="Pragma" content="no-cache" />
 		<META http-equiv="Expires" content="0" />
+		<LINK rel="icon" href="data:,">
 		<TITLE>Daily Spending Tracker</TITLE>
 		<SCRIPT type='text/javascript'>
 			function deleteAllCookies()
@@ -185,11 +186,6 @@
 		const authStatus = document.getElementById('authStatus');
 		const loginBtn = document.getElementById('loginBtn');
 		const logoutBtn = document.getElementById('logoutBtn');
-		if( !window.location.hostname.includes('127.0.0.1') && !window.location.hostname.includes('localhost') )
-		{
-			authSection.style.display = 'none';
-			saveDefaultBtn.style.display = 'none';
-		}
 		// Login function
 		loginBtn.addEventListener('click', async () => {
 			const email = prompt('Enter your email:');
@@ -1361,6 +1357,11 @@ Apr: [
 		const message = document.getElementById('message');
 		const addBtn = document.getElementById('addBtn');
 		const saveDefaultBtn = document.getElementById('saveDefaultBtn');
+		if( !window.location.hostname.includes('127.0.0.1') && !window.location.hostname.includes('localhost') )
+		{
+			authSection.style.display = 'none';
+			saveDefaultBtn.style.display = 'none';
+		}
 		dateInput.value = new Date().toLocaleDateString("en-CA", { timeZone:"Asia/Kolkata" });
 		function populateMonthSelect(monthKeys) {
 			monthSelect.innerHTML = "";
