@@ -108,13 +108,18 @@
 	<H1><A href='spending-chart.html'><FONT color='#00ff00'>செலவு வரைபடத்தைப் பார்க்க</FONT></A></H1>
 	<P>தேவையற்ற செலவுகளைத் நாம் தடுப்பதன் மூலம் நமது பணத்தைச் சேமிக்க முடியும்.</P>
 	<DIV class="controls">
+		<DIV id="authSection" style="margin-bottom:10px;">
+			<SPAN id="authStatus">Not logged in</SPAN>
+			<BUTTON id="loginBtn" style="margin-left:10px;">Login</BUTTON>
+			<BUTTON id="logoutBtn" style="display:none;margin-left:10px;">Logout</BUTTON>
+		</DIV>
 		<LABEL for="monthSelect">காண:</LABEL>
 		<SELECT id="monthSelect"></SELECT>
 		<LABEL for="dateInput">தேதி:</LABEL>
 		<INPUT type="date" id="dateInput" />
-		<INPUT type="text" id="itemInput" placeholder="பொருள் ( எ.கா: சிஉண்டி )" />
-		<INPUT type="number" id="amountInput" placeholder="தொகை" step="0.01" />
-		<BUTTON id="addBtn">பதிவு சேர்க்கவும்</BUTTON>
+		<INPUT style="display:none;" type="text" id="itemInput" placeholder="பொருள் ( எ.கா: சிஉண்டி )" />
+		<INPUT style="display:none;" type="number" id="amountInput" placeholder="தொகை" step="0.01" />
+		<BUTTON style="display:none;" id="addBtn">பதிவு சேர்க்கவும்</BUTTON>
 		<BUTTON id="saveDefaultBtn">Save default array to DB</BUTTON>
 	</DIV>
 	<DIV id="message" aria-live="polite"></DIV>
@@ -127,6 +132,7 @@
 	</SCRIPT>
 	<SCRIPT src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app-compat.js"></SCRIPT>
 	<SCRIPT src="https://www.gstatic.com/firebasejs/11.0.1/firebase-database-compat.js"></SCRIPT>
+	<SCRIPT src="https://www.gstatic.com/firebasejs/11.0.1/firebase-auth-compat.js"></SCRIPT>
 	<SCRIPT type="text/javascript">
 		console.log("=== Starting spending.html initialization ===");
 		const firebaseConfig = {
@@ -140,33 +146,91 @@
 			measurementId: "G-0MFK92PQMP"
 		};
 		let app, db, rootRef;
-try {
-    if (!firebase.apps || firebase.apps.length === 0) {
-        app = firebase.initializeApp(firebaseConfig);
-        console.log("Firebase initialized (new)");
-    } else {
-        app = firebase.app();
-        console.log("Using existing Firebase instance");
-    }
-    
-    db = firebase.database();
-    rootRef = db.ref("spending");
-    console.log("Firebase database reference created");
-    
-} catch (error) {
-    console.error("Firebase initialization error:", error);
-    
-    try {
-        app = firebase.app();
-        db = firebase.database();
-        rootRef = db.ref("spending");
-        console.log("Recovered using existing Firebase instance");
-    } catch (recoveryError) {
-        console.error("Failed to recover Firebase:", recoveryError);
-        alert("Firebase initialization failed. Please refresh the page (F5).");
-    }
-}
+		let auth;
+		try
+		{
+			if (!firebase.apps || firebase.apps.length === 0) {
+				app = firebase.initializeApp(firebaseConfig);
+				console.log("Firebase initialized (new)");
+			} else {
+				app = firebase.app();
+				console.log("Using existing Firebase instance");
+			}
+			
+			db = firebase.database();
+			rootRef = db.ref("spending");
+			console.log("Firebase database reference created");
+			auth = firebase.auth();
+			console.log("Firebase auth initialized");
+		}
+		catch( error )
+		{
+			console.error("Firebase initialization error:", error);
+			try
+			{
+				app = firebase.app();
+				db = firebase.database();
+				rootRef = db.ref("spending");
+				console.log("Recovered using existing Firebase instance");
+			}
+			catch( recoveryError )
+			{
+				console.error("Failed to recover Firebase:", recoveryError);
+				alert("Firebase initialization failed. Please refresh the page (F5).");
+			}
+		}
 		console.log("Firebase database reference created");
+		// Authentication elements
+		const authSection = document.getElementById('authSection');
+		const authStatus = document.getElementById('authStatus');
+		const loginBtn = document.getElementById('loginBtn');
+		const logoutBtn = document.getElementById('logoutBtn');
+		if( !window.location.hostname.includes('127.0.0.1') && !window.location.hostname.includes('localhost') )
+		{
+			authSection.style.display = 'none';
+			saveDefaultBtn.style.display = 'none';
+		}
+		// Login function
+		loginBtn.addEventListener('click', async () => {
+			const email = prompt('Enter your email:');
+			if (!email) return;
+			
+			const password = prompt('Enter your password:');
+			if (!password) return;
+			
+			try {
+				await auth.signInWithEmailAndPassword(email, password);
+				message.textContent = 'Logged in successfully!';
+			} catch (error) {
+				alert('Login failed: ' + error.message);
+				console.error('Login error:', error);
+			}
+		});
+
+		// Logout function
+		logoutBtn.addEventListener('click', async () => {
+			try {
+				await auth.signOut();
+				message.textContent = 'Logged out successfully!';
+			} catch (error) {
+				alert('Logout failed: ' + error.message);
+			}
+		});
+
+		// Monitor authentication state
+		auth.onAuthStateChanged((user) => {
+			if (user) {
+				authStatus.textContent = `Logged in as: ${user.email}`;
+				loginBtn.style.display = 'none';
+				logoutBtn.style.display = 'inline-block';
+				saveDefaultBtn.disabled = false;
+			} else {
+				authStatus.textContent = 'Not logged in';
+				loginBtn.style.display = 'inline-block';
+				logoutBtn.style.display = 'none';
+				saveDefaultBtn.disabled = true;
+			}
+		});
 		function formatDate(dateStr) {
 			const date = new Date(dateStr.split("-").reverse().join("-"));
 			const weekday = date.toLocaleString('en-GB', { weekday: 'short' });
@@ -178,6 +242,14 @@ try {
 		}
 						const baseRaw = {
 Jan: [
+		[ formatDate("05-Jan-2026"),
+			"<A TITLE='testing'>testing</A>",				1.00,
+			"<A TITLE='நன்கொடை/Donation'>நன்கொடை</A>",			0.00,
+			"<A TITLE='தேநீர்/Tea'>தேநீர்</A>",				0.00,
+			"<A TITLE='கால்சட்டை/PantRepair'>கால்சட்டை</A>",			0.00,
+			"<A TITLE='தர்மபுரி எரி/Dharmapuri PETROL'>எரி</A>",				0.00,
+			"<A TITLE='travel and calendar'>Travel</A>",		0.00
+		],
 		[ formatDate("04-Jan-2026"),
 			"<A TITLE='தேநீர்/Tea'>தேநீர்</A>",				10.00,
 			"<A TITLE='நன்கொடை/Donation'>நன்கொடை</A>",			5.00,
@@ -1412,7 +1484,8 @@ Apr: [
 			tableContainer.innerHTML = html;
 			console.log("Table rendered successfully");
 		}
-		async function initAndLoad() {
+		async function initAndLoad()
+		{
 			console.log("=== initAndLoad called ===");
 			message.textContent = "Loading data from Firebase...";
 			try {
@@ -1435,13 +1508,16 @@ Apr: [
 					|| 'all';
 				monthSelect.value = defaultMk;
 				await renderForSelected(data);
-			} catch (error) {
+			}
+			catch( error )
+			{
 				console.error("Firebase error:", error);
 				message.textContent = "Firebase error - using local data.";
 				const monthKeys = Object.keys(baseData);
 				populateMonthSelect(monthKeys);
 				await renderForSelected(baseData);
 			}
+			monthSelect.focus();
 		}
 		async function addEntry() {
 			const rawDate = dateInput.value;
@@ -1487,7 +1563,7 @@ Apr: [
 			}
 		}
 			addBtn.addEventListener('click', addEntry);
-			saveDefaultBtn.addEventListener('click', async () => 
+			saveDefaultBtn.addEventListener( 'click', async () => 
 				{
 					try {
 						await rootRef.set(baseData);
@@ -1516,6 +1592,19 @@ Apr: [
 					}
 				}
 			);
+			monthSelect.addEventListener('keydown', (e) => {
+				if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+					e.preventDefault();
+					const opts = monthSelect.options;
+					let idx = monthSelect.selectedIndex;
+					if (e.key === "ArrowUp" && idx > 0) idx--;
+					else if (e.key === "ArrowDown" && idx < opts.length - 1) idx++;
+					monthSelect.selectedIndex = idx;
+					
+					// Trigger change event to update the display
+					monthSelect.dispatchEvent(new Event('change'));
+				}
+			});
 			console.log("Setting up initialization...");
 			if( 'loading' === document.readyState )
 			{

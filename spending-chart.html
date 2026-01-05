@@ -6,7 +6,13 @@
 		<META http-equiv="Expires" content="0">
 		<META CHARSET="UTF-8">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<LINK rel="stylesheet" href="hai-style.css">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<TITLE>செலவு வரைபடம்</TITLE>
+		<SCRIPT src='NMmenu024.js'></SCRIPT>
+		<SCRIPT type='text/javascript'>
+			writeMenu();
+		</SCRIPT>
 		<STYLE type='text/css'>
 			body
 			{
@@ -28,7 +34,7 @@
 				font-size:20px;
 				margin-bottom:20px;
 				color:#FFFFFF;
-				border-bottom:2px solid #FF6600;
+				border-bottom:2px solid #FF6600; /* orange accent */
 				padding-bottom:8px;
 			}
 			select
@@ -93,18 +99,7 @@
 			}
 			.green
 			{
-				background:conic-gradient(#00cc66 var(--v), #eee 0%);
-			}
-			#debugInfo {
-				background: #003D82;
-				color: #FFFFFF;
-				padding: 10px;
-				margin: 10px auto;
-				max-width: 800px;
-				border: 2px solid #FF6600;
-				border-radius: 5px;
-				text-align: left;
-				font-size: 12px;
+				background:conic-gradient(green var(--v), #eee 0%);
 			}
 		</STYLE>
 	</HEAD>
@@ -121,9 +116,6 @@
 			<DIV class="container" style="margin-top:20px;">
 				<H2 id="chartTitle"><A id='spendingid' href='spending.html'>மாதாந்திர மொத்த செலவு</A></H2>
 				<SELECT id="monthSelect"></SELECT>
-				<!--
-				<DIV id="debugInfo"></DIV>
-				-->
 				<TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
 					<TR align="center">
 						<TD valign='top' align='left'><DIV class="circle orange" id="cFood"><DIV class="text" id="tFood"></DIV></DIV></TD>
@@ -134,8 +126,9 @@
 						<TD valign='top' align='left'><DIV class="circle violet" id="cTravel"><DIV class="text" id="tTravel"></DIV></DIV></TD>
 						<TD valign='top' align='left'><DIV class="circle cyan" id="cSchool"><DIV class="text" id="tSchool"></DIV></DIV></TD>
 						<TD valign='top' align='left'><DIV class="circle cyan" id="csavedamt"><DIV class="text" id="tsavedamt"></DIV></DIV></TD>
-						<TD valign='top' align='left'><DIV class="circle gray" id="cOther"><DIV class="text" id="tOther"></DIV></DIV></TD>
 						<TD valign='top' align='left'><DIV class="circle green" id="cDonation"><DIV class="text" id="tDonation"></DIV></DIV></TD>
+						<TD valign='top' align='left'><DIV class="circle gray" id="cOther"><DIV class="text" id="tOther"></DIV></DIV></TD>
+						
 					</TR>
 				</TABLE>
 			</DIV>
@@ -168,10 +161,9 @@
 				const tTravel=document.getElementById("tTravel");
 				const tSchool=document.getElementById("tSchool");
 				const tsavedamt=document.getElementById("tsavedamt");
+				const tOther=document.getElementById("tOther");
 				const cDonation=document.getElementById("cDonation");
 				const tDonation=document.getElementById("tDonation");
-				const tOther=document.getElementById("tOther");
-				const debugInfo=document.getElementById("debugInfo");
 				function extractMonth(d)
 				{
 					const p = d.split("-");
@@ -190,7 +182,7 @@
 				);
 				const months = Array.from(monthSet).sort( (a,b)=>
 					{
-						return new Date("01-"+a) - new Date("01-"+b);
+						return new Date("01-"+b) - new Date("01-"+a);
 					}
 				);
 				monthSelect.innerHTML=`<OPTION value="ALL">ALL</OPTION>`;
@@ -199,27 +191,36 @@
 				const mm=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 				const curr = mm[d.getMonth()] + "-" + d.getFullYear();
 				if(months.includes(curr)) monthSelect.value=curr;
-				
-				// Focus on select for keyboard navigation
-				monthSelect.focus();
-				
 				updateChart(data);
 				monthSelect.addEventListener("change",()=>updateChart(data));
+				monthSelect.addEventListener("keydown",(e)=>
+					{
+						if(e.key==="ArrowUp"||e.key==="ArrowDown"){
+							e.preventDefault();
+							const opts=monthSelect.options;
+							let idx=monthSelect.selectedIndex;
+							if(e.key==="ArrowUp"&&idx>0)idx--;
+							else if(e.key==="ArrowDown"&&idx<opts.length-1)idx++;
+							monthSelect.selectedIndex=idx;
+							updateChart(data);
+						}
+					}
+				);
 			}
 			function updateChart(data)
 			{
-				const sel = monthSelect.value;
-				let spendingHref = document.getElementById("spendingid");
-				if( spendingHref )
-				{
-					spendingHref.href = "spending.html";
-				}
-				const chartTitle = document.getElementById("chartTitle");
-				if (sel === "ALL")
+			    const sel = monthSelect.value;
+			    let spendingHref = document.getElementById("spendingid");
+			    if( spendingHref )
+			    {
+				    spendingHref.href = "spending.html";
+			    }
+			    const chartTitle = document.getElementById("chartTitle");
+			    if (sel === "ALL")
 				{
 					const now = new Date();
 					const fyStartYear = (now.getMonth() >= 3) ? now.getFullYear() : now.getFullYear() - 1;
-					const fyEndYear = fyStartYear + 1;
+					const fyEndYear   = fyStartYear + 1;
 					spendingHref.textContent = "01-Apr-" + fyStartYear + " முதல் 31-Mar-" + fyEndYear + " வரை மொத்த செலவுத் தொகை";
 					spendingHref.style.color = 'white';
 				}
@@ -227,123 +228,100 @@
 				{
 				const parts = sel.split("-");
 				const tMap = {
-					"Jan":"ஜனவரி","Feb":"பிப்ரவரி","Mar":"மார்ச்","Apr":"ஏப்ரல்","May":"மே","Jun":"ஜூன்",
-					"Jul":"ஜூலை","Aug":"ஆகஸ்ட்","Sep":"செப்டம்பர்","Oct":"அக்டோபர்","Nov":"நவம்பர்","Dec":"டிசம்பர்"
+				    "Jan":"ஜனவரி","Feb":"பிப்ரவரி","Mar":"மார்ச்","Apr":"ஏப்ரல்","May":"மே","Jun":"ஜூன்",
+				    "Jul":"ஜூலை","Aug":"ஆகஸ்ட்","Sep":"செப்டம்பர்","Oct":"அக்டோபர்","Nov":"நவம்பர்","Dec":"டிசம்பர்"
 					};
 					spendingHref.textContent = `${tMap[parts[0]]}-${parts[1]} இல் செலவினத் தொகை`;
 					spendingHref.style.color = 'white';
-				}
-				let wasted=0, food=0, eri=0, travel=0, school=0, other=0, savedamt=0, donation=0;
-				let donationItems = [];
-				
-				Object.values(data).forEach(rows=>{
+			    }
+			    let wasted=0, food=0, eri=0, travel=0, school=0, other=0, savedamt=0;
+				let donation=0;
+			    Object.values(data).forEach(rows=>{
 				rows.forEach(row=>{
-					if (sel !== "ALL" && extractMonth(row[0]) !== sel)
+				    if (sel !== "ALL" && extractMonth(row[0]) !== sel)
 					{
 						return;
 					}
-					for(let i=1;i<row.length;i+=2)
+				    for(let i=1;i<row.length;i+=2)
 					{
 						const item = row[i];
-						const amt= parseFloat(row[i+1]) || 0;
+						const amt  = parseFloat(row[i+1]) || 0;
 						const clean = item
 							.normalize("NFKC")
 							.replace(/[\s.\u200B\u00A0\uFEFF\u2060\u180E\u200C\u200D]/g,"")
-							.toLowerCase()
-							.replace(/<[^>]*>/g, "")
 							.trim();
-						
-						// Check donation FIRST before other conditions
-						if(
-							clean.includes("donation") ||
-							clean.includes("தானம்") ||
-							clean.includes("நன்கொடை")
-						)
-						{
-							donation += amt;
-							donationItems.push(`${item} = ${amt}`);
-						}
-						else if(clean.includes("snack")){
+						if(item.toLowerCase().includes("snack")){
 							wasted += amt;
+							continue;
 						}
-						else if( clean.includes("மா.ர.ப") )
+						if( item.toLowerCase().includes("மா.ர.ப") )
 						{
 							if(0!=amt)
 							{
 								savedamt += amt;
 							}
 						}
-						else if(clean.includes("உணவு") || item==="மதிய உணவு" || item==="இரவு உணவு" || item==="தேநீர்" || item==="அ.சி")
+						else if(item.toLowerCase().includes("உணவு") || item==="மதிய உணவு" || item==="இரவு உணவு" || item==="தேநீர்" || item==="அ.சி")
 							food += amt;
-						else if(clean.includes("எரி"))
+						else if(item.includes("எரி"))
 							eri += amt;
-						else if(clean.includes("பயண") || clean.includes("dpi") || clean.includes("hosur") || clean.includes("bng"))
+						else if(item.includes("பயண") || item.toLowerCase().includes("dpi") || item.toLowerCase().includes("hosur") || item.toLowerCase().includes("bng"))
 							travel += amt;
-						else if( clean.includes("school") )
+						// else if( ( item.toLowerCase().includes("school") && ( -1 == row[0].indexOf("அத்திபள்ளி") ) ) || ( "ALL" == sel ) )
+						// else if( item.toLowerCase().includes("school") || sel === "ALL" )
+						else if( item.toLowerCase().includes("school") )
 						{
 							school += amt;
 						}
-						else if( clean.includes("தொ.வை") )
+						else if( item.toLowerCase().includes("தொ.வை") )
 						{
 							if(0!=amt)
 							{
 								savedamt += amt;
+							}
+						}
+						else if( item.toLowerCase().includes("நன்கொடை") || item.toLowerCase().includes("donation") )
+						{
+							if(0!=amt)
+							{
+								donation += amt;
 							}
 						}
 						else
 						{
 							other += amt;
 						}
-					}
+				    }
 				});
-				});
-				
-				const sum = food+eri+travel+school+other+savedamt+donation;
-				
-				// Debug output with full breakdown
-				/*
-				debugInfo.innerHTML = `
-				<!--
-					<strong>Debug Info:</strong><br>
-					Food: ${food} (${sum?Math.ceil(food/sum*100):0}%)<br>
-					Wasted: ${wasted}<br>
-					Eri: ${eri} (${sum?Math.ceil(eri/sum*100):0}%)<br>
-					Travel: ${travel} (${sum?Math.ceil(travel/sum*100):0}%)<br>
-					School: ${school} (${sum?Math.ceil(school/sum*100):0}%)<br>
-					Saved: ${savedamt} (${sum?Math.ceil(savedamt/sum*100):0}%)<br>
-					Other: ${other} (${sum?Math.ceil(other/sum*100):0}%)<br>
-					<strong>Donation: ${donation} (${sum?Math.ceil(donation/sum*100):0}%)</strong><br>
-					<strong>Total Sum: ${sum}</strong><br>
-					Donation Items: ${donationItems.join(', ')}
-					-->
-				`;
-				*/
-				const pFood = sum?Math.ceil(food/sum*100):0;
-				const pWaste = sum?Math.ceil(wasted/sum*100):0;
-				const pEri = sum?Math.ceil(eri/sum*100):0;
-				const pTravel = sum?Math.ceil(travel/sum*100):0;
-				const pSchool = sum?Math.ceil(school/sum*100):0;
-				const psavedamt= sum?Math.ceil(savedamt/sum*100):0;
-				const pOther = sum?Math.ceil(other/sum*100):0;
-				const pDonation = sum?Math.ceil(donation/sum*100):0;
-				cFood.style.setProperty("--v",pFood+"%");
-				cWaste.style.setProperty("--v",pWaste+"%");
-				cEri.style.setProperty("--v",pEri+"%");
-				cTravel.style.setProperty("--v",pTravel+"%");
-				cSchool.style.setProperty("--v",pSchool+"%");
-				csavedamt.style.setProperty("--v",psavedamt+"%");
-				cOther.style.setProperty("--v",pOther+"%");
-				tFood.innerHTML = "உணவு: "+pFood+"%";
-				tWaste.innerHTML = "வீணான தொகை: "+pWaste+"%";
-				tEri.innerHTML = "எரிபொருள்: "+pEri+"%";
-				tTravel.innerHTML= "பயணம்: "+pTravel+"%";
-				tSchool.innerHTML= "பள்ளிக்கூட கட்டணம்: "+pSchool+"%";
-				tsavedamt.innerHTML= "சேமித்த தொகை: "+psavedamt+"%";
-				tOther.innerHTML = "மற்றவை: "+pOther+"%";
+			    });
+			    const sum = food+eri+travel+school+other+savedamt+donation;
+			    const pFood      = sum?Math.ceil(food/sum*100):0;
+			    const pWaste     = sum?Math.ceil(wasted/sum*100):0;
+			    const pEri       = sum?Math.ceil(eri/sum*100):0;
+			    const pTravel    = sum?Math.ceil(travel/sum*100):0;
+			    const pSchool    = sum?Math.ceil(school/sum*100):0;
+			    const psavedamt  = sum?Math.ceil(savedamt/sum*100):0;
+			    const pOther     = sum?Math.ceil(other/sum*100):0;
+				const pDonation  = sum?Math.ceil(donation/sum*100):0;
+			    cFood.style.setProperty("--v",pFood+"%");
+			    cWaste.style.setProperty("--v",pWaste+"%");
+			    cEri.style.setProperty("--v",pEri+"%");
+			    cTravel.style.setProperty("--v",pTravel+"%");
+			    cSchool.style.setProperty("--v",pSchool+"%");
+			    csavedamt.style.setProperty("--v",psavedamt+"%");
+			    cOther.style.setProperty("--v",pOther+"%");
 				cDonation.style.setProperty("--v",pDonation+"%");
-				tDonation.innerHTML = "தானம்: "+pDonation+"%";
+			    tFood.innerHTML    = "உணவு: "+pFood+"%";
+			    tWaste.innerHTML   = "வீணான தொகை: "+pWaste+"%";
+			    tEri.innerHTML     = "எரிபொருள்: "+pEri+"%";
+			    tTravel.innerHTML  = "பயணம்: "+pTravel+"%";
+			    tSchool.innerHTML  = "பள்ளிக்கூட கட்டணம்: "+pSchool+"%";
+			    tsavedamt.innerHTML= "சேமித்த தொகை: "+psavedamt+"%";
+			    tOther.innerHTML   = "மற்றவை: "+pOther+"%";
+				tDonation.innerHTML= "நன்கொடை: "+pDonation+"%";
 			}
 			loadChart();
+			monthSelect.focus();
 		</SCRIPT>
 	</BODY>
 </HTML>
