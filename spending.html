@@ -293,7 +293,7 @@ Dec: [
 		[ formatDate("30-Dec-2025"),
 			"",				0.00,
 			"<A TITLE='மதிய உணவு/Lunch'>உணவு</A>",					140.00,
-			"<A TITLE='பயணச்சீட்டு/TRAVELLING TICKET'>ப.சீட்டு</A>",			32.00,
+			"<A TITLE='பெங்களூரு பயணச்சீட்டு /Karnataka Ticket'>ப.சீட்டு</A>",		32.00,
 			"",					0.00,
 			"",					0.00,
 			"",					0.00,
@@ -475,7 +475,7 @@ Dec: [
 		],
 		[ formatDate("09-Dec-2025"),
 			"<A title='3.5% மந்தப்படுத்தப்பட்ட பால்/3.5% Toned Milk'>ம.பா</A>",	20.00,
-			"<A TITLE='பயணச்சீட்டு/TRAVELLING TICKET'>ப.சீட்டு</A>",		88.00,
+			"<A TITLE='தமிழ்நாடு பயணச்சீட்டு /Tamilnadu Ticket'>ப.சீட்டு</A>",	88.00,
 			"<A title='மதிய உணவு/LUNCH'>உணவு</A>",				40.00,
 			"<A TITLE='இரவு உணவு/Dinner'>உணவு</A>",				60.00,
 			"",					0.00,
@@ -630,7 +630,7 @@ Nov: [
 		],
 		[ formatDate("22-Nov-2025"),
 			"<A title='காலை உணவு/BREAK FAST'>உணவு</A>",			210.00,
-			"த.ப.சீட்டு",		56.00,
+			"<A TITLE='தமிழ்நாடு பயணச்சீட்டு /Tamilnadu Ticket'>த.ப.சீட்டு</A>",	56.00,
 			"<A title='3.0% மந்தப்படுத்தப்பட்ட பால்/3.0% Toned Milk'>ம.பா</A>",	130.00,
 			"",					0.00,
 			"",					0.00,
@@ -693,7 +693,7 @@ Nov: [
 		[ formatDate("15-Nov-2025"),
 			"14நகல்",				15.00,
 			"<A title='இரவு உணவு/DINNER'>உணவு</A>",				60.00,
-			"<A TITLE='TRAVELLING TICKET'>ப.சீட்டு</A>",				115.00,
+			"<A TITLE='பெங்களூரு பயணச்சீட்டு /Karnataka Ticket'>ப.சீட்டு</A>",	115.00,
 			"குறிப்பேடு",				75.00,
 			"<A TITLE='VEGETABLES'>காய்கறி</A>",					172.00,
 			"தொ.வை",					1000.00
@@ -762,7 +762,7 @@ Nov: [
 			"",					0.00
 		],
 		[ formatDate("07-Nov-2025"),
-			"த.ப.சீட்டு",			69.00,
+			"<A TITLE='தமிழ்நாடு பயணச்சீட்டு /Tamilnadu Ticket'>ப.சீட்டு</A>",	69.00,
 			"02நகல்",		15.00,
 			"மூ.கா.வ",			20.00,
 			"மூ.கா.ஊ",		100.00,
@@ -816,7 +816,7 @@ Nov: [
 			"",				0.00
 		],
 		[ formatDate("01-Nov-2025"),
-			"<A TITLE='TRAVELLING TICKET'>ப.சீட்டு</A>",			69.00,
+			"<A TITLE='தமிழ்நாடு பயணச்சீட்டு /Tamilnadu Ticket'>ப.சீட்டு</A>",	69.00,
 			"<A TITLE='VEGETABLES'>காய்கறி</A>",			107.00,
 			"அரிசி",			360.00,
 			"<A title='இரவு உணவு/DINNER'>உணவு</A>",			55.00,
@@ -881,7 +881,7 @@ Oct: [
 			"எரி",			220.00
 		],
 		[ formatDate("21-Oct-2025"),
-			"<A TITLE='TRAVELLING TICKET'>ப.சீட்டு</A>",			183.00,
+			"<A TITLE='பெங்களூரு பயணச்சீட்டு /Karnataka Ticket'>ப.சீட்டு</A>",	183.00,
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",				10.00,
 			"MSPuri",			40.00,
 			"<A title='இரவு உணவு/DINNER'>உணவு</A>",			40.00,
@@ -918,7 +918,7 @@ oil 80.00
 			"",				0.00
 		],
 		[ formatDate("18-Oct-2025"),
-			"<A TITLE='TRAVELLING TICKET'>ப.சீட்டு</A>",			417.00,
+			"<A TITLE='பெங்களூரு பயணச்சீட்டு /Karnataka Ticket'>ப.சீட்டு</A>",	417.00,
 			"<A TITLE='தேநீர்/TEA'>தேநீர்</A>",				10.00,
 			"",				0.00,
 			"",				0.00,
@@ -1074,7 +1074,7 @@ oil 80.00
 			"பொ.தொ",			550.00,
 			"<A title='இரவு உணவு/DINNER'>உணவு</A>",			70.00,
 			"<A title='இரவு உணவு/DINNER'>உணவு</A>",			30.00,
-			"<A TITLE='TRAVELLING TICKET'>ப.சீட்டு</A>",			98.00,
+			"<A TITLE='தமிழ்நாடு பயணச்சீட்டு /Tamilnadu Ticket'>ப.சீட்டு</A>",	98.00,
 			"பெ.எரி",			50.00,
 			"இ.வா.ப",			20.00,
 			"<A TITLE='VEGETABLES'>காய்கறி</A>",				100.00
@@ -1390,19 +1390,27 @@ Apr: [
 			const yr = d.getFullYear();
 			return mo + "-" + yr;
 		}
-		async function renderForSelected(dataFromDB) {
+		async function renderForSelected(dataFromDB)
+		{
 			console.log("renderForSelected called");
 			const sel = monthSelect.value;
 			let data = dataFromDB;
-			if (!data) {
-				try {
+			if( !data )
+			{
+				try
+				{
 					const snapshot = await rootRef.once('value');
-					if (snapshot.exists()) {
+					if( snapshot.exists() )
+					{
 						data = snapshot.val();
-					} else {
+					}
+					else
+					{
 						data = baseData;
 					}
-				} catch (error) {
+				}
+				catch( error )
+				{
 					console.error("Error loading data:", error);
 					data = baseData;
 				}
@@ -1424,43 +1432,60 @@ Apr: [
 				<TBODY>`;
 			const months = sel === 'all' ? Object.keys(data) : [sel];
 			const dailyMap = {};
-			for (const mk of months) {
-				if (!data[mk]) continue;
-				data[mk].forEach(row => {
-					const date = row[0];
-					for (let i = 1; i < row.length; i += 2) {
-						const item = row[i];
-						const amt = row[i + 1];
-						// if (item && (amt !== undefined && amt !== null))
-						if (item && !isNaN(amt))
+			for( const mk of months )
+			{
+				if( !data[mk] )
+				{
+					continue;
+				}
+				data[mk].forEach( row =>
+					{
+						const date = row[0];
+						for( let i = 1; row.length > i; i += 2)
 						{
-							if (!dailyMap[date]) dailyMap[date] = [];
-							dailyMap[date].push({ item, amt });
+							const item = row[i];
+							const amt = row[i + 1];
+							if( item && !isNaN(amt) )
+							{
+								if( !dailyMap[date] )
+								{
+									dailyMap[date] = [];
+								}
+								dailyMap[date].push( { item, amt } );
+							}
 						}
 					}
-				});
+				);
 			}
 			let grandTotal = 0;
 			let grandWaste = 0;
 			const today = new Date();
 			today.setHours(0, 0, 0, 0);
-			for (const d of Object.keys(dailyMap).sort((a, b) => new Date(b) - new Date(a))) {
+			for( const d of Object.keys(dailyMap).sort((a, b) => new Date(b) - new Date(a) ) )
+			{
 				const entries = dailyMap[d];
 				let subTotal = 0;
 				let wasted = 0;
 				const inputDate = new Date(d);
 				if (inputDate > today) continue;
 				let rowHtml = `<TR><TD valign='top' align='right'>${d}</TD>`;
-				for (let i = 0; i < 6; i++) {
-					if (entries[i]) {
+				for( let i = 0; 6 > i; ++i)
+				{
+					if( entries[i] )
+					{
 						const e = entries[i];
 						const isSnack = /சிஉண்டி/i.test(e.item);
 						const amtVal = parseFloat(e.amt) || 0;
 						const style = isSnack ? " style='background:red;color:white;'" : "";
 						rowHtml += `<TD${style}>${e.item}</TD><TD${style}>${amtVal.toFixed(2)}</TD>`;
 						subTotal += amtVal;
-						if (isSnack) wasted += amtVal;
-					} else {
+						if( isSnack )
+						{
+							wasted += amtVal;
+						}
+					}
+					else
+					{
 						rowHtml += "<TD valign='top' align='right'></TD><TD valign='top' align='right'></TD>";
 					}
 				}
