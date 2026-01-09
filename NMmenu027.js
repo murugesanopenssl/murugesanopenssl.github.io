@@ -1117,6 +1117,9 @@ function DisplayMainMenu()
 		</A>
 		<UL class="submenu">
 		<LI>
+			<A href="#" onclick="javascript:loadHomeContent( event, 'my-kt-rank-chatgpt-Fri-09-Jan-2026.html' );" class="nav-link">My KT to chatgpt</A>
+		</LI>
+		<LI>
 			<A href='#' onclick='window.open( "NMurugesan_cv.html" );'><FONT color='#00ff00'>My Profile</FONT></A>
 		</LI>
 		<LI>
