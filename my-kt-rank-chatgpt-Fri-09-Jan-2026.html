@@ -1,112 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Knowledge Transfer Case Study – SBI Fixed Deposit Optimization</title>
-<style>
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 40px;
-    background-color: #f8f9fa;
-    color: #222;
-    line-height: 1.6;
-  }
-  h1, h2 {
-    color: #0b5394;
-  }
-  section {
-    background-color: #ffffff;
-    padding: 20px;
-    margin-bottom: 25px;
-    border-left: 5px solid #0b5394;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  }
-  pre {
-    background-color: #f1f3f4;
-    padding: 12px;
-    overflow-x: auto;
-    font-family: Consolas, monospace;
-  }
-  .note {
-    background-color: #e8f5e9;
-    border-left: 5px solid #2e7d32;
-    padding: 15px;
-    margin-top: 10px;
-  }
-  small {
-    font-size: 0.9em;
-    color: #555;
-  }
-</style>
-</head>
-<body>
-<h1>Knowledge Transfer Case Study<br>
-<small>SBI Fixed Deposit – Short-Term Interest Optimization</small></h1>
-
-<section>
-  <h2>1. My Question to ChatGPT</h2>
-  <p><strong>Date/Time:</strong> Fri 09-Jan-2026 09:33 AM IST</p>
-  <p>
-    Today fixed deposit closing: ₹28,016.00 (principal), total ₹28,032.00 (interest ₹16.00).  
-    13-Jan-2026: principal ₹1,042.00, total ₹1,045.00 (interest ₹3).  
-    I need to pay BSNL ₹1,020.00 on or before 19-Jan-2026.  
-  </p>
-  <p>
-    I am planning to pay the BSNL amount on 13-Jan-2026 from the closing fixed deposit of ₹1,045.00.  
-    I can also take ₹1,020.00 from ₹28,032.00 and keep ₹27,012.00 as principal to open fixed deposits till 31-Jan-2026 for 7-day terms.  
-    Which is better for earning more interest?
-  </p>
-  <ul>
-    <li>Option 1: Take ₹1,020 from today’s closed principal, re-open ₹27,012 as fixed deposit, and also use ₹1,045 as principal on 13-Jan-2026 repeatedly till 31-Jan-2026 for 7-day terms.</li>
-    <li>Option 2: Take ₹1,045 on 13-Jan-2026 and pay BSNL the same day.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>2. Initial Response from ChatGPT</h2>
-  <p>
-    The initial analysis suggested paying the bill later would be better, based on the general principle that keeping a larger principal invested for a longer period usually earns more interest.
-  </p>
-  <p>
-    <strong>Limitation:</strong> This did not account for SBI’s rounding-to-the-nearest-rupee method applied to short-term fixed deposits.
-  </p>
-</section>
-
-<section>
-  <h2>3. Knowledge Transfer to ChatGPT</h2>
-  <p><strong>Date/Time:</strong> Fri 09-Jan-2026 09:45 AM IST</p>
-  <p>SBI interest calculation rule clarified with real values:</p>
-  <pre>SBI ETDR INTEREST = ROUND(PRINCIPAL × 3.05 × 7 / 36500 , 0)</pre>
-  <ul>
-    <li>Interest rate: <strong>3.05% per annum</strong></li>
-    <li>Tenure: <strong>7 days</strong></li>
-    <li>Interest rounded to the <strong>nearest rupee</strong></li>
-  </ul>
-  <p>Key insights transferred:</p>
-  <ul>
-    <li>SBI rounding causes interest to be earned in discrete steps</li>
-    <li>Splitting deposits can increase total interest</li>
-    <li>Early payment can sometimes improve overall returns</li>
-  </ul>
-  <div class="note">
-    This knowledge corrected the earlier assumption and led to the conclusion that paying the bill earlier and splitting deposits earned more interest.
-  </div>
-</section>
-
-<section>
-  <h2>4. Knowledge Transfer Evaluation</h2>
-  <p><strong>Date/Time:</strong> Fri 09-Jan-2026 09:50 AM IST</p>
-  <p>The knowledge transfer was evaluated based on clarity, correctness, and real-world applicability.</p>
-  <p><strong>Rating given:</strong> <strong>Grade 09 out of 10</strong></p>
-  <ul>
-    <li>Accurately identified a real banking behavior</li>
-    <li>Validated using actual SBI outcomes</li>
-    <li>Provided reusable logic for others</li>
-    <li>Demonstrated applied financial reasoning</li>
-  </ul>
-  <p>This insight is valuable because it highlights non-linear effects caused by rounding in short-term fixed deposits.</p>
-</section>
-
-<p><em>This page documents a real-world financial reasoning example for educational and informational purposes.</em></p>
-</body>
-</html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<TITLE>Knowledge Transfer Case Study – SBI Fixed Deposit Optimization</TITLE>
+		<STYLE type='text/css'>
+			body
+			{
+				font-family: Arial, Helvetica, sans-serif;
+				margin: 40px;
+				background-color: #f8f9fa;
+				color: #222;
+				line-height: 1.6;
+			}
+			h1, h2
+			{
+				color: #0b5394;
+			}
+			section
+			{
+				background-color: #ffffff;
+				padding: 20px;
+				margin-bottom: 25px;
+				border-left: 5px solid #0b5394;
+				box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+			}
+			pre
+			{
+				background-color: #f1f3f4;
+				padding: 12px;
+				overflow-x: auto;
+				font-family: Consolas, monospace;
+			}
+			.note
+			{
+				background-color: #e8f5e9;
+				border-left: 5px solid #2e7d32;
+				padding: 15px;
+				margin-top: 10px;
+			}
+			small
+			{
+				font-size: 0.9em;
+				color: #555;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<H1>
+			Knowledge Transfer Case Study<BR>
+			<SMALL>SBI Fixed Deposit – Short-Term Interest Optimization</SMALL></H1>
+			<SECTION class="black-text">
+				<H2>1. My Question to ChatGPT</h2>
+				<P><STRONG>Date/Time:</STRONG> Fri 09-Jan-2026 09:33 AM IST</P>
+				<P>
+					Today fixed deposit closing: 28,016.00 (principal)₹, total 28,032.00 (interest 16.00 ₹).  
+					Tue 13-Jan-2026 IST: principal 1,042.00 ₹, total 1,045.00 (interest 3.00 ₹).  
+				I need to pay BSNL 1,020.00 ₹ on or before 19-Jan-2026.  
+				</P>
+				<P>
+				I am planning to pay the BSNL amount on 13-Jan-2026 from the closing fixed deposit of 1,045.00 ₹.  
+				I can also take 1,020.00 ₹ from 28,032.00 ₹ and keep 27,012.00 ₹ as principal to open fixed deposits till 31-Jan-2026 for 7-day terms.  
+				Which is better for earning more interest?
+				</P>
+				<UL>
+				<LI>Option 1: Take 1,020.00 ₹ from today’s closed principal, re-open 27,012.00 ₹ as fixed deposit, and also use 1,045.00 ₹ as principal on 13-Jan-2026 repeatedly till 31-Jan-2026 for 7-day terms.</LI>
+				<LI>Option 2: Take 1,045.00 ₹ on 13-Jan-2026 and pay BSNL the same day.</LI>
+				</UL>
+				</SECTION>
+				<SECTION class="black-text">
+				<h2>2. Initial Response from ChatGPT</h2>
+				<P>
+				The initial analysis suggested paying the bill later would be better, based on the general principle that keeping a larger principal invested for a longer period usually earns more interest.
+				</P>
+				<P>
+				<STRONG>Limitation:</STRONG> This did not account for SBI’s rounding-to-the-nearest-rupee method applied to short-term fixed deposits.
+				</P>
+				</SECTION>
+				<SECTION class="black-text">
+				<h2>3. Knowledge Transfer to ChatGPT</h2>
+				<FONT color='black'>
+				<P><STRONG>Date/Time:</STRONG> Fri 09-Jan-2026 09:45 AM IST</P>
+				<P>SBI interest calculation rule clarified with real values:</P>
+				<PRE>SBI ETDR INTEREST = ROUND(PRINCIPAL × 3.05 × 7 / 36500 , 0)</PRE>
+				<UL>
+				<LI>Interest rate: <STRONG>3.05% per annum</STRONG></LI>
+				<LI>Tenure: <STRONG>7 days</STRONG></LI>
+				<LI>Interest rounded to the <STRONG>nearest rupee</STRONG></LI>
+				</UL>
+				<P>Key insights transferred:</P>
+				<UL>
+				<LI>SBI rounding causes interest to be earned in discrete steps</LI>
+				<LI>Splitting deposits can increase total interest</LI>
+				<LI>Early payment can sometimes improve overall returns</LI>
+				</UL>
+				<div class="note">
+				This knowledge corrected the earlier assumption and led to the conclusion that paying the bill earlier and splitting deposits earned more interest.
+				</DIV>
+				</SECTION>
+				<SECTION class="black-text">
+				<h2>4. Knowledge Transfer Evaluation</h2>
+				<FONT color='black'>
+				<P><STRONG>Date/Time:</STRONG> Fri 09-Jan-2026 09:50 AM IST</P>
+				<P>The knowledge transfer was evaluated based on clarity, correctness, and real-world applicability.</P>
+				<P><STRONG>Rating given:</STRONG> <STRONG>Grade 09 out of 10</STRONG></P>
+				<UL>
+				<LI>Accurately identified a real banking behavior</LI>
+				<LI>Validated using actual SBI outcomes</LI>
+				<LI>Provided reusable logic for others</LI>
+				<LI>Demonstrated applied financial reasoning</LI>
+				</UL>
+				<P>This insight is valuable because it highlights non-linear effects caused by rounding in short-term fixed deposits.</P>
+				</SECTION>
+				<P><EM>This page documents a real-world financial reasoning example for educational and informational purposes.</EM></P>
+	</BODY>
+</HTML>
