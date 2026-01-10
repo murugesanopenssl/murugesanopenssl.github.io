@@ -366,6 +366,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 	{
 		document.title = "My saved amount";
 	}
+	else if( "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" == htmlFileName) {
+		document.title = "Knowledge Transfer Case Study – SBI Fixed Deposit Optimization";
+	}
 	event.preventDefault();
 	var xhr = new XMLHttpRequest();
 	var url = htmlFileName;
@@ -674,12 +677,16 @@ function loadMainContent( event )
 					document.title = "Daily Spending";
 					console.log("Setting title to 'Daily Spending'");
 				}
+				else if( "SavedAmt.html" == htmlFileName )
+				{
+					document.title = "My saved amount";
+				}
 				else if( "2-wheeler-4-wheeler-rank.html" == htmlFileName) {
 					document.title = "Vehicle ranking";
 					console.log("Setting title to 'Daily Spending'");
 				}
 				else if( "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" == htmlFileName) {
-					document.title = "My saved amount";
+					document.title = "Knowledge Transfer Case Study – SBI Fixed Deposit Optimization";
 				}
 				else if( "SavedAmt.html" == htmlFileName) {
 					document.title = "Knowledge Transfer Case Study – SBI Fixed Deposit Optimization";
