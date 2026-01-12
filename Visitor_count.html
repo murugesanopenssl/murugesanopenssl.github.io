@@ -512,32 +512,26 @@
 			detectAndStoreBrowser();
 				function normalizeCountry(country, timezone)
 				{
-					if (!country) return "UNKNOWN";
-					
-					// Fix old data that has full description as country name
+					if( !country )
+					{
+						return "UNKNOWN";
+					}
 					if( country.includes( "Location: UNKNOWN" ) || country.includes("location for these users is not available") )
 					{
 						return "UNKNOWN";
 					}
-					
-					// Handle old country codes first
 					if( country === "INDIA" || country === "IN" )
 					{
 						return "India";
 					}
-					
 					if( country.includes( "USA (" ) || country.includes("Time Zone") )
 					{
 						return "United States";
 					}
-					
-					// If it's already a clean country name (no slashes, no weird formatting), return it as-is
 					if (!country.includes( "/" ) && country !== "INDIA" && country !== "IN" && !country.includes("Time Zone") )
 					{
 						return country;
 					}
-					
-					// Handle timezone strings stored as country in old data
 					if( country.includes( "/" ) )
 					{
 						if( country.includes( "America/Los_Angeles" ) || country.includes("America/Vancouver") || 
@@ -677,7 +671,6 @@
 				{
 					return "India";
 				}
-				
 				if( country.includes( "USA (" ) || country.includes("Time Zone") )
 				{
 					return "United States";
@@ -692,7 +685,10 @@
 				const usersSet = new Set();
 				let visitsToday = 0;
 				const today = new Date().toDateString();
-				
+				if( !snap.exists() )
+				{
+					return;
+				}
 				snap.forEach(child =>
 						{
 					const val = child.val();
@@ -725,14 +721,13 @@
 					{
 						desc = `Visitors from ${c}`;
 					}
-					
 					tbody.innerHTML += `<TR>
 						<TD align='middle'>${String(countryCnt[c]).padStart(4, "0" )}</TD>
 						<TD align='right'>${c}</TD>
-						<TD align='right'>${desc}</TD>
+						<TD align='left'>${desc}</TD>
 					</TR>`;
 				});
-				const totalVisits = snap.size;
+				const totalVisits = Object.keys(snap.val() || {}).length;
 				const uniqueVisitors = usersSet.size;
 				const metrics = [
 					{ name: "Total Visits", value: totalVisits },

@@ -362,10 +362,6 @@ function MainPageHomeLoadContent( event, htmlFileName )
 	{
 		document.title = "Money Help Menu";
 	}
-	else if( "SavedAmt.html" == htmlFileName )
-	{
-		document.title = "My saved amount";
-	}
 	else if( "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" == htmlFileName) {
 		document.title = "Knowledge Transfer Case Study – SBI Fixed Deposit Optimization";
 	}
@@ -677,18 +673,11 @@ function loadMainContent( event )
 					document.title = "Daily Spending";
 					console.log("Setting title to 'Daily Spending'");
 				}
-				else if( "SavedAmt.html" == htmlFileName )
-				{
-					document.title = "My saved amount";
-				}
 				else if( "2-wheeler-4-wheeler-rank.html" == htmlFileName) {
 					document.title = "Vehicle ranking";
 					console.log("Setting title to 'Daily Spending'");
 				}
 				else if( "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" == htmlFileName) {
-					document.title = "Knowledge Transfer Case Study – SBI Fixed Deposit Optimization";
-				}
-				else if( "SavedAmt.html" == htmlFileName) {
 					document.title = "Knowledge Transfer Case Study – SBI Fixed Deposit Optimization";
 				}
 				event.preventDefault();
@@ -1044,15 +1033,6 @@ function DisplayMainMenu()
 		<UL class="submenu">
 			<LI>
 				<A href="#" onclick="javascript:loadHomeContent( event, '2-wheeler-4-wheeler-rank.html' );" class="nav-link">Vehicle rankings amount</A>
-			</LI>
-			<LI>
-				<A href="#" id="spending" onclick="javascript:window.open( 'spending.html' );" class="nav-link"><FONT color='#00ff00'>Daily spending</FONT></A>
-			</LI>
-			<LI>
-				<A href="#" onclick="javascript:loadHomeContent( event, 'SavedAmt.html' );" class="nav-link">Saved amount</A>
-			</LI>
-			<LI>
-				<A href="#" onclick='javascript:window.open( "spending-chart.html" );' class="nav-link"><FONT color='#00ff00'>Spending chart</FONT></A>
 			</LI>
 		</UL>
 	</LI>
