@@ -1043,7 +1043,7 @@ function DisplayMainMenu()
 		</A>
 		<UL class="submenu">
 			<LI>
-				<A href="#" id="TwoWheelerFourWheeler" onclick="javascript:window.open( '2-wheeler-4-wheeler-rank.html' );" class="nav-link"><FONT color='#00ff00'>Vehicle rankings</FONT></A>
+				<A href="#" onclick="javascript:loadHomeContent( event, '2-wheeler-4-wheeler-rank.html' );" class="nav-link">Vehicle rankings amount</A>
 			</LI>
 			<LI>
 				<A href="#" id="spending" onclick="javascript:window.open( 'spending.html' );" class="nav-link"><FONT color='#00ff00'>Daily spending</FONT></A>

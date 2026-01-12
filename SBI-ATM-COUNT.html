@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<TITLE>MY SBI ATM Count</TITLE>
+		<STYLE type='text/css'>
+			body
+			{
+						font-family: Arial, sans-serif;
+						padding: 20px;
+			}
+			table
+			{
+						border-collapse: collapse;
+						width: 60%;
+			}
+			th, td
+			{
+						border: 1px solid #333;
+						padding: 8px 12px;
+						text-align: center;
+			}
+			th
+			{
+						background-color: #f2f2f2;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<H2><FONT color='black'>MY SBI ATM Monthly Usage</FONT></H2>
+		<TABLE id="atmTable">
+				<THEAD valign='top' align='right' style='color:black;'>
+						<TR>
+								<TH>ATM Type</TH>
+								<TH>Free / Month</TH>
+								<TH>Used</TH>
+								<TH>Remaining</TH>
+						</TR>
+				</THEAD>
+				<TBODY>
+				</TBODY>
+		</TABLE>
+		<SCRIPT type='text/javascript'>
+				const atmTransactions = [
+						{ date: "Thu 01-Jan-2026", type: "OTHER BANK ATM" },
+						{ date: "Mon 06-Jan-2026", type: "SBI ATM" },
+						{ date: "Mon 07-Jan-2026", type: "OTHER BANK ATM" },
+						{ date: "Sun 11-Jan-2026", type: "SBI ATM" }
+				];
+				const limits = {
+						"SBI ATM": 10,
+						"OTHER BANK ATM": 5
+				};
+				let usageCount = {
+						"SBI ATM": 0,
+						"OTHER BANK ATM": 0
+				};
+				atmTransactions.forEach(txn =>
+					{
+						if( undefined !== usageCount[txn.type] )
+						{
+								usageCount[txn.type]++;
+						}
+					}
+				);
+				const tbody = document.querySelector("#atmTable tbody");
+				Object.keys(limits).forEach(type =>
+					{
+						const free = limits[type];
+						const used = usageCount[type];
+						const remaining = free - used;
+						const row = document.createElement("tr");
+						row.innerHTML = `
+								<TD valign='top' align='right' style='color:black;'>${type}</TD>
+								<TD valign='top' align='right' style='background-color:cyan;color:black;'>${free}</TD>
+								<TD valign='top' align='right' style='background-color:red;color:white;'>${used}</TD>
+								<TD valign='top' align='right' style='background-color:cyan;color:black;'>${remaining}</TD>
+						`;
+						tbody.appendChild(row);
+					}
+				);
+		</SCRIPT>
+	</BODY>
+</HTML>

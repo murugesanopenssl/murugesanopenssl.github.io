@@ -1,107 +1,70 @@
-<SCRIPT type='text/javascript'>
-	function DispIndx(name)
-	{
-		if( 'undefined' == typeof indx )
-		{
-			indx=0;
-		}
-		if( "ROYAL ENFIELD" == name )
-		{
-			indx=0;
-		}
-		++indx;
-		if( 10 > indx )
-		{
-			document.write( "<TD valign='top' align='right'>00"+indx+"</TD>");
-		}
-		else if( 100 > indx )
-		{
-			document.write( "<TD valign='top' align='right'>0"+indx+"</TD>");
-		}
-		else
-		{
-			document.write( "<TD valign='top' align='right'>"+indx+"</TD>");
-		}
-		if( 'undefined' != typeof name )
-		{
-			document.write( "<TD valign='top' align='right'>"+name+"</TD>");
-		}
-	}
-</SCRIPT>
 <TABLE BORDER="1" CELLPADDING="6">
-	<TR>
-		<TH ALIGN="CENTER">RANK</TH>
-		<TH ALIGN="CENTER">TWO WHEELER NAME</TH>
-		<TH ALIGN="CENTER">STATUS</TH>
-		<TH ALIGN="CENTER">OWNER COUNTRY</TH>
-		<TH ALIGN="CENTER">OWNER NAME</TH>
-		<TH ALIGN="CENTER">AMOUNT (INR)</TH>
-		<TH ALIGN="CENTER">AMOUNT DESCRIPTION</TH>
+	<TR style='background-color:cyan;color:black;'>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>RANK</TH>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>TWO WHEELER NAME</TH>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>STATUS</TH>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>OWNER COUNTRY</TH>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>OWNER NAME</TH>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>AMOUNT (INR)</TH>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>AMOUNT DESCRIPTION</TH>
 	</TR>
-	<TR style='background-color:#00ff00;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "ROYAL ENFIELD" );
-			</SCRIPT>
+	<TR style='background-color:cyan;color:black;'>
+		<TD valign='top' align='right'>01</TD>
+		<TD valign='top' align='right'>ROYAL ENFIELD</TD>
 		<TD valign='top' align='right'>VERY GOOD</TD>
 		<TD valign='top' align='right'>INDIA</TD>
 		<TD valign='top' align='right'>EICHER MOTORS</TD>
 		<TD valign='top' align='right'>3,00,000.00</TD>
 		<TD valign='top' align='right'>THREE LAKHS</TD>
 	</TR>
-	<TR style='background-color:#00ff00;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "KAWASAKI" );
-			</SCRIPT>
+	<TR style='background-color:cyan;color:black;'>
+		<TD valign='top' align='right'>02</TD>
+		<TD valign='top' align='right'>KAWASAKI</TD>
 		<TD valign='top' align='right'>VERY GOOD</TD>
 		<TD valign='top' align='right'>JAPAN</TD>
 		<TD valign='top' align='right'>KAWASAKI HEAVY INDUSTRIES</TD>
 		<TD valign='top' align='right'>6,00,000.00</TD>
 		<TD valign='top' align='right'>SIX LAKHS</TD>
 	</TR>
-	<TR style='background-color:#00ff00;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "BAJAJ" );
-			</SCRIPT>
+	<TR style='background-color:cyan;color:black;'>
+		<TD valign='top' align='right'>03</TD>
+		<TD valign='top' align='right'>BAJAJ</TD>
 		<TD valign='top' align='right'>GOOD</TD>
 		<TD valign='top' align='right'>INDIA</TD>
 		<TD valign='top' align='right'>BAJAJ AUTO</TD>
 		<TD valign='top' align='right'>1,40,000.00</TD>
 		<TD valign='top' align='right'>ONE LAKH FORTY THOUSAND</TD>
 	</TR>
-	<TR style='background-color:#00ff00;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "SUZUKI" );
-			</SCRIPT>
+	<TR style='background-color:cyan;color:black;'>
+		<TD valign='top' align='right'>04</TD>
+		<TD valign='top' align='right'>SUZUKI</TD>
 		<TD valign='top' align='right'>GOOD</TD>
 		<TD valign='top' align='right'>JAPAN</TD>
 		<TD valign='top' align='right'>SUZUKI MOTOR CORPORATION</TD>
 		<TD valign='top' align='right'>1,20,000.00</TD>
 		<TD valign='top' align='right'>ONE LAKH TWENTY THOUSAND</TD>
 	</TR>
-	<TR style='background-color:#00ff00;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "ACCESS 125" );
-			</SCRIPT>
+	<TR style='background-color:cyan;color:black;'>
+		<TD valign='top' align='right'>05</TD>
+		<TD valign='top' align='right'>ACCESS 125</TD>
 		<TD valign='top' align='right'>GOOD (BETTER REPAIR COST THAN TVS)</TD>
 		<TD valign='top' align='right'>JAPAN</TD>
 		<TD valign='top' align='right'>SUZUKI MOTOR CORPORATION</TD>
 		<TD valign='top' align='right'>1,05,000.00</TD>
 		<TD valign='top' align='right'>ONE LAKH FIVE THOUSAND</TD>
 	</TR>
-	<TR style='background-color:#00ff00;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "HERO" );
-			</SCRIPT>
+	<TR style='background-color:cyan;color:black;'>
+		<TD valign='top' align='right'>HERO</TD>
+		<TD valign='top' align='right'>06</TD>
 		<TD valign='top' align='right'>AVERAGE</TD>
 		<TD valign='top' align='right'>INDIA</TD>
 		<TD valign='top' align='right'>HERO MOTOCORP</TD>
 		<TD valign='top' align='right'>1,10,000.00</TD>
 		<TD valign='top' align='right'>ONE LAKH TEN THOUSAND</TD>
 	</TR>
-	<TR style='background-color:#00ff00;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "MARUTHI" );
-			</SCRIPT>
+	<TR style='background-color:cyan;color:black;'>
+		<TD valign='top' align='right'>MARUTHI</TD>
+		<TD valign='top' align='right'>07</TD>
 		<TD valign='top' align='right'>AVERAGE</TD>
 		<TD valign='top' align='right'>INDIA / JAPAN</TD>
 		<TD valign='top' align='right'>MARUTI SUZUKI</TD>
@@ -109,9 +72,8 @@
 		<TD valign='top' align='right'>ONE LAKH</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "YAMAHA<BR>OR YAMAHA 1970" );
-			</SCRIPT>
+		<TD valign='top' align='right'>08</TD>
+		<TD valign='top' align='right'>YAMAHA<BR>OR YAMAHA 1970</TD>
 		<TD valign='top' align='right'>WORST</TD>
 		<TD valign='top' align='right'>JAPAN</TD>
 		<TD valign='top' align='right'>YAMAHA MOTOR COMPANY</TD>
@@ -119,9 +81,8 @@
 		<TD valign='top' align='right'>ONE LAKH EIGHTY THOUSAND</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "HONDA" );
-			</SCRIPT>
+		<TD valign='top' align='right'>09</TD>
+		<TD valign='top' align='right'>HONDA</TD>
 		<TD valign='top' align='right'>WORST</TD>
 		<TD valign='top' align='right'>JAPAN</TD>
 		<TD valign='top' align='right'>HONDA MOTOR CO.</TD>
@@ -129,9 +90,8 @@
 		<TD valign='top' align='right'>ONE LAKH FIFTY THOUSAND</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "TVS" );
-			</SCRIPT>
+		<TD valign='top' align='right'>10</TD>
+		<TD valign='top' align='right'>TVS</TD>
 		<TD valign='top' align='right'>
 			WORST (HIGHEST REPAIR COST) - Dharmapuri/India TVS SERVICE CENTRE, AVC MOTORS.<BR>
 			NEVER CALLED ME FOR THE FIRST 4 FREE SERVICES.<BR>
@@ -145,9 +105,8 @@
 		<TD valign='top' align='right'>ONE LAKH FIFTEEN THOUSAND</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "TRIUMPH" );
-			</SCRIPT>
+		<TD valign='top' align='right'>11</TD>
+		<TD valign='top' align='right'>TRIUMPH</TD>
 		<TD valign='top' align='right'>N/A</TD>
 		<TD valign='top' align='right'>UNITED KINGDOM</TD>
 		<TD valign='top' align='right'>TRIUMPH MOTORCYCLES</TD>
@@ -155,68 +114,62 @@
 		<TD valign='top' align='right'>FIVE LAKHS</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "KTM" );
-			</SCRIPT>
+		<TD valign='top' align='right'>12</TD>
+		<TD valign='top' align='right'>KTM</TD>
 		<TD valign='top' align='right'>N/A</TD>
 		<TD valign='top' align='right'>AUSTRIA</TD>
 		<TD valign='top' align='right'>KTM AG</TD>
 		<TD valign='top' align='right'>3,50,000.00</TD>
 		<TD valign='top' align='right'>THREE LAKHS FIFTY THOUSAND</TD>
 	</TR>
-	<TR>
-		<TH ALIGN="CENTER">RANK</TH>
-		<TH ALIGN="CENTER"><A href='' onclick='window.open("https://www.youtube.com/shorts/Ss3FThSmt8I?feature=share");'>FOUR WHEELER NAME</A></TH>
-		<TH ALIGN="CENTER">STATUS</TH>
-		<TH ALIGN="CENTER">OWNER COUNTRY</TH>
-		<TH ALIGN="CENTER">OWNER NAME</TH>
-		<TH ALIGN="CENTER">AMOUNT (INR)</TH>
-		<TH ALIGN="CENTER">AMOUNT DESCRIPTION</TH>
+	<TR style='background-color:white;color:black;'>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>RANK</TH>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'><A href='' onclick='window.open("https://www.youtube.com/shorts/Ss3FThSmt8I?feature=share");'>FOUR WHEELER NAME</A></TH>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>STATUS</TH>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>OWNER COUNTRY</TH>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>OWNER NAME</TH>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>AMOUNT (INR)</TH>
+		<TH ALIGN="CENTER" style='background-color:white;color:black;'>AMOUNT DESCRIPTION</TH>
 	</TR>
-	<TR style='background-color:#00ff00;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "AUDI Q8" );
-			</SCRIPT>
+	<TR style='background-color:white;color:black;'>
+		<TD valign='top' align='right'>01</TD>
+		<TD valign='top' align='right'>AUDI Q8</TD>
 		<TD valign='top' align='right'>VERY GOOD (BEST)</TD>
 		<TD valign='top' align='right'>GERMANY</TD>
 		<TD valign='top' align='right'>AUDI AG</TD>
 		<TD valign='top' align='right'>1,10,00,000.00</TD>
 		<TD valign='top' align='right'>ONE CRORE TEN LAKHS</TD>
 	</TR>
-	<TR style='background-color:#00ff00;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "VOLVO XC90" );
-			</SCRIPT>
+	<TR style='background-color:white;color:black;'>
+		<TD valign='top' align='right'>02</TD>
+		<TD valign='top' align='right'>VOLVO XC90</TD>
 		<TD valign='top' align='right'>VERY GOOD</TD>
 		<TD valign='top' align='right'>SWEDEN</TD>
 		<TD valign='top' align='right'>VOLVO CARS</TD>
 		<TD valign='top' align='right'>98,00,000.00</TD>
 		<TD valign='top' align='right'>NINETY EIGHT LAKHS</TD>
 	</TR>
-	<TR style='background-color:#00ff00;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "BMW X3" );
-			</SCRIPT>
+	<TR style='background-color:cyan;color:black;'>
+		<TD valign='top' align='right'>03</TD>
+		<TD valign='top' align='right'>BMW X3</TD>
 		<TD valign='top' align='right'>BETTER THAN LAMBORGHINI SVJ SOMEWHAT OK</TD>
 		<TD valign='top' align='right'>GERMANY</TD>
 		<TD valign='top' align='right'>BMW AG</TD>
 		<TD valign='top' align='right'>80,00,000.00</TD>
 		<TD valign='top' align='right'>EIGHTY FIVE LAKHS</TD>
 	</TR>
-	<TR style='background-color:#00ff00;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "LAMBORGHINI SVJ" );
-			</SCRIPT>
+	<TR style='background-color:cyan;color:black;'>
+		<TD valign='top' align='right'>04</TD>
+		<TD valign='top' align='right'>LAMBORGHINI SVJ</TD>
 		<TD valign='top' align='right'>BETTER THAN PORSCHE PANAMERA SOMEWHAT OK</TD>
 		<TD valign='top' align='right'>ITALY</TD>
 		<TD valign='top' align='right'>LAMBORGHINI S.p.A.</TD>
 		<TD valign='top' align='right'>3,00,00,000.00</TD>
 		<TD valign='top' align='right'>THREE CRORE</TD>
 	</TR>
-	<TR style='background-color:#00ff00;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "PORSCHE PANAMERA" );
-			</SCRIPT>
+	<TR style='background-color:cyan;color:black;'>
+		<TD valign='top' align='right'>05</TD>
+		<TD valign='top' align='right'>PORSCHE PANAMERA</TD>
 		<TD valign='top' align='right'>GOOD BUT SOMEWHAT OK</TD>
 		<TD valign='top' align='right'>GERMANY</TD>
 		<TD valign='top' align='right'>PORSCHE AG</TD>
@@ -224,9 +177,8 @@
 		<TD valign='top' align='right'>TWO CRORE FIFTY LAKHS</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "BUGATTI TOURBILLION" );
-			</SCRIPT>
+		<TD valign='top' align='right'>06</TD>
+		<TD valign='top' align='right'>BUGATTI TOURBILLION</TD>
 		<TD valign='top' align='right'>WORST</TD>
 		<TD valign='top' align='right'>FRANCE</TD>
 		<TD valign='top' align='right'>BUGATTI AUTOMOBILES S.A.S</TD>
@@ -234,9 +186,8 @@
 		<TD valign='top' align='right'>TEN CRORE</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "HONDA CIVIC" );
-			</SCRIPT>
+		<TD valign='top' align='right'>07</TD>
+		<TD valign='top' align='right'>HONDA CIVIC</TD>
 		<TD valign='top' align='right'>WORST</TD>
 		<TD valign='top' align='right'>JAPAN</TD>
 		<TD valign='top' align='right'>HONDA MOTOR CO.</TD>
@@ -244,9 +195,8 @@
 		<TD valign='top' align='right'>TWENTY LAKHS</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "LR RANGE ROVER" );
-			</SCRIPT>
+		<TD valign='top' align='right'>08</TD>
+		<TD valign='top' align='right'>LR RANGE ROVER</TD>
 		<TD valign='top' align='right'>WORST</TD>
 		<TD valign='top' align='right'>UNITED KINGDOM</TD>
 		<TD valign='top' align='right'>LAND ROVER</TD>
@@ -254,9 +204,8 @@
 		<TD valign='top' align='right'>NINETY LAKHS</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "NISSAN PETROL" );
-			</SCRIPT>
+		<TD valign='top' align='right'>09</TD>
+		<TD valign='top' align='right'>NISSAN PETROL</TD>
 		<TD valign='top' align='right'>WASTE IF SPEED BREAK GREATER THAN 15 TIMES AT A TIME WHEN DRIVING THIS VEHICLE</TD>
 		<TD valign='top' align='right'>JAPAN</TD>
 		<TD valign='top' align='right'>NISSAN MOTOR CO.</TD>
@@ -264,9 +213,8 @@
 		<TD valign='top' align='right'>TWELVE LAKHS</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "MARUTHI (MARUTI SUZUKI)" );
-			</SCRIPT>
+		<TD valign='top' align='right'>10</TD>
+		<TD valign='top' align='right'>MARUTHI (MARUTI SUZUKI)</TD>
 		<TD valign='top' align='right'>WASTE IF SPEED BREAK GREATER THAN 15 TIMES AT A TIME WHEN DRIVING THIS VEHICLE</TD>
 		<TD valign='top' align='right'>INDIA / JAPAN</TD>
 		<TD valign='top' align='right'>MARUTI SUZUKI</TD>
@@ -274,9 +222,8 @@
 		<TD valign='top' align='right'>NINE LAKHS</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "BHARATH (TATA MOTORS)" );
-			</SCRIPT>
+		<TD valign='top' align='right'>11</TD>
+		<TD valign='top' align='right'>BHARATH (TATA MOTORS)</TD>
 		<TD valign='top' align='right'>WASTE IF SPEED BREAK GREATER THAN 15 TIMES AT A TIME WHEN DRIVING THIS VEHICLE</TD>
 		<TD valign='top' align='right'>INDIA</TD>
 		<TD valign='top' align='right'>TATA MOTORS</TD>
@@ -284,9 +231,8 @@
 		<TD valign='top' align='right'>FIFTEEN LAKHS</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "FORD BRONCO" );
-			</SCRIPT>
+		<TD valign='top' align='right'>12</TD>
+		<TD valign='top' align='right'>FORD BRONCO</TD>
 		<TD valign='top' align='right'>WASTE IF SPEED BREAKS &GT; 20</TD>
 		<TD valign='top' align='right'>UNITED STATES OF AMERICA</TD>
 		<TD valign='top' align='right'>FORD MOTOR COMPANY</TD>
@@ -294,9 +240,8 @@
 		<TD valign='top' align='right'>THIRTY LAKHS</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "DELOREAN" );
-			</SCRIPT>
+		<TD valign='top' align='right'>13</TD>
+		<TD valign='top' align='right'>DELOREAN</TD>
 		<TD valign='top' align='right'>WASTE IF SPEED BREAK GREATER THAN 15 TIMES AT A TIME WHEN DRIVING THIS VEHICLE (OUTDATED)</TD>
 		<TD valign='top' align='right'>UNITED STATES OF AMERICA</TD>
 		<TD valign='top' align='right'>DELOREAN MOTOR COMPANY</TD>
@@ -304,9 +249,8 @@
 		<TD valign='top' align='right'>TWENTY FIVE LAKHS</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "HYUNDAI PALISADE" );
-			</SCRIPT>
+		<TD valign='top' align='right'>14</TD>
+		<TD valign='top' align='right'>HYUNDAI PALISADE</TD>
 		<TD valign='top' align='right'>WASTE IF SPEED BREAK GREATER THAN 15 TIMES AT A TIME WHEN DRIVING THIS VEHICLE</TD>
 		<TD valign='top' align='right'>SOUTH KOREA</TD>
 		<TD valign='top' align='right'>HYUNDAI MOTOR COMPANY</TD>
@@ -314,9 +258,8 @@
 		<TD valign='top' align='right'>FORTY FIVE LAKHS</TD>
 	</TR>
 	<TR style='background-color:red;color:white;'>
-			<SCRIPT type='text/javascript'>
-				DispIndx( "TESLA MODEL 3" );
-			</SCRIPT>
+		<TD valign='top' align='right'>15</TD>
+		<TD valign='top' align='right'>TESLA MODEL 3</TD>
 		<TD valign='top' align='right'>WASTE IF SPEED BREAK GREATER THAN 15 TIMES AT A TIME WHEN DRIVING THIS VEHICLE</TD>
 		<TD valign='top' align='right'>UNITED STATES OF AMERICA</TD>
 		<TD valign='top' align='right'>TESLA INC.</TD>

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+    <TITLE>RD CALCULATOR</TITLE>
+    <STYLE TYPE="text/css">
+        body {
+            font-family: monospace;
+        }
+        td {
+            padding: 6px;
+        }
+        .result {
+            white-space: pre;
+        }
+    </STYLE>
+    <SCRIPT TYPE="text/javascript">
+        function BC(N) {
+            return Number(N.toFixed(2));
+        }
+
+        function calc_RD() {
+            var P = parseFloat(document.getElementById("P").value);
+            if (isNaN(P)) {
+                alert("Enter a valid number");
+                return;
+            }
+
+            // Principal validation
+            if (P < 100 || P % 100 !== 0) {
+                alert("PRINCIPAL MUST BE MINIMUM 100 AND MULTIPLE OF 100");
+                return;
+            }
+
+            var R = 6.70; // annual interest rate in %
+            var YEARS = 5;
+            var MONTHS = YEARS * 12;
+            var r = R / 100; // rate in decimal
+
+            // RD total maturity formula with quarterly compounding
+            var n = 4; // quarterly
+            var TOTAL = P * ((Math.pow(1 + r / n, n * YEARS) - 1) / (1 - Math.pow(1 + r / n, -1/3)));
+
+            var PRINCIPAL = P * MONTHS;
+            var INT = TOTAL - PRINCIPAL;
+            var MATURITY = PRINCIPAL + INT;
+
+            // Dates
+            var SD = new Date(); // today
+            var ED = new Date(SD);
+            ED.setMonth(ED.getMonth() + MONTHS - 1);
+
+            function FMT(D) {
+                var DAYS = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+                var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+                var DD = DAYS[D.getDay()];
+                var DT = ("0" + D.getDate()).slice(-2);
+                var MM = MONTHS[D.getMonth()];
+                var YY = D.getFullYear();
+                return DD + " " + DT + "-" + MM + "-" + YY + " IST";
+            }
+
+            document.getElementById("OUT").innerHTML =
+                "START DATE            :" + FMT(SD) + "\n" +
+                "Monthly Deposit    (P):  " + P.toFixed(2) + " ரூ/₹/INR\n" +
+                "Interest Rate      (R):     " + R.toFixed(2) + " %\n" +
+                "Interest Earned  (INT): " + INT.toFixed(2) + " ரூ/₹/INR\n" +
+                "Total Investment      : " + PRINCIPAL.toFixed(2) + " ரூ/₹/INR\n" +
+                "Maturity Amount       : " + MATURITY.toFixed(2) + " ரூ/₹/INR\n" +
+                "END   DATE            :" + FMT(ED);
+        }
+
+        // Set default start date input to today
+        window.onload = function() {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById("SD").value = today;
+        };
+    </SCRIPT>
+</HEAD>
+<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+    <TABLE BORDER="1" STYLE="width:100%;">
+        <TR>
+            <TD ALIGN="RIGHT" VALIGN="TOP">
+                <TABLE BORDER="0">
+                    <TR>
+                        <TD>PRINCIPAL (₹):</TD>
+                        <TD>
+                            <INPUT TYPE="NUMBER" ID="P" VALUE="1000" STEP="100" MIN="100">
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD>START DATE:</TD>
+                        <TD>
+                            <INPUT TYPE="DATE" ID="SD">
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD COLSPAN="2" ALIGN="CENTER">
+                            <INPUT TYPE="BUTTON" VALUE="RD RESULT" ONCLICK="calc_RD()">
+                        </TD>
+                    </TR>
+                </TABLE>
+                <HR>
+                <PRE CLASS="RESULT" ID="OUT">
+						START DATE            :Tue Feb 18 2025
+						Monthly Deposit    (P):  1000.00 ரூ/₹/INR
+						Interest Rate      (R):     6.70 %
+						Interest Earned  (INT): 10970.00 ரூ/₹/INR
+						Total Investment      : 60000.00 ரூ/₹/INR
+						Maturity Amount       : 70970.00 ரூ/₹/INR
+						END   DATE            :Fri Jan-18-2030 IST
+                </PRE>
+            </TD>
+        </TR>
+    </TABLE>
+</BODY>
+</HTML>
