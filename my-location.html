@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+		<META charset="UTF-8">
+		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<META http-equiv="Pragma" content="no-cache">
+		<META http-equiv="Expires" content="0">
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV id="my-location-container">
+			<TABLE border='1' style='width:100%; border-collapse:collapse;'>
+				<TR><TD colspan='2' valign='top' align='middle'>
+					<A href='#' id="toggleLink" onclick="toggleLanguage();return false;">Display in English</A>
+				</TD></TR>
+				<TR><TD colspan='2' valign='top' align='middle'><B id="title">உங்கள் இருப்பிடம்</B></TD></TR>
+				<TR><TD valign='top' align='right'><B id="labelDistrict">மாவட்டம்</B></TD><TD id="district"></TD></TR>
+				<TR><TD valign='top' align='right'><B id="labelState">மாநிலம்</B></TD><TD id="state"></TD></TR>
+				<TR><TD valign='top' align='right'><B id="labelCountry">நாடு</B></TD><TD id="country"></TD></TR>
+				<TR><TD valign='top' align='right'><B id="labelContinent">கண்டம்</B></TD><TD id="continent"></TD></TR>
+			</TABLE>
+		</DIV>
+		<P id="output"></P>
+		<SCRIPT type='text/javascript'>
+			getLocation();
+			// incorrect here document.getElementById('title').innerText = "உங்கள் இருப்பிடம்";
+		</SCRIPT>
+	</BODY>
+</HTML>

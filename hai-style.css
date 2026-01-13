@@ -4,6 +4,10 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+#my-location-container td
+{
+	color: black;
+}
 body
 {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
