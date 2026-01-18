@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+	<HEAD>
+		<META charset="UTF-8">
+		<TITLE>
+			Components
+		</TITLE>
+		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<META http-equiv="Pragma" content="no-cache">
+		<META http-equiv="Expires" content="0">
+	</HEAD>
+	<BODY topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'>
+		<TABLE id="mainTable" style="text-align:left;width:100%;height:100%;" border="1" cellpadding="2" cellspacing="2">
+			<TBODY>
+				<TR id="searchResultRow" style="display:none;background-color:red;color:white;">
+					<TD colspan="6" id="searchResultCell" style="color:white;"></TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left' colspan='6'>
+						<TABLE border='0' style='width:100%;'>
+							<TR>
+					<SCRIPT type="text/javascript">
+						curdate=new Date();
+						dd=curdate.getDate();
+						yyyy=curdate.getYear();
+						if( 1900 > yyyy )
+						{
+							yyyy+=1900;
+						}
+						mmm=curdate.getMonth();
+						mmm++;
+						switch( mmm )
+						{
+							case 1:
+								mmm="Jan";
+								break;
+							case 2:
+								mmm="Feb";
+								break;
+							case 3:
+								mmm="Mar";
+								break;
+							case 4:
+								mmm="Apr";
+								break;
+							case 5:
+								mmm="May";
+								break;
+							case 6:
+								mmm="Jun";
+								break;
+							case 7:
+								mmm="Jul";
+								break;
+							case 8:
+								mmm="Aug";
+								break;
+							case 9:
+								mmm="Sep";
+								break;
+							case 10:
+								mmm="Oct";
+								break;
+							case 11:
+								mmm="Nov";
+								break;
+							case 12:
+								mmm="Dec";
+								break;
+								break;
+						}
+						if( 10 > dd )
+						{
+							today="0"+dd+"."+mmm+"."+yyyy;
+							disp_dd="0"+dd;
+						}
+						else
+						{
+							today=dd+"."+mmm+"."+yyyy;
+							disp_dd=+dd;
+						}
+						url="https://www.youtube.com/results?search_query=tamil+news+sathiyam+"+disp_dd+"-"+mmm+"-"+yyyy+"";
+						Dispurl="<FONT color=red><B><U>"+today+" news</B></U></FONT>";
+						document.write( "<TD colspan='1' valign='top' align='left'><A href=\"\" onclick=window.open('"+url+"');>"+Dispurl+"</A></TD>");
+url="https://www.youtube.com/results?search_query=tamil+news+sathiyam+"+disp_dd+"-"+mmm+"-"+yyyy+"";
+						Dispurl="<FONT color=red><B><U>"+today+" PM news</FONT></B></U>";
+						// document.write( "<TD valign='top' align='left'><A href=\"\" onclick=window.open('"+url+"');>"+Dispurl+"</A></TD>");
+	url="https://www.youtube.com/results?search_query=tamil+news+sathiyam+"+disp_dd+"-"+mmm+"-"+yyyy+"";
+						Dispurl="<FONT color=red><B><U>"+today+" EVE news</FONT></B></U>";
+						// document.write( "<TD valign='top' align='left' style='width:200px;' colspan='1'><A href=\"\" onclick=window.open('"+url+"');>"+Dispurl+"</A></TD>");
+						document.write( "<TD colspan='2' align='left' valign='top'><FONT color='RED'><B><A href='Components.html' onclick='javascript:window.open(\"https://www.youtube.com/results?search_query=tamil+Chanakyaa\")'><FONT color='red'><U><B>Chanakyaa</B></U></FONT></A></B></FONT></TD>");
+						document.write( "<TD colspan='1' align='left' valign='top'><FONT color='RED'><B><A href='Components.html' onclick='javascript:window.open(\"https://www.youtube.com/results?search_query=tamil+minute+mystery\")'><FONT color='red'><U><B>minute mystery</B></U></FONT></A></B></FONT></TD>");
+						// document.write( "<TD colspan='2' align='left' valign='top'><FONT color='RED'><B><A href='Components.html' onclick='javascript:window.open(\"https://www.youtube.com/results?search_query=Major+Madhan+Kumar&sp=CAI%253D\")'><FONT color='red'><U><B>Madhan Kumar</B></U></FONT></A></B></FONT></TD>");
+					</SCRIPT>
+					<TD valign='top' align='left' colspan='6'>
+						<A href='#' onclick="javascript:window.open('Contacts/Contacts.html');">CONTACTS</A>
+					</TD>
+					</TR>
+					</TABLE>
+					</TD>
+				</TR>
+				<TR>
+				</TR>
+				<TR>
+					<TD valign='top' align='left' colspan='6'>
+						<TABLE border='1' style="width:100%;">
+							<TR>
+								<TD valign='top' align='left'>
+									<A href="Components.html" onclick="javascript:window.open('https://retail.onlinesbi.sbi/retail/login.htm')">SBI LOGIN</A>
+								</TD>
+								<TD valign='top' align='left' colspan='5'><A href='' onclick='window.open("https://retail.onlinesbi.sbi/retail/logout.htm");'>https://retail.onlinesbi.sbi/retail/logout.htm</A></TD>
+								<TD colspan='1' valign='top' align='left'>
+									<A href="Components.html" onclick="javascript:window.open('https://www.indianbank.net.in/jsp/startIB.jsp')">INDIAN BANK</A>
+								</TD>
+								<TD colspan='1' valign='top' align='left'>
+									<A href="Components.html" onclick="javascript:window.open('https://rewardz.sbi/user/login')">SBI Rewards</A>
+								</TD>
+					<TD colspan='1' valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://www.sbigeneral.in/portal/motor-insurance/two-wheeler-insurance')">SBI INSURANCE</A></TD>
+								<TD valign='top' align='left'>
+									<A href="Components.html" onclick="javascript:window.open('https://netportal.hdfcbank.com/nb-login/login.jsp')">HDFC</A>
+									<BR>
+									https://netbanking.hdfcbank.com/netbanking</TD>
+								<TD valign='top' align='left'>
+									<A href="Components.html" onclick="javascript:window.open('https://www.hdfcbank.com/log-out?id=X7dFpGgcRaMKFijt8usTrg%3D%3D')">HDFC Logoff</A>
+								</TD>
+								<TD valign='top' align='left'>
+									<A href="Components.html" onclick="javascript:window.open('http://lcs.hdfcbk.io/EdmTrack/RedirectUrl?url=958272b0-c032-4c9d-9aa0-81084a1f6ec9&dbid=cust_00b4e220_6121_4a93_a63f_d0848bd73506&bid=2&cid=c129965e-db75-4c72-ad64-802507018387&sid=ef772bdc-4574-4dcc-bb69-e6e3d96220df&rid=W9PTKC&pid=W9PTKC')">Unsubscribe HDFC</A>
+								</TD>
+								<TD valign='top' align='left'>
+									<A href="Components.html" onclick="javascript:window.open('https://www.tmbnet.in/message.htm')">TMB LOGIN</A>
+								</TD>
+								<TD valign='top' align='left'>
+									<A href="Components.html" onclick="javascript:window.open('https://inb.kvb.bank.in')">KVB LOGIN</A>
+								</TD>
+								<TD colspan='5' valign='top' align='left'>
+									<A href="Components.html" onclick="javascript:window.open('https://ebanking.indiapost.gov.in')">Postoffice</A>
+								</TD>
+					</TD>
+							</TR>
+						</TABLE>
+					</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://bescom.trm.ieasybill.com:444')">BESCOM</A><BR>NEVER USE SL SBI ATM CARD</TD>
+					<TD colspan='5' valign=top style="text-align:left;">
+						<TABLE border='0'>
+							<TR>
+								<TD valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://www.tnebnet.org/awp/logincheck')">TNEB</A></TD>
+							</TR>
+						</TABLE>
+					</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left'>MyNum BHARATH GAS</TD>
+					<TD valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://my.ebharatgas.com/bharatgas/User/Login')">BHARATH GAS</A></TD>
+					<TD valign='top' align='left' colspan='4'>ConsumerNum: 31405188 After Payment Time Out Error =&gt; Logout =&gt; Chk After 30 Minutes</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left'>DPI INDANE GAS</TD>
+					<TD valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://cx.indianoil.in/webcenter/portal/Customer')">DPI KOTTAI INDANE</A><BR>https://cx.indianoil.in/webcenter/portal/Customer</TD>
+					<TD valign='top' align='left' colspan='4'>ConsumerNum: 10065</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left'>vodafone/vim <A href='' onclick='alert(9943250993);window.open("https://www.myvi.in/prepaid/online-mobile-recharge");'>VODAfone</A></TD>
+					<TD colspan='1' align='left' align='left'><A href="Components.html" onclick="javascript:window.open('https://www.airtel.in/prepaid-recharge/?icid=header')"><FONT color=blue><B><U>airtel</B></U> prepaid</FONT></A></TD>
+					<TD valign='top' align='left'>jio</TD>
+					<TD colspan='3' align='left' align='left'><A href="Components.html" onclick="javascript:window.open('https://www.jio.com/selfcare/recharge/mobility')"><FONT color=blue><B><U>jio</B></U> prepaid</FONT></A></TD>
+				</TR>
+				<TR>
+					<TD colspan='1' valign='top' align='left'>gmail/yahoo</TD>
+					<TD colspan='1' valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin')">gmail</A></TD>
+					<TD valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://login.yahoo.com')">yahoo</A></TD>
+					<TD colspan='3' valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://photos.google.com/?pli=1')">gmail photos</A></TD>
+				</TR>
+				<TR>
+					<TD colspan='1' valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://nironline.ndml.in/NIR/loginPwd.html')">TVS EIA</A></TD>
+					<TD colspan='1' valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://www.icicilombard.com')">ICICI LOMBARD</A><BR>
+					<FONT color='red'>USE SBI GENERAL INSURANCE.</FONT></TD>
+				</TR>
+				<TR>
+				<SCRIPT type="text/javascript">
+					let today = new Date();
+					let dayOfMonth = today.getDate();
+					let month = today.getMonth();
+					let year = today.getFullYear();
+					let options = { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' };
+					let formattedToday = today.toLocaleDateString('en-US', options).replace(',', '');
+					let next15th = new Date(year, month, 15);
+					if( 15 < dayOfMonth )
+					{
+						next15th = new Date(year, month + 1, 15);
+					}
+					let formattedNext15th = next15th.toLocaleDateString('en-US', options).replace(',', '');
+					if( ( 11 === month ) && ( 2026 === year ) )
+					{
+						let paidDate = new Date(year, month, 4); // Paid on 4th December
+						let formattedPaidDate = paidDate.toLocaleDateString('en-US', options).replace(',', '');
+						document.write("<TD colspan='3' valign='top' align='left'>");
+						document.write("<FONT COLOR='green'><B><U>PAID: " + formattedPaidDate + "</B></U></FONT><BR>");
+					}
+					document.write("<TR><TD><FONT COLOR='red'><B><U>NEVER PAY BSNL FIBERNET BEFORE " + formattedNext15th + "</B></U></FONT><BR>");
+					document.write("<A href='#' onclick='checkDate(" + dayOfMonth + ");'>BSNL BHARATH FIBERNET</A><BR>");
+					document.write("Recharge 571.00 OR 471.00 <BR>USING SL CARD</TD>");
+					function checkDate(day)
+					{
+						if( ( 11 === month ) && ( 2026 === year ) )
+						{
+							alert("PAY BSNL FIBERNET ON : Thu 04-Dec-2026.");
+						}
+						else if( 15 > day )
+						{
+							alert("NEVER PAY BSNL FIBERNET BEFORE " + formattedNext15th + ". TODAY DATE IS: " + formattedToday + ".");
+						}
+						window.open("https://wsc.cdr.bsnl.co.in/index");
+					}
+				</SCRIPT>
+				<TD valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://portal2.bsnl.in/myportal/tariffs.do?PREPAID')">BSNL RECHARGE</A></TD>
+				<TD colspan='2' valign='top' align='left'>Never use 220. Recharge 100 after 577 recharge and if the call balance is 0.00.<BR>After mobile number at web page, type 577 and proceed.<BR>Use Debit card =&gt; Use master card =&gt; Use Bill Desk =&gt; Press Continue for payment.</TD>
+			</TR>
+			<TR>
+				<TD valign='top' colspan='6'><A href="Components.html" onclick="javascript:window.open('https://ebiz.licindia.in/D2CPM/#Login')" title='https://ebiz.licindia.in/D2CPM/#Login'>SL LIC</A></TD>
+			</TR>
+			<TR>
+				<TD colspan='1' valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://eportal.incometax.gov.in/iec/foservices/#/login')">Income tax url</A></TD>
+				<TD colspan='6' valign='top' align='left'><TABLE style='width:100%;' border='1'><TR><TD valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://cleartax.in')">ITR</A> cleartax.in</TD><TD valign='top' align='left'>Login</TD><TD valign='top' align='left'>File ITR</TD><TD valign='top' align='left' colspan='1' >mukeshgct default</TD></TR></TABLE></TD>
+				<SCRIPT type="text/javascript">
+					if( -1 !== navigator.userAgent.indexOf("Firefox") )
+					{
+						document.write( "");
+					}
+					else if( -1 !== navigator.userAgent.indexOf('OPR') )
+					{
+						document.write( "");
+					}
+					else if( navigator.userAgent.indexOf('Edg') != -1 )
+					{
+						document.write( "<TR>");
+						document.write( "<TD valign='top' align='left'>web.whatsapp.com</TD>");
+						document.write( "<TD colspan='5' valign='top' align='left'><A href='Components.html' onclick=\"javascript:window.open('https://web.whatsapp.com')\">web.whatsapp.com</A></TD>");
+						document.write( "</TR>");
+					}
+				</SCRIPT>
+				<TR>
+					<TD valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://translate.google.co.in/?sl=en&tl=ta&op=translate')"><B><FONT color=orange>English to tamil</FONT></B></A></TD>
+					<TD colspan='5' valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://translate.google.co.in/?sl=ta&tl=en&op=translate')"><B><FONT color=orange>Tamil to English</FONT></B></A></TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left' colspan='1'><A href="Components.html" onclick="javascript:window.open('file:\\\\C:\\\\cygwin\\\\home\\\\NMurugesan\\\\Din_Back\\\\2Wheeler\\\\SLeelavathi\\\\slinsurancerenew.html')">2WHEELER INSURANCE</A></TD>
+					<TD valign='top' align='left' colspan='1'><A href="Components.html" onclick="javascript:window.open('https://www.amazon.in')">amazon</A></TD>
+					<TD valign='top' align='left' colspan='1'><A href="Components.html" onclick="javascript:window.open('https://passbook.epfindia.gov.in/MemberPassBook/Login')">PF passbook</A></TD>
+					<TD valign='top' align='left' colspan='1'><A href="Components.html" onclick="javascript:window.open('https://unifiedportal-mem.epfindia.gov.in/memberinterface')">PF</A></TD>
+					<TD valign='top' align='left' colspan='2'><A href="Components.html" onclick="javascript:window.open('https://outlook.office365.com')">Microsoft Office email</A></TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left'>members.geocities</TD>
+					<TD valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://members.geocities.ws/fm/index.php')">members.geocities</A></TD>
+					<TD colspan='1' valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('file:///C:/cygwin/home/NMurugesan/geocities/murugesan/MarbleGames/index.html')">local murugesan_openssl</A></TD>
+					<TD colspan='1' valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('file:///C:/cygwin/home/NMurugesan/geocities1_/UPDATE_AADHAR_WAIT_DAYS.html')">local geocities aadhar wait</A></TD>
+						<TD valign='top' align='left' colspan='1'><TABLE border='1'><TR><TD valign='top' align='left'><A href="Components.html" onclick="javascript:window.open('https://myaadhaar.uidai.gov.in/login')"><FONT color=red>AADHAR LOGIN</FONT></A></TD>
+						</TR></TABLE></TD>
+						<TD valign='top' align='left'>
+						<A href='' onclick='javascript:window.open("https://web.whatsapp.com");'>whatsapp</A>
+						</TD>
+					</TR>
+					<TR>
+						<TD colspan="6" valign="top" align="left">
+							<input type="text" id="searchBox" placeholder="Search..." onkeypress="if(event.key==='Enter'){searchTable();}" style="width:300px;">
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+		</BODY>
+		<SCRIPT type="text/javascript">
+			function searchTable() {
+    let input = document.getElementById("searchBox").value.toLowerCase().trim();
+    let table = document.getElementById("mainTable");
+    let rows = table.getElementsByTagName("TR");
+    let resultCell = document.getElementById("searchResultCell");
+    let resultRow = document.getElementById("searchResultRow");
+
+    if (input === "") {
+        resultCell.innerHTML = "";
+        resultRow.style.display = "none";
+        return;
+    }
+
+    let foundRows = [];
+    let seenTexts = new Set();
+
+    for (let i = 0; i < rows.length; i++) {
+        // Skip the search result row itself
+        if (rows[i].id === "searchResultRow") continue;
+
+        let text = rows[i].innerText.toLowerCase().trim();
+
+        if (
+            text.includes(input) ||
+            (input === "rewards" && text.includes("rewardz")) ||
+            (input === "rewardz" && text.includes("rewards"))
+        ) {
+            if (!seenTexts.has(text)) {
+                let rowHtml = rows[i].innerHTML.replace(/<a /gi, "<a style='color:#00FFFF;' ");
+                foundRows.push(rowHtml);
+                seenTexts.add(text);
+            }
+        }
+    }
+
+    resultCell.innerHTML = ""; // clear previous results
+
+    if (foundRows.length > 0) {
+        resultCell.innerHTML = foundRows.join("<HR>");
+        resultRow.style.display = "";
+    } else {
+        resultCell.innerHTML = "<FONT color='red'>No match found</FONT>";
+        resultRow.style.display = "";
+    }
+}
+		</SCRIPT>
+</HTML>

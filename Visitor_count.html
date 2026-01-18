@@ -1,748 +1,231 @@
-		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-		<META http-equiv="Pragma" content="no-cache">
-		<META http-equiv="Expires" content="0">
-		<META charset="UTF-8">
-		<META name="viewport" content="width=device-width, initial-scale=1.0">
-		<LINK href="github.io.css" rel="stylesheet">
-		<TITLe>User access count</TITLE>
-		<STYLE type='text/css'>
-			body
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User access count (IP based)</title>
+
+    <style>
+        body {
+            background-color: #004C8F;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+        }
+        table {
+            width: 100%;
+            background-color: white;
+            color: black;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 6px;
+        }
+        th {
+            background-color: #E6E6E6;
+        }
+    </style>
+</head>
+
+<body>
+
+<h3>User Count (IP-based geolocation)</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>User Count</th>
+            <th>Country</th>
+            <th>Region</th>
+            <th>City</th>
+            <th>Continent</th>
+        </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+</table>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+        authDomain: "openmurugesan.firebaseapp.com",
+        databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "openmurugesan",
+        storageBucket: "openmurugesan.firebasestorage.app",
+        messagingSenderId: "307675598593",
+        appId: "1:307675598593:web:4af163460ce2c3bc719500"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const tbody = document.getElementById("tbody");
+
+    // -------- IP GEOLOCATION --------
+    async function detectLocation() {
+        try {
+            const res = await fetch("https://ipapi.co/json/");
+            const data = await res.json();
+
+            return {
+                country: data.country_name || "UNKNOWN",
+                region: data.region || "UNKNOWN",
+                city: data.city || "UNKNOWN",
+                continent: data.continent_code || "UNKNOWN",
+                ip: data.ip || "UNKNOWN"
+            };
+        } catch (e) {
+            return {
+                country: "UNKNOWN",
+                region: "UNKNOWN",
+                city: "UNKNOWN",
+                continent: "UNKNOWN",
+                ip: "UNKNOWN"
+            };
+        }
+    }
+
+    // -------- STORE VISIT --------
+    async function storeVisit() {
+        const geo = await detectLocation();
+
+        await push(ref(db, "userAccess"), {
+            country: geo.country|| "UNKNOWN",
+            region: geo.region|| "UNKNOWN",
+            city: geo.city|| "UNKNOWN",
+            continent: geo.continent|| "UNKNOWN",
+            ip: geo.ip,
+            userAgent: navigator.userAgent,
+            timestamp: Date.now()
+        });
+    }
+
+    storeVisit();
+
+    // -------- DISPLAY COUNTS --------
+    onValue(ref(db, "userAccess"), snapshot => {
+        tbody.innerHTML = "";
+        if (!snapshot.exists()) return;
+const continentMap = { 
+  "AS": "Asia",
+  "NA": "North America",
+  "EU": "Europe",
+  "AF": "Africa",
+  "OC": "Oceania",
+  "SA": "South America",
+  "AN": "Antarctica",
+  "OS": "Oceania",
+   "???": "what to write"
+};        const counts = {};
+
+snapshot.forEach(child => {
+            const v = child.val();
+            const country = v.country || "UNKNOWN";
+            const region = v.region || "UNKNOWN";
+            const city = v.city || "UNKNOWN";
+            let continentCode = v.continent || "UNKNOWN";
+            switch(country.toUpperCase()) {
+    case "INDIA":
+        continentCode = "AS";
+        break;
+	case "Pacific Islands":
+		continentCode = "OS";
+		break;
+    case "UNITED STATES":
+    case "AMERICA/LOS_ANGELES":
+    case "USA (HAWAII-ALEUTIAN TIME ZONE)":
+    case "USA (PACIFIC TIME ZONE)":
+        continentCode = "NA";
+        break;
+    case "RUSSIA":
+        // optional: choose EU or AS depending on region
+        continentCode = "EU";
+        break;
+    case "AUSTRALIA":
+    case "FIJI":
+    case "SAMOA":
+    case "TONGA":
+    case "VANUATU":
+    case "SOLOMON ISLANDS":
+        continentCode = "OC"; // Oceania
+        break;
+    case "BRAZIL":
+    case "ARGENTINA":
+    case "CHILE":
+        continentCode = "SA"; // South America
+        break;
+    case "EGYPT":
+    case "NIGERIA":
+    case "SOUTH AFRICA":
+        continentCode = "AF"; // Africa
+        break;
+    case "UNITED KINGDOM":
+    case "FRANCE":
+    case "GERMANY":
+        continentCode = "EU"; // Europe
+        break;
+case "CHINA":
+case "JAPAN":
+case "INDONESIA":
+case "Asia/Calcutta":
+    continentCode = "AS"; // Asia
+    break;
+
+case "CANADA":
+case "MEXICO":
+    continentCode = "NA"; // North America
+    break;
+
+case "NEW ZEALAND":
+case "PAPUA NEW GUINEA":
+    continentCode = "OC"; // Oceania
+    break;
+
+case "ARGENTINA":
+case "PERU":
+case "COLOMBIA":
+    continentCode = "SA"; // South America
+    break;
+
+case "SOUTH AFRICA":
+case "KENYA":
+    continentCode = "AF"; // Africa
+    break;
+
+case "FRANCE":
+case "GERMANY":
+case "ITALY":
+    continentCode = "EU"; // Europe
+    break;
+            }
+			if( country === "India" || "INDIA" === country )
 			{
-				background-color: #004C8F;
-				color: #FFFFFF;
-				font-family: Arial, sans-serif;
-				margin: 0;
-				padding: 0;
+				continentCode = "AS";
 			}
-			h3
-			{
-				color: #FFFFFF;
-				border-bottom: 2px solid #FF6600;
-				padding-bottom: 10px;
-			}
-			#financialResourcesMenu01, #financialResourcesMenu02
-			{
-				background-color: #0066CC !important;
-				color: #FFFFFF !important;
-				border: 2px solid #003D82 !important;
-				border-radius: 5px;
-			}
-			#financialResourcesMenu01 a, #financialResourcesMenu02 a
-			{
-				color: #FFCC00 !important;
-				font-weight: bold;
-			}
-			#financialResourcesMenu01 a:hover, #financialResourcesMenu02 a:hover
-			{
-				color: #FF6600 !important;
-				background-color: #003D82;
-				padding: 5px;
-				border-radius: 3px;
-			}
-			button
-			{
-				background-color: #003D82 !important;
-				color: #FFFFFF !important;
-				border: 2px solid #FF6600 !important;
-				font-weight: bold;
-			}
-			button:hover
-			{
-				background-color: #FF6600 !important;
-				color: #FFFFFF !important;
-				border: 2px solid #003D82 !important;
-			}
-		</STYLE>
-		<TABLE border='1' style='width:100%;color:black;'>
-			<THead>
-				<TR>
-					<TH><FONT color='black'>User Count at https://murugesanopenssl.github.io</FONT></TH>
-					<TH><FONT color='black'>Country/Region</FONT></TH>
-					<TH><FONT color='black'>Description</FONT></TH>
-				</TR>
-			</THEAD>
-			<TBODY id="tbody"></TBODY>
-		</TABLE>
-		<TABLE border='1' style='width:100%; margin-top:20px;color:black;'>
-			<THead>
-				<TR>
-					<TH>Metric</TH>
-					<TH>Value</TH>
-				</TR>
-			</THEAD>
-			<TBODY id="metrics"></TBODY>
-		</TABLE>
-		<SCRIPT type="module">
-			import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-			import { getDatabase, ref, onValue, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-			const firebaseConfig = {
-				apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
-				authDomain: "openmurugesan.firebaseapp.com",
-				databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
-				projectId: "openmurugesan",
-				storageBucket: "openmurugesan.firebasestorage.app",
-				messagingSenderId: "307675598593",
-				appId: "1:307675598593:web:4af163460ce2c3bc719500",
-				measurementId: "G-0MFK92PQMP"
-			};
-			const app = initializeApp(firebaseConfig);
-			const db = getDatabase(app);
-			const tbody = document.getElementById( "tbody" );
-			const metricsTbody = document.getElementById( "metrics" );
-			const bow = navigator.userAgent;
-			const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-			let ctry = "UNKNOWN";
-			if( tz.includes( "America/" ) )
-			{
-				if( tz.includes( "Los_Angeles" ) || tz.includes("Vancouver") || tz.includes("Tijuana") )
-				{
-					ctry = "United States";
-				}
-				else if( tz.includes( "Denver" ) || tz.includes("Phoenix") || tz.includes("Boise") )
-				{
-					ctry = "United States";
-				}
-				else if( tz.includes( "Chicago" ) || tz.includes("Winnipeg") )
-				{
-					ctry = "United States";
-				}
-				else if( tz.includes( "New_York" ) || tz.includes("Toronto") || tz.includes("Detroit") || tz.includes("Miami") )
-				{
-					ctry = "United States";
-				}
-				else if( tz.includes( "Anchorage" ) || tz.includes("Juneau") )
-				{
-					ctry = "United States";
-				}
-				else if( tz.includes( "Halifax" ) || tz.includes("Bermuda") )
-				{
-					ctry = "United States";
-				}
-				else if( tz.includes( "Mexico" ) )
-				{
-					ctry = "Mexico";
-				}
-				else if( tz.includes( "Sao_Paulo" ) || tz.includes("Rio") )
-				{
-					ctry = "Brazil";
-				}
-				else if( tz.includes( "Buenos_Aires" ) )
-				{
-					ctry = "Argentina";
-				}
-				else if( tz.includes( "Bogota" ) )
-				{
-					ctry = "Colombia";
-				}
-				else if( tz.includes( "Lima" ) )
-				{
-					ctry = "Peru";
-				}
-				else if( tz.includes( "Santiago" ) )
-				{
-					ctry = "Chile";
-				}
-				else if( tz.includes( "Caracas" ) )
-				{
-					ctry = "Venezuela";
-				}
-				else
-				{
-					ctry = "Americas (Other)";
-				}
-			}
-			else if( tz.includes( "Atlantic/" ) )
-			{
-				if( tz.includes( "Cape_Verde" ) )
-				{
-					ctry = "Cape Verde";
-				}
-				else if( tz.includes( "Reykjavik" ) )
-				{
-					ctry = "Iceland";
-				}
-				else if( tz.includes( "Azores" ) )
-				{
-					ctry = "Portugal (Azores)";
-				}
-				else if( tz.includes( "Bermuda" ) )
-				{
-					ctry = "Bermuda";
-				}
-				else
-				{
-					ctry = "Atlantic Islands";
-				}
-			}
-			else if( tz.includes( "Pacific/" ) )
-			{
-				if( tz.includes( "Honolulu" ) )
-				{
-					ctry = "United States";
-				}
-				else if( tz.includes( "Auckland" ) )
-				{
-					ctry = "New Zealand";
-				}
-				else if( tz.includes( "Fiji" ) )
-				{
-					ctry = "Fiji";
-				}
-				else
-				{
-					ctry = "Pacific Islands";
-				}
-			}
-			else if( tz.includes( "Asia/" ) )
-			{
-				if( tz.includes( "Kolkata" ) || tz.includes("Calcutta") )
-				{
-					ctry = "India";
-				}
-				else if( tz.includes( "Shanghai" ) || tz.includes("Hong_Kong") )
-				{
-					ctry = "China";
-				}
-				else if( tz.includes( "Singapore" ) )
-				{
-					ctry = "Singapore";
-				}
-				else if( tz.includes( "Tokyo" ) )
-				{
-					ctry = "Japan";
-				}
-				else if( tz.includes( "Dubai" ) )
-				{
-					ctry = "UAE";
-				}
-				else if( tz.includes( "Seoul" ) )
-				{
-					ctry = "South Korea";
-				}
-				else if( tz.includes( "Bangkok" ) )
-				{
-					ctry = "Thailand";
-				}
-				else if( tz.includes( "Karachi" ) )
-				{
-					ctry = "Pakistan";
-				}
-				else if( tz.includes( "Dhaka" ) )
-				{
-					ctry = "Bangladesh";
-				}
-				else if( tz.includes( "Jakarta" ) )
-				{
-					ctry = "Indonesia";
-				}
-				else if( tz.includes( "Manila" ) )
-				{
-					ctry = "Philippines";
-				}
-				else if( tz.includes( "Kuala_Lumpur" ) )
-				{
-					ctry = "Malaysia";
-				}
-				else if( tz.includes( "Ho_Chi_Minh" ) || tz.includes("Hanoi") )
-				{
-					ctry = "Vietnam";
-				}
-				else if( tz.includes( "Tehran" ) )
-				{
-					ctry = "Iran";
-				}
-				else if( tz.includes( "Riyadh" ) )
-				{
-					ctry = "Saudi Arabia";
-				}
-				else
-				{
-					ctry = "Asia (Other)";
-				}
-			}
-			else if( tz.includes( "Europe/" ) )
-			{
-				if( tz.includes( "London" ) )
-				{
-					ctry = "United Kingdom";
-				}
-				else if( tz.includes( "Paris" ) )
-				{
-					ctry = "France";
-				}
-				else if( tz.includes( "Berlin" ) )
-				{
-					ctry = "Germany";
-				}
-				else if( tz.includes( "Rome" ) )
-				{
-					ctry = "Italy";
-				}
-				else if( tz.includes( "Madrid" ) )
-				{
-					ctry = "Spain";
-				}
-				else if( tz.includes( "Moscow" ) )
-				{
-					ctry = "Russia";
-				}
-				else if( tz.includes( "Kiev" ) || tz.includes("Kyiv") )
-				{
-					ctry = "Ukraine";
-				}
-				else if( tz.includes( "Athens" ) )
-				{
-					ctry = "Greece";
-				}
-				else if( tz.includes( "Lisbon" ) )
-				{
-					ctry = "Portugal";
-				}
-				else if( tz.includes( "Amsterdam" ) )
-				{
-					ctry = "Netherlands";
-				}
-				else if( tz.includes( "Brussels" ) )
-				{
-					ctry = "Belgium";
-				}
-				else if( tz.includes( "Stockholm" ) )
-				{
-					ctry = "Sweden";
-				}
-				else if( tz.includes( "Warsaw" ) )
-				{
-					ctry = "Poland";
-				}
-				else if( tz.includes( "Dublin" ) )
-				{
-					ctry = "Ireland";
-				}
-				else if( tz.includes( "Vienna" ) )
-				{
-					ctry = "Austria";
-				}
-				else if( tz.includes( "Zurich" ) )
-				{
-					ctry = "Switzerland";
-				}
-				else if( tz.includes( "Oslo" ) )
-				{
-					ctry = "Norway";
-				}
-				else if( tz.includes( "Copenhagen" ) )
-				{
-					ctry = "Denmark";
-				}
-				else if( tz.includes( "Helsinki" ) )
-				{
-					ctry = "Finland";
-				}
-				else if( tz.includes( "Prague" ) )
-				{
-					ctry = "Czech Republic";
-				}
-				else if( tz.includes( "Budapest" ) )
-				{
-					ctry = "Hungary";
-				}
-				else if( tz.includes( "Bucharest" ) )
-				{
-					ctry = "Romania";
-				}
-				else if( tz.includes( "Sofia" ) )
-				{
-					ctry = "Bulgaria";
-				}
-				else if( tz.includes( "Istanbul" ) )
-				{
-					ctry = "Turkey";
-				}
-				else
-				{
-					ctry = "Europe (Other)";
-				}
-			}
-			else if( tz.includes( "Africa/" ) )
-			{
-				if( tz.includes( "Johannesburg" ) )
-				{
-					ctry = "South Africa";
-				}
-				else if( tz.includes( "Cairo" ) )
-				{
-					ctry = "Egypt";
-				}
-				else if( tz.includes( "Lagos" ) )
-				{
-					ctry = "Nigeria";
-				}
-				else if( tz.includes( "Nairobi" ) )
-				{
-					ctry = "Kenya";
-				}
-				else if( tz.includes( "Casablanca" ) )
-				{
-					ctry = "Morocco";
-				}
-				else if( tz.includes( "Algiers" ) )
-				{
-					ctry = "Algeria";
-				}
-				else if( tz.includes( "Tunis" ) )
-				{
-					ctry = "Tunisia";
-				}
-				else
-				{
-					ctry = "Africa (Other)";
-				}
-			}
-			else if( tz.includes( "Australia/" ) )
-			{
-				if( tz.includes( "Sydney" ) || tz.includes("Melbourne") || tz.includes("Brisbane") )
-				{
-					ctry = "Australia";
-				}
-				else if( tz.includes( "Perth" ) )
-				{
-					ctry = "Australia";
-				}
-				else
-				{
-					ctry = "Australia";
-				}
-			}
-			else if( tz.includes( "Indian/" ) )
-			{
-				if( tz.includes( "Mauritius" ) )
-				{
-					ctry = "Mauritius";
-				}
-				else if( tz.includes( "Maldives" ) )
-				{
-					ctry = "Maldives";
-				}
-				else
-				{
-					ctry = "Indian Ocean Islands";
-				}
-			}
-			const dispCntrl = Intl.DateTimeFormat().resolvedOptions().timeZone;
-			async function detectAndStoreBrowser()
-			{
-				let browserName = "Unknown";
-				const ua = bow.toLowerCase();
-				let deviceType = "Desktop";
-				let deviceModel = "Unknown";
-				let osName = "Unknown";
-				if (/mobile|iphone|ipod|android.*mobile/i.test(bow) )
-				{ 
-					deviceType = "Mobile"; 
-				}
-				else if (/tablet|ipad|android(?!.*mobile)/i.test(bow) )
-				{ 
-					deviceType = "Tablet"; 
-				}
-				if( ua.includes( "windows" ) )
-				{
-					osName = "Windows";
-					if( ua.includes( "windows nt 10.0" ) )
-					{ osName = "Windows 10/11"; }
-					else if( ua.includes( "windows nt 6.3" ) )
-					{ osName = "Windows 8.1"; }
-					else if( ua.includes( "windows nt 6.2" ) )
-					{ osName = "Windows 8"; }
-				}
-				else if( ua.includes( "android" ) )
-				{ 
-					osName = "Android"; 
-					const androidMatch = ua.match(/android (\d+)/); 
-					if( androidMatch)
-					{ osName = "Android " + androidMatch[1]; }
-				}
-				else if( ua.includes( "iphone" ) )
-				{ 
-					osName = "iOS (iPhone)"; 
-				}
-				else if( ua.includes( "ipad" ) )
-				{ 
-					osName = "iOS (iPad)"; 
-				}
-				else if( ua.includes( "mac os x" ) )
-				{ 
-					osName = "macOS"; 
-				}
-				else if( ua.includes( "linux" ) )
-				{ 
-					osName = "Linux"; 
-				}
-				if( ua.includes( "iphone" ) )
-				{ deviceModel = "iPhone"; }
-				else if( ua.includes( "ipad" ) )
-				{ deviceModel = "iPad"; }
-				else if( ua.includes( "samsung" ) )
-				{ deviceModel = "Samsung"; }
-				else if( ua.includes( "pixel" ) )
-				{ deviceModel = "Google Pixel"; }
-				const screenWidth = window.screen.width;
-				const screenHeight = window.screen.height;
-				const screenResolution = `${screenWidth}x${screenHeight}`;
-				if( ua.includes( "firefox/" ) && ua.includes("gecko/") )
-				{ browserName = "Firefox"; }
-				else if( ua.includes( "edg/" ) )
-				{ browserName = "Edge"; }
-				else if( ua.includes( "chrome/" ) )
-				{ browserName = "Chrome"; }
-				else if( ua.includes( "safari/" ) && !ua.includes("chrome/") )
-				{ browserName = "Safari"; }
-				push(ref(db, "userAccess" ),
-						{
-					browser: bow,
-					browserName: browserName,
-					deviceType: deviceType,
-					deviceModel: deviceModel,
-					osName: osName,
-					screenResolution: screenResolution,
-					country: ctry,
-					timezone: tz,
-					timestamp: Date.now()
-				});
-			}
-			detectAndStoreBrowser();
-				function normalizeCountry(country, timezone)
-				{
-					if( !country )
-					{
-						return "UNKNOWN";
-					}
-					if( country.includes( "Location: UNKNOWN" ) || country.includes("location for these users is not available") )
-					{
-						return "UNKNOWN";
-					}
-					if( country === "INDIA" || country === "IN" )
-					{
-						return "India";
-					}
-					if( country.includes( "USA (" ) || country.includes("Time Zone") )
-					{
-						return "United States";
-					}
-					if (!country.includes( "/" ) && country !== "INDIA" && country !== "IN" && !country.includes("Time Zone") )
-					{
-						return country;
-					}
-					if( country.includes( "/" ) )
-					{
-						if( country.includes( "America/Los_Angeles" ) || country.includes("America/Vancouver") || 
-							country.includes( "America/New_York" ) || country.includes("America/Chicago") || 
-							country.includes( "America/Denver" ) || country.includes("America/Phoenix") ||
-							country.includes( "America/Anchorage" ) )
-						{
-							return "United States";
-						}
-						else if( country.includes( "Asia/Kolkata" ) || country.includes("Asia/Calcutta") )
-						{
-							return "India";
-						}
-						else if( country.includes( "Pacific/Honolulu" ) )
-						{
-							return "United States";
-						}
-						else if( country.includes( "Atlantic/Cape_Verde" ) )
-						{
-							return "Cape Verde";
-						}
-						else if( country.includes( "Europe/London" ) )
-						{
-							return "United Kingdom";
-						}
-						else if( country.includes( "Europe/Paris" ) )
-						{
-							return "France";
-						}
-						else if( country.includes( "Europe/Berlin" ) )
-						{
-							return "Germany";
-						}
-						else if( country.includes( "Europe/Rome" ) )
-						{
-							return "Italy";
-						}
-						else if( country.includes( "Europe/Madrid" ) )
-						{
-							return "Spain";
-						}
-						else if( country.includes( "Europe/Moscow" ) )
-						{
-							return "Russia";
-						}
-						else if( country.includes( "Europe/Amsterdam" ) )
-						{
-							return "Netherlands";
-						}
-						else if( country.includes( "Europe/Brussels" ) )
-						{
-							return "Belgium";
-						}
-						else if( country.includes( "Europe/Lisbon" ) )
-						{
-							return "Portugal";
-						}
-						else if( country.includes( "Europe/Athens" ) )
-						{
-							return "Greece";
-						}
-						else if( country.includes( "Europe/Stockholm" ) )
-						{
-							return "Sweden";
-						}
-						else if( country.includes( "Europe/Warsaw" ) )
-						{
-							return "Poland";
-						}
-						else if( country.includes( "Europe/Dublin" ) )
-						{
-							return "Ireland";
-						}
-						else if( country.includes( "Europe/Vienna" ) )
-						{
-							return "Austria";
-						}
-						else if( country.includes( "Europe/Zurich" ) )
-						{
-							return "Switzerland";
-						}
-						else if( country.includes( "Europe/Oslo" ) )
-						{
-							return "Norway";
-						}
-						else if( country.includes( "Europe/Copenhagen" ) )
-						{
-							return "Denmark";
-						}
-						else if( country.includes( "Europe/Helsinki" ) )
-						{
-							return "Finland";
-						}
-						else if( country.includes( "Europe/Prague" ) )
-						{
-							return "Czech Republic";
-						}
-						else if( country.includes( "Europe/Budapest" ) )
-						{
-							return "Hungary";
-						}
-						else if( country.includes( "Europe/Bucharest" ) )
-						{
-							return "Romania";
-						}
-						else if( country.includes( "Europe/Istanbul" ) )
-						{
-							return "Turkey";
-						}
-						else if( country.includes( "America/Mexico" ) )
-						{
-							return "Mexico";
-						}
-						else if( country.includes( "America/Sao_Paulo" ) )
-						{
-							return "Brazil";
-						}
-						else if( country.includes( "Atlantic/" ) )
-						{
-							return "Atlantic Islands";
-						}
-						else if( country.includes( "America/" ) )
-						{
-							return "Americas (Other)";
-						}
-						else if( country.includes( "Asia/" ) )
-						{
-							return "Asia (Other)";
-						}
-						else if( country.includes( "Europe/" ) )
-						{
-							return "Europe (Other)";
-						}
-					return "UNKNOWN";
-				}
-				if( country === "INDIA" || country === "IN" )
-				{
-					return "India";
-				}
-				if( country.includes( "USA (" ) || country.includes("Time Zone") )
-				{
-					return "United States";
-				}
-				return country;
-			}
-			onValue(ref(db, "userAccess" ), snap =>
-					{
-				tbody.innerHTML = "";
-				metricsTbody.innerHTML = "";
-				const countryCnt = {};
-				const usersSet = new Set();
-				let visitsToday = 0;
-				const today = new Date().toDateString();
-				if( !snap.exists() )
-				{
-					return;
-				}
-				snap.forEach(child =>
-						{
-					const val = child.val();
-					usersSet.add(child.key);
-					const visitDate = new Date(val.timestamp).toDateString();
-					if( today === visitDate)
-					{ ++visitsToday; }
-					const normalizedCountry = normalizeCountry(val.country, val.timezone);
-					countryCnt[normalizedCountry] = 1 + (countryCnt[normalizedCountry] || 0);
-				});
-				Object.keys(countryCnt).sort((a, b) => countryCnt[b] - countryCnt[a]).forEach(c =>
-						{
-					let desc;
-					if( c === "India" )
-					{
-						desc = "Visitors from India (Asia/Kolkata timezone)";
-					}
-					else if( c === "United States" )
-					{
-						desc = "Visitors from United States";
-					}
-					else if( c === "Cape Verde" )
-					{
-						desc = "Visitors from Cape Verde (Atlantic/Cape_Verde timezone)";
-					}
-					else if( c === "UNKNOWN" )
-					{
-						desc = "Location hidden due to VPN/proxy/privacy settings";
-					} else
-					{
-						desc = `Visitors from ${c}`;
-					}
-					tbody.innerHTML += `<TR>
-						<TD align='middle'>${String(countryCnt[c]).padStart(4, "0" )}</TD>
-						<TD align='right'>${c}</TD>
-						<TD align='left'>${desc}</TD>
-					</TR>`;
-				});
-				const totalVisits = Object.keys(snap.val() || {}).length;
-				const uniqueVisitors = usersSet.size;
-				const metrics = [
-					{ name: "Total Visits", value: totalVisits },
-					{ name: "Unique Visitors", value: uniqueVisitors },
-					{ name: "Visits Today", value: visitsToday }
-				];
-				metrics.forEach(m =>
-						{
-					metricsTbody.innerHTML += `
-					<TR>
-						<TD valign='top' align='right'>${m.name}</TD>
-						<TD valign='top' align='right'>${m.value}</TD>
-					</TR>`;
-				});
-			});
-		</SCRIPT>
-	</BODY>
-</HTML>
+			const continent = continentMap[continentCode] || "UNKNOWN";
+            const key = `${country}|${continent}|${region}|${city}`;
+            counts[key] = (counts[key] || 0) + 1;
+        });
+        Object.keys(counts).forEach(k => {
+            const [country, continent, region, city] = k.split("|");
+            tbody.innerHTML += `
+                <tr>
+                    <td align="center">${String(counts[k]).padStart(4,"0")}</td>
+                    <td>${country}</td>
+                    <td>${region}</td>
+                    <td>${city}</td>
+                    <td>${continent}</td>
+                </tr>`;
+        });
+    });
+</script>
+
+</body>
+</html>
