@@ -1,4 +1,5 @@
-(	function injectDisabledLinkStyles()
+(
+	function injectDisabledLinkStyles()
 	{
 		if( document.getElementById('disabled-link-styles'))
 		{
@@ -1354,6 +1355,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<SPAN class="nav-arrow">&gt;</SPAN>
 					</A>
 					<UL class="submenu">
+					<LI>
+						<A href="#" onclick="javascript:loadHomeContent( event, 'My_Drawings.html' );" class="nav-link">My drawings</A>
+					</LI>
 					<LI>
 						<A href="#" onclick="javascript:loadHomeContent( event, 'my-kt-rank-chatgpt-Fri-09-Jan-2026.html' );" class="nav-link">My KT to chatgpt</A>
 					</LI>
