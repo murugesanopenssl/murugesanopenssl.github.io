@@ -1224,7 +1224,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 							</A>
 							<UL class="submenu">
 								<LI>
-									<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-recharge-any-sim.html' );" class="nav-link">SIM Recharge Exception</A>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-recharge-any-sim.html' );" class="nav-link">Internet Recharge Exception</A>
 								</LI>
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'HandleBankAMB.html' );" class="nav-link">AtmTips0</A>

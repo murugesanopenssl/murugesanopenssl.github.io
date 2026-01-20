@@ -1,120 +1,390 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>SIM Recharge Comparison</title>
-	<style>
-	</style>
-	<script type='text/javascript'>
-		function displayTamil() {
-			document.getElementById('content').innerHTML = `
-			<div class="lang-toggle">
-				<a onclick="displayEnglish()"><font color='blue'><b><u>Display in English</u></b></font></a>
-			</div>
-			<h2 style='color:black;'>கைபேசியில் கைபேசி சந்தாதாரர் அடையாள அட்டை/சிம் மீண்டும் கட்டணம் செலுத்துதல் ஒப்பீடு</h2>
-			<p style='color:black;'><b><u>விவரம்</u></b>: 28 நாள் ரீச்சார்ஜை 14 முறை செய்வதை விட 365 நாள் ரீச்சார்ஜ் செய்வது எவ்வளவு பணம் சேமிக்கிறது என்பதை பார்க்கவும்.</p>
-			<table style='width:100%;'>
-				<tr style='color:black;'>
-					<th>SIM சேவை வழங்குபவர்</th>
-					<th>28 நாள் ரீச்சார்ஜ்</th>
-					<th>365 நாள் ரீச்சார்ஜ்</th>
-					<th>பணம் சேமிப்பு</th>
-					<th>கைபேசியில் சிறந்த இணையத்தின் தரவரிசை எண்</th>
-				</tr>
-				<tr style='background-color:orange;color:black;'>
-					<td><b>ஏர்டெல்</b></td>
-					<td>409.00 ₹<br>14 × 409.00 = <b>5726.00 ₹ / வருடம்</b></td>
-					<td class="no-loss">3999.00 ₹<br><b>3999.00 ₹ / வருடம்</b></td>
-					<td class="no-loss"><b>1727.00 ₹</b></td>
-					<td class="no-loss"><b>01</b></td>
-				</tr>
-				<tr style='background-color:#00ff00;color:black;'>
-					<td><b>பாரத் சஞ்சார் நிகாம் லிமிடெட்</b></td>
-					<td>225.00 ₹<br>14 × 225.00 = <b>3150.00 ₹ / வருடம்</b></td>
-					<td class="no-loss">2799.00 ₹<br><b>2799.00 ₹ / வருடம்</b></td>
-					<td class="no-loss"><b>351.00 ₹</b></td>
-					<td class="no-loss"><b>02</b></td>
-				</tr>
-				<tr style='background-color:red;color:white;'>
-					<td><b>ஜியோ</b></td>
-					<td>399.00 ₹<br>13 × 399.00 = <b>5187.00 ₹ / வருடம்</b></td>
-					<td class="no-loss">3599.00 ₹<br><b>3599.00 ₹ / வருடம்</b></td>
-					<td class="no-loss"><b>1588.00 ₹</b></td>
-					<td class="no-loss"><b>03</b></td>
-				</tr>
-				<tr style='background-color:red;color:white;'>
-					<td><b>வோடபோன் ஐடியா/வோஐ</b></td>
-					<td>409.00 ₹<br>14 × 409.00 = <b>5726.00 ₹ / வருடம்</b></td>
-					<td class="no-loss">3599.00 ₹<br><b>3599.00 ₹ / வருடம்</b></td>
-					<td class="no-loss"><b>2127.00 ₹</b></td>
-					<td class="no-loss"><b>04</b></td>
-				</tr>
-			</table>
-			<h3 style='color:black;'>💡 பரிசு:</h3>
-			<p style='color:black;'>🎯 சிம்-ஐ <span class="loss">28/56/84 நாட்களுக்குப் பதிலாக 365 நாட்கள் (1 வருடம்)</span> ரீச்சார்ஜ் செய்யவும்.</p>
-			<p style='color:black;'>✅ இது உங்களுக்கு ஆண்டுக்கு <span class="loss">₹ 350 முதல் ₹ 2100 வரை</span> பணம் சேமிக்கும்!</p>
-			`;
-		}
-		
-		function displayEnglish() {
-			document.getElementById('content').innerHTML = `
-			<div class="lang-toggle">
-				<a onclick="displayTamil()"><font color='blue'><b><u>தமிழில் காட்சிப்படுத்தவும்</u></b></font></a>
-			</div>
-			<h2 style='color:black;'>SIM Recharge Comparison</h2>
-			<p style='color:black;'><b><u>Details:</u></b> See how much money you save by doing 365-day recharge instead of doing 28-day recharge 14 times.</p>
-			<table style='width:100%;'>
-				<tr style='color:black;'>
-					<th>SIM Provider</th>
-					<th>28 Days Recharge</th>
-					<th>365 Days Recharge</th>
-					<th>Money Saved</th>
-					<th>Best Internet Rank</th>
-				</tr>
-				<tr style='background-color:orange;color:black;'>
-					<td><b>Airtel</b></td>
-					<td>409.00 ₹<br>14 × 409.00 = <b>5726.00 ₹ per Year</b></td>
-					<td class="no-loss">3999.00 ₹<br><b>3999.00 ₹ per Year</b></td>
-					<td class="no-loss"><b>1727.00 ₹</b></td>
-					<td class="no-loss"><b>01</b></td>
-				</tr>
-				<tr style='background-color:#00ff00;color:black;'>
-					<td><b>BSNL</b></td>
-					<td>225.00 ₹<br>14 × 225.00 = <b>3150.00 ₹ per Year</b></td>
-					<td class="no-loss">2799.00 ₹<br><b>2799.00 ₹ per Year</b></td>
-					<td class="no-loss"><b>351.00 ₹</b></td>
-					<td class="no-loss"><b>02</b></td>
-				</tr>
-				<tr style='background-color:red;color:white;'>
-					<td><b>Jio</b></td>
-					<td>399.00 ₹<br>13 × 399.00 = <b>5187.00 ₹ per Year</b></td>
-					<td class="no-loss">3599.00 ₹<br><b>3599.00 ₹ per Year</b></td>
-					<td class="no-loss"><b>1588.00 ₹</b></td>
-					<td class="no-loss"><b>03</b></td>
-				</tr>
-				<tr style='background-color:red;color:white;'>
-					<td><b>Vodafone Idea/VI</b></td>
-					<td>409.00 ₹<br>14 × 409.00 = <b>5726.00 ₹ per Year</b></td>
-					<td class="no-loss">3599.00 ₹<br><b>3599.00 ₹ per Year</b></td>
-					<td class="no-loss"><b>2127.00 ₹</b></td>
-					<td class="no-loss"><b>04</b></td>
-				</tr>
-			</table>
-			<h3 style='color:black;'>💡 Recommendation:</h3>
-			<p style='color:black;'>🎯 Recharge your SIM for <span class="loss">365 days (1 year) instead of 28/56/84 days</span>.</p>
-			<p style='color:black;'>✅ This saves you <span class="loss">₹ 350 to ₹ 2100 per year</span>!</p>
-			`;
-		}
-	</script>
-</head>
-<body>
-	<div class="container">
-		<div id="content"></div>
-	</div>
-	<script>
-		// Load Tamil content when page opens
-		displayTamil();
-	</script>
-</body>
-</html>
+<HTML>
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SIM Recharge Comparison</title>
+		<SCRIPT type='text/javascript'>
+			function displayTamil()
+			{
+				document.getElementById('content').innerHTML = `
+				<DIV class="lang-toggle">
+					<a onclick="displayEnglish()"><font color='blue'><b><u>Display in English</u></b></font></a>
+				</DIV>
+				<H2 style='color:black;'>கைபேசியில் கைபேசி சந்தாதாரர் அடையாள அட்டை/சிம் மீண்டும் கட்டணம் செலுத்துதல் ஒப்பீடு</h2>
+				<P style='color:black;'><b><u>விவரம்</u></b>: 28 நாள் ரீச்சார்ஜை 14 முறை செய்வதை விட 365 நாள் ரீச்சார்ஜ் செய்வது எவ்வளவு பணம் சேமிக்கிறது என்பதை பார்க்கவும்.</P>
+				<TABLE style='width:100%;'>
+					<TR style='color:black;'>
+						<TH valign='top' align='right'>SIM சேவை வழங்குபவர்</TH>
+						<TH valign='top' align='right'>28 நாள் ரீச்சார்ஜ்</TH>
+						<TH valign='top' align='right'>365 நாள் ரீச்சார்ஜ்</TH>
+						<TH valign='top' align='right'>பணம் சேமிப்பு</TH>
+						<TH valign='top' align='right'>கைபேசியில் சிறந்த இணையத்தின் தரவரிசை எண்</TH>
+					</TR>
+					<TR style='background-color:orange;color:black;'>
+						<TD valign='top' align='right'><b>ஏர்டெல்</b></TD>
+						<TD valign='top' align='right'>409.00 ₹<br>14 × 409.00 = <b>5726.00 ₹ / வருடம்</b></TD>
+						<TD class="no-loss">3999.00 ₹<br><b>3999.00 ₹ / வருடம்</b></TD>
+						<TD class="no-loss"><b>1727.00 ₹</b></TD>
+						<TD class="no-loss"><b>01</b></TD>
+					</TR>
+					<TR style='background-color:#00ff00;color:black;'>
+						<TD valign='top' align='right'><b>பாரத் சஞ்சார் நிகாம் லிமிடெட்</b></TD>
+						<TD valign='top' align='right'>225.00 ₹<br>14 × 225.00 = <b>3150.00 ₹ / வருடம்</b></TD>
+						<TD class="no-loss">2799.00 ₹<br><b>2799.00 ₹ / வருடம்</b></TD>
+						<TD class="no-loss"><b>351.00 ₹</b></TD>
+						<TD class="no-loss"><b>02</b></TD>
+					</TR>
+					<TR style='background-color:red;color:white;'>
+						<TD valign='top' align='right'><b>ஜியோ</b></TD>
+						<TD valign='top' align='right'>399.00 ₹<br>13 × 399.00 = <b>5187.00 ₹ / வருடம்</b></TD>
+						<TD class="no-loss">3599.00 ₹<br><b>3599.00 ₹ / வருடம்</b></TD>
+						<TD class="no-loss"><b>1588.00 ₹</b></TD>
+						<TD class="no-loss"><b>03</b></TD>
+					</TR>
+					<TR style='background-color:red;color:white;'>
+						<TD valign='top' align='right'><b>வோடபோன் ஐடியா/வோஐ</b></TD>
+						<TD valign='top' align='right'>409.00 ₹<br>14 × 409.00 = <b>5726.00 ₹ / வருடம்</b></TD>
+						<TD class="no-loss">3599.00 ₹<br><b>3599.00 ₹ / வருடம்</b></TD>
+						<TD class="no-loss"><b>2127.00 ₹</b></TD>
+						<TD class="no-loss"><b>04</b></TD>
+					</TR>
+				</table>
+				<h3 style='color:black;'>💡 பரிசு:</h3>
+				<P style='color:black;'>🎯 சிம்-ஐ <span class="loss">28/56/84 நாட்களுக்குப் பதிலாக 365 நாட்கள் (1 வருடம்)</span> ரீச்சார்ஜ் செய்யவும்.</P>
+				<P style='color:black;'>✅ இது உங்களுக்கு ஆண்டுக்கு <span class="loss">350.00 ₹ முதல் 2100.00 ₹ வரை</span> பணம் சேமிக்கும்!</P>
+				<H2 style='color:black;'>பிந்தைய கட்டணம் நார்சார்/ஃபைபர்நெட் இணைய கட்டணம் ஒப்பீடு</H2>
+				<TABLE border='1' style='width:100%;'>
+					<TR style='color:black;'>
+						<TH valign='top' align='right'>
+							இணைய சேவை வழங்குபவர்
+						</TH>
+						<TH valign='top' align='right'>
+							இணைய வேக சோதனை
+							<TABLE style='width:100%;' border='1'>
+								<TR>
+									<TD valign='top' align='right' style='width:50%;'>
+										பதிவிறக்க வேகம்
+									</TD>
+									<TD valign='top' align='right'>
+										பதிவேற்ற வேகம்
+									</TD>
+								</TR>
+							</TABLE>
+						</TH>
+						<TH valign='top' align='right'>
+							மாத கட்டணம்
+						</TH>
+						<TH valign='top' align='right'>
+							தரவு அளவு
+						</TH>
+						<TH valign='top' align='right'>
+							தரவரிசை
+						</TH>
+					</TR>
+					<TR style='background-color:#00ff00;color:black;'>
+						<TD valign='top' align='right'>
+							பிஎஸ்என்எல் நார்சார்/ஃபைபர்நெட்
+						</TD>
+						<TD valign='top' align='right'>
+							<TABLE style='width:100%;height:100%' border='1'>
+								<TR>
+									<TD valign='top' align='right' style='width:50%;'>36.76 கோடி எழுத்துகள் ஒரு விநாடிக்கு<BR>35.90 MB/s</TD>
+									<TD valign='top' align='right'>
+										42.36 கோடி எழுத்துகள் ஒரு விநாடிக்கு<BR>
+										4.04 MB/s</TD>
+								</TR>
+							</TABLE>
+						</TD>
+						<TD valign='top' align='right'>
+							471.00 ₹/ரூ(நகரம்) / மாதம் அல்லது<BR>
+						(ஒரு ஆண்டிற்கு செலுத்தப்படும் தொகை: ₹471.00 * 12 = ₹5652.00)<BR>
+						555.00 ₹/ரூ(மாநகரம்) / மாதம்<BR>
+						(ஒரு ஆண்டிற்கு செலுத்தப்படும் தொகை: ₹555.00 * 12 = ₹6660.00)
+						</TD>
+						<TD valign='top' align='right'>
+							3300 GB / மாதம்<br>
+							(≈ 106 GB / நாள்)
+						</TD>
+						<TD valign='top' align='right'><b>01</b></TD>
+					</TR>
+					<TR style='background-color:orange;color:black;'>
+						<TD valign='top' align='right'><b>ஏர்டெல் ஃபைபர்</b></TD>
+						<TD valign='top' align='right'>
+							<TABLE style='width:100%;' border='1'>
+								<TR>
+									<TD valign='top' align='right'>
+										12.58 கோடி எழுத்துகள் ஒரு விநாடிக்கு<BR>
+										12 MB/s</TD>
+									<TD valign='top' align='right'>
+										83.88 கோடி எழுத்துகள் ஒரு விநாடிக்கு<BR>
+										8 MB/s</TD>
+								</TR>
+							</TABLE>
+						</TD>
+						<TD valign='top' align='right'>
+							3999.00 ₹ / மாதம்<br>
+							(வருடம்: 47988.00 ₹)
+						</TD>
+						<TD valign='top' align='right'>
+							3300 GB / மாதம்
+						</TD>
+						<TD valign='top' align='right'>02</TD>
+					</TR>
+					<TR style='background-color:violet;color:black;'>
+						<TD valign='top' align='right'><b>ஜியோ ஃபைபர்</b></TD>
+						<TD valign='top' align='right'>
+							<TABLE style='width:100%;' border='1'>
+								<TR>
+									<TD valign='top' align='right'>
+										12.58 கோடி எழுத்துகள் ஒரு விநாடிக்கு<BR>
+										12 MB/s
+									</TD>
+									<TD valign='top' align='right'>
+										94.37 கோடி எழுத்துகள் ஒரு விநாடிக்கு<BR>
+										9 MB/s
+									</TD>
+								</TR>
+							</TABLE>
+						</TD>
+						<TD valign='top' align='right'>
+							1178.00 ₹ / மாதம்<br>
+							(வருடம்: 14136.00 ₹)
+						</TD>
+						<TD valign='top' align='right'>
+							3300 GB / மாதம்
+						</TD>
+						<TD valign='top' align='right'>03</TD>
+					</TR>
+					<TR style='background-color:blue;color:white;'>
+						<TD valign='top' align='right'><b>வோடபோன் ஐடியா / VI ஃபைபர்</b></TD>
+						<TD valign='top' align='right'>
+							<TABLE style='width:100%;' border='1'>
+								<TR>
+									<TD valign='top' align='right'>
+										83.89 கோடி எழுத்துகள் ஒரு விநாடிக்கு<BR>
+										08 MB/s
+									</TD>
+									<TD valign='top' align='right'>
+										62.91 கோடி எழுத்துகள் ஒரு விநாடிக்கு<BR>
+										6 MB/s
+										</TD>
+								</TR>
+							</TABLE>
+						</TD>
+						<TD valign='top' align='right'>
+							1200.00 ₹ / மாதம்<br>
+							(வருடம்: 14400.00 ₹)
+						</TD>
+						<TD valign='top' align='right'>
+							3300 GB / மாதம்
+						</TD>
+						<TD valign='top' align='right'>04</TD>
+					</TR>
+				</TABLE>
+					<h3 style='color:black;'>💡 Recommendation:</h3>
+					<P style='color:black;'>நான் BSNL ஃபைபர் நெட் பாஸ்ட் பேட் இணைப்பை பயன்படுத்த விரும்புகிறேன், காரணங்கள்::<BR>
+					a) 🎯 செலவு<BR>
+					b) ✅ இணைய வேகம்</P>
+				`;
+			}
+			function displayEnglish()
+			{
+				document.getElementById('content').innerHTML = `
+				<DIV class="lang-toggle">
+					<a onclick="displayTamil()"><font color='blue'><b><u>தமிழில் காட்சிப்படுத்தவும்</u></b></font></a>
+				</DIV>
+				<H2 style='color:black;'>SIM Recharge Comparison</h2>
+				<P style='color:black;'><b><u>Details:</u></b> See how much money you save by doing 365-day recharge instead of doing 28-day recharge 14 times.</P>
+				<TABLE style='width:100%;'>
+					<TR style='color:black;'>
+						<TH valign='top' align='right'>SIM Provider</TH>
+						<TH valign='top' align='right'>28 Days Recharge</TH>
+						<TH valign='top' align='right'>365 Days Recharge</TH>
+						<TH valign='top' align='right'>Money Saved</TH>
+						<TH valign='top' align='right'>Best Internet Rank</TH>
+					</TR>
+					<TR style='background-color:orange;color:black;'>
+						<TD valign='top' align='right'><b>Airtel</b></TD>
+						<TD valign='top' align='right'>409.00 ₹<br>14 × 409.00 = <b>5726.00 ₹ per Year</b></TD>
+						<TD class="no-loss">3999.00 ₹<br><b>3999.00 ₹ per Year</b></TD>
+						<TD class="no-loss"><b>1727.00 ₹</b></TD>
+						<TD class="no-loss"><b>01</b></TD>
+					</TR>
+					<TR style='background-color:#00ff00;color:black;'>
+						<TD valign='top' align='right'><b>BSNL</b></TD>
+						<TD valign='top' align='right'>225.00 ₹<br>14 × 225.00 = <b>3150.00 ₹ per Year</b></TD>
+						<TD class="no-loss">2799.00 ₹<br><b>2799.00 ₹ per Year</b></TD>
+						<TD class="no-loss"><b>351.00 ₹</b></TD>
+						<TD class="no-loss"><b>02</b></TD>
+					</TR>
+					<TR style='background-color:red;color:white;'>
+						<TD valign='top' align='right'><b>Jio</b></TD>
+						<TD valign='top' align='right'>399.00 ₹<br>13 × 399.00 = <b>5187.00 ₹ per Year</b></TD>
+						<TD class="no-loss">3599.00 ₹<br><b>3599.00 ₹ per Year</b></TD>
+						<TD class="no-loss"><b>1588.00 ₹</b></TD>
+						<TD class="no-loss"><b>03</b></TD>
+					</TR>
+					<TR style='background-color:red;color:white;'>
+						<TD valign='top' align='right'><b>Vodafone Idea/VI</b></TD>
+						<TD valign='top' align='right'>409.00 ₹<br>14 × 409.00 = <b>5726.00 ₹ per Year</b></TD>
+						<TD class="no-loss">3599.00 ₹<br><b>3599.00 ₹ per Year</b></TD>
+						<TD class="no-loss"><b>2127.00 ₹</b></TD>
+						<TD class="no-loss"><b>04</b></TD>
+					</TR>
+				</table>
+				<h3 style='color:black;'>💡 Recommendation:</h3>
+				<P style='color:black;'>🎯 Recharge your SIM for <span class="loss">365 days (1 year) instead of 28/56/84 days</span>.</P>
+				<P style='color:black;'>✅ This saves you <span class="loss">350.00 ₹ to 2100.00 ₹ per year</span>!</P>
+				<H2 style='color:black;'>Post-paid fibernet recharge comparison</h2>
+				<TABLE border='1' style='width:100%;'>
+					<TR style='color:black;'>
+						<TH valign='top' align='right'>
+							Internet service provider
+						</TH>
+						<TH valign='top' align='right'>
+							Internet speed test
+							<TABLE style='width:100%;' border='1'>
+								<TR>
+									<TD valign='top' align='right' style='width:50%;'>
+										Mbps download speed
+									</TD>
+									<TD valign='top' align='right'>
+										Mbps upload speed
+									</TD>
+								</TR>
+							</TABLE>
+						</TH>
+						<TH valign='top' align='right'>
+							Payment per month
+						</TH>
+						<TH valign='top' align='right'>
+							Data amount
+						</TH>
+						<TH valign='top' align='right'>
+							Ranking based on:<BR>
+							a) amount<BR>
+							b) net speed<BR>
+							c) data usage per day
+						</TH>
+					</TR>
+					<TR style='background-color:#00ff00;color:black;'>
+						<TD valign='top' align='right'>
+							BSNL Fibernet
+						</TD>
+						<TD valign='top' align='right'>
+							<TABLE style='width:100%;' border='1'>
+								<TR>
+									<TD valign='top' align='right' style='width:50%;'>
+										35.90 Megabytes per second
+									</TD>
+									<TD valign='top' align='right'>
+										4.04 Megabytes per second
+									</TD>
+								</TR>
+							</TABLE>
+						</TD>
+						<TD valign='top' align='right'>
+							471.00 ₹(TOWN) OR<BR>
+							471.00 ₹ * 12 = 5652.00 ₹ OR<BR>
+							555.00 ₹(URBAN)<BR>
+							555.00 ₹ * 12 = 6660.00 per year
+						</TD>
+						<TD valign='top' align='right'>
+							3300 GB per month = approximately 106 GB per day
+						</TD>
+						<TD valign='top' align='right'><b>01</b></TD>
+					</TR>
+					<TR style='background-color:orange;'>
+						<TD valign='top' align='right'><b>Airtel Fiber</b></TD>
+						<TD valign='top' align='right'>
+							<TABLE style='width:100%;' border='1'>
+								<TR>
+									<TD valign='top' align='right' style='width:50%;'>
+										10-12 Megabytes per second
+									</TD>
+									<TD valign='top' align='right'>
+										8-12 Megabytes per second
+									</TD>
+								</TR>
+							</TABLE>
+						</TD>
+						<TD valign='top' align='right' style='background-color:red;'>
+							3,999.00 ₹<BR>
+							3,999.00 ₹ * 12 = 47988.00 per year
+						</TD>
+						<TD valign='top' align='right'>
+							3300 GB per month = approximately 106 GB per day
+						</TD>
+						<TD valign='top' align='right'>
+							02
+						</TD>
+					</TR>
+					<TR style='background-color:violet;'>
+						<TD valign='top' align='right'><b>Jio Fiber</b></TD>
+						<TD valign='top' align='right'>
+							<TABLE style='width:100%;' border='1'>
+								<TR>
+									<TD valign='top' align='right' style='width:50%;'>
+										9-12 Megabytes per second
+									</TD>
+									<TD valign='top' align='right'>
+										9-12 Megabytes per second
+									</TD>
+								</TR>
+							</TABLE>
+						</TD>
+						<TD valign='top' align='right' style='background-color:red;'>
+							1,178.00 ₹<BR>
+							1,178.00 ₹ * 12 = 14136.00 per year
+						</TD>
+						<TD valign='top' align='right'>
+							3300 GB per month = approximately 106 GB per day
+						</TD>
+						<TD valign='top' align='right'>
+							03
+						</TD>
+					</TR>
+					<TR style='background-color:blue;color:white;'>
+						<TD valign='top' align='right'><b>Vodafone Idea/ VI Fiber</b></TD>
+						<TD valign='top' align='right'>
+							<TABLE style='width:100%;' border='1'>
+								<TR>
+									<TD valign='top' align='right' style='width:50%;'>
+										6-8 Megabytes per second
+									</TD>
+									<TD valign='top' align='right'>
+										6-8 Megabytes per second
+									</TD>
+								</TR>
+							</TABLE>
+						</TD>
+						<TD valign='top' align='right' style='background-color:red;'>
+							1,200.00 ₹<BR>
+							1,200.00 ₹ * 12 = 14400.00 per year
+						</TD>
+						<TD valign='top' align='right'>
+							3300 GB per month = approximately 106 GB per day
+						</TD>
+						<TD valign='top' align='right'>
+							04
+						</TD>
+					</TR>
+					</TABLE>
+					<h3 style='color:black;'>💡 Recommendation:</h3>
+					<P style='color:black;'>I prefer to use BSNL fibernet post paid connection due to:<BR>
+					a) 🎯 amount<BR>
+					b) ✅ net speed</P>
+					`;
+			}
+		</script>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV class="container">
+			<DIV id="content"></DIV>
+		</DIV>
+		<SCRIPT type='text/javascript'>
+			displayTamil();
+		</SCRIPT>
+	</BODY>
+</HTML>
