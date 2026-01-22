@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<TITLE>INR Exchange Rates (Today)</TITLE>
+		<STYLE type='text/css'>
+		</STYLE>
+	</HEAD>
+	<BODY>
+		<H2>Indian rupee vs Other Currencies (Today's Rate)</h2>
+		<TABLE border='1' style='width:100%;'>
+			<THEAD>
+				<TR>
+					<TH>S.No</TH>
+					<TH>Indian Rupee (INR)</TH>
+					<TH>Other Currency</TH>
+					<TH>Country</TH>
+				</TR>
+			</THEAD>
+			<TBODY id="ratesTable">
+				<TR>
+					<TD colspan="2">Loading today's rates...</td>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<SCRIPT type="text/javascript">
+			const currencies = {
+				AED: "United Arab Emirates",
+				AFN: "Afghanistan",
+				ALL: "Albania",
+				AMD: "Armenia",
+				ANG: "Curaçao",
+				AOA: "Angola",
+				ARS: "Argentina",
+				AUD: "Australia",
+				AWG: "Aruba",
+				AZN: "Azerbaijan",
+				BBD: "Barbados",
+				BDT: "Bangladesh",
+				BGN: "Bulgaria",
+				BHD: "Bahrain",
+				BIF: "Burundi",
+				BMD: "Bermuda",
+				BND: "Brunei",
+				BOB: "Bolivia",
+				BRL: "Brazil",
+				BSD: "Bahamas",
+				BTN: "Bhutan",
+				BWP: "Botswana",
+				BYN: "Belarus",
+				BZD: "Belize",
+				CAD: "Canada",
+				CDF: "Congo",
+				CHF: "Switzerland",
+				CLP: "Chile",
+				CNY: "China",
+				COP: "Colombia",
+				CRC: "Costa Rica",
+				CUP: "Cuba",
+				CVE: "Cape Verde",
+				CZK: "Czech Republic",
+				DJF: "Djibouti",
+				DKK: "Denmark",
+				DZD: "Algeria",
+				EGP: "Egypt",
+				ERN: "Eritrea",
+				ETB: "Ethiopia",
+				EUR: "Eurozone",
+				FJD: "Fiji",
+				FKP: "Falkland Islands",
+				GBP: "United Kingdom",
+				GEL: "Georgia",
+				GHS: "Ghana",
+				GIP: "Gibraltar",
+				GMD: "Gambia",
+				GNF: "Guinea",
+				GTQ: "Guatemala",
+				GYD: "Guyana",
+				HKD: "Hong Kong",
+				HNL: "Honduras",
+				HRK: "Croatia",
+				HTG: "Haiti",
+				HUF: "Hungary",
+				IDR: "Indonesia",
+				ILS: "Israel",
+				INR: "India",
+				IQD: "Iraq",
+				IRR: "Iran",
+				ISK: "Iceland",
+				JMD: "Jamaica",
+				JOD: "Jordan",
+				JPY: "Japan",
+				KES: "Kenya",
+				KGS: "Kyrgyzstan",
+				KHR: "Cambodia",
+				KMF: "Comoros",
+				KPW: "North Korea",
+				KRW: "South Korea",
+				KWD: "Kuwait",
+				KYD: "Cayman Islands",
+				KZT: "Kazakhstan",
+				LAK: "Laos",
+				LBP: "Lebanon",
+				LKR: "Sri Lanka",
+				LRD: "Liberia",
+				LSL: "Lesotho",
+				LYD: "Libya",
+				MAD: "Morocco",
+				MDL: "Moldova",
+				MGA: "Madagascar",
+				MKD: "North Macedonia",
+				MMK: "Myanmar",
+				MNT: "Mongolia",
+				MOP: "Macau",
+				MUR: "Mauritius",
+				MVR: "Maldives",
+				MWK: "Malawi",
+				MXN: "Mexico",
+				MYR: "Malaysia",
+				NAD: "Namibia",
+				NGN: "Nigeria",
+				NIO: "Nicaragua",
+				NOK: "Norway",
+				NPR: "Nepal",
+				NZD: "New Zealand",
+				OMR: "Oman",
+				PAB: "Panama",
+				PEN: "Peru",
+				PGK: "Papua New Guinea",
+				PHP: "Philippines",
+				PKR: "Pakistan",
+				PLN: "Poland",
+				PYG: "Paraguay",
+				QAR: "Qatar",
+				RON: "Romania",
+				RSD: "Serbia",
+				RUB: "Russia",
+				RWF: "Rwanda",
+				SAR: "Saudi Arabia",
+				SBD: "Solomon Islands",
+				SCR: "Seychelles",
+				SDG: "Sudan",
+				SEK: "Sweden",
+				SGD: "Singapore",
+				SHP: "Saint Helena",
+				SLL: "Sierra Leone",
+				SOS: "Somalia",
+				SRD: "Suriname",
+				SSP: "South Sudan",
+				STN: "São Tomé and Príncipe",
+				SYP: "Syria",
+				SZL: "Eswatini",
+				THB: "Thailand",
+				TJS: "Tajikistan",
+				TMT: "Turkmenistan",
+				TND: "Tunisia",
+				TOP: "Tonga",
+				TRY: "Turkey",
+				TTD: "Trinidad & Tobago",
+				TWD: "Taiwan",
+				TZS: "Tanzania",
+				UAH: "Ukraine",
+				UGX: "Uganda",
+				USD: "United States",
+				UYU: "Uruguay",
+				UZS: "Uzbekistan",
+				VES: "Venezuela",
+				VND: "Vietnam",
+				VUV: "Vanuatu",
+				WST: "Samoa",
+				XAF: "Central African CFA",
+				XCD: "East Caribbean",
+				XOF: "West African CFA",
+				YER: "Yemen",
+				ZAR: "South Africa",
+				ZMW: "Zambia"
+			};
+			const preferredCurrencies = [ "LKR","SGD","BDT","RUB","CNY","MYR","IRR","GRL", "CAD", "AUD", "NZD", "ILS", "AED", "BRL", "DKK", "HKD", "MXN", "EGP", "AFN", "INR"];
+			const indiaFriendsCurrencies = [
+			  "INR", // India
+			  "SGD", // Singapore – major hub, business-friendly
+			  "MYR", // Malaysia – trade-friendly
+			  "AED", // UAE – trade, investments, remittances
+			  "BDT", // Bangladesh – trade & investment
+			  "LKR", // Sri Lanka – business-friendly historically
+			  "ILS", // Israel – tech & defense cooperation
+			  "RUB", // Russia – historic industrial cooperation
+			  "AFN", // Afghanistan – historic cooperation
+			  "QAR", // Qatar – energy & investment
+			  "KWD", // Kuwait – trade-friendly
+			  "BTN", // Bhutan – business operations friendly
+			  "NPR", // Nepal – open economic cooperation
+			  "MVR", // Maldives – tourism & Indian investments
+			  "THB", // Thailand – ASEAN trade partner
+			  "IDR", // Indonesia – trade & business-friendly
+			  "PHL", // Philippines – ASEAN trade cooperation
+			  "VND", // Vietnam – emerging trade partner
+			  "EGP", // Egypt – regional trade cooperation
+			  "SAF", // South Africa – trade & investment friendly
+			  "BRL", // Brazil – trade-friendly, tech cooperation
+			  "MXN", // Mexico – trade partner
+			  "TUR", // Turkey – bilateral trade
+			  "KOR", // South Korea – industrial cooperation
+			  "JPN", // Japan – investment & tech partnerships
+			  "AUS", // Australia – trade & mining investments
+			  "NZD", // New Zealand – trade cooperation
+			  "GBR", // United Kingdom – trade & historic cooperation
+			  "CAN", // Canada – trade & investment
+			  "CHF", // Switzerland – banking & trade-friendly
+			];
+			const maxRows = 100;
+			let count=0;
+			fetch("https://open.er-api.com/v6/latest/INR")
+			.then( response => response.json() )
+			.then( data =>
+				{
+					const tbody = document.getElementById("ratesTable");
+					tbody.innerHTML = "";
+					let rows = [];
+					Object.keys(currencies).forEach(code => {
+						if (data.rates[code]) {
+							const inrValue = 1 / data.rates[code];
+							// Include if in top 101 or is an India friend or UK/USA
+							if (count < 201 || indiaFriendsCurrencies.includes(code) || ["GBP","USD"].includes(code)) {
+								rows.push({
+									inr: inrValue,
+									currency: code,
+									country: currencies[code]
+								});
+							}
+						}
+						++count;
+					});
+					rows.sort((a, b) => b.inr - a.inr);
+					rows.forEach( (item, idx) => {
+						const index = String(idx + 1).padStart(3, '0'); // 001, 002, ...
+						const isPreferred = indiaFriendsCurrencies.includes(item.currency);
+						const isUKorUSFriend = ["GBP","USD"].includes(item.currency);
+						tbody.innerHTML += `
+						<TR style="${
+  isPreferred 
+    ? 'background:#00ffff;color:#000;' 
+    : (["GBP","USD"].includes(item.currency) 
+        ? 'background:orange;color:#000;' 
+        : (item.inr < 1 
+            ? 'background:#00ff00;color:#000;' 
+            : ''
+          )
+      )
+}">
+							<TD valign="top" align="center">${index}</TD>
+							<TD valign="top" align="right">
+								${item.inr < 1 ? item.inr.toFixed(2) : item.inr.toFixed(2) + ' INR'}
+							</TD>
+							<TD valign="top" align="right">1 ${item.currency}</TD>
+							<TD valign="top" align="left">${item.country}</TD>
+						</TR>
+						`;
+					});
+			})
+			.catch(() =>
+				{
+					document.getElementById("ratesTable").innerHTML = "<TR><TD colspan='2' align='center'>Failed to load rates</TD></TR>";
+				}
+			);
+			</SCRIPT>
+	</BODY>
+</HTML>

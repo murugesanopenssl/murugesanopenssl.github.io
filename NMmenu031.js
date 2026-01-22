@@ -1277,6 +1277,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 					<A href="#" onclick="javascript:loadHomeContent( event, 'HandleBankAMB.html' );" class="nav-link">Handling AMB</A>
 				</LI>
 				<LI>
+					<A href="#" onclick="javascript:loadHomeContent( event, 'inr-others.html' );" class="nav-link">INR exchange rates</A>
+				</LI>
+				<LI>
 					<A href="#" onclick="javascript:loadHomeContent( event, 'Last-year-investment-provit-at-earth.html' );" class="nav-link">Last Year Investment Trends</A>
 				</LI>
 				<LI>
