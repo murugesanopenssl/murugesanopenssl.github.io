@@ -1,0 +1,214 @@
+<SCRIPT type='text/javascript'>
+function searchCountry() {
+	const input = document.getElementById("searchBox").value.toLowerCase();
+	const table = document.getElementById("countryTable");
+	const tbody = table.getElementsByTagName("tbody")[0];
+	const rows = tbody.getElementsByTagName("tr");
+	let resultsHTML = "";
+	for( let i = 0; rows.length > i; ++i)
+	{
+		const country = rows[i].getElementsByTagName("td")[1].textContent.toLowerCase();
+		if( country.includes(input) && ( "" !== input ) )
+	{
+			resultsHTML += "<TABLE border='1' cellpadding='4' cellspacing='0' style='width:100%; margin-top:10px;'><TR style='color:black;'><TH>Rank</TH><TH>Country</TH><TH>Score</TH></TR>" +
+						"<TR style='color:black;'>" + rows[i].innerHTML + "</TR></TABLE>";
+			rows[i].style.display = found ? "" : "none";
+		}
+	}
+	document.getElementById("searchResults").innerHTML = resultsHTML;
+}
+function searchTable() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const table = document.getElementById("rniTable");
+    const rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) { // skip header row
+        const cells = rows[i].getElementsByTagName("td");
+        let found = false;
+        for (let j = 0; j < cells.length; j++) {
+            if (cells[j].textContent.toLowerCase().includes(input)) {
+                found = true;
+                break;
+            }
+        }
+        rows[i].style.display = found ? "" : "none"; // show matching rows, hide others
+    }
+}
+</SCRIPT>
+<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+	<h2><FONT color='black'>Country Score Table on Thu 22-Jan-2026 IST <A href='#India'>India Rank 016</A></FONT></H2>
+	<!--
+	<input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for countries...">
+	<div id="searchResults"></DIV>
+	-->
+	<TABLE border="1" cellpadding="4" cellspacing="0" style='width:100%;' style='color:black;'>
+	<THEAD>
+		<TR style='color:black;'>
+			<TH valign='top' align='right'>Rank</TH>
+			<TH valign='top' align='right'>Country</TH>
+			<TH valign='top' align='right'>Score</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR style='color:black;'><TD valign='top' align='right'>001</TD><TD valign='top' align='right'>Singapore</TD><TD valign='top' align='right'>0.61945</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>002</TD><TD valign='top' align='right'>Switzerland</TD><TD valign='top' align='right'>0.58692</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>003</TD><TD valign='top' align='right'>Denmark</TD><TD valign='top' align='right'>0.58372</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>004</TD><TD valign='top' align='right'>Cyprus</TD><TD valign='top' align='right'>0.57737</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>005</TD><TD valign='top' align='right'>Sweden</TD><TD valign='top' align='right'>0.57397</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>006</TD><TD valign='top' align='right'>Czechia</TD><TD valign='top' align='right'>0.57037</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>007</TD><TD valign='top' align='right'>Belgium</TD><TD valign='top' align='right'>0.56900</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>008</TD><TD valign='top' align='right'>Austria</TD><TD valign='top' align='right'>0.56645</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>009</TD><TD valign='top' align='right'>Ireland</TD><TD valign='top' align='right'>0.56336</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>010</TD><TD valign='top' align='right'>Georgia</TD><TD valign='top' align='right'>0.55805</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>011</TD><TD valign='top' align='right'>Croatia</TD><TD valign='top' align='right'>0.55782</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>012</TD><TD valign='top' align='right'>Germany</TD><TD valign='top' align='right'>0.55703</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>013</TD><TD valign='top' align='right'>Portugal</TD><TD valign='top' align='right'>0.55513</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>014</TD><TD valign='top' align='right'>Bulgaria</TD><TD valign='top' align='right'>0.55466</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>015</TD><TD valign='top' align='right'>Norway</TD><TD valign='top' align='right'>0.55291</TD></TR>
+		<TR style='color:black;background-color:#00ff00;'>
+			<TD valign='top' align='right'>
+				<A name='India'>
+					016
+				</A>
+			</TD>
+			<TD valign='top' align='right'>India</TD><TD valign='top' align='right'>0.551513</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>017</TD><TD valign='top' align='right'>France</TD><TD valign='top' align='right'>0.54835</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>018</TD><TD valign='top' align='right'>Albania</TD><TD valign='top' align='right'>0.54650</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>019</TD><TD valign='top' align='right'>Poland</TD><TD valign='top' align='right'>0.54636</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>020</TD><TD valign='top' align='right'>Netherlands</TD><TD valign='top' align='right'>0.54408</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>021</TD><TD valign='top' align='right'>South Korea</TD><TD valign='top' align='right'>0.54244</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>022</TD><TD valign='top' align='right'>Kyrgyzstan</TD><TD valign='top' align='right'>0.54098</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>023</TD><TD valign='top' align='right'>Finland</TD><TD valign='top' align='right'>0.54092</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>024</TD><TD valign='top' align='right'>Thailand</TD><TD valign='top' align='right'>0.54036</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>025</TD><TD valign='top' align='right'>United Kingdom</TD><TD valign='top' align='right'>0.53849</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>026</TD><TD valign='top' align='right'>El Salvador</TD><TD valign='top' align='right'>0.53546</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>027</TD><TD valign='top' align='right'>Mauritius</TD><TD valign='top' align='right'>0.53521</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>028</TD><TD valign='top' align='right'>Spain</TD><TD valign='top' align='right'>0.53466</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>029</TD><TD valign='top' align='right'>Nicaragua</TD><TD valign='top' align='right'>0.53418</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>030</TD><TD valign='top' align='right'>Iceland</TD><TD valign='top' align='right'>0.53391</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>031</TD><TD valign='top' align='right'>Romania</TD><TD valign='top' align='right'>0.53367</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>032</TD><TD valign='top' align='right'>Serbia</TD><TD valign='top' align='right'>0.53266</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>033</TD><TD valign='top' align='right'>Cambodia</TD><TD valign='top' align='right'>0.53235</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>034</TD><TD valign='top' align='right'>Italy</TD><TD valign='top' align='right'>0.53204</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>035</TD><TD valign='top' align='right'>Tajikistan</TD><TD valign='top' align='right'>0.53148</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>036</TD><TD valign='top' align='right'>Greece</TD><TD valign='top' align='right'>0.53044</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>037</TD><TD valign='top' align='right'>Armenia</TD><TD valign='top' align='right'>0.52953</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>038</TD><TD valign='top' align='right'>Japan</TD><TD valign='top' align='right'>0.52930</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>039</TD><TD valign='top' align='right'>North Macedonia</TD><TD valign='top' align='right'>0.52845</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>040</TD><TD valign='top' align='right'>Namibia</TD><TD valign='top' align='right'>0.52775</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>041</TD><TD valign='top' align='right'>Morocco</TD><TD valign='top' align='right'>0.52741</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>042</TD><TD valign='top' align='right'>Bangladesh</TD><TD valign='top' align='right'>0.52695</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>043</TD><TD valign='top' align='right'>Israel</TD><TD valign='top' align='right'>0.52658</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>044</TD><TD valign='top' align='right'>Vietnam</TD><TD valign='top' align='right'>0.52456</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>045</TD><TD valign='top' align='right'>Canada</TD><TD valign='top' align='right'>0.52390</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>046</TD><TD valign='top' align='right'>Antigua and Barbuda</TD><TD valign='top' align='right'>0.52168</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>047</TD><TD valign='top' align='right'>Costa Rica</TD><TD valign='top' align='right'>0.52129</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>048</TD><TD valign='top' align='right'>New Zealand</TD><TD valign='top' align='right'>0.52108</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>049</TD><TD valign='top' align='right'>Lebanon</TD><TD valign='top' align='right'>0.52090</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>050</TD><TD valign='top' align='right'>Indonesia</TD><TD valign='top' align='right'>0.51992</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>051</TD><TD valign='top' align='right'>Malaysia</TD><TD valign='top' align='right'>0.51973</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>052</TD><TD valign='top' align='right'>Tunisia</TD><TD valign='top' align='right'>0.51965</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>053</TD><TD valign='top' align='right'>Fiji</TD><TD valign='top' align='right'>0.51821</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>054</TD><TD valign='top' align='right'>Chile</TD><TD valign='top' align='right'>0.51619</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>055</TD><TD valign='top' align='right'>Dominican Republic</TD><TD valign='top' align='right'>0.51613</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>056</TD><TD valign='top' align='right'>Hungary</TD><TD valign='top' align='right'>0.51543</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>057</TD><TD valign='top' align='right'>Uruguay</TD><TD valign='top' align='right'>0.51398</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>058</TD><TD valign='top' align='right'>Uzbekistan</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>059</TD><TD valign='top' align='right'>Moldova</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>060</TD><TD valign='top' align='right'>Panama</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>061</TD><TD valign='top' align='right'>Belarus</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>062</TD><TD valign='top' align='right'>Australia</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>063</TD><TD valign='top' align='right'>Ghana</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>064</TD><TD valign='top' align='right'>Guatemala</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>065</TD><TD valign='top' align='right'>Libya</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>066</TD><TD valign='top' align='right'>United States</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>067</TD><TD valign='top' align='right'>Bosnia and Herzegovina</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>068</TD><TD valign='top' align='right'>China</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>069</TD><TD valign='top' align='right'>Lesotho</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>070</TD><TD valign='top' align='right'>Mexico</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>071</TD><TD valign='top' align='right'>Gambia</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>072</TD><TD valign='top' align='right'>Paraguay</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>073</TD><TD valign='top' align='right'>Philippines</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>074</TD><TD valign='top' align='right'>Guyana</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>075</TD><TD valign='top' align='right'>United Arab Emirates</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>076</TD><TD valign='top' align='right'>Mongolia</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>077</TD><TD valign='top' align='right'>Bhutan</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>078</TD><TD valign='top' align='right'>Liberia</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>079</TD><TD valign='top' align='right'>Botswana</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>080</TD><TD valign='top' align='right'>Comoros</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>081</TD><TD valign='top' align='right'>Azerbaijan</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>082</TD><TD valign='top' align='right'>Togo</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>083</TD><TD valign='top' align='right'>Bahrain</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>084</TD><TD valign='top' align='right'>Kazakhstan</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>085</TD><TD valign='top' align='right'>Gabon</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>086</TD><TD valign='top' align='right'>Benin</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>087</TD><TD valign='top' align='right'>Oman</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>088</TD><TD valign='top' align='right'>Uganda</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>089</TD><TD valign='top' align='right'>Malawi</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>090</TD><TD valign='top' align='right'>Pakistan</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>091</TD><TD valign='top' align='right'>Eswatini</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>092</TD><TD valign='top' align='right'>Sierra Leone</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>093</TD><TD valign='top' align='right'>Cameroon</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>094</TD><TD valign='top' align='right'>Kuwait</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>095</TD><TD valign='top' align='right'>Kenya</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>096</TD><TD valign='top' align='right'>Algeria</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>097</TD><TD valign='top' align='right'>Burundi</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>098</TD><TD valign='top' align='right'>Egypt</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>099</TD><TD valign='top' align='right'>Congo</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>100</TD><TD valign='top' align='right'>Cuba</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>101</TD><TD valign='top' align='right'>Cote d’Ivoire</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>102</TD><TD valign='top' align='right'>Iran</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>103</TD><TD valign='top' align='right'>Burkina Faso</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>104</TD><TD valign='top' align='right'>Madagascar</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>105</TD><TD valign='top' align='right'>Guinea</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>106</TD><TD valign='top' align='right'>Trinidad and Tobago</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>107</TD><TD valign='top' align='right'>Saudi Arabia</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>108</TD><TD valign='top' align='right'>Mali</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>109</TD><TD valign='top' align='right'>Dominica</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>110</TD><TD valign='top' align='right'>Ukraine</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>111</TD><TD valign='top' align='right'>Haiti</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>112</TD><TD valign='top' align='right'>Ethiopia</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>113</TD><TD valign='top' align='right'>Iraq</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>114</TD><TD valign='top' align='right'>Niger</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>115</TD><TD valign='top' align='right'>Nigeria</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>116</TD><TD valign='top' align='right'>Mauritania</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>117</TD><TD valign='top' align='right'>Guinea-Bissau</TD><TD valign='top' align='right'>(score not published)</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>118</TD><TD valign='top' align='right'>Zimbabwe</TD><TD valign='top' align='right'>0.45659</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>119</TD><TD valign='top' align='right'>Egypt</TD><TD valign='top' align='right'>0.45550</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>120</TD><TD valign='top' align='right'>Congo</TD><TD valign='top' align='right'>0.45508</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>121</TD><TD valign='top' align='right'>Cuba</TD><TD valign='top' align='right'>0.45438</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>122</TD><TD valign='top' align='right'>Cote d’Ivoire</TD><TD valign='top' align='right'>0.45429</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>123</TD><TD valign='top' align='right'>Iran</TD><TD valign='top' align='right'>0.45198</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>124</TD><TD valign='top' align='right'>Burkina Faso</TD><TD valign='top' align='right'>0.45115</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>125</TD><TD valign='top' align='right'>Madagascar</TD><TD valign='top' align='right'>0.44950</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>126</TD><TD valign='top' align='right'>Guinea</TD><TD valign='top' align='right'>0.44874</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>127</TD><TD valign='top' align='right'>Trinidad and Tobago</TD><TD valign='top' align='right'>0.44855</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>128</TD><TD valign='top' align='right'>Saudi Arabia</TD><TD valign='top' align='right'>0.44808</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>129</TD><TD valign='top' align='right'>Mali</TD><TD valign='top' align='right'>0.44760</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>130</TD><TD valign='top' align='right'>Dominica</TD><TD valign='top' align='right'>0.44676</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>131</TD><TD valign='top' align='right'>Ukraine</TD><TD valign='top' align='right'>0.44317</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>132</TD><TD valign='top' align='right'>Haiti</TD><TD valign='top' align='right'>0.44295</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>133</TD><TD valign='top' align='right'>Ethiopia</TD><TD valign='top' align='right'>0.44073</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>134</TD><TD valign='top' align='right'>Iraq</TD><TD valign='top' align='right'>0.43920</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>135</TD><TD valign='top' align='right'>Niger</TD><TD valign='top' align='right'>0.43659</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>136</TD><TD valign='top' align='right'>Nigeria</TD><TD valign='top' align='right'>0.43538</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>137</TD><TD valign='top' align='right'>Mauritania</TD><TD valign='top' align='right'>0.43036</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>138</TD><TD valign='top' align='right'>Guinea-Bissau</TD><TD valign='top' align='right'>0.42971</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>139</TD><TD valign='top' align='right'>Congo, DRC</TD><TD valign='top' align='right'>0.42638</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>140</TD><TD valign='top' align='right'>Equatorial Guinea</TD><TD valign='top' align='right'>0.42632</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>141</TD><TD valign='top' align='right'>Qatar</TD><TD valign='top' align='right'>0.42372</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>142</TD><TD valign='top' align='right'>Angola</TD><TD valign='top' align='right'>0.42320</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>143</TD><TD valign='top' align='right'>Turkmenistan</TD><TD valign='top' align='right'>0.41999</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>144</TD><TD valign='top' align='right'>Venezuela</TD><TD valign='top' align='right'>0.41955</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>145</TD><TD valign='top' align='right'>Afghanistan</TD><TD valign='top' align='right'>0.41398</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>146</TD><TD valign='top' align='right'>North Korea</TD><TD valign='top' align='right'>0.41329</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>147</TD><TD valign='top' align='right'>Papua New Guinea</TD><TD valign='top' align='right'>0.41172</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>148</TD><TD valign='top' align='right'>Chad</TD><TD valign='top' align='right'>0.40310</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>149</TD><TD valign='top' align='right'>Sudan</TD><TD valign='top' align='right'>0.40120</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>150</TD><TD valign='top' align='right'>Somalia</TD><TD valign='top' align='right'>0.39995</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>151</TD><TD valign='top' align='right'>Yemen</TD><TD valign='top' align='right'>0.38265</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>152</TD><TD valign='top' align='right'>South Sudan</TD><TD valign='top' align='right'>0.37389</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>153</TD><TD valign='top' align='right'>Syria</TD><TD valign='top' align='right'>0.37254</TD></TR>
+		<TR style='color:black;'><TD valign='top' align='right'>154</TD><TD valign='top' align='right'>Central African Republic</TD><TD valign='top' align='right'>0.35715</TD></TR>
+	</TBODY>
+</TABLE>

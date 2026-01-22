@@ -1346,6 +1346,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Visitor_count.html' );" class="nav-link">Visitor Count</A>
 						</LI>
 						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'Responsible-Nations-Index-Jan-2026.html' );" class="nav-link">Responsible Nations Index Jan-2026</A>
+						</LI>
+						<LI>
 							<A href="#" onclick='window.open( "earth_politics_or_general_age.html" );'><FONT color='#00ff00'>Earth politics</FONT></A>
 						</LI>
 					</UL>
