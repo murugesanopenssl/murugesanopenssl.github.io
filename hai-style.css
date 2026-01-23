@@ -198,17 +198,17 @@ body
 .nav-item a[style*="not-allowed"],
 .submenu a[style*="not-allowed"]
 {
-    cursor: not-allowed !important;
-    pointer-events: none !important;
-    opacity: 0.5 !important;
-    text-decoration: none !important;
-    color: #888 !important;
-    background-color: rgba(0, 0, 0, 0.1) !important;
+	cursor: not-allowed !important;
+	pointer-events: none !important;
+	opacity: 0.5 !important;
+	text-decoration: none !important;
+	color: #888 !important;
+	background-color: rgba(0, 0, 0, 0.1) !important;
 }
 .nav-item a[style*="not-allowed"]:hover,
 .submenu a[style*="not-allowed"]:hover
 {
-    background-color: rgba(0, 0, 0, 0.1) !important;
-    color: #888 !important;
-    padding-left: 20px !important; /* Don't shift on hover */
+	background-color: rgba(0, 0, 0, 0.1) !important;
+	color: #888 !important;
+	padding-left: 20px !important; /* Don't shift on hover */
 }
