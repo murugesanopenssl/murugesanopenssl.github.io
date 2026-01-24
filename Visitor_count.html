@@ -122,97 +122,72 @@ const continentMap = {
   "SA": "South America",
   "AN": "Antarctica",
   "OS": "Oceania",
-   "???": "what to write"
+	"???": "Unknown Location",
+	"UNKNOWN": "Unknown Location"
 };        const counts = {};
 
 snapshot.forEach(child => {
-            const v = child.val();
-            const country = v.country || "UNKNOWN";
-            const region = v.region || "UNKNOWN";
-            const city = v.city || "UNKNOWN";
-            let continentCode = v.continent || "UNKNOWN";
-            switch(country.toUpperCase()) {
-    case "INDIA":
+    const v = child.val();
+    let country = v.country || "UNKNOWN";
+    const region = v.region || "UNKNOWN";
+    const city = v.city || "UNKNOWN";
+    let continentCode = v.continent || "UNKNOWN";
+    
+    // Normalize country name
+    const upperCountry = country.toUpperCase();
+    
+    // Handle UNKNOWN/privacy cases - simplify the display
+    if (upperCountry.includes("UNKNOWN") || upperCountry.includes("LOCATION:") || upperCountry.includes("VPN") || upperCountry.includes("PROXY") || upperCountry.includes("PRIVACY")) {
+        country = "UNKNOWN (VPN/Privacy)";
+        continentCode = "???";
+    }
+    // India variations
+    else if (upperCountry === "INDIA" || upperCountry === "INDIA") {
+        country = "India";
         continentCode = "AS";
-        break;
-	case "Pacific Islands":
-		continentCode = "OS";
-		break;
-    case "UNITED STATES":
-    case "AMERICA/LOS_ANGELES":
-    case "USA (HAWAII-ALEUTIAN TIME ZONE)":
-    case "USA (PACIFIC TIME ZONE)":
+    }
+    // America/Los_Angeles timezone format
+    else if (upperCountry.includes("AMERICA/LOS") || upperCountry.includes("LOS_ANGELES")) {
+        country = "United States";
         continentCode = "NA";
-        break;
-    case "RUSSIA":
-        // optional: choose EU or AS depending on region
-        continentCode = "EU";
-        break;
-    case "AUSTRALIA":
-    case "FIJI":
-    case "SAMOA":
-    case "TONGA":
-    case "VANUATU":
-    case "SOLOMON ISLANDS":
-        continentCode = "OC"; // Oceania
-        break;
-    case "BRAZIL":
-    case "ARGENTINA":
-    case "CHILE":
-        continentCode = "SA"; // South America
-        break;
-    case "EGYPT":
-    case "NIGERIA":
-    case "SOUTH AFRICA":
-        continentCode = "AF"; // Africa
-        break;
-    case "UNITED KINGDOM":
-    case "FRANCE":
-    case "GERMANY":
-        continentCode = "EU"; // Europe
-        break;
-case "CHINA":
-case "JAPAN":
-case "INDONESIA":
-case "Asia/Calcutta":
-    continentCode = "AS"; // Asia
-    break;
-
-case "CANADA":
-case "MEXICO":
-    continentCode = "NA"; // North America
-    break;
-
-case "NEW ZEALAND":
-case "PAPUA NEW GUINEA":
-    continentCode = "OC"; // Oceania
-    break;
-
-case "ARGENTINA":
-case "PERU":
-case "COLOMBIA":
-    continentCode = "SA"; // South America
-    break;
-
-case "SOUTH AFRICA":
-case "KENYA":
-    continentCode = "AF"; // Africa
-    break;
-
-case "FRANCE":
-case "GERMANY":
-case "ITALY":
-    continentCode = "EU"; // Europe
-    break;
-            }
-			if( country === "India" || "INDIA" === country )
-			{
-				continentCode = "AS";
-			}
-			const continent = continentMap[continentCode] || "UNKNOWN";
-            const key = `${country}|${continent}|${region}|${city}`;
-            counts[key] = (counts[key] || 0) + 1;
-        });
+    }
+    else {
+        switch(true) {
+            case upperCountry.includes("UNITED STATES") || upperCountry.includes("USA") || upperCountry.includes("HAWAII") || upperCountry.includes("PACIFIC TIME"):
+                country = "United States";
+                continentCode = "NA";
+                break;
+            case upperCountry === "PACIFIC ISLANDS":
+                continentCode = "OS";
+                break;
+            case upperCountry === "RUSSIA":
+                continentCode = "EU";
+                break;
+            case upperCountry === "AUSTRALIA" || upperCountry === "FIJI" || upperCountry === "SAMOA" || upperCountry === "TONGA" || upperCountry === "VANUATU" || upperCountry === "SOLOMON ISLANDS" || upperCountry === "NEW ZEALAND" || upperCountry === "PAPUA NEW GUINEA":
+                continentCode = "OC";
+                break;
+            case upperCountry === "BRAZIL" || upperCountry === "ARGENTINA" || upperCountry === "CHILE" || upperCountry === "PERU" || upperCountry === "COLOMBIA":
+                continentCode = "SA";
+                break;
+            case upperCountry === "EGYPT" || upperCountry === "NIGERIA" || upperCountry === "SOUTH AFRICA" || upperCountry === "KENYA" || upperCountry === "CAPE VERDE" || upperCountry === "MOROCCO" || upperCountry.includes("AFRICA"):
+                continentCode = "AF";
+                break;
+            case upperCountry === "UNITED KINGDOM" || upperCountry === "FRANCE" || upperCountry === "GERMANY" || upperCountry === "ITALY" || upperCountry === "ICELAND" || upperCountry === "HUNGARY" || upperCountry === "POLAND" || upperCountry === "ROMANIA" || upperCountry === "UKRAINE" || upperCountry.includes("PORTUGAL") || upperCountry.includes("EUROPE"):
+                continentCode = "EU";
+                break;
+            case upperCountry === "CHINA" || upperCountry === "JAPAN" || upperCountry === "INDONESIA" || upperCountry === "IN" || upperCountry.includes("ASIA/CALCUTTA") || upperCountry.includes("ASIA"):
+                continentCode = "AS";
+                break;
+            case upperCountry === "CANADA" || upperCountry === "MEXICO":
+                continentCode = "NA";
+                break;
+        }
+    }
+    
+    const continent = continentMap[continentCode] || "UNKNOWN";
+    const key = `${country}|${continent}|${region}|${city}`;
+    counts[key] = (counts[key] || 0) + 1;
+});
         Object.keys(counts).forEach(k => {
             const [country, continent, region, city] = k.split("|");
             tbody.innerHTML += `
@@ -226,6 +201,5 @@ case "ITALY":
         });
     });
 </script>
-
 </body>
 </html>
