@@ -272,49 +272,49 @@ url="https://www.youtube.com/results?search_query=tamil+news+sathiyam+"+disp_dd+
 		</BODY>
 		<SCRIPT type="text/javascript">
 			function searchTable() {
-    let input = document.getElementById("searchBox").value.toLowerCase().trim();
-    let table = document.getElementById("mainTable");
-    let rows = table.getElementsByTagName("TR");
-    let resultCell = document.getElementById("searchResultCell");
-    let resultRow = document.getElementById("searchResultRow");
+ let input = document.getElementById("searchBox").value.toLowerCase().trim();
+ let table = document.getElementById("mainTable");
+ let rows = table.getElementsByTagName("TR");
+ let resultCell = document.getElementById("searchResultCell");
+ let resultRow = document.getElementById("searchResultRow");
 
-    if (input === "") {
-        resultCell.innerHTML = "";
-        resultRow.style.display = "none";
-        return;
-    }
+ if (input === "") {
+ resultCell.innerHTML = "";
+ resultRow.style.display = "none";
+ return;
+ }
 
-    let foundRows = [];
-    let seenTexts = new Set();
+ let foundRows = [];
+ let seenTexts = new Set();
 
-    for (let i = 0; i < rows.length; i++) {
-        // Skip the search result row itself
-        if (rows[i].id === "searchResultRow") continue;
+ for (let i = 0; i < rows.length; i++) {
+ // Skip the search result row itself
+ if (rows[i].id === "searchResultRow") continue;
 
-        let text = rows[i].innerText.toLowerCase().trim();
+ let text = rows[i].innerText.toLowerCase().trim();
 
-        if (
-            text.includes(input) ||
-            (input === "rewards" && text.includes("rewardz")) ||
-            (input === "rewardz" && text.includes("rewards"))
-        ) {
-            if (!seenTexts.has(text)) {
-                let rowHtml = rows[i].innerHTML.replace(/<a /gi, "<a style='color:#00FFFF;' ");
-                foundRows.push(rowHtml);
-                seenTexts.add(text);
-            }
-        }
-    }
+ if (
+ text.includes(input) ||
+ (input === "rewards" && text.includes("rewardz")) ||
+ (input === "rewardz" && text.includes("rewards"))
+ ) {
+ if (!seenTexts.has(text)) {
+ let rowHtml = rows[i].innerHTML.replace(/<a /gi, "<a style='color:#00FFFF;' ");
+ foundRows.push(rowHtml);
+ seenTexts.add(text);
+ }
+ }
+ }
 
-    resultCell.innerHTML = ""; // clear previous results
+ resultCell.innerHTML = ""; // clear previous results
 
-    if (foundRows.length > 0) {
-        resultCell.innerHTML = foundRows.join("<HR>");
-        resultRow.style.display = "";
-    } else {
-        resultCell.innerHTML = "<FONT color='red'>No match found</FONT>";
-        resultRow.style.display = "";
-    }
+ if (foundRows.length > 0) {
+ resultCell.innerHTML = foundRows.join("<HR>");
+ resultRow.style.display = "";
+ } else {
+ resultCell.innerHTML = "<FONT color='red'>No match found</FONT>";
+ resultRow.style.display = "";
+ }
 }
 		</SCRIPT>
 </HTML>

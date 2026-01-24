@@ -544,38 +544,38 @@
 					</TD>
  					<TD valign='top' align='left'><PRE>static int do_multi(int multi, int size_num)
 {
-        int n;
-        int fd[2];
-        int *fds;
-        static char sep[] = ":";
-        // https://github.com/openssl/openssl/commit/8e51a340f40fc80331ddac19203ef7a3e7e02d1a
-        fds = app_malloc(sizeof(*fds) * multi, "fd buffer for do_multi");
-        for (n = 0; n < multi; ++n)</PRE>
+ int n;
+ int fd[2];
+ int *fds;
+ static char sep[] = ":";
+ // https://github.com/openssl/openssl/commit/8e51a340f40fc80331ddac19203ef7a3e7e02d1a
+ fds = app_malloc(sizeof(*fds) * multi, "fd buffer for do_multi");
+ for (n = 0; n < multi; ++n)</PRE>
 					</TD>
  					<TD valign='top' align='left'><PRE>static int do_multi(int multi, int size_num)
 {
-        // murugesan openssl IDA290520252136
-        // ALWAYS INITIALIZE VARIABLES.
-        <FONT color='#00ff00'><B><U>int n = 0;</B></U>
-        <B><U>int fd[2] = { 0 };</B></U>
-        <B><U>int *fds = NULL;</B></U>
-        <B><U>static char sep[] = ":";</B></U></FONT>
-        // https://github.com/openssl/openssl/commit/8e51a340f40fc80331ddac19203ef7a3e7e02d1a
-        <FONT color='#00ff00'><B><U>if( 0 > sizeof(int) * multi )</B></U>
-        <B><U>{</B></U>
+ // murugesan openssl IDA290520252136
+ // ALWAYS INITIALIZE VARIABLES.
+ <FONT color='#00ff00'><B><U>int n = 0;</B></U>
+ <B><U>int fd[2] = { 0 };</B></U>
+ <B><U>int *fds = NULL;</B></U>
+ <B><U>static char sep[] = ":";</B></U></FONT>
+ // https://github.com/openssl/openssl/commit/8e51a340f40fc80331ddac19203ef7a3e7e02d1a
+ <FONT color='#00ff00'><B><U>if( 0 > sizeof(int) * multi )</B></U>
+ <B><U>{</B></U>
 		<B><U>printf( "app_malloc not allowed sizeof(int) %lu\n"\</B></U>
 			<B><U>"multi %lu\n"\</B></U>
 			<B><U>"sizeof(int) * multi: %lu\n",</B></U>
 			<B><U>sizeof(int),</B></U>
 			<B><U>multi,</B></U>
 			<B><U>sizeof(int) * multi );</B></U>
-                <B><U>exit(0);</B></U>
-        <B><U>}</B></U>
+ <B><U>exit(0);</B></U>
+ <B><U>}</B></U>
 	// BETTER TO USE sizeof(int) instead of using sizeof(*fds)
-        <B><U>// fds = app_malloc(sizeof(*fds) * multi, "fd buffer for do_multi");</B></U>
-        <B><U>fds = app_malloc(sizeof(int) * multi, "fd buffer for do_multi");</B></U>
-        // murugesan openssl IDA290520252136</FONT>
-        for (n = 0; n < multi; ++n)</PRE>
+ <B><U>// fds = app_malloc(sizeof(*fds) * multi, "fd buffer for do_multi");</B></U>
+ <B><U>fds = app_malloc(sizeof(int) * multi, "fd buffer for do_multi");</B></U>
+ // murugesan openssl IDA290520252136</FONT>
+ for (n = 0; n < multi; ++n)</PRE>
 					</TD>
  				</TR>
 				<TR>
@@ -584,31 +584,31 @@
 					</TD>
 					<TD valign='top' align='left'><PRE>void* app_malloc(int sz, const char *what)
 {
-    void *vp = OPENSSL_malloc(sz);
-    ...</PRE>
-		   			</TD>
+ void *vp = OPENSSL_malloc(sz);
+ ...</PRE>
+		 			</TD>
 					<TD valign='top' align='left'><PRE>void* app_malloc(int sz, const char *what)
 {
-    // murugesan openssl IDA290520252136
-    <FONT color='#00ff00'><B><U>if ( 0 > sz )</B></U>
-    <B><U>{</B></U>
-        <B><U>app_bail_out( "%s: multi*sizeof(int) parameter less than zero. Could not allocate %d bytes for %s\n",</B></U>
-                     <B><U>opt_getprog(), sz, what);</B></U>
-    <B><U>}</B></U>
-    <FONT color='#00ff00'><B><U>if ( NULL == what )</B></U>
-    <B><U>{</B></U>
-        <B><U>app_bail_out( "NULL at second parameter. Could not allocate %d bytes for NULL\n",</B></U>
-                     <B><U>opt_getprog(), sz);</B></U>
-    <B><U>}</B></U>
-    <B><U>{</B></U>
-	    </FONT>
-    // murugesan openssl IDA290520252136
-            void *vp = OPENSSL_malloc(sz);
-            ...
-    // murugesan openssl IDA290520252136
-    <FONT color='#00ff00'><B><U>}</B></U></FONT>
-    // murugesan openssl IDA290520252136</PRE>
-		   			</TD>
+ // murugesan openssl IDA290520252136
+ <FONT color='#00ff00'><B><U>if ( 0 > sz )</B></U>
+ <B><U>{</B></U>
+ <B><U>app_bail_out( "%s: multi*sizeof(int) parameter less than zero. Could not allocate %d bytes for %s\n",</B></U>
+ <B><U>opt_getprog(), sz, what);</B></U>
+ <B><U>}</B></U>
+ <FONT color='#00ff00'><B><U>if ( NULL == what )</B></U>
+ <B><U>{</B></U>
+ <B><U>app_bail_out( "NULL at second parameter. Could not allocate %d bytes for NULL\n",</B></U>
+ <B><U>opt_getprog(), sz);</B></U>
+ <B><U>}</B></U>
+ <B><U>{</B></U>
+	 </FONT>
+ // murugesan openssl IDA290520252136
+ void *vp = OPENSSL_malloc(sz);
+ ...
+ // murugesan openssl IDA290520252136
+ <FONT color='#00ff00'><B><U>}</B></U></FONT>
+ // murugesan openssl IDA290520252136</PRE>
+		 			</TD>
 				</TR>
  			</TBODY>
 		</TABLE>
@@ -619,7 +619,7 @@
 developed and maintained by Murugesan Technical Enterprise knowledge transfer
 solutions &copy; 1985 to 900000000/0(infinite). All rights reserved. <A HREF="./privacy.html" title="PrivacyPolicies at free website providers"><FONT COLOR="black"><U>
 PrivacyPolicy</U></FONT></A>
-      </FONT></TD>
+ </FONT></TD>
  				</TR>
  			</TBODY>
 		</TABLE>

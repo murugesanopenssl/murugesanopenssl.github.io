@@ -475,7 +475,7 @@
 					</TD>
 					</NOSCRIPT>
 					<SCRIPT type='text/javascript'>
-						document.write( "<TD valign='top' align='left'  style='background-color:cyan;text-color:white;'>\
+						document.write( "<TD valign='top' align='left' style='background-color:cyan;text-color:white;'>\
 							<FONT color='black'><SPAN id='interestRate'>Loading...</SPAN>% LATEST INTEREST FOR MIS POST OFFICE ON <SPAN id='currentDate'>Loading...</SPAN> IST at <A href='https://www.indiapost.gov.in/banking-services/saving' target='_blank'>https://www.indiapost.gov.in/banking-services/saving</A>\
 							</TD>");
 					</SCRIPT>
@@ -4153,42 +4153,42 @@ MONEY FROM BANK TO IPPB, TRANSFER THAT MONEY FROM IPPB TO POST OFFICE.
 			</SCRIPT>
 <SCRIPT type='text/javascript'>
 (async function(){
-    const proxy="https://api.allorigins.win/raw?url=";
-    const target="https://www.paisabazaar.com/saving-schemes/post-office-monthly-income-scheme/";
-    let latest=7.4;
-    try
-    {
-        let r=await fetch(proxy+target);
-        let t=await r.text();
-        let m=t.match(/(\d+\.\d+)%/);
-        if(m) latest=parseFloat(m[1]);
-    }
-    catch(e)
-    {
-    }
-    const map={
-        "7.8":"SEVEN.EIGHT",
-        "7.7":"SEVEN.SEVEN",
-        "7.6":"SEVEN.SIX",
-        "7.5":"SEVEN.FIVE",
-        "7.4":"SEVEN.FOUR",
-        "7.3":"SEVEN.THREE",
-        "7.2":"SEVEN.TWO",
-        "7.1":"SEVEN.ONE",
-        "6.7":"SIX.SEVEN",
-        "6.6":"SIX.SIX",
-        "5.5":"FIVE.FIVE"
-    };
-    let sel=document.getElementById("select_id");
-    if(!sel) return;
-    let options="";
-    let rates=[7.8,7.7,7.6,7.5,7.4,7.3,7.2,7.1,6.7,6.6,5.5];
-    rates.forEach(r=>{
-        let s=(r==latest)?" selected":"";
-        options+=`<OPTION value='${map[r.toFixed(1)]}'${s}>${r.toFixed(1)}</OPTION>`;
-    });
-    sel.innerHTML=options;
-    DISPLAY_REQUIRED_POSTOFFICE_INTEREST();
+ const proxy="https://api.allorigins.win/raw?url=";
+ const target="https://www.paisabazaar.com/saving-schemes/post-office-monthly-income-scheme/";
+ let latest=7.4;
+ try
+ {
+ let r=await fetch(proxy+target);
+ let t=await r.text();
+ let m=t.match(/(\d+\.\d+)%/);
+ if(m) latest=parseFloat(m[1]);
+ }
+ catch(e)
+ {
+ }
+ const map={
+ "7.8":"SEVEN.EIGHT",
+ "7.7":"SEVEN.SEVEN",
+ "7.6":"SEVEN.SIX",
+ "7.5":"SEVEN.FIVE",
+ "7.4":"SEVEN.FOUR",
+ "7.3":"SEVEN.THREE",
+ "7.2":"SEVEN.TWO",
+ "7.1":"SEVEN.ONE",
+ "6.7":"SIX.SEVEN",
+ "6.6":"SIX.SIX",
+ "5.5":"FIVE.FIVE"
+ };
+ let sel=document.getElementById("select_id");
+ if(!sel) return;
+ let options="";
+ let rates=[7.8,7.7,7.6,7.5,7.4,7.3,7.2,7.1,6.7,6.6,5.5];
+ rates.forEach(r=>{
+ let s=(r==latest)?" selected":"";
+ options+=`<OPTION value='${map[r.toFixed(1)]}'${s}>${r.toFixed(1)}</OPTION>`;
+ });
+ sel.innerHTML=options;
+ DISPLAY_REQUIRED_POSTOFFICE_INTEREST();
 })();
 </SCRIPT>
 	</BODY>

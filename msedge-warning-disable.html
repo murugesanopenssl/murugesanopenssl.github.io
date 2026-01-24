@@ -10,7 +10,7 @@ $
 
 NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/httpd-server/Apache24/conf [ 0 ]
 
-$ /usr/bin/ls.exe -ltr $(grep "SSLCertificateFile|SSLCertificateKeyFile "   extra/httpd-ssl.conf | awk '{ print $NF}' | sed "s/\"//g;")
+$ /usr/bin/ls.exe -ltr $(grep "SSLCertificateFile|SSLCertificateKeyFile " extra/httpd-ssl.conf | awk '{ print $NF}' | sed "s/\"//g;")
 
 -rw-r--r-- 1 NMurugesan None 1704 Dec 15 05:56 F:/cygwin/home/NMurugesan/Din_Back/certs/localhost-key.pem
 
@@ -24,11 +24,11 @@ NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/httpd-server/Apache24/conf [ 0 ]
 
 $ netstat.exe -nao | grep 443.*LISTEN
 
-  TCP    0.0.0.0:443            0.0.0.0:0              LISTENING       2076
+ TCP 0.0.0.0:443 0.0.0.0:0 LISTENING 2076
 
-  TCP    127.0.0.1:443          0.0.0.0:0              LISTENING       2076
+ TCP 127.0.0.1:443 0.0.0.0:0 LISTENING 2076
 
-  TCP    [::]:443               [::]:0                 LISTENING       2076
+ TCP [::]:443 [::]:0 LISTENING 2076
 
 NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/httpd-server/Apache24/conf [ 0 ]
 
@@ -65,12 +65,12 @@ cp ~/Din_Back/certs/localhost-key.pem ~/Din_Back/httpd-server/Apache24/htdocs/ss
 sc.exe stop Apache24
 sc.exe start Apache24
 netstat.exe -nao | grep 443.*LISTEN
-  TCP    0.0.0.0:443            0.0.0.0:0              LISTENING       13424
-  TCP    127.0.0.1:443          0.0.0.0:0              LISTENING       13424
-  TCP    [::]:443               [::]:0                 LISTENING       13424
+ TCP 0.0.0.0:443 0.0.0.0:0 LISTENING 13424
+ TCP 127.0.0.1:443 0.0.0.0:0 LISTENING 13424
+ TCP [::]:443 [::]:0 LISTENING 13424
 /usr/bin/openssl.exe x509 -in ~/Din_Back/certs/localhost.pem -text -noout | grep -A1 "Subject Alternative Name"
-            X509v3 Subject Alternative Name:
-                DNS:localhost, IP Address:127.0.0.1, IP Address:0:0:0:0:0:0:0:1
+ X509v3 Subject Alternative Name:
+ DNS:localhost, IP Address:127.0.0.1, IP Address:0:0:0:0:0:0:0:1
 
 re-testing after closing msedge
 same warning message on accessing 
@@ -112,19 +112,19 @@ $ sc.exe stop Apache24
 
 SERVICE_NAME: Apache24
 
-        TYPE               : 10  WIN32_OWN_PROCESS
+ TYPE : 10 WIN32_OWN_PROCESS
 
-        STATE              : 3  STOP_PENDING
+ STATE : 3 STOP_PENDING
 
-                                (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+ (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
 
-        WIN32_EXIT_CODE    : 0  (0x0)
+ WIN32_EXIT_CODE : 0 (0x0)
 
-        SERVICE_EXIT_CODE  : 0  (0x0)
+ SERVICE_EXIT_CODE : 0 (0x0)
 
-        CHECKPOINT         : 0x2
+ CHECKPOINT : 0x2
 
-        WAIT_HINT          : 0x7530
+ WAIT_HINT : 0x7530
 
 NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/certs [ 0 ]
 
@@ -132,33 +132,33 @@ $ sc.exe start Apache24
 
 SERVICE_NAME: Apache24
 
-        TYPE               : 10  WIN32_OWN_PROCESS
+ TYPE : 10 WIN32_OWN_PROCESS
 
-        STATE              : 2  START_PENDING
+ STATE : 2 START_PENDING
 
-                                (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+ (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
 
-        WIN32_EXIT_CODE    : 0  (0x0)
+ WIN32_EXIT_CODE : 0 (0x0)
 
-        SERVICE_EXIT_CODE  : 0  (0x0)
+ SERVICE_EXIT_CODE : 0 (0x0)
 
-        CHECKPOINT         : 0x2
+ CHECKPOINT : 0x2
 
-        WAIT_HINT          : 0x7530
+ WAIT_HINT : 0x7530
 
-        PID                : 8680
+ PID : 8680
 
-        FLAGS              :
+ FLAGS :
 
 NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/certs [ 0 ]
 
 $ netstat.exe -nao | grep 443.*LISTEN
 
-  TCP    0.0.0.0:443            0.0.0.0:0              LISTENING       8680
+ TCP 0.0.0.0:443 0.0.0.0:0 LISTENING 8680
 
-  TCP    127.0.0.1:443          0.0.0.0:0              LISTENING       8680
+ TCP 127.0.0.1:443 0.0.0.0:0 LISTENING 8680
 
-  TCP    [::]:443               [::]:0                 LISTENING       8680
+ TCP [::]:443 [::]:0 LISTENING 8680
 
 NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/certs [ 0 ]
 
@@ -174,19 +174,19 @@ $ back clogall
 
 total 4
 
-drwx------+ 1 NMurugesan None 0 Dec  6 14:16 ..
+drwx------+ 1 NMurugesan None 0 Dec 6 14:16 ..
 
-drwx------+ 1 NMurugesan None 0 Dec  6 17:36 .
+drwx------+ 1 NMurugesan None 0 Dec 6 17:36 .
 
 /cygdrive/c/Users/NMurugesan/AppData/Local/Temp:
 
 total 121
 
--rwx------+ 1 NMurugesan None  0 Sep  3 10:42 FXSAPIDebugLogFile.txt
+-rwx------+ 1 NMurugesan None 0 Sep 3 10:42 FXSAPIDebugLogFile.txt
 
-drwx------+ 1 NMurugesan None  0 Dec 15 04:54 ..
+drwx------+ 1 NMurugesan None 0 Dec 15 04:54 ..
 
-drwx------+ 1 NMurugesan None  0 Dec 15 06:37 .
+drwx------+ 1 NMurugesan None 0 Dec 15 06:37 .
 
 NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/certs [ 0 ]
 
@@ -256,17 +256,17 @@ NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/certs [ 0 ]
 
 $ grep -E "SSLCertificateFile|SSLCertificateKeyFile" ~/Din_Back/httpd-server/Apache24/conf/extra/httpd-ssl.conf
 
-        SSLCertificateFile "F:/cygwin/home/NMurugesan/Din_Back/certs/localhost.pem"
+ SSLCertificateFile "F:/cygwin/home/NMurugesan/Din_Back/certs/localhost.pem"
 
-        SSLCertificateKeyFile "F:/cygwin/home/NMurugesan/Din_Back/certs/localhost-key.pem"
+ SSLCertificateKeyFile "F:/cygwin/home/NMurugesan/Din_Back/certs/localhost-key.pem"
 
 NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/certs [ 0 ]
 
 $ grep "SSLCertificateFile|SSLCertificateKeyFile" ~/Din_Back/httpd-server/Apache24/conf/extra/httpd-ssl.conf
 
-        SSLCertificateFile "F:/cygwin/home/NMurugesan/Din_Back/certs/localhost.pem"
+ SSLCertificateFile "F:/cygwin/home/NMurugesan/Din_Back/certs/localhost.pem"
 
-        SSLCertificateKeyFile "F:/cygwin/home/NMurugesan/Din_Back/certs/localhost-key.pem"
+ SSLCertificateKeyFile "F:/cygwin/home/NMurugesan/Din_Back/certs/localhost-key.pem"
 
 NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/certs [ 0 ]
 
@@ -276,9 +276,9 @@ NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/certs [ 0 ]
 
 $ grep "SSLCertificateFile|SSLCertificateKeyFile" ~/Din_Back/httpd-server/Apache24/conf/extra/httpd-ssl.conf
 
-        SSLCertificateFile "F:/cygwin/home/NMurugesan/Din_Back/certs/localhost.pem"
+ SSLCertificateFile "F:/cygwin/home/NMurugesan/Din_Back/certs/localhost.pem"
 
-        SSLCertificateKeyFile "F:/cygwin/home/NMurugesan/Din_Back/certs/localhost-key.pem"
+ SSLCertificateKeyFile "F:/cygwin/home/NMurugesan/Din_Back/certs/localhost-key.pem"
 
 NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/certs [ 0 ]
 
@@ -288,17 +288,17 @@ NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/certs [ 0 ]
 
 $ echo | /usr/bin/openssl.exe s_client -connect 127.0.0.1:443 -servername 127.0.0.1 2>/dev/null | openssl x509 -noout -text | grep -E "(Issuer|Subject|DNS:|IP Address:)"
 
-        Issuer: C = IN, ST = KARNATAKA, L = BENGALURU, O = murugesanopenssl, OU = Dev, CN = murugesanopenssl
+ Issuer: C = IN, ST = KARNATAKA, L = BENGALURU, O = murugesanopenssl, OU = Dev, CN = murugesanopenssl
 
-        Subject: C = IN, ST = KARNATAKA, L = BENGALURU, O = ERP, OU = murugesanopenssl, CN = 127.0.0.1
+ Subject: C = IN, ST = KARNATAKA, L = BENGALURU, O = ERP, OU = murugesanopenssl, CN = 127.0.0.1
 
-        Subject Public Key Info:
+ Subject Public Key Info:
 
-            X509v3 Subject Alternative Name:
+ X509v3 Subject Alternative Name:
 
-                DNS:localhost, IP Address:127.0.0.1
+ DNS:localhost, IP Address:127.0.0.1
 
-            X509v3 Subject Key Identifier:
+ X509v3 Subject Key Identifier:
 
 NMurugesan@127.0.0.1 /home/NMurugesan/Din_Back/certs [ 0 ]
 

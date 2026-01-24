@@ -1,229 +1,229 @@
 <!DOCTYPE html>
 <HTML lang="en">
 <HEAD>
-    <meta charset="UTF-8">
+ <meta charset="UTF-8">
 		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 		<META http-equiv="Pragma" content="no-cache">
 		<META http-equiv="Expires" content="0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<META charset="UTF-8">
 	<LINK href="github.io.css" rel="stylesheet">
 	<META name="viewport" content="width=device-width, initial-scale=1.0">
 	<TITLE>Human-AI Financial Solutions</TITLE>
-   <!--
-   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-   -->
+ <!--
+ <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ -->
 <STYLE type='text/css'>
 .rectangle {
-            position: relative;
-            width: 50px;
-            height: 50px;
-            background-color: lightblue;
-            border: 2px solid black;
-            margin: 50px;
-        }
+ position: relative;
+ width: 50px;
+ height: 50px;
+ background-color: lightblue;
+ border: 2px solid black;
+ margin: 50px;
+ }
 
-        /* Top-left arrow */
-        .arrow-top-left {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
-            border-bottom: 20px solid black;
-        }
+ /* Top-left arrow */
+ .arrow-top-left {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 0;
+ height: 0;
+ border-left: 20px solid transparent;
+ border-right: 20px solid transparent;
+ border-bottom: 20px solid black;
+ }
 
-        /* Bottom-right arrow */
-        .arrow-bottom-right {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 0;
-            border-left: 20px solid transparent;
-            border-top: 20px solid black;
-            border-right: 20px solid transparent;
-        }
+ /* Bottom-right arrow */
+ .arrow-bottom-right {
+ position: absolute;
+ bottom: 0;
+ right: 0;
+ width: 0;
+ height: 0;
+ border-left: 20px solid transparent;
+ border-top: 20px solid black;
+ border-right: 20px solid transparent;
+ }
 		/* Styling the link */
-        .link-style {
-            color: orange;  /* Sets the text color to orange */
-            text-decoration: none; /* Removes underline */
-            font-weight: bold; /* Optional: Makes it bold */
-            cursor: pointer; /* Changes the cursor to a pointer when hovering */
-        }
-        
-        /* Table styling */
-        #PreventWastage {
-            margin-top: 20px;
-            border-collapse: collapse;
-            width: 100%;
-        }
+ .link-style {
+ color: orange; /* Sets the text color to orange */
+ text-decoration: none; /* Removes underline */
+ font-weight: bold; /* Optional: Makes it bold */
+ cursor: pointer; /* Changes the cursor to a pointer when hovering */
+ }
+ 
+ /* Table styling */
+ #PreventWastage {
+ margin-top: 20px;
+ border-collapse: collapse;
+ width: 100%;
+ }
 
-        #PreventWastage, #PreventWastage th, #PreventWastage td {
-            border: 1px solid black;
-        }
+ #PreventWastage, #PreventWastage th, #PreventWastage td {
+ border: 1px solid black;
+ }
 
-        #PreventWastage th, #PreventWastage td {
-            padding: 8px;
-            text-align: center;
-        }
+ #PreventWastage th, #PreventWastage td {
+ padding: 8px;
+ text-align: center;
+ }
 
 
-        #IndexTable {
-            margin-top: 20px;
-            border-collapse: collapse;
-            width: 100%;
-        }
+ #IndexTable {
+ margin-top: 20px;
+ border-collapse: collapse;
+ width: 100%;
+ }
 
-        #IndexTable, #IndexTable th, #IndexTable td {
-            border: 1px solid black;
-        }
+ #IndexTable, #IndexTable th, #IndexTable td {
+ border: 1px solid black;
+ }
 
-        #IndexTable th, #IndexTable td {
-            padding: 8px;
-            text-align: center;
-        }
+ #IndexTable th, #IndexTable td {
+ padding: 8px;
+ text-align: center;
+ }
 
 		.triangle {
-            width: 0;
-            height: 0;
-            border-left: 25px solid transparent;    /* Left side of the triangle */
-            border-right: 25px solid transparent;   /* Right side of the triangle */
-            border-bottom: 50px solid #0071bb;     /* Bottom side of the triangle */
-            position: relative;                     /* Allows positioning of text inside */
-        }
+ width: 0;
+ height: 0;
+ border-left: 25px solid transparent; /* Left side of the triangle */
+ border-right: 25px solid transparent; /* Right side of the triangle */
+ border-bottom: 50px solid #0071bb; /* Bottom side of the triangle */
+ position: relative; /* Allows positioning of text inside */
+ }
 
-        /* Exclamation mark inside the triangle */
-        .triangle-text {
-            position: absolute;
-            top: 50%;     /* Adjusts vertical positioning */
-            left: 50%;    /* Centers the text horizontally */
-            transform: translateX(-50%); /* Adjusts to truly center the text */
-            color: white;
-            font-size: 30px;
-            font-weight: bold;
-        }
-        .circle {
-            width: 50px;
-            height: 50px;
-            background-color: #0071bb;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 30px;
-            font-weight: bold;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        /* Header */
-        header {
-            background-color: #0071bb;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
+ /* Exclamation mark inside the triangle */
+ .triangle-text {
+ position: absolute;
+ top: 50%; /* Adjusts vertical positioning */
+ left: 50%; /* Centers the text horizontally */
+ transform: translateX(-50%); /* Adjusts to truly center the text */
+ color: white;
+ font-size: 30px;
+ font-weight: bold;
+ }
+ .circle {
+ width: 50px;
+ height: 50px;
+ background-color: #0071bb;
+ border-radius: 50%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ color: white;
+ font-size: 30px;
+ font-weight: bold;
+ }
+ body {
+ font-family: Arial, sans-serif;
+ margin: 0;
+ padding: 0;
+ }
+ /* Header */
+ header {
+ background-color: #0071bb;
+ color: white;
+ padding: 10px 0;
+ text-align: center;
+ }
 
-        header h1 {
-            margin: 0;
-        }
+ header h1 {
+ margin: 0;
+ }
 
-        /* Menu bar */
-        nav {
-            background-color: #f1f1f1;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-        }
+ /* Menu bar */
+ nav {
+ background-color: #f1f1f1;
+ padding: 10px;
+ display: flex;
+ justify-content: center;
+ }
 
-        nav a {
-            margin: 0 20px;
-            text-decoration: none;
-            color: #0071bb;
-            font-weight: bold;
-        }
+ nav a {
+ margin: 0 20px;
+ text-decoration: none;
+ color: #0071bb;
+ font-weight: bold;
+ }
 
-        nav a:hover {
-            color: #004f7c;
-        }
+ nav a:hover {
+ color: #004f7c;
+ }
 
-        /* Icon and links */
-        .icon-menu {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px;
-            background-color: #f1f1f1;
-        }
+ /* Icon and links */
+ .icon-menu {
+ display: flex;
+ justify-content: space-around;
+ padding: 20px;
+ background-color: #f1f1f1;
+ }
 
-        .icon-menu div {
-            text-align: center;
-        }
+ .icon-menu div {
+ text-align: center;
+ }
 
-        .icon-menu i {
-            font-size: 40px;
-            color: #0071bb;
-        }
+ .icon-menu i {
+ font-size: 40px;
+ color: #0071bb;
+ }
 
-        .icon-menu div a {
-            display: block;
-            margin-top: 10px;
-            color: #0071bb;
-            font-weight: bold;
-            text-decoration: none;
-        }
+ .icon-menu div a {
+ display: block;
+ margin-top: 10px;
+ color: #0071bb;
+ font-weight: bold;
+ text-decoration: none;
+ }
 
-        /* Table */
-        table {
-            width: 100%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
+ /* Table */
+ table {
+ width: 100%;
+ margin: 20px auto;
+ border-collapse: collapse;
+ }
 
-        table, th, td {
-            border: 1px solid #ddd;
-        }
+ table, th, td {
+ border: 1px solid #ddd;
+ }
 
-        th, td {
-            padding: 8px 12px;
-            text-align: center;
-        }
+ th, td {
+ padding: 8px 12px;
+ text-align: center;
+ }
 
-        th {
-            background-color: #0071bb;
-            color: white;
-        }
+ th {
+ background-color: #0071bb;
+ color: white;
+ }
 
-        td {
-            background-color: #f9f9f9;
-        }
+ td {
+ background-color: #f9f9f9;
+ }
 
-        td a {
-            color: #0071bb;
-            text-decoration: none;
-        }
+ td a {
+ color: #0071bb;
+ text-decoration: none;
+ }
 
-        td a:hover {
-            text-decoration: underline;
-        }
-    </STYLE>
+ td a:hover {
+ text-decoration: underline;
+ }
+ </STYLE>
 </HEAD>
 
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 
 
-    <!-- Header -->
-    <HEADER>
-        <h1>Human-AI Financial Solutions = HAI FS</h1>
-    </HEADER>
+ <!-- Header -->
+ <HEADER>
+ <h1>Human-AI Financial Solutions = HAI FS</h1>
+ </HEADER>
 
-    <!-- Menu Bar -->
-    <NAV>
+ <!-- Menu Bar -->
+ <NAV>
 		<a class="link-style" onclick="toggleTable()" id='Homehref' style='color:blue'>Home</A>
 		<script type='text/javascript'>
 		function showHomeTable()
@@ -236,107 +236,107 @@
 			homeTable.style.display = 'table';
 		}
 		</SCRIPT>
-        <a href="#">Products & Services</A>
-        <a href="#">How Do I (Help)</A>
-        <a href="#">Manage Debit Card</A>
-        <a href="#">E-Mandate</A>
-        <a href="#">Contact Us</A>
-    </NAV>
+ <a href="#">Products & Services</A>
+ <a href="#">How Do I (Help)</A>
+ <a href="#">Manage Debit Card</A>
+ <a href="#">E-Mandate</A>
+ <a href="#">Contact Us</A>
+ </NAV>
 <script type='text/javascript'>
 function toggleTable() {
-    const homeLink = document.getElementById('Homehref');
-    const preventLink = document.getElementById('PreventWastagehref');
-    const homeTable = document.getElementById('HomeTable');
-    const preventWastage = document.getElementById('PreventWastage');
-    const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
+ const homeLink = document.getElementById('Homehref');
+ const preventLink = document.getElementById('PreventWastagehref');
+ const homeTable = document.getElementById('HomeTable');
+ const preventWastage = document.getElementById('PreventWastage');
+ const categoryAmount = document.getElementById('CategoryAmountDetailsTab');
 
-    // check which link was clicked
-    const clickedId = event.target.id;
+ // check which link was clicked
+ const clickedId = event.target.id;
 
-    if (clickedId === 'Homehref') {
-        if (homeTable.style.display === 'none' || homeTable.style.display === '') {
-            // Home is disabled → enable it
-            homeTable.style.display = 'table';
-            categoryAmount.style.display = 'none';
-            preventWastage.style.display = 'none';
-        } else {
-            // Home is enabled → disable it and show categoryAmount
-            homeTable.style.display = 'none';
-            categoryAmount.style.display = 'table';
-            preventWastage.style.display = 'none';
-        }
-    }
+ if (clickedId === 'Homehref') {
+ if (homeTable.style.display === 'none' || homeTable.style.display === '') {
+ // Home is disabled → enable it
+ homeTable.style.display = 'table';
+ categoryAmount.style.display = 'none';
+ preventWastage.style.display = 'none';
+ } else {
+ // Home is enabled → disable it and show categoryAmount
+ homeTable.style.display = 'none';
+ categoryAmount.style.display = 'table';
+ preventWastage.style.display = 'none';
+ }
+ }
 
-    if (clickedId === 'PreventWastagehref') {
-        if (preventWastage.style.display === 'none' || preventWastage.style.display === '') {
-            // PreventWastage is disabled → enable it
-            preventWastage.style.display = 'table';
-            categoryAmount.style.display = 'none';
-            homeTable.style.display = 'none';
-        } else {
-            // PreventWastage is enabled → disable it and show categoryAmount
-            preventWastage.style.display = 'none';
-            categoryAmount.style.display = 'table';
-            homeTable.style.display = 'none';
-        }
-    }
+ if (clickedId === 'PreventWastagehref') {
+ if (preventWastage.style.display === 'none' || preventWastage.style.display === '') {
+ // PreventWastage is disabled → enable it
+ preventWastage.style.display = 'table';
+ categoryAmount.style.display = 'none';
+ homeTable.style.display = 'none';
+ } else {
+ // PreventWastage is enabled → disable it and show categoryAmount
+ preventWastage.style.display = 'none';
+ categoryAmount.style.display = 'table';
+ homeTable.style.display = 'none';
+ }
+ }
 }
-    </SCRIPT>
-    <!-- Icon Menu -->
-    <DIV class="icon-menu">
-        <DIV>
-            <I class="material-icons">    <DIV class="circle">?</DIV></I>
-            <a href="#">FinanceHelp</A>
-        </DIV>
-        <DIV>
-            <I class="material-icons"><DIV class="circle">i</DIV></I>
-            <a href="#">About FinanceSSL</A>
-        </DIV>
-        <DIV>
-            <I class="material-icons"><DIV class="triangle">
-        <DIV class="triangle-text">!</DIV>
-    </DIV></I>
-            <a class="link-style" onclick="toggleTable()" id='PreventWastagehref' style='color:blue'>PreventWastage</A>
-        </DIV>
-        <DIV>
-            <I class="material-icons"><DIV class="rectangle"><div class="arrow-top-left"></DIV><div class="arrow-bottom-right"></DIV></DIV></I>
-            <a href="#">CompareBankFD</A>
-        </DIV>
-    </DIV>
+ </SCRIPT>
+ <!-- Icon Menu -->
+ <DIV class="icon-menu">
+ <DIV>
+ <I class="material-icons"> <DIV class="circle">?</DIV></I>
+ <a href="#">FinanceHelp</A>
+ </DIV>
+ <DIV>
+ <I class="material-icons"><DIV class="circle">i</DIV></I>
+ <a href="#">About FinanceSSL</A>
+ </DIV>
+ <DIV>
+ <I class="material-icons"><DIV class="triangle">
+ <DIV class="triangle-text">!</DIV>
+ </DIV></I>
+ <a class="link-style" onclick="toggleTable()" id='PreventWastagehref' style='color:blue'>PreventWastage</A>
+ </DIV>
+ <DIV>
+ <I class="material-icons"><DIV class="rectangle"><div class="arrow-top-left"></DIV><div class="arrow-bottom-right"></DIV></DIV></I>
+ <a href="#">CompareBankFD</A>
+ </DIV>
+ </DIV>
 
-    <!-- Spending Table -->
-    <table id='CategoryAmountDetailsTab'>
-        <THEAD>
-            <TR>
-                <TH valign='top' align='right'>Category</TH>
-                <TH valign='top' align='right'>Amount</TH>
-                <TH valign='top' align='right'>Details</TH>
-            </TR>
-        </THEAD>
-        <TBODY>
-            <!-- Example row -->
-            <TR>
-                <TD valign='top' align='right'>Rent</TD>
-                <TD valign='top' align='right'>$1200</TD>
-                <TD valign='top' align='right'><a href="#">View Details</A></TD>
-            </TR>
-            <TR>
-                <TD valign='top' align='right'>Utilities</TD>
-                <TD valign='top' align='right'>$250</TD>
-                <TD valign='top' align='right'><a href="#">View Details</A></TD>
-            </TR>
-            <TR>
-                <TD valign='top' align='right'>Food</TD>
-                <TD valign='top' align='right'>$400</TD>
-                <TD valign='top' align='right'><a href="#">View Details</A></TD>
-            </TR>
-            <TR>
-                <TD valign='top' align='right'>Entertainment</TD>
-                <TD valign='top' align='right'>$150</TD>
-                <TD valign='top' align='right'><a href="#">View Details</A></TD>
-            </TR>
-        </TBODY>
-    </TABLE>
+ <!-- Spending Table -->
+ <table id='CategoryAmountDetailsTab'>
+ <THEAD>
+ <TR>
+ <TH valign='top' align='right'>Category</TH>
+ <TH valign='top' align='right'>Amount</TH>
+ <TH valign='top' align='right'>Details</TH>
+ </TR>
+ </THEAD>
+ <TBODY>
+ <!-- Example row -->
+ <TR>
+ <TD valign='top' align='right'>Rent</TD>
+ <TD valign='top' align='right'>$1200</TD>
+ <TD valign='top' align='right'><a href="#">View Details</A></TD>
+ </TR>
+ <TR>
+ <TD valign='top' align='right'>Utilities</TD>
+ <TD valign='top' align='right'>$250</TD>
+ <TD valign='top' align='right'><a href="#">View Details</A></TD>
+ </TR>
+ <TR>
+ <TD valign='top' align='right'>Food</TD>
+ <TD valign='top' align='right'>$400</TD>
+ <TD valign='top' align='right'><a href="#">View Details</A></TD>
+ </TR>
+ <TR>
+ <TD valign='top' align='right'>Entertainment</TD>
+ <TD valign='top' align='right'>$150</TD>
+ <TD valign='top' align='right'><a href="#">View Details</A></TD>
+ </TR>
+ </TBODY>
+ </TABLE>
 <!--
 	Menu name:
 		Save Money, Avoid Waste
@@ -1015,18 +1015,18 @@ earning revenue from each sale. Unfortunately, this practice has largely disappe
 <P>The sequence for the listed locations as they receive sunlight is:</P>
 <P>To follow the path of the sun, the sequence for the listed locations as they receive sunlight would be:</P>
 <UL>
-  <LI>01) Antartica. Famous countries: Australia/New Zealand</LI>
-  <LI>02) South America. Famous countries: Brazil/Argentina/Chile/Peru/Colombia/Uruguay/Ecuador/Venezuela</LI>
-  <LI>03) North America. Famous countries: Antigua and Barbuda, Bahamas, Barbados, Belize, Canada, Costa Rica, Cuba, Dominica, Dominican Republic, El Salvador,<BR>
-  Grenada, Guatemala, Haiti, Honduras, Jamaica, Mexico, Nicaragua, Panama, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines,<BR>
-  Trinidad and Tobago, and the United States of America</LI>
-  <LI>04) Africa. Famous countries: Nigeria, Ethiopia, Egypt, DR Congo, Tanzania, South Africa, Kenya, Sudan, Uganda, Algeria, Angola, Morocco, Mozambique,<BR>
-  Ghana, Madagascar, Côte d'Ivoire(Ivory Coast), Cameroon, Niger, Mali, Burkina Faso, Malawi, Zambia, Chad, Somalia, Senegal, Zimbabwe, Guinea, Benin, Rwanda,<BR>
-  Burundi, Tunisia, South Sudan, Togo, Sierra Leone, Libya, Congo, Liberia, Central African Republic, Mauritania, Eritrea, Namibia, Gambia, Gabon, Botswana,<BR>
-  Lesotho, Guinea-Bissau, Equatorial Guinea, Mauritius, Eswatini, Djibouti, Comoros, Cabo Verde, Sao Tome & Principe, Seychelles</LI>
-  <LI>05) Europe</LI>
-  <LI>06) Asia having the country India</LI>
-  <LI>07) Australia</LI>
+ <LI>01) Antartica. Famous countries: Australia/New Zealand</LI>
+ <LI>02) South America. Famous countries: Brazil/Argentina/Chile/Peru/Colombia/Uruguay/Ecuador/Venezuela</LI>
+ <LI>03) North America. Famous countries: Antigua and Barbuda, Bahamas, Barbados, Belize, Canada, Costa Rica, Cuba, Dominica, Dominican Republic, El Salvador,<BR>
+ Grenada, Guatemala, Haiti, Honduras, Jamaica, Mexico, Nicaragua, Panama, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines,<BR>
+ Trinidad and Tobago, and the United States of America</LI>
+ <LI>04) Africa. Famous countries: Nigeria, Ethiopia, Egypt, DR Congo, Tanzania, South Africa, Kenya, Sudan, Uganda, Algeria, Angola, Morocco, Mozambique,<BR>
+ Ghana, Madagascar, Côte d'Ivoire(Ivory Coast), Cameroon, Niger, Mali, Burkina Faso, Malawi, Zambia, Chad, Somalia, Senegal, Zimbabwe, Guinea, Benin, Rwanda,<BR>
+ Burundi, Tunisia, South Sudan, Togo, Sierra Leone, Libya, Congo, Liberia, Central African Republic, Mauritania, Eritrea, Namibia, Gambia, Gabon, Botswana,<BR>
+ Lesotho, Guinea-Bissau, Equatorial Guinea, Mauritius, Eswatini, Djibouti, Comoros, Cabo Verde, Sao Tome & Principe, Seychelles</LI>
+ <LI>05) Europe</LI>
+ <LI>06) Asia having the country India</LI>
+ <LI>07) Australia</LI>
 </UL></TD></TR>
 <TR>
 	<TD valign='top' align='left' colspan='2'>
@@ -1390,7 +1390,7 @@ HEADQUARTERED IN XIZHI, NEW TAIPEI CITY, TAIWAN</TD></TR>
 <TR style='background-color: red; color: white;'><TD valign='top' align='left'>vlc/vlc.exe</TD><TD colspan='3' valign='top' align='left'>FRANCE</TD></TR>
 <TR style='background-color: red; color: white;'><TD valign='top' align='left'>notepad++/notepad++.exe</TD><TD colspan='3' valign='top' align='left'>FRANCE</TD></TR>
 <TR style='background-color: red; color: white;'><TD valign='top' align='left'>TRUECALLER PRIVATE COMPANY</TD><TD colspan='3' valign='top' align='left'>SWEDISH</TD></TR>
-<TR style='background-color: red; color: white;'><TD valign='top' align='left'>REXONA               </TD><TD colspan='3' valign='top' align='left'>BRITISH-DUTCH UNITED KINGDOM MULTINATIONAL CONSUMER GOODS COMPANY UNILEVER</TD></TR>
+<TR style='background-color: red; color: white;'><TD valign='top' align='left'>REXONA </TD><TD colspan='3' valign='top' align='left'>BRITISH-DUTCH UNITED KINGDOM MULTINATIONAL CONSUMER GOODS COMPANY UNILEVER</TD></TR>
 <TR style='background-color: red; color: white;'><TD valign='top' align='left'>PEPSODANT TOOTH PASTE</TD><TD colspan='3' valign='top' align='left'>BRITISH-DUTCH UNITED KINGDOM</TD></TR>
 <TR style='background-color: red; color: white;'><TD valign='top' align='left'>SENSODYNE</TD><TD colspan='3' valign='top' align='left'>UNITED KINGDOM</TD></TR>
 <TR style='background-color: red; color: white;'><TD valign='top' align='left'>wise.com PRIVATE COMPANY</TD><TD colspan='3' valign='top' align='left'>UNITED KINGDOM</TD></TR>
@@ -1420,9 +1420,9 @@ GEOCITIES.ws is an unfunded company based in the United States, founded in 1999.
 * The company boasts 5,900 active competitors.
 * Of these, 26 are funded, while 231 have exited (gone out of business).
 * Its top competitors include established players such as:
-        + 1&1 IONOS
-        + GoDaddy
-        + Liquid Web
+ + 1&1 IONOS
+ + GoDaddy
+ + Liquid Web
 Note: I've formatted the text to make it easier to read and understand, with clear headings and concise bullet points. Let me
 know if you have any further requests!
 <HR>
@@ -1452,17 +1452,17 @@ to save all user's data/cache inside the geocities.ws database.</PRE>
 <TABLE id='PreventWastage'>
 	<SCRIPT>
 window.onload = function() {
-            // Hide the PreventWastage table
-            const preventWastageTable = document.getElementById("PreventWastage");
+ // Hide the PreventWastage table
+ const preventWastageTable = document.getElementById("PreventWastage");
 			const HomeTable = document.getElementById("HomeTable");
-            preventWastageTable.style.display = "table"; // Hide it
-            HomeTable.style.display = "none"; // Hide it
+ preventWastageTable.style.display = "table"; // Hide it
+ HomeTable.style.display = "none"; // Hide it
 
-            // Show the CategoryAmountDetailsTab table
-            const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
-            categoryAmountDetailsTab.style.display = "none"; // Show it
-            const IndexTable = document.getElementById("IndexTable");
-            IndexTable.style.display = "none"; // Show it
+ // Show the CategoryAmountDetailsTab table
+ const categoryAmountDetailsTab = document.getElementById("CategoryAmountDetailsTab");
+ categoryAmountDetailsTab.style.display = "none"; // Show it
+ const IndexTable = document.getElementById("IndexTable");
+ IndexTable.style.display = "none"; // Show it
 			const link = preventWastageTable.querySelector('a');
 			if (link)
 			{
@@ -1483,40 +1483,40 @@ window.onload = function() {
 <h1>Save Money by Preventing Unnecessary Expenses</h1>
 <P>Default view shows <STRONG>Nov-2025</STRONG> if available. Use Add Entry to add data.</P>
 <DIV class="controls">
-  <LABEL for="monthSelect">View:</LABEL>
-  <select id="monthSelect"></SELECT>
-  <LABEL for="dateInput">Date:</LABEL>
-  <input type="date" id="dateInput" />
-  <input type="text" id="itemInput" placeholder="Item (e.g., Snacks)" />
-  <input type="number" id="amountInput" placeholder="Amount" step="0.01" />
-  <BUTTON id="addBtn">Add Entry</BUTTON>
-  <BUTTON id="saveDefaultBtn">Save default array to DB</BUTTON>
+ <LABEL for="monthSelect">View:</LABEL>
+ <select id="monthSelect"></SELECT>
+ <LABEL for="dateInput">Date:</LABEL>
+ <input type="date" id="dateInput" />
+ <input type="text" id="itemInput" placeholder="Item (e.g., Snacks)" />
+ <input type="number" id="amountInput" placeholder="Amount" step="0.01" />
+ <BUTTON id="addBtn">Add Entry</BUTTON>
+ <BUTTON id="saveDefaultBtn">Save default array to DB</BUTTON>
 </DIV>
 <DIV id="message" aria-live="polite"></DIV>
 <DIV id="tableContainer"></DIV>
 <script type="module">
-                        function formatDate(dateStr)
-                        {
-                                const date = new Date(dateStr.split("-").reverse().join("-"));
-                                const weekday = date.toLocaleString('en-GB', { weekday: 'short' });
-                                const day = date.toLocaleString('en-GB', { day: '2-digit' });
-                                const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                                const month = months[date.getMonth()];
-                                const year = date.getFullYear();
-                                return `${weekday} ${day}-${month}-${year}`;
-                        }
+ function formatDate(dateStr)
+ {
+ const date = new Date(dateStr.split("-").reverse().join("-"));
+ const weekday = date.toLocaleString('en-GB', { weekday: 'short' });
+ const day = date.toLocaleString('en-GB', { day: '2-digit' });
+ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ const month = months[date.getMonth()];
+ const year = date.getFullYear();
+ return `${weekday} ${day}-${month}-${year}`;
+ }
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getDatabase, ref, set, get, child, push } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 // Firebase config (from user)
 const firebaseConfig = {
-  apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
-  authDomain: "openmurugesan.firebaseapp.com",
-  databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "openmurugesan",
-  storageBucket: "openmurugesan.firebasestorage.app",
-  messagingSenderId: "307675598593",
-  appId: "1:307675598593:web:4af163460ce2c3bc719500",
-  measurementId: "G-0MFK92PQMP"
+ apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+ authDomain: "openmurugesan.firebaseapp.com",
+ databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+ projectId: "openmurugesan",
+ storageBucket: "openmurugesan.firebasestorage.app",
+ messagingSenderId: "307675598593",
+ appId: "1:307675598593:web:4af163460ce2c3bc719500",
+ measurementId: "G-0MFK92PQMP"
 };
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
@@ -1524,23 +1524,23 @@ const rootRef = ref(db, "spendingData");
 // ----- Hardcoded fallback array (base version) -----
 			const baseRaw = {
 Nov: [
-[ formatDate("07-Nov-2025"),         "ToDpi", 69.00,   "AdhPanXerox",   15.00,  "EntSoup",  20.00,       "EntInject", 100.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-[ formatDate("06-Nov-2025"),        "Snacks", 40.00,        "Pickle",  203.00],
-[ formatDate("05-Nov-2025"),     "BreadMilk", 200.00, "TvsInsurance", 1098.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-[ formatDate("04-Nov-2025"),          "Veg",  108.00,        "Sweet",  176.00,"BreadMilk", 200.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-[ formatDate("03-Nov-2025"),        "Snacks",  30.00,       "Petrol", 210.00,         "",   0.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-[ formatDate("02-Nov-2025"),          "Rice", 700.00,   "BananaLeaf",  10.00,      "Veg",  70.00,                "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-[ formatDate("01-Nov-2025"),         "ToBng",  69.00,          "Veg", 107.00,     "Rice", 360.00,           "Lunch",  55.00,     "Snacks",     30.00,            "",  0.00,        "",   0.00 ]
+[ formatDate("07-Nov-2025"), "ToDpi", 69.00, "AdhPanXerox", 15.00, "EntSoup", 20.00, "EntInject", 100.00, "", 0.00, "", 0.00, "", 0.00 ],
+[ formatDate("06-Nov-2025"), "Snacks", 40.00, "Pickle", 203.00],
+[ formatDate("05-Nov-2025"), "BreadMilk", 200.00, "TvsInsurance", 1098.00, "", 0.00, "", 0.00, "", 0.00, "", 0.00, "", 0.00 ],
+[ formatDate("04-Nov-2025"), "Veg", 108.00, "Sweet", 176.00,"BreadMilk", 200.00, "", 0.00, "", 0.00, "", 0.00, "", 0.00 ],
+[ formatDate("03-Nov-2025"), "Snacks", 30.00, "Petrol", 210.00, "", 0.00, "", 0.00, "", 0.00, "", 0.00, "", 0.00 ],
+[ formatDate("02-Nov-2025"), "Rice", 700.00, "BananaLeaf", 10.00, "Veg", 70.00, "", 0.00, "", 0.00, "", 0.00, "", 0.00 ],
+[ formatDate("01-Nov-2025"), "ToBng", 69.00, "Veg", 107.00, "Rice", 360.00, "Lunch", 55.00, "Snacks", 30.00, "", 0.00, "", 0.00 ]
 ],
 Oct: [
 // Chandapura to attibele and left 2 wheeler at Chandapura
-[ formatDate("31-Oct-2025"),        "Snacks",  18.00,       "Dinner",  45.00,  "EntSoup",  40.00,       "FeviQuick",  10.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-[ formatDate("26-Oct-2025"),     "LaptopFan", 350.00,    "   Repair",   0.00,"NotTraced",   0.00,            "Till",   0.00,"30-Oct-2025",      0.00,            "",  0.00,        "",   0.00 ],
-[ formatDate("25-Oct-2025"),         "Train",  23.00,       "Snacks",   80.00,     "MobCover", 200.00,     "Pickle", 240.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-[ formatDate("24-Oct-2025"),          "BMTC",  23.00,       "Snacks",   80.00,     "MobCover", 200.00,     "Pickle", 240.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-[ formatDate("23-Oct-2025"),        "Snacks",  80.00,             "",    0.00,            "",    0.00,           "",   0.00,           "",      0.00,            "",  0.00,        "",   0.00 ],
-[ formatDate("22-Oct-2025"),       "Haircut", 60.00,       "Earset",  150.00,             "",    0.00,      "Lunch",  40.00,  "feviquick",    -10.00,       "Lemon",  5.00,  "Petrol", 220.00 ],
-[ formatDate("21-Oct-2025"),       "ToBng", 183.00,       "Tea",  10.00,     "MSPuri",  40.00,      "Dinner",  40.00,  "BathBrush",    96.00,       "Milk",  80.00,  "VaalaIlai", 330.00 ],
+[ formatDate("31-Oct-2025"), "Snacks", 18.00, "Dinner", 45.00, "EntSoup", 40.00, "FeviQuick", 10.00, "", 0.00, "", 0.00, "", 0.00 ],
+[ formatDate("26-Oct-2025"), "LaptopFan", 350.00, " Repair", 0.00,"NotTraced", 0.00, "Till", 0.00,"30-Oct-2025", 0.00, "", 0.00, "", 0.00 ],
+[ formatDate("25-Oct-2025"), "Train", 23.00, "Snacks", 80.00, "MobCover", 200.00, "Pickle", 240.00, "", 0.00, "", 0.00, "", 0.00 ],
+[ formatDate("24-Oct-2025"), "BMTC", 23.00, "Snacks", 80.00, "MobCover", 200.00, "Pickle", 240.00, "", 0.00, "", 0.00, "", 0.00 ],
+[ formatDate("23-Oct-2025"), "Snacks", 80.00, "", 0.00, "", 0.00, "", 0.00, "", 0.00, "", 0.00, "", 0.00 ],
+[ formatDate("22-Oct-2025"), "Haircut", 60.00, "Earset", 150.00, "", 0.00, "Lunch", 40.00, "feviquick", -10.00, "Lemon", 5.00, "Petrol", 220.00 ],
+[ formatDate("21-Oct-2025"), "ToBng", 183.00, "Tea", 10.00, "MSPuri", 40.00, "Dinner", 40.00, "BathBrush", 96.00, "Milk", 80.00, "VaalaIlai", 330.00 ],
 /*
 vaalai ilai 20.00
 vilakku 20.00
@@ -1551,66 +1551,66 @@ malli poo 60.00
 oil 80.00
 banana 20.00
 */
-[ formatDate("20-Oct-2025"),         "Tea",  10.00,   "EntSoup",  20.00,"SugarEntMed", 404.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
-[ formatDate("19-Oct-2025"),        "Auto",  20.00,      "Kool",  20.00,    "EntSoup",  20.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
-[ formatDate("18-Oct-2025"),       "ToBng", 417.00,       "Tea",  10.00,           "",     "",            "",     "",           "",       "",           "",     "",           "",     "" ],
-[ formatDate("17-Oct-2025"),         "Tea",  10.00,    "Snacks",  40.00,     "Petrol", 200.00,       "Lunch", 105.00,  "EntVapour",   200.00,     "Dinner", 355.00,           "",     "" ],
-[ formatDate("16-Oct-2025"),       "BFast", 105.00,       "Tea",  20.00, "AdhaarUpdt", 200.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
-[ formatDate("15-Oct-2025"),      "BESCOM", 174.00,    "3Roses", 345.00,  "DressRope", 120.00,         "Tea",  10.00,     "Snacks",    60.00,           "",     "",           "",     "" ],
-[ formatDate("14-Oct-2025"), "LenseRepair", 900.00,  "SnackTea",  10.00,           "",     "",      "Snacks", 256.00,           "",     0.00,           "",     "",           "",     "" ],
-[ formatDate("13-Oct-2025"),         "Tea",  20.00,       "Ent", 100.00,     "Snacks",  23.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
-[ formatDate("12-Oct-2025"),         "Tea",  50.00,   "Poosari",  10.00,       "Soup",  20.00,      "2Meera", 156.00, "PantTailor",    30.00,     "Snacks",  10.00,       "Livo",  10.00 ],
-[ formatDate("11-Oct-2025"),  "BngToHosur",  13.00,  "HosToDpi",  56.00,  "DpiPetrol", 200.00,     "EntSoup",  20.00,  "EntInject",   610.00, "ViradamTip",  10.00,     "Dinner",  40.00 ],
-[ formatDate("10-Oct-2025"),        "BMTC",  25.00,     "Lunch",  70.00,      "Bfast",  70.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
-[ formatDate("09-Oct-2025"),        "BMTC",  25.00,    "Snacks", 120.00,     "Snacks",  50.00,      "Dinner",  20.00, "IGCSE_SSLC", 35000.00,           "",     "",           "",     "" ],
-[ formatDate("08-Oct-2025"),      "Snacks",  80.00,     "Sweet", 216.00,       "Milk",     "",            "",     "",           "",       "",           "",     "",           "",     "" ],
-[ formatDate("07-Oct-2025"),       "BFast",     "",          "",     "",       "Milk",     "",            "",     "",           "",       "",           "",     "",           "",     "" ],
-[ formatDate("06-Oct-2025"),       "BFast",  60.00,    "Snacks",  20.00,       "Milk",  82.00,            "",     "",           "",       "",           "",     "",           "",     "" ],
-[ formatDate("05-Oct-2025"),       "BFast",     "",     "Sweet", 617.00,     "Snacks",  30.00,         "Veg",  60.00,      "NoTea",       "",      "Lunch",  45.00,           "",     "" ],
-[ formatDate("04-Oct-2025"),       "BFast",  60.00,     "Lunch",  60.00,     "Dinner",  80.00,         "Veg", 330.00,     "MSSnac",    35.00,     "Snacks", 240.00,      "NoTea",     "" ],
-[ formatDate("03-Oct-2025"),       "BFast", 140.00,    "Dinner",  70.00,           "",     "",       "Lunch",  80.00,  "TvsRepair",   581.00,           "",     "",           "",     "" ],
-[ formatDate("02-Oct-2025"),       "BFast", 130.00,     "Lunch",  70.00,     "Dinner",     "", "SnacksSweet", 806.00,   "NMPetrol",   250.00,           "",     "",           "",     "" ],
-[ formatDate("01-Oct-2025"),       "BFast",     "",     "Lunch",  70.00,     "Dinner",  30.00,    "DpiToBng",  98.00,   "SLPetrol",    50.00,  "SLWhelRep",  20.00,        "Veg", 100.00 ]
+[ formatDate("20-Oct-2025"), "Tea", 10.00, "EntSoup", 20.00,"SugarEntMed", 404.00, "", "", "", "", "", "", "", "" ],
+[ formatDate("19-Oct-2025"), "Auto", 20.00, "Kool", 20.00, "EntSoup", 20.00, "", "", "", "", "", "", "", "" ],
+[ formatDate("18-Oct-2025"), "ToBng", 417.00, "Tea", 10.00, "", "", "", "", "", "", "", "", "", "" ],
+[ formatDate("17-Oct-2025"), "Tea", 10.00, "Snacks", 40.00, "Petrol", 200.00, "Lunch", 105.00, "EntVapour", 200.00, "Dinner", 355.00, "", "" ],
+[ formatDate("16-Oct-2025"), "BFast", 105.00, "Tea", 20.00, "AdhaarUpdt", 200.00, "", "", "", "", "", "", "", "" ],
+[ formatDate("15-Oct-2025"), "BESCOM", 174.00, "3Roses", 345.00, "DressRope", 120.00, "Tea", 10.00, "Snacks", 60.00, "", "", "", "" ],
+[ formatDate("14-Oct-2025"), "LenseRepair", 900.00, "SnackTea", 10.00, "", "", "Snacks", 256.00, "", 0.00, "", "", "", "" ],
+[ formatDate("13-Oct-2025"), "Tea", 20.00, "Ent", 100.00, "Snacks", 23.00, "", "", "", "", "", "", "", "" ],
+[ formatDate("12-Oct-2025"), "Tea", 50.00, "Poosari", 10.00, "Soup", 20.00, "2Meera", 156.00, "PantTailor", 30.00, "Snacks", 10.00, "Livo", 10.00 ],
+[ formatDate("11-Oct-2025"), "BngToHosur", 13.00, "HosToDpi", 56.00, "DpiPetrol", 200.00, "EntSoup", 20.00, "EntInject", 610.00, "ViradamTip", 10.00, "Dinner", 40.00 ],
+[ formatDate("10-Oct-2025"), "BMTC", 25.00, "Lunch", 70.00, "Bfast", 70.00, "", "", "", "", "", "", "", "" ],
+[ formatDate("09-Oct-2025"), "BMTC", 25.00, "Snacks", 120.00, "Snacks", 50.00, "Dinner", 20.00, "IGCSE_SSLC", 35000.00, "", "", "", "" ],
+[ formatDate("08-Oct-2025"), "Snacks", 80.00, "Sweet", 216.00, "Milk", "", "", "", "", "", "", "", "", "" ],
+[ formatDate("07-Oct-2025"), "BFast", "", "", "", "Milk", "", "", "", "", "", "", "", "", "" ],
+[ formatDate("06-Oct-2025"), "BFast", 60.00, "Snacks", 20.00, "Milk", 82.00, "", "", "", "", "", "", "", "" ],
+[ formatDate("05-Oct-2025"), "BFast", "", "Sweet", 617.00, "Snacks", 30.00, "Veg", 60.00, "NoTea", "", "Lunch", 45.00, "", "" ],
+[ formatDate("04-Oct-2025"), "BFast", 60.00, "Lunch", 60.00, "Dinner", 80.00, "Veg", 330.00, "MSSnac", 35.00, "Snacks", 240.00, "NoTea", "" ],
+[ formatDate("03-Oct-2025"), "BFast", 140.00, "Dinner", 70.00, "", "", "Lunch", 80.00, "TvsRepair", 581.00, "", "", "", "" ],
+[ formatDate("02-Oct-2025"), "BFast", 130.00, "Lunch", 70.00, "Dinner", "", "SnacksSweet", 806.00, "NMPetrol", 250.00, "", "", "", "" ],
+[ formatDate("01-Oct-2025"), "BFast", "", "Lunch", 70.00, "Dinner", 30.00, "DpiToBng", 98.00, "SLPetrol", 50.00, "SLWhelRep", 20.00, "Veg", 100.00 ]
 ],
 Sep: [
-[ formatDate("30-Sep-2025"),       "BFast",     "",     "Lunch",     "",      "Snack",  60.00,     "ToHosur",  13.00,      "ToDpi",    56.00,     "BngGas", 857.00,     "Digest", 20.00 ],
-[ formatDate("29-Sep-2025"),       "BFast",  70.00,     "Lunch",  60.00,   "SnackOat", 407.00,         "Veg", 916.00,      "EntDr",   200.00,     "EntMed", 634.00,  "SnackPuff", 25.00 ],
-[ formatDate("28-Sep-2025"),       "BFast",  50.00,     "Lunch",  50.00,  "Snacksoup", 120.00,  "GarbDonate",  20.00,    "TeaHarp",   549.00, "SchoolFees", 55000.00,          "",    "" ],
-[ formatDate("27-Sep-2025"),       "BFast",     "",     "Lunch",     "",           "",     "",      "Dinner",     "",           "",     "",           "",       "",          "",    "" ],
-[ formatDate("26-Sep-2025"),       "BFast",  50.00,     "Lunch",  50.00,      "Snack", 250.00,      "Dinner",  50.00, "Vegetables",   466.00,   "SLBigMrt", 249.00,      "MPURI",    35.00 ],
-[ formatDate("25-Sep-2025"),       "BFast",  50.00,     "Lunch",  50.00,     "Dinner",  50.00,            "",       "",           "",     "",           "",       "",          "",    "" ],
-[ formatDate("24-Sep-2025"),      "Dinner",  40.00,     "Snack", 150.00,           "",     "",            "",       "",           "",     "",           "",       "",          "",    "" ],
-[ formatDate("13-Sep-2025"),      "BESCOM", 256.00,          "",    .00,           "",     "",            "",       "",           "",     "",           "",       "",          "",    "" ]
+[ formatDate("30-Sep-2025"), "BFast", "", "Lunch", "", "Snack", 60.00, "ToHosur", 13.00, "ToDpi", 56.00, "BngGas", 857.00, "Digest", 20.00 ],
+[ formatDate("29-Sep-2025"), "BFast", 70.00, "Lunch", 60.00, "SnackOat", 407.00, "Veg", 916.00, "EntDr", 200.00, "EntMed", 634.00, "SnackPuff", 25.00 ],
+[ formatDate("28-Sep-2025"), "BFast", 50.00, "Lunch", 50.00, "Snacksoup", 120.00, "GarbDonate", 20.00, "TeaHarp", 549.00, "SchoolFees", 55000.00, "", "" ],
+[ formatDate("27-Sep-2025"), "BFast", "", "Lunch", "", "", "", "Dinner", "", "", "", "", "", "", "" ],
+[ formatDate("26-Sep-2025"), "BFast", 50.00, "Lunch", 50.00, "Snack", 250.00, "Dinner", 50.00, "Vegetables", 466.00, "SLBigMrt", 249.00, "MPURI", 35.00 ],
+[ formatDate("25-Sep-2025"), "BFast", 50.00, "Lunch", 50.00, "Dinner", 50.00, "", "", "", "", "", "", "", "" ],
+[ formatDate("24-Sep-2025"), "Dinner", 40.00, "Snack", 150.00, "", "", "", "", "", "", "", "", "", "" ],
+[ formatDate("13-Sep-2025"), "BESCOM", 256.00, "", .00, "", "", "", "", "", "", "", "", "", "" ]
 ]
 			};
 // helper: convert "03-Nov-2025" -> "Nov-2025"
 function monthKeyFromDateString(dstr){
-  try{
-    const parts = dstr.split("-");
-    if(parts.length >= 3){
-      return parts[1] + "-" + parts[2];
-    }
-    const d = new Date(dstr);
-    const m = d.toLocaleString('en-US',{month:'short'});
-    const y = d.getFullYear();
-    return m + "-" + y;
-  }catch(e){
-    return dstr;
-  }
+ try{
+ const parts = dstr.split("-");
+ if(parts.length >= 3){
+ return parts[1] + "-" + parts[2];
+ }
+ const d = new Date(dstr);
+ const m = d.toLocaleString('en-US',{month:'short'});
+ const y = d.getFullYear();
+ return m + "-" + y;
+ }catch(e){
+ return dstr;
+ }
 }
 // convert baseRaw to month-year keyed object
 function normalizeBase(raw){
-  const out = {};
-  for(const k in raw){
-    const rows = raw[k];
-    for(const row of rows){
-      const date = row[0];
-      const mk = monthKeyFromDateString(date);
-      if(!out[mk]) out[mk] = [];
-      out[mk].push(row.slice()); // copy
-    }
-  }
-  return out;
+ const out = {};
+ for(const k in raw){
+ const rows = raw[k];
+ for(const row of rows){
+ const date = row[0];
+ const mk = monthKeyFromDateString(date);
+ if(!out[mk]) out[mk] = [];
+ out[mk].push(row.slice()); // copy
+ }
+ }
+ return out;
 }
 const baseData = normalizeBase(baseRaw);
 // UI elements
@@ -1626,72 +1626,72 @@ const saveDefaultBtn = document.getElementById('saveDefaultBtn');
 dateInput.valueAsDate = new Date();
 // utility: format monthKey to label
 function labelOf(mk){
-  return mk;
+ return mk;
 }
 // load DB, if empty set baseData then display default month
 async function initAndLoad(){
-  message.textContent = "Loading data from Firebase...";
-  const snap = await get(child(ref(db), '/spendingData'));
-  let data;
-  if(snap.exists()){
-    data = snap.val();
-    message.textContent = "Loaded data from Firebase.";
-  } else {
-    // no data, save baseData then use it
-    await set(rootRef, baseData);
-    data = baseData;
-    message.textContent = "No data in DB — saved local default array to database.";
-  }
-  populateMonthSelect(Object.keys(data));
+ message.textContent = "Loading data from Firebase...";
+ const snap = await get(child(ref(db), '/spendingData'));
+ let data;
+ if(snap.exists()){
+ data = snap.val();
+ message.textContent = "Loaded data from Firebase.";
+ } else {
+ // no data, save baseData then use it
+ await set(rootRef, baseData);
+ data = baseData;
+ message.textContent = "No data in DB — saved local default array to database.";
+ }
+ populateMonthSelect(Object.keys(data));
 
-  // determine current month key like "Nov-2025"
-  const curMk = currentMonthKey();
+ // determine current month key like "Nov-2025"
+ const curMk = currentMonthKey();
 
-  // prefer exact match for current month-year, else prefer any key with same month name,
-  // else fall back to the first available month key, else use 'all'
-  const keys = Object.keys(data || {});
-  const defaultMk = keys.find(k => k === curMk)
-    || keys.find(k => k.startsWith(curMk.split('-')[0]))
-    || keys[0]
-    || 'all';
+ // prefer exact match for current month-year, else prefer any key with same month name,
+ // else fall back to the first available month key, else use 'all'
+ const keys = Object.keys(data || {});
+ const defaultMk = keys.find(k => k === curMk)
+ || keys.find(k => k.startsWith(curMk.split('-')[0]))
+ || keys[0]
+ || 'all';
 
-  // set dropdown and render for selected source (DB takes precedence)
-  monthSelect.value = defaultMk;
-  renderForSelected(data);
+ // set dropdown and render for selected source (DB takes precedence)
+ monthSelect.value = defaultMk;
+ renderForSelected(data);
 }
 // populate month dropdown (All + months sorted newest first)
 function populateMonthSelect(monthKeys){
-  monthSelect.innerHTML = "";
-  const optAll = document.createElement('option'); optAll.value = 'all'; optAll.textContent = 'All Months';
-  monthSelect.appendChild(optAll);
-  // sort keys descending by year-month
-  monthKeys.sort((a,b)=>{
-    const da = new Date(a); const db = new Date(b);
-    return db - da;
-  });
-  for(const mk of monthKeys){
-    const opt = document.createElement('option');
-    opt.value = mk;
-    opt.textContent = labelOf(mk);
-    monthSelect.appendChild(opt);
-  }
+ monthSelect.innerHTML = "";
+ const optAll = document.createElement('option'); optAll.value = 'all'; optAll.textContent = 'All Months';
+ monthSelect.appendChild(optAll);
+ // sort keys descending by year-month
+ monthKeys.sort((a,b)=>{
+ const da = new Date(a); const db = new Date(b);
+ return db - da;
+ });
+ for(const mk of monthKeys){
+ const opt = document.createElement('option');
+ opt.value = mk;
+ opt.textContent = labelOf(mk);
+ monthSelect.appendChild(opt);
+ }
 }
 // get current monthKey like "Nov-2025"
 function currentMonthKey(){
-  const d = new Date();
-  const mo = d.toLocaleString('en-US',{month:'short'});
-  const yr = d.getFullYear();
-  return mo + "-" + yr;
+ const d = new Date();
+ const mo = d.toLocaleString('en-US',{month:'short'});
+ const yr = d.getFullYear();
+ return mo + "-" + yr;
 }
 // render table for selected month or all
 async function renderForSelected(dataFromDB){
-  const sel = monthSelect.value;
-  let data = dataFromDB;
-  if(!data){
-    const snap = await get(child(ref(db), '/spendingData'));
-    if(snap.exists()) data = snap.val();
-    else data = baseData;
-  }
+ const sel = monthSelect.value;
+ let data = dataFromDB;
+ if(!data){
+ const snap = await get(child(ref(db), '/spendingData'));
+ if(snap.exists()) data = snap.val();
+ else data = baseData;
+ }
 let html = "<table border='1'>\
 				<THEAD>\
 					<TR>\
@@ -1742,9 +1742,9 @@ let html = "<table border='1'>\
 					</TR>\
 				</THEAD>\
 			<TBODY>";
-  const months = sel === 'all' ? Object.keys(data) : [sel];
+ const months = sel === 'all' ? Object.keys(data) : [sel];
 
-  const dailyMap = {};
+ const dailyMap = {};
 	for(const mk of months)
 	{
 		if(!data[mk]) continue;
@@ -1815,76 +1815,76 @@ let html = "<table border='1'>\
 	tableContainer.innerHTML = html;
 }
 async function loadData() {
-  const dbRef = ref(db);
-  const snapshot = await get(child(ref(db), "spendingData"));
-  console.log("Data loaded from Firebase path: spendingData");
-  if (snapshot.exists()) {
-    displayData(snapshot.val());
-  } else {
-    await set(ref(db, "spendingData"), baseData);
-    displayData(baseData);
-  }
+ const dbRef = ref(db);
+ const snapshot = await get(child(ref(db), "spendingData"));
+ console.log("Data loaded from Firebase path: spendingData");
+ if (snapshot.exists()) {
+ displayData(snapshot.val());
+ } else {
+ await set(ref(db, "spendingData"), baseData);
+ displayData(baseData);
+ }
 }
 // add entry: update DB structure properly
 async function addEntry(){
-  const rawDate = dateInput.value;
-  const date = formatDate(rawDate.split("-").reverse().join("-"));
-  const item = itemInput.value.trim();
-  const amount = parseFloat(amountInput.value);
-  if(!rawDate || !item || Number.isNaN(amount)){
-    alert("Please enter Date, Item and Amount.");
-    return;
-  }
-  const mk = monthKeyFromDateString(date);
-  const monthRef = ref(db, `spendingData/${mk}`);
-  const snap = await get(monthRef);
-  let monthArr = snap.exists() ? snap.val() : [];
-  // monthArr is array of rows (each row: [date, item, amount, ...pairs])
-  // find row for same date
-  let foundIndex = -1;
-  for(let i=0;i<monthArr.length;i++){
-    if(monthArr[i][0] === date){
-      foundIndex = i; break;
-    }
-  }
-  if(foundIndex >= 0){
-    monthArr[foundIndex].push(item, amount);
-  } else {
-    monthArr.push([formatDate(date), item, amount]);
-  }
+ const rawDate = dateInput.value;
+ const date = formatDate(rawDate.split("-").reverse().join("-"));
+ const item = itemInput.value.trim();
+ const amount = parseFloat(amountInput.value);
+ if(!rawDate || !item || Number.isNaN(amount)){
+ alert("Please enter Date, Item and Amount.");
+ return;
+ }
+ const mk = monthKeyFromDateString(date);
+ const monthRef = ref(db, `spendingData/${mk}`);
+ const snap = await get(monthRef);
+ let monthArr = snap.exists() ? snap.val() : [];
+ // monthArr is array of rows (each row: [date, item, amount, ...pairs])
+ // find row for same date
+ let foundIndex = -1;
+ for(let i=0;i<monthArr.length;i++){
+ if(monthArr[i][0] === date){
+ foundIndex = i; break;
+ }
+ }
+ if(foundIndex >= 0){
+ monthArr[foundIndex].push(item, amount);
+ } else {
+ monthArr.push([formatDate(date), item, amount]);
+ }
 
-  // write back entire object to preserve all months
-  const snapAll = await get(child(ref(db), '/spendingData'));
-  let dataAll = snapAll.exists() ? snapAll.val() : baseData;
-  dataAll[mk] = monthArr;
-  await set(ref(db, "spendingData"), dataAll);
+ // write back entire object to preserve all months
+ const snapAll = await get(child(ref(db), '/spendingData'));
+ let dataAll = snapAll.exists() ? snapAll.val() : baseData;
+ dataAll[mk] = monthArr;
+ await set(ref(db, "spendingData"), dataAll);
 
-  // refresh UI
-  populateMonthSelect(Object.keys(dataAll));
-  monthSelect.value = mk;
-  await renderForSelected(dataAll);
+ // refresh UI
+ populateMonthSelect(Object.keys(dataAll));
+ monthSelect.value = mk;
+ await renderForSelected(dataAll);
 
-  // clear inputs
-  itemInput.value = "";
-  amountInput.value = "";
-  dateInput.valueAsDate = new Date();
-  message.textContent = "Saved entry and updated table.";
+ // clear inputs
+ itemInput.value = "";
+ amountInput.value = "";
+ dateInput.valueAsDate = new Date();
+ message.textContent = "Saved entry and updated table.";
 }
 // button handlers
 addBtn.addEventListener('click', addEntry);
 saveDefaultBtn.addEventListener('click', async ()=>{
-  await set(rootRef, baseData);
-  message.textContent = "Default array saved to DB.";
-  const snap = await get(child(ref(db), '/spendingData'));
-  const dataAll = snap.exists() ? snap.val() : baseData;
-  populateMonthSelect(Object.keys(dataAll));
-  renderForSelected(dataAll);
+ await set(rootRef, baseData);
+ message.textContent = "Default array saved to DB.";
+ const snap = await get(child(ref(db), '/spendingData'));
+ const dataAll = snap.exists() ? snap.val() : baseData;
+ populateMonthSelect(Object.keys(dataAll));
+ renderForSelected(dataAll);
 });
 // when user changes month selection
 monthSelect.addEventListener('change', async ()=>{
-  const snap = await get(child(ref(db), '/spendingData'));
-  const dataAll = snap.exists() ? snap.val() : baseData;
-  renderForSelected(dataAll);
+ const snap = await get(child(ref(db), '/spendingData'));
+ const dataAll = snap.exists() ? snap.val() : baseData;
+ renderForSelected(dataAll);
 });
 // initialize
 initAndLoad();

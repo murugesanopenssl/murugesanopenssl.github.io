@@ -5,122 +5,122 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <TITLE>Spending Tracker (Firebase Connected)</TITLE>
 <STYLE type='text/css'>
-  body { font-family: Arial, sans-serif; margin: 20px; }
-  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-  th, td { border: 1px solid #aaa; padding: 8px; text-align: left; }
-  th { background: #f2f2f2; }
-  input, select, button { margin: 5px; padding: 8px; }
+ body { font-family: Arial, sans-serif; margin: 20px; }
+ table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+ th, td { border: 1px solid #aaa; padding: 8px; text-align: left; }
+ th { background: #f2f2f2; }
+ input, select, button { margin: 5px; padding: 8px; }
 </STYLE>
 </HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 <h2>💰 Spending Tracker - Firebase Integrated</h2>
 
 <DIV>
-  <LABEL for="monthSelect">Select Month:</LABEL>
-  <select id="monthSelect">
-    <option value="current" selected>Current Month</OPTION>
-    <option value="all">All Months</OPTION>
-  </SELECT>
+ <LABEL for="monthSelect">Select Month:</LABEL>
+ <select id="monthSelect">
+ <option value="current" selected>Current Month</OPTION>
+ <option value="all">All Months</OPTION>
+ </SELECT>
 </DIV>
 
 <DIV>
-  <input type="date" id="dateInput">
-  <input type="text" id="itemInput" placeholder="Item">
-  <input type="number" id="amountInput" placeholder="Amount">
-  <BUTTON onclick="addEntry()">➕ Add Entry</BUTTON>
+ <input type="date" id="dateInput">
+ <input type="text" id="itemInput" placeholder="Item">
+ <input type="number" id="amountInput" placeholder="Amount">
+ <BUTTON onclick="addEntry()">➕ Add Entry</BUTTON>
 </DIV>
 
 <DIV id="spendingTable"></DIV>
 
 <NOSCRIPT>
-  <P>This app requires JavaScript to run.</P>
+ <P>This app requires JavaScript to run.</P>
 </NOSCRIPT>
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+ import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
-  const firebaseConfig = {
-    apiKey: "murugesanopenssl",
-    authDomain: "openmurugesan.firebaseapp.com",
-    databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "openmurugesan",
-    storageBucket: "openmurugesan.firebasestorage.app",
-    messagingSenderId: "307675598593",
-    appId: "1:307675598593:web:4af163460ce2c3bc719500",
-    measurementId: "G-0MFK92PQMP"
-  };
+ const firebaseConfig = {
+ apiKey: "murugesanopenssl",
+ authDomain: "openmurugesan.firebaseapp.com",
+ databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+ projectId: "openmurugesan",
+ storageBucket: "openmurugesan.firebasestorage.app",
+ messagingSenderId: "307675598593",
+ appId: "1:307675598593:web:4af163460ce2c3bc719500",
+ measurementId: "G-0MFK92PQMP"
+ };
 
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
+ const app = initializeApp(firebaseConfig);
+ const db = getDatabase(app);
 
-  const today = new Date();
-  document.getElementById('dateInput').valueAsDate = today;
+ const today = new Date();
+ document.getElementById('dateInput').valueAsDate = today;
 
-  const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  const currentMonth = monthNames[today.getMonth()];
+ const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+ const currentMonth = monthNames[today.getMonth()];
 
-  const spendingData = {
-    Nov: [
-      ["03-Nov-2025","Snacks",30.00,"Petrol",210.00],
-      ["02-Nov-2025","Rice",700.00,"BananaLeaf",10.00,"Veg",70.00],
-      ["01-Nov-2025","ToBng",69.00,"Veg",107.00,"Rice",360.00,"Lunch",55.00,"Snacks",30.00]
-    ]
-  };
+ const spendingData = {
+ Nov: [
+ ["03-Nov-2025","Snacks",30.00,"Petrol",210.00],
+ ["02-Nov-2025","Rice",700.00,"BananaLeaf",10.00,"Veg",70.00],
+ ["01-Nov-2025","ToBng",69.00,"Veg",107.00,"Rice",360.00,"Lunch",55.00,"Snacks",30.00]
+ ]
+ };
 
-  async function loadData() {
-    const snapshot = await get(child(ref(db), "spendingData"));
-    if (snapshot.exists()) {
-      displayData(snapshot.val());
-    } else {
-      await set(ref(db, "spendingData"), spendingData);
-      displayData(spendingData);
-    }
-  }
+ async function loadData() {
+ const snapshot = await get(child(ref(db), "spendingData"));
+ if (snapshot.exists()) {
+ displayData(snapshot.val());
+ } else {
+ await set(ref(db, "spendingData"), spendingData);
+ displayData(spendingData);
+ }
+ }
 
-  function displayData(data) {
-    const selected = document.getElementById('monthSelect').value;
-    let html = "<TABLE><TR><TH>Date</TH><TH>Item</TH><TH>Amount</TH></TR>";
-    const months = selected === "all" ? Object.keys(data) : [currentMonth];
-    months.forEach(m => {
-      if (data[m]) {
-        data[m].forEach(row => {
-          const date = row[0];
-          for (let i = 1; i < row.length; i += 2) {
-            const item = row[i];
-            const amt = row[i + 1];
-            if (item && amt) html += `<TR><TD VALIGN='TOP' ALIGN='LEFT'>${date}</TD><TD VALIGN='TOP' ALIGN='LEFT'>${item}</TD><TD VALIGN='TOP' ALIGN='LEFT'>${amt}</TD></TR>`;
-          }
-        });
-      }
-    });
-    html += "</TABLE>";
-    document.getElementById("spendingTable").innerHTML = html;
-  }
+ function displayData(data) {
+ const selected = document.getElementById('monthSelect').value;
+ let html = "<TABLE><TR><TH>Date</TH><TH>Item</TH><TH>Amount</TH></TR>";
+ const months = selected === "all" ? Object.keys(data) : [currentMonth];
+ months.forEach(m => {
+ if (data[m]) {
+ data[m].forEach(row => {
+ const date = row[0];
+ for (let i = 1; i < row.length; i += 2) {
+ const item = row[i];
+ const amt = row[i + 1];
+ if (item && amt) html += `<TR><TD VALIGN='TOP' ALIGN='LEFT'>${date}</TD><TD VALIGN='TOP' ALIGN='LEFT'>${item}</TD><TD VALIGN='TOP' ALIGN='LEFT'>${amt}</TD></TR>`;
+ }
+ });
+ }
+ });
+ html += "</TABLE>";
+ document.getElementById("spendingTable").innerHTML = html;
+ }
 
-  async function addEntry() {
-    const date = document.getElementById('dateInput').value;
-    const item = document.getElementById('itemInput').value.trim();
-    const amount = parseFloat(document.getElementById('amountInput').value);
-    if (!item || !amount) {
-      alert("Please enter item and amount.");
-      return;
-    }
+ async function addEntry() {
+ const date = document.getElementById('dateInput').value;
+ const item = document.getElementById('itemInput').value.trim();
+ const amount = parseFloat(document.getElementById('amountInput').value);
+ if (!item || !amount) {
+ alert("Please enter item and amount.");
+ return;
+ }
 
-    const monthKey = monthNames[new Date(date).getMonth()];
-    const entryRef = ref(db, `spendingData/${monthKey}`);
+ const monthKey = monthNames[new Date(date).getMonth()];
+ const entryRef = ref(db, `spendingData/${monthKey}`);
 
-    const snapshot = await get(entryRef);
-    let monthData = snapshot.exists() ? snapshot.val() : [];
-    monthData.push([date, item, amount]);
-    await set(entryRef, monthData);
+ const snapshot = await get(entryRef);
+ let monthData = snapshot.exists() ? snapshot.val() : [];
+ monthData.push([date, item, amount]);
+ await set(entryRef, monthData);
 
-    alert("✅ Entry added!");
-    loadData();
-  }
+ alert("✅ Entry added!");
+ loadData();
+ }
 
-  document.getElementById("monthSelect").addEventListener("change", loadData);
-  window.addEventListener("load", loadData);
+ document.getElementById("monthSelect").addEventListener("change", loadData);
+ window.addEventListener("load", loadData);
 </SCRIPT>
 
 </BODY>

@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User access count (IP based)</title>
+ <meta charset="UTF-8">
+ <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+ <meta http-equiv="Pragma" content="no-cache">
+ <meta http-equiv="Expires" content="0">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>User access count (IP based)</title>
 
-    <style>
-        body {
-            background-color: #004C8F;
-            color: #FFFFFF;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 10px;
-        }
-        table {
-            width: 100%;
-            background-color: white;
-            color: black;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #000;
-            padding: 6px;
-        }
-        th {
-            background-color: #E6E6E6;
-        }
-    </style>
+ <style>
+ body {
+ background-color: #004C8F;
+ color: #FFFFFF;
+ font-family: Arial, sans-serif;
+ margin: 0;
+ padding: 10px;
+ }
+ table {
+ width: 100%;
+ background-color: white;
+ color: black;
+ border-collapse: collapse;
+ }
+ th, td {
+ border: 1px solid #000;
+ padding: 6px;
+ }
+ th {
+ background-color: #E6E6E6;
+ }
+ </style>
 </head>
 
 <body>
@@ -37,169 +37,169 @@
 <h3>User Count (IP-based geolocation)</h3>
 
 <table>
-    <thead>
-        <tr>
-            <th>User Count</th>
-            <th>Country</th>
-            <th>Region</th>
-            <th>City</th>
-            <th>Continent</th>
-        </tr>
-    </thead>
-    <tbody id="tbody"></tbody>
+ <thead>
+ <tr>
+ <th>User Count</th>
+ <th>Country</th>
+ <th>Region</th>
+ <th>City</th>
+ <th>Continent</th>
+ </tr>
+ </thead>
+ <tbody id="tbody"></tbody>
 </table>
 
 <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+ import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
-        authDomain: "openmurugesan.firebaseapp.com",
-        databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "openmurugesan",
-        storageBucket: "openmurugesan.firebasestorage.app",
-        messagingSenderId: "307675598593",
-        appId: "1:307675598593:web:4af163460ce2c3bc719500"
-    };
+ const firebaseConfig = {
+ apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+ authDomain: "openmurugesan.firebaseapp.com",
+ databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+ projectId: "openmurugesan",
+ storageBucket: "openmurugesan.firebasestorage.app",
+ messagingSenderId: "307675598593",
+ appId: "1:307675598593:web:4af163460ce2c3bc719500"
+ };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
+ const app = initializeApp(firebaseConfig);
+ const db = getDatabase(app);
 
-    const tbody = document.getElementById("tbody");
+ const tbody = document.getElementById("tbody");
 
-    // -------- IP GEOLOCATION --------
-    async function detectLocation() {
-        try {
-            const res = await fetch("https://ipapi.co/json/");
-            const data = await res.json();
+ // -------- IP GEOLOCATION --------
+ async function detectLocation() {
+ try {
+ const res = await fetch("https://ipapi.co/json/");
+ const data = await res.json();
 
-            return {
-                country: data.country_name || "UNKNOWN",
-                region: data.region || "UNKNOWN",
-                city: data.city || "UNKNOWN",
-                continent: data.continent_code || "UNKNOWN",
-                ip: data.ip || "UNKNOWN"
-            };
-        } catch (e) {
-            return {
-                country: "UNKNOWN",
-                region: "UNKNOWN",
-                city: "UNKNOWN",
-                continent: "UNKNOWN",
-                ip: "UNKNOWN"
-            };
-        }
-    }
+ return {
+ country: data.country_name || "UNKNOWN",
+ region: data.region || "UNKNOWN",
+ city: data.city || "UNKNOWN",
+ continent: data.continent_code || "UNKNOWN",
+ ip: data.ip || "UNKNOWN"
+ };
+ } catch (e) {
+ return {
+ country: "UNKNOWN",
+ region: "UNKNOWN",
+ city: "UNKNOWN",
+ continent: "UNKNOWN",
+ ip: "UNKNOWN"
+ };
+ }
+ }
 
-    // -------- STORE VISIT --------
-    async function storeVisit() {
-        const geo = await detectLocation();
+ // -------- STORE VISIT --------
+ async function storeVisit() {
+ const geo = await detectLocation();
 
-        await push(ref(db, "userAccess"), {
-            country: geo.country|| "UNKNOWN",
-            region: geo.region|| "UNKNOWN",
-            city: geo.city|| "UNKNOWN",
-            continent: geo.continent|| "UNKNOWN",
-            ip: geo.ip,
-            userAgent: navigator.userAgent,
-            timestamp: Date.now()
-        });
-    }
+ await push(ref(db, "userAccess"), {
+ country: geo.country|| "UNKNOWN",
+ region: geo.region|| "UNKNOWN",
+ city: geo.city|| "UNKNOWN",
+ continent: geo.continent|| "UNKNOWN",
+ ip: geo.ip,
+ userAgent: navigator.userAgent,
+ timestamp: Date.now()
+ });
+ }
 
-    storeVisit();
+ storeVisit();
 
-    // -------- DISPLAY COUNTS --------
-    onValue(ref(db, "userAccess"), snapshot => {
-        tbody.innerHTML = "";
-        if (!snapshot.exists()) return;
+ // -------- DISPLAY COUNTS --------
+ onValue(ref(db, "userAccess"), snapshot => {
+ tbody.innerHTML = "";
+ if (!snapshot.exists()) return;
 const continentMap = { 
-  "AS": "Asia",
-  "NA": "North America",
-  "EU": "Europe",
-  "AF": "Africa",
-  "OC": "Oceania",
-  "SA": "South America",
-  "AN": "Antarctica",
-  "OS": "Oceania",
+ "AS": "Asia",
+ "NA": "North America",
+ "EU": "Europe",
+ "AF": "Africa",
+ "OC": "Oceania",
+ "SA": "South America",
+ "AN": "Antarctica",
+ "OS": "Oceania",
 	"???": "Unknown Location",
 	"UNKNOWN": "Unknown Location"
-};        const counts = {};
+}; const counts = {};
 
 snapshot.forEach(child => {
-    const v = child.val();
-    let country = v.country || "UNKNOWN";
-    const region = v.region || "UNKNOWN";
-    const city = v.city || "UNKNOWN";
-    let continentCode = v.continent || "UNKNOWN";
-    
-    // Normalize country name
-    const upperCountry = country.toUpperCase();
-    
-    // Handle UNKNOWN/privacy cases - simplify the display
-    if (upperCountry.includes("UNKNOWN") || upperCountry.includes("LOCATION:") || upperCountry.includes("VPN") || upperCountry.includes("PROXY") || upperCountry.includes("PRIVACY")) {
-        country = "UNKNOWN (VPN/Privacy)";
-        continentCode = "???";
-    }
-    // India variations
-    else if (upperCountry === "INDIA" || upperCountry === "INDIA") {
-        country = "India";
-        continentCode = "AS";
-    }
-    // America/Los_Angeles timezone format
-    else if (upperCountry.includes("AMERICA/LOS") || upperCountry.includes("LOS_ANGELES")) {
-        country = "United States";
-        continentCode = "NA";
-    }
-    else {
-        switch(true) {
-            case upperCountry.includes("UNITED STATES") || upperCountry.includes("USA") || upperCountry.includes("HAWAII") || upperCountry.includes("PACIFIC TIME"):
-                country = "United States";
-                continentCode = "NA";
-                break;
-            case upperCountry === "PACIFIC ISLANDS":
-                continentCode = "OS";
-                break;
-            case upperCountry === "RUSSIA":
-                continentCode = "EU";
-                break;
-            case upperCountry === "AUSTRALIA" || upperCountry === "FIJI" || upperCountry === "SAMOA" || upperCountry === "TONGA" || upperCountry === "VANUATU" || upperCountry === "SOLOMON ISLANDS" || upperCountry === "NEW ZEALAND" || upperCountry === "PAPUA NEW GUINEA":
-                continentCode = "OC";
-                break;
-            case upperCountry === "BRAZIL" || upperCountry === "ARGENTINA" || upperCountry === "CHILE" || upperCountry === "PERU" || upperCountry === "COLOMBIA":
-                continentCode = "SA";
-                break;
-            case upperCountry === "EGYPT" || upperCountry === "NIGERIA" || upperCountry === "SOUTH AFRICA" || upperCountry === "KENYA" || upperCountry === "CAPE VERDE" || upperCountry === "MOROCCO" || upperCountry.includes("AFRICA"):
-                continentCode = "AF";
-                break;
-            case upperCountry === "UNITED KINGDOM" || upperCountry === "FRANCE" || upperCountry === "GERMANY" || upperCountry === "ITALY" || upperCountry === "ICELAND" || upperCountry === "HUNGARY" || upperCountry === "POLAND" || upperCountry === "ROMANIA" || upperCountry === "UKRAINE" || upperCountry.includes("PORTUGAL") || upperCountry.includes("EUROPE"):
-                continentCode = "EU";
-                break;
-            case upperCountry === "CHINA" || upperCountry === "JAPAN" || upperCountry === "INDONESIA" || upperCountry === "IN" || upperCountry.includes("ASIA/CALCUTTA") || upperCountry.includes("ASIA"):
-                continentCode = "AS";
-                break;
-            case upperCountry === "CANADA" || upperCountry === "MEXICO":
-                continentCode = "NA";
-                break;
-        }
-    }
-    
-    const continent = continentMap[continentCode] || "UNKNOWN";
-    const key = `${country}|${continent}|${region}|${city}`;
-    counts[key] = (counts[key] || 0) + 1;
+ const v = child.val();
+ let country = v.country || "UNKNOWN";
+ const region = v.region || "UNKNOWN";
+ const city = v.city || "UNKNOWN";
+ let continentCode = v.continent || "UNKNOWN";
+ 
+ // Normalize country name
+ const upperCountry = country.toUpperCase();
+ 
+ // Handle UNKNOWN/privacy cases - simplify the display
+ if (upperCountry.includes("UNKNOWN") || upperCountry.includes("LOCATION:") || upperCountry.includes("VPN") || upperCountry.includes("PROXY") || upperCountry.includes("PRIVACY")) {
+ country = "UNKNOWN (VPN/Privacy)";
+ continentCode = "???";
+ }
+ // India variations
+ else if (upperCountry === "INDIA" || upperCountry === "INDIA") {
+ country = "India";
+ continentCode = "AS";
+ }
+ // America/Los_Angeles timezone format
+ else if (upperCountry.includes("AMERICA/LOS") || upperCountry.includes("LOS_ANGELES")) {
+ country = "United States";
+ continentCode = "NA";
+ }
+ else {
+ switch(true) {
+ case upperCountry.includes("UNITED STATES") || upperCountry.includes("USA") || upperCountry.includes("HAWAII") || upperCountry.includes("PACIFIC TIME"):
+ country = "United States";
+ continentCode = "NA";
+ break;
+ case upperCountry === "PACIFIC ISLANDS":
+ continentCode = "OS";
+ break;
+ case upperCountry === "RUSSIA":
+ continentCode = "EU";
+ break;
+ case upperCountry === "AUSTRALIA" || upperCountry === "FIJI" || upperCountry === "SAMOA" || upperCountry === "TONGA" || upperCountry === "VANUATU" || upperCountry === "SOLOMON ISLANDS" || upperCountry === "NEW ZEALAND" || upperCountry === "PAPUA NEW GUINEA":
+ continentCode = "OC";
+ break;
+ case upperCountry === "BRAZIL" || upperCountry === "ARGENTINA" || upperCountry === "CHILE" || upperCountry === "PERU" || upperCountry === "COLOMBIA":
+ continentCode = "SA";
+ break;
+ case upperCountry === "EGYPT" || upperCountry === "NIGERIA" || upperCountry === "SOUTH AFRICA" || upperCountry === "KENYA" || upperCountry === "CAPE VERDE" || upperCountry === "MOROCCO" || upperCountry.includes("AFRICA"):
+ continentCode = "AF";
+ break;
+ case upperCountry === "UNITED KINGDOM" || upperCountry === "FRANCE" || upperCountry === "GERMANY" || upperCountry === "ITALY" || upperCountry === "ICELAND" || upperCountry === "HUNGARY" || upperCountry === "POLAND" || upperCountry === "ROMANIA" || upperCountry === "UKRAINE" || upperCountry.includes("PORTUGAL") || upperCountry.includes("EUROPE"):
+ continentCode = "EU";
+ break;
+ case upperCountry === "CHINA" || upperCountry === "JAPAN" || upperCountry === "INDONESIA" || upperCountry === "IN" || upperCountry.includes("ASIA/CALCUTTA") || upperCountry.includes("ASIA"):
+ continentCode = "AS";
+ break;
+ case upperCountry === "CANADA" || upperCountry === "MEXICO":
+ continentCode = "NA";
+ break;
+ }
+ }
+ 
+ const continent = continentMap[continentCode] || "UNKNOWN";
+ const key = `${country}|${continent}|${region}|${city}`;
+ counts[key] = (counts[key] || 0) + 1;
 });
-        Object.keys(counts).forEach(k => {
-            const [country, continent, region, city] = k.split("|");
-            tbody.innerHTML += `
-                <tr>
-                    <td align="center">${String(counts[k]).padStart(4,"0")}</td>
-                    <td>${country}</td>
-                    <td>${region}</td>
-                    <td>${city}</td>
-                    <td>${continent}</td>
-                </tr>`;
-        });
-    });
+ Object.keys(counts).forEach(k => {
+ const [country, continent, region, city] = k.split("|");
+ tbody.innerHTML += `
+ <tr>
+ <td align="center">${String(counts[k]).padStart(4,"0")}</td>
+ <td>${country}</td>
+ <td>${region}</td>
+ <td>${city}</td>
+ <td>${continent}</td>
+ </tr>`;
+ });
+ });
 </script>
 </body>
 </html>
