@@ -11,7 +11,7 @@ function searchCountry()
 		const country = rows[i].getElementsByTagName("td")[1].textContent.toLowerCase();
 		if( country.includes(input) && ( "" !== input ) )
 		{
-			resultsHTML += "<TABLE border='1' cellpadding='4' cellspacing='0' style='width:100%; margin-top:10px;'><TR style='color:black;'><TH>Rank</TH><TH>Country</TH><TH>Score</TH></TR>" +
+			resultsHTML += "<TABLE border='1' cellpadding='4' cellspacing='0' style='width:100%; margin-top:10px;'><TR style='color:black;'><TH valign='top' align='right'>Rank</TH><TH valign='top' align='right'>Country</TH><TH valign='top' align='right'>Score</TH></TR>" +
 						"<TR style='color:black;'>" + rows[i].innerHTML + "</TR></TABLE>";
 			rows[i].style.display = found ? "" : "none";
 		}
