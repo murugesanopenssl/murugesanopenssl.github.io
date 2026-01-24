@@ -721,6 +721,11 @@ function loadMainContent( event )
 					document.title = "Vehicle ranking";
 					console.log("Setting title to 'Daily Spending'");
 				}
+				else if( "my-gold-loan.html" == htmlFileName )
+				{
+					document.title = "My Gold Loan Summary KLM Axiva";
+					console.log("Setting title to 'Daily Spending'");
+				}
 				else if( "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" == htmlFileName )
 				{
 					document.title = "Knowledge Transfer Case Study – SBI Fixed Deposit Optimization";
@@ -1294,6 +1299,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 				</LI>
 				<LI>
 					<A href="#" onclick="javascript:loadHomeContent( event, '2-wheeler-4-wheeler-rank.html' );" class="nav-link">Vehicle rankings amount</A>
+				</LI>
+				<LI>
+					<A href="#" onclick="javascript:loadHomeContent( event, 'my-gold-loan.html' );" class="nav-link">My Gold Loan Summary</A>
 				</LI>
 				</UL>
 				</LI>
