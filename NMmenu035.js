@@ -1373,6 +1373,11 @@ function loadMoneyHelpContent( event, htmlFileName )
 				<SPAN class="nav-icon">&#x1F4C5;</SPAN>
 				<SPAN class="nav-text"><FONT color='#00ff00'>Calendar</FONT></SPAN>
 				</A>
+					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'IGCSE-EXAM-DATES.html' );" class="nav-link">Cambridge IGCSE Examination Timetable</A>
+						</LI>
+					</UL>
 				</LI>
 				<LI class="nav-item">
 					<A href="#" class="nav-link">
