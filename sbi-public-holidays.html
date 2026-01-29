@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+		<TITLE>TN/KA SBI Public Holidays</TITLE>
+		<SCRIPT type='text/javascript'>
+			var adhoc=[new Date(new Date().getFullYear(),0,27)]; // 27-Jan example
+			function y(){return new Date().getFullYear();}
+			function key(d){return d.getDate()+'-'+d.getMonth()+'-'+d.getFullYear();}
+			function dstr(d)
+			{
+				var w=d.toLocaleDateString('en-IN',{weekday:'short'});
+				var m=d.toLocaleDateString('en-IN',{month:'short'});
+				return w+' '+d.getDate()+'-'+m+'-'+d.getFullYear()+' IST';
+			}
+			function sat(month, n)
+			{
+				var count = 0;
+				for (var i = 1; i <= 31; i++) {
+					var d = new Date(y(), month, i);
+					if (d.getMonth() != month) break;
+					if (d.getDay() == 6) count++; // Saturday
+					if (count == n) return d;
+				}
+			}
+			function row(d,h)
+			{
+				var t=new Date();
+				var isToday = key(d) == key(t);
+				var displayText = adhoc.some(ad=>key(ad)==key(d)) ? 
+								  'All Banks: Likely closed or severely affected due to the strike' : h;
+
+				var tnBg = isToday ? 'red' : 'orange';
+				var kaBg = isToday ? 'red' : '#00ff00';
+				var tnColor = isToday ? 'white' : 'black';
+				var kaColor = isToday ? 'white' : 'black';
+
+				return '<TR>'+
+					'<TD valign="top" align="right" style="background-color:'+tnBg+'; color:'+tnColor+';">'+dstr(d)+'</TD>'+
+					'<TD valign="top" align="right" style="background-color:'+tnBg+'; color:'+tnColor+';">'+displayText+'</TD>'+
+					'<TD valign="top" align="right" style="background-color:'+kaBg+'; color:'+kaColor+';">'+dstr(d)+'</TD>'+
+					'<TD valign="top" align="right" style="background-color:'+kaBg+'; color:'+kaColor+';">'+displayText+'</TD>'+
+				'</TR>';
+			}
+			function init()
+			{
+			var r = document.getElementById('rows');
+			var fixed = [
+				[26,0,'Republic Day'],
+				[1,4,'International Workers\' Day'],
+				[15,7,'Independence Day'],
+				[2,9,'Gandhi Jayanti'],
+				[25,11,'Christmas Day']
+			];
+
+			for (var m = 0; m < 12; m++) {
+				r.innerHTML += row(sat(m,2),'Second Saturday');
+				r.innerHTML += row(sat(m,4),'Fourth Saturday');
+			}
+
+			for (var i = 0; i < fixed.length; i++) {
+				r.innerHTML += row(new Date(y(), fixed[i][1], fixed[i][0]), fixed[i][2]);
+			}
+
+			for (var i = 0; i < adhoc.length; i++) {
+				r.innerHTML += row(adhoc[i],'All Banks: Likely closed or severely affected due to the strike');
+			}
+		}
+		</SCRIPT>
+		<STYLE type='text/css'>
+			TABLE{border-collapse:collapse;width:100%;}
+			TD,TH{padding:6px;border:1px solid #000;}
+			TH{background:#ccc;}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN="0" LEFTMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" onload="init()">
+		<TABLE border="1" style="width:100%;">
+			<TR>
+				<TH valign="top" align="right" colspan="2" style="background-color:orange;">TAMILNADU SBI PUBLIC HOLIDAYS</TH>
+				<TH valign="top" align="right" colspan="2" style="background-color:#00ff00;">KARNATAKA SBI PUBLIC HOLIDAYS</TH>
+			</TR>
+			<TR>
+				<TH valign="top" align="right" style="background-color:orange;">Date</TH>
+				<TH valign="top" align="right" style="background-color:orange;">Holiday</TH>
+				<TH valign="top" align="right" style="background-color:#00ff00;">Date</TH>
+				<TH valign="top" align="right" style="background-color:#00ff00;">Holiday</TH>
+			</TR>
+			<tbody id="rows"></tbody>
+		</TABLE>
+	</BODY>
+</HTML>
