@@ -489,7 +489,7 @@ function loadMainContent( event )
 					<TD class="content-column">
 						<DIV class="feature-box">
 							<DIV class="feature-icon">&#x1F527;</DIV>
-							<H3>Practical Utilities</H3>
+							<H3>Practical Utility</H3>
 							<P>Home maintenance tips and knowledge sharing for everyday household problems.</P>
 						</DIV>
 					</TD>
@@ -905,12 +905,33 @@ function loadMainContent( event )
 						{
 							activeLink.closest(".nav-item").classList.add("active");
 							const shouldDisableLink = 
-							(htmlFileName === "HandleBankAMB.html" && activeLink.textContent.trim() === "AtmTips0") ||
+							(htmlFileName === "HandleBankAMB.html" && activeLink.textContent.trim() === "AtmTips") ||
+							(htmlFileName === "Prediction_04.html" && activeLink.textContent.trim() === "MyPredict") ||
+							(htmlFileName === "IGCSE-EXAM-DATES.html" && activeLink.textContent.trim() === "Cambridge IGCSE Examination Timetable") ||
+							(htmlFileName === "Tamilnadu-MLA.html" && activeLink.textContent.trim() === "TN M.L.A") ||
+							(htmlFileName === "new-employee-sbi-account.html" && activeLink.textContent.trim() === "Any Employee Savings Guide") ||
+							(htmlFileName === "Indian-bank-to-other-bank.html" && activeLink.textContent.trim() === "Indian bank transfer err") ||
+							(htmlFileName === "world-currencies.html" && activeLink.textContent.trim() === "World Currency Rates") ||
+							(htmlFileName === "Last-year-investment-provit-at-earth.html" && activeLink.textContent.trim() === "Last Year Investment Trends") ||
+							(htmlFileName === "gold-loan.html" && activeLink.textContent.trim() === "When to pay loan?") ||
+							(htmlFileName === "2-wheeler-4-wheeler-rank.html" && activeLink.textContent.trim() === "Vehicle rankings amount") ||
+							(htmlFileName === "my-gold-loan.html" && activeLink.textContent.trim() === "Apply gold loan only at SBI/banks") ||
+							(htmlFileName === "vegetables-health.html" && activeLink.textContent.trim() === "Vegetables & Health") ||
+							(htmlFileName === "My_Drawings.html" && activeLink.textContent.trim() === "My drawings") ||
+							(htmlFileName === "privacy.html" && activeLink.textContent.trim() === "Privacy policy") ||
+							(htmlFileName === "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" && activeLink.textContent.trim() === "My KT to chatgpt") ||
+							(htmlFileName === "pm-cm-india-relations.html" && activeLink.textContent.trim() === "India PM–CM Relations") ||
+							(htmlFileName === "BIG-MART-POINTS.html" && activeLink.textContent.trim() === "Rewards & Smart Spending") ||
+							(htmlFileName === "Steps-to-save-money-from-mis.html" && activeLink.textContent.trim() === "Steps to save money") ||
+							(htmlFileName === "Responsible-Nations-Index-Jan-2026.html" && activeLink.textContent.trim() === "Responsible Nations Index Jan-2026") ||
+							(htmlFileName === "Visitor_count.html" && activeLink.textContent.trim() === "Visitors") ||
+							(htmlFileName === "my-location.html" && activeLink.textContent.trim() === "Display my location") ||
+							(htmlFileName === "steps-to-recharge-any-sim.html" && activeLink.textContent.trim() === "Internet Recharge Exception") ||
 							(htmlFileName === "displayMoneyHelpMenu.html" && activeLink.textContent.trim() === "Money Help0") ||
 							(htmlFileName === "Increase-Daily-Salary.html" && activeLink.textContent.trim() === "Increase daily salary") ||
 							(htmlFileName === "Bharath_gas_booking_steps.html" && activeLink.textContent.trim() === "Bharath gas online booking steps") ||
 							(htmlFileName === "Indian-Oil-Cylinder-Booking-Online-Steps.html" && activeLink.textContent.trim() === "Indian oil gas online booking steps") ||
-							(htmlFileName === "Always-Have-Cash-A-Lesson.html" && activeLink.textContent.trim() === "Always Have Cash – A Lesson") ||
+							(htmlFileName === "Always-Have-Cash-A-Lesson.html" && activeLink.textContent.trim() === "Always Have Cash : A Lesson") ||
 							(htmlFileName === "spending.html" && activeLink.textContent.trim() === "Daily spending");
 							if( shouldDisableLink )
 							{
@@ -1237,7 +1258,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<LI class="nav-item">
 							<A href='javascript:void( 0 );' class="nav-link" style="cursor: text; text-decoration: none;">
 								<SPAN class="nav-icon">&#127974;</SPAN>
-								<SPAN class="nav-text"><FONT color='black'>HandleMoneyErrs</FONT></SPAN>
+								<SPAN class="nav-text"><FONT color='black'>HandleMoney</FONT></SPAN>
 								<SPAN class="nav-arrow">&gt;</SPAN>
 							</A>
 							<UL class="submenu">
@@ -1245,7 +1266,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 									<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-recharge-any-sim.html' );" class="nav-link">Internet Recharge Exception</A>
 								</LI>
 								<LI>
-									<A href="#" onclick="javascript:loadHomeContent( event, 'HandleBankAMB.html' );" class="nav-link">AtmTips0</A>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'HandleBankAMB.html' );" class="nav-link">AtmTips</A>
 								</LI>
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'displayMoneyHelpMenu.html' );" class="nav-link">Money Help0</A>
@@ -1260,7 +1281,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 									<A href="#" onclick="javascript:loadHomeContent( event, 'Indian-Oil-Cylinder-Booking-Online-Steps.html' );" class="nav-link">Indian oil gas online booking steps</A>
 								</LI>
 								<LI>
-									<A href="#" onclick="javascript:loadHomeContent( event, 'Always-Have-Cash-A-Lesson.html' );" class="nav-link">Always Have Cash – A Lesson</A>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'Always-Have-Cash-A-Lesson.html' );" class="nav-link">Always Have Cash : A Lesson</A>
 								</LI>
 							</UL>
 						</LI>
@@ -1298,9 +1319,6 @@ function loadMoneyHelpContent( event, htmlFileName )
 					<A href="#" onclick="javascript:loadHomeContent( event, 'Indian-bank-to-other-bank.html' );" class="nav-link">Indian bank transfer err</A>
 				</LI>
 				<LI>
-					<A href="#" onclick="javascript:loadHomeContent( event, 'HandleBankAMB.html' );" class="nav-link">Handling AMB</A>
-				</LI>
-				<LI>
 					<A href="#" onclick="javascript:loadHomeContent( event, 'world-currencies.html' );" class="nav-link">World Currency Rates</A>
 				</LI>
 				<LI>
@@ -1320,7 +1338,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 				<LI class="nav-item">
 					<A href="#" class="nav-link">
 						<SPAN class="nav-icon">&#x1F527;</SPAN>
-						<SPAN class="nav-text"><FONT color='black'>Utilities</FONT></SPAN>
+						<SPAN class="nav-text"><FONT color='black'>Utility</FONT></SPAN>
 						<SPAN CLASS="NAV-ARROW">&gt;</SPAN>
 					</A>
 					<UL class="submenu">
@@ -1384,12 +1402,12 @@ function loadMoneyHelpContent( event, htmlFileName )
 			<LI class="nav-item">
 					<A href="javascript:void(0);" class="nav-link">
 						<SPAN class="nav-icon">&#x1F465;</SPAN>
-						<SPAN class="nav-text"><FONT color='black'>VisitorCount</FONT></SPAN>
+						<SPAN class="nav-text"><FONT color='black'>Visitors</FONT></SPAN>
 						<SPAN class="nav-arrow">&gt;</SPAN>
 					</A>
 					<UL class="submenu">
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'Visitor_count.html' );" class="nav-link">Visitor Count</A>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'Visitor_count.html' );" class="nav-link">Visitors</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Responsible-Nations-Index-Jan-2026.html' );" class="nav-link">Responsible Nations Index Jan-2026</A>
