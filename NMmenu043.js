@@ -1425,6 +1425,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 								<FONT color='#00ff00'>Washing Machine</FONT>
 							</A>
 						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'Set-Black-Image-lock-screen-home-screen.html' );" class="nav-link">Samsung Wallpaper Home Lock</A>
+						</LI>
 					</UL>
 				</LI>
 				<LI class="nav-item">
