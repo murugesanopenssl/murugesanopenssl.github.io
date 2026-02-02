@@ -1,0 +1,24 @@
+name: Update AVR Gold Rates
+on:
+  schedule:
+    - cron: '0 6 * * *'
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch AVR rates
+        run: |
+          curl -s https://avrswarnamahal.com/todaysgoldrate > page.html
+          blr22=$(grep -oP '22K[^0-9]*\K[0-9,]+' page.html | head -1 | tr -d ',')
+          blr24=$(grep -oP '24K[^0-9]*\K[0-9,]+' page.html | head -1 | tr -d ',')
+          date=$(date +%Y-%m-%d)
+          echo "{\"blr22\":$blr22,\"blr24\":$blr24,\"dpi22\":$blr22,\"dpi24\":$blr24,\"updated\":\"$date\"}" > rates.json
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add rates.json
+          git commit -m "Update rates.json"
+          git push
+
