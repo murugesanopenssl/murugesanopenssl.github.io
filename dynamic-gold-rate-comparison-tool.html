@@ -513,10 +513,9 @@
 				
 				try
 				{
-					// Try fetching Dharmapuri rates
 					const dpiResponse = await fetchWithTimeout(
-						'https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.goodreturns.in/gold-rates/dharmapuri.html'),
-						8000
+					  'https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.goodreturns.in/gold-rates/dharmapuri.html'),
+					  8000
 					);
 					
 					if (dpiResponse.ok)
