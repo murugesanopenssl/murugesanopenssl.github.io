@@ -1,5 +1,6 @@
 name: Update AVR Gold Rates
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 6 * * *'
 jobs:
@@ -21,4 +22,3 @@ jobs:
           git add rates.json
           git commit -m "Update rates.json"
           git push
-
