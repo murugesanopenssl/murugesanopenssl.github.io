@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width,initial-scale=1.0">
+		<TITLE>Live Gold Rate Comparison - Dharmapuri vs Bangalore</TITLE>
+		<STYLE type='text/css'>
+			*
+			{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body
+			{
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background: white;
+				padding: 0;
+				margin: 0;
+				min-height: 100vh;
+			}
+			.container
+			{
+				width: 100%;
+				max-width: 100%;
+				margin: 0;
+				background: white;
+				border-radius: 0;
+				box-shadow: none;
+				overflow: hidden;
+			}
+			.header
+			{
+				background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+				color: white;
+				padding: 30px;
+				text-align: center;
+			}
+			.header h1
+			{
+				font-size: 2.5em;
+				margin-bottom: 10px;
+				text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+			}
+			.header p
+			{
+				font-size: 1.1em;
+				opacity: 0.95;
+			}
+			.content
+			{
+				padding: 30px;
+			}
+			.loading
+			{
+				text-align: center;
+				padding: 40px;
+				font-size: 1.2em;
+				color: #666;
+			}
+			.spinner
+			{
+				border: 4px solid #f3f3f3;
+				border-top: 4px solid #667eea;
+				border-radius: 50%;
+				width: 50px;
+				height: 50px;
+				animation: spin 1s linear infinite;
+				margin: 20px auto;
+			}
+			@keyframes spin
+			{
+				0%
+				{
+					transform: rotate(0deg);
+				}
+				100%
+				{
+					transform: rotate(360deg);
+				}
+			}
+			.error
+			{
+				background: #f8d7da;
+				border-left: 5px solid #dc3545;
+				padding: 20px;
+				margin: 20px 0;
+				border-radius: 8px;
+				color: #721c24;
+			}
+			.warning
+			{
+				background: #fff3cd;
+				border-left: 5px solid #ffc107;
+				padding: 20px;
+				margin: 20px 0;
+				border-radius: 8px;
+				color: #856404;
+			}
+			.alert
+			{
+				background: #fff3cd;
+				border-left: 5px solid #ffc107;
+				padding: 20px;
+				margin-bottom: 30px;
+				border-radius: 8px;
+			}
+			.alert h3
+			{
+				color: #856404;
+				margin-bottom: 10px;
+			}
+			.rate-cards
+			{
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 20px;
+				margin: 30px 0;
+			}
+			.rate-card
+			{
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				padding: 25px;
+				border-radius: 15px;
+				box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+				transition: transform 0.3s ease;
+			}
+			.rate-card:hover
+			{
+				transform: translateY(-5px);
+			}
+			.rate-card h3
+			{
+				font-size: 1.3em;
+				margin-bottom: 15px;
+				border-bottom: 2px solid rgba(255,255,255,0.3);
+				padding-bottom: 10px;
+			}
+			.rate-item
+			{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin: 15px 0;
+				background: rgba(255,255,255,0.15);
+				padding: 12px 15px;
+				border-radius: 8px;
+			}
+			.rate-item label
+			{
+				font-weight: 500;
+			}
+			.rate-item .price
+			{
+				font-size: 1.4em;
+				font-weight: bold;
+			}
+			.savings-highlight
+			{
+				background: #d4edda;
+				border-left: 5px solid #28a745;
+				padding: 20px;
+				margin: 20px 0;
+				border-radius: 8px;
+			}
+			.savings-highlight h3
+			{
+				color: #155724;
+				margin-bottom: 10px;
+			}
+			.savings-amount
+			{
+				font-size: 2em;
+				color: #28a745;
+				font-weight: bold;
+			}
+			.comparison-table
+			{
+				width: 100%;
+				border-collapse: collapse;
+				margin: 30px 0;
+				background: white;
+				border-radius: 10px;
+				overflow: hidden;
+				box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+			}
+			.comparison-table thead
+			{
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+			}
+			.comparison-table th
+			{
+				padding: 18px;
+				text-align: right;
+				font-weight: 600;
+				font-size: 1.05em;
+			}
+			.comparison-table td
+			{
+				padding: 15px 18px;
+				border-bottom: 1px solid #e0e0e0;
+				text-align: right;
+			}
+			.comparison-table tbody tr:hover
+			{
+				background: #f8f9fa;
+			}
+			.location-dharmapuri
+			{
+				background: #e8f5e9;
+				font-weight: bold;
+				color: #2e7d32;
+			}
+			.location-bangalore
+			{
+				background: #fff3e0;
+				font-weight: bold;
+				color: #e65100;
+			}
+			.best-deal
+			{
+				background: #c8e6c9 !important;
+				position: relative;
+			}
+			.best-deal::after
+			{
+				content: '✓ BEST';
+				position: absolute;
+				right: 10px;
+				top: 50%;
+				transform: translateY(-50%);
+				background: #4caf50;
+				color: white;
+				padding: 5px 12px;
+				border-radius: 20px;
+				font-size: 0.75em;
+				font-weight: bold;
+			}
+			.recommendation
+			{
+				background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+				padding: 25px;
+				border-radius: 15px;
+				margin: 30px 0;
+				box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+			}
+			.recommendation h2
+			{
+				color: #0d47a1;
+				margin-bottom: 15px;
+			}
+			.recommendation ul
+			{
+				list-style: none;
+				padding-left: 0;
+			}
+			.recommendation li
+			{
+				padding: 10px 0;
+				padding-left: 30px;
+				position: relative;
+			}
+			.recommendation li::before
+			{
+				content: '💡';
+				position: absolute;
+				left: 0;
+				top: 10px;
+			}
+			.note
+			{
+				background: #e3f2fd;
+				border-left: 5px solid #2196f3;
+				padding: 20px;
+				margin: 20px 0;
+				border-radius: 8px;
+				font-size: 0.95em;
+			}
+			.refresh-btn
+			{
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				border: none;
+				padding: 12px 30px;
+				border-radius: 25px;
+				font-size: 1.1em;
+				cursor: pointer;
+				box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+				transition: all 0.3s ease;
+				margin: 20px 10px;
+			}
+			.refresh-btn:hover
+			{
+				transform: translateY(-2px);
+				box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+			}
+			.refresh-btn:active
+			{
+				transform: translateY(0);
+			}
+			.refresh-btn:disabled
+			{
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+			.link-btn
+			{
+				background: #28a745;
+				color: white;
+				text-decoration: none;
+				padding: 12px 30px;
+				border-radius: 25px;
+				font-size: 1.1em;
+				display: inline-block;
+				box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+				transition: all 0.3s ease;
+				margin: 10px;
+			}
+			.link-btn:hover
+			{
+				transform: translateY(-2px);
+				box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+			}
+			.last-updated
+			{
+				text-align: center;
+				color: #666;
+				font-size: 0.9em;
+				margin-top: 30px;
+				padding: 15px;
+				background: #f5f5f5;
+				border-radius: 8px;
+			}
+			.success-message
+			{
+				background: #d4edda;
+				border-left: 5px solid #28a745;
+				padding: 15px;
+				margin: 20px 0;
+				border-radius: 8px;
+				color: #155724;
+			}
+			@media (max-width: 768px)
+			{
+				.header h1
+				{
+					font-size: 1.8em;
+				}
+				.rate-cards
+				{
+					grid-template-columns: 1fr;
+				}
+				.comparison-table
+				{
+					font-size: 0.9em;
+				}
+				.comparison-table th,
+				.comparison-table td
+				{
+					padding: 10px;
+				}
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV class="container">
+			<DIV class="header">
+				<H1>🏆 Live Gold Rate Comparison</H1>
+				<P>Compare gold rates - Dharmapuri vs Bangalore</P>
+			</DIV>
+			<DIV class="content">
+				<DIV id="loadingSection" class="loading" style="display: none;">
+					<DIV class="spinner"></DIV>
+					<P>Fetching live gold rates...</P>
+				</DIV>
+				<DIV id="errorSection" class="error" style="display: none;"></DIV>
+				<DIV id="successSection" class="success-message" style="display: none;"></DIV>
+				<DIV id="mainContent">
+					<DIV class="warning">
+						BUYING GOLD COIN AT DHARMAPURI/TAMILNADU/INDIA HAVING LESS AMOUNT THAN BUYING THE SAME GOLD AT BENGALURU/KARNATAKA/INDIA.<BR>
+						<B><U>I feel to buy 0.25 gram OR 0.50 gram or 0.75 gram or 1.00 gram of 24K gold coin during Nov-2026 IST at Dharmapuri/Tamilnadu/India</B></U>
+						<DIV style="margin-top: 15px;">
+							<A href="https://www.goodreturns.in/gold-rates/dharmapuri.html" target="_blank" class="link-btn">📍 Dharmapuri Rates</A>
+							<A href="https://www.goodreturns.in/gold-rates/bangalore.html" target="_blank" class="link-btn">📍 Bangalore Rates</A>
+						</DIV>
+					</DIV>
+					<DIV class="alert">
+						<H3>📍 Locations Compared:</H3>
+						<UL>
+							<LI><STRONG>Dharmapuri</STRONG> - Tamil Nadu, India</LI>
+							<LI><STRONG>Bangalore (Rajaji Nagar & Attibele)</STRONG> - Karnataka, India</LI>
+						</UL>
+					</DIV>
+					<BUTTON class="refresh-btn" onclick="fetchGoldRates()" id="refreshBtn">🔄 Fetch Live Rates</BUTTON>
+					<DIV class="rate-cards">
+						<DIV class="rate-card">
+							<H3>🌟 Dharmapuri, Tamil Nadu</H3>
+							<DIV class="rate-item">
+								<LABEL>22K Gold</LABEL>
+								<DIV class="price">₹<SPAN id="dharmapuri-22k">Loading...</SPAN>/g</DIV>
+							</DIV>
+							<DIV class="rate-item">
+								<LABEL>24K Gold</LABEL>
+								<DIV class="price">₹<SPAN id="dharmapuri-24k">Loading...</SPAN>/g</DIV>
+							</DIV>
+						</DIV>
+						<DIV class="rate-card">
+							<H3>🏙️ Bangalore, Karnataka</H3>
+							<DIV class="rate-item">
+								<LABEL>22K Gold</LABEL>
+								<DIV class="price">₹<SPAN id="bangalore-22k">Loading...</SPAN>/g</DIV>
+							</DIV>
+							<DIV class="rate-item">
+								<LABEL>24K Gold</LABEL>
+								<DIV class="price">₹<SPAN id="bangalore-24k">Loading...</SPAN>/g</DIV>
+							</DIV>
+						</DIV>
+					</DIV>
+					<DIV class="savings-highlight" id="savingsSection">
+					</DIV>
+					<H2 style="margin: 40px 0 20px 0; color: #333;">📊 Detailed Price Comparison</H2>
+					<TABLE class="comparison-table">
+						<THEAD>
+							<TR>
+								<TH valign='top' align='right'>Weight</TH>
+								<TH valign='top' align='right'>Karat</TH>
+								<TH valign='top' align='right'>Dharmapuri (TN)</TH>
+								<TH valign='top' align='right'>Bangalore (KA)</TH>
+								<TH valign='top' align='right'>You Save</TH>
+							</TR>
+						</THEAD>
+						<TBODY id="comparisonTableBody">
+						</TBODY>
+					</TABLE>
+					<DIV class="recommendation" id="recommendationSection">
+					</DIV>
+					<DIV class="note">
+						<STRONG>⚠️ Important Considerations:</STRONG>
+						<UL style="margin-top: 10px; padding-left: 20px;">
+							<LI><STRONG>ALWAYS verify current rates before purchasing</STRONG> - gold prices change daily</LI>
+							<LI>Visit the official websites above for today's exact rates</LI>
+							<LI>Factor in transportation costs to your preferred location</LI>
+							<LI>Check making charges which vary significantly between jewelers (₹300-₹800 per gram)</LI>
+							<LI>Ensure BIS hallmark certification (916 for 22K, 999 for 24K)</LI>
+							<LI>GST (3%) applies uniformly across all locations</LI>
+							<LI>TCS (Tax Collected at Source) applies: 1% if payment > ₹2 lakhs without PAN, 0.1% with PAN</LI>
+							<LI>For cash purchases above ₹2 lakhs, PAN card is mandatory</LI>
+						</UL>
+					</DIV>
+					<DIV class="note" style="background: #fff3e0; border-left-color: #ff9800;">
+						<STRONG>💼 Why Rates Differ Between States:</STRONG>
+						<P style="margin-top: 10px;">
+							Gold rates vary between Tamil Nadu and Karnataka due to:
+						</P>
+						<UL style="margin-top: 10px; padding-left: 20px;">
+							<LI><STRONG>State-level taxation differences</STRONG></LI>
+							<LI><STRONG>Local market demand and supply</STRONG></LI>
+							<LI><STRONG>Transportation and logistics costs</STRONG></LI>
+							<LI><STRONG>Regional jeweler associations and pricing policies</STRONG></LI>
+							<LI><STRONG>Competition levels in each market</STRONG></LI>
+							<LI><STRONG>Import duties and local levies</STRONG></LI>
+						</UL>
+					</DIV>
+					<DIV class="note" style="background: #e8f5e9; border-left-color: #4caf50;">
+						<STRONG>📱 How to Use This Tool:</STRONG>
+						<OL style="margin-top: 10px; padding-left: 25px;">
+							<LI>Click "Fetch Live Rates" to get today's rates automatically</LI>
+							<LI>If automatic fetch fails, click the links above to check rates manually</LI>
+							<LI>Compare the calculated prices for different weights</LI>
+							<LI>Consider making charges and transportation costs</LI>
+							<LI>Visit your preferred location with proper identification</LI>
+						</OL>
+					</DIV>
+					<DIV class="last-updated">
+						<STRONG>📊 Data Information:</STRONG><BR>
+						Last fetched: <SPAN id="lastUpdated">Not yet loaded</SPAN><BR>
+						<SMALL>Rates are fetched from GoodReturns.in. Actual jeweler rates may vary by ₹50-200 per gram.<BR>
+						Always confirm current rates at your chosen jeweler before purchase.</SMALL>
+					</DIV>
+				</DIV>
+			</DIV>
+		</DIV>
+		<SCRIPT type='text/javascript'>
+			// Initialize with placeholder values - will be replaced by API
+			let rates = {
+				dharmapuri: { '22k': 0, '24k': 0 },
+				bangalore: { '22k': 0, '24k': 0 }
+			};
+			
+			const weights = [0.25, 0.5, 0.75, 1, 2, 4, 8, 10];
+			
+			function formatCurrency(amount)
+			{
+				return '₹' + amount.toLocaleString( 'en-IN',
+					{ 
+						minimumFractionDigits: 2, 
+						maximumFractionDigits: 2 
+					}
+				);
+			}
+			
+			// Function to fetch gold rates using a backend proxy or scraping service
+			async function fetchGoldRates()
+			{
+				const loadingSection = document.getElementById('loadingSection');
+				const errorSection = document.getElementById('errorSection');
+				const successSection = document.getElementById('successSection');
+				const refreshBtn = document.getElementById('refreshBtn');
+				
+				loadingSection.style.display = 'block';
+				errorSection.style.display = 'none';
+				successSection.style.display = 'none';
+				refreshBtn.disabled = true;
+				refreshBtn.textContent = '⏳ Fetching...';
+				
+				try
+				{
+					// Try fetching Dharmapuri rates
+					const dpiResponse = await fetchWithTimeout(
+						'https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.goodreturns.in/gold-rates/dharmapuri.html'),
+						8000
+					);
+					
+					if (dpiResponse.ok)
+					{
+						const dpiData = await dpiResponse.json();
+						const dpiHtml = dpiData.contents;
+						
+						// Parse Dharmapuri rates from HTML
+						const dpiRates = parseGoldRates(dpiHtml);
+						if (dpiRates.gold22k && dpiRates.gold24k)
+						{
+							rates.dharmapuri['22k'] = dpiRates.gold22k;
+							rates.dharmapuri['24k'] = dpiRates.gold24k;
+						}
+					}
+					
+					// Try fetching Bangalore rates
+					const blrResponse = await fetchWithTimeout(
+						'https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.goodreturns.in/gold-rates/bangalore.html'),
+						8000
+					);
+					
+					if (blrResponse.ok)
+					{
+						const blrData = await blrResponse.json();
+						const blrHtml = blrData.contents;
+						
+						// Parse Bangalore rates from HTML
+						const blrRates = parseGoldRates(blrHtml);
+						if (blrRates.gold22k && blrRates.gold24k)
+						{
+							rates.bangalore['22k'] = blrRates.gold22k;
+							rates.bangalore['24k'] = blrRates.gold24k;
+						}
+					}
+					
+					// Check if we got valid rates
+					if (rates.dharmapuri['22k'] > 0 && rates.bangalore['22k'] > 0)
+					{
+						loadingSection.style.display = 'none';
+						successSection.style.display = 'block';
+						successSection.innerHTML = '<STRONG>✅ Rates updated successfully!</STRONG> Showing live rates from GoodReturns.in';
+						updateUI();
+					}
+					else
+					{
+						throw new Error('Could not parse valid rates');
+					}
+				}
+				catch (error)
+				{
+					console.error('Fetch error:', error);
+					loadingSection.style.display = 'none';
+					errorSection.style.display = 'block';
+					errorSection.innerHTML = `
+						<STRONG>⚠️ Unable to fetch live rates automatically</STRONG><BR>
+						This can happen due to network restrictions or API limitations.<BR><BR>
+						<STRONG>Please check rates manually:</STRONG><BR>
+						<A href="https://www.goodreturns.in/gold-rates/dharmapuri.html" target="_blank" style="color: #0066cc;">Dharmapuri Rates</A> | 
+						<A href="https://www.goodreturns.in/gold-rates/bangalore.html" target="_blank" style="color: #0066cc;">Bangalore Rates</A><BR><BR>
+						Using fallback reference rates from recent market data.
+					`;
+					
+					// Use fallback rates (recent approximate values)
+					rates.dharmapuri['22k'] = 7580;
+					rates.dharmapuri['24k'] = 8270;
+					rates.bangalore['22k'] = 7655;
+					rates.bangalore['24k'] = 8352;
+					
+					updateUI();
+				}
+				finally
+				{
+					refreshBtn.disabled = false;
+					refreshBtn.textContent = '🔄 Fetch Live Rates';
+				}
+			}
+			
+			// Helper function with timeout
+			function fetchWithTimeout(url, timeout = 8000)
+			{
+				return Promise.race([
+					fetch(url),
+					new Promise((_, reject) => 
+						setTimeout(() => reject(new Error('Timeout')), timeout)
+					)
+				]);
+			}
+			
+			// Parse gold rates from GoodReturns HTML
+			function parseGoldRates(html)
+			{
+				const rates = { gold22k: 0, gold24k: 0 };
+				
+				try
+				{
+					// Look for common patterns in GoodReturns HTML
+					// Pattern 1: Direct text with rupee symbol
+					const match22_1 = html.match(/22.*?[Kk]arat.*?₹\s*([0-9,]+)/i);
+					const match24_1 = html.match(/24.*?[Kk]arat.*?₹\s*([0-9,]+)/i);
+					
+					if (match22_1) rates.gold22k = parseFloat(match22_1[1].replace(/,/g, ''));
+					if (match24_1) rates.gold24k = parseFloat(match24_1[1].replace(/,/g, ''));
+					
+					// Pattern 2: Table format
+					if (!rates.gold22k || !rates.gold24k)
+					{
+						const tableMatch22 = html.match(/<td[^>]*>.*?22.*?<\/td>\s*<td[^>]*>.*?([0-9,]+).*?<\/td>/i);
+						const tableMatch24 = html.match(/<td[^>]*>.*?24.*?<\/td>\s*<td[^>]*>.*?([0-9,]+).*?<\/td>/i);
+						
+						if (tableMatch22 && !rates.gold22k) rates.gold22k = parseFloat(tableMatch22[1].replace(/,/g, ''));
+						if (tableMatch24 && !rates.gold24k) rates.gold24k = parseFloat(tableMatch24[1].replace(/,/g, ''));
+					}
+					
+					// Validate rates are reasonable (between 5000-20000 per gram)
+					if (rates.gold22k < 5000 || rates.gold22k > 20000) rates.gold22k = 0;
+					if (rates.gold24k < 5000 || rates.gold24k > 20000) rates.gold24k = 0;
+				}
+				catch (e)
+				{
+					console.error('Parse error:', e);
+				}
+				
+				return rates;
+			}
+			
+			function updateUI()
+			{
+				document.getElementById('dharmapuri-22k').textContent = rates.dharmapuri['22k'].toLocaleString('en-IN');
+				document.getElementById('dharmapuri-24k').textContent = rates.dharmapuri['24k'].toLocaleString('en-IN');
+				document.getElementById('bangalore-22k').textContent = rates.bangalore['22k'].toLocaleString('en-IN');
+				document.getElementById('bangalore-24k').textContent = rates.bangalore['24k'].toLocaleString('en-IN');
+				
+				const savings22 = rates.bangalore['22k'] - rates.dharmapuri['22k'];
+				const savings24 = rates.bangalore['24k'] - rates.dharmapuri['24k'];
+				
+				const cheaper = savings22 > 0 ? 'Dharmapuri' : 'Bangalore';
+				const expensive = savings22 > 0 ? 'Bangalore' : 'Dharmapuri';
+				
+				const savingsSection = document.getElementById('savingsSection');
+				savingsSection.innerHTML = `
+					<H3>💰 Your Potential Savings</H3>
+					<P>By buying in <STRONG>${cheaper}</STRONG> instead of <STRONG>${expensive}</STRONG>:</P>
+					<DIV style="margin: 15px 0;">
+						<DIV>22K Gold: Save <SPAN class="savings-amount">${formatCurrency(Math.abs(savings22))}</SPAN> per gram</DIV>
+						<DIV>24K Gold: Save <SPAN class="savings-amount">${formatCurrency(Math.abs(savings24))}</SPAN> per gram</DIV>
+					</DIV>
+					<P style="margin-top: 15px; font-size: 0.95em; color: #666;">
+						* For 8 grams of 22K gold, you save ${formatCurrency(Math.abs(savings22 * 8))}!<BR>
+						* For 8 grams of 24K gold, you save ${formatCurrency(Math.abs(savings24 * 8))}!
+					</P>
+				`;
+				
+				const recommendationSection = document.getElementById('recommendationSection');
+				recommendationSection.innerHTML = `
+					<H2>🎯 Recommendation: Buy in ${cheaper.toUpperCase()}!</H2>
+					<P style="font-size: 1.1em; margin: 15px 0;">
+						<STRONG>${cheaper} offers ${cheaper === 'Dharmapuri' ? 'significantly lower' : 'better'} gold prices</STRONG> 
+						compared to ${expensive}.
+					</P>
+					<UL>
+						<LI>${cheaper === 'Dharmapuri' ? 'Lower state taxes and local levies in Tamil Nadu' : 'Competitive market in Karnataka'}</LI>
+						<LI>${cheaper === 'Dharmapuri' ? 'Better value for money on base gold rate' : 'Well-established gold market'}</LI>
+						<LI>Savings of ${formatCurrency(Math.abs(savings22))}-${formatCurrency(Math.abs(savings24))} per gram</LI>
+						<LI>For 10g purchase, total savings: ${formatCurrency(Math.abs(savings22 * 10))}-${formatCurrency(Math.abs(savings24 * 10))}</LI>
+					</UL>
+					<P style="margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.3); border-radius: 8px;">
+						<STRONG>⚠️ Don't forget:</STRONG> Making charges (₹300-800/gram) can significantly impact final price. 
+						Always ask for total price including making charges, GST, and other fees!
+					</P>
+				`;
+				
+				populateTable();
+				updateDateTime();
+			}
+			
+			function populateTable()
+			{
+				const tbody = document.getElementById('comparisonTableBody');
+				tbody.innerHTML = '';
+				
+				weights.forEach( weight =>
+					{
+						const dharmapuri22 = rates.dharmapuri['22k'] * weight;
+						const bangalore22 = rates.bangalore['22k'] * weight;
+						const savings22 = Math.abs(bangalore22 - dharmapuri22);
+						const cheaperLocation22 = dharmapuri22 < bangalore22 ? 'dharmapuri' : 'bangalore';
+						
+						const tr22 = document.createElement('tr');
+						tr22.innerHTML = `
+							<TD valign='top' align='right'><STRONG>${weight.toFixed(2)} grams</STRONG></TD>
+							<TD valign='top' align='right'>22 Karat</TD>
+							<TD class="location-dharmapuri ${cheaperLocation22 === 'dharmapuri' ? 'best-deal' : ''}">${formatCurrency(dharmapuri22)}</TD>
+							<TD class="location-bangalore ${cheaperLocation22 === 'bangalore' ? 'best-deal' : ''}">${formatCurrency(bangalore22)}</TD>
+							<TD style="color: #28a745; font-weight: bold;">${formatCurrency(savings22)}</TD>
+						`;
+						tbody.appendChild(tr22);
+						
+						const dharmapuri24 = rates.dharmapuri['24k'] * weight;
+						const bangalore24 = rates.bangalore['24k'] * weight;
+						const savings24 = Math.abs(bangalore24 - dharmapuri24);
+						const cheaperLocation24 = dharmapuri24 < bangalore24 ? 'dharmapuri' : 'bangalore';
+						
+						const tr24 = document.createElement('tr');
+						tr24.innerHTML = `
+							<TD valign='top' align='right'><STRONG>${weight.toFixed(2)} grams</STRONG></TD>
+							<TD valign='top' align='right'>24 Karat</TD>
+							<TD class="location-dharmapuri ${cheaperLocation24 === 'dharmapuri' ? 'best-deal' : ''}">${formatCurrency(dharmapuri24)}</TD>
+							<TD class="location-bangalore ${cheaperLocation24 === 'bangalore' ? 'best-deal' : ''}">${formatCurrency(bangalore24)}</TD>
+							<TD style="color: #28a745; font-weight: bold;">${formatCurrency(savings24)}</TD>
+						`;
+						tbody.appendChild(tr24);
+					}
+				);
+			}
+			
+			function updateDateTime()
+			{
+				const now = new Date();
+				const options = { 
+					year: 'numeric', 
+					month: 'long', 
+					day: 'numeric', 
+					hour: '2-digit', 
+					minute: '2-digit',
+					timeZone: 'Asia/Kolkata'
+				};
+				document.getElementById('lastUpdated').textContent = 
+					now.toLocaleDateString('en-IN', options) + ' IST';
+			}
+			
+			// Auto-fetch rates on page load
+			window.addEventListener('load', () => {
+				fetchGoldRates();
+			});
+		</SCRIPT>
+	</BODY>
+</HTML>

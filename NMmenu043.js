@@ -1290,51 +1290,103 @@ function loadMoneyHelpContent( event, htmlFileName )
 				<SPAN class="nav-icon">&#x1F465;<FONT color='black'>MyPredict</FONT></SPAN>
 				</A>
 				</LI>
-				<LI class="nav-item">
-				<A href="#" class="nav-link">
-				<SPAN class="nav-icon">&#127974;</SPAN>
-				<SPAN class="nav-text"><FONT color='black'>Banking</FONT></SPAN>
-				<SPAN class="nav-arrow">&gt;</SPAN>
-				</A>
-				<UL class="submenu">
-				<LI>
-					<A href="#" onclick="javascript:loadHomeContent( event, 'new-employee-sbi-account.html' );" class="nav-link">Any Employee Savings Guide</A>
-				</LI>
-				<LI>
-					<A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>Post office MIS</FONT></A>
-				</LI>
-				<LI>
-					<A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-save-money-from-mis.html' );" class="nav-link">Steps to save money</A>
-				</LI>
-				<LI>
-					<A href="#" onclick='javascript:window.open( "post-office-nsc.html" );' class="nav-link"><FONT color='#00ff00'>Post office NSC</FONT></A>
-				</LI>
-				<LI>
-					<A href="#" onclick="javascript:window.open( 'why-to-open-fixed-deposit.html' );" class="nav-link"><FONT color='#00ff00'>Why Fixed deposit?</FONT></A>
-				</LI>
-				<LI>
-					<A href="#" onclick='javascript:window.open( "SBI_ETDR_INTEREST.html" );' class="nav-link"><FONT color='#00ff00'>SBI FD INTEREST</FONT></A>
-				</LI>
-				<LI>
-					<A href="#" onclick="javascript:loadHomeContent( event, 'Indian-bank-to-other-bank.html' );" class="nav-link">Indian bank transfer err</A>
-				</LI>
-				<LI>
-					<A href="#" onclick="javascript:loadHomeContent( event, 'world-currencies.html' );" class="nav-link">World Currency Rates</A>
-				</LI>
-				<LI>
-					<A href="#" onclick="javascript:loadHomeContent( event, 'Last-year-investment-provit-at-earth.html' );" class="nav-link">Last Year Investment Trends</A>
-				</LI>
-				<LI>
-					<A href="#" onclick="javascript:loadHomeContent( event, 'gold-loan.html' );" class="nav-link">When to pay loan?</A>
-				</LI>
-				<LI>
-					<A href="#" onclick="javascript:loadHomeContent( event, '2-wheeler-4-wheeler-rank.html' );" class="nav-link">Vehicle rankings amount</A>
-				</LI>
-				<LI>
-					<A href="#" onclick="javascript:loadHomeContent( event, 'my-gold-loan.html' );" class="nav-link">Apply gold loan only at SBI/banks</A>
-				</LI>
-				</UL>
-				</LI>
+
+<LI class="nav-item">
+    <A href="#" class="nav-link">
+    <SPAN class="nav-icon">&#127974;</SPAN>
+    <SPAN class="nav-text"><FONT color='black'>Banking</FONT></SPAN>
+    <SPAN class="nav-arrow">&gt;</SPAN>
+    </A>
+    <UL class="submenu">
+        <!-- Sub menu01: Any Employee Savings Guide -->
+        <LI>
+            <A href="#" onclick="javascript:loadHomeContent( event, 'new-employee-sbi-account.html' );" class="nav-link">Any Employee Savings Guide</A>
+        </LI>
+        
+        <!-- Sub menu01: Post office -->
+<LI class="nav-item">
+    <A href="#" class="nav-link">
+        Post office
+        <SPAN class="nav-arrow">&gt;</SPAN>
+    </A>
+    <UL class="submenu">
+                <!-- Sub menu02: MIS -->
+                <LI>
+                    <A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>MIS</FONT></A>
+                </LI>
+                <!-- Sub menu02: Steps to save money -->
+                <LI>
+                    <A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-save-money-from-mis.html' );" class="nav-link">Steps to save money</A>
+                </LI>
+                <!-- Sub menu02: NSC -->
+                <LI>
+                    <A href="#" onclick='javascript:window.open( "post-office-nsc.html" );' class="nav-link"><FONT color='#00ff00'>NSC</FONT></A>
+                </LI>
+            </UL>
+        </LI>
+        
+        <!-- Sub menu01: SBI -->
+        <LI class="nav-item">
+            <A href="#" class="nav-link">SBI<SPAN class="nav-arrow">&gt;</SPAN></A>
+            <UL class="submenu">
+                <!-- Sub menu02: Why Fixed deposit? -->
+                <LI>
+                    <A href="#" onclick="javascript:window.open( 'why-to-open-fixed-deposit.html' );" class="nav-link"><FONT color='#00ff00'>Why Fixed deposit?</FONT></A>
+                </LI>
+                <!-- Sub menu02: SBI FD INTEREST -->
+                <LI>
+                    <A href="#" onclick='javascript:window.open( "SBI_ETDR_INTEREST.html" );' class="nav-link"><FONT color='#00ff00'>SBI FD INTEREST</FONT></A>
+                </LI>
+                <!-- Sub menu02: Town city gold rate compare -->
+                <LI>
+                    <A href="#" onclick="javascript:loadHomeContent( event, 'dynamic-gold-rate-comparison-tool.html' );" class="nav-link">Town city gold rate compare</A>
+                </LI>
+            </UL>
+        </LI>
+        
+        <!-- Sub menu01: Other bank -->
+        <LI class="nav-item">
+            <A href="#" class="nav-link">Other bank<SPAN class="nav-arrow">&gt;</SPAN></A>
+            <UL class="submenu">
+                <!-- Sub menu02: Indian bank transfer err -->
+                <LI>
+                    <A href="#" onclick="javascript:loadHomeContent( event, 'Indian-bank-to-other-bank.html' );" class="nav-link">Indian bank transfer err</A>
+                </LI>
+            </UL>
+        </LI>
+        
+        <!-- Sub menu01: World Currency Rates -->
+        <LI>
+            <A href="#" onclick="javascript:loadHomeContent( event, 'world-currencies.html' );" class="nav-link">World Currency Rates</A>
+        </LI>
+        
+        <!-- Sub menu01: Last Year Investment Trends -->
+        <LI>
+            <A href="#" onclick="javascript:loadHomeContent( event, 'Last-year-investment-provit-at-earth.html' );" class="nav-link">Last Year Investment Trends</A>
+        </LI>
+        
+        <!-- Sub menu01: Loan -->
+        <LI class="nav-item">
+            <A href="#" class="nav-link">Loan<SPAN class="nav-arrow">&gt;</SPAN></A>
+            <UL class="submenu">
+                <!-- Sub menu02: When to pay loan? -->
+                <LI>
+                    <A href="#" onclick="javascript:loadHomeContent( event, 'gold-loan.html' );" class="nav-link">When to pay loan?</A>
+                </LI>
+                <!-- Sub menu02: loan only at SBI/banks -->
+                <LI>
+                    <A href="#" onclick="javascript:loadHomeContent( event, 'my-gold-loan.html' );" class="nav-link">Apply gold loan only at SBI/banks</A>
+                </LI>
+            </UL>
+        </LI>
+        
+        <!-- Sub menu01: Vehicle rankings amount -->
+        <LI>
+            <A href="#" onclick="javascript:loadHomeContent( event, '2-wheeler-4-wheeler-rank.html' );" class="nav-link">Vehicle rankings amount</A>
+        </LI>
+    </UL>
+</LI>
+
 				<LI class="nav-item">
 					<A href="#" class="nav-link">
 						<SPAN class="nav-icon">&#x1F527;</SPAN>
