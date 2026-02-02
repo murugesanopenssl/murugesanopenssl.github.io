@@ -219,25 +219,6 @@
 				font-weight: bold;
 				color: #e65100;
 			}
-			.best-deal
-			{
-				background: #c8e6c9 !important;
-				position: relative;
-			}
-			.best-deal::after
-			{
-				content: '✓ BEST';
-				position: absolute;
-				right: 10px;
-				top: 50%;
-				transform: translateY(-50%);
-				background: #4caf50;
-				color: white;
-				padding: 5px 12px;
-				border-radius: 20px;
-				font-size: 0.75em;
-				font-weight: bold;
-			}
 			.recommendation
 			{
 				background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
@@ -399,22 +380,37 @@
 							<H3>🌟 Dharmapuri, Tamil Nadu</H3>
 							<DIV class="rate-item">
 								<LABEL>22K Gold</LABEL>
-								<DIV class="price">₹<SPAN id="dharmapuri-22k">Loading...</SPAN>/g</DIV>
+								<DIV class="price">
+									<SPAN id="dharmapuri-22k">Loading...</SPAN> per gram
+									ரூ/₹ INR
+								</DIV>
 							</DIV>
 							<DIV class="rate-item">
 								<LABEL>24K Gold</LABEL>
-								<DIV class="price">₹<SPAN id="dharmapuri-24k">Loading...</SPAN>/g</DIV>
+								<DIV class="price">
+									<SPAN id="dharmapuri-24k">Loading...</SPAN>
+									per gram
+									ரூ/₹ INR
+								</DIV>
 							</DIV>
 						</DIV>
 						<DIV class="rate-card">
 							<H3>🏙️ Bangalore, Karnataka</H3>
 							<DIV class="rate-item">
 								<LABEL>22K Gold</LABEL>
-								<DIV class="price">₹<SPAN id="bangalore-22k">Loading...</SPAN>/g</DIV>
+								<DIV class="price">
+									<SPAN id="bangalore-22k">Loading...</SPAN>
+									per gram
+									ரூ/₹ INR
+								</DIV>
 							</DIV>
 							<DIV class="rate-item">
 								<LABEL>24K Gold</LABEL>
-								<DIV class="price">₹<SPAN id="bangalore-24k">Loading...</SPAN>/g</DIV>
+								<DIV class="price">
+									<SPAN id="bangalore-24k">Loading...</SPAN>
+									per gram
+									ரூ/₹ INR
+								</DIV>
 							</DIV>
 						</DIV>
 					</DIV>
@@ -442,11 +438,11 @@
 							<LI><STRONG>ALWAYS verify current rates before purchasing</STRONG> - gold prices change daily</LI>
 							<LI>Visit the official websites above for today's exact rates</LI>
 							<LI>Factor in transportation costs to your preferred location</LI>
-							<LI>Check making charges which vary significantly between jewelers (₹300-₹800 per gram)</LI>
+							<LI>Check making charges which vary significantly between jewelers (300.00 ரூ/₹ INR to 800.00 ரூ/₹ INR per gram)</LI>
 							<LI>Ensure BIS hallmark certification (916 for 22K, 999 for 24K)</LI>
 							<LI>GST (3%) applies uniformly across all locations</LI>
-							<LI>TCS (Tax Collected at Source) applies: 1% if payment > ₹2 lakhs without PAN, 0.1% with PAN</LI>
-							<LI>For cash purchases above ₹2 lakhs, PAN card is mandatory</LI>
+							<LI>TCS (Tax Collected at Source) applies: 1% if payment > 2,00,000.00 ரூ/₹ INR (lakhs) without PAN, 0.1% with PAN</LI>
+							<LI>For cash purchases above 2,00,000.00 ரூ/₹ INR (lakhs), PAN card is mandatory</LI>
 						</UL>
 					</DIV>
 					<DIV class="note" style="background: #fff3e0; border-left-color: #ff9800;">
@@ -476,7 +472,7 @@
 					<DIV class="last-updated">
 						<STRONG>📊 Data Information:</STRONG><BR>
 						Last fetched: <SPAN id="lastUpdated">Not yet loaded</SPAN><BR>
-						<SMALL>Rates are fetched from GoodReturns.in. Actual jeweler rates may vary by ₹50-200 per gram.<BR>
+						<SMALL>Rates are fetched from GoodReturns.in. Actual jeweler rates may vary by 50.00 ரூ/₹ INR to 200.00 ரூ/₹ INR per gram.<BR>
 						Always confirm current rates at your chosen jeweler before purchase.</SMALL>
 					</DIV>
 				</DIV>
@@ -493,12 +489,12 @@
 			
 			function formatCurrency(amount)
 			{
-				return '₹' + amount.toLocaleString( 'en-IN',
+				return amount.toLocaleString( 'en-IN',
 					{ 
 						minimumFractionDigits: 2, 
 						maximumFractionDigits: 2 
 					}
-				);
+				) + ' ரூ/₹ INR';
 			}
 			
 			// Function to fetch gold rates using a backend proxy or scraping service
@@ -584,11 +580,11 @@
 						Using fallback reference rates from recent market data.
 					`;
 					
-					// Use fallback rates (recent approximate values)
-					rates.dharmapuri['22k'] = 7580;
-					rates.dharmapuri['24k'] = 8270;
-					rates.bangalore['22k'] = 7655;
-					rates.bangalore['24k'] = 8352;
+					// Use fallback rates (recent approximate values) - PER GRAM
+					rates.dharmapuri['22k'] = 14830;  // 14,830 ரூ/₹ INR per gram (8g = 1,18,640 ரூ/₹ INR)
+					rates.dharmapuri['24k'] = 16176;  // 16,176.00 ரூ/₹ INR per gram
+					rates.bangalore['22k'] = 14920;   // 14,920.00 ரூ/₹ INR per gram
+					rates.bangalore['24k'] = 16274;   // 16,274.00 ரூ/₹ INR per gram
 					
 					updateUI();
 				}
@@ -634,6 +630,11 @@
 						if (tableMatch22 && !rates.gold22k) rates.gold22k = parseFloat(tableMatch22[1].replace(/,/g, ''));
 						if (tableMatch24 && !rates.gold24k) rates.gold24k = parseFloat(tableMatch24[1].replace(/,/g, ''));
 					}
+					
+					// GoodReturns shows rates PER 10 GRAMS, so we need to divide by 10 to get per gram rate
+					// Check if rates are > 50000 (which indicates they're for 10 grams, not 1 gram)
+					if (rates.gold22k > 50000) rates.gold22k = rates.gold22k / 10;
+					if (rates.gold24k > 50000) rates.gold24k = rates.gold24k / 10;
 					
 					// Validate rates are reasonable (between 5000-20000 per gram)
 					if (rates.gold22k < 5000 || rates.gold22k > 20000) rates.gold22k = 0;
@@ -688,7 +689,7 @@
 						<LI>For 10g purchase, total savings: ${formatCurrency(Math.abs(savings22 * 10))}-${formatCurrency(Math.abs(savings24 * 10))}</LI>
 					</UL>
 					<P style="margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.3); border-radius: 8px;">
-						<STRONG>⚠️ Don't forget:</STRONG> Making charges (₹300-800/gram) can significantly impact final price. 
+						<STRONG>⚠️ Don't forget:</STRONG> Making charges (300.00 ரூ/₹ INR to 800.00 ரூ/₹ INR per gram) can significantly impact final price. 
 						Always ask for total price including making charges, GST, and other fees!
 					</P>
 				`;
@@ -713,8 +714,8 @@
 						tr22.innerHTML = `
 							<TD valign='top' align='right'><STRONG>${weight.toFixed(2)} grams</STRONG></TD>
 							<TD valign='top' align='right'>22 Karat</TD>
-							<TD class="location-dharmapuri ${cheaperLocation22 === 'dharmapuri' ? 'best-deal' : ''}">${formatCurrency(dharmapuri22)}</TD>
-							<TD class="location-bangalore ${cheaperLocation22 === 'bangalore' ? 'best-deal' : ''}">${formatCurrency(bangalore22)}</TD>
+							<TD class="location-dharmapuri" style="${cheaperLocation22 === 'dharmapuri' ? 'background-color:#00ff00;' : ''}">${formatCurrency(dharmapuri22)}</TD>
+							<TD class="location-bangalore" style="${cheaperLocation22 === 'bangalore' ? 'background-color:#00ff00;' : ''}">${formatCurrency(bangalore22)}</TD>
 							<TD style="color: #28a745; font-weight: bold;">${formatCurrency(savings22)}</TD>
 						`;
 						tbody.appendChild(tr22);
@@ -728,8 +729,8 @@
 						tr24.innerHTML = `
 							<TD valign='top' align='right'><STRONG>${weight.toFixed(2)} grams</STRONG></TD>
 							<TD valign='top' align='right'>24 Karat</TD>
-							<TD class="location-dharmapuri ${cheaperLocation24 === 'dharmapuri' ? 'best-deal' : ''}">${formatCurrency(dharmapuri24)}</TD>
-							<TD class="location-bangalore ${cheaperLocation24 === 'bangalore' ? 'best-deal' : ''}">${formatCurrency(bangalore24)}</TD>
+							<TD class="location-dharmapuri" style="${cheaperLocation24 === 'dharmapuri' ? 'background-color:#00ff00;' : ''}">${formatCurrency(dharmapuri24)}</TD>
+							<TD class="location-bangalore" style="${cheaperLocation24 === 'bangalore' ? 'background-color:#00ff00;' : ''}">${formatCurrency(bangalore24)}</TD>
 							<TD style="color: #28a745; font-weight: bold;">${formatCurrency(savings24)}</TD>
 						`;
 						tbody.appendChild(tr24);
