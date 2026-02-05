@@ -1314,6 +1314,9 @@ function loadMoneyHelpContent( event, htmlFileName )
                 <LI>
                     <A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>MIS</FONT></A>
                 </LI>
+                <LI>
+                    <A href="#" onclick="javascript:loadHomeContent( event, 'ppf-post-office.html' );" class="nav-link">PPF</A>
+                </LI>
                 <!-- Sub menu02: Steps to save money -->
                 <LI>
                     <A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-save-money-from-mis.html' );" class="nav-link">Steps to save money</A>
