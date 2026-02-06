@@ -917,6 +917,7 @@ function loadMainContent( event )
 							(htmlFileName === "2-wheeler-4-wheeler-rank.html" && activeLink.textContent.trim() === "Vehicle rankings amount") ||
 							(htmlFileName === "my-gold-loan.html" && activeLink.textContent.trim() === "Apply gold loan only at SBI/banks") ||
 							(htmlFileName === "vegetables-health.html" && activeLink.textContent.trim() === "Vegetables & Health") ||
+							(htmlFileName === "ITR-2025-2026.html" && activeLink.textContent.trim() === "ITR Fri 31-Jul-2026 IST") ||
 							(htmlFileName === "My_Drawings.html" && activeLink.textContent.trim() === "My drawings") ||
 							(htmlFileName === "privacy.html" && activeLink.textContent.trim() === "Privacy policy") ||
 							(htmlFileName === "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" && activeLink.textContent.trim() === "My KT to chatgpt") ||
@@ -925,6 +926,10 @@ function loadMainContent( event )
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Town city gold rate compare") ||
 							(htmlFileName === "Set-Black-Image-lock-screen-home-screen.html" && activeLink.textContent.trim() === "Samsung Wallpaper Home Lock") ||
 							(htmlFileName === "BIG-MART-POINTS.html" && activeLink.textContent.trim() === "Rewards & Smart Spending") ||
+							(htmlFileName === "ShareKnowledgeTransferToPeople.html" && activeLink.textContent.trim() === "Share knowledge transfer") ||
+							(htmlFileName === "remove-blockages-kitchen-pvc-outflow-pipe.html" && activeLink.textContent.trim() === "Kitchen Drain") ||
+							(htmlFileName === "washing-machine-repair.html" && activeLink.textContent.trim() === "Washing Machine") ||
+							(htmlFileName === "TamilLetters.html" && activeLink.textContent.trim() === "Tamil letters") ||
 							(htmlFileName === "Steps-to-save-money-from-mis.html" && activeLink.textContent.trim() === "Steps to save money") ||
 							(htmlFileName === "Responsible-Nations-Index-Jan-2026.html" && activeLink.textContent.trim() === "Responsible Nations Index Jan-2026") ||
 							(htmlFileName === "Visitor_count.html" && activeLink.textContent.trim() === "Visitors") ||
@@ -1400,6 +1405,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<SPAN CLASS="NAV-ARROW">&gt;</SPAN>
 					</A>
 					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent(event, 'ITR-2025-2026.html');" class="nav-link">ITR Fri 31-Jul-2026 IST</A>
+						</LI>
 						<!-- Health / educational content first -->
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent(event, 'vegetables-health.html');" class="nav-link">Vegetables & Health</A>
@@ -1412,9 +1420,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 
 						<!-- Personal knowledge -->
 						<LI>
-							<A href="#" onclick='javascript:window.open("ShareKnowledgeTransferToPeople.html");' class="nav-link">
-								<FONT color='#00ff00'>Share knowledge transfer</FONT>
-							</A>
+							<A href="#" onclick="javascript:loadHomeContent(event, 'ShareKnowledgeTransferToPeople.html');" class="nav-link">Share knowledge transfer</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'pm-cm-india-relations.html' );" class="nav-link">India PM–CM Relations</A>
@@ -1422,14 +1428,10 @@ function loadMoneyHelpContent( event, htmlFileName )
 
 						<!-- Home utilities -->
 						<LI>
-							<A href="#" onclick='javascript:window.open("remove-blockages-kitchen-pvc-outflow-pipe.html");' class="nav-link">
-								<FONT color='#00ff00'>Kitchen Drain</FONT>
-							</A>
+							<A href="#" onclick="javascript:loadHomeContent(event, 'remove-blockages-kitchen-pvc-outflow-pipe.html');" class="nav-link">Kitchen Drain</A>
 						</LI>
 						<LI>
-							<A href="#" onclick='javascript:window.open("washing-machine-repair.html");' class="nav-link">
-								<FONT color='#00ff00'>Washing Machine</FONT>
-							</A>
+							<A href="#" onclick="javascript:loadHomeContent(event, 'washing-machine-repair.html');" class="nav-link">Washing Machine</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Set-Black-Image-lock-screen-home-screen.html' );" class="nav-link">Samsung Wallpaper Home Lock</A>
@@ -1444,7 +1446,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 				</A>
 				<UL class="submenu">
 				<LI>
-					<A href="#" onclick='javascript:window.open( "TamilLetters.html" );'><FONT color='#00ff00'>Tamil letters</FONT></A>
+						<A href="#" onclick='javascript:window.open( "TamilLEtters.html" );'><FONT color='#00ff00'>Tamil letters</FONT></A>
 				</LI>
 				<LI>
 					<A href="#" onclick='javascript:window.open( "Windows_ERR_HELP.html" );'><FONT color='#00ff00'>Windows Help</FONT></A>
