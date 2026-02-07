@@ -1440,6 +1440,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 							<A href="#" onclick="javascript:loadHomeContent(event, 'washing-machine-repair.html');" class="nav-link">Washing Machine</A>
 						</LI>
 						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'how-to-know-sim-number.html' );" class="nav-link">How to know SIM number?</A>
+						</LI>
+						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Set-Black-Image-lock-screen-home-screen.html' );" class="nav-link">Samsung Wallpaper Home Lock</A>
 						</LI>
 					</UL>
