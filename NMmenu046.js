@@ -919,6 +919,11 @@ function loadMainContent( event )
 							(htmlFileName === "vegetables-health.html" && activeLink.textContent.trim() === "Vegetables & Health") ||
 							(htmlFileName === "ITR-2025-2026.html" && activeLink.textContent.trim() === "ITR Fri 31-Jul-2026 IST") ||
 							(htmlFileName === "My_Drawings.html" && activeLink.textContent.trim() === "My drawings") ||
+							(htmlFileName === "NMurugesan_cv.html" && activeLink.textContent.trim() === "My profile") ||
+							(htmlFileName === "openssl_speed.html" && activeLink.textContent.trim() === "openssl.exe speed") ||
+							(htmlFileName === "murugesan_achievements.html" && activeLink.textContent.trim() === "My achievements") ||
+							(htmlFileName === "Sustainable_Living.html" && activeLink.textContent.trim() === "Sustainable Living") ||
+							(htmlFileName === "earth_politics_or_general_age.html" && activeLink.textContent.trim() === "Earth politics") ||
 							(htmlFileName === "privacy.html" && activeLink.textContent.trim() === "Privacy policy") ||
 							(htmlFileName === "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" && activeLink.textContent.trim() === "My KT to chatgpt") ||
 							(htmlFileName === "pm-cm-india-relations.html" && activeLink.textContent.trim() === "India PM–CM Relations") ||
@@ -1480,7 +1485,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Tamilnadu-MLA.html' );" class="nav-link">TN M.L.A</A>
 						</LI>
 						<LI>
-							<A href="#" onclick='window.open( "earth_politics_or_general_age.html" );'><FONT color='#00ff00'>Earth politics</FONT></A>
+							<A href="#" onclick="javascript:window.open( 'earth_politics_or_general_age.html');" class="nav-link">Earth politics</A>
 						</LI>
 					</UL>
 				</LI>
@@ -1509,16 +1514,16 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<A href="#" onclick="javascript:loadHomeContent( event, 'my-kt-rank-chatgpt-Fri-09-Jan-2026.html' );" class="nav-link">My KT to chatgpt</A>
 					</LI>
 					<LI>
-						<A href='#' onclick='window.open( "NMurugesan_cv.html" );'><FONT color='#00ff00'>My Profile</FONT></A>
+						<A href="#" onclick="javascript:loadHomeContent( event, 'NMurugesan_cv.html' );" class="nav-link">My profile</A>
 					</LI>
 					<LI>
-						<A href='#' onclick='window.open( "openssl_speed.html" );'><FONT color='#00ff00'><FONT color='#00ff00'>openssl.exe speed</FONT></A>
+						<A href="#" onclick="javascript:loadHomeContent( event, 'openssl_speed.html' );" class="nav-link">openssl.exe speed</A>
 					</LI>
 					<LI>
-						<A href='#' onclick='window.open( "murugesan_achievements.html" );'><FONT color='#00ff00'>My achievements</FONT></A>
+						<A href="#" onclick="javascript:loadHomeContent( event, 'murugesan_achievements.html' );" class="nav-link">My achievements</A>
 					</LI>
 					<LI>
-						<A href='#' onclick='window.open( "Sustainable_Living.html" );'><FONT color='#00ff00'>Sustainable Living</FONT></A>
+						<A href="#" onclick="javascript:loadHomeContent( event, 'Sustainable_Living.html' );" class="nav-link">Sustainable Living</A>
 					</LI>
 					<LI>
 						<A href="#" onclick="javascript:loadHomeContent( event, 'privacy.html' );" class="nav-link">Privacy policy</A>
