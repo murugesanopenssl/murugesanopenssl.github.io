@@ -923,6 +923,7 @@ function loadMainContent( event )
 							(htmlFileName === "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" && activeLink.textContent.trim() === "My KT to chatgpt") ||
 							(htmlFileName === "pm-cm-india-relations.html" && activeLink.textContent.trim() === "India PM–CM Relations") ||
 							(htmlFileName === "ppf-post-office.html" && activeLink.textContent.trim() === "PPF") ||
+							(htmlFileName === "post-office-nsc.html" && activeLink.textContent.trim() === "NSC") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Town city gold rate compare") ||
 							(htmlFileName === "Set-Black-Image-lock-screen-home-screen.html" && activeLink.textContent.trim() === "Samsung Wallpaper Home Lock") ||
 							(htmlFileName === "BIG-MART-POINTS.html" && activeLink.textContent.trim() === "Rewards & Smart Spending") ||
