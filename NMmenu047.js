@@ -935,6 +935,7 @@ function loadMainContent( event )
 							(htmlFileName === "ShareKnowledgeTransferToPeople.html" && activeLink.textContent.trim() === "Share knowledge transfer") ||
 							(htmlFileName === "remove-blockages-kitchen-pvc-outflow-pipe.html" && activeLink.textContent.trim() === "Kitchen Drain") ||
 							(htmlFileName === "washing-machine-repair.html" && activeLink.textContent.trim() === "Washing Machine") ||
+							(htmlFileName === "how-to-know-sim-number.html" && activeLink.textContent.trim() === "How to know SIM number?") ||
 							(htmlFileName === "TamilLetters.html" && activeLink.textContent.trim() === "Tamil letters") ||
 							(htmlFileName === "Steps-to-save-money-from-mis.html" && activeLink.textContent.trim() === "Steps to save money") ||
 							(htmlFileName === "Responsible-Nations-Index-Jan-2026.html" && activeLink.textContent.trim() === "Responsible Nations Index Jan-2026") ||
@@ -1488,7 +1489,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Tamilnadu-MLA.html' );" class="nav-link">TN M.L.A</A>
 						</LI>
 						<LI>
-							<A href="#" onclick="javascript:window.open( 'earth_politics_or_general_age.html');" class="nav-link">Earth politics</A>
+							<A href="#" onclick="javascript:window.open( 'earth_politics_or_general_age.html');" class="nav-link"><FONT color='#00ff00'>Earth politics</FONT></A>
 						</LI>
 					</UL>
 				</LI>
