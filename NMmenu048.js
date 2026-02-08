@@ -444,63 +444,94 @@ function MainPageHomeLoadContent( event, htmlFileName )
 	};
 	xhr.send();
 }
-function loadMainContent( event )
-{
-	event.preventDefault();
-	var originalContent = `<HEADER class="content-header">
-				<H1>Welcome to Life Finance Helper1</H1>
-				<P class="tagline">Empowering financial literacy for low and middle-class families</P>
-	</HEADER>
-	<SECTION class="hero-section">
-			<TABLE class="content-table">
+	function loadMainContent(event)
+	{
+		event.preventDefault();
+
+		var originalContent = `
+		<HEADER class="content-header">
+			<H1>Welcome to Murugesan Life Finance Helper</H1>
+			<P class="tagline">Empowering financial literacy for low and middle-class families through Murugesan guidance</P>
+		</HEADER>
+		<SECTION class="hero-section">
+			<TABLE class="td-black-text">
 				<TR>
-					<TD class="content-column">
+					<TD valign='top' align='left'>
 						<DIV class="mission-card">
-							<H2>Our Mission</H2>
+							<H2>Murugesan’s Mission</H2>
 							<P>
-								After 2019, I noticed increasing financial difficulties among low and middle-class families. This website shares practical information to help people handle money issues throughout their lifetime.
+								After 2019, Murugesan noticed increasing financial difficulties among low and middle-class families. This website shares practical information to help people handle money issues throughout their lifetime.
 							</P>
 						</DIV>
 					</TD>
 					<TD class="content-column">
 						<DIV class="purpose-card">
-							<H2>Our Purpose</H2>
+							<H2>Murugesan’s Purpose</H2>
 							<P>
-								Based on the challenges people face, this site provides comprehensive guidance on banking, spending management, utilities, and technology - all aimed at helping you make better financial decisions and live more comfortably.
+								Based on the challenges people face, Murugesan’s hub provides comprehensive guidance on banking, spending management, utilities, and technology — all aimed at helping you make better financial decisions and live more comfortably.
 							</P>
 						</DIV>
 					</TD>
-				<TD class="content-column">
-					<DIV class="feature-box">
-						<DIV class="feature-icon">&#x1F3E6;</DIV>
-						<H3>Banking Solutions</H3>
-						<P>Learn about Post Office schemes, FD interest rates, inter-bank transfers, and more.</P>
-					</DIV>
-				</TD>
+					<TD class="content-column">
+						<DIV class="feature-box">
+							<DIV class="feature-icon">&#x1F3E6;</DIV>
+							<H3>Murugesan Banking Solutions</H3>
+							<P>Learn about Post Office schemes, FD interest rates, inter-bank transfers, and more.</P>
+						</DIV>
+					</TD>
 				</TR>
 				<TR>
-				<TD class="content-column">
-					<DIV class="feature-box">
-						<DIV class="feature-icon">&#x1F4B0;</DIV>
-							<H3>Smart Spending</H3>
+					<TD class="content-column">
+						<DIV class="feature-box">
+							<DIV class="feature-icon">&#x1F4B0;</DIV>
+							<H3>Murugesan Smart Spending</H3>
 							<P>Track your daily expenses, visualize spending patterns, and discover saving strategies.</P>
 						</DIV>
 					</TD>
 					<TD class="content-column">
 						<DIV class="feature-box">
 							<DIV class="feature-icon">&#x1F527;</DIV>
-							<H3>Practical Utility</H3>
+							<H3>Murugesan Practical Utilities</H3>
 							<P>Home maintenance tips and knowledge sharing for everyday household problems.</P>
+						</DIV>
+					</TD>
+					<TD class="content-column">
+						<DIV class="feature-box">
+							<DIV class="feature-icon">&#x1F4BB;</DIV>
+							<H3>Murugesan Technology Help</H3>
+							<P>Windows tips, network solutions, and technical guides for everyone.</P>
+						</DIV>
+					</TD>
+				</TR>
+				<TR>
+					<TD class="content-column">
+						<DIV class="feature-box">
+							<DIV class="feature-icon">&#x1F4CA;</DIV>
+							<H3>Murugesan Track Progress</H3>
+							<P>Monitor your financial journey with visitor tracking and calendar planning.</P>
+						</DIV>
+					</TD>
+					<TD class="content-column">
+						<DIV class="feature-box">
+							<DIV class="feature-icon">&#x1F331;</DIV>
+							<H3>Murugesan Sustainable Living</H3>
+							<P>Learn about sustainable practices and achieve your personal goals.</P>
 						</DIV>
 					</TD>
 				</TR>
 			</TABLE>
-	</SECTION>
-	`;
-	document.querySelector( ".main-content" ).innerHTML = originalContent;
-	document.querySelector( ".sidebar-header #life-finance-helper" ).removeAttribute( "href" );
-	document.querySelector( ".sidebar-header #life-finance-helper" ).removeAttribute( "onclick" );
-}
+		</SECTION>
+		`;
+
+		document.querySelector(".main-content").innerHTML = originalContent;
+		// Remove sidebar link functionality if needed
+		var sidebarLink = document.querySelector(".sidebar-header #life-finance-helper");
+		if (sidebarLink) {
+			sidebarLink.removeAttribute("href");
+			sidebarLink.removeAttribute("onclick");
+		}
+	}
+
 			document.addEventListener( 'DOMContentLoaded', function()
 				{
 					const navItems = document.querySelectorAll( '.nav-item' );
