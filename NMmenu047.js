@@ -707,6 +707,10 @@ function loadMainContent( event )
 				{
 					document.title = "Money Help Menu";
 				}
+				else if( "ippb-awareness-indian-citizens.html" == htmlFileName )
+				{
+					document.title = "IPPB Avoid Premium Use Savings";
+				}
 				else if( "post-office-mis.html" == htmlFileName )
 				{
 					document.title = "Post Office MIS";
@@ -1330,6 +1334,9 @@ function loadMoneyHelpContent( event, htmlFileName )
                     <A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>MIS</FONT></A>
                 </LI>
                 <LI>
+                    <A href="#" onclick="javascript:loadHomeContent( event, 'ippb-awareness-indian-citizens.html' );" class="nav-link">IPPB Avoid Premium Use Savings</A>
+                </LI>
+                <LI>
                     <A href="#" onclick="javascript:loadHomeContent( event, 'ppf-post-office.html' );" class="nav-link">PPF</A>
                 </LI>
                 <!-- Sub menu02: Steps to save money -->
@@ -1539,7 +1546,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 				<DIV id='sidefoot-content'>
 				<DIV class="sidebar-footer">`);
 				yyyy=new Date().getFullYear();
-				document.write( "<FONT color='black'>&copy; "+yyyy+" Life Finance Helper4</FONT>" );
+				document.write( "<FONT color='black'>&copy; "+yyyy+" Murugesan Financial Life Management Hub</FONT>" );
 				document.write( `<NOSCRIPT>`);
 				document.write( `<P>&copy; 900000000 Life Finance Helper5</P>
 				</NOSCRIPT>

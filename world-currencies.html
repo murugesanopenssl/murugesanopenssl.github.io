@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>World Currency Rates</title>
-<style type='text/css'>
-	td { padding: 6px; }
-	table { width: 100%; border-collapse: collapse; }
-	table, td { border: 1px solid black; }
-</style>
-<script type='text/javascript'>
-fetch('https://open.er-api.com/v6/latest/USD')
-.then(r => r.json())
-.then(d => {
+<HTML lang="en">
+	<HEAD>
+		<META name="keywords" content="murugesan,financial life management hub,india savings account awareness">
+		<META CHARSET="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>World Currency Rates</TITLE>
+		<STYLE type='text/css'>
+			td { padding: 6px; }
+			table { width: 100%; border-collapse: collapse; }
+			table, td { border: 1px solid black; }
+		</STYLE>
+		<SCRIPT type='text/javascript'>
+			fetch('https://open.er-api.com/v6/latest/USD')
+			.then(r => r.json())
+			.then(d => {
 	const rates = d.rates;
 	const table = document.querySelector('table');
 	const setCell = (id, val) => document.getElementById(id).innerHTML = val;
@@ -74,56 +75,56 @@ fetch('https://open.er-api.com/v6/latest/USD')
 		row.cells[0].innerText = sn < 10 ? `00${sn}` : sn < 100 ? `0${sn}` : `${sn}`;
 	});
 });
-</script>
-</head>
-<body>
-<table style='width:100%;border:1;color:black;'>
-<tr>
-	<td align="right">S.No</td>
-	<TD VALIGN='TOP' ALIGN='right'>Country</td>
-	<TD VALIGN='TOP' ALIGN='right'>Country currency</td>
-	<TD VALIGN='TOP' ALIGN='right'>ரூ/₹ INR Amount</td>
-</tr>
-<tr id="row-india">
-	<td align="right">000</td>
-	<TD VALIGN='TOP' ALIGN='right'>INDIA</td>
-	<td valitn='top' align='right' id="inr"></td>
-	<td valitn='top' align='right' id="inrinr"></td>
-</tr>
-<tr id="row-usd"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>UNITED STATES</td><td valitn='top' align='right' id="usd"></td><td valitn='top' align='right' id="usdinr"></td></tr>
-<tr id="row-gbp"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>BRITAIN</td><td valitn='top' align='right' id="gbp"></td><td valitn='top' align='right' id="gbpinr"></td></tr>
-<tr id="row-eur"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>EUROPE</td><td valitn='top' align='right' id="eur"></td><td valitn='top' align='right' id="eurinr"></td></tr>
-<tr id="row-jpy"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>JAPAN</td><td valitn='top' align='right' id="jpy"></td><td valitn='top' align='right' id="jpyinr"></td></tr>
-<tr id="row-cny"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>CHINA</td><td valitn='top' align='right' id="cny"></td><td valitn='top' align='right' id="cnyinr"></td></tr>
-<tr id="row-pkr"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>PAKISTAN</td><td valitn='top' align='right' id="pkr"></td><td valitn='top' align='right' id="pkrinr"></td></tr>
-<tr id="row-afg"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>AFGHANISTAN</td><td valitn='top' align='right' id="afg"></td><td valitn='top' align='right' id="afginr"></td></tr>
-<tr id="row-npr"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>NEPAL</td><td valitn='top' align='right' id="npr"></td><td valitn='top' align='right' id="nprinr"></td></tr>
-<tr id="row-lkr"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>SRI LANKA</td><td valitn='top' align='right' id="lkr"></td><td valitn='top' align='right' id="lkrinr"></td></tr>
-<tr id="row-bdt"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>BANGLADESH</td><td valitn='top' align='right' id="bdt"></td><td valitn='top' align='right' id="bdtinr"></td></tr>
-<tr id="row-sar"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>SAUDI ARABIA</td><td valitn='top' align='right' id="sar"></td><td valitn='top' align='right' id="sarinr"></td></tr>
-<tr id="row-aed"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>UAE</td><td valitn='top' align='right' id="aed"></td><td valitn='top' align='right' id="aedinr"></td></tr>
-<tr id="row-aud"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>AUSTRALIA</td><td valitn='top' align='right' id="aud"></td><td valitn='top' align='right' id="audinr"></td></tr>
-<tr id="row-cad"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>CANADA</td><td valitn='top' align='right' id="cad"></td><td valitn='top' align='right' id="cadinr"></td></tr>
-<tr id="row-chf"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>SWITZERLAND</td><td valitn='top' align='right' id="chf"></td><td valitn='top' align='right' id="chfinr"></td></tr>
-<tr id="row-sgd"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>SINGAPORE</td><td valitn='top' align='right' id="sgd"></td><td valitn='top' align='right' id="sgdinr"></td></tr>
-<tr id="row-zar"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>SOUTH AFRICA</td><td valitn='top' align='right' id="zar"></td><td valitn='top' align='right' id="zarinr"></td></tr>
-<tr id="row-rus"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>RUSSIA</td><td valitn='top' align='right' id="rus"></td><td valitn='top' align='right' id="rusinr"></td></tr>
-<tr id="row-isr"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>ISRAEL</td><td valitn='top' align='right' id="isr"></td><td valitn='top' align='right' id="isrinr"></td></tr>
-<tr id="row-bhutan"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>BHUTAN</td><td valitn='top' align='right' id="btn"></td><td valitn='top' align='right' id="btninr"></td></tr>
-<tr id="row-brunei"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>BRUNEI</td><td valitn='top' align='right' id="brn"></td><td valitn='top' align='right' id="brninr"></td></tr>
-<tr id="row-arm"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>ARMENIA</td><td valitn='top' align='right' id="arm"></td><td valitn='top' align='right' id="arminr"></td></tr>
-<tr id="row-iran"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>IRAN</td><td valitn='top' align='right' id="iran"></td><td valitn='top' align='right' id="iraninr"></td></tr>
-<tr id="row-indo"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>INDONESIA</td><td valitn='top' align='right' id="indo"></td><td valitn='top' align='right' id="indoinr"></td></tr>
-<tr id="row-mal"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>MALAYSIA</td><td valitn='top' align='right' id="mal"></td><td valitn='top' align='right' id="malinr"></td></tr>
-<tr id="row-sk"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>SOUTH KOREA</td><td valitn='top' align='right' id="sk"></td><td valitn='top' align='right' id="skinr"></td></tr>
-<tr id="row-bra"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>BRAZIL</td><td valitn='top' align='right' id="bra"></td><td valitn='top' align='right' id="brainr"></td></tr>
-<tr id="row-mex"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>MEXICO</td><td valitn='top' align='right' id="mex"></td><td valitn='top' align='right' id="mexinr"></td></tr>
-<tr id="row-kaz"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>KAZAKHSTAN</td><td valitn='top' align='right' id="kaz"></td><td valitn='top' align='right' id="kazinr"></td></tr>
-<tr id="row-viet"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>VIETNAM</td><td valitn='top' align='right' id="viet"></td><td valitn='top' align='right' id="vietinr"></td></tr>
-<tr id="row-oman"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>OMAN</td><td valitn='top' align='right' id="oman"></td><td valitn='top' align='right' id="omaninr"></td></tr>
-<tr id="row-uzb"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>UZBEKISTAN</td><td valitn='top' align='right' id="uzb"></td><td valitn='top' align='right' id="uzbinr"></td></tr>
-<tr id="row-sey"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>SEYCHELLES</td><td valitn='top' align='right' id="sey"></td><td valitn='top' align='right' id="seyinr"></td></tr>
-<tr id="row-mau"><TD VALIGN='TOP' ALIGN='right'></td><TD VALIGN='TOP' ALIGN='right'>MAURITIUS</td><td valitn='top' align='right' id="mau"></td><td valitn='top' align='right' id="mauinr"></td></tr>
-</table>
-</body>
-</html>
+</SCRIPT>
+</HEAD>
+<BODY>
+<TABLE style='width:100%;border:1;color:black;'>
+<TR>
+	<TD align="right">S.No</TD>
+	<TD VALIGN='TOP' ALIGN='right'>Country</TD>
+	<TD VALIGN='TOP' ALIGN='right'>Country currency</TD>
+	<TD VALIGN='TOP' ALIGN='right'>ரூ/₹ INR Amount</TD>
+</TR>
+<TR id="row-india">
+	<TD align="right">000</TD>
+	<TD VALIGN='TOP' ALIGN='right'>INDIA</TD>
+	<TD valitn='top' align='right' id="inr"></TD>
+	<TD valitn='top' align='right' id="inrinr"></TD>
+</TR>
+<TR id="row-usd"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>UNITED STATES</TD><TD valitn='top' align='right' id="usd"></TD><TD valitn='top' align='right' id="usdinr"></TD></TR>
+<TR id="row-gbp"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>BRITAIN</TD><TD valitn='top' align='right' id="gbp"></TD><TD valitn='top' align='right' id="gbpinr"></TD></TR>
+<TR id="row-eur"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>EUROPE</TD><TD valitn='top' align='right' id="eur"></TD><TD valitn='top' align='right' id="eurinr"></TD></TR>
+<TR id="row-jpy"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>JAPAN</TD><TD valitn='top' align='right' id="jpy"></TD><TD valitn='top' align='right' id="jpyinr"></TD></TR>
+<TR id="row-cny"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>CHINA</TD><TD valitn='top' align='right' id="cny"></TD><TD valitn='top' align='right' id="cnyinr"></TD></TR>
+<TR id="row-pkr"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>PAKISTAN</TD><TD valitn='top' align='right' id="pkr"></TD><TD valitn='top' align='right' id="pkrinr"></TD></TR>
+<TR id="row-afg"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>AFGHANISTAN</TD><TD valitn='top' align='right' id="afg"></TD><TD valitn='top' align='right' id="afginr"></TD></TR>
+<TR id="row-npr"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>NEPAL</TD><TD valitn='top' align='right' id="npr"></TD><TD valitn='top' align='right' id="nprinr"></TD></TR>
+<TR id="row-lkr"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>SRI LANKA</TD><TD valitn='top' align='right' id="lkr"></TD><TD valitn='top' align='right' id="lkrinr"></TD></TR>
+<TR id="row-bdt"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>BANGLADESH</TD><TD valitn='top' align='right' id="bdt"></TD><TD valitn='top' align='right' id="bdtinr"></TD></TR>
+<TR id="row-sar"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>SAUDI ARABIA</TD><TD valitn='top' align='right' id="sar"></TD><TD valitn='top' align='right' id="sarinr"></TD></TR>
+<TR id="row-aed"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>UAE</TD><TD valitn='top' align='right' id="aed"></TD><TD valitn='top' align='right' id="aedinr"></TD></TR>
+<TR id="row-aud"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>AUSTRALIA</TD><TD valitn='top' align='right' id="aud"></TD><TD valitn='top' align='right' id="audinr"></TD></TR>
+<TR id="row-cad"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>CANADA</TD><TD valitn='top' align='right' id="cad"></TD><TD valitn='top' align='right' id="cadinr"></TD></TR>
+<TR id="row-chf"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>SWITZERLAND</TD><TD valitn='top' align='right' id="chf"></TD><TD valitn='top' align='right' id="chfinr"></TD></TR>
+<TR id="row-sgd"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>SINGAPORE</TD><TD valitn='top' align='right' id="sgd"></TD><TD valitn='top' align='right' id="sgdinr"></TD></TR>
+<TR id="row-zar"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>SOUTH AFRICA</TD><TD valitn='top' align='right' id="zar"></TD><TD valitn='top' align='right' id="zarinr"></TD></TR>
+<TR id="row-rus"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>RUSSIA</TD><TD valitn='top' align='right' id="rus"></TD><TD valitn='top' align='right' id="rusinr"></TD></TR>
+<TR id="row-isr"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>ISRAEL</TD><TD valitn='top' align='right' id="isr"></TD><TD valitn='top' align='right' id="isrinr"></TD></TR>
+<TR id="row-bhutan"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>BHUTAN</TD><TD valitn='top' align='right' id="btn"></TD><TD valitn='top' align='right' id="btninr"></TD></TR>
+<TR id="row-brunei"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>BRUNEI</TD><TD valitn='top' align='right' id="brn"></TD><TD valitn='top' align='right' id="brninr"></TD></TR>
+<TR id="row-arm"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>ARMENIA</TD><TD valitn='top' align='right' id="arm"></TD><TD valitn='top' align='right' id="arminr"></TD></TR>
+<TR id="row-iran"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>IRAN</TD><TD valitn='top' align='right' id="iran"></TD><TD valitn='top' align='right' id="iraninr"></TD></TR>
+<TR id="row-indo"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>INDONESIA</TD><TD valitn='top' align='right' id="indo"></TD><TD valitn='top' align='right' id="indoinr"></TD></TR>
+<TR id="row-mal"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>MALAYSIA</TD><TD valitn='top' align='right' id="mal"></TD><TD valitn='top' align='right' id="malinr"></TD></TR>
+<TR id="row-sk"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>SOUTH KOREA</TD><TD valitn='top' align='right' id="sk"></TD><TD valitn='top' align='right' id="skinr"></TD></TR>
+<TR id="row-bra"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>BRAZIL</TD><TD valitn='top' align='right' id="bra"></TD><TD valitn='top' align='right' id="brainr"></TD></TR>
+<TR id="row-mex"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>MEXICO</TD><TD valitn='top' align='right' id="mex"></TD><TD valitn='top' align='right' id="mexinr"></TD></TR>
+<TR id="row-kaz"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>KAZAKHSTAN</TD><TD valitn='top' align='right' id="kaz"></TD><TD valitn='top' align='right' id="kazinr"></TD></TR>
+<TR id="row-viet"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>VIETNAM</TD><TD valitn='top' align='right' id="viet"></TD><TD valitn='top' align='right' id="vietinr"></TD></TR>
+<TR id="row-oman"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>OMAN</TD><TD valitn='top' align='right' id="oman"></TD><TD valitn='top' align='right' id="omaninr"></TD></TR>
+<TR id="row-uzb"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>UZBEKISTAN</TD><TD valitn='top' align='right' id="uzb"></TD><TD valitn='top' align='right' id="uzbinr"></TD></TR>
+<TR id="row-sey"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>SEYCHELLES</TD><TD valitn='top' align='right' id="sey"></TD><TD valitn='top' align='right' id="seyinr"></TD></TR>
+<TR id="row-mau"><TD VALIGN='TOP' ALIGN='right'></TD><TD VALIGN='TOP' ALIGN='right'>MAURITIUS</TD><TD valitn='top' align='right' id="mau"></TD><TD valitn='top' align='right' id="mauinr"></TD></TR>
+</TABLE>
+</BODY>
+</HTML>
