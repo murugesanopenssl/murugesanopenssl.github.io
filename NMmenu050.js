@@ -1449,11 +1449,13 @@ function loadMoneyHelpContent( event, htmlFileName )
     <SPAN class="nav-icon">&#127974;</SPAN>
     <SPAN class="nav-text"><FONT color='black'>Spending</FONT></SPAN>
     <SPAN class="nav-arrow">&gt;</SPAN>
-    <
 	<UL class="submenu">
 		<LI>
 		<A href="#" onclick='javascript:window.open( "attibele-to-vijayanagar-bus-stops-intermediate-metro.html" );' class="nav-link"><FONT color='#00ff00'>Bengaluru Attibele to Vijayanagr BMTC?</FONT></A>
-		</LI>/A>
+		</LI>
+		<LI>
+		<A href="#" onclick='javascript:window.open( "tamil-calendar.html" );' class="nav-link"><FONT color='#00ff00'>Tamil calendar</FONT></A>
+		</LI>
 	</UL>
 </LI>
 
@@ -1546,9 +1548,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 					</UL>
 				</LI>
 				<LI class="nav-item">
-				<A onclick='window.open( "tamil-calendar.html" );' class="nav-link">
+				<A class="nav-link">
 				<SPAN class="nav-icon">&#x1F4C5;</SPAN>
-				<SPAN class="nav-text"><FONT color='#00ff00'>Calendar</FONT></SPAN>
+				<SPAN class="nav-text"><FONT color='black'>Calendar</FONT></SPAN>
 				</A>
 					<UL class="submenu">
 						<LI>
