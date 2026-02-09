@@ -949,6 +949,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "world-currencies.html" && activeLink.textContent.trim() === "World Currency Rates") ||
 							(htmlFileName === "Last-year-investment-provit-at-earth.html" && activeLink.textContent.trim() === "Last Year Investment Trends") ||
 							(htmlFileName === "gold-loan.html" && activeLink.textContent.trim() === "When to pay loan?") ||
+							(htmlFileName === "attibele-to-vijayanagar-bus-stops-intermediate-metro.html" && activeLink.textContent.trim() === "Bengaluru Attibele to Vijayanagr BMTC") ||
 							(htmlFileName === "2-wheeler-4-wheeler-rank.html" && activeLink.textContent.trim() === "Vehicle rankings amount") ||
 							(htmlFileName === "my-gold-loan.html" && activeLink.textContent.trim() === "Apply gold loan only at SBI/banks") ||
 							(htmlFileName === "vegetables-health.html" && activeLink.textContent.trim() === "Vegetables & Health") ||
@@ -965,6 +966,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "ppf-post-office.html" && activeLink.textContent.trim() === "PPF") ||
 							(htmlFileName === "post-office-nsc.html" && activeLink.textContent.trim() === "NSC") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Town city gold rate compare") ||
+							(htmlFileName === "why-to-open-fixed-deposit.html" && activeLink.textContent.trim() === "Why Fixed deposit?") ||
 							(htmlFileName === "Set-Black-Image-lock-screen-home-screen.html" && activeLink.textContent.trim() === "Samsung Wallpaper Home Lock") ||
 							(htmlFileName === "BIG-MART-POINTS.html" && activeLink.textContent.trim() === "Rewards & Smart Spending") ||
 							(htmlFileName === "ShareKnowledgeTransferToPeople.html" && activeLink.textContent.trim() === "Share knowledge transfer") ||
@@ -1387,13 +1389,13 @@ function loadMoneyHelpContent( event, htmlFileName )
             <UL class="submenu">
                 <!-- Sub menu02: Why Fixed deposit? -->
                 <LI>
-                    <A href="#" onclick="javascript:window.open( 'why-to-open-fixed-deposit.html' );" class="nav-link"><FONT color='#00ff00'>Why Fixed deposit?</FONT></A>
+                    <A href="#" onclick="javascript:loadHomeContent( event, 'why-to-open-fixed-deposit.html' );" class="nav-link">Why Fixed deposit?</A>
                 </LI>
                 <!-- Sub menu02: SBI FD INTEREST -->
                 <LI>
                     <A href="#" onclick='javascript:window.open( "SBI_ETDR_INTEREST.html" );' class="nav-link"><FONT color='#00ff00'>SBI FD INTEREST</FONT></A>
                 </LI>
-                <!-- Sub menu02: Town city gold rate compare -->
+                <!-- Sub menu02: -->
                 <LI>
                     <A href="#" onclick="javascript:loadHomeContent( event, 'dynamic-gold-rate-comparison-tool.html' );" class="nav-link">Town city gold rate compare</A>
                 </LI>
@@ -1441,6 +1443,18 @@ function loadMoneyHelpContent( event, htmlFileName )
             <A href="#" onclick="javascript:loadHomeContent( event, '2-wheeler-4-wheeler-rank.html' );" class="nav-link">Vehicle rankings amount</A>
         </LI>
     </UL>
+</LI>
+<LI class="nav-item">
+    <A href="#" class="nav-link">
+    <SPAN class="nav-icon">&#127974;</SPAN>
+    <SPAN class="nav-text"><FONT color='black'>Spending</FONT></SPAN>
+    <SPAN class="nav-arrow">&gt;</SPAN>
+    <
+	<UL class="submenu">
+		<LI>
+		<A href="#" onclick='javascript:window.open( "attibele-to-vijayanagar-bus-stops-intermediate-metro.html" );' class="nav-link"><FONT color='#00ff00'>Bengaluru Attibele to Vijayanagr BMTC?</FONT></A>
+		</LI>/A>
+	</UL>
 </LI>
 
 				<LI class="nav-item">
