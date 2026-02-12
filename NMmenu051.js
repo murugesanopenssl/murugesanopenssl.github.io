@@ -968,6 +968,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Town city gold rate compare") ||
 							(htmlFileName === "why-to-open-fixed-deposit.html" && activeLink.textContent.trim() === "Why Fixed deposit?") ||
 							(htmlFileName === "Set-Black-Image-lock-screen-home-screen.html" && activeLink.textContent.trim() === "Samsung Wallpaper Home Lock") ||
+							(htmlFileName === "steps-to-port-jio-to-bsnl.html" && activeLink.textContent.trim() === "Port from Jio to BSNL") ||
 							(htmlFileName === "BIG-MART-POINTS.html" && activeLink.textContent.trim() === "Rewards & Smart Spending") ||
 							(htmlFileName === "ShareKnowledgeTransferToPeople.html" && activeLink.textContent.trim() === "Share knowledge transfer") ||
 							(htmlFileName === "remove-blockages-kitchen-pvc-outflow-pipe.html" && activeLink.textContent.trim() === "Kitchen Drain") ||
@@ -1499,6 +1500,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Set-Black-Image-lock-screen-home-screen.html' );" class="nav-link">Samsung Wallpaper Home Lock</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-port-jio-to-bsnl.html' );" class="nav-link">Port from Jio to BSNL</A>
 						</LI>
 					</UL>
 				</LI>
