@@ -954,6 +954,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "my-gold-loan.html" && activeLink.textContent.trim() === "Apply gold loan only at SBI/banks") ||
 							(htmlFileName === "vegetables-health.html" && activeLink.textContent.trim() === "Vegetables & Health") ||
 							(htmlFileName === "ITR-2025-2026.html" && activeLink.textContent.trim() === "ITR Fri 31-Jul-2026 IST") ||
+							(htmlFileName === "TN-how-to-get-more-vote.html" && activeLink.textContent.trim() === "TN how to get more vote") ||
 							(htmlFileName === "My_Drawings.html" && activeLink.textContent.trim() === "My drawings") ||
 							(htmlFileName === "NMurugesan_cv.html" && activeLink.textContent.trim() === "My profile") ||
 							(htmlFileName === "openssl_speed.html" && activeLink.textContent.trim() === "openssl.exe speed") ||
@@ -1456,6 +1457,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 		</LI>
 		<LI>
 		<A href="#" onclick='javascript:window.open( "tamil-calendar.html" );' class="nav-link"><FONT color='#00ff00'>Tamil calendar</FONT></A>
+		</LI>
+		<LI>
+			<A href="#" onclick="javascript:loadHomeContent(event, 'TN-how-to-get-more-vote.html');" class="nav-link">TN how to get more vote</A>
 		</LI>
 	</UL>
 </LI>
