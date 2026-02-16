@@ -1391,6 +1391,32 @@ function loadMoneyHelpContent( event, htmlFileName )
                 </LI>
             </UL>
         </LI>
+
+        <LI class="nav-item">
+		<A href="#" class="nav-link">PPF<SPAN class="nav-arrow">&gt;</SPAN></A>
+		<UL class="submenu">
+			<!--
+			<LI>
+				<FONT color='white'>
+					PPF Overview
+				</FONT>
+			</LI>
+			<LI>
+				<FONT color='white'>
+					Steps to Save in PPF
+				</FONT>
+			</LI>
+			<LI>
+				<FONT color='white'>
+					Valid Dates to Deposit PPF
+				</FONT>
+			</LI>
+			-->
+			<LI>
+			    <A href="#" onclick="javascript:loadHomeContent( event, 'ppf-info.html' );" class="nav-link">Interest Gain/Loss Details</A>
+			</LI>
+		</UL>
+	</LI>
         
         <!-- Sub menu01: Other bank -->
         <LI class="nav-item">
@@ -1409,7 +1435,7 @@ function loadMoneyHelpContent( event, htmlFileName )
             <UL class="submenu">
                 <!-- Sub menu02: Indian bank transfer err -->
                 <LI>
-                    <A href="#" onclick="javascript:loadHomeContent( event, 'SBI-CREDIT-INTEREST.html' );" class="nav-link">Bank Quarterly Credit Interest</A>
+                    <A href="#" onclick="javascript:loadHomeContent( event, 'SBI-CREDIT-INTEREST.html' );" class="nav-link">AMB Bank Quarterly Credit Interest</A>
                 </LI>
             </UL>
         </LI>
@@ -1623,4 +1649,12 @@ function loadMoneyHelpContent( event, htmlFileName )
 				</DIV>
 				</DIV>
 				</ASIDE>` );
+			}
+			function DispPrivacyPolicy()
+			{
+				const container = document.getElementById('privacyContainer');
+				if(container)
+				{
+					container.innerHTML = '<A href="#" onclick="loadHomeContent(event, \'privacy.html\');" class="nav-link">Privacy Policy</A>';
+				}
 			}
