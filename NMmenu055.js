@@ -447,7 +447,6 @@ function MainPageHomeLoadContent( event, htmlFileName )
 	function loadMainContent(event)
 	{
 		event.preventDefault();
-
 		var originalContent = `
 		<HEADER class="content-header">
 			<H1>Welcome to Murugesan Life Finance Helper</H1>
@@ -522,16 +521,14 @@ function MainPageHomeLoadContent( event, htmlFileName )
 			</TABLE>
 		</SECTION>
 		`;
-
 		document.querySelector(".main-content").innerHTML = originalContent;
-		// Remove sidebar link functionality if needed
 		var sidebarLink = document.querySelector(".sidebar-header #life-finance-helper");
-		if (sidebarLink) {
+		if( sidebarLink )
+		{
 			sidebarLink.removeAttribute("href");
 			sidebarLink.removeAttribute("onclick");
 		}
 	}
-
 			document.addEventListener( 'DOMContentLoaded', function()
 				{
 					const navItems = document.querySelectorAll( '.nav-item' );
@@ -941,7 +938,6 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							activeLink.closest(".nav-item").classList.add("active");
 							const shouldDisableLink = 
 							(htmlFileName === "HandleBankAMB.html" && activeLink.textContent.trim() === "AtmTips") ||
-							(htmlFileName === "Prediction_04.html" && activeLink.textContent.trim() === "MyPredict") ||
 							(htmlFileName === "IGCSE-EXAM-DATES.html" && activeLink.textContent.trim() === "Cambridge IGCSE Examination Timetable") ||
 							(htmlFileName === "Tamilnadu-MLA.html" && activeLink.textContent.trim() === "TN M.L.A") ||
 							(htmlFileName === "new-employee-sbi-account.html" && activeLink.textContent.trim() === "Any Employee Savings Guide") ||
@@ -965,8 +961,12 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" && activeLink.textContent.trim() === "My KT to chatgpt") ||
 							(htmlFileName === "pm-cm-india-relations.html" && activeLink.textContent.trim() === "India PM–CM Relations") ||
 							(htmlFileName === "ppf-post-office.html" && activeLink.textContent.trim() === "PPF") ||
+							(htmlFileName === "ippb-awareness-indian-citizens.html" && activeLink.textContent.trim() === "IPPB Avoid Premium Use Savings") ||
 							(htmlFileName === "post-office-nsc.html" && activeLink.textContent.trim() === "NSC") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Town city gold rate compare") ||
+							(htmlFileName === "SBI-CREDIT-INTEREST.html" && activeLink.textContent.trim() === "AMB Bank Quarterly Credit Interest") ||
+							(htmlFileName === "Personal-Spending-Strategy.html" && activeLink.textContent.trim() === "Personal Spending Strategy") ||
+							(htmlFileName === "ppf-info.html" && activeLink.textContent.trim() === "Interest Gain/Loss Details") ||
 							(htmlFileName === "why-to-open-fixed-deposit.html" && activeLink.textContent.trim() === "Why Fixed deposit?") ||
 							(htmlFileName === "Set-Black-Image-lock-screen-home-screen.html" && activeLink.textContent.trim() === "Samsung Wallpaper Home Lock") ||
 							(htmlFileName === "steps-to-port-jio-to-bsnl.html" && activeLink.textContent.trim() === "Port from Jio to BSNL") ||
@@ -987,14 +987,32 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "Indian-Oil-Cylinder-Booking-Online-Steps.html" && activeLink.textContent.trim() === "Indian oil gas online booking steps") ||
 							(htmlFileName === "Always-Have-Cash-A-Lesson.html" && activeLink.textContent.trim() === "Always Have Cash : A Lesson") ||
 							(htmlFileName === "spending.html" && activeLink.textContent.trim() === "Daily spending");
+							let myPredictLink = document.querySelector(`.nav-link[onclick*="Prediction_04.html"]`);
+							if( myPredictLink )
+							{
+								if( htmlFileName === "Prediction_04.html" )
+								{
+									myPredictLink.removeAttribute("href");
+									myPredictLink.style.pointerEvents = "none";
+									myPredictLink.style.cursor = "not-allowed";
+									myPredictLink.style.opacity = "0.5";
+								}
+								else
+								{
+									myPredictLink.setAttribute("href", "#");
+									myPredictLink.style.pointerEvents = "auto";
+									myPredictLink.style.cursor = "pointer";
+									myPredictLink.style.opacity = "1";
+								}
+							}
 							if( shouldDisableLink )
 							{
 								console.log("Disabling link for:", activeLink.textContent.trim());
-								if (!activeLink.dataset.originalHref )
+								if( !activeLink.dataset.originalHref )
 								{
 									activeLink.dataset.originalHref = activeLink.getAttribute("href") || "#";
 								}
-								if (!activeLink.dataset.originalOnclick )
+								if( !activeLink.dataset.originalOnclick )
 								{
 									activeLink.dataset.originalOnclick = activeLink.getAttribute("onclick") || "";
 								}
@@ -1151,7 +1169,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 			function getLocation()
 			{
 				document.getElementById('title').innerText = "உங்கள் இருப்பிடம் (காத்திருக்கவும்)";
-				if ( !navigator.geolocation )
+				if( !navigator.geolocation )
 				{
 					document.getElementById("output").innerText =
 						currentLanguage === 'ta' ?
@@ -1332,193 +1350,162 @@ function loadMoneyHelpContent( event, htmlFileName )
 				<SPAN class="nav-icon">&#x1F465;<FONT color='black'>MyPredict</FONT></SPAN>
 				</A>
 				</LI>
-
-<LI class="nav-item">
-    <A href="#" class="nav-link">
-    <SPAN class="nav-icon">&#127974;</SPAN>
-    <SPAN class="nav-text"><FONT color='black'>Banking</FONT></SPAN>
-    <SPAN class="nav-arrow">&gt;</SPAN>
-    </A>
-    <UL class="submenu">
-        <!-- Sub menu01: Any Employee Savings Guide -->
-        <LI>
-            <A href="#" onclick="javascript:loadHomeContent( event, 'new-employee-sbi-account.html' );" class="nav-link">Any Employee Savings Guide</A>
-        </LI>
-        
-        <!-- Sub menu01: Post office -->
-<LI class="nav-item">
-    <A href="#" class="nav-link">
-        Post office
-        <SPAN class="nav-arrow">&gt;</SPAN>
-    </A>
-    <UL class="submenu">
-                <!-- Sub menu02: MIS -->
-                <LI>
-                    <A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>MIS</FONT></A>
-                </LI>
-                <LI>
-                    <A href="#" onclick="javascript:loadHomeContent( event, 'ippb-awareness-indian-citizens.html' );" class="nav-link">IPPB Avoid Premium Use Savings</A>
-                </LI>
-                <LI>
-                    <A href="#" onclick="javascript:loadHomeContent( event, 'ppf-post-office.html' );" class="nav-link">PPF</A>
-                </LI>
-                <!-- Sub menu02: Steps to save money -->
-                <LI>
-                    <A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-save-money-from-mis.html' );" class="nav-link">Steps to save money</A>
-                </LI>
-                <!-- Sub menu02: NSC -->
-                <LI>
-                    <A href="#" onclick='javascript:window.open( "post-office-nsc.html" );' class="nav-link"><FONT color='#00ff00'>NSC</FONT></A>
-                </LI>
-            </UL>
-        </LI>
-        
-        <!-- Sub menu01: SBI -->
-        <LI class="nav-item">
-            <A href="#" class="nav-link">SBI<SPAN class="nav-arrow">&gt;</SPAN></A>
-            <UL class="submenu">
-                <!-- Sub menu02: Why Fixed deposit? -->
-                <LI>
-                    <A href="#" onclick="javascript:loadHomeContent( event, 'why-to-open-fixed-deposit.html' );" class="nav-link">Why Fixed deposit?</A>
-                </LI>
-                <!-- Sub menu02: SBI FD INTEREST -->
-                <LI>
-                    <A href="#" onclick='javascript:window.open( "SBI_ETDR_INTEREST.html" );' class="nav-link"><FONT color='#00ff00'>SBI FD INTEREST</FONT></A>
-                </LI>
-                <!-- Sub menu02: -->
-                <LI>
-                    <A href="#" onclick="javascript:loadHomeContent( event, 'dynamic-gold-rate-comparison-tool.html' );" class="nav-link">Town city gold rate compare</A>
-                </LI>
-            </UL>
-        </LI>
-
-        <LI class="nav-item">
-		<A href="#" class="nav-link">PPF<SPAN class="nav-arrow">&gt;</SPAN></A>
-		<UL class="submenu">
-			<!--
-			<LI>
-				<FONT color='white'>
-					PPF Overview
-				</FONT>
-			</LI>
-			<LI>
-				<FONT color='white'>
-					Steps to Save in PPF
-				</FONT>
-			</LI>
-			<LI>
-				<FONT color='white'>
-					Valid Dates to Deposit PPF
-				</FONT>
-			</LI>
-			-->
-			<LI>
-			    <A href="#" onclick="javascript:loadHomeContent( event, 'ppf-info.html' );" class="nav-link">Interest Gain/Loss Details</A>
-			</LI>
-		</UL>
-	</LI>
-        
-        <!-- Sub menu01: Other bank -->
-        <LI class="nav-item">
-            <A href="#" class="nav-link">Other bank<SPAN class="nav-arrow">&gt;</SPAN></A>
-            <UL class="submenu">
-                <!-- Sub menu02: Indian bank transfer err -->
-                <LI>
-                    <A href="#" onclick="javascript:loadHomeContent( event, 'Indian-bank-to-other-bank.html' );" class="nav-link">Indian bank transfer err</A>
-                </LI>
-            </UL>
-        </LI>
-        
-        <!-- Sub menu01: Other bank -->
-        <LI class="nav-item">
-            <A href="#" class="nav-link">Customer Interest Info<SPAN class="nav-arrow">&gt;</SPAN></A>
-            <UL class="submenu">
-                <!-- Sub menu02: Indian bank transfer err -->
-                <LI>
-                    <A href="#" onclick="javascript:loadHomeContent( event, 'SBI-CREDIT-INTEREST.html' );" class="nav-link">AMB Bank Quarterly Credit Interest</A>
-                </LI>
-            </UL>
-        </LI>
-
-        <!-- Sub menu01: Other bank -->
-        <LI class="nav-item">
-                    <A href="#" onclick="javascript:loadHomeContent( event, 'Personal-Spending-Strategy.html' );" class="nav-link">Personal Spending Strategy</A>
-        </LI>
-        <!-- Sub menu01: World Currency Rates -->
-        <LI>
-            <A href="#" onclick="javascript:loadHomeContent( event, 'world-currencies.html' );" class="nav-link">World Currency Rates</A>
-        </LI>
-        
-        <!-- Sub menu01: Last Year Investment Trends -->
-        <LI>
-            <A href="#" onclick="javascript:loadHomeContent( event, 'Last-year-investment-provit-at-earth.html' );" class="nav-link">Last Year Investment Trends</A>
-        </LI>
-        
-        <!-- Sub menu01: Loan -->
-        <LI class="nav-item">
-            <A href="#" class="nav-link">Loan<SPAN class="nav-arrow">&gt;</SPAN></A>
-            <UL class="submenu">
-                <!-- Sub menu02: When to pay loan? -->
-                <LI>
-                    <A href="#" onclick="javascript:loadHomeContent( event, 'gold-loan.html' );" class="nav-link">When to pay loan?</A>
-                </LI>
-                <!-- Sub menu02: loan only at SBI/banks -->
-                <LI>
-                    <A href="#" onclick="javascript:loadHomeContent( event, 'my-gold-loan.html' );" class="nav-link">Apply gold loan only at SBI/banks</A>
-                </LI>
-            </UL>
-        </LI>
-		<LI>
-			<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-recharge-any-sim.html' );" class="nav-link">Internet Recharge Exception</A>
-		</LI>
-		<LI>
-			<A href="#" onclick="javascript:loadHomeContent( event, 'HandleBankAMB.html' );" class="nav-link">AtmTips</A>
-		</LI>
-		<LI>
-			<A href="#" onclick="javascript:loadHomeContent(event, 'ITR-2025-2026.html');" class="nav-link">ITR Fri 31-Jul-2026 IST</A>
-		</LI>
-        
-        <!-- Sub menu01: Vehicle rankings amount -->
-        <LI>
-            <A href="#" onclick="javascript:loadHomeContent( event, '2-wheeler-4-wheeler-rank.html' );" class="nav-link">Vehicle rankings amount</A>
-        </LI>
-    </UL>
-</LI>
-<LI class="nav-item">
-    <A href="#" class="nav-link">
-    <SPAN class="nav-icon">&#127974;</SPAN>
-    <SPAN class="nav-text"><FONT color='black'>Spending</FONT></SPAN>
-    <SPAN class="nav-arrow">&gt;</SPAN>
-	<UL class="submenu">
-		<LI>
-		<A href="#" onclick='javascript:window.open( "attibele-to-vijayanagar-bus-stops-intermediate-metro.html" );' class="nav-link"><FONT color='#00ff00'>Bengaluru Attibele to Vijayanagr BMTC?</FONT></A>
-		</LI>
-		<LI>
-		<A href="#" onclick='javascript:window.open( "tamil-calendar.html" );' class="nav-link"><FONT color='#00ff00'>Tamil calendar</FONT></A>
-		</LI>
-		<LI>
-			<A href="#" onclick="javascript:loadHomeContent(event, 'TN-how-to-get-more-vote.html');" class="nav-link">TN how to get more vote</A>
-		</LI>
-	</UL>
-</LI>
-
 				<LI class="nav-item">
 					<A href="#" class="nav-link">
-						<SPAN class="nav-icon">&#x1F527;</SPAN>
-						<SPAN class="nav-text"><FONT color='black'>Utility</FONT></SPAN>
-						<SPAN CLASS="NAV-ARROW">&gt;</SPAN>
+						<SPAN class="nav-icon">&#127974;</SPAN>
+						<SPAN class="nav-text"><FONT color='black'>Banking</FONT></SPAN>
+						<SPAN class="nav-arrow">&gt;</SPAN>
 					</A>
 					<UL class="submenu">
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent(event, 'vegetables-health.html');" class="nav-link">Vegetables & Health</A>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'new-employee-sbi-account.html' );" class="nav-link">Any Employee Savings Guide</A>
+						</LI>
+						<LI class="nav-item">
+							<A href="#" class="nav-link">
+								Post office
+								<SPAN class="nav-arrow">&gt;</SPAN>
+							</A>
+							<UL class="submenu">
+								<LI>
+									<A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>MIS</FONT></A>
+								</LI>
+								<LI>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'ippb-awareness-indian-citizens.html' );" class="nav-link">IPPB Avoid Premium Use Savings</A>
+								</LI>
+							<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-post-office.html' );" class="nav-link">PPF</A>
 						</LI>
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent(event, 'BIG-MART-POINTS.html');" class="nav-link">Rewards & Smart Spending</A>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-save-money-from-mis.html' );" class="nav-link">Steps to save money</A>
 						</LI>
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent(event, 'ShareKnowledgeTransferToPeople.html');" class="nav-link">Share knowledge transfer</A>
+							<A href="#" onclick='javascript:window.open( "post-office-nsc.html" );' class="nav-link"><FONT color='#00ff00'>NSC</FONT></A>
+						</LI>
+					</UL>
+				</LI>
+				<LI class="nav-item">
+					<A href="#" class="nav-link">SBI<SPAN class="nav-arrow">&gt;</SPAN></A>
+					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'why-to-open-fixed-deposit.html' );" class="nav-link">Why Fixed deposit?</A>
 						</LI>
 						<LI>
+							<A href="#" onclick='javascript:window.open( "SBI_ETDR_INTEREST.html" );' class="nav-link"><FONT color='#00ff00'>SBI FD INTEREST</FONT></A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'dynamic-gold-rate-comparison-tool.html' );" class="nav-link">Town city gold rate compare</A>
+						</LI>
+					</UL>
+				</LI>
+				<LI class="nav-item">
+					<A href="#" class="nav-link">PPF<SPAN class="nav-arrow">&gt;</SPAN></A>
+					<UL class="submenu">
+						<!--
+						<LI>
+							<FONT color='white'>
+								PPF Overview
+							</FONT>
+						</LI>
+						<LI>
+							<FONT color='white'>
+								Steps to Save in PPF
+							</FONT>
+						</LI>
+						<LI>
+							<FONT color='white'>
+								Valid Dates to Deposit PPF
+							</FONT>
+						</LI>
+						-->
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-info.html' );" class="nav-link">Interest Gain/Loss Details</A>
+						</LI>
+					</UL>
+				</LI>
+				<LI class="nav-item">
+					<A href="#" class="nav-link">Other bank<SPAN class="nav-arrow">&gt;</SPAN></A>
+					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'Indian-bank-to-other-bank.html' );" class="nav-link">Indian bank transfer err</A>
+						</LI>
+					</UL>
+				</LI>
+				<LI class="nav-item">
+					<A href="#" class="nav-link">Customer Interest Info<SPAN class="nav-arrow">&gt;</SPAN></A>
+					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'SBI-CREDIT-INTEREST.html' );" class="nav-link">AMB Bank Quarterly Credit Interest</A>
+						</LI>
+					</UL>
+				</LI>
+				<LI class="nav-item">
+					<A href="#" onclick="javascript:loadHomeContent( event, 'Personal-Spending-Strategy.html' );" class="nav-link">Personal Spending Strategy</A>
+				</LI>
+				<LI>
+					<A href="#" onclick="javascript:loadHomeContent( event, 'world-currencies.html' );" class="nav-link">World Currency Rates</A>
+				</LI>
+				<LI>
+					<A href="#" onclick="javascript:loadHomeContent( event, 'Last-year-investment-provit-at-earth.html' );" class="nav-link">Last Year Investment Trends</A>
+				</LI>
+				<LI class="nav-item">
+					<A href="#" class="nav-link">Loan<SPAN class="nav-arrow">&gt;</SPAN></A>
+					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'gold-loan.html' );" class="nav-link">When to pay loan?</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'my-gold-loan.html' );" class="nav-link">Apply gold loan only at SBI/banks</A>
+						</LI>
+					</UL>
+				</LI>
+				<LI>
+					<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-recharge-any-sim.html' );" class="nav-link">Internet Recharge Exception</A>
+				</LI>
+				<LI>
+					<A href="#" onclick="javascript:loadHomeContent( event, 'HandleBankAMB.html' );" class="nav-link">AtmTips</A>
+				</LI>
+				<LI>
+					<A href="#" onclick="javascript:loadHomeContent(event, 'ITR-2025-2026.html');" class="nav-link">ITR Fri 31-Jul-2026 IST</A>
+				</LI>
+				<LI>
+					<A href="#" onclick="javascript:loadHomeContent( event, '2-wheeler-4-wheeler-rank.html' );" class="nav-link">Vehicle rankings amount</A>
+				</LI>
+			</UL>
+		</LI>
+		<LI class="nav-item">
+			<A href="#" class="nav-link">
+			<SPAN class="nav-icon">&#127974;</SPAN>
+			<SPAN class="nav-text"><FONT color='black'>Spending</FONT></SPAN>
+			<SPAN class="nav-arrow">&gt;</SPAN>
+			<UL class="submenu">
+				<LI>
+					<A href="#" onclick='javascript:window.open( "attibele-to-vijayanagar-bus-stops-intermediate-metro.html" );' class="nav-link"><FONT color='#00ff00'>Bengaluru Attibele to Vijayanagr BMTC?</FONT></A>
+				</LI>
+			<LI>
+				<A href="#" onclick='javascript:window.open( "tamil-calendar.html" );' class="nav-link"><FONT color='#00ff00'>Tamil calendar</FONT></A>
+			</LI>
+			<LI>
+					<A href="#" onclick="javascript:loadHomeContent(event, 'TN-how-to-get-more-vote.html');" class="nav-link">TN how to get more vote</A>
+			</LI>
+		</UL>
+	</LI>
+	<LI class="nav-item">
+		<A href="#" class="nav-link">
+			<SPAN class="nav-icon">&#x1F527;</SPAN>
+			<SPAN class="nav-text"><FONT color='black'>Utility</FONT></SPAN>
+			<SPAN CLASS="NAV-ARROW">&gt;</SPAN>
+		</A>
+		<UL class="submenu">
+			<LI>
+				<A href="#" onclick="javascript:loadHomeContent(event, 'vegetables-health.html');" class="nav-link">Vegetables & Health</A>
+			</LI>
+			<LI>
+				<A href="#" onclick="javascript:loadHomeContent(event, 'BIG-MART-POINTS.html');" class="nav-link">Rewards & Smart Spending</A>
+			</LI>
+			<LI>
+				<A href="#" onclick="javascript:loadHomeContent(event, 'ShareKnowledgeTransferToPeople.html');" class="nav-link">Share knowledge transfer</A>
+			</LI>
+			<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'pm-cm-india-relations.html' );" class="nav-link">India PM–CM Relations</A>
 						</LI>
 						<LI>
@@ -1542,13 +1529,6 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-port-jio-to-bsnl.html' );" class="nav-link">Port from Jio to BSNL</A>
 						</LI>
-						<!-- Health / educational content first -->
-
-						<!-- Finance / rewards -->
-
-						<!-- Personal knowledge -->
-
-						<!-- Home utilities -->
 					</UL>
 				</LI>
 				<LI class="nav-item">
