@@ -951,6 +951,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "vegetables-health.html" && activeLink.textContent.trim() === "Vegetables & Health") ||
 							(htmlFileName === "ITR-2025-2026.html" && activeLink.textContent.trim() === "ITR Fri 31-Jul-2026 IST") ||
 							(htmlFileName === "TN-how-to-get-more-vote.html" && activeLink.textContent.trim() === "TN how to get more vote") ||
+							(htmlFileName === "epson-printer-requirement.html" && activeLink.textContent.trim() === "Epson printer rates") ||
 							(htmlFileName === "My_Drawings.html" && activeLink.textContent.trim() === "My drawings") ||
 							(htmlFileName === "NMurugesan_cv.html" && activeLink.textContent.trim() === "My profile") ||
 							(htmlFileName === "openssl_speed.html" && activeLink.textContent.trim() === "openssl.exe speed") ||
@@ -1543,6 +1544,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 				</LI>
 				<LI>
 					<A href="#" onclick='javascript:window.open( "Windows_ERR_HELP.html" );'><FONT color='#00ff00'>Windows Help</FONT></A>
+				</LI>
+				<LI>
+					<A href="#" onclick="javascript:loadHomeContent( event, 'epson-printer-requirement.html' );" class="nav-link">Epson printer rates</A>
 				</LI>
 				<LI>
 					<A href="#" onclick='javascript:window.open( "Windows_network_icon.html" );' class="nav-link"><FONT color='#00ff00'>Windows Network</FONT></A>
