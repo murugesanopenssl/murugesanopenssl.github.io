@@ -1139,7 +1139,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 					document.getElementById('toggleLink').innerText = "Display in Tamil";
 					if( 0 < englishData.district.index( "தர்மபுரி") )
 					{
-						document.getElementById("district").innerText = "Dharmapuri district";
+						document.getElementById("district").innerText = "Dharmapuri";
 					}
 					else
 					{
