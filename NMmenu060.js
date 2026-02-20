@@ -1137,7 +1137,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 					document.getElementById('labelCountry').innerText = "Country";
 					document.getElementById('labelContinent').innerText = "Continent";
 					document.getElementById('toggleLink').innerText = "Display in Tamil";
-					if( 0 < englishData.district.index( "தர்மபுரி") )
+					if( ( 0 < englishData.district.index( "தர்மபுரி") ) || ( 0 < englishData.district.index( "தருமபுரி") ) )
 					{
 						document.getElementById("district").innerText = "Dharmapuri";
 					}
