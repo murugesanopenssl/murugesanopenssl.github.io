@@ -1137,7 +1137,14 @@ function loadMoneyHelpContent( event, htmlFileName )
 					document.getElementById('labelCountry').innerText = "Country";
 					document.getElementById('labelContinent').innerText = "Continent";
 					document.getElementById('toggleLink').innerText = "Display in Tamil";
-					document.getElementById("district").innerText = englishData.district;
+					if( "தர்மபுரி மாவட்டம்" == englishData.district )
+					{
+						document.getElementById("district").innerText = "Dharmapuri district";
+					}
+					else
+					{
+						document.getElementById("district").innerText = englishData.district;
+					}
 					document.getElementById("state").innerText = englishData.state;
 					document.getElementById("country").innerText = englishData.country;
 					document.getElementById("continent").innerText = englishData.continent;
