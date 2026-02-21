@@ -48,7 +48,7 @@
 				d.setDate(3);
 				document.getElementById("nextMonthChit").innerHTML=formatDate(d);
 			}
-			window.onload=function()
+			document.addEventListener("DOMContentLoaded", function()
 			{
 				var yyyy=new Date().getFullYear();
 				document.getElementById("todayDate").innerHTML=formatDate(new Date());
@@ -84,19 +84,23 @@
 						<TR>
 							<TD valign='top' align='right'>02</TD>
 							<TD valign='top' align='right'>Gold Coin Chit Fund(1 Gram)</TD>
-							<TD valign='top' align='right' id='goldDate'></TD>
+							<TD valign='top' align='right' id='goldDate'>
+								1000.00 INR each month for 11 months.
+							</TD>
 							<TD valign='top' align='right'>Saving</TD>
 						</TR>
 						<TR>
 							<TD valign='top' align='right'>03</TD>
 							<TD valign='top' align='right'>Parents Emergency Support</TD>
-							<TD valign='top' align='right'>Future Need</TD>
+							<TD valign='top' align='right'>Approximately 595.00 to 489.00 INR during each month for 5 years</TD>
 							<TD valign='top' align='right'>Growing</TD>
 						</TR>
 						<TR>
 							<TD valign='top' align='right'>04</TD>
 							<TD valign='top' align='right'>Epson Printer Purchase</TD>
-							<TD valign='top' align='right' id='printerDate'></TD>
+							<TD valign='top' align='right' id='printerDate'>
+								Approximately 564.00 INR pea month for 2 years
+							</TD>
 							<TD valign='top' align='right'>Saving</TD>
 						</TR>
 						<TR>
@@ -108,13 +112,21 @@
 						<TR>
 							<TD valign='top' align='right'>06</TD>
 							<TD valign='top' align='right'>My Son 11th Standard Fees</TD>
-							<TD valign='top' align='right' id='eleventhFeesMain'></TD>
+							<TD valign='top' align='right' id='eleventhFeesMain'>
+								Approximately 564.00 inr during each month for 6 months
+							</TD>
 							<TD valign='top' align='right'>Planned</TD>
 						</TR>
 						<TR>
 							<TD valign='top' align='right'>07</TD>
-							<TD valign='top' align='right'>Next Month Recurring Deposit</TD>
-							<TD valign='top' align='right'>Monthly</TD>
+							<TD valign='top' align='right'>RECURRING DEPOSIT</TD>
+							<TD valign='top' align='right'>1000.00 ரூ/₹ INR each month for 5 years</TD>
+							<TD valign='top' align='right'>Active</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>08</TD>
+							<TD valign='top' align='right'>PUBLIC PROVIDEND FUND</TD>
+							<TD valign='top' align='right'>500.00 ரூ/₹ INR each month for 15 years</TD>
 							<TD valign='top' align='right'>Active</TD>
 						</TR>
 					</TABLE>
@@ -157,13 +169,18 @@
 						</TR>
 						<TR>
 							<TD valign='top' align='right'>05</TD>
-							<TD valign='top' align='right'>Epson Printer Plan Opening</TD>
-							<TD valign='top' align='right' id='printerDate'></TD>
+							<TD valign='top' align='right'>Future plan to buy Epson Printer</TD>
+							<TD valign='top' align='right' id='printerDate'>
+								Use HP machine only for scanning<BR>
+								Use epson machine only for printing.
+							</TD>
 						</TR>
 						<TR>
 							<TD valign='top' align='right'>06</TD>
 							<TD valign='top' align='right'>Open New MIS at Post Office</TD>
-							<TD valign='top' align='right' id='openMIS'></TD>
+							<TD valign='top' align='right' id='openMIS'>
+								if ETDR amount reach 5000.00 ரூ/₹ INR
+							</TD>
 						</TR>
 					</TABLE>
 					<H3>Financial Discipline Statement</H3>
@@ -171,5 +188,16 @@
 				</TD>
 			</TR>
 		</TABLE>
+		<script>
+		var yyyy=new Date().getFullYear();
+		document.getElementById("todayDate").innerHTML=formatDate(new Date());
+		setDate("goldDate",28,10,yyyy);
+		setDate("printerDate",28,10,yyyy);
+		setLeapFeb("tenthFees",yyyy);
+		setDate("eleventhFeesMain",31,4,yyyy);
+		setDate("eleventhFeesFD",31,4,yyyy);
+		setDate("openMIS",4,2,yyyy);
+		nextMonthChit();
+		</script>
 	</BODY>
 </HTML>

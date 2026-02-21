@@ -1625,6 +1625,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<A href="#" onclick="javascript:loadHomeContent( event, 'murugesan_achievements.html' );" class="nav-link">My achievements</A>
 					</LI>
 					<LI>
+						<A href="#" onclick="javascript:window.open( 'poems/index.html');" class="nav-link"><FONT color='#00ff00'>My tamil poems</FONT></A>
+					</LI>
+					<LI>
 						<A href="#" onclick="javascript:loadHomeContent( event, 'Sustainable_Living.html' );" class="nav-link">Sustainable Living</A>
 					</LI>
 					<LI>
