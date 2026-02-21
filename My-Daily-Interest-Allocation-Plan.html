@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>My Daily Interest Allocation Plan</TITLE>
+		<STYLE type='text/css'>
+			body
+			{
+				font-family:Arial;
+				font-size:14px;
+			}
+			table
+			{
+				border-collapse:collapse;
+			}
+			th
+			{
+				background-color:#f0f0f0;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<SCRIPT type='text/javascript'>
+			function formatDate(d)
+			{
+				var days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+				var months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+				var dd=d.getDate()<10?"0"+d.getDate():d.getDate();
+				return days[d.getDay()]+" "+dd+"-"+months[d.getMonth()]+"-"+d.getFullYear()+" IST";
+			}
+			function setDate(id,day,month,year)
+			{
+				var d=new Date(year,month,day);
+				document.getElementById(id).innerHTML=formatDate(d);
+			}
+			function setLeapFeb(id,year)
+			{
+				var leap=(year%4==0&&year%100!=0)||year%400==0;
+				var day=leap?29:28;
+				var d=new Date(year,1,day);
+				document.getElementById(id).innerHTML=formatDate(d);
+			}
+			function nextMonthChit()
+			{
+				var d=new Date();
+				d.setMonth(d.getMonth()+1);
+				d.setDate(3);
+				document.getElementById("nextMonthChit").innerHTML=formatDate(d);
+			}
+			window.onload=function()
+			{
+				var yyyy=new Date().getFullYear();
+				document.getElementById("todayDate").innerHTML=formatDate(new Date());
+				setDate("goldDate",28,10,yyyy);
+				setDate("printerDate",28,10,yyyy);
+				setLeapFeb("tenthFees",yyyy);
+				setDate("eleventhFeesMain",31,4,yyyy);
+				setDate("eleventhFeesFD",31,4,yyyy);
+				setDate("openMIS",4,2,yyyy);
+				nextMonthChit();
+			};
+		</SCRIPT>
+		<TABLE border='1' style='width:100%;'>
+			<TR>
+				<TD valign='top' align='left'>
+					<H2>My Daily Interest Allocation Plan</H2>
+					<P>Today is <SPAN id='todayDate'></SPAN></P>
+					<P>Purpose:To manage daily MIS interest income with discipline and clarity for family security and future goals.</P>
+					<H3>1)Daily MIS Interest Distribution(Divide each days total MIS interest by 7)</H3>
+					<TABLE border='1' style='width:100%;'>
+						<TR>
+							<TH valign='top' align='right' style='width:10px;'>Index</TH>
+							<TH valign='top' align='right' style='width:600px;'>Purpose</TH>
+							<TH valign='top' align='right'>Target Date</TH>
+							<TH valign='top' align='right'>Status</TH>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>01</TD>
+							<TD valign='top' align='right'>Daily Spending Control = transfer to my bank daily using NEFT from post office</TD>
+							<TD valign='top' align='right'>Daily</TD>
+							<TD valign='top' align='right'>Ongoing</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>02</TD>
+							<TD valign='top' align='right'>Gold Coin Chit Fund(1 Gram)</TD>
+							<TD valign='top' align='right' id='goldDate'></TD>
+							<TD valign='top' align='right'>Saving</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>03</TD>
+							<TD valign='top' align='right'>Parents Emergency Support</TD>
+							<TD valign='top' align='right'>Future Need</TD>
+							<TD valign='top' align='right'>Growing</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>04</TD>
+							<TD valign='top' align='right'>Epson Printer Purchase</TD>
+							<TD valign='top' align='right' id='printerDate'></TD>
+							<TD valign='top' align='right'>Saving</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>05</TD>
+							<TD valign='top' align='right'>Post Office Savings total target 900000.00 ரூ/₹ INR</TD>
+							<TD valign='top' align='right'>Ongoing</TD>
+							<TD valign='top' align='right'>Deposit 5000.00 ரூ/₹ INR when Possible</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>06</TD>
+							<TD valign='top' align='right'>My Son 11th Standard Fees</TD>
+							<TD valign='top' align='right' id='eleventhFeesMain'></TD>
+							<TD valign='top' align='right'>Planned</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>07</TD>
+							<TD valign='top' align='right'>Next Month Recurring Deposit</TD>
+							<TD valign='top' align='right'>Monthly</TD>
+							<TD valign='top' align='right'>Active</TD>
+						</TR>
+					</TABLE>
+					<H3>2)SBI Fixed Deposit/ETDR 46 Days or required days Goal Tracking</H3>
+					<TABLE border='1' style='width:100%;'>
+						<TR>
+							<TH valign='top' align='right' style='width:10px;'>Index</TH>
+							<TH valign='top' align='right' style='width:600px;'>Purpose</TH>
+							<TH valign='top' align='right'>Due Date</TH>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>01</TD>
+							<TD valign='top' align='right'>Tenth standard school fees</TD>
+							<TD valign='top' align='right' id='tenthFees'></TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>02</TD>
+							<TD valign='top' align='right'>
+								Eleventh standard school fees<BR>
+								multiple Fixed Deposits/ETDRs having different end dates.
+							</TD>
+							<TD valign='top' align='right'>
+								Either:<BR>
+								a)Merge to one Fixed Deposit/ETDR later<BR>
+								b)Close each 1/2/3/... days before end date.<BR>
+								Till then reopen ETDR+interest after each close date.<BR>
+								Planned Date:<BR>
+								<SPAN id='eleventhFeesFD'></SPAN>
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>03</TD>
+							<TD valign='top' align='right'>Gold Coin Chit Fund Payment</TD>
+							<TD valign='top' align='right' id='nextMonthChit'></TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>04</TD>
+							<TD valign='top' align='right'>Parent Insurance Activation</TD>
+							<TD valign='top' align='right'>When Savings Reach 1053 INR</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>05</TD>
+							<TD valign='top' align='right'>Epson Printer Plan Opening</TD>
+							<TD valign='top' align='right' id='printerDate'></TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>06</TD>
+							<TD valign='top' align='right'>Open New MIS at Post Office</TD>
+							<TD valign='top' align='right' id='openMIS'></TD>
+						</TR>
+					</TABLE>
+					<H3>Financial Discipline Statement</H3>
+					<P>This plan is created to ensure controlled spending,systematic saving,and responsible financial growth for low and middle income families after Covid-19.Every rupee of interest income is assigned a purpose before spending.</P>
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</HTML>
