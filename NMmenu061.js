@@ -939,12 +939,13 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							const shouldDisableLink = 
 							(htmlFileName === "HandleBankAMB.html" && activeLink.textContent.trim() === "AtmTips") ||
 							(htmlFileName === "IGCSE-EXAM-DATES.html" && activeLink.textContent.trim() === "Cambridge IGCSE Examination Timetable") ||
+							(htmlFileName === "make-son-daughter-study-for-exam.html" && activeLink.textContent.trim() === "Parent/Teacher Exam Guide") ||
 							(htmlFileName === "Tamilnadu-MLA.html" && activeLink.textContent.trim() === "TN M.L.A") ||
 							(htmlFileName === "new-employee-sbi-account.html" && activeLink.textContent.trim() === "Employee Savings Guide") ||
 							(htmlFileName === "Indian-bank-to-other-bank.html" && activeLink.textContent.trim() === "Indian bank transfer err") ||
 							(htmlFileName === "world-currencies.html" && activeLink.textContent.trim() === "World Currency Rates") ||
 							(htmlFileName === "Last-year-investment-provit-at-earth.html" && activeLink.textContent.trim() === "Annual Investment Review") ||
-							(htmlFileName === "My-Daily-Interest-Allocation-Plan.html" && activeLink.textContent.trim() === "My Daily Interest Allocation Plan") ||
+							(htmlFileName === "My-Daily-Interest-Allocation-Plan.html" && activeLink.textContent.trim() === "Increase India's Income Daily") ||
 							(htmlFileName === "gold-loan.html" && activeLink.textContent.trim() === "When to pay loan?") ||
 							(htmlFileName === "attibele-to-vijayanagar-bus-stops-intermediate-metro.html" && activeLink.textContent.trim() === "Bengaluru Attibele to Vijayanagr BMTC") ||
 							(htmlFileName === "2-wheeler-4-wheeler-rank.html" && activeLink.textContent.trim() === "Vehicle rankings amount") ||
@@ -1359,7 +1360,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 									<A href="#" onclick="javascript:loadHomeContent( event, 'Last-year-investment-provit-at-earth.html' );" class="nav-link">Annual Investment Review</A>
 								</LI>
 								<LI>
-									<A href="#" onclick="javascript:loadHomeContent( event, 'My-Daily-Interest-Allocation-Plan.html' );" class="nav-link">My Daily Interest Allocation Plan</A>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'My-Daily-Interest-Allocation-Plan.html' );" class="nav-link">Increase India's Income Daily</A>
 								</LI>
 							</UL>
 						</LI>
@@ -1599,6 +1600,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 					<UL class="submenu">
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'IGCSE-EXAM-DATES.html' );" class="nav-link">Cambridge IGCSE Examination Timetable</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'make-son-daughter-study-for-exam.html' );" class="nav-link">Parent/Teacher Exam Guide</A>
 						</LI>
 					</UL>
 				</LI>
