@@ -3,118 +3,192 @@
 	<HEAD>
 		<META CHARSET="UTF-8">
 		<META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH, INITIAL-SCALE=1.0">
-		<TITLE>BSNL FIBERNET</TITLE>
+		<TITLE>BSNL ADVERTISEMENT</TITLE>
 		<STYLE TYPE='TEXT/CSS'>
+			@PAGE
+			{
+				SIZE: A4;
+				MARGIN: 20MM;
+			}
 			BODY
 			{
-				FONT-FAMILY:ARIAL,HELVETICA,SANS-SERIF;
-				MARGIN:0;
-				BACKGROUND-SIZE:COVER;
-				BACKGROUND-POSITION:CENTER;
-				BACKGROUND-REPEAT:NO-REPEAT;
+				FONT-FAMILY: ARIAL, HELVETICA, SANS-SERIF;
+				MARGIN: 0;
+				PADDING: 0;
+				BACKGROUND-COLOR: #F0F8FF;
+				COLOR: #003366;
 			}
-			.TITLE
+			.CONTAINER
 			{
-				FONT-SIZE:24PX;
-				FONT-WEIGHT:BOLD;
-				COLOR:#003366;
+				WIDTH: 100%;
+				MAX-WIDTH: 800PX;
+				MARGIN: AUTO;
+				PADDING: 20PX;
+				BOX-SIZING: BORDER-BOX;
 			}
-			.SUBTITLE
+			.HEADER
 			{
-				FONT-SIZE:16PX;
-				FONT-WEIGHT:BOLD;
-				COLOR:#003366;
+				TEXT-ALIGN: CENTER;
+				MARGIN-BOTTOM: 20PX;
 			}
-			.NORMAL
+			.HEADER H1
 			{
-				FONT-SIZE:14PX;
-				COLOR:#000000;
+				FONT-SIZE: 28PX;
+				FONT-WEIGHT: BOLD;
+				MARGIN: 0;
+			}
+			.HEADER H2
+			{
+				FONT-SIZE: 18PX;
+				FONT-WEIGHT: BOLD;
+				MARGIN: 5PX 0 0 0;
+			}
+			.PLANS
+			{
+				DISPLAY: FLEX;
+				FLEX-DIRECTION: COLUMN;
+				GAP: 15PX;
+				MARGIN: 20PX 0;
+			}
+			.PLAN
+			{
+				BORDER: 2PX SOLID #003366;
+				BORDER-RADIUS: 8PX;
+				PADDING: 15PX;
+				BACKGROUND-COLOR: #E6F2FF;
+			}
+			.PLAN H6
+			{
+				MARGIN: 0 0 10PX 0;
+				FONT-SIZE: 20PX;
+			}
+			.PLAN P
+			{
+				MARGIN: 5PX 0;
+				FONT-SIZE: 16PX;
 			}
 			.NOTICE
 			{
-				FONT-SIZE:28PX;
-				FONT-WEIGHT:BOLD;
-				COLOR:#cc0000;
+				TEXT-ALIGN: CENTER;
+				MARGIN-TOP: 30PX;
+				FONT-SIZE: 22PX;
+				FONT-WEIGHT: BOLD;
+				COLOR: #CC0000;
 			}
-			TABLE
+			.IMAGE-SECTION
 			{
-				BORDER-COLLAPSE:COLLAPSE;
-				BACKGROUND-COLOR:#e6f2ff; /* Same as body */
-				POSITION:RELATIVE;
+				TEXT-ALIGN: CENTER;
+				MARGIN: 20PX 0;
 			}
-			.WATERMARK
+			.IMAGE-SECTION IMG
 			{
-				POSITION:ABSOLUTE;
-				TOP:50%;
-				LEFT:50%;
-				TRANSFORM:TRANSLATE(-50%, -50%);
-				OPACITY:0.05;
-				Z-INDEX:0;
-				WIDTH:80%;
+				MAX-WIDTH: 200PX;
+				HEIGHT: AUTO;
+				BORDER-RADIUS: 10PX;
 			}
-			.TABLE-CONTAINER
+			.FOOTER
 			{
-				POSITION:RELATIVE;
-				Z-INDEX:1;
+				TEXT-ALIGN: CENTER;
+				MARGIN-TOP: 40PX;
+				FONT-SIZE: 16PX;
+				FONT-WEIGHT: BOLD;
+			}
+			@MEDIA PRINT
+			{
+				BODY
+				{
+					BACKGROUND-COLOR: WHITE;
+				}
+				.CONTAINER
+				{
+					BOX-SHADOW: NONE;
+				}
+			}
+			@MEDIA PRINT {
+				@PAGE {
+					SIZE: A4 LANDSCAPE; /* FORCES PDF TO BE LANDSCAPE */
+					MARGIN: 20MM;
+				}
+				BODY {
+					WIDTH: 100%;
+					HEIGHT: 100%;
+				}
 			}
 		</STYLE>
 	</HEAD>
-	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0' style='background-color:lightblue;'>
-		<DIV CLASS='TABLE-CONTAINER'>
-			<TABLE BORDER='1' STYLE='WIDTH:100%;background-color:lightblue;'>
-				<TR>
-					<TD VALIGN='TOP' ALIGN='CENTER' COLSPAN='2' CLASS='TITLE'>
-						ಅತ್ಯುತ್ತಮ ಫೈಬರ್ನೆಟ್ ಕರ್ನಾಟಕ<BR>
-						BEST FIBERNET KARNATAKA
-					</TD>
-				</TR>
-				<TR>
-					<TD VALIGN='TOP' ALIGN='CENTER' COLSPAN='2' CLASS='SUBTITLE'>
-						ಅತ್ಯುತ್ತಮ ಭಾರತೀಯ ಸರ್ಕಾರಿ ಭಾ.ಸ.ನಿ.ನಿ ಫೈಬರ್ನೆಟ್<BR>
-						BEST INDIAN GOVERNMENT BSNL FIBERNET
-						<TABLE BORDER='1' STYLE='WIDTH:100%;background-color:lightblue;'>
-							<TR>
-								<TD VALIGN='TOP' ALIGN='RIGHT'>
-									ಕನಿಷ್ಠ ಫೈಬರ್ನೆಟ್ ಮೊತ್ತ<BR>
-									LEAST FIBERNET AMOUNT
-								</TD>
-								<TD VALIGN='TOP' ALIGN='RIGHT'>
-									ಯಾವುದೇ ನಗರ ಜಿಲ್ಲೆಯಲ್ಲಿ (ಅಟ್ಟಿಬೆಲೆ/ಜಿಗಳ ರಸ್ತೆ):<BR>
-									AT ANY URBAN DISTRICT(ATTIBELE/JIGALA ROAD):
-								</TD>
-								<TD VALIGN='TOP' ALIGN='CENTER' CLASS='NORMAL'>
-									571.00 ರೂ/₹ INR
-								</TD>
-							</TR>
-							<TR>
-								<TD VALIGN='TOP' ALIGN='RIGHT'>
-									ಕನಿಷ್ಠ ಫೈಬರ್ನೆಟ್ ಮೊತ್ತ<BR>
-									LEAST FIBERNET AMOUNT
-								</TD>
-								<TD VALIGN='TOP' ALIGN='RIGHT'>
-									ಯಾವುದೇ ಪಟ್ಟಣದಲ್ಲಿ (ಕರ್ನಾಟಕ ರಾಜಧಾನಿಯ ಹೊರಗೆ):<BR>
-									AT ANY TOWN(OUTSIDE KARNATAKA CAPITAL):
-								</TD>
-								<TD VALIGN='TOP' ALIGN='CENTER' CLASS='NORMAL'>
-									471.00 ರೂ/₹ INR
-								</TD>
-							</TR>
-						</TABLE>
-					</TD>
-				</TR>
-				<TR>
-					<TD VALIGN='TOP' ALIGN='CENTER' CLASS='NORMAL'>
-						<IMG SRC='images/bsnl-net-speed-Mon-23-Feb-2026-08-10-am.jpg' STYLE='MAX-WIDTH:100%;HEIGHT:AUTO;'>
-						<IMG src='images/bsnl-connecting-india-faster.jpg' style='width:45%;'>
-					</TD>
-				</TR>
-				<TR>
-					<TD VALIGN='TOP' ALIGN='CENTER' COLSPAN='2' CLASS='NOTICE'>
-						ಗೇಟ್ ಮುಂದೆ ಪಾರ್ಕಿಂಗ್ ಇಲ್ಲ<BR>
-						NO PARKING IN FRONT OF THE GATE
-					</TD>
-				</TR>
-			</TABLE>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV CLASS="PLANS">
+				<TABLE BORDER='1' STYLE='WIDTH:100%;'>
+					<TR>
+						<TD VALIGN='TOP' ALIGN='middle' colspan='3'>
+							<IMG src='images/bsnl-child1.jpg' style='width:65%;'>
+						</TD>
+					</TR>
+					<TR>
+						<TD VALIGN='TOP' ALIGN='MIDDLE'>
+							<H6>೦೧) ಭಾ.ಸ.ನಿ.ಲಿ: ಭಾರತ ಸರ್ಕಾರದಿಂದ</H6>
+						</TD>
+						<TD VALIGN='TOP' ALIGN='MIDDLE'>
+							<H6>01) BSNL FROM INDIAN GOVERNMENT</H6>
+						</TD>
+					</TR>
+					<TR>
+						<TD VALIGN='TOP' ALIGN='MIDDLE'>
+							<H6>೦೨) ಭಾ.ಸ.ನಿ.ಲಿ: ಭಾರತವನ್ನು ವೇಗವಾಗಿ ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ</H6>
+						</TD>
+						<TD VALIGN='TOP' ALIGN='MIDDLE'>
+							<H6>02) BSNL CONNECTING INDIA FASTER</H6>
+						</TD>
+					</TR>
+					<TR>
+						<TD VALIGN='TOP' ALIGN='MIDDLE'>
+							<H6>೦೩) ಪರೋಕ್ಷವಾಗಿ ಭಾರತೀಯ ಆದಾಯ/ಶ್ರೇಣಿಯನ್ನು ಹೆಚ್ಚಿಸಿ</H6>
+						</TD>
+						<TD VALIGN='TOP' ALIGN='MIDDLE'>
+							<H6>03) INDIRECTLY INCREASE INDIAN INCOME/RANK</H2>
+						</TD>
+					</TR>
+					<TR>
+						<TD VALIGN='TOP' ALIGN='MIDDLE'>
+							<DIV CLASS="PLAN">
+								<H6>BSNL MOBILE INTERNET</H6>
+								<P><B><U>2799.00</B></U> ರೂ/₹ INR FOR 12 MONTHS</P>
+								<P>3.0 GB DATA PER DAY</P>
+								<B><U>PREPAID</B></U>
+							</DIV>
+						</TD>
+						<TD VALIGN='TOP' ALIGN='MIDDLE'>
+							<DIV CLASS="PLAN">
+								<H6>BSNL FIBERNET ATTIBELE</H6>
+								<P><B><U>571.00</B></U> ರೂ/₹ INR PER MONTH <B><U>POSTPAID</B></U></P>
+							</DIV>
+						</TD>
+					</TR>
+					<TR>
+						<TD VALIGN='TOP' ALIGN='MIDDLE'>
+							<DIV CLASS="PLAN">
+								<H6>BSNL FIBERNET TOWN</H6>
+								<P><B><U>471.00</B></U> ರೂ/₹ INR PER MONTH <B><U>POSTPAID</B></U></P>
+							</DIV>
+						</TD>
+						<TD VALIGN='TOP' ALIGN='MIDDLE'>
+							<DIV CLASS="IMAGE-SECTION">
+								BSNL NET SPEED<BR>
+								<IMG SRC="IMAGES/BSNL-NET-SPEED-MON-23-FEB-2026-08-10-AM.JPG" style='width:25%;' ALT="CUSTOMER SUPPORT">
+							</DIV>
+						</TD>
+					</TR>
+					<!--
+					<TR>
+						<TD VALIGN='TOP' ALIGN='middle' colspan='2'>
+							<FONT color='red'>
+								NO PARKING IN FRONT OF THE GATE
+							</FONT>
+						</TD>
+					</TR>
+					-->
+				</TABLE>
+			</DIV>
 		</DIV>
 	</BODY>
 </HTML>

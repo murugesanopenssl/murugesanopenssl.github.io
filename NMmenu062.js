@@ -1552,6 +1552,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 				</A>
 				<UL class="submenu">
 				<LI>
+						<A href="#" onclick="javascript:loadHomeContent( event, 'bsnl-net-speed-no-parking.html' );" class="nav-link">BSNL Reliable Fiber & Mobile Services</A>
+				</LI>
+				<LI>
 						<A href="#" onclick='javascript:window.open( "TamilLEtters.html" );'><FONT color='#00ff00'>Tamil letters</FONT></A>
 				</LI>
 				<LI>
