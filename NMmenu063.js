@@ -1445,6 +1445,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 					<A href="#" class="nav-link">Other banks<SPAN class="nav-arrow">&gt;</SPAN></A>
 					<UL class="submenu">
 						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'Handle-Pre-closure-bank.html' );" class="nav-link">Bank Account Closure & SMS Issue</A>
+						</LI>
+						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Indian-bank-to-other-bank.html' );" class="nav-link">Bank Transfer Issues</A>
 						</LI>
 					</UL>
