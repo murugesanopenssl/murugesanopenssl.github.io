@@ -145,7 +145,7 @@
 								COUNTRY: INDIA
 							</TD>
 							<TD valign='top' align='right'>
-								SAVED AMOUNT: 4000.00 ರೂ/ரூ/₹ INR<BR>
+								SAVED: 4000.00 ರೂ/ரூ/₹ INR<BR>
 								Future saving
 							</TD>
 						</TR>
@@ -161,41 +161,13 @@
 							</TD>
 							<TD valign='top' align='right'>
 								SBI ETDR<BR>
-								AND FEW AMOUNT AT MUM'S BANK<BR>
-								I USED TO RECEIVE NEXT DAY MIS INTEREST ONE DAY BEFORE THE ACTUAL DATE<BR>
-								EXAMPLE: RECEIVED ON Tue 24-Feb-2026 11:50 PM<BR>
-								SINCE (Feb) 2024 WAS A LEAP YEAR
+								AND FEW AMOUNT AT MUM'S BANK
 							</TD>
 							<TD valign='top' align='right'>
-								<div id="amount"></div>
-								<div id="updated"></div>
-								<script type="text/javascript">
-								(function() {
-								  // Amount
-								  var PARENT_AMT = 4010.00;
-								  document.getElementById("amount").innerHTML =
-									PARENT_AMT.toFixed(2) + " ரூ/ரூ/₹ INR";
-								  // Full date string
-								  var last_updated = "24-Feb-2026 11:50 PM IST";
-								  // Split date & time
-								  var parts = last_updated.split(" ");
-								  var dateOnly = parts[0]; // 24-Feb-2026
-								  var dateParts = dateOnly.split("-");
-								  var day = parseInt(dateParts[0], 10);
-								  var monthStr = dateParts[1];
-								  var year = parseInt(dateParts[2], 10);
-								  var months = {
-									Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5,
-									Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11
-								  };
-								  var dateObj = new Date(year, months[monthStr], day);
-								  var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-								  var dayName = days[dateObj.getDay()];
-								  // Print full original date-time string
-								  document.getElementById("updated").innerHTML =
-									"on " + dayName + " " + last_updated;
-								})();
-								</script>
+								<FONT color='red'>
+								<A title='RECEIVED TOMORROW MIS INTEREST ONE DAY BEFORE THE ACTUAL RECEIVING DATE AND TIME IST. REASON: AUTOMATED COMPUTER ERROR SINCE 2024 WAS A LEAP YEAR.'>4010.00 ರೂ/ரூ/₹ INR on<BR>
+								Tue 24-Feb-2026 11:50 PM IST</A>
+								</FONT>
 							</TD>
 						</TR>
 						<TR>
@@ -212,22 +184,7 @@
 								Saving at post office
 							</TD>
 							<TD valign='top' align='right'>
-								<div id="printerSaved"></div>
-								<div id="yetToSave"></div>
-								<script type="text/javascript">
-								(function() {
-
-								  var SAVED_EPSON_PRINTER = 1419.00;
-								  var YET_TO_SAVE = 12000.00 - SAVED_EPSON_PRINTER;
-
-								  document.getElementById("printerSaved").innerHTML =
-									"SAVED AMOUNT: "+SAVED_EPSON_PRINTER.toFixed(2);
-
-								  document.getElementById("yetToSave").innerHTML =
-									"YET TO SAVE: "+YET_TO_SAVE.toFixed(2);
-
-								})();
-								</script>
+								SAVED: 1419.00<BR>
 								YET TO SAVE: 10625.00 ರೂ/ரூ/₹ INR
 							</TD>
 						</TR>
@@ -236,7 +193,7 @@
 								05
 							</TD>
 							<TD valign='top' align='right'>
-								Post Office Savings total target 900000.00 ರೂ/ரூ/₹ INR
+								Post Office MIS FUTURE SAVINGS TOTAL TARGET 900000.00 ರೂ/ரூ/₹ INR
 							</TD>
 							<TD valign='top' align='right'>
 								Ongoing
@@ -245,7 +202,7 @@
 								AT INDIAN POST OFFICE
 							</TD>
 							<TD valign='top' align='right'>
-								SAVED AMOUNT: 2136.50<BR>
+								SAVED: 2136.50 ರೂ/ரூ/₹ INR<BR>
 								Deposit 5000.00 ರೂ/ரூ/₹ INR when Possible
 							</TD>
 						</TR>
@@ -263,8 +220,11 @@
 								SBI FIXED DEPOSIT/ETDR
 							</TD>
 							<TD valign='top' align='right'>
-								SAVED: 40318.00 ರೂ/ரூ/₹ INR<BR>
-								YET TO SAVE: 109682.00 ರೂ/ரூ/₹ INR
+								<SCRIPT type='text/javascript'>
+									SAVED_PUC_AMT=40362.00;
+									document.write( "SAVED: "+SAVED_PUC_AMT.toFixed( 2 )+" ರೂ/ரூ/₹ INR<BR>");
+									document.write( "YET TO SAVE: "+ ( 150000.00 - SAVED_PUC_AMT ).toFixed( 2 )+" ರೂ/ரூ/₹ INR");
+								</SCRIPT>
 							</TD>
 						</TR>
 						<TR>
@@ -275,13 +235,14 @@
 								RECURRING DEPOSIT
 							</TD>
 							<TD valign='top' align='right'>
-								1000.00 ರೂ/ரூ/₹ INR each month for 5 years
+								Sat 14-Mar-2026 IST
 							</TD>
 							<TD valign='top' align='right'>
+								1000.00 ರೂ/ரூ/₹ INR each month for 5 years
 								RD AT INDIAN POST OFFICE
 							</TD>
 							<TD valign='top' align='right'>
-								SAVED AMOUNT: 13000.00 ರೂ/ரூ/₹ INR<BR>
+								TOTAL PAID: 13000.00 ರೂ/ரூ/₹ INR<BR>
 								till Thu 28-Feb-2030 IST
 							</TD>
 						</TR>
@@ -293,13 +254,14 @@
 								PUBLIC PROVIDEND FUND
 							</TD>
 							<TD valign='top' align='right'>
+								Sat 14-Mar-2026 IST
+							</TD>
+							<TD valign='top' align='right'>
+								PPF AT INDIAN POST OFFICE<BR>
 								500.00 ರೂ/ரூ/₹ INR each month for 15 years
 							</TD>
 							<TD valign='top' align='right'>
-								PPF AT INDIAN POST OFFICE
-							</TD>
-							<TD valign='top' align='right'>
-								SAVED AMOUNT: 12297.00 ರೂ/ரூ/₹ INR<BR>
+								TOTAL PAID: 12297.00 ರೂ/ரூ/₹ INR<BR>
 								till Fri 28-Oct-2039 IST
 							</TD>
 						</TR>
@@ -326,9 +288,7 @@
 							<TD valign='top' align='right'>
 								Tenth standard school fees
 							</TD>
-							<TD valign='top' align='right' id='tenthFees'>
-								Sat 28-Feb-2026 IST
-							</TD>
+							<TD valign='top' align='right' id='tenthFees'></TD>
 						</TR>
 						<TR>
 							<TD valign='top' align='right'>
