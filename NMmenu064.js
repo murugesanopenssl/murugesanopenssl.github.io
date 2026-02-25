@@ -967,6 +967,8 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "ippb-awareness-indian-citizens.html" && activeLink.textContent.trim() === "IPPB Premium Savings Tips") ||
 							(htmlFileName === "post-office-nsc.html" && activeLink.textContent.trim() === "National Savings Certificate (NSC)") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Town city gold rate compare") ||
+							(htmlFileName === "Handle-Pre-closure-bank.html" && activeLink.textContent.trim() === "Bank Account Closure & SMS Issue") ||
+							(htmlFileName === "Indian-bank-to-other-bank.html" && activeLink.textContent.trim() === "Bank Transfer Issues") ||
 							(htmlFileName === "SBI-CREDIT-INTEREST.html" && activeLink.textContent.trim() === "AMB Bank Quarterly Credit Interest") ||
 							(htmlFileName === "Personal-Spending-Strategy.html" && activeLink.textContent.trim() === "Smart Spending Plan") ||
 							(htmlFileName === "ppf-info.html" && activeLink.textContent.trim() === "PPF Interest Details") ||
@@ -981,6 +983,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "TamilLetters.html" && activeLink.textContent.trim() === "Tamil letters") ||
 							(htmlFileName === "Steps-to-save-money-from-mis.html" && activeLink.textContent.trim() === "Post Office Savings Guide") ||
 							(htmlFileName === "Responsible-Nations-Index-Jan-2026.html" && activeLink.textContent.trim() === "Responsible Nations Index Jan-2026") ||
+							(htmlFileName === "bsnl-net-speed-no-parking-kannada.html" && activeLink.textContent.trim() === "BSNL Fibernet,Mobile kannada") ||
+							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Gold Rate Comparison") ||
+							(htmlFileName === "bsnl-net-speed-no-parking-tamil.html" && activeLink.textContent.trim() === "BSNL Fibernet,Mobile Tamil") ||
 							(htmlFileName === "Visitor_count.html" && activeLink.textContent.trim() === "Visitors") ||
 							(htmlFileName === "my-location.html" && activeLink.textContent.trim() === "Display my location") ||
 							(htmlFileName === "steps-to-recharge-any-sim.html" && activeLink.textContent.trim() === "Internet Recharge Exception") ||
@@ -1554,8 +1559,18 @@ function loadMoneyHelpContent( event, htmlFileName )
 				<SPAN class="nav-arrow">&gt;</SPAN>
 				</A>
 				<UL class="submenu">
-				<LI>
-						<A href="#" onclick="javascript:loadHomeContent( event, 'bsnl-net-speed-no-parking.html' );" class="nav-link">BSNL Reliable Fiber & Mobile Services</A>
+				<LI class="nav-item">
+					<FONT color='white'>
+					BSNL Reliable Fiber & Mobile Services
+					</FONT>
+					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'bsnl-net-speed-no-parking-kannada.html' );" class="nav-link">BSNL Fibernet,Mobile kannada</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'bsnl-net-speed-no-parking-tamil.html' );" class="nav-link">BSNL Fibernet,Mobile Tamil</A>
+						</LI>
+					</UL>
 				</LI>
 				<LI>
 						<A href="#" onclick='javascript:window.open( "TamilLEtters.html" );'><FONT color='#00ff00'>Tamil letters</FONT></A>
