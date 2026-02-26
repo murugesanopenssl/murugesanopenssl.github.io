@@ -1133,6 +1133,47 @@ function loadMoneyHelpContent( event, htmlFileName )
 			var currentLanguage = 'ta';
 			var englishData = {};
 			var tamilData = {};
+			let TamilLocationName = "";
+			async function toTamil(text)
+			{
+				if( !text )
+				{
+					return "அறியப்படவில்லை";
+				}
+				if( tamilOverrides[text] )
+				{
+					return tamilOverrides[text];
+				}
+				try
+				{
+					const response = await fetch(
+						`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|ta`
+					);
+					const data = await response.json();
+					TamilLocationName = (data.responseData && data.responseData.translatedText) || text;
+					if( "தரமுரிமாறம்" == TamilLocationName )
+					{
+							TamilLocationName="தருமபுரி";
+					}
+					return TamilLocationName;
+				}
+				catch (e)
+				{
+					return text;
+				}
+			}
+			function continentToTamil(continent)
+			{
+				const map = {
+					"Asia": "ஆசியா",
+					"North America": "வட அமெரிக்கா",
+					"Europe": "ஐரோப்பா",
+					"Australia": "ஆஸ்திரேலியா",
+					"Africa": "ஆப்பிரிக்கா",
+					"Unknown": "அறியப்படவில்லை"
+				};
+				return map[continent] || continent;
+			}
 			function toggleLanguage()
 			{
 				if( 'ta' === currentLanguage )
@@ -1144,13 +1185,13 @@ function loadMoneyHelpContent( event, htmlFileName )
 					document.getElementById('labelCountry').innerText = "Country";
 					document.getElementById('labelContinent').innerText = "Continent";
 					document.getElementById('toggleLink').innerText = "Display in Tamil";
-					if( 0 < englishData.district.index( "தர்மபுரி") )
+					if( -1 < englishData.district && englishData.district.indexOf("தர்மபுரி") )
 					{
 						document.getElementById("district").innerText = "Dharmapuri";
 					}
 					else
 					{
-						document.getElementById("district").innerText = englishData.district;
+						document.getElementById("district").innerText = englishData.district || '';
 					}
 					document.getElementById("state").innerText = englishData.state;
 					document.getElementById("country").innerText = englishData.country;
@@ -1271,46 +1312,6 @@ function loadMoneyHelpContent( event, htmlFileName )
 				"Karnataka": "கர்நாடகா",
 				"England": "இங்கிலாந்து"
 			};
-			async function toTamil(text)
-			{
-				if( !text )
-				{
-					return "அறியப்படவில்லை";
-				}
-				if( tamilOverrides[text] )
-				{
-					return tamilOverrides[text];
-				}
-				try
-				{
-					const response = await fetch(
-						`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|ta`
-					);
-					const data = await response.json();
-					TamilLocationName = (data.responseData && data.responseData.translatedText) || text;
-					if( "தரமுரிமாறம்" == TamilLocationName )
-					{
-							TamilLocationName="தருமபுரி";
-					}
-					return TamilLocationName;
-				}
-				catch (e)
-				{
-					return text;
-				}
-			}
-			function continentToTamil(continent)
-			{
-				const map = {
-					"Asia": "ஆசியா",
-					"North America": "வட அமெரிக்கா",
-					"Europe": "ஐரோப்பா",
-					"Australia": "ஆஸ்திரேலியா",
-					"Africa": "ஆப்பிரிக்கா",
-					"Unknown": "அறியப்படவில்லை"
-				};
-				return map[continent] || continent;
-			}
 			function DisplayMainMenu()
 			{
 				document.write( `<ASIDE class="sidebar">

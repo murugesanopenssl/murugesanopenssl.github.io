@@ -180,7 +180,7 @@
 								<SCRIPT type="text/javascript">
 								( function()
 						{
-							var PARENT_AMT = 4046.00;
+							var PARENT_AMT = 4134.00;
 							document.getElementById( "amount" ).innerHTML =
 							"<FONT color='red'><B><U>SAVED AMOUNT AT ETDR/POST: "+PARENT_AMT.toFixed( 2 ) + " ரூ/ரூ/₹ INR</B></U></FONT>";
 							var last_updated = "25-Feb-2026 09:58 PM IST";
@@ -424,7 +424,14 @@
 								Open New MIS at Post Office
 							</TD>
 							<TD valign='top' align='right' id='openMIS'>
-								IF SAVED ETDR AMOUNT REACH 5000.00 ರೂ/ரூ/₹ INR
+								<DIV id="Missaved"></DIV>
+								<DIV id="YetToSaveMis"></DIV>
+				<SCRIPT type='text/javascript'>
+					var SAVED_EPSON_PRINTER = 2276.00;
+					var YET_TO_SAVE = 5000.00 - SAVED_EPSON_PRINTER;
+					document.getElementById( "Missaved" ).innerHTML = "<FONT color='red'><B><U>SAVED AMOUNT AT POST:<BR>"+SAVED_EPSON_PRINTER.toFixed( 2 )+" ರೂ/ரூ/₹ INR</B></U></FONT>";
+					document.getElementById( "YetToSaveMis" ).innerHTML = "YET TO SAVE: "+YET_TO_SAVE.toFixed( 2 )+" ರೂ/ரூ/₹ INR";
+				</SCRIPT>
 							</TD>
 						</TR>
 					</TABLE>
