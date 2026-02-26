@@ -945,7 +945,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "Indian-bank-to-other-bank.html" && activeLink.textContent.trim() === "Indian bank transfer err") ||
 							(htmlFileName === "world-currencies.html" && activeLink.textContent.trim() === "World Currency Rates") ||
 							(htmlFileName === "Last-year-investment-provit-at-earth.html" && activeLink.textContent.trim() === "Annual Investment Review") ||
-							(htmlFileName === "My-Daily-Interest-Allocation-Plan.html" && activeLink.textContent.trim() === "Increase India's Income Daily") ||
+							(htmlFileName === "My-Daily-Interest-Allocation-Plan.html" && activeLink.textContent.trim() === "Daily Income Growth") ||
 							(htmlFileName === "gold-loan.html" && activeLink.textContent.trim() === "When to pay loan?") ||
 							(htmlFileName === "attibele-to-vijayanagar-bus-stops-intermediate-metro.html" && activeLink.textContent.trim() === "Bengaluru Attibele to Vijayanagr BMTC") ||
 							(htmlFileName === "2-wheeler-4-wheeler-rank.html" && activeLink.textContent.trim() === "Vehicle rankings amount") ||
@@ -1365,7 +1365,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 									<A href="#" onclick="javascript:loadHomeContent( event, 'Last-year-investment-provit-at-earth.html' );" class="nav-link">Annual Investment Review</A>
 								</LI>
 								<LI>
-									<A href="#" onclick="javascript:loadHomeContent( event, 'My-Daily-Interest-Allocation-Plan.html' );" class="nav-link">Increase India's Income Daily</A>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'My-Daily-Interest-Allocation-Plan.html' );" class="nav-link">Daily Income Growth</A>
 								</LI>
 							</UL>
 						</LI>
