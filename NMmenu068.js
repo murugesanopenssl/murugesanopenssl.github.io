@@ -393,10 +393,6 @@ function MainPageHomeLoadContent( event, htmlFileName )
 	{
 		document.title = "ATM Card exception usage";
 	}
-	else if( "displayMoneyHelpMenu.html" == htmlFileName )
-	{
-		document.title = "Money Help Menu";
-	}
 	else if( "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" == htmlFileName )
 	{
 		document.title = "Knowledge Transfer Case Study – SBI Fixed Deposit Optimization";
@@ -731,10 +727,6 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				{
 					document.title = "ATM Card exception usage";
 				}
-				else if( "displayMoneyHelpMenu.html" == htmlFileName )
-				{
-					document.title = "Money Help Menu";
-				}
 				else if( "ippb-awareness-indian-citizens.html" == htmlFileName )
 				{
 					document.title = "IPPB Premium Savings Tips";
@@ -989,7 +981,6 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "Visitor_count.html" && activeLink.textContent.trim() === "Visitor Information") ||
 							(htmlFileName === "my-location.html" && activeLink.textContent.trim() === "Display my location") ||
 							(htmlFileName === "steps-to-recharge-any-sim.html" && activeLink.textContent.trim() === "Internet Recharge Exceptions") ||
-							(htmlFileName === "displayMoneyHelpMenu.html" && activeLink.textContent.trim() === "Financial Guidance") ||
 							(htmlFileName === "Increase-Daily-Salary.html" && activeLink.textContent.trim() === "Income Growth Strategies") ||
 							(htmlFileName === "Bharath_gas_booking_steps.html" && activeLink.textContent.trim() === "Bharat Gas Booking Steps") ||
 							(htmlFileName === "Indian-Oil-Cylinder-Booking-Online-Steps.html" && activeLink.textContent.trim() === "Indian Oil Booking Steps") ||
@@ -1340,9 +1331,6 @@ function loadMoneyHelpContent( event, htmlFileName )
 							<UL class="submenu">
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'Increase-Daily-Salary.html' );" class="nav-link">Income Growth Strategies</A>
-								</LI>
-								<LI>
-									<A href="#" onclick="javascript:loadHomeContent( event, 'displayMoneyHelpMenu.html' );" class="nav-link">Financial Guidance</A>
 								</LI>
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'Personal-Spending-Strategy.html' );" class="nav-link">Smart Spending Plan</A>
