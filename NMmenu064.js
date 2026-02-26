@@ -963,7 +963,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "privacy.html" && activeLink.textContent.trim() === "Privacy policy") ||
 							(htmlFileName === "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" && activeLink.textContent.trim() === "My KT to chatgpt") ||
 							(htmlFileName === "pm-cm-india-relations.html" && activeLink.textContent.trim() === "India PM–CM Relations") ||
-							(htmlFileName === "ppf-post-office.html" && activeLink.textContent.trim() === "PPF Scheme Details") ||
+							(htmlFileName === "ppf-post-office.html" && activeLink.textContent.trim() === "why to open PPF?") ||
 							(htmlFileName === "ippb-awareness-indian-citizens.html" && activeLink.textContent.trim() === "IPPB Premium Savings Tips") ||
 							(htmlFileName === "post-office-nsc.html" && activeLink.textContent.trim() === "National Savings Certificate (NSC)") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Town city gold rate compare") ||
@@ -971,7 +971,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "Indian-bank-to-other-bank.html" && activeLink.textContent.trim() === "Bank Transfer Issues") ||
 							(htmlFileName === "SBI-CREDIT-INTEREST.html" && activeLink.textContent.trim() === "AMB Bank Quarterly Credit Interest") ||
 							(htmlFileName === "Personal-Spending-Strategy.html" && activeLink.textContent.trim() === "Smart Spending Plan") ||
-							(htmlFileName === "ppf-info.html" && activeLink.textContent.trim() === "PPF Interest Details") ||
+							(htmlFileName === "ppf-info.html" && activeLink.textContent.trim() === "Steps to save at PPF?") ||
 							(htmlFileName === "why-to-open-fixed-deposit.html" && activeLink.textContent.trim() === "Why Choose Fixed Deposit?") ||
 							(htmlFileName === "Set-Black-Image-lock-screen-home-screen.html" && activeLink.textContent.trim() === "Samsung Wallpaper Home Lock") ||
 							(htmlFileName === "steps-to-port-jio-to-bsnl.html" && activeLink.textContent.trim() === "Port from Jio to BSNL") ||
@@ -1394,10 +1394,20 @@ function loadMoneyHelpContent( event, htmlFileName )
 									<A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-save-money-from-mis.html' );" class="nav-link">Post Office Savings Guide</A>
 								</LI>
 								<LI>
-									<A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>Monthly Income Scheme (MIS)</FONT></A>
+									<LI class="nav-item">
+										<A href="#" class="nav-link">Public Provident Fund (PPF)<SPAN class="nav-arrow">&gt;</SPAN></A>
+										<UL class="submenu">
+											<LI>
+												<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-post-office.html' );" class="nav-link">why to open PPF?</A>
+											</LI>
+											<LI>
+												<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-info.html' );" class="nav-link">Steps to save at PPF?</A>
+											</LI>
+										</UL>
+									</LI>
 								</LI>
 								<LI>
-									<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-post-office.html' );" class="nav-link">PPF Scheme Details</A>
+									<A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>Monthly Income Scheme (MIS)</FONT></A>
 								</LI>
 								<LI>
 									<A href="#" onclick='javascript:window.open( "post-office-nsc.html" );' class="nav-link"><FONT color='#00ff00'>National Savings Certificate (NSC)</FONT></A>
@@ -1405,31 +1415,6 @@ function loadMoneyHelpContent( event, htmlFileName )
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'ippb-awareness-indian-citizens.html' );" class="nav-link">IPPB Premium Savings Tips</A>
 								</LI>
-					</UL>
-				</LI>
-				<LI class="nav-item">
-					<A href="#" class="nav-link">Public Provident Fund (PPF)<SPAN class="nav-arrow">&gt;</SPAN></A>
-					<UL class="submenu">
-						<!--
-						<LI>
-							<FONT color='white'>
-								PPF Overview
-							</FONT>
-						</LI>
-						<LI>
-							<FONT color='white'>
-								Steps to Save in PPF
-							</FONT>
-						</LI>
-						<LI>
-							<FONT color='white'>
-								Valid Dates to Deposit PPF
-							</FONT>
-						</LI>
-						-->
-						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-info.html' );" class="nav-link">PPF Interest Details</A>
-						</LI>
 					</UL>
 				</LI>
 				<LI class="nav-item">
@@ -1461,7 +1446,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 					<A href="#" class="nav-link">Customer Interest Info<SPAN class="nav-arrow">&gt;</SPAN></A>
 					<UL class="submenu">
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'SBI-CREDIT-INTEREST.html' );" class="nav-link">AMB Bank Quarterly Credit Interest</A>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'SBI-CREDIT-INTEREST.html' );" class="nav-link">AMB Quarterly Interest Rates</A>
 						</LI>
 					</UL>
 				</LI>
