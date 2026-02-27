@@ -1360,9 +1360,10 @@ function loadMoneyHelpContent( event, htmlFileName )
 						</LI>
 				<LI class="nav-item">
 					<A href="#" class="nav-link">
-					<SPAN class="nav-icon">&#127974;</SPAN>
-					<SPAN class="nav-text"><FONT color='black'>Spending</FONT></SPAN>
-					<SPAN class="nav-arrow">&gt;</SPAN>
+						<SPAN class="nav-icon">&#127974;</SPAN>
+						<SPAN class="nav-text"><FONT color='black'>Spending</FONT></SPAN>
+						<SPAN class="nav-arrow">&gt;</SPAN>
+					</A>
 					<UL class="submenu">
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-recharge-any-sim.html' );" class="nav-link">Internet Recharge Exceptions</A>
@@ -1431,6 +1432,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'dynamic-gold-rate-comparison-tool.html' );" class="nav-link">Gold Rate Comparison</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'futura-brush-buying-guide.html' );" class="nav-link">Futura Brush: Save AMB Interest (Cash Only)</A>
 						</LI>
 					</UL>
 				</LI>
