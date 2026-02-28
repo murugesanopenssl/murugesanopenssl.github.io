@@ -961,22 +961,33 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Town city gold rate compare") ||
 							(htmlFileName === "Handle-Pre-closure-bank.html" && activeLink.textContent.trim() === "Bank Account Closure & SMS Issue") ||
 							(htmlFileName === "Indian-bank-to-other-bank.html" && activeLink.textContent.trim() === "Bank Transfer Issues") ||
-							(htmlFileName === "SBI-CREDIT-INTEREST.html" && activeLink.textContent.trim() === "AMB Bank Quarterly Credit Interest") ||
+							(htmlFileName === "SBI-CREDIT-INTEREST.html" && activeLink.textContent.trim() === "AMB Quarterly Interest Rates") ||
+							(htmlFileName === "gold-loan.html" && activeLink.textContent.trim() === "Loan Repayment Timing") ||
+							(htmlFileName === "2-wheeler-4-wheeler-rank.html" && activeLink.textContent.trim() === "Vehicle Cost Rankings") ||
+							(htmlFileName === "ITR-2025-2026.html" && activeLink.textContent.trim() === "ITR Filing Guide") ||
+							(htmlFileName === "my-gold-loan.html" && activeLink.textContent.trim() === "SBI/Bank Gold Loans Only") ||
 							(htmlFileName === "Personal-Spending-Strategy.html" && activeLink.textContent.trim() === "Smart Spending Plan") ||
 							(htmlFileName === "ppf-info.html" && activeLink.textContent.trim() === "Steps to save at PPF?") ||
 							(htmlFileName === "why-to-open-fixed-deposit.html" && activeLink.textContent.trim() === "Why Choose Fixed Deposit?") ||
+							(htmlFileName === "bpl-washing-machine.html" && activeLink.textContent.trim() === "BPL Washing Machine") ||
+							(htmlFileName === "washing-machine-repair.html" && activeLink.textContent.trim() === "How to use rinse when using washing steps?") ||
 							(htmlFileName === "Set-Black-Image-lock-screen-home-screen.html" && activeLink.textContent.trim() === "Samsung Wallpaper Home Lock") ||
 							(htmlFileName === "steps-to-port-jio-to-bsnl.html" && activeLink.textContent.trim() === "Port from Jio to BSNL") ||
 							(htmlFileName === "BIG-MART-POINTS.html" && activeLink.textContent.trim() === "Rewards & Smart Spending") ||
+							(htmlFileName === "next_day_sim_recharge.html" && activeLink.textContent.trim() === "Handle MOBILE SIM and recharge dates?") ||
 							(htmlFileName === "ShareKnowledgeTransferToPeople.html" && activeLink.textContent.trim() === "Share knowledge transfer") ||
+							(htmlFileName === "vegetables-health.html" && activeLink.textContent.trim() === "Vegetables & Health Guide") ||
 							(htmlFileName === "remove-blockages-kitchen-pvc-outflow-pipe.html" && activeLink.textContent.trim() === "Kitchen Drain Fixes") ||
+							(htmlFileName === "pm-cm-india-relations.html" && activeLink.textContent.trim() === "India politician relationships") ||
 							(htmlFileName === "washing-machine-repair.html" && activeLink.textContent.trim() === "Washing Machine") ||
 							(htmlFileName === "how-to-know-sim-number.html" && activeLink.textContent.trim() === "How to know SIM number?") ||
 							(htmlFileName === "TamilLetters.html" && activeLink.textContent.trim() === "Tamil letters") ||
 							(htmlFileName === "Steps-to-save-money-from-mis.html" && activeLink.textContent.trim() === "Post Office Savings Guide") ||
 							(htmlFileName === "Responsible-Nations-Index-Jan-2026.html" && activeLink.textContent.trim() === "Responsible Nations Index") ||
 							(htmlFileName === "bsnl-net-speed-no-parking-kannada.html" && activeLink.textContent.trim() === "BSNL Fibernet,Mobile kannada") ||
+							(htmlFileName === "epson-printer-requirement.html" && activeLink.textContent.trim() === "Epson Printer Rates") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Gold Rate Comparison") ||
+							(htmlFileName === "futura-brush-buying-guide.html" && activeLink.textContent.trim() === "Futura Brush: Save AMB Interest (Cash Only)") ||
 							(htmlFileName === "bsnl-net-speed-no-parking-tamil.html" && activeLink.textContent.trim() === "BSNL Fibernet,Mobile Tamil") ||
 							(htmlFileName === "Visitor_count.html" && activeLink.textContent.trim() === "Visitor Information") ||
 							(htmlFileName === "my-location.html" && activeLink.textContent.trim() === "Display my location") ||
@@ -984,6 +995,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "Increase-Daily-Salary.html" && activeLink.textContent.trim() === "Income Growth Strategies") ||
 							(htmlFileName === "Bharath_gas_booking_steps.html" && activeLink.textContent.trim() === "Bharat Gas Booking Steps") ||
 							(htmlFileName === "Indian-Oil-Cylinder-Booking-Online-Steps.html" && activeLink.textContent.trim() === "Indian Oil Booking Steps") ||
+							(htmlFileName === "how-to-know-sim-number.html" && activeLink.textContent.trim() === "How to find my SIM number?") ||
 							(htmlFileName === "Always-Have-Cash-A-Lesson.html" && activeLink.textContent.trim() === "Emergency Fund Planning") ||
 							(htmlFileName === "spending.html" && activeLink.textContent.trim() === "Daily spending");
 							let myPredictLink = document.querySelector(`.nav-link[onclick*="Prediction_04.html"]`);
@@ -1422,6 +1434,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'ippb-awareness-indian-citizens.html' );" class="nav-link">IPPB Premium Savings Tips</A>
 								</LI>
+								<LI>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'Self-Insurance-Plan-for-Parents.html' );" class="nav-link">Personal Self-Insurance Example</A>
+								</LI>
 					</UL>
 				</LI>
 				<LI class="nav-item">
@@ -1500,13 +1515,21 @@ function loadMoneyHelpContent( event, htmlFileName )
 				<A href="#" onclick="javascript:loadHomeContent(event, 'ShareKnowledgeTransferToPeople.html');" class="nav-link">Share knowledge transfer</A>
 			</LI>
 			<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'pm-cm-india-relations.html' );" class="nav-link">India PM–CM Relations</A>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'pm-cm-india-relations.html' );" class="nav-link">India politician relationships</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent(event, 'remove-blockages-kitchen-pvc-outflow-pipe.html');" class="nav-link">Kitchen Drain Fixes</A>
 						</LI>
-						<LI>
-							<A href="#" onclick="javascript:loadHomeContent(event, 'washing-machine-repair.html');" class="nav-link">Washing Machine</A>
+						<LI class="nav-item">
+							<A href="#" class="nav-link">Washing Machine<SPAN class="nav-arrow">&gt;</SPAN></A>
+							<UL class="submenu">
+								<LI>
+									<A href="#" onclick="javascript:loadHomeContent(event, 'bpl-washing-machine.html');" class="nav-link">BPL Washing Machine</A>
+								</LI>
+								<LI>
+									<A href="#" onclick="javascript:loadHomeContent(event, 'washing-machine-repair.html');" class="nav-link">How to use rinse when using washing steps?</A>
+								</LI>
+							</UL>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Set-Black-Image-lock-screen-home-screen.html' );" class="nav-link">Samsung Wallpaper Home Lock</A>
