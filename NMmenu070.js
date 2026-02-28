@@ -1377,6 +1377,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent(event, 'BIG-MART-POINTS.html');" class="nav-link">Rewards & Smart Spending</A>
 						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'next_day_sim_recharge.html' );" class="nav-link">Handle MOBILE SIM and recharge dates?</A>
+						</LI>
 				</UL>
 				<LI class="nav-item">
 					<A href="#" class="nav-link">
