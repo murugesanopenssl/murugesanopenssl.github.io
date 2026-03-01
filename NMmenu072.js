@@ -731,6 +731,10 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				{
 					document.title = "IPPB Premium Savings Tips";
 				}
+				else if( "Self-Insurance-Plan-for-Parents.html" == htmlFileName )
+				{
+					document.title = "Personal Self insurance Example";
+				}
 				else if( "post-office-mis.html" == htmlFileName )
 				{
 					document.title = "Monthly Income Scheme (MIS)";
@@ -957,6 +961,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "pm-cm-india-relations.html" && activeLink.textContent.trim() === "India PM–CM Relations") ||
 							(htmlFileName === "ppf-post-office.html" && activeLink.textContent.trim() === "why to open PPF?") ||
 							(htmlFileName === "ippb-awareness-indian-citizens.html" && activeLink.textContent.trim() === "IPPB Premium Savings Tips") ||
+							(htmlFileName === "Self-Insurance-Plan-for-Parents.html" && activeLink.textContent.trim() === "Personal Self-Insurance Example") ||
 							(htmlFileName === "post-office-nsc.html" && activeLink.textContent.trim() === "National Savings Certificate (NSC)") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Town city gold rate compare") ||
 							(htmlFileName === "Handle-Pre-closure-bank.html" && activeLink.textContent.trim() === "Bank Account Closure & SMS Issue") ||
