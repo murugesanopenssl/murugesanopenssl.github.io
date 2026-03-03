@@ -990,6 +990,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "Steps-to-save-money-from-mis.html" && activeLink.textContent.trim() === "Post Office Savings Guide") ||
 							(htmlFileName === "Responsible-Nations-Index-Jan-2026.html" && activeLink.textContent.trim() === "Responsible Nations Index") ||
 							(htmlFileName === "bsnl-net-speed-no-parking-kannada.html" && activeLink.textContent.trim() === "BSNL Fibernet,Mobile kannada") ||
+							(htmlFileName === "BSNL-DATA1515-INVALID-SMS.html" && activeLink.textContent.trim() === "BSNL DATA1515 Invalid SMS") ||
 							(htmlFileName === "epson-printer-requirement.html" && activeLink.textContent.trim() === "Epson Printer Rates") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Gold Rate Comparison") ||
 							(htmlFileName === "futura-brush-buying-guide.html" && activeLink.textContent.trim() === "Futura Brush: Save AMB Interest (Cash Only)") ||
@@ -1579,6 +1580,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'bsnl-net-speed-no-parking-tamil.html' );" class="nav-link">BSNL Fibernet,Mobile Tamil</A>
 						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'BSNL-DATA1515-INVALID-SMS.html' );" class="nav-link">BSNL DATA1515 Invalid SMS</A>
+						</LI>
 					</UL>
 				</LI>
 				<LI>
@@ -1659,7 +1663,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<A href="#" onclick="javascript:loadHomeContent( event, 'murugesan_achievements.html' );" class="nav-link">My achievements</A>
 					</LI>
 					<LI>
-						<A href="#" onclick="javascript:window.open( 'https://murugesanopenssl.github.io/poems/index.html');" class="nav-link"><FONT color='#00ff00'>My tamil poems</FONT></A>
+						<A href="#" onclick="javascript:window.open( 'poems/index.html');" class="nav-link"><FONT color='#00ff00'>My tamil poems</FONT></A>
 					</LI>
 					<LI>
 						<A href="#" onclick="javascript:loadHomeContent( event, 'Sustainable_Living.html' );" class="nav-link">Sustainable Living</A>
