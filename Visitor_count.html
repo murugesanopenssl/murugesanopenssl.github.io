@@ -71,7 +71,6 @@
 				let c    = (country      || "UNKNOWN").trim();
 				let code = (continentRaw || "UNKNOWN").trim();
 				const upper = c.toUpperCase();
-
 				if (!c || upper === "UNKNOWN" || upper.includes("VPN") || upper.includes("PROXY") || upper.includes("PRIVACY")) {
 					return { country: "UNKNOWN (VPN/Privacy)", continent: "Unknown Location" };
 				}
@@ -117,19 +116,12 @@
 						return { country_name: d.country, continent_code: d.continent_code, region: d.region, city: d.city, ip: d.ip };
 					}
 				];
-
 				for (let i = 0; i < apis.length; i++) {
 					try {
 						const raw = await apis[i]();
 						const { country, continent } = normalizeCountryContinent(raw.country_name, raw.continent_code);
-						status.textContent = `✔ Location detected via API-${i+1}: ${country}, ${raw.region || "UNKNOWN"}, ${raw.city || "UNKNOWN"} [IP: ${raw.ip}]`;
-						return {
-							country,
-							region:    raw.region || "UNKNOWN",
-							city:      raw.city   || "UNKNOWN",
-							continent,
-							ip:        raw.ip     || "UNKNOWN"
-						};
+						status.textContent = `✔ Location detected via API-${i+1}: ${country}, ${raw.region||"UNKNOWN"}, ${raw.city||"UNKNOWN"} [IP: ${raw.ip}]`;
+						return { country, region: raw.region||"UNKNOWN", city: raw.city||"UNKNOWN", continent, ip: raw.ip||"UNKNOWN" };
 					} catch (e) {
 						console.warn(`Geo API ${i+1} failed:`, e.message);
 					}
@@ -164,37 +156,26 @@
 				tbody.innerHTML = "";
 				if (!snapshot.exists()) return;
 
-				const counts      = {};
-				const lastVisited = {};
-				// Track the best (most recent non-UNKNOWN) region and city per country
-				const bestRegion  = {};
-				const bestCity    = {};
+				const counts     = {};
+				const lastVisited= {};
+				const bestRegion = {};
+				const bestCity   = {};
 
 				snapshot.forEach(child => {
 					const v = child.val();
 					const { country, continent } = normalizeCountryContinent(v.country, v.continent);
 
-					// ── Group by COUNTRY + CONTINENT only ──
-					// Region/city are shown from the most recent visit but do NOT split rows
+					// GROUP BY COUNTRY + CONTINENT ONLY (region/city differences do NOT split rows)
 					const key = `${country}|${continent}`;
 					counts[key] = (counts[key] || 0) + 1;
 
 					const ts = v.timestamp || 0;
-
 					if (!lastVisited[key] || lastVisited[key] < ts) {
 						lastVisited[key] = ts;
-						// Update region/city from this most-recent record
-						bestRegion[key] = (v.region && v.region !== "UNKNOWN") ? v.region : (bestRegion[key] || "UNKNOWN");
-						bestCity[key]   = (v.city   && v.city   !== "UNKNOWN") ? v.city   : (bestCity[key]   || "UNKNOWN");
-					} else {
-						// Even if not most recent, fill in region/city if currently UNKNOWN
-						if (!bestRegion[key] || bestRegion[key] === "UNKNOWN") {
-							if (v.region && v.region !== "UNKNOWN") bestRegion[key] = v.region;
-						}
-						if (!bestCity[key] || bestCity[key] === "UNKNOWN") {
-							if (v.city && v.city !== "UNKNOWN") bestCity[key] = v.city;
-						}
 					}
+					// Always keep best known region/city
+					if (v.region && v.region !== "UNKNOWN") bestRegion[key] = v.region;
+					if (v.city   && v.city   !== "UNKNOWN") bestCity[key]   = v.city;
 				});
 
 				Object.keys(counts)
