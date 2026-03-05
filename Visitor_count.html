@@ -2,7 +2,7 @@
 <HTML lang="en">
 	<HEAD>
 		<META charset="UTF-8">
-		<META name="keywords" content="murugesan,financial life management ,india savings account awareness">
+		<META name="keywords" content="murugesan,financial life management,india savings account awareness">
 		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 		<META http-equiv="Pragma" content="no-cache">
 		<META http-equiv="Expires" content="0">
@@ -14,10 +14,12 @@
 			th, td { border: 1px solid black; padding: 4px; }
 			th { background-color: #f2f2f2; }
 			td { text-align: right; }
+			#status { font-size: 12px; color: #555; margin-bottom: 8px; }
 		</STYLE>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 		<H3>User Count (IP-based geolocation)</H3>
+		<DIV id="status">Detecting location...</DIV>
 		<TABLE>
 			<THEAD>
 				<TR>
@@ -46,76 +48,98 @@
 			};
 
 			const app = initializeApp(firebaseConfig);
-			const db = getDatabase(app);
-			const tbody = document.getElementById("tbody");
+			const db  = getDatabase(app);
+			const tbody  = document.getElementById("tbody");
+			const status = document.getElementById("status");
 
-			// Maps both continent codes AND full names → display name
 			const continentMap = {
-				"AS": "Asia", "NA": "North America", "EU": "Europe",
-				"AF": "Africa", "OC": "Oceania", "SA": "South America",
-				"AN": "Antarctica", "OS": "Oceania", "???": "Unknown Location",
-				"UNKNOWN": "Unknown Location",
-				"Asia": "Asia", "North America": "North America", "Europe": "Europe",
-				"Africa": "Africa", "Oceania": "Oceania", "South America": "South America",
-				"Antarctica": "Antarctica", "Unknown Location": "Unknown Location"
+				"AS":"Asia","NA":"North America","EU":"Europe","AF":"Africa",
+				"OC":"Oceania","SA":"South America","AN":"Antarctica",
+				"OS":"Oceania","??":"Unknown Location","???":"Unknown Location",
+				"UNKNOWN":"Unknown Location",
+				"Asia":"Asia","North America":"North America","Europe":"Europe",
+				"Africa":"Africa","Oceania":"Oceania","South America":"South America",
+				"Antarctica":"Antarctica","Unknown Location":"Unknown Location"
 			};
 
 			function resolveContinent(raw) {
 				if (!raw) return "Unknown Location";
-				return continentMap[raw] || continentMap[raw.toUpperCase()] || raw;
+				return continentMap[raw] || continentMap[raw.toUpperCase()] || "Unknown Location";
 			}
 
 			function normalizeCountryContinent(country, continentRaw) {
-				let c = (country || "UNKNOWN").trim();
+				let c    = (country      || "UNKNOWN").trim();
 				let code = (continentRaw || "UNKNOWN").trim();
 				const upper = c.toUpperCase();
 
-				if (upper.includes("UNKNOWN") || upper.includes("VPN") || upper.includes("PROXY") || upper.includes("PRIVACY")) {
+				if (!c || upper === "UNKNOWN" || upper.includes("VPN") || upper.includes("PROXY") || upper.includes("PRIVACY")) {
 					return { country: "UNKNOWN (VPN/Privacy)", continent: "Unknown Location" };
 				}
-
 				switch (true) {
-					case upper === "INDIA":
-						return { country: "India", continent: "Asia" };
-					case upper.includes("UNITED STATES") || upper.includes("USA") || upper.includes("AMERICA/LOS") || upper.includes("LOS_ANGELES") || upper.includes("HAWAII") || upper.includes("PACIFIC TIME"):
-						return { country: "United States", continent: "North America" };
-					case upper === "CANADA": return { country: c, continent: "North America" };
-					case upper === "MEXICO": return { country: c, continent: "North America" };
-					case upper === "RUSSIA": return { country: c, continent: "Europe" };
-					case upper === "PACIFIC ISLANDS": return { country: c, continent: "Oceania" };
+					case upper === "INDIA":                   return { country: "India",         continent: "Asia" };
+					case upper.includes("UNITED STATES") || upper === "US" || upper === "USA":
+					                                          return { country: "United States",  continent: "North America" };
+					case upper === "CANADA":                  return { country: c, continent: "North America" };
+					case upper === "MEXICO":                  return { country: c, continent: "North America" };
+					case upper === "RUSSIA":                  return { country: c, continent: "Europe" };
 					case ["AUSTRALIA","FIJI","SAMOA","TONGA","VANUATU","SOLOMON ISLANDS","NEW ZEALAND","PAPUA NEW GUINEA"].includes(upper):
-						return { country: c, continent: "Oceania" };
+					                                          return { country: c, continent: "Oceania" };
 					case ["BRAZIL","ARGENTINA","CHILE","PERU","COLOMBIA"].includes(upper):
-						return { country: c, continent: "South America" };
+					                                          return { country: c, continent: "South America" };
 					case ["EGYPT","NIGERIA","SOUTH AFRICA","KENYA","CAPE VERDE","MOROCCO"].includes(upper) || upper.includes("AFRICA"):
-						return { country: c, continent: "Africa" };
+					                                          return { country: c, continent: "Africa" };
 					case ["UNITED KINGDOM","FRANCE","GERMANY","ITALY","ICELAND","HUNGARY","POLAND","ROMANIA","UKRAINE"].includes(upper) || upper.includes("EUROPE"):
-						return { country: c, continent: "Europe" };
-					case ["CHINA","JAPAN","INDONESIA"].includes(upper) || upper.includes("ASIA"):
-						return { country: c, continent: "Asia" };
-					default:
-						return { country: c, continent: resolveContinent(code) };
+					                                          return { country: c, continent: "Europe" };
+					case ["CHINA","JAPAN","INDONESIA","SINGAPORE","MALAYSIA","THAILAND","BANGLADESH","SRI LANKA","PAKISTAN"].includes(upper) || upper.includes("ASIA"):
+					                                          return { country: c, continent: "Asia" };
+					default:                                  return { country: c, continent: resolveContinent(code) };
 				}
 			}
 
+			// Try multiple geo APIs in sequence until one succeeds
 			async function detectLocation() {
-				try {
-					const res = await fetch("https://ipapi.co/json/");
-					const data = await res.json();
-					const { country, continent } = normalizeCountryContinent(data.country_name, data.continent_code);
-					return {
-						country,
-						region: data.region || "UNKNOWN",
-						city:   data.city   || "UNKNOWN",
-						continent,
-						ip:     data.ip     || "UNKNOWN"
-					};
-				} catch (e) {
-					return { country: "UNKNOWN", region: "UNKNOWN", city: "UNKNOWN", continent: "Unknown Location", ip: "UNKNOWN" };
+				const apis = [
+					async () => {
+						const r = await fetch("https://ipapi.co/json/");
+						const d = await r.json();
+						if (!d.country_name || d.error) throw new Error("ipapi.co failed");
+						return { country_name: d.country_name, continent_code: d.continent_code, region: d.region, city: d.city, ip: d.ip };
+					},
+					async () => {
+						const r = await fetch("https://ip-api.com/json/?fields=country,regionName,city,continentCode,query");
+						const d = await r.json();
+						if (d.status !== "success") throw new Error("ip-api.com failed");
+						return { country_name: d.country, continent_code: d.continentCode, region: d.regionName, city: d.city, ip: d.query };
+					},
+					async () => {
+						const r = await fetch("https://ipwho.is/");
+						const d = await r.json();
+						if (!d.success) throw new Error("ipwho.is failed");
+						return { country_name: d.country, continent_code: d.continent_code, region: d.region, city: d.city, ip: d.ip };
+					}
+				];
+
+				for (let i = 0; i < apis.length; i++) {
+					try {
+						const raw = await apis[i]();
+						const { country, continent } = normalizeCountryContinent(raw.country_name, raw.continent_code);
+						status.textContent = `✔ Location detected via API-${i+1}: ${country}, ${raw.region || "UNKNOWN"}, ${raw.city || "UNKNOWN"} [IP: ${raw.ip}]`;
+						return {
+							country,
+							region:    raw.region    || "UNKNOWN",
+							city:      raw.city      || "UNKNOWN",
+							continent,
+							ip:        raw.ip        || "UNKNOWN"
+						};
+					} catch (e) {
+						console.warn(`Geo API ${i+1} failed:`, e.message);
+					}
 				}
+
+				status.textContent = "⚠ All geo APIs failed — stored as UNKNOWN";
+				return { country: "UNKNOWN", region: "UNKNOWN", city: "UNKNOWN", continent: "Unknown Location", ip: "UNKNOWN" };
 			}
 
-			// Every page load = new visit entry → count goes up, date updates
 			async function storeVisit() {
 				const geo = await detectLocation();
 				await push(ref(db, "userAccess"), {
@@ -132,10 +156,10 @@
 			storeVisit();
 
 			function formatDate(ts) {
-				const date = new Date(ts);
-				const dayNames   = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-				const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-				return `${dayNames[date.getDay()]} ${String(date.getDate()).padStart(2,'0')}-${monthNames[date.getMonth()]}-${date.getFullYear()}`;
+				const d = new Date(ts);
+				const days   = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+				const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+				return `${days[d.getDay()]} ${String(d.getDate()).padStart(2,"0")}-${months[d.getMonth()]}-${d.getFullYear()}`;
 			}
 
 			onValue(ref(db, "userAccess"), snapshot => {
@@ -147,8 +171,6 @@
 
 				snapshot.forEach(child => {
 					const v = child.val();
-
-					// Re-normalize on read so old records with continent codes display correctly
 					const { country, continent } = normalizeCountryContinent(v.country, v.continent);
 					const region = v.region || "UNKNOWN";
 					const city   = v.city   || "UNKNOWN";
@@ -161,20 +183,19 @@
 					}
 				});
 
-				// Most recently visited first
-				const sortedKeys = Object.keys(counts).sort((a, b) => lastVisited[b] - lastVisited[a]);
-
-				sortedKeys.forEach(k => {
-					const [country, continent, region, city] = k.split("|");
-					tbody.innerHTML += `<TR>
-						<TD align="center">${String(counts[k]).padStart(4,"0")}</TD>
-						<TD valign='top' align='right'>${country}</TD>
-						<TD valign='top' align='right'>${region}</TD>
-						<TD valign='top' align='right'>${city}</TD>
-						<TD valign='top' align='right'>${continent}</TD>
-						<TD valign='top' align='right'>${formatDate(lastVisited[k])}</TD>
-					</TR>`;
-				});
+				Object.keys(counts)
+					.sort((a, b) => lastVisited[b] - lastVisited[a])
+					.forEach(k => {
+						const [country, continent, region, city] = k.split("|");
+						tbody.innerHTML += `<TR>
+							<TD align="center">${String(counts[k]).padStart(4,"0")}</TD>
+							<TD valign='top' align='right'>${country}</TD>
+							<TD valign='top' align='right'>${region}</TD>
+							<TD valign='top' align='right'>${city}</TD>
+							<TD valign='top' align='right'>${continent}</TD>
+							<TD valign='top' align='right'>${formatDate(lastVisited[k])}</TD>
+						</TR>`;
+					});
 			});
 		</SCRIPT>
 	</BODY>
