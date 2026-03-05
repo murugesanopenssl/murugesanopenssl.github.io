@@ -1,161 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="keywords" content="murugesan,financial life management ,india savings account awareness">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User access count (IP based)</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid black; padding: 4px; }
-        th { background-color: #f2f2f2; }
-        td { text-align: right; }
-    </style>
-</head>
-<body>
-    <h3>User Count (IP-based geolocation)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>User Count</th>
-                <th>Country</th>
-                <th>Region</th>
-                <th>City</th>
-                <th>Continent</th>
-                <th>Last Visited</th>
-            </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-    </table>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="keywords" content="murugesan,financial life management ,india savings account awareness">
+		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<META http-equiv="Pragma" content="no-cache">
+		<META http-equiv="Expires" content="0">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>User access count (IP based)</TITLE>
+		<STYLE type='text/css'>
+			body { font-family: Arial, sans-serif; }
+			table { border-collapse: collapse; width: 100%; }
+			th, td { border: 1px solid black; padding: 4px; }
+			th { background-color: #f2f2f2; }
+			td { text-align: right; }
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<H3>User Count (IP-based geolocation)</H3>
+		<TABLE>
+			<THEAD>
+				<TR>
+					<TH>User Count</TH>
+					<TH>Country</TH>
+					<TH>Region</TH>
+					<TH>City</TH>
+					<TH>Continent</TH>
+					<TH>Last Visited</TH>
+				</TR>
+			</THEAD>
+			<TBODY id="tbody"></TBODY>
+		</TABLE>
+		<SCRIPT type="module">
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+			import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+			const firebaseConfig = {
+				apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+				authDomain: "openmurugesan.firebaseapp.com",
+				databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+				projectId: "openmurugesan",
+				storageBucket: "openmurugesan.firebasestorage.app",
+				messagingSenderId: "307675598593",
+				appId: "1:307675598593:web:4af163460ce2c3bc719500"
+			};
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
-            authDomain: "openmurugesan.firebaseapp.com",
-            databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "openmurugesan",
-            storageBucket: "openmurugesan.firebasestorage.app",
-            messagingSenderId: "307675598593",
-            appId: "1:307675598593:web:4af163460ce2c3bc719500"
-        };
+			const app = initializeApp(firebaseConfig);
+			const db = getDatabase(app);
+			const tbody = document.getElementById("tbody");
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        const tbody = document.getElementById("tbody");
+			// Maps both continent codes AND full names → display name
+			const continentMap = {
+				"AS": "Asia", "NA": "North America", "EU": "Europe",
+				"AF": "Africa", "OC": "Oceania", "SA": "South America",
+				"AN": "Antarctica", "OS": "Oceania", "???": "Unknown Location",
+				"UNKNOWN": "Unknown Location",
+				"Asia": "Asia", "North America": "North America", "Europe": "Europe",
+				"Africa": "Africa", "Oceania": "Oceania", "South America": "South America",
+				"Antarctica": "Antarctica", "Unknown Location": "Unknown Location"
+			};
 
-        async function detectLocation() {
-            try {
-                const res = await fetch("https://ipapi.co/json/");
-                const data = await res.json();
-                return {
-                    country: data.country_name || "UNKNOWN",
-                    region: data.region || "UNKNOWN",
-                    city: data.city || "UNKNOWN",
-                    continent: data.continent_code || "UNKNOWN",
-                    ip: data.ip || "UNKNOWN"
-                };
-            } catch (e) {
-                return { country: "UNKNOWN", region: "UNKNOWN", city: "UNKNOWN", continent: "UNKNOWN", ip: "UNKNOWN" };
-            }
-        }
+			function resolveContinent(raw) {
+				if (!raw) return "Unknown Location";
+				return continentMap[raw] || continentMap[raw.toUpperCase()] || raw;
+			}
 
-        async function storeVisit() {
-            const geo = await detectLocation();
-            await push(ref(db, "userAccess"), {
-                country: geo.country,
-                region: geo.region,
-                city: geo.city,
-                continent: geo.continent,
-                ip: geo.ip,
-                userAgent: navigator.userAgent,
-                timestamp: Date.now()
-            });
-        }
+			function normalizeCountryContinent(country, continentRaw) {
+				let c = (country || "UNKNOWN").trim();
+				let code = (continentRaw || "UNKNOWN").trim();
+				const upper = c.toUpperCase();
 
-        storeVisit();
+				if (upper.includes("UNKNOWN") || upper.includes("VPN") || upper.includes("PROXY") || upper.includes("PRIVACY")) {
+					return { country: "UNKNOWN (VPN/Privacy)", continent: "Unknown Location" };
+				}
 
-        onValue(ref(db, "userAccess"), snapshot => {
-            tbody.innerHTML = "";
-            if (!snapshot.exists()) return;
+				switch (true) {
+					case upper === "INDIA":
+						return { country: "India", continent: "Asia" };
+					case upper.includes("UNITED STATES") || upper.includes("USA") || upper.includes("AMERICA/LOS") || upper.includes("LOS_ANGELES") || upper.includes("HAWAII") || upper.includes("PACIFIC TIME"):
+						return { country: "United States", continent: "North America" };
+					case upper === "CANADA": return { country: c, continent: "North America" };
+					case upper === "MEXICO": return { country: c, continent: "North America" };
+					case upper === "RUSSIA": return { country: c, continent: "Europe" };
+					case upper === "PACIFIC ISLANDS": return { country: c, continent: "Oceania" };
+					case ["AUSTRALIA","FIJI","SAMOA","TONGA","VANUATU","SOLOMON ISLANDS","NEW ZEALAND","PAPUA NEW GUINEA"].includes(upper):
+						return { country: c, continent: "Oceania" };
+					case ["BRAZIL","ARGENTINA","CHILE","PERU","COLOMBIA"].includes(upper):
+						return { country: c, continent: "South America" };
+					case ["EGYPT","NIGERIA","SOUTH AFRICA","KENYA","CAPE VERDE","MOROCCO"].includes(upper) || upper.includes("AFRICA"):
+						return { country: c, continent: "Africa" };
+					case ["UNITED KINGDOM","FRANCE","GERMANY","ITALY","ICELAND","HUNGARY","POLAND","ROMANIA","UKRAINE"].includes(upper) || upper.includes("EUROPE"):
+						return { country: c, continent: "Europe" };
+					case ["CHINA","JAPAN","INDONESIA"].includes(upper) || upper.includes("ASIA"):
+						return { country: c, continent: "Asia" };
+					default:
+						return { country: c, continent: resolveContinent(code) };
+				}
+			}
 
-            const continentMap = { 
-                "AS": "Asia", "NA": "North America", "EU": "Europe",
-                "AF": "Africa", "OC": "Oceania", "SA": "South America",
-                "AN": "Antarctica", "OS": "Oceania", "???": "Unknown Location",
-                "UNKNOWN": "Unknown Location"
-            };
+			async function detectLocation() {
+				try {
+					const res = await fetch("https://ipapi.co/json/");
+					const data = await res.json();
+					const { country, continent } = normalizeCountryContinent(data.country_name, data.continent_code);
+					return {
+						country,
+						region: data.region || "UNKNOWN",
+						city:   data.city   || "UNKNOWN",
+						continent,
+						ip:     data.ip     || "UNKNOWN"
+					};
+				} catch (e) {
+					return { country: "UNKNOWN", region: "UNKNOWN", city: "UNKNOWN", continent: "Unknown Location", ip: "UNKNOWN" };
+				}
+			}
 
-            const counts = {};
-            const lastVisited = {};
+			// Every page load = new visit entry → count goes up, date updates
+			async function storeVisit() {
+				const geo = await detectLocation();
+				await push(ref(db, "userAccess"), {
+					country:   geo.country,
+					region:    geo.region,
+					city:      geo.city,
+					continent: geo.continent,
+					ip:        geo.ip,
+					userAgent: navigator.userAgent,
+					timestamp: Date.now()
+				});
+			}
 
-            snapshot.forEach(child => {
-                const v = child.val();
-                let country = v.country || "UNKNOWN";
-                const region = v.region || "UNKNOWN";
-                const city = v.city || "UNKNOWN";
-                let continentCode = v.continent || "UNKNOWN";
-                const upperCountry = country.toUpperCase();
+			storeVisit();
 
-                if (upperCountry.includes("UNKNOWN") || upperCountry.includes("VPN") || upperCountry.includes("PROXY") || upperCountry.includes("PRIVACY")) {
-                    country = "UNKNOWN (VPN/Privacy)";
-                    continentCode = "???";
-                } else if (upperCountry === "INDIA") {
-                    country = "India"; continentCode = "AS";
-                } else if (upperCountry.includes("AMERICA/LOS") || upperCountry.includes("LOS_ANGELES")) {
-                    country = "United States"; continentCode = "NA";
-                } else {
-                    switch(true) {
-                        case upperCountry.includes("UNITED STATES") || upperCountry.includes("USA") || upperCountry.includes("HAWAII") || upperCountry.includes("PACIFIC TIME"):
-                            country = "United States"; continentCode = "NA"; break;
-                        case upperCountry === "PACIFIC ISLANDS": continentCode = "OS"; break;
-                        case upperCountry === "RUSSIA": continentCode = "EU"; break;
-                        case ["AUSTRALIA","FIJI","SAMOA","TONGA","VANUATU","SOLOMON ISLANDS","NEW ZEALAND","PAPUA NEW GUINEA"].includes(upperCountry):
-                            continentCode = "OC"; break;
-                        case ["BRAZIL","ARGENTINA","CHILE","PERU","COLOMBIA"].includes(upperCountry): continentCode = "SA"; break;
-                        case ["EGYPT","NIGERIA","SOUTH AFRICA","KENYA","CAPE VERDE","MOROCCO"].includes(upperCountry) || upperCountry.includes("AFRICA"): continentCode = "AF"; break;
-                        case ["UNITED KINGDOM","FRANCE","GERMANY","ITALY","ICELAND","HUNGARY","POLAND","ROMANIA","UKRAINE"].includes(upperCountry) || upperCountry.includes("EUROPE"): continentCode = "EU"; break;
-                        case ["CHINA","JAPAN","INDONESIA","IN"].includes(upperCountry) || upperCountry.includes("ASIA"): continentCode = "AS"; break;
-                        case ["CANADA","MEXICO"].includes(upperCountry): continentCode = "NA"; break;
-                    }
-                }
+			function formatDate(ts) {
+				const date = new Date(ts);
+				const dayNames   = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+				const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+				return `${dayNames[date.getDay()]} ${String(date.getDate()).padStart(2,'0')}-${monthNames[date.getMonth()]}-${date.getFullYear()}`;
+			}
 
-                const continent = continentMap[continentCode] || "UNKNOWN";
-                const key = `${country}|${continent}|${region}|${city}`;
-                counts[key] = (counts[key] || 0) + 1;
+			onValue(ref(db, "userAccess"), snapshot => {
+				tbody.innerHTML = "";
+				if (!snapshot.exists()) return;
 
-                if (!lastVisited[key] || lastVisited[key] < v.timestamp) {
-                    lastVisited[key] = v.timestamp;
-                }
-            });
+				const counts      = {};
+				const lastVisited = {};
 
-            // Sort keys by last visited timestamp descending
-            const sortedKeys = Object.keys(counts).sort((a,b) => lastVisited[b] - lastVisited[a]);
+				snapshot.forEach(child => {
+					const v = child.val();
 
-            sortedKeys.forEach(k => {
-                const [country, continent, region, city] = k.split("|");
-                const date = new Date(lastVisited[k]);
-                const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-                const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-                const formattedDate = `${dayNames[date.getDay()]} ${String(date.getDate()).padStart(2,'0')}-${monthNames[date.getMonth()]}-${date.getFullYear()}`;
+					// Re-normalize on read so old records with continent codes display correctly
+					const { country, continent } = normalizeCountryContinent(v.country, v.continent);
+					const region = v.region || "UNKNOWN";
+					const city   = v.city   || "UNKNOWN";
 
-                tbody.innerHTML += `
-                    <tr>
-                        <td align="center">${String(counts[k]).padStart(4,"0")}</td>
-                        <td valign='top' align='right'>${country}</td>
-                        <td valign='top' align='right'>${region}</td>
-                        <td valign='top' align='right'>${city}</td>
-                        <td valign='top' align='right'>${continent}</td>
-                        <td valign='top' align='right'>${formattedDate}</td>
-                    </tr>`;
-            });
-        });
-    </script>
-</body>
-</html>
+					const key = `${country}|${continent}|${region}|${city}`;
+					counts[key] = (counts[key] || 0) + 1;
+
+					if (!lastVisited[key] || lastVisited[key] < v.timestamp) {
+						lastVisited[key] = v.timestamp;
+					}
+				});
+
+				// Most recently visited first
+				const sortedKeys = Object.keys(counts).sort((a, b) => lastVisited[b] - lastVisited[a]);
+
+				sortedKeys.forEach(k => {
+					const [country, continent, region, city] = k.split("|");
+					tbody.innerHTML += `<TR>
+						<TD align="center">${String(counts[k]).padStart(4,"0")}</TD>
+						<TD valign='top' align='right'>${country}</TD>
+						<TD valign='top' align='right'>${region}</TD>
+						<TD valign='top' align='right'>${city}</TD>
+						<TD valign='top' align='right'>${continent}</TD>
+						<TD valign='top' align='right'>${formatDate(lastVisited[k])}</TD>
+					</TR>`;
+				});
+			});
+		</SCRIPT>
+	</BODY>
+</HTML>

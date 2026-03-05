@@ -949,6 +949,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "vegetables-health.html" && activeLink.textContent.trim() === "Vegetables & Health") ||
 							(htmlFileName === "ITR-2025-2026.html" && activeLink.textContent.trim() === "ITR Fri 31-Jul-2026 IST") ||
 							(htmlFileName === "TN-how-to-get-more-vote.html" && activeLink.textContent.trim() === "TN Voter Increase Guide") ||
+							(htmlFileName === "Steps-to-talk-with-indian-voter.html" && activeLink.textContent.trim() === "Call Indian Voter Help") ||
 							(htmlFileName === "epson-printer-requirement.html" && activeLink.textContent.trim() === "Epson printer rates") ||
 							(htmlFileName === "My_Drawings.html" && activeLink.textContent.trim() === "My drawings") ||
 							(htmlFileName === "NMurugesan_cv.html" && activeLink.textContent.trim() === "My profile") ||
@@ -1510,6 +1511,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 		</A>
 		<UL class="submenu">
 			<LI>
+					<A href="#" onclick="javascript:loadHomeContent(event, 'Steps-to-talk-with-indian-voter.html');" class="nav-link">Call Indian Voter Help</A>
+			</LI>
+			<LI>
 				<A href="#" onclick='javascript:window.open( "tamil-calendar.html" );' class="nav-link"><FONT color='#00ff00'>Tamil calendar</FONT></A>
 			</LI>
 			<LI>
@@ -1624,7 +1628,11 @@ function loadMoneyHelpContent( event, htmlFileName )
 							</A>
 							<UL class="submenu">
 								<LI>
-									<A href="#" onclick="javascript:window.open('COUNTRIES-SUPPORTING-IRAN.html');" class="nav-link">Countries Supporting Iran</A>
+									<A href="#" onclick="javascript:window.open('COUNTRIES-SUPPORTING-IRAN.html');" class="nav-link">
+										<FONT color='#00ff00'>
+											Countries Supporting Iran
+										</FONT>
+									</A>
 								</LI>
 								<!-- Add more sub-submenus here if needed -->
 							</UL>
