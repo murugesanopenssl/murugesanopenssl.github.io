@@ -76,9 +76,9 @@
 					return { country: "UNKNOWN (VPN/Privacy)", continent: "Unknown Location" };
 				}
 				switch (true) {
-					case upper === "INDIA":                   return { country: "India",         continent: "Asia" };
+					case upper === "INDIA":                   return { country: "India",        continent: "Asia" };
 					case upper.includes("UNITED STATES") || upper === "US" || upper === "USA":
-					                                          return { country: "United States",  continent: "North America" };
+					                                          return { country: "United States", continent: "North America" };
 					case upper === "CANADA":                  return { country: c, continent: "North America" };
 					case upper === "MEXICO":                  return { country: c, continent: "North America" };
 					case upper === "RUSSIA":                  return { country: c, continent: "Europe" };
@@ -96,7 +96,6 @@
 				}
 			}
 
-			// Try multiple geo APIs in sequence until one succeeds
 			async function detectLocation() {
 				const apis = [
 					async () => {
@@ -106,7 +105,7 @@
 						return { country_name: d.country_name, continent_code: d.continent_code, region: d.region, city: d.city, ip: d.ip };
 					},
 					async () => {
-						const r = await fetch("https://ip-api.com/json/?fields=country,regionName,city,continentCode,query");
+						const r = await fetch("https://ip-api.com/json/?fields=country,regionName,city,continentCode,query,status");
 						const d = await r.json();
 						if (d.status !== "success") throw new Error("ip-api.com failed");
 						return { country_name: d.country, continent_code: d.continentCode, region: d.regionName, city: d.city, ip: d.query };
@@ -126,16 +125,15 @@
 						status.textContent = `✔ Location detected via API-${i+1}: ${country}, ${raw.region || "UNKNOWN"}, ${raw.city || "UNKNOWN"} [IP: ${raw.ip}]`;
 						return {
 							country,
-							region:    raw.region    || "UNKNOWN",
-							city:      raw.city      || "UNKNOWN",
+							region:    raw.region || "UNKNOWN",
+							city:      raw.city   || "UNKNOWN",
 							continent,
-							ip:        raw.ip        || "UNKNOWN"
+							ip:        raw.ip     || "UNKNOWN"
 						};
 					} catch (e) {
 						console.warn(`Geo API ${i+1} failed:`, e.message);
 					}
 				}
-
 				status.textContent = "⚠ All geo APIs failed — stored as UNKNOWN";
 				return { country: "UNKNOWN", region: "UNKNOWN", city: "UNKNOWN", continent: "Unknown Location", ip: "UNKNOWN" };
 			}
@@ -168,30 +166,46 @@
 
 				const counts      = {};
 				const lastVisited = {};
+				// Track the best (most recent non-UNKNOWN) region and city per country
+				const bestRegion  = {};
+				const bestCity    = {};
 
 				snapshot.forEach(child => {
 					const v = child.val();
 					const { country, continent } = normalizeCountryContinent(v.country, v.continent);
-					const region = v.region || "UNKNOWN";
-					const city   = v.city   || "UNKNOWN";
 
-					const key = `${country}|${continent}|${region}|${city}`;
+					// ── Group by COUNTRY + CONTINENT only ──
+					// Region/city are shown from the most recent visit but do NOT split rows
+					const key = `${country}|${continent}`;
 					counts[key] = (counts[key] || 0) + 1;
 
-					if (!lastVisited[key] || lastVisited[key] < v.timestamp) {
-						lastVisited[key] = v.timestamp;
+					const ts = v.timestamp || 0;
+
+					if (!lastVisited[key] || lastVisited[key] < ts) {
+						lastVisited[key] = ts;
+						// Update region/city from this most-recent record
+						bestRegion[key] = (v.region && v.region !== "UNKNOWN") ? v.region : (bestRegion[key] || "UNKNOWN");
+						bestCity[key]   = (v.city   && v.city   !== "UNKNOWN") ? v.city   : (bestCity[key]   || "UNKNOWN");
+					} else {
+						// Even if not most recent, fill in region/city if currently UNKNOWN
+						if (!bestRegion[key] || bestRegion[key] === "UNKNOWN") {
+							if (v.region && v.region !== "UNKNOWN") bestRegion[key] = v.region;
+						}
+						if (!bestCity[key] || bestCity[key] === "UNKNOWN") {
+							if (v.city && v.city !== "UNKNOWN") bestCity[key] = v.city;
+						}
 					}
 				});
 
 				Object.keys(counts)
 					.sort((a, b) => lastVisited[b] - lastVisited[a])
 					.forEach(k => {
-						const [country, continent, region, city] = k.split("|");
+						const [country, continent] = k.split("|");
 						tbody.innerHTML += `<TR>
 							<TD align="center">${String(counts[k]).padStart(4,"0")}</TD>
 							<TD valign='top' align='right'>${country}</TD>
-							<TD valign='top' align='right'>${region}</TD>
-							<TD valign='top' align='right'>${city}</TD>
+							<TD valign='top' align='right'>${bestRegion[k] || "UNKNOWN"}</TD>
+							<TD valign='top' align='right'>${bestCity[k]   || "UNKNOWN"}</TD>
 							<TD valign='top' align='right'>${continent}</TD>
 							<TD valign='top' align='right'>${formatDate(lastVisited[k])}</TD>
 						</TR>`;
