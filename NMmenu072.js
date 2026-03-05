@@ -989,6 +989,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "TamilLetters.html" && activeLink.textContent.trim() === "Tamil letters") ||
 							(htmlFileName === "Steps-to-save-money-from-mis.html" && activeLink.textContent.trim() === "Post Office Savings Guide") ||
 							(htmlFileName === "Responsible-Nations-Index-Jan-2026.html" && activeLink.textContent.trim() === "Responsible Nations Index") ||
+							(htmlFileName === "COUNTRIES-SUPPORTING-IRAN.html" && activeLink.textContent.trim() === "Countries Supporting Iran") ||
 							(htmlFileName === "bsnl-net-speed-no-parking-kannada.html" && activeLink.textContent.trim() === "BSNL Fibernet,Mobile kannada") ||
 							(htmlFileName === "BSNL-DATA1515-INVALID-SMS.html" && activeLink.textContent.trim() === "BSNL DATA1515 Invalid SMS") ||
 							(htmlFileName === "epson-printer-requirement.html" && activeLink.textContent.trim() === "Epson Printer Rates") ||
@@ -1605,7 +1606,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 				</LI>
 				</UL>
 				</LI>
-			<LI class="nav-item">
+				<LI class="nav-item">
 					<A href="javascript:void(0);" class="nav-link">
 						<SPAN class="nav-icon">&#x1F465;</SPAN>
 						<SPAN class="nav-text"><FONT color='black'>Visitors</FONT></SPAN>
@@ -1613,16 +1614,30 @@ function loadMoneyHelpContent( event, htmlFileName )
 					</A>
 					<UL class="submenu">
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'Visitor_count.html' );" class="nav-link">Visitor Information</A>
+							<A href="#" onclick="javascript:loadHomeContent(event, 'Visitor_count.html');" class="nav-link">Visitor Information</A>
 						</LI>
-						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'Responsible-Nations-Index-Jan-2026.html' );" class="nav-link">Responsible Nations Index</A>
+
+						<!-- Responsible Nations Index with submenu -->
+						<LI class="nav-item">
+							<A href="javascript:void(0);" class="nav-link">
+								Responsible Nations Index<SPAN class="nav-arrow">&gt;</SPAN>
+							</A>
+							<UL class="submenu">
+								<LI>
+									<A href="#" onclick="javascript:window.open('COUNTRIES-SUPPORTING-IRAN.html');" class="nav-link">Countries Supporting Iran</A>
+								</LI>
+								<!-- Add more sub-submenus here if needed -->
+							</UL>
 						</LI>
+
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'Tamilnadu-MLA.html' );" class="nav-link">Tamil Nadu MLAs</A>
+							<A href="#" onclick="javascript:loadHomeContent(event, 'Tamilnadu-MLA.html');" class="nav-link">Tamil Nadu MLAs</A>
 						</LI>
+
 						<LI>
-							<A href="#" onclick="javascript:window.open( 'earth_politics_or_general_age.html');" class="nav-link"><FONT color='#00ff00'>Earth politics</FONT></A>
+							<A href="#" onclick="javascript:window.open('earth_politics_or_general_age.html');" class="nav-link">
+								<FONT color='#00ff00'>Earth politics</FONT>
+							</A>
 						</LI>
 					</UL>
 				</LI>
