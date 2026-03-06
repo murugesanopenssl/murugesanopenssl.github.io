@@ -81,7 +81,7 @@
 
         document.getElementById('result').innerHTML =
             'SIM: ' + sim + ' | Expiry Date: ' + dd + '-' + mmm + '-' + yyyy + ' IST<br>' +
-            'Recharge one day after expiry date on ' + formattedNextDay + ' IST<br>' +
+            '<FONT color=red><B><U>RECHARGE</FONT></B></U> ONE DAY AFTER EXPIRY DATE <FONT color=red><B><U>ON ' + formattedNextDay + ' IST</B></U></FONT><br>' +
             'This helps maintain your Average Monthly Balance (AMB) interest in any bank on Earth when interest is calculated once every 3 months.';
     }
 </script>
@@ -136,7 +136,7 @@ b) Always recharge any SIM for one year instead of 28 / 84 / 90 days to prevent 
     </tr>
     <tr>
         <td valign="top" align="left">
-            Select Expiry Date: <input type="date" id="calendar" onchange="updateDate()">
+            Select Expiry Date: <FONT color='red'><B><U>mm/dd/yyyy</B></U></FONT> <input type="date" id="calendar" onchange="updateDate()">
         </td>
     </tr>
     <tr>
