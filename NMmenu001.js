@@ -1392,7 +1392,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 							<A href="#" onclick="javascript:loadHomeContent( event, 'HandleBankAMB.html' );" class="nav-link">ATM Usage Tips</A>
 						</LI>
 						<LI>
-							<A href="#" onclick='javascript:window.open( "attibele-to-vijayanagar-bus-stops-intermediate-metro.html" );' class="nav-link"><FONT color='#00ff00'>Bengaluru Attibele to Vijayanagar BMTC</FONT></A>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'attibele-to-vijayanagar-bus-stops-intermediate-metro.html' );" class="nav-link">Bengaluru Attibele to Vijayanagar BMTC</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent(event, 'BIG-MART-POINTS.html');" class="nav-link">Rewards & Smart Spending</A>
@@ -1412,9 +1412,17 @@ function loadMoneyHelpContent( event, htmlFileName )
 							<A href="#" onclick="javascript:loadHomeContent( event, 'new-employee-sbi-account.html' );" class="nav-link">Employee Savings Guide</A>
 						</LI>
 						<LI class="nav-item">
-							<A href="#" class="nav-link">
-								Post Office Schemes
-								<SPAN class="nav-arrow">&gt;</SPAN>
+							<A>
+								<TABLE  cellpadding="0" cellspacing="0" border="0">
+									<TR>
+										<TD valign='top' align='left' style='width:142px;'>
+											Post Office Schemes
+										</TD>
+										<TD>
+											<SPAN style="background-color:blue;color:white;padding:2px 6px;">&#9654;</SPAN>
+										</TD>
+									</TR>
+								</TABLE>
 							</A>
 							<UL class="submenu">
 								<LI>
@@ -1422,7 +1430,18 @@ function loadMoneyHelpContent( event, htmlFileName )
 								</LI>
 								<LI>
 									<LI class="nav-item">
-										<A href="#" class="nav-link">Public Provident Fund (PPF)<SPAN class="nav-arrow">&gt;</SPAN></A>
+						<TABLE  cellpadding="0" cellspacing="0" border="0">
+							<TR>
+								<TD valign='top' align='left' style='width:142px;'>
+									<FONT color='white'>
+										Public Provident Fund (PPF)
+									</FONT>
+								</TD>
+								<TD valign='top' align='right'>
+									<SPAN style="background-color:blue;color:white;padding:2px 6px;">&#9654;</SPAN>
+								</TD>
+							</TR>
+						</TABLE>
 										<UL class="submenu">
 											<LI>
 												<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-post-office.html' );" class="nav-link">why to open PPF?</A>
@@ -1448,7 +1467,18 @@ function loadMoneyHelpContent( event, htmlFileName )
 					</UL>
 				</LI>
 				<LI class="nav-item">
-					<A href="#" class="nav-link">SBI<SPAN class="nav-arrow">&gt;</SPAN></A>
+					<A>
+						<TABLE  cellpadding="0" cellspacing="0" border="0">
+							<TR>
+								<TD valign='top' align='left' style='width:142px;'>
+									SBI
+								</TD>
+								<TD valign='top' align='right'>
+									<SPAN style="background-color:blue;color:white;padding:2px 6px;">&#9654;</SPAN>
+								</TD>
+							</TR>
+						</TABLE>
+					</A>
 					<UL class="submenu">
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'why-to-open-fixed-deposit.html' );" class="nav-link">Why Choose Fixed Deposit?</A>
@@ -1465,7 +1495,18 @@ function loadMoneyHelpContent( event, htmlFileName )
 					</UL>
 				</LI>
 				<LI class="nav-item">
-					<A href="#" class="nav-link">Other banks<SPAN class="nav-arrow">&gt;</SPAN></A>
+					<A>
+						<TABLE  cellpadding="0" cellspacing="0" border="0">
+							<TR>
+								<TD valign='top' align='left' style='width:142px;'>
+									Other banks
+								</TD>
+								<TD valign='top' align='right'>
+									<SPAN style="background-color:blue;color:white;padding:2px 6px;">&#9654;</SPAN>
+								</TD>
+							</TR>
+						</TABLE>
+					</A>
 					<UL class="submenu">
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Handle-Pre-closure-bank.html' );" class="nav-link">Bank Account Closure & SMS Issue</A>
@@ -1476,7 +1517,18 @@ function loadMoneyHelpContent( event, htmlFileName )
 					</UL>
 				</LI>
 				<LI class="nav-item">
-					<A href="#" class="nav-link">Customer Interest Info<SPAN class="nav-arrow">&gt;</SPAN></A>
+					<A>
+						<TABLE  cellpadding="0" cellspacing="0" border="0">
+							<TR>
+								<TD valign='top' align='left' style='width:142px;'>
+									Customer Interest Info
+								</TD>
+								<TD>
+									<SPAN style="background-color:blue;color:white;padding:2px 6px;">&#9654;</SPAN>
+								</TD>
+							</TR>
+						</TABLE>
+					</A>
 					<UL class="submenu">
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'SBI-CREDIT-INTEREST.html' );" class="nav-link">AMB Quarterly Interest Rates</A>
@@ -1484,7 +1536,18 @@ function loadMoneyHelpContent( event, htmlFileName )
 					</UL>
 				</LI>
 				<LI class="nav-item">
-					<A href="#" class="nav-link">Loan<SPAN class="nav-arrow">&gt;</SPAN></A>
+					<A>
+						<TABLE  cellpadding="0" cellspacing="0" border="0">
+							<TR>
+								<TD valign='top' align='left' style='width:142px;'>
+									Loan
+								</TD>
+								<TD valign='top' align='right'>
+									<SPAN style="background-color:blue;color:white;padding:2px 6px;">&#9654;</SPAN>
+								</TD>
+							</TR>
+						</TABLE>
+					</A>
 					<UL class="submenu">
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'gold-loan.html' );" class="nav-link">Loan Repayment Timing</A>
@@ -1576,7 +1639,16 @@ function loadMoneyHelpContent( event, htmlFileName )
 				<UL class="submenu">
 				<LI class="nav-item">
 					<FONT color='white'>
-					BSNL Reliable Fiber & Mobile Services
+						<TABLE  cellpadding="0" cellspacing="0" border="0">
+							<TR>
+								<TD valign='top' align='left' style='width:142px;'>
+									BSNL Reliable Fiber & Mobile Services
+								</TD>
+								<TD valign='top' align='right'>
+									<SPAN style="background-color:blue;color:white;padding:2px 6px;">&#9654;</SPAN>
+								</TD>
+							</TR>
+						</TABLE>
 					</FONT>
 					<UL class="submenu">
 						<LI>
@@ -1623,9 +1695,18 @@ function loadMoneyHelpContent( event, htmlFileName )
 
 						<!-- Responsible Nations Index with submenu -->
 						<LI class="nav-item">
-							<A href="javascript:void(0);" class="nav-link">
-								Responsible Nations Index<SPAN class="nav-arrow">&gt;</SPAN>
-							</A>
+							<TABLE  cellpadding="0" cellspacing="0" border="0">
+								<TR>
+									<TD valign='top' align='left' style='width:142px;'>
+										<FONT color='white'>
+											Responsible Nations Index
+										</FONT>
+									</TD>
+									<TD valign='top' align='right'>
+										<SPAN style="background-color:blue;color:white;padding:2px 6px;">&#9654;</SPAN>
+									</TD>
+								</TR>
+							</TABLE>
 							<UL class="submenu">
 								<LI>
 									<A href="#" onclick="javascript:window.open('COUNTRIES-SUPPORTING-IRAN.html');" class="nav-link">
