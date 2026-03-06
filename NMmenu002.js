@@ -960,7 +960,6 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "privacy.html" && activeLink.textContent.trim() === "Privacy policy") ||
 							(htmlFileName === "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" && activeLink.textContent.trim() === "My ChatGPT Knowledge Transfer") ||
 							(htmlFileName === "pm-cm-india-relations.html" && activeLink.textContent.trim() === "India PM–CM Relations") ||
-							(htmlFileName === "ppf-post-office.html" && activeLink.textContent.trim() === "why to open PPF?") ||
 							(htmlFileName === "ippb-awareness-indian-citizens.html" && activeLink.textContent.trim() === "IPPB Premium Savings Tips") ||
 							(htmlFileName === "Self-Insurance-Plan-for-Parents.html" && activeLink.textContent.trim() === "Personal Self-Insurance Example") ||
 							(htmlFileName === "post-office-nsc.html" && activeLink.textContent.trim() === "National Savings Certificate (NSC)") ||
@@ -1443,9 +1442,6 @@ function loadMoneyHelpContent( event, htmlFileName )
 							</TR>
 						</TABLE>
 										<UL class="submenu">
-											<LI>
-												<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-post-office.html' );" class="nav-link">why to open PPF?</A>
-											</LI>
 											<LI>
 												<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-info.html' );" class="nav-link">Steps to save at PPF?</A>
 											</LI>
