@@ -1663,7 +1663,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<A href="#" onclick='javascript:loadHomeContent( event, "never-recharge-sim-on-expiry-date.html" );'><FONT color='white'>RechargeSIM@NextDayofExpiryDate</FONT></A>
 				</LI>
 				<LI>
-						<A href="#" onclick='javascript:window.open( "TamilLEtters.html" );'><FONT color='#00ff00'>Tamil letters</FONT></A>
+						<A href="#" onclick='javascript:window.open( "TamilLetters.html" );'><FONT color='#00ff00'>Tamil letters</FONT></A>
 				</LI>
 				<LI>
 					<A href="#" onclick='javascript:window.open( "Windows_ERR_HELP.html" );'><FONT color='#00ff00'>Windows Help Guide</FONT></A>
