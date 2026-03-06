@@ -3,14 +3,8 @@
 	<HEAD>
 		<META CHARSET="UTF-8">
 		<META name="keywords" content="murugesan,financial life management ,india savings account awareness">
-		<TITLE>IGCSE 2026 Examination Timetable</TITLE>
+		<TITLE id="pageTitle"></TITLE>
 	</HEAD>
-	<SCRIPT type='text/javascript'>
-		if( 'undefined' == typeof yyyy )
-		{
-			yyyy=new Date().getFullYear();
-		}
-	</SCRIPT>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 		<TABLE border='1' style='width:100%;color:black;'>
 			<TBODY>
@@ -28,7 +22,10 @@
 					<TD valign='top' align='middle' colspan='6'>
 						<H1 id="examTitle"></H1>
 						<SCRIPT type='text/javascript'>
-							document.getElementById("examTitle").innerHTML = "IGCSE " + yyyy + " Examination Timetable Feb–Mar " + yyyy + " IST";
+							var yyyy = new Date().getFullYear();
+							document.querySelectorAll('.year').forEach(e => e.textContent = yyyy);
+							document.getElementById("examTitle").textContent = "IGCSE " + yyyy + " Examination Timetable Feb–Mar " + yyyy + " IST";
+							document.getElementById("pageTitle").textContent = "IGCSE " + yyyy + " Examination Timetable";
 						</SCRIPT>
 					</TD>
 				</TR>
@@ -44,7 +41,7 @@
 					<TD valign='top' align='right'>01</TD>
 					<TD valign='top' align='right'>PHYSICS ALTERNATIVE TO PRACTICAL</TD>
 					<TD valign='top' align='right'>0625/62</TD>
-					<TD valign='top' align='right'>Thu 05-Feb-2026</TD>
+					<TD valign='top' align='right'>Thu 05-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>PM</TD>
 					<TD valign='top' align='right'>COMPLETED</TD>
 				</TR>
@@ -52,7 +49,7 @@
 					<TD valign='top' align='right'>02</TD>
 					<TD valign='top' align='right'>MATHEMATICS</TD>
 					<TD valign='top' align='right'>0580/22</TD>
-					<TD valign='top' align='right'>Fri 06-Feb-2026</TD>
+					<TD valign='top' align='right'>Fri 06-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>AM</TD>
 					<TD valign='top' align='right' rowspan='2'>
 						COMPLETED<BR>
@@ -64,7 +61,7 @@
 									a)
 								</TD>
 								<TD valign='top' align='right'>
-									Thu 05-Feb-2026
+									Thu 05-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									EVENING TO STUDY CHEMISTRY THEORY
@@ -75,7 +72,7 @@
 									b)
 								</TD>
 								<TD valign='top' align='right'>
-									Thu 05-Feb-2026
+									Thu 05-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									EVENING/NIGHT TO STUDY MATHEMATICS
@@ -86,7 +83,7 @@
 									a)
 								</TD>
 								<TD valign='top' align='right'>
-									Fri 06-Feb-2026
+									Fri 06-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									MORNING TO STUDY MATHEMATICS
@@ -99,14 +96,14 @@
 					<TD valign='top' align='right'>03</TD>
 					<TD valign='top' align='right'>CHEMISTRY THEORY</TD>
 					<TD valign='top' align='right'>0620/42</TD>
-					<TD valign='top' align='right'>Fri 06-Feb-2026</TD>
+					<TD valign='top' align='right'>Fri 06-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>PM</TD>
 				</TR>
 				<TR style='background-color:white;'>
 					<TD valign='top' align='right'>04</TD>
 					<TD valign='top' align='right'>ENGLISH READING</TD>
 					<TD valign='top' align='right'>0500/12</TD>
-					<TD valign='top' align='right'>Mon 09-Feb-2026</TD>
+					<TD valign='top' align='right'>Mon 09-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>AM</TD>
 					<TD valign='top' align='right' rowspan='1'>
 						COMPLETED<BR>
@@ -118,7 +115,7 @@
 									a)
 								</TD>
 								<TD valign='top' align='right'>
-									Fri 06-Feb-2026 
+									Fri 06-Feb-<span class="year"></span> 
 								</TD>
 								<TD valign='top' align='right'>
 									EVENING AND NIGHT TO STUDY CHEMISTRY ALTERNATIVE TO PRACTICAL
@@ -129,7 +126,7 @@
 									b)
 								</TD>
 								<TD valign='top' align='right'>
-									Sat 07-Feb-2026
+									Sat 07-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 01 TO STUDY HINDI WRITINg
@@ -140,7 +137,7 @@
 									c)
 								</TD>
 								<TD valign='top' align='right'>
-									Sun 08-Feb-2026
+									Sun 08-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 02 TO STUDY ENGLISH READING
@@ -151,7 +148,7 @@
 									d)
 								</TD>
 								<TD valign='top' align='right'>
-									Mon 09-Feb-2026 
+									Mon 09-Feb-<span class="year"></span> 
 								</TD>
 								<TD valign='top' align='right'>
 									MORNING TIME TO STUDY ENGLISH READING
@@ -162,7 +159,7 @@
 									e)
 								</TD>
 								<TD valign='top' align='right'>
-									Mon 09-Feb-2026 
+									Mon 09-Feb-<span class="year"></span> 
 								</TD>
 								<TD valign='top' align='right'>
 									EVENING TIME TO STUDY CHEMISTRY ALTERNATIVE TO PRACTICAL
@@ -173,7 +170,7 @@
 									f)
 								</TD>
 								<TD valign='top' align='right'>
-									Mon 09-Feb-2026 
+									Mon 09-Feb-<span class="year"></span> 
 								</TD>
 								<TD valign='top' align='right'>
 									EVENING/NIGHT TIME TO STUDY HINDI WRITING
@@ -186,7 +183,7 @@
 					<TD valign='top' align='right'>05</TD>
 					<TD valign='top' align='right'>HINDI WRITING</TD>
 					<TD valign='top' align='right'>0549/01</TD>
-					<TD valign='top' align='right'>Tue 10-Feb-2026</TD>
+					<TD valign='top' align='right'>Tue 10-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>AM</TD>
 					<TD valign='top' align='right' rowspan='2'>
 						<TABLE>
@@ -195,7 +192,7 @@
 									f)
 								</TD>
 								<TD valign='top' align='right'>
-									Tue 10-Feb-2026 
+									Tue 10-Feb-<span class="year"></span> 
 								</TD>
 								<TD valign='top' align='right'>
 									COMPLETED<BR>
@@ -209,14 +206,14 @@
 					<TD valign='top' align='right'>06</TD>
 					<TD valign='top' align='right'>CHEMISTRY ALTERNATIVE TO PRACTICAL</TD>
 					<TD valign='top' align='right'>0620/62</TD>
-					<TD valign='top' align='right'>Tue 10-Feb-2026</TD>
+					<TD valign='top' align='right'>Tue 10-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>PM</TD>
 				</TR>
 				<TR style='background-color:white;'>
 					<TD valign='top' align='right'>07</TD>
 					<TD valign='top' align='right'>ENGLISH WRITING</TD>
 					<TD valign='top' align='right'></TD>
-					<TD valign='top' align='right'>Wed 11-Feb-2026</TD>
+					<TD valign='top' align='right'>Wed 11-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>AM</TD>
 					<TD valign='top' align='right' rowspan='2'>
 						COMPLETED<BR>
@@ -227,7 +224,7 @@
 									a)
 								</TD>
 								<TD valign='top' align='right'>
-									Tue 10-Feb-2026
+									Tue 10-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									EVENING (1/2 hours) TO STUDY PHYSICS THEORY
@@ -238,7 +235,7 @@
 									b)
 								</TD>
 								<TD valign='top' align='right'>
-									Tue 10-Feb-2026
+									Tue 10-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									EVENING/NIGHT TIME TO STUDY ENGLISH WRITING
@@ -249,7 +246,7 @@
 									c)
 								</TD>
 								<TD valign='top' align='right'>
-									Wed 11-Feb-2026
+									Wed 11-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									MORNING TO STUDY ENGLISH WRITING
@@ -262,14 +259,14 @@
 					<TD valign='top' align='right'>08</TD>
 					<TD valign='top' align='right'>PHYSICS THEORY</TD>
 					<TD valign='top' align='right'></TD>
-					<TD valign='top' align='right'>Wed 11-Feb-2026</TD>
+					<TD valign='top' align='right'>Wed 11-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>PM</TD>
 				</TR>
 				<TR style='background-color:white;'>
 					<TD valign='top' align='right'>09</TD>
 					<TD valign='top' align='right'>ENVIRONMENTAL MANAGEMENT THEORY</TD>
 					<TD valign='top' align='right'>0680/12</TD>
-					<TD valign='top' align='right'>Thu 12-Feb-2026</TD>
+					<TD valign='top' align='right'>Thu 12-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>AM</TD>
 					<TD valign='top' align='right'>
 						COMPLETED<BR>
@@ -281,7 +278,7 @@
 					<TD valign='top' align='right'>10</TD>
 					<TD valign='top' align='right'>MATHEMATICS CALCULATOR</TD>
 					<TD valign='top' align='right'>0580/42</TD>
-					<TD valign='top' align='right'>Fri 13-Feb-2026</TD>
+					<TD valign='top' align='right'>Fri 13-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>AM</TD>
 					<TD valign='top' align='right'>
 						COMPLETED<BR>
@@ -293,10 +290,10 @@
 					<TD valign='top' align='right'>11</TD>
 					<TD valign='top' align='right'>HINDI LISTENING</TD>
 					<TD valign='top' align='right'>0549/02</TD>
-					<TD valign='top' align='right'>Mon 16-Feb-2026</TD>
+					<TD valign='top' align='right'>Mon 16-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>AM</TD>
 					<TD valign='top' align='right' rowspan='3'>
-						 TWO HOLIDAYS WERE THERE (Sat 14-Feb-2026 and Sun 15-Feb-2026) TO STUDY:<BR>
+						 TWO HOLIDAYS WERE THERE (Sat 14-Feb-<span class="year"></span> and Sun 15-Feb-<span class="year"></span>) TO STUDY:<BR>
 						 a) HINDI LISTENING<BR>
 						COMPLETED HINDI LISTENING<BR>
 						COMPLETED BIO ATP<BR>
@@ -309,7 +306,7 @@
 									a)
 								</TD>
 								<TD valign='top' align='right'>
-									Fri 13-Feb-2026
+									Fri 13-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									EVENING AND NIGHT
@@ -320,7 +317,7 @@
 									b)
 								</TD>
 								<TD valign='top' align='right'>
-									Sat 14-Feb-2026
+									Sat 14-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 01
@@ -331,7 +328,7 @@
 									c)
 								</TD>
 								<TD valign='top' align='right'>
-									Sun 15-Feb-2026
+									Sun 15-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 02
@@ -342,7 +339,7 @@
 									d)
 								</TD>
 								<TD valign='top' align='right'>
-									Mon 16-Feb-2026
+									Mon 16-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									MORNING TIME
@@ -355,21 +352,21 @@
 					<TD valign='top' align='right'>12</TD>
 					<TD valign='top' align='right'>BIO ATP (BIOLOGY ALTERNATIVE TO PRACTICAL)</TD>
 					<TD valign='top' align='right'>0610/62</TD>
-					<TD valign='top' align='right'>Tue 17-Feb-2026</TD>
+					<TD valign='top' align='right'>Tue 17-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>PM</TD>
 				</TR>
 				<TR style='background-color:white;'>
 					<TD valign='top' align='right'>13</TD>
 					<TD valign='top' align='right'>EVM P (ENVIRONMENTAL MANAGEMENT PRACTICAL)</TD>
 					<TD valign='top' align='right'>0680/22</TD>
-					<TD valign='top' align='right'>Wed 18-Feb-2026</TD>
+					<TD valign='top' align='right'>Wed 18-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>AM</TD>
 				</TR>
 				<TR style='background-color:white;'>
 					<TD valign='top' align='right'>14</TD>
 					<TD valign='top' align='right'>BIO THEORY (BIOLOGY THEORY)</TD>
 					<TD valign='top' align='right'>0610/42</TD>
-					<TD valign='top' align='right'>Tue 24-Feb-2026</TD>
+					<TD valign='top' align='right'>Tue 24-Feb-<span class="year"></span></TD>
 					<TD valign='top' align='right'>PM</TD>
 					<TD valign='top' align='right'>
 						COMPLETED BIO THEORY<BR>
@@ -380,7 +377,7 @@
 									a)
 								</TD>
 								<TD valign='top' align='right'>
-									Wed 18-Feb-2026
+									Wed 18-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									EVENING AND NIGHT
@@ -391,7 +388,7 @@
 									b)
 								</TD>
 								<TD valign='top' align='right'>
-									Thu 19-Feb-2026
+									Thu 19-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 01
@@ -402,7 +399,7 @@
 									c)
 								</TD>
 								<TD valign='top' align='right'>
-									Fri 20-Feb-2026
+									Fri 20-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 02
@@ -413,7 +410,7 @@
 									d)
 								</TD>
 								<TD valign='top' align='right'>
-									Sat 21-Feb-2026
+									Sat 21-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 03
@@ -424,7 +421,7 @@
 									e)
 								</TD>
 								<TD valign='top' align='right'>
-									Sun 22-Feb-2026
+									Sun 22-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 04
@@ -435,7 +432,7 @@
 									f)
 								</TD>
 								<TD valign='top' align='right'>
-									Mon 23-Feb-2026
+									Mon 23-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 05
@@ -446,7 +443,7 @@
 									g)
 								</TD>
 								<TD valign='top' align='right'>
-									Tue 24-Feb-2026
+									Tue 24-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									MORNING TIME
@@ -459,7 +456,7 @@
 					<TD valign='top' align='right'>15</TD>
 					<TD valign='top' align='right'>PHY MCQ (PHYSICS MCQ)</TD>
 					<TD valign='top' align='right'>0625/22</TD>
-					<TD valign='top' align='right'>Mon 02-Mar-2026</TD>
+					<TD valign='top' align='right'>Mon 02-Mar-<span class="year"></span></TD>
 					<TD valign='top' align='right'>PM</TD>
 					<TD valign='top' align='right'>
 						COMPLETED<BR>
@@ -473,7 +470,7 @@
 									a)
 								</TD>
 								<TD valign='top' align='right'>
-									Tue 24-Feb-2026
+									Tue 24-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									EVENING AND NIGHT TO STUDY CHEM MCQ (CHEMISTRY MCQ)
@@ -484,7 +481,7 @@
 									b)
 								</TD>
 								<TD valign='top' align='right'>
-									Wed 25-Feb-2026
+									Wed 25-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 01 TO STUDY CHEM MCQ (CHEMISTRY MCQ)
@@ -495,7 +492,7 @@
 									c)
 								</TD>
 								<TD valign='top' align='right'>
-									Thu 26-Feb-2026
+									Thu 26-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 02 TO STUDY BIO MCQ ( BIOLOGY MCQ )
@@ -506,7 +503,7 @@
 									d)
 								</TD>
 								<TD valign='top' align='right'>
-									Fri 27-Feb-2026
+									Fri 27-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 03 TO STUDY PHY MCQ (PHYSICS MCQ)
@@ -517,7 +514,7 @@
 									e)
 								</TD>
 								<TD valign='top' align='right'>
-									Sat 28-Feb-2026
+									Sat 28-Feb-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 04 TO STUDY PHY MCQ (PHYSICS MCQ)
@@ -528,7 +525,7 @@
 									f)
 								</TD>
 								<TD valign='top' align='right'>
-									Sun 01-Mar-2026
+									Sun 01-Mar-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 05 TO STUDY PHY MCQ (PHYSICS MCQ)
@@ -539,7 +536,7 @@
 									g)
 								</TD>
 								<TD valign='top' align='right'>
-									Mon 02-Mar-2026
+									Mon 02-Mar-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									MORNING TO STUDY PHY MCQ (PHYSICS MCQ)
@@ -552,11 +549,11 @@
 					<TD valign='top' align='right'>16</TD>
 					<TD valign='top' align='right'>CHEM MCQ (CHEMISTRY MCQ)</TD>
 					<TD valign='top' align='right'>0620/22</TD>
-					<TD valign='top' align='right'>Thu 05-Mar-2026</TD>
+					<TD valign='top' align='right'>Thu 05-Mar-<span class="year"></span></TD>
 					<TD valign='top' align='right'>PM</TD>
 					<TD valign='top' align='right' rowspan='2'>
 						COMPLETED.<BR>
-						ONLY ONE MORE EXAM TO COMPLETE IGCSE EXAMS ON Fri 06-Mar-2026 IST.<BR>
+						ONLY ONE MORE EXAM TO COMPLETE IGCSE EXAMS ON Fri 06-Mar-<span class="year"></span> IST.<BR>
 						a) BIO MCQ ( BIOLOGY MCQ )<BR>
 						b) CHEM MCQ (CHEMISTRY MCQ)
 						<TABLE>
@@ -565,7 +562,7 @@
 									a)
 								</TD>
 								<TD valign='top' align='right'>
-									Mon 02-Mar-2026
+									Mon 02-Mar-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									EVENING AND NIGHT TO STUDY BIO MCQ ( BIOLOGY MCQ )
@@ -576,7 +573,7 @@
 									b)
 								</TD>
 								<TD valign='top' align='right'>
-									Tue 03-Mar-2026
+									Tue 03-Mar-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 01 TO STUDY BIO MCQ ( BIOLOGY MCQ )
@@ -587,7 +584,7 @@
 									c)
 								</TD>
 								<TD valign='top' align='right'>
-									Wed 04-Mar-2026
+									Wed 04-Mar-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									HOLIDAY 02 TO STUDY CHEM MCQ (CHEMISTRY MCQ)
@@ -598,7 +595,7 @@
 									d)
 								</TD>
 								<TD valign='top' align='right'>
-									Thu 05-Mar-2026
+									Thu 05-Mar-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									MORNING TO STUDY CHEM MCQ (CHEMISTRY MCQ)
@@ -609,7 +606,7 @@
 									e)
 								</TD>
 								<TD valign='top' align='right'>
-									Thu 05-Mar-2026
+									Thu 05-Mar-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									EVENING AND NIGHT TO STUDY BIO MCQ ( BIOLOGY MCQ )
@@ -620,7 +617,7 @@
 									f)
 								</TD>
 								<TD valign='top' align='right'>
-									Fri 06-Mar-2026
+									Fri 06-Mar-<span class="year"></span>
 								</TD>
 								<TD valign='top' align='right'>
 									MORNING TO STUDY BIO MCQ ( BIOLOGY MCQ )
@@ -629,14 +626,18 @@
 						</TABLE>
 					</TD>
 				</TR>
-				<TR style='background-color:#00ff00;'>
+				<TR style='background-color:white;'>
 					<TD valign='top' align='right'>17</TD>
 					<TD valign='top' align='right'>BIO MCQ ( BIOLOGY MCQ )</TD>
 					<TD valign='top' align='right'>0610/22</TD>
-					<TD valign='top' align='right'>Fri 06-Mar-2026</TD>
+					<TD valign='top' align='right'>Fri 06-Mar-<span class="year"></span></TD>
 					<TD valign='top' align='right'>AM</TD>
 				</TR>
 			</TBODY>
 		</TABLE>
+		<SCRIPT type='text/javascript'>
+			document.querySelectorAll('.year').forEach(e => e.textContent = yyyy);
+			document.getElementById("pageTitle").innerText = "IGCSE " + yyyy + " Examination Timetable";
+		</SCRIPT>
 	</BODY>
 </HTML>
