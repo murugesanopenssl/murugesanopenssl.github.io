@@ -993,6 +993,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "bsnl-net-speed-no-parking-kannada.html" && activeLink.textContent.trim() === "BSNL Fibernet,Mobile kannada") ||
 							(htmlFileName === "BSNL-DATA1515-INVALID-SMS.html" && activeLink.textContent.trim() === "BSNL DATA1515 Invalid SMS") ||
 							(htmlFileName === "epson-printer-requirement.html" && activeLink.textContent.trim() === "Epson Printer Rates") ||
+							(htmlFileName === "never-recharge-sim-on-expiry-date.html" && activeLink.textContent.trim() === "RechargeSIM@NextDayofExpiryDate") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Gold Rate Comparison") ||
 							(htmlFileName === "futura-brush-buying-guide.html" && activeLink.textContent.trim() === "Futura Brush: Save AMB Interest (Cash Only)") ||
 							(htmlFileName === "bsnl-net-speed-no-parking-tamil.html" && activeLink.textContent.trim() === "BSNL Fibernet,Mobile Tamil") ||
@@ -1657,6 +1658,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 							<A href="#" onclick="javascript:loadHomeContent( event, 'BSNL-DATA1515-INVALID-SMS.html' );" class="nav-link">BSNL DATA1515 Invalid SMS</A>
 						</LI>
 					</UL>
+				</LI>
+				<LI>
+						<A href="#" onclick='javascript:loadHomeContent( event, "never-recharge-sim-on-expiry-date.html" );'><FONT color='white'>RechargeSIM@NextDayofExpiryDate</FONT></A>
 				</LI>
 				<LI>
 						<A href="#" onclick='javascript:window.open( "TamilLEtters.html" );'><FONT color='#00ff00'>Tamil letters</FONT></A>

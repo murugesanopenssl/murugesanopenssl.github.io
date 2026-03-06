@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recharge SIM One Day After Expiry</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        h1 {
+            font-size: 22px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 6px;
+        }
+        .err {
+            color: red;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 60px;
+            text-align: center;
+            margin-right: 4px;
+        }
+        pre {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<script>
+    var monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    function formatDateToDDMMMYYYY(d) {
+        var day = ('0' + d.getDate()).slice(-2);
+        var mon = monthNames[d.getMonth()];
+        var yr = d.getFullYear();
+        return day + '-' + mon + '-' + yr;
+    }
+
+    function setDefaultValues() {
+        document.getElementById('sim').value = 'BSNL';
+        var today = new Date('2026-03-06');
+        document.getElementById('calendar').value = today.toISOString().split('T')[0];
+        setThreeBoxes(today);
+    }
+    function setThreeBoxes(dateObj) {
+        document.getElementById('dd').value = ('0' + dateObj.getDate()).slice(-2);
+        document.getElementById('mmm').value = monthNames[dateObj.getMonth()];
+        document.getElementById('yyyy').value = dateObj.getFullYear();
+    }
+
+    function updateDate() {
+        var selected = document.getElementById('calendar').value;
+        if(selected != '') {
+            var d = new Date(selected);
+            setThreeBoxes(d);
+        }
+    }
+	setDefaultValues();
+    function showmsg() {
+        var sim = document.getElementById('sim').value;
+        var dd = document.getElementById('dd').value;
+        var mmm = document.getElementById('mmm').value;
+        var yyyy = document.getElementById('yyyy').value;
+        if(sim == '' || dd == '' || mmm == '' || yyyy == '') {
+            document.getElementById('result').innerHTML = '<span class="err">Please select SIM type and expiry date.</span>';
+            return;
+        }
+        var monthIndex = monthNames.indexOf(mmm);
+        var expiryDate = new Date(yyyy, monthIndex, dd);
+        var nextDay = new Date(expiryDate);
+        nextDay.setDate(expiryDate.getDate() + 1);
+        var formattedNextDay = formatDateToDDMMMYYYY(nextDay);
+
+        document.getElementById('result').innerHTML =
+            'SIM: ' + sim + ' | Expiry Date: ' + dd + '-' + mmm + '-' + yyyy + ' IST<br>' +
+            'Recharge one day after expiry date on ' + formattedNextDay + ' IST<br>' +
+            'This helps maintain your Average Monthly Balance (AMB) interest in any bank on Earth when interest is calculated once every 3 months.';
+    }
+</script>
+
+<table border="1">
+    <tr>
+        <td valign="top" align="left">
+<pre>
+I prefer all users on Earth to recharge their mobile one day after the SIM expiry date.
+
+All banks in this world provide interest to customers once every 3 months.
+Hence, they provide interest 4 times per year.
+
+Assume that a bank is going to provide interest to customers on Fri 25-Dec-2026.
+
+Assume that I have 1000.00 INR in my bank account on 01-Oct-2026.
+From 01-Oct-2026 to 25-Dec-2026, I have not withdrawn or deposited any money.
+
+The bank calculates the total amount for these days:
+
+TOTAL AMB SUM = 1000.00 × 86 days
+TOTAL AMB SUM = 86,000.00
+
+For this AMB amount, the bank provides some interest on 25-Dec-2026.
+
+If I recharge my SIM exactly on the expiry date, my total balance will reduce on that day.
+If I recharge one day after the expiry date, my total balance reduces one day later.
+
+Hence, my AMB interest may be slightly affected if I recharge exactly on expiry date.
+
+I have been following this practice for my own SIM from 2003 until now,
+for my mother from 2005 until now,
+and for my father from 2024 until now.
+</pre>
+
+<h1>
+a) Never recharge a SIM on the expiry date.<br>
+b) Always recharge any SIM for one year instead of 28 / 84 / 90 days to prevent wastage of money.
+</h1>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="left">
+            Select SIM:
+            <select id="sim">
+                <option value="BSNL">BSNL</option>
+                <option value="Airtel">Airtel</option>
+                <option value="Jio">Jio</option>
+                <option value="Vodafone">Vodafone</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="left">
+            Select Expiry Date: <input type="date" id="calendar" onchange="updateDate()">
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="left">
+            Selected Date:
+            <input type="text" id="dd" readonly>
+            <input type="text" id="mmm" readonly>
+            <input type="text" id="yyyy" readonly>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="left">
+            <input type="button" value="Check" onclick="showmsg()">
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="left" id="result">
+        </td>
+    </tr>
+</table>
+</body>
+</html>
