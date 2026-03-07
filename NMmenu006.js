@@ -1400,6 +1400,34 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'next_day_sim_recharge.html' );" class="nav-link">Handle MOBILE SIM and recharge dates?</A>
 						</LI>
+						<LI>
+							<A href="#" onclick='javascript:loadHomeContent( event, "never-recharge-sim-on-expiry-date.html" );'><FONT color='white'>RechargeSIM@NextDayofExpiryDate</FONT></A>
+						</LI>
+				<LI class="nav-item">
+					<FONT color='white'>
+						<TABLE  cellpadding="0" cellspacing="0" border="0">
+							<TR>
+								<TD valign='top' align='left' style='width:142px;'>
+									BSNL Reliable Fiber & Mobile Services
+								</TD>
+								<TD valign='top' align='right'>
+									<SPAN style="background-color:blue;color:white;padding:2px 6px;">&#9654;</SPAN>
+								</TD>
+							</TR>
+						</TABLE>
+					</FONT>
+					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'bsnl-net-speed-no-parking-kannada.html' );" class="nav-link">BSNL Fibernet,Mobile kannada</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'bsnl-net-speed-no-parking-tamil.html' );" class="nav-link">BSNL Fibernet,Mobile Tamil</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'BSNL-DATA1515-INVALID-SMS.html' );" class="nav-link">BSNL DATA1515 Invalid SMS</A>
+						</LI>
+					</UL>
+				</LI>
 				</UL>
 				<LI class="nav-item">
 					<A href="#" class="nav-link">
@@ -1634,34 +1662,6 @@ function loadMoneyHelpContent( event, htmlFileName )
 				<SPAN class="nav-arrow">&gt;</SPAN>
 				</A>
 				<UL class="submenu">
-				<LI class="nav-item">
-					<FONT color='white'>
-						<TABLE  cellpadding="0" cellspacing="0" border="0">
-							<TR>
-								<TD valign='top' align='left' style='width:142px;'>
-									BSNL Reliable Fiber & Mobile Services
-								</TD>
-								<TD valign='top' align='right'>
-									<SPAN style="background-color:blue;color:white;padding:2px 6px;">&#9654;</SPAN>
-								</TD>
-							</TR>
-						</TABLE>
-					</FONT>
-					<UL class="submenu">
-						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'bsnl-net-speed-no-parking-kannada.html' );" class="nav-link">BSNL Fibernet,Mobile kannada</A>
-						</LI>
-						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'bsnl-net-speed-no-parking-tamil.html' );" class="nav-link">BSNL Fibernet,Mobile Tamil</A>
-						</LI>
-						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'BSNL-DATA1515-INVALID-SMS.html' );" class="nav-link">BSNL DATA1515 Invalid SMS</A>
-						</LI>
-					</UL>
-				</LI>
-				<LI>
-						<A href="#" onclick='javascript:loadHomeContent( event, "never-recharge-sim-on-expiry-date.html" );'><FONT color='white'>RechargeSIM@NextDayofExpiryDate</FONT></A>
-				</LI>
 				<LI>
 						<A href="#" onclick='javascript:window.open( "TamilLetters.html" );'><FONT color='#00ff00'>Tamil letters</FONT></A>
 				</LI>
