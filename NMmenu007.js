@@ -993,6 +993,8 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "bsnl-net-speed-no-parking-kannada.html" && activeLink.textContent.trim() === "BSNL Fibernet,Mobile kannada") ||
 							(htmlFileName === "BSNL-DATA1515-INVALID-SMS.html" && activeLink.textContent.trim() === "BSNL DATA1515 Invalid SMS") ||
 							(htmlFileName === "epson-printer-requirement.html" && activeLink.textContent.trim() === "Epson Printer Rates") ||
+							(htmlFileName === "info-ltts.html" && activeLink.textContent.trim() === "L & T EMAIL AUTOMATION") ||
+							(htmlFileName === "talent-ibm.html" && activeLink.textContent.trim() === "IBM EMAIL AUTOMATION") ||
 							(htmlFileName === "never-recharge-sim-on-expiry-date.html" && activeLink.textContent.trim() === "RechargeSIM@NextDayofExpiryDate") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Gold Rate Comparison") ||
 							(htmlFileName === "futura-brush-buying-guide.html" && activeLink.textContent.trim() === "Futura Brush: Save AMB Interest (Cash Only)") ||
@@ -1663,17 +1665,23 @@ function loadMoneyHelpContent( event, htmlFileName )
 					</A>
 				</LI>
 				<LI class="nav-item">
-					<A href="#" onclick="loadHomeContent( event, 'info-ltts.html' )" class="nav-link">
-						<SPAN class="nav-icon">&#x1F465;<FONT color='black'>L & T HR EMAIL</FONT></SPAN>
-					</A>
-				</LI>
-				<LI class="nav-item">
 				<A href="#" class="nav-link">
 				<SPAN class="nav-icon">&#x1F4BB;</SPAN>
 				<SPAN class="nav-text"><FONT color='black'>Tech</FONT></SPAN>
 				<SPAN class="nav-arrow">&gt;</SPAN>
 				</A>
 				<UL class="submenu">
+				<LI class="nav-item">
+					<SPAN class="nav-icon"><FONT color='white'>EMAIL AUTOMATION</FONT></SPAN>
+					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="loadHomeContent( event, 'info-ltts.html' )" class="nav-link">L & T EMAIL AUTOMATION</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="loadHomeContent( event, 'talent-ibm.html' )" class="nav-link">IBM EMAIL AUTOMATION</A>
+						</LI>
+					</UL>
+				</LI>
 				<LI>
 						<A href="#" onclick='javascript:window.open( "TamilLetters.html" );'><FONT color='#00ff00'>Tamil letters</FONT></A>
 				</LI>

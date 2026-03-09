@@ -1,33 +1,78 @@
-Send replye email to:<BR>
+Send reply email to:<BR>
 info@ltts.com instead of replying automated email:<FONT color='red'>Recruit.AI@LTTS.com</FONT>
-<PRE>info@ltts.com
-
-SMTP automated email:
-Dear EMPLOYEE,
-
-We hope you’re doing well!
-
-We noticed it’s been a while since we last connected, and we’d love to keep your profile up to date in our talent network.
-
-If you are interested in pursuing new career opportunities or wish to remain on our radar for future openings, kindly share your updated resume with us at your earliest convenience.
-
-This will help us match you with roles that align with your skills and aspirations, and therefore:
-
-✔ Recommend roles that fit your skills
-✔ Speed up the hiring process
-✔ Keep you informed about relevant openings
-
-You can update your resume by clicking here 
-
-link to chatbot
-
-We’ve always admired your potential and would love to have you in our network again. Let’s stay connected - your next opportunity could be closer than you think!
-
-Best regards,
-Talent Acquisition Team
-L&T Technology Services Limited
-Facebook	Twitter	Instagram	LinkedIn
-ltts.com
-© <B><U><FONT color='red'>2025</FONT></B></U> L&T Technology Services Limited. All Rights Reserved.
-You can Unsubscribe | Manage subscription preferences
+AUTOMATED SHELL SCRIPT:
+<TABLE>
+<TR>
+<TD>
+<PRE>$ /usr/bin/cat ./send-samplemail.sh
+#!/bin/bash
+set -x
+TO="india.careers@ltts.com"
+#FOLLOWING LINE FOR TESTING PURPOSE:
+#TO="murugesangct@gmail.com"
+BCC="murugesanopenssl@gmail.com"
+# We cannot change FROM Email id, this will be replaced by our sender's email id by smtp server.
+FROM="india.careers@ltts.com"
+REPLY_TO="india.careers@ltts.com"
+FROM_NAME="murugesanopenssl.github.io@LTTS.com"
+SUBJECT="Re: Let's Re Connect"
+DATE="$(/usr/bin/date "+%A %d-%b-%Y %I:%M %p %Z")"
+BODY=$(/usr/bin/cat <<EOF
+Re-sending this email using automation and AI using 127.0.0.1
+BCC: $BCC
+On $DATE, $FROM wrote:
+>
+> Respected HR team,
+>
+> Thank you for using SMTP server.
+>
+> As per my remembrance I have attended technical round during 2019,
+>
+> no response after selection.
+>
+> Regards,
+> N Murugesan
+> google:
+> murugesan openssl
+> https://murugesanopenssl.github.io
+> On Sun 08-Mar-2026 03:03 PM, LTTS TA Team wrote:
+> FROM: LTTS TA Team <Recruit.AI@LTTS.com> automated shell script.
+> To: murugesanopenssl@gmail.com Sun 08-Mar-2026 03:03 PM IST
+>>
+>> Dear MURUGESAN ,
+>>
+>> We hope you're doing well!
+>>
+>> We noticed it's been a while since we last connected, and we'd love to keep your profile up to date in our talent network.
+>>
+>> If you are interested in pursuing new career opportunities or wish to remain on our radar for future openings, kindly share your updated resume with us at your earliest convenience.
+>>
+>> This will help us match you with roles that align with your skills and aspirations, and therefore:
+>>
+>> &#9989; Recommend roles that fit your skills
+>> &#9989; Speed up the hiring process
+>> &#9989; Keep you informed about relevant openings
+>>
+>> You can update your resume by clicking here
+>>
+>> link to chatbot
+>>
+>> We've always admired your potential and would love to have you in our network again. Let's stay connected - your next opportunity could be closer than you think!
+>>
+>> Best regards,
+>>
+>> Talent Acquisition Team
+>> L&T Technology Services Limited
+>> Facebook     Twitter         Instagram       LinkedIn
+>> ltts.com
+>> © <FONT color='red'><B><U>2025</B></U></FONT> L&T Technology Services Limited. All Rights Reserved.
+>>
+>> You can Unsubscribe | Manage subscription preferences
+EOF
+)
+echo -e "From: ${FROM}\nTo: ${TO}\nReply-To: $REPLY_TO\nBcc: ${BCC}\nSubject: ${SUBJECT}\n\n${BODY}" 2>&1 | \
+/usr/sbin/msmtp.exe --read-envelope-from -t
+echo "Email sent to ${TO} with BCC to ${BCC}"
 </PRE>
+</TD>
+</TR>
