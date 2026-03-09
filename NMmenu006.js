@@ -1386,6 +1386,13 @@ function loadMoneyHelpContent( event, htmlFileName )
 					</A>
 					<UL class="submenu">
 						<LI>
+							<A href="#" onclick="javascript:window.open( 'why-iran-israel-us-war-increase-india-lpg.html' );" class="nav-link">
+								<FONT color='#00ff00'>
+									Why War Raises LPG Gas Prices at Home
+								</FONT>
+							</A>
+						</LI>
+						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-recharge-any-sim.html' );" class="nav-link">Internet Recharge Exceptions</A>
 						</LI>
 						<LI>
@@ -1653,6 +1660,11 @@ function loadMoneyHelpContent( event, htmlFileName )
 				<LI class="nav-item">
 					<A href="#" onclick="loadHomeContent( event, 'Prediction_04.html' )" class="nav-link">
 						<SPAN class="nav-icon">&#x1F465;<FONT color='black'>MyPredict</FONT></SPAN>
+					</A>
+				</LI>
+				<LI class="nav-item">
+					<A href="#" onclick="loadHomeContent( event, 'info-ltts.html' )" class="nav-link">
+						<SPAN class="nav-icon">&#x1F465;<FONT color='black'>L & T HR EMAIL</FONT></SPAN>
 					</A>
 				</LI>
 				<LI class="nav-item">
