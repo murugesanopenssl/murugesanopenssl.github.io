@@ -935,6 +935,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							const shouldDisableLink = 
 							(htmlFileName === "HandleBankAMB.html" && activeLink.textContent.trim() === "ATM Usage Tips") ||
 							(htmlFileName === "IGCSE-EXAM-DATES.html" && activeLink.textContent.trim() === "Cambridge IGCSE Examination Timetable") ||
+							(htmlFileName === "twelth-exam-dates.html" && activeLink.textContent.trim() === "12th EXAM CHART") ||
+							(htmlFileName === "eleventh-exam-dates.html" && activeLink.textContent.trim() === "11th EXAM CHART") ||
+							(htmlFileName === "SSLC-EXAM-DATES.html" && activeLink.textContent.trim() === "SSLC EXAM CHART") ||
 							(htmlFileName === "make-son-daughter-study-for-exam.html" && activeLink.textContent.trim() === "Parent/Teacher Exam Guide") ||
 							(htmlFileName === "Tamilnadu-MLA.html" && activeLink.textContent.trim() === "Tamil Nadu MLAs") ||
 							(htmlFileName === "new-employee-sbi-account.html" && activeLink.textContent.trim() === "Employee Savings Guide") ||
@@ -1756,6 +1759,15 @@ function loadMoneyHelpContent( event, htmlFileName )
 				<SPAN class="nav-text"><FONT color='black'>Calendar</FONT></SPAN>
 				</A>
 					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="javascript:window.open( 'twelth-exam-dates.html' );" class="nav-link">12th EXAM CHART</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:window.open( 'eleventh-exam-dates.html' );" class="nav-link">11th EXAM CHART</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:window.open( 'SSLC-EXAM-DATES.html' );" class="nav-link">SSLC EXAM CHART</A>
+						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'IGCSE-EXAM-DATES.html' );" class="nav-link">Cambridge IGCSE Examination Timetable</A>
 						</LI>

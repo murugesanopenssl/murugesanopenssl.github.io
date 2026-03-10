@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META CHARSET='UTF-8'>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<TABLE class="td-black-text" border='1' style='width:100%;'>
+			<TR>
+				<TD align='middle' valign='top' colspan='2'>
+					SSLC EXAM CHART
+					<DIV id='yyyy'></DIV>
+				</TD>
+			</TR>
+			<TR>
+				<TD align='right' valign='top'>
+					DATE IST
+				</TD>
+				<TD align='right' valign='top'>
+					SUBJECT
+				</TD>
+			</TR>
+			<TR id='r1'>
+				<TD align='right' valign='top'>
+					<DIV id='d1'></DIV>
+				</TD>
+				<TD align='right' valign='top'>
+					TAMIL & Other languages
+				</TD>
+			</TR>
+			<TR id='r2'>
+				<TD align='right' valign='top'>
+					<DIV id='d2'></DIV>
+				</TD>
+				<TD align='right' valign='top'>
+					ENGLISH
+				</TD>
+			</TR>
+			<TR id='r3'>
+				<TD align='right' valign='top'>
+					<DIV id='d3'></DIV>
+				</TD>
+				<TD align='right' valign='top'>
+					MATHEMATICS
+				</TD>
+			</TR>
+			<TR id='r4'>
+				<TD align='right' valign='top'>
+					<DIV id='d4'></DIV>
+				</TD>
+				<TD align='right' valign='top'>
+					SCIENCE
+				</TD>
+			</TR>
+			<TR id='r5'>
+				<TD align='right' valign='top'>
+					<DIV id='d5'></DIV>
+				</TD>
+				<TD align='right' valign='top'>
+					SOCIAL SCIENCE
+				</TD>
+			</TR>
+			<TR id='r6'>
+				<TD align='right' valign='top'>
+					<DIV id='d6'></DIV>
+				</TD>
+				<TD align='right' valign='top'>
+					OPTIONAL LANGUAGE
+				</TD>
+			</TR>
+		</TABLE>
+		<SCRIPT type='text/javascript'>
+			var yyyy=new Date().getFullYear();
+			document.getElementById('yyyy').innerText=yyyy;
+			function f(y,m,d)
+			{
+				var a=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+				var b=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+				var x=new Date(y,m,d);
+				if(10>d)
+				{
+					return a[x.getDay()]+' 0'+d+'-'+b[m]+'-'+y;
+				}
+				else
+				{
+					return a[x.getDay()]+' '+d+'-'+b[m]+'-'+y;
+				}
+			}
+			function c(r,y,m,d)
+			{
+				var t=new Date();
+				var e=new Date(y,m,d);
+				if( t > e )
+				{
+					document.getElementById(r).style.background='#00ff00';
+				}
+				else
+				{
+					document.getElementById(r).style.background='white';
+				}
+			}
+			document.getElementById('d1').innerText=f(yyyy,2,11);
+			document.getElementById('d2').innerText=f(yyyy,2,16);
+			document.getElementById('d3').innerText=f(yyyy,2,25);
+			document.getElementById('d4').innerText=f(yyyy,2,30);
+			document.getElementById('d5').innerText=f(yyyy,3,2);
+			document.getElementById('d6').innerText=f(yyyy,3,6);
+			c('r1',yyyy,2,11);
+			c('r2',yyyy,2,16);
+			c('r3',yyyy,2,25);
+			c('r4',yyyy,2,30);
+			c('r5',yyyy,3,2);
+			c('r6',yyyy,3,6);
+		</SCRIPT>
+	</BODY>
+</HTML>

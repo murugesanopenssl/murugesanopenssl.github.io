@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>12th Exam Dates</title>
+<style>
+  table { width:100%; border-collapse: collapse; }
+  th, td { border: 1px solid black; padding: 8px; text-align: left; vertical-align: top; }
+  th { background-color: #f2f2f2; }
+</style>
+</head>
+<body>
+<h2>12th Exam Chart</h2>
+<div id="year"></div>
+<table id="examTable">
+  <tr>
+    <th>DATE IST</th>
+    <th>SUBJECTS</th>
+  </tr>
+</table>
+
+<script>
+const yyyy = new Date().getFullYear();
+document.getElementById('year').innerText = yyyy;
+
+// List of exams: [day, month (0-indexed), subjects]
+const exams = [
+  [2, 2, ['FIRST LANGUAGE']],
+  [5, 2, ['ENGLISH']],
+  [9, 2, ['CHEMISTRY','ACCOUNTANCY','GEOGRAPHY']],
+  [13,2, ['PHYSICS','ECONOMICS','EMPLOYABILITY SKILLS']],
+  [17,2, ['MATHEMATICS','ZOOLOGY','COMMERCE','MICRO BIOLOGY','NUTRITION AND DIETETICS','TEXTILE & DRESS DESIGNING','FOOD SERVICE MANAGEMENT','AGRICULTURAL SCIENCE','NURSING (General)']],
+  [23,2, ['BIOLOGY','BOTANY','HISTORY','BUSINESS MATHEMATICS AND STATISTICS','BASIC ELECTRONICS ENGINEERING','BASIC CIVIL ENGINEERING','BASIC AUTOMOBILE ENGINEERING','BASIC MECHANICAL ENGINEERING','TEXTILE TECHNOLOGY','OFFICE MANAGEMENT AND SECRETARYSHIP']],
+  [26,2, ['COMMUNICATIVE ENGLISH','ETHICS AND INDIAN CULTURE','COMPUTER SCIENCE','COMPUTER APPLICATIONS','BIO-CHEMISTRY','ADVANCED LANGUAGE (TAMIL)','HOME SCIENCE','POLITICAL SCIENCE','STATISTICS','NURSING VOCATIONAL','BASIC ELECTRICAL ENGINEERING']]
+];
+
+// Helper to format date
+function formatDate(day, month) {
+  const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const date=new Date(yyyy, month, day);
+  const dayNum = day < 10 ? '0'+day : day;
+  return days[date.getDay()] + ' ' + dayNum + '-' + months[month] + '-' + yyyy;
+}
+
+// Add table rows dynamically
+const table = document.getElementById('examTable');
+const today = new Date();
+
+exams.forEach((exam, index) => {
+  const [day, month, subjects] = exam;
+  const tr = document.createElement('tr');
+  tr.style.backgroundColor = new Date(yyyy, month, day) < today ? '#00ff00' : '#ffffff';
+
+  const tdDate = document.createElement('td');
+  tdDate.innerText = formatDate(day, month);
+  tdDate.style.textAlign = 'right';
+
+  const tdSubjects = document.createElement('td');
+  tdSubjects.innerHTML = subjects.join('<br>');
+
+  tr.appendChild(tdDate);
+  tr.appendChild(tdSubjects);
+  table.appendChild(tr);
+});
+</script>
+</body>
+</html>

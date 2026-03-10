@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title id="pageTitle"></title>
+<style>
+  table { width: 100%; border-collapse: collapse; }
+  th, td { border: 1px solid black; padding: 8px; text-align: left; }
+</style>
+</head>
+<body>
+
+<h2 id="pageHeader"></h2>
+
+<table id="examTable">
+  <tr>
+    <th>Date IST</th>
+    <th>Subjects</th>
+  </tr>
+</table>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  // Dynamic current year
+  const yyyy = new Date().getFullYear();
+  document.getElementById('pageTitle').innerText = `TN 11th Exam Dates ${yyyy}`;
+  document.getElementById('pageHeader').innerText = `TN 11th Exam Dates ${yyyy} (Arrear Candidates)`;
+
+  // Exam data: [day, month(0-indexed), subjects]
+  const examData = [
+    [3, 2, 'Language'],
+    [6, 2, 'English'],
+    [10, 2, 'Chemistry / Accountancy / Geography'],
+    [12, 2, 'Communicative English / Ethics and Indian Culture / Computer Science / Computer Applications / Bio-Chemistry / Advanced Language (Tamil) / Home Science / Political Science / Statistics / Basic Electrical Engineering / Nursing Vocational'],
+    [18, 2, 'Physics / Economics / Employability Skills'],
+    [24, 2, 'Mathematics / Zoology / Commerce / Micro Biology / Nutrition Dietetics / Textiles & Dress Designing / Food Service Management / Agricultural Science / Nursing (General)'],
+    [27, 2, 'Biology / Botany / History / Business Mathematics and Statistics / Basic Electronics Engineering / Basic Civil Engineering / Basic Automobile Engineering / Basic Mechanical Engineering / Textile Technology / Office Management and Secretaryship']
+  ];
+
+  const table = document.getElementById('examTable');
+  const today = new Date();
+
+  // Format date function
+  function formatDate(day, month) {
+    const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const date = new Date(yyyy, month, day);
+    const dayStr = date.getDate() < 10 ? '0'+date.getDate() : date.getDate();
+    return `${days[date.getDay()]} ${dayStr}-${months[month]}-${yyyy}`;
+  }
+
+  // Fill table dynamically
+  examData.forEach((exam, index) => {
+    const [day, month, subjects] = exam;
+    const row = table.insertRow(-1);
+    const dateCell = row.insertCell(0);
+    const subjectCell = row.insertCell(1);
+
+    dateCell.innerText = formatDate(day, month);
+    subjectCell.innerText = subjects;
+
+    // Set background color if exam date is past
+    const examDate = new Date(yyyy, month, day);
+    row.style.backgroundColor = (examDate < today) ? '#00ff00' : '#ffffff';
+  });
+
+});
+</script>
+
+</body>
+</html>
