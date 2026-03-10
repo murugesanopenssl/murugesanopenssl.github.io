@@ -17,65 +17,66 @@ REPLY_TO="talent@ibm.com;murugesanopenssl.github.io@ibm.com"
 FROM_NAME="murugesanopenssl.github.io@ibm.com"
 SUBJECT="Re: Action Required: Renew IBM Talent Acquisition Opt-in form"
 DATE="$(/usr/bin/date "+%A %d-%b-%Y %I:%M %p %Z")"
-BODY=$(/usr/bin/cat << EOF
-&lt;HTML>
-&lt;BODY>
-Respected Madam/Sir,&lt;BR>
-&lt;P>Using automated email use dynamic \${YYYY}:&lt;P>
-&lt;P>
-Replace:&lt;BR>
-	IBM Corporation &lt;FONT color='red'>&lt;B>&lt;U>2022&lt;B>&lt;U>&lt;FONT>&lt;BR>
-With:&lt;BR>
-	IBM Corporation $YYYY
-&lt;P>
-&lt;P>
-You have offered me a position with a salary lower than my previous GXS salary in 2008/2009.&lt;BR>
-I therefore had to decline the offer.&lt;BR>
+BODY=$(/usr/bin/cat &lt;&lt; EOF
+&lt;HTML&gt;
+&lt;BODY&gt;
+Respected Madam/Sir,&lt;BR&gt;
+&lt;P&gt;Using automated email use dynamic \${YYYY}:&lt;/P&gt;
+&lt;P&gt;
+Replace:&lt;BR&gt;
+        IBM Corporation &lt;FONT color='red'&gt;&lt;B&gt;&lt;U&gt;2022&lt;/B&gt;&lt;/U&gt;&lt;/FONT&gt;&lt;BR&gt;
+With:&lt;BR&gt;
+        IBM Corporation $YYYY
+&lt;/P&gt;
+&lt;P&gt;
+You have offered me a position with a salary lower than my previous GXS salary in 2008/2009.&lt;BR&gt;
+I therefore had to decline the offer.&lt;BR&gt;
 I am sending this automated reply via a shell script on localhost
-&lt;P>
-&lt;P>
-BCC: $BCC&lt;BR>
+&lt;/P&gt;
+&lt;P&gt;
+BCC: $BCC&lt;BR&gt;
 On $DATE, $FROM wrote:
-&lt;P>
-&lt;P>
-Regards,&lt;BR>
-murugesan openssl&lt;BR>
-&lt;a href="https://murugesanopenssl.github.io">https://murugesanopenssl.github.io&lt;a>
-On Sun 08-Mar-2026, 05:58 AM, IBM Talent Acquisition wrote:&lt;BR>
-> Email header&lt;BR>
->&lt;BR>
-> Hello, Murugesan&lt;BR>
->&lt;BR>
-> It's time to renew your interest in the IBM Talent Network!&lt;BR>
->&lt;BR>
-> To maintain your active participation and ensure we continue to consider you for future job opportunities, we require you to re-acknowledge your interest by completing this renewal form.&lt;BR>
-> Key Reminders:&lt;BR>
->&lt;BR>
->     Renewal Agreement: By completing this form, you confirm you agree to share your profile information with IBM and allow our teams to review your profile for suitable job opportunities.&lt;BR>
->&lt;BR>
->     Keep Your Profile Fresh! We rely on the information you provide. Please take this opportunity to update your profile with your latest skills, work history, contact information, and career goals. An accurate, current profile is essential for us to successfully match you with the best roles at IBM.&lt;BR>
->&lt;BR>
->     Profiles that are not renewed will be permanently archived from our active sourcing pool.&lt;BR>
->&lt;BR>
-> Thank you,&lt;BR>
->&lt;BR>
-> IBM Talent Acquisition Team&lt;BR>
->&lt;BR>
-> ibm.com/careers&lt;BR>
->&lt;BR>
-> ©IBM Corporation &lt;FONT color='red'>&lt;B>&lt;U>2022&lt;B>&lt;U>&lt;FONT>. IBM, the IBM logo, IBM Cloud™ and ibm.com are trademarks of the international Business Machines Corp., registered in many jurisdictions worldwide. This document is current as of the initial date of publication and maybe changed by IBM at any time. Not all offerings are available in every country in which IBM operates.&lt;BR>
->&lt;BR>
-> To ensure delivery to your inbox, please add talent@ibm.com to your address book. Please do not reply to this email, as we are unable to respond from this address.&lt;BR>
->&lt;BR>
-> If you'd like us to refrain from sending you similar e-mails in the future, please click on the unsubscribe link below. You may also mail a written request to IBM US at: IBM Corporation, 11501 Burnet Rd, Bldg 904 3B-000, Austin, TX 78758.&lt;BR>
->&lt;BR>
-> © IBM | Data Privacy Policy&lt;BR>
->&lt;BR>
-> This email is being sent on behalf of IBM. To unsubscribe from further emails on this list, please click &lt;A href='https://ibmglobal.avature.net/unsubscribe.php?uid=14a450593298c1d6d4c136c31c5f251765cd6095&code=IX6xo96jmTOYT9diZN4NTod6yDQwgbhQ'>here&lt;/A>.
-&lt;/BODY>
-&lt;/HTML>
+&lt;/P&gt;
+&lt;P&gt;
+Regards,&lt;BR&gt;
+murugesan openssl&lt;BR&gt;
+&lt;a href="https://murugesanopenssl.github.io"&gt;https://murugesanopenssl.github.io&lt;/a&gt;
+On Sun 08-Mar-2026, 05:58 AM, IBM Talent Acquisition wrote:&lt;BR&gt;
+&gt; Email header&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt; Hello, Murugesan&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt; It's time to renew your interest in the IBM Talent Network!&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt; To maintain your active participation and ensure we continue to consider you for future job opportunities, we require you to re-acknowledge your interest by completing this renewal form.&lt;BR&gt;
+&gt; Key Reminders:&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt;     Renewal Agreement: By completing this form, you confirm you agree to share your profile information with IBM and allow our teams to review your profile for suitable job opportunities.&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt;     Keep Your Profile Fresh! We rely on the information you provide. Please take this opportunity to update your profile with your latest skills, work history, contact information, and career goals. An accurate, current profile is essential for us to successfully match you with the best roles at IBM.&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt;     Profiles that are not renewed will be permanently archived from our active sourcing pool.&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt; Thank you,&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt; IBM Talent Acquisition Team&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt; ibm.com/careers&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt; ©IBM Corporation &lt;FONT color='red'&gt;&lt;B&gt;&lt;U&gt;2022&lt;/B&gt;&lt;/U&gt;&lt;/FONT&gt;. IBM, the IBM logo, IBM Cloud™ and ibm.com are trademarks of the international Business Machines Corp., registered in many jurisdictions worldwide. This document is current as of the initial date of publication and maybe changed by IBM at any time. Not all offerings are available in every country in which IBM operates.&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt; To ensure delivery to your inbox, please add talent@ibm.com to your address book. Please do not reply to this email, as we are unable to respond from this address.&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt; If you’d like us to refrain from sending you similar e-mails in the future, please click on the unsubscribe link below. You may also mail a written request to IBM US at: IBM Corporation, 11501 Burnet Rd, Bldg 904 3B-000, Austin, TX 78758.&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt; © IBM | Data Privacy Policy&lt;BR&gt;
+&gt;&lt;BR&gt;
+&gt; This email is being sent on behalf of IBM. To unsubscribe from further emails on this list, please click &lt;A href='https://ibmglobal.avature.net/unsubscribe.php?uid=14a450593298c1d6d4c136c31c5f251765cd6095&code=IX6xo96jmTOYT9diZN4NTod6yDQwgbhQ'&gt;here&lt;/A&gt;.
+&lt;/BODY&gt;
+&lt;/HTML&gt;
 EOF
 )
+#A blank line is required before writing ${BODY} for automation
 echo -e "From: ${FROM}
 To: ${TO}
 Reply-To: $REPLY_TO
@@ -84,7 +85,7 @@ Subject: ${SUBJECT}
 MIME-Version: 1.0
 Content-Type: text/html; charset=UTF-8
 
-${BODY}" 2>&1 | \
+${BODY}" 2&gt;&1 | \
 /usr/sbin/msmtp.exe --read-envelope-from -t
 echo "Email sent to ${TO} with BCC to ${BCC}"
 </PRE>
