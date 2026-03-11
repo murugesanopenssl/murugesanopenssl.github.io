@@ -998,6 +998,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "epson-printer-requirement.html" && activeLink.textContent.trim() === "Epson Printer Rates") ||
 							(htmlFileName === "info-ltts.html" && activeLink.textContent.trim() === "L & T EMAIL AUTOMATION") ||
 							(htmlFileName === "talent-ibm.html" && activeLink.textContent.trim() === "IBM EMAIL AUTOMATION") ||
+							(htmlFileName === "talent-accenture.html" && activeLink.textContent.trim() === "ACCENTURE EMAIL AUTOMATION") ||
 							(htmlFileName === "never-recharge-sim-on-expiry-date.html" && activeLink.textContent.trim() === "RechargeSIM@NextDayofExpiryDate") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Gold Rate Comparison") ||
 							(htmlFileName === "futura-brush-buying-guide.html" && activeLink.textContent.trim() === "Futura Brush: Save AMB Interest (Cash Only)") ||
@@ -1005,6 +1006,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "Visitor_count.html" && activeLink.textContent.trim() === "Visitor Information") ||
 							(htmlFileName === "my-location.html" && activeLink.textContent.trim() === "Display my location") ||
 							(htmlFileName === "steps-to-recharge-any-sim.html" && activeLink.textContent.trim() === "Internet Recharge Exceptions") ||
+							(htmlFileName === "israel-usa-iran-war-2026.html" && activeLink.textContent.trim() === "Cylinder/Food Warnings due to War") ||
 							(htmlFileName === "Increase-Daily-Salary.html" && activeLink.textContent.trim() === "Income Growth Strategies") ||
 							(htmlFileName === "Bharath_gas_booking_steps.html" && activeLink.textContent.trim() === "Bharat Gas Booking Steps") ||
 							(htmlFileName === "Indian-Oil-Cylinder-Booking-Online-Steps.html" && activeLink.textContent.trim() === "Indian Oil Booking Steps") ||
@@ -1391,6 +1393,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 					</A>
 					<UL class="submenu">
 						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'israel-usa-iran-war-2026.html' );" class="nav-link">Cylinder/Food Warnings due to War</A>
+						</LI>
+						<LI>
 							<A href="#" onclick="javascript:window.open( 'why-iran-israel-us-war-increase-india-lpg.html' );" class="nav-link">
 								<FONT color='#00ff00'>
 									Why War Raises LPG Gas Prices at Home
@@ -1677,6 +1682,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 				<LI class="nav-item">
 					<SPAN class="nav-icon"><FONT color='white'>EMAIL AUTOMATION</FONT></SPAN>
 					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="loadHomeContent( event, 'talent-accenture.html' )" class="nav-link">ACCENTURE EMAIL AUTOMATION</A>
+						</LI>
 						<LI>
 							<A href="#" onclick="loadHomeContent( event, 'info-ltts.html' )" class="nav-link">L & T EMAIL AUTOMATION</A>
 						</LI>

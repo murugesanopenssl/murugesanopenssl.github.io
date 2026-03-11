@@ -1,0 +1,57 @@
+Use same reply email to:<BR>
+support@accenturealumni.com<BR>
+AUTOMATED SHELL SCRIPT:
+<TABLE>
+<TR>
+<TD>
+<PRE>$ /usr/bin/cat ./accenture-replymail.sh
+#!/bin/bash
+#TO="murugesangct@gmail.com"
+REPLY_TO="murugesan.nagarajan@accenture.com"
+TO="support@accenturealumni.com"
+BCC="murugesanopenssl@gmail.com"
+FROM="murugesan.nagarajan@accenture.com"
+SUBJECT="Re: Hot Jobs Newsletter — March Edition"
+DATE="$(/usr/bin/date "+%A %d-%b-%Y %I:%M %p %Z")"
+HTML_FILE="/home/NMurugesan/Din_Back/jobs/Send-Automatic-Email/No-reply-email.html"
+if [[ -f "${HTML_FILE}" ]]
+then
+	BODY_TOP="&lt;P&gt;Respected automation team,&lt;/P&gt;
+&lt;P&gt;Sending my reply email using automation script at CYGWIN.&lt;/P&gt;
+&lt;P&gt;Thank you for your automated email.&lt;/P&gt;
+&lt;P&gt;
+BCC: ${BCC}&lt;BR&gt;
+On ${DATE}, ${FROM} wrote:
+&lt;/P&gt;
+Description:&lt;BR&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use automated shell script at any OS (CYGWIN_NT/MSYS_NT/UNIX/*BSD/Linux/Minix/QNX/IRIX/Tru64/Haiku/BeOS/Android/AIX/SunOS/HP-UX/macOS) use \$YYYY without hard coded values.&lt;BR&gt;
+Replace:&lt;BR&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright &lt;FONT color='red'&gt;&lt;B&gt;&lt;U&gt;2025&lt;/FONT&gt;&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;
+With:&lt;BR&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright &lt;FONT color='red'&gt;&lt;B&gt;&lt;U&gt;\$YYYY&lt;/U&gt;&lt;/B&gt;&lt;/FONT&gt;&lt;BR&gt;
+&lt;BR&gt;
+Regards,&lt;BR&gt;
+N Murugesan&lt;BR&gt;
+google: murugesan openssl&lt;BR&gt;
+&lt;A href='https://murugesanopenssl.github.io'&gt;https://murugesanopenssl.github.io&lt;/A&gt;"
+	FOOTER_CONTENT="$(/usr/bin/sed '/&lt;html&gt;/Id;/&lt;\/html&gt;/Id;/&lt;body&gt;/Id;/&lt;\/body&gt;/Id' "${HTML_FILE}")"
+	BODY="${BODY_TOP}&lt;HR&gt;${FOOTER_CONTENT}"
+	(
+		echo "From: ${FROM}"
+		echo "To: ${TO}"
+		echo "Reply-To: ${REPLY_TO}"
+		echo "Bcc: ${BCC}"
+		echo "Subject: ${SUBJECT}"
+		echo "MIME-Version: 1.0"
+		echo "Content-Type: text/html; charset=UTF-8"
+		echo
+		echo "${BODY}"
+	) | /usr/sbin/msmtp.exe --read-envelope-from -t
+	echo "Email sent to ${TO}"
+else
+	echo "HTML file not found:"
+	/usr/bin/ls -ltr "${HTML_FILE}"
+fi
+</PRE>
+</TD>
+</TR>

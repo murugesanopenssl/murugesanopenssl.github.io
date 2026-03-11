@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<HTML lang="en">
+<HEAD>
+	<META CHARSET='UTF-8'>
+	<SCRIPT type='text/javascript'>
+		function sortTable(col, numeric=false)
+		{
+			let table = document.getElementById("warTable");
+			let tbody = table.getElementsByTagName("tbody")[0];
+			let rows = Array.from(tbody.getElementsByTagName("tr"));
+			rows.sort( function(a,b){
+				let A = a.children[col].getAttribute("data-sort") || a.children[col].innerText;
+				let B = b.children[col].getAttribute("data-sort") || b.children[col].innerText;
+				if(numeric)
+				{
+					A = parseFloat(A);
+					B = parseFloat(B);
+					return B - A;
+				}
+				else
+				{
+					return A.localeCompare(B);
+				}
+			});
+			rows.forEach(r => tbody.appendChild(r));
+		}
+	</SCRIPT>
+</HEAD>
+<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+
+<!-- ALERT SECTION FOR PEOPLE ON EARTH -->
+<div style="background-color:#ffcc00; border:2px solid red; padding:10px; margin-bottom:10px;">
+	<h3>⚠️ Alerts for Residents & Travelers</h3>
+	<ul>
+		<li>Last cylinder booking in Tamil Nadu, India: <b>16-Feb-2026</b>. Next cylinder can be booked on or after <b>14-Mar-2026</b> due to 25-day delay caused by war.</li>
+		<li>Many hotels are closing temporarily due to war-related supply issues.</li>
+		<li>Some hotels are switching to wood stoves instead of gas.</li>
+		<li>People working away from home may face limited food availability from hotels, PGs, or local providers.</li>
+		<li>This page is for awareness: plan food and fuel ahead.</li>
+	</ul>
+</div>
+
+<!-- ORIGINAL WAR TABLE -->
+<DIV>
+	<TABLE id="warTable" border='1' style='width:100%; border-collapse:collapse;'>
+		<THEAD>
+			<TR>
+				<TD align='right'><B>Country name</B></TD>
+				<TD align='right'><B>Towards/against/neutral IRAN</B></TD>
+				<TD align='right'>
+					<B>
+						<A href="#" onclick="sortTable(2,true);return false;">Sort rows by people died</A><BR>
+						People died
+					</B>
+				</TD>
+				<TD align='right'>
+					<B>
+						<A href="#" onclick="sortTable(3,true);return false;">Sort rows by loss</A><BR>
+						Loss at INR due to war
+					</B>
+				</TD>
+				<TD align='right'>
+					<B>
+						Amount
+					</B>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<!-- your original rows here -->
+			<TR style='background-color:#00ff00;'>
+				<TD align='right'>Iran</TD>
+				<TD align='right'>Self / Main side</TD>
+				<TD align='right' data-sort="1200">1200+ PEOPLE</TD>
+				<TD align='right' data-sort="400000">400000.00 CRORE ₹ INR</TD>
+				<TD align='right'>FOUR LAKH CRORE ₹ INR</TD>
+			</TR>
+			<TR style='background-color:red;color:white;'>
+				<TD align='right'>United States</TD>
+				<TD align='right'>Against Iran</TD>
+				<TD align='right' data-sort="12">12+ PEOPLE</TD>
+				<TD align='right' data-sort="120000">120000.00 CRORE ₹ INR</TD>
+				<TD align='right'>ONE LAKH TWENTY THOUSAND CRORE ₹ INR</TD>
+			</TR>
+			<!-- all your other original rows here ... -->
+			<TR style='background-color:orange;'>
+				<TD align='right'>Oman</TD>
+				<TD align='right'>Neutral</TD>
+				<TD align='right' data-sort="1">01+ PEOPLE</TD>
+				<TD align='right' data-sort="5000">5000.00 CRORE ₹ INR</TD>
+				<TD align='right'>FIVE THOUSAND CRORE ₹ INR</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</DIV>
+
+</BODY>
+</HTML>
