@@ -1007,6 +1007,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "my-location.html" && activeLink.textContent.trim() === "Display my location") ||
 							(htmlFileName === "steps-to-recharge-any-sim.html" && activeLink.textContent.trim() === "Internet Recharge Exceptions") ||
 							(htmlFileName === "israel-usa-iran-war-2026.html" && activeLink.textContent.trim() === "Cylinder/Food Warnings due to War") ||
+							(htmlFileName === "parents-insurance-steps.html" && activeLink.textContent.trim() === "Savings Strategy for Parents' Insurance") ||
 							(htmlFileName === "Increase-Daily-Salary.html" && activeLink.textContent.trim() === "Income Growth Strategies") ||
 							(htmlFileName === "Bharath_gas_booking_steps.html" && activeLink.textContent.trim() === "Bharat Gas Booking Steps") ||
 							(htmlFileName === "Indian-Oil-Cylinder-Booking-Online-Steps.html" && activeLink.textContent.trim() === "Indian Oil Booking Steps") ||
@@ -1392,6 +1393,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<SPAN class="nav-arrow">&gt;</SPAN>
 					</A>
 					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="javascript:window.open( 'parents-insurance-steps.html' );" class="nav-link"><FONT color='#00ff00'>Savings Strategy for Parents' Insurance</FONT></A>
+						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'israel-usa-iran-war-2026.html' );" class="nav-link">Cylinder/Food Warnings due to War</A>
 						</LI>

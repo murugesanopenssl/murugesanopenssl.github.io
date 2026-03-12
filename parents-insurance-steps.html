@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>Murugesan's Parent Insurance Savings Plan</TITLE>
+		<SCRIPT src="https://cdn.jsdelivr.net/npm/chart.js"></SCRIPT>
+		<STYLE type='text/css'>
+			body
+			{
+				font-family: Arial, sans-serif;
+				margin: 20px;
+				background-color: #f9f9f9;
+			}
+			h1
+			{
+				color: #2a2a72;
+			}
+			table
+			{
+				border-collapse: collapse;
+				width: 100%;
+				margin-bottom: 30px;
+			}
+			table, th, td
+			{
+				border: 1px solid #000;
+			}
+			th, td
+			{
+				padding: 8px;
+				text-align: center;
+			}
+			.chart-container
+			{
+				width: 1000px;
+				height: 250px;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<H1>Murugesan's Savings Strategy for Parents' Insurance</H1>
+		<P>This page shows my savings approach to indirectly build financial protection for my parents using Post Office, ETDR, and MIS.</P>
+		<TABLE>
+			<TR>
+				<TH>Step</TH>
+				<TH>Method</TH>
+				<TH>Details / Amount</TH>
+				<TH>Purpose</TH>
+			</TR>
+			<TR>
+				<TD valign='top' align='right'>
+					01
+				</TD>
+				<TD valign='top' align='right'>Receive MIS interest daily from Post Office.<BR>Example open MIS during<BR>01) 01-Jan-year01<BR>02) 02-May-year01<BR>03) 03-Aug-year02<BR>04) 04-Nov-year03<BR>...<BR>05) 31-Dec-year05<BR>Open MIS sequentially during different month and different years.</TD>
+				<TD valign='top' align='right'>310.00 ರೂ/ரூ/₹ INR to 4500.00 ರೂ/ரூ/₹ INR per month</TD>
+				<TD valign='top' align='right'>Building base savings, liquidity for emergencies</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='right'>
+					02
+				</TD>
+				<TD valign='top' align='right'>
+					Short(less than 46 days),<BR>
+					long term(46 days) ETDR/fixed Deposits at SBI</TD>
+				<TD valign='top' align='right'>1000.00 ರೂ/ரூ/₹ INR to 1053.00 ರೂ/ரூ/₹ INR for 46 days.<BR>Always submit form 15G using online.</TD>
+				<TD valign='top' align='right'>Discipline in saving, small interest earnings</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='right'>
+					03
+				</TD>
+				<TD valign='top' align='right'>MIS Deposit at 5000.00 ರೂ/ரூ/₹ INR+</TD>
+				<TD valign='top' align='right'>Government-backed 5-year Monthly Income Scheme</TD>
+				<TD valign='top' align='right'>Earn monthly interest, increase monthly income, indirect insurance buffer</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='right'>
+					04
+				</TD>
+				<TD valign='top' align='right'>Reinvestment</TD>
+				<TD valign='top' align='right'>Interest from MIS / ETDR saved & redeposited</TD>
+				<TD valign='top' align='right'>Increase monthly income, build compounding growth</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='right'>
+					05
+				</TD>
+				<TD valign='top' align='right'>Total System</TD>
+				<TD valign='top' align='right'>Post Office + ETDR + MIS + reinvestment</TD>
+				<TD valign='top' align='right'>Safe, flexible, government-backed self-created medical fund for parents</TD>
+			</TR>
+		</TABLE>
+		<H2>Projected Savings Growth Over 10 Years</H2>
+		<label for="rangeSelect"><b>Select Graph Range:</b></label>
+		<select id="rangeSelect">
+		<option value="0">Feb 2026 → Today</option>
+		<option value="12">Feb 2026 → 1 Year</option>
+		<option value="18">Feb 2026 → 1.5 Years</option>
+		<option value="24">Feb 2026 → 2 Years</option>
+		<option value="36">Feb 2026 → 3 Years</option>
+		<option value="48">Feb 2026 → 4 Years</option>
+		<option value="60">Feb 2026 → 5 Years</option>
+		<option value="120">Feb 2026 → 10 Years</option>
+		</select>
+		<br><br>
+		<DIV class="chart-container">
+			<CANVAS id="savingsChart"></CANVAS>
+		</DIV>
+		<SCRIPT type='text/javascript'>
+			const baseLabels = [
+			'18 Jan 2026',
+			'18 Jan 2026',
+			'20 Jan 2026',
+			'23 Jan 2026',
+			'12 Feb 2026',
+			'17 Feb 2026',
+			'20 Feb 2026',
+			'09 Mar 2026',
+			'11 Mar 2026'
+			];
+			const baseData = [
+			43.50,
+			43.00,
+			545.00,
+			31.00,
+			572.00,
+			1672.00,
+			2725.00,
+			3822.00,
+			4533.00
+			];
+			const ctx = document.getElementById('savingsChart').getContext('2d');
+			let savingsChart;
+			function generateProjection(months)
+			{
+				let labels = [...baseLabels];
+				let data = [...baseData];
+				if(months == 0)
+				{
+					return {labels,data};
+				}
+				let lastAmount = data[data.length-1];
+				let monthlyGrowth = 4533;
+				for(let i=1;i<=months;i++)
+				{
+					lastAmount += monthlyGrowth;
+					labels.push("+"+i+" month");
+					data.push(Math.round(lastAmount));
+				}
+				return {labels,data};
+			}
+			function updateChart(months)
+			{
+				const result = generateProjection(months);
+				if(savingsChart)
+				{
+					savingsChart.destroy();
+				}
+				savingsChart = new Chart( ctx,{
+						type:'line',
+						data:{
+						labels:result.labels,
+						datasets:[{
+						label:'Actual + Projected Savings (₹ INR)',
+						data:result.data,
+						backgroundColor:'rgba(42,42,114,0.2)',
+						borderColor:'rgba(42,42,114,1)',
+						borderWidth:2,
+						fill:true,
+						tension:0.3,
+						pointRadius:4
+						}]
+						},
+						options:{
+								responsive:true,
+								plugins:{
+									legend:{position:'top'},
+									title:{
+										display:true,
+										text:'Murugesan Parent Insurance Fund Growth'
+									}
+								},
+							scales:{
+								y:{
+									beginAtZero:true
+								}
+							}
+						}
+					}
+				);
+			}
+			updateChart(0);
+				document.getElementById("rangeSelect").addEventListener( "change",function() {
+					updateChart(parseInt(this.value));
+				}
+			);
+			</SCRIPT>
+	</BODY>
+</HTML>
