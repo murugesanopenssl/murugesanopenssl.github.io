@@ -1007,6 +1007,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "my-location.html" && activeLink.textContent.trim() === "Display my location") ||
 							(htmlFileName === "steps-to-recharge-any-sim.html" && activeLink.textContent.trim() === "Internet Recharge Exceptions") ||
 							(htmlFileName === "israel-usa-iran-war-2026.html" && activeLink.textContent.trim() === "Cylinder/Food Warnings due to War") ||
+							(htmlFileName === "health-insurance.html" && activeLink.textContent.trim() === "PARENT HEALTH INSURANCE") ||
 							(htmlFileName === "parents-insurance-steps.html" && activeLink.textContent.trim() === "Savings Strategy for Parents' Insurance") ||
 							(htmlFileName === "Increase-Daily-Salary.html" && activeLink.textContent.trim() === "Income Growth Strategies") ||
 							(htmlFileName === "Bharath_gas_booking_steps.html" && activeLink.textContent.trim() === "Bharat Gas Booking Steps") ||
@@ -1405,6 +1406,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 									Why War Raises LPG Gas Prices at Home
 								</FONT>
 							</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'health-insurance.html' );" class="nav-link">PARENT HEALTH INSURANCE</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-recharge-any-sim.html' );" class="nav-link">Internet Recharge Exceptions</A>
