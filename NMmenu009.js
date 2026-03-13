@@ -1772,13 +1772,13 @@ function loadMoneyHelpContent( event, htmlFileName )
 				</A>
 					<UL class="submenu">
 						<LI>
-							<A href="#" onclick="javascript:window.open( 'twelth-exam-dates.html' );" class="nav-link">12th EXAM CHART</A>
+							<A href="#" onclick="javascript:window.open( 'twelth-exam-dates.html' );" class="nav-link"><FONT color='#00ff00'>12th EXAM CHART</FONT></A>
 						</LI>
 						<LI>
-							<A href="#" onclick="javascript:window.open( 'eleventh-exam-dates.html' );" class="nav-link">11th EXAM CHART</A>
+							<A href="#" onclick="javascript:window.open( 'eleventh-exam-dates.html' );" class="nav-link"><FONT color='#00ff00'>11th EXAM CHART</FONT></A>
 						</LI>
 						<LI>
-							<A href="#" onclick="javascript:window.open( 'SSLC-EXAM-DATES.html' );" class="nav-link">SSLC EXAM CHART</A>
+							<A href="#" onclick="javascript:window.open( 'SSLC-EXAM-DATES.html' );" class="nav-link"><FONT color='#00ff00'>SSLC EXAM CHART</FONT></A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'IGCSE-EXAM-DATES.html' );" class="nav-link">Cambridge IGCSE Examination Timetable</A>
