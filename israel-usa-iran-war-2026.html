@@ -42,117 +42,148 @@
 			</ul>
 		</div>
 		<DIV>
-			<TABLE id="warTable" border='1' style='width:100%; border-collapse:collapse;'>
-				<THEAD>
-					<TR>
-						<TD align='right'><B>Country name</B></TD>
-						<TD align='right'><B>Towards/against/neutral IRAN</B></TD>
-						<TD align='right'>
-							<B>
-								<A href="#" onclick="sortTable(2,true);return false;">Sort rows by people died</A><BR>
-								People died
-							</B>
-						</TD>
-						<TD align='right'>
-							<B>
-								<A href="#" onclick="sortTable(3,true);return false;">Sort rows by loss</A><BR>
-								Loss at INR due to war
-							</B>
-						</TD>
-						<TD align='right'>
-							<B>
-								Amount
-							</B>
-						</TD>
-					</TR>
-				</THEAD>
-				<TBODY>
-					<TR style='background-color:#00ff00;'>
-						<TD align='right'>Iran</TD>
-						<TD align='right'>Self / Main side</TD>
-						<TD align='right' data-sort="1200">1200+ PEOPLE</TD>
-						<TD align='right' data-sort="400000">400000.00 CRORE ₹ INR</TD>
-						<TD align='right'>FOUR LAKH CRORE ₹ INR</TD>
-					</TR>
-					<TR style='background-color:red;color:white;'>
-						<TD align='right'>United States</TD>
-						<TD align='right'>Against Iran</TD>
-						<TD align='right' data-sort="12">12+ PEOPLE</TD>
-						<TD align='right' data-sort="120000">120000.00 CRORE ₹ INR</TD>
-						<TD align='right'>ONE LAKH TWENTY THOUSAND CRORE ₹ INR</TD>
-					</TR>
-					<TR style='background-color:red;color:white;'>
-						<TD align='right'>Israel</TD>
-						<TD align='right'>Against Iran</TD>
-						<TD align='right' data-sort="30">30+ PEOPLE</TD>
-						<TD align='right' data-sort="90000">90000.00 CRORE ₹ INR</TD>
-						<TD align='right'>NINETY THOUSAND CRORE ₹ INR</TD>
-					</TR>
-					<TR style='background-color:red;color:white;'>
-						<TD align='right'>Saudi Arabia</TD>
-						<TD align='right'>Against Iran</TD>
-						<TD align='right' data-sort="0">0 PEOPLE</TD>
-						<TD align='right' data-sort="50000">50000.00 CRORE ₹ INR</TD>
-						<TD align='right'>FIFTY THOUSAND CRORE ₹ INR</TD>
-					</TR>
-					<TR style='background-color:red;color:white;'>
-						<TD align='right'>United Arab Emirates</TD>
-						<TD align='right'>Against Iran</TD>
-						<TD align='right' data-sort="3">3+ PEOPLE</TD>
-						<TD align='right' data-sort="15000">15000.00 CRORE ₹ INR</TD>
-						<TD align='right'>FIFTEEN THOUSAND CRORE ₹ INR</TD>
-					</TR>
-					<TR style='background-color:red;color:white;'>
-						<TD align='right'>Qatar</TD>
-						<TD align='right'>Against Iran</TD>
-						<TD align='right' data-sort="0">0 PEOPLE</TD>
-						<TD align='right' data-sort="10000">10000.00 CRORE ₹ INR</TD>
-						<TD align='right'>TEN THOUSAND CRORE ₹ INR</TD>
-					</TR>
-					<TR style='background-color:red;color:white;'>
-						<TD align='right'>Bahrain</TD>
-						<TD align='right'>Against Iran</TD>
-						<TD align='right' data-sort="2">2+ PEOPLE</TD>
-						<TD align='right' data-sort="8000">8000.00 CRORE ₹ INR</TD>
-						<TD align='right'>EIGHT THOUSAND CRORE ₹ INR</TD>
-					</TR>
-					<TR style='background-color:red;color:white;'>
-						<TD align='right'>Kuwait</TD>
-						<TD align='right'>Against Iran</TD>
-						<TD align='right' data-sort="1">01+ PEOPLE</TD>
-						<TD align='right' data-sort="6000">6000.00 CRORE ₹ INR</TD>
-						<TD align='right'>SIX THOUSAND CRORE ₹ INR</TD>
-					</TR>
-					<TR style='background-color:#00ff00;'>
-						<TD align='right'>Lebanon</TD>
-						<TD align='right'>Supporting IRAN</TD>
-						<TD align='right' data-sort="400">400+ PEOPLE</TD>
-						<TD align='right' data-sort="40000">40000.00 CRORE ₹ INR</TD>
-						<TD align='right'>FORTY THOUSAND CRORE ₹ INR</TD>
-					</TR>
-					<TR style='background-color:#00ff00;'>
-						<TD align='right'>Syria</TD>
-						<TD align='right'>Supporting IRAN</TD>
-						<TD align='right' data-sort="415">415+ PEOPLE</TD>
-						<TD align='right' data-sort="35000">35000.00 CRORE ₹ INR</TD>
-						<TD align='right'>THIRTY FIVE THOUSAND CRORE ₹ INR</TD>
-					</TR>
-					<TR style='background-color:#00ff00;'>
-						<TD align='right'>Yemen</TD>
-						<TD align='right'>Supporting IRAN</TD>
-						<TD align='right' data-sort="500">500+ PEOPLE</TD>
-						<TD align='right' data-sort="20000">20000.00 CRORE ₹ INR</TD>
-						<TD align='right'>TWENTY THOUSAND CRORE ₹ INR</TD>
-					</TR>
-					<TR style='background-color:orange;'>
-						<TD align='right'>Oman</TD>
-						<TD align='right'>Neutral</TD>
-						<TD align='right' data-sort="1">01+ PEOPLE</TD>
-						<TD align='right' data-sort="5000">5000.00 CRORE ₹ INR</TD>
-						<TD align='right'>FIVE THOUSAND CRORE ₹ INR</TD>
-					</TR>
-				</TBODY>
-			</TABLE>
+<TABLE id="warTable" border='1' style='width:100%; border-collapse:collapse;'>
+	<THEAD>
+		<TR>
+			<TD align='right'><B>Country name</B></TD>
+			<TD align='right'><B>Towards/against/neutral IRAN</B></TD>
+			<TD align='right'>
+				<B>
+					<A href="#" onclick="sortTable(2,true);return false;">Sort rows by people died</A><BR>
+					People died
+				</B>
+			</TD>
+			<TD align='right'>
+				<B>
+					<A href="#" onclick="sortTable(3,true);return false;">Sort rows by loss</A><BR>
+					Loss at INR due to war
+				</B>
+			</TD>
+			<TD align='right'>
+				<B>
+					Amount
+				</B>
+			</TD>
+		</TR>
+	</THEAD>
+	<TABLE id="warTable" border='1' style='width:100%; border-collapse:collapse;'>
+	<THEAD>
+		<TR>
+			<TD align='right'><B>Country name</B></TD>
+			<TD align='right'><B>Towards/against/neutral IRAN</B></TD>
+			<TD align='right'>
+				<B>
+					<A href="#" onclick="sortTable(2,true);return false;">Sort rows by people died</A><BR>
+					People died
+				</B>
+			</TD>
+			<TD align='right'>
+				<B>
+					<A href="#" onclick="sortTable(3,true);return false;">Sort rows by loss</A><BR>
+					Loss at INR due to war
+				</B>
+			</TD>
+			<TD align='right'>
+				<B>
+					Amount
+				</B>
+			</TD>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR style='background-color:#00ff00;'>
+			<TD align='right'>Iran</TD>
+			<TD align='right'>Self / Main side</TD>
+			<TD align='right' data-sort="1300">1300+ PEOPLE</TD>
+			<TD align='right' data-sort="94000">94000.00 CRORE ₹ INR</TD>
+			<TD align='right'>NINETY FOUR THOUSAND CRORE ₹ INR</TD>
+		</TR>
+		<TR style='background-color:red;color:white;'>
+			<TD align='right'>United States</TD>
+			<TD align='right'>Against Iran</TD>
+			<TD align='right' data-sort="12">12+ PEOPLE</TD>
+			<TD align='right' data-sort="120000">120000.00 CRORE ₹ INR</TD>
+			<TD align='right'>ONE LAKH TWENTY THOUSAND CRORE ₹ INR</TD>
+		</TR>
+		<TR style='background-color:red;color:white;'>
+			<TD align='right'>Israel</TD>
+			<TD align='right'>Against Iran</TD>
+			<TD align='right' data-sort="30">30+ PEOPLE</TD>
+			<TD align='right' data-sort="90000">90000.00 CRORE ₹ INR</TD>
+			<TD align='right'>NINETY THOUSAND CRORE ₹ INR</TD>
+		</TR>
+		<TR style='background-color:red;color:white;'>
+			<TD align='right'>Saudi Arabia</TD>
+			<TD align='right'>Against Iran</TD>
+			<TD align='right' data-sort="0">0 PEOPLE</TD>
+			<TD align='right' data-sort="50000">50000.00 CRORE ₹ INR</TD>
+			<TD align='right'>FIFTY THOUSAND CRORE ₹ INR</TD>
+		</TR>
+		<TR style='background-color:red;color:white;'>
+			<TD align='right'>United Arab Emirates</TD>
+			<TD align='right'>Against Iran</TD>
+			<TD align='right' data-sort="3">3+ PEOPLE</TD>
+			<TD align='right' data-sort="15000">15000.00 CRORE ₹ INR</TD>
+			<TD align='right'>FIFTEEN THOUSAND CRORE ₹ INR</TD>
+		</TR>
+		<TR style='background-color:red;color:white;'>
+			<TD align='right'>Qatar</TD>
+			<TD align='right'>Against Iran</TD>
+			<TD align='right' data-sort="0">0 PEOPLE</TD>
+			<TD align='right' data-sort="10000">10000.00 CRORE ₹ INR</TD>
+			<TD align='right'>TEN THOUSAND CRORE ₹ INR</TD>
+		</TR>
+		<TR style='background-color:red;color:white;'>
+			<TD align='right'>Bahrain</TD>
+			<TD align='right'>Against Iran</TD>
+			<TD align='right' data-sort="2">2+ PEOPLE</TD>
+			<TD align='right' data-sort="8000">8000.00 CRORE ₹ INR</TD>
+			<TD align='right'>EIGHT THOUSAND CRORE ₹ INR</TD>
+		</TR>
+		<TR style='background-color:red;color:white;'>
+			<TD align='right'>Kuwait</TD>
+			<TD align='right'>Against Iran</TD>
+			<TD align='right' data-sort="1">01+ PEOPLE</TD>
+			<TD align='right' data-sort="6000">6000.00 CRORE ₹ INR</TD>
+			<TD align='right'>SIX THOUSAND CRORE ₹ INR</TD>
+		</TR>
+		<TR style='background-color:#00ff00;'>
+			<TD align='right'>Lebanon</TD>
+			<TD align='right'>Supporting IRAN</TD>
+			<TD align='right' data-sort="400">400+ PEOPLE</TD>
+			<TD align='right' data-sort="40000">40000.00 CRORE ₹ INR</TD>
+			<TD align='right'>FORTY THOUSAND CRORE ₹ INR</TD>
+		</TR>
+		<TR style='background-color:#00ff00;'>
+			<TD align='right'>Syria</TD>
+			<TD align='right'>Supporting IRAN</TD>
+			<TD align='right' data-sort="415">415+ PEOPLE</TD>
+			<TD align='right' data-sort="35000">35000.00 CRORE ₹ INR</TD>
+			<TD align='right'>THIRTY FIVE THOUSAND CRORE ₹ INR</TD>
+		</TR>
+		<TR style='background-color:#00ff00;'>
+			<TD align='right'>Yemen</TD>
+			<TD align='right'>Supporting IRAN</TD>
+			<TD align='right' data-sort="500">500+ PEOPLE</TD>
+			<TD align='right' data-sort="20000">20000.00 CRORE ₹ INR</TD>
+			<TD align='right'>TWENTY THOUSAND CRORE ₹ INR</TD>
+		</TR>
+		<TR style='background-color:orange;'>
+			<TD align='right'>Oman</TD>
+			<TD align='right'>Neutral</TD>
+			<TD align='right' data-sort="1">01+ PEOPLE</TD>
+			<TD align='right' data-sort="5000">5000.00 CRORE ₹ INR</TD>
+			<TD align='right'>FIVE THOUSAND CRORE ₹ INR</TD>
+		</TR>
+		<!-- Summary row for total deaths and total INR spent -->
+		<TR style='background-color:#ffff00; font-weight:bold;'>
+			<TD align='right' colspan="2">TOTAL (All countries)</TD>
+			<TD align='right' data-sort="3163">3163+ PEOPLE</TD>
+			<TD align='right' data-sort="414000">414000.00 CRORE ₹ INR</TD>
+			<TD align='right'>FOUR LAKH FOURTEEN THOUSAND CRORE ₹ INR</TD>
+		</TR>
+	</TBODY>
+</TABLE>
 		</DIV>
 	</BODY>
 </HTML>
