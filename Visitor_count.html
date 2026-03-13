@@ -171,23 +171,23 @@
 				status.textContent = `✔ Location via Timezone (${tz.tz}): ${tz.country}, ${tz.region}, ${tz.city}`;
 				return { country: tz.country, region: tz.region, city: tz.city, continent: tz.continent, ip: "UNKNOWN" };
 			}
-
-			async function storeVisit() {
+			async function storeVisit()
+			{
 				const geo = await detectLocation();
+				console.log("Storing visit:", geo);
 				await push(ref(db, "userAccess"), {
-					country:   geo.country,
-					region:    geo.region,
-					city:      geo.city,
+					country: geo.country,
+					region: geo.region,
+					city: geo.city,
 					continent: geo.continent,
-					ip:        geo.ip,
+					ip: geo.ip,
 					userAgent: navigator.userAgent,
 					timestamp: Date.now()
 				});
 			}
-
 			storeVisit();
-
-			function formatDate(ts) {
+			function formatDate(ts)
+			{
 				const d = new Date(ts);
 				const days   = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 				const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -202,29 +202,20 @@
 				const lastVisited= {};
 				const bestRegion = {};
 				const bestCity   = {};
-
-				// Normalize continent codes from old records
 				const cMap = {"AS":"Asia","NA":"North America","EU":"Europe","AF":"Africa","OC":"Oceania","SA":"South America","AN":"Antarctica","OS":"Oceania","???":"Unknown Location","UNKNOWN":"Unknown Location"};
-
 				snapshot.forEach(child => {
 					const v = child.val();
 					let country   = (v.country   || "UNKNOWN").trim();
 					let continent = (v.continent || "UNKNOWN").trim();
-					continent = cMap[continent] || continent;
-
-					// Treat all India variants as "India"
-					if (country.toUpperCase() === "INDIA") country = "India";
-
-					// GROUP BY COUNTRY + CONTINENT ONLY
+					const ts = Number(v.timestamp);
+					if (!ts) return;
 					const key = `${country}|${continent}`;
 					counts[key] = (counts[key] || 0) + 1;
-
-					const ts = v.timestamp || 0;
-					if (!lastVisited[key] || lastVisited[key] < ts) lastVisited[key] = ts;
+					if (!lastVisited[key] || lastVisited[key] < ts)
+						lastVisited[key] = ts;
 					if (v.region && v.region !== "UNKNOWN") bestRegion[key] = v.region;
 					if (v.city   && v.city   !== "UNKNOWN") bestCity[key]   = v.city;
 				});
-
 				Object.keys(counts)
 					.sort((a, b) => lastVisited[b] - lastVisited[a])
 					.forEach(k => {
