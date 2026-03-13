@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<HTML lang="en">
+<HEAD>
+	<META CHARSET="UTF-8">
+	<META name="viewport" content="width=device-width, initial-scale=1.0">
+	<LINK href="github.io.css" rel="stylesheet">
+	<TITLE>Daily Visitor Count</TITLE>
+	<SCRIPT src='text.js'></SCRIPT>
+	<SCRIPT type='text/javascript'>
+		writeMenu();
+	</SCRIPT>
+	<STYLE>
+		body {
+			font-family: Arial, sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+			padding: 20px;
+		}
+		.container {
+			max-width: 1400px;
+			margin: 0 auto;
+			background: white;
+			border-radius: 20px;
+			box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+			padding: 30px;
+		}
+		h1 {
+			text-align: center;
+			color: #667eea;
+			margin-bottom: 10px;
+			font-size: 2.5em;
+		}
+		.subtitle {
+			text-align: center;
+			color: #666;
+			margin-bottom: 30px;
+			font-size: 1.1em;
+		}
+		.controls {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		.controls select {
+			padding: 10px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: 2px solid #667eea;
+			margin: 0 5px;
+		}
+		.visitor-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 30px;
+		}
+		.visitor-table th {
+			background: #667eea;
+			color: white;
+			padding: 15px 10px;
+			text-align: center;
+			font-size: 1.1em;
+		}
+		.visitor-table td {
+			padding: 12px 10px;
+			border: 1px solid #e0e0e0;
+			text-align: center;
+		}
+		.visitor-table tr:hover {
+			background: #f9f9f9;
+		}
+		.total-row {
+			background: #f0f0f0;
+			font-weight: bold;
+			font-size: 1.1em;
+		}
+		.loading {
+			text-align: center;
+			padding: 20px;
+			color: #667eea;
+			font-size: 1.2em;
+		}
+		.status {
+			text-align: center;
+			padding: 10px;
+			margin-bottom: 20px;
+			border-radius: 8px;
+			font-weight: bold;
+		}
+		.firebase-connected {
+			background: #d4edda;
+			color: #155724;
+		}
+		.firebase-error {
+			background: #f8d7da;
+			color: #721c24;
+		}
+	</STYLE>
+</HEAD>
+<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+	<DIV class="container">
+		<H1>📊 Daily Visitor Count</H1>
+		<P class="subtitle">Track daily visitors by country and date</P>
+		
+		<DIV id="firebaseStatus"></DIV>
+		<DIV id="loadingIndicator" class="loading">Loading visitor data...</DIV>
+		
+		<DIV class="controls" style="display: none;" id="controlsDiv">
+			<LABEL for="monthSelect">Select Month:</LABEL>
+			<SELECT id="monthSelect">
+				<OPTION value="all">All Months</OPTION>
+			</SELECT>
+			
+			<LABEL for="countryFilter">Filter by Country:</LABEL>
+			<SELECT id="countryFilter">
+				<OPTION value="all">All Countries</OPTION>
+			</SELECT>
+		</DIV>
+		
+		<DIV id="tableContainer" style="display: none;"></DIV>
+	</DIV>
+	
+	<SCRIPT type="module">
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+		import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+		
+		const firebaseConfig = {
+			apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+			authDomain: "openmurugesan.firebaseapp.com",
+			databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+			projectId: "openmurugesan",
+			storageBucket: "openmurugesan.firebasestorage.app",
+			messagingSenderId: "307675598593",
+			appId: "1:307675598593:web:4af163460ce2c3bc719500"
+		};
+		
+		let app, database;
+		let allVisitorData = {};
+		
+		try {
+			app = initializeApp(firebaseConfig);
+			database = getDatabase(app);
+			showStatus('Connected to Firebase', 'connected');
+			loadVisitorData();
+		} catch (error) {
+			showStatus('Firebase Error: ' + error.message, 'error');
+			console.error('Firebase initialization error:', error);
+		}
+		
+		function showStatus(message, type) {
+			const statusDiv = document.getElementById('firebaseStatus');
+			statusDiv.textContent = message;
+			statusDiv.className = `status firebase-${type}`;
+		}
+		
+		function formatDate(ts) {
+			if (!ts || isNaN(ts)) return "UNKNOWN";
+			const d = new Date(ts);
+			if (isNaN(d.getTime())) return "UNKNOWN";
+			
+			const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+			const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+			
+			return `${days[d.getDay()]} ${String(d.getDate()).padStart(2, "0")}-${months[d.getMonth()]}-${d.getFullYear()}`;
+		}
+		
+		function getDateKey(ts) {
+			const d = new Date(ts);
+			const day = String(d.getDate()).padStart(2, "0");
+			const month = String(d.getMonth() + 1).padStart(2, "0");
+			const year = d.getFullYear();
+			return `${day}-${month}-${year}`;
+		}
+		
+		function getMonthKey(ts) {
+			const d = new Date(ts);
+			const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+			return `${months[d.getMonth()]}-${d.getFullYear()}`;
+		}
+		
+		function loadVisitorData() {
+			onValue(ref(database, "userAccess"), snapshot => {
+				document.getElementById('loadingIndicator').style.display = 'none';
+				
+				if (!snapshot.exists()) {
+					document.getElementById('tableContainer').innerHTML = 
+						"<P style='text-align:center;padding:20px;'>No visitor data available</P>";
+					document.getElementById('tableContainer').style.display = 'block';
+					return;
+				}
+				
+				// Process data: organize by date and country
+				const dailyData = {};
+				const countries = new Set();
+				const months = new Set();
+				
+				snapshot.forEach(child => {
+					const v = child.val();
+					const ts = Number(v.timestamp);
+					if (!ts || isNaN(ts)) return;
+					
+					const dateKey = getDateKey(ts);
+					const monthKey = getMonthKey(ts);
+					const country = (v.country || "Unknown").trim();
+					
+					countries.add(country);
+					months.add(monthKey);
+					
+					if (!dailyData[dateKey]) {
+						dailyData[dateKey] = {
+							timestamp: ts,
+							countries: {},
+							total: 0
+						};
+					}
+					
+					if (!dailyData[dateKey].countries[country]) {
+						dailyData[dateKey].countries[country] = 0;
+					}
+					
+					dailyData[dateKey].countries[country]++;
+					dailyData[dateKey].total++;
+				});
+				
+				allVisitorData = dailyData;
+				
+				// Populate filters
+				populateFilters(Array.from(months), Array.from(countries));
+				
+				// Display data
+				renderTable('all', 'all');
+				
+				document.getElementById('controlsDiv').style.display = 'block';
+				document.getElementById('tableContainer').style.display = 'block';
+			});
+		}
+		
+		function populateFilters(months, countries) {
+			const monthSelect = document.getElementById('monthSelect');
+			const countryFilter = document.getElementById('countryFilter');
+			
+			// Sort months in reverse chronological order
+			months.sort((a, b) => {
+				const [monthA, yearA] = a.split('-');
+				const [monthB, yearB] = b.split('-');
+				if (yearA !== yearB) return yearB - yearA;
+				const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+				return monthNames.indexOf(monthB) - monthNames.indexOf(monthA);
+			});
+			
+			months.forEach(month => {
+				const option = document.createElement('option');
+				option.value = month;
+				option.textContent = month;
+				monthSelect.appendChild(option);
+			});
+			
+			// Sort countries alphabetically
+			countries.sort();
+			countries.forEach(country => {
+				const option = document.createElement('option');
+				option.value = country;
+				option.textContent = country;
+				countryFilter.appendChild(option);
+			});
+			
+			// Add event listeners
+			monthSelect.addEventListener('change', () => {
+				renderTable(monthSelect.value, countryFilter.value);
+			});
+			
+			countryFilter.addEventListener('change', () => {
+				renderTable(monthSelect.value, countryFilter.value);
+			});
+		}
+		
+		function renderTable(monthFilter, countryFilter) {
+			const tableContainer = document.getElementById('tableContainer');
+			
+			// Filter data
+			const filteredData = {};
+			for (const dateKey in allVisitorData) {
+				const data = allVisitorData[dateKey];
+				const monthKey = getMonthKey(data.timestamp);
+				
+				if (monthFilter !== 'all' && monthKey !== monthFilter) continue;
+				
+				filteredData[dateKey] = data;
+			}
+			
+			// Get all unique countries in filtered data
+			const allCountries = new Set();
+			for (const dateKey in filteredData) {
+				Object.keys(filteredData[dateKey].countries).forEach(c => allCountries.add(c));
+			}
+			
+			// Filter countries if needed
+			let displayCountries = Array.from(allCountries);
+			if (countryFilter !== 'all') {
+				displayCountries = [countryFilter];
+			}
+			displayCountries.sort();
+			
+			// Build table HTML
+			let html = `<TABLE class="visitor-table">
+				<THEAD>
+					<TR>
+						<TH>Date</TH>`;
+			
+			displayCountries.forEach(country => {
+				html += `<TH>${country}</TH>`;
+			});
+			
+			html += `<TH>Total</TH>
+					</TR>
+				</THEAD>
+				<TBODY>`;
+			
+			// Sort dates in reverse chronological order
+			const sortedDates = Object.keys(filteredData).sort((a, b) => {
+				return filteredData[b].timestamp - filteredData[a].timestamp;
+			});
+			
+			let grandTotal = 0;
+			const countryTotals = {};
+			displayCountries.forEach(c => countryTotals[c] = 0);
+			
+			sortedDates.forEach(dateKey => {
+				const data = filteredData[dateKey];
+				const formattedDate = formatDate(data.timestamp);
+				
+				html += `<TR>
+					<TD style="text-align:left; font-weight:bold;">${formattedDate}</TD>`;
+				
+				let rowTotal = 0;
+				displayCountries.forEach(country => {
+					const count = data.countries[country] || 0;
+					rowTotal += count;
+					countryTotals[country] += count;
+					html += `<TD>${count > 0 ? count : '-'}</TD>`;
+				});
+				
+				grandTotal += rowTotal;
+				html += `<TD style="font-weight:bold; color:#28a745;">${rowTotal}</TD>
+				</TR>`;
+			});
+			
+			// Totals row
+			html += `<TR class="total-row">
+				<TD style="text-align:left;">TOTAL</TD>`;
+			
+			displayCountries.forEach(country => {
+				html += `<TD>${countryTotals[country]}</TD>`;
+			});
+			
+			html += `<TD style="color:#28a745; font-size:1.2em;">${grandTotal}</TD>
+				</TR>`;
+			
+			html += `</TBODY></TABLE>`;
+			
+			tableContainer.innerHTML = html;
+		}
+	</SCRIPT>
+</BODY>
+</HTML>

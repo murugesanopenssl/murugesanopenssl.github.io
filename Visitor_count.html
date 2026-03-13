@@ -36,7 +36,6 @@
 		<SCRIPT type="module">
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 			import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-
 			const firebaseConfig = {
 				apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
 				authDomain: "openmurugesan.firebaseapp.com",
@@ -46,141 +45,17 @@
 				messagingSenderId: "307675598593",
 				appId: "1:307675598593:web:4af163460ce2c3bc719500"
 			};
-
 			const app = initializeApp(firebaseConfig);
-			const db  = getDatabase(app);
-			const tbody  = document.getElementById("tbody");
-			const status = document.getElementById("status");
-
-			// ── Timezone → Country / Region / Continent (no external API needed) ──
-			const tzMap = {
-				"Asia/Kolkata":            { country: "India",          region: "Tamil Nadu",   city: "",             continent: "Asia" },
-				"Asia/Calcutta":           { country: "India",          region: "Tamil Nadu",   city: "",             continent: "Asia" },
-				"Asia/Colombo":            { country: "Sri Lanka",      region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Karachi":            { country: "Pakistan",       region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Dhaka":              { country: "Bangladesh",     region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Kathmandu":          { country: "Nepal",          region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Thimphu":            { country: "Bhutan",         region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Tokyo":              { country: "Japan",          region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Shanghai":           { country: "China",          region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Singapore":          { country: "Singapore",      region: "UNKNOWN",      city: "Singapore",    continent: "Asia" },
-				"Asia/Kuala_Lumpur":       { country: "Malaysia",       region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Bangkok":            { country: "Thailand",       region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Jakarta":            { country: "Indonesia",      region: "UNKNOWN",      city: "Jakarta",      continent: "Asia" },
-				"Asia/Dubai":              { country: "UAE",             region: "UNKNOWN",      city: "Dubai",        continent: "Asia" },
-				"Asia/Riyadh":             { country: "Saudi Arabia",   region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Tehran":             { country: "Iran",           region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Jerusalem":          { country: "Israel",         region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Manila":             { country: "Philippines",    region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"Asia/Seoul":              { country: "South Korea",    region: "UNKNOWN",      city: "Seoul",        continent: "Asia" },
-				"Asia/Ho_Chi_Minh":        { country: "Vietnam",        region: "UNKNOWN",      city: "UNKNOWN",      continent: "Asia" },
-				"America/New_York":        { country: "United States",  region: "New York",     city: "New York",     continent: "North America" },
-				"America/Chicago":         { country: "United States",  region: "Illinois",     city: "Chicago",      continent: "North America" },
-				"America/Denver":          { country: "United States",  region: "Colorado",     city: "Denver",       continent: "North America" },
-				"America/Los_Angeles":     { country: "United States",  region: "California",   city: "Los Angeles",  continent: "North America" },
-				"America/Phoenix":         { country: "United States",  region: "Arizona",      city: "Phoenix",      continent: "North America" },
-				"America/Anchorage":       { country: "United States",  region: "Alaska",       city: "Anchorage",    continent: "North America" },
-				"Pacific/Honolulu":        { country: "United States",  region: "Hawaii",       city: "Honolulu",     continent: "North America" },
-				"America/Toronto":         { country: "Canada",         region: "Ontario",      city: "Toronto",      continent: "North America" },
-				"America/Vancouver":       { country: "Canada",         region: "BC",           city: "Vancouver",    continent: "North America" },
-				"America/Mexico_City":     { country: "Mexico",         region: "UNKNOWN",      city: "Mexico City",  continent: "North America" },
-				"America/Sao_Paulo":       { country: "Brazil",         region: "UNKNOWN",      city: "Sao Paulo",    continent: "South America" },
-				"America/Argentina/Buenos_Aires": { country: "Argentina", region: "UNKNOWN",    city: "Buenos Aires", continent: "South America" },
-				"America/Bogota":          { country: "Colombia",       region: "UNKNOWN",      city: "Bogota",       continent: "South America" },
-				"America/Lima":            { country: "Peru",           region: "UNKNOWN",      city: "Lima",         continent: "South America" },
-				"Europe/London":           { country: "United Kingdom", region: "England",      city: "London",       continent: "Europe" },
-				"Europe/Paris":            { country: "France",         region: "UNKNOWN",      city: "Paris",        continent: "Europe" },
-				"Europe/Berlin":           { country: "Germany",        region: "UNKNOWN",      city: "Berlin",       continent: "Europe" },
-				"Europe/Rome":             { country: "Italy",          region: "UNKNOWN",      city: "Rome",         continent: "Europe" },
-				"Europe/Madrid":           { country: "Spain",          region: "UNKNOWN",      city: "Madrid",       continent: "Europe" },
-				"Europe/Moscow":           { country: "Russia",         region: "UNKNOWN",      city: "Moscow",       continent: "Europe" },
-				"Europe/Kiev":             { country: "Ukraine",        region: "UNKNOWN",      city: "Kyiv",         continent: "Europe" },
-				"Europe/Warsaw":           { country: "Poland",         region: "UNKNOWN",      city: "Warsaw",       continent: "Europe" },
-				"Europe/Bucharest":        { country: "Romania",        region: "UNKNOWN",      city: "Bucharest",    continent: "Europe" },
-				"Europe/Budapest":         { country: "Hungary",        region: "UNKNOWN",      city: "Budapest",     continent: "Europe" },
-				"Africa/Cairo":            { country: "Egypt",          region: "UNKNOWN",      city: "Cairo",        continent: "Africa" },
-				"Africa/Lagos":            { country: "Nigeria",        region: "UNKNOWN",      city: "Lagos",        continent: "Africa" },
-				"Africa/Johannesburg":     { country: "South Africa",   region: "UNKNOWN",      city: "Johannesburg", continent: "Africa" },
-				"Africa/Nairobi":          { country: "Kenya",          region: "UNKNOWN",      city: "Nairobi",      continent: "Africa" },
-				"Africa/Casablanca":       { country: "Morocco",        region: "UNKNOWN",      city: "Casablanca",   continent: "Africa" },
-				"Australia/Sydney":        { country: "Australia",      region: "NSW",          city: "Sydney",       continent: "Oceania" },
-				"Australia/Melbourne":     { country: "Australia",      region: "Victoria",     city: "Melbourne",    continent: "Oceania" },
-				"Pacific/Auckland":        { country: "New Zealand",    region: "UNKNOWN",      city: "Auckland",     continent: "Oceania" },
-			};
-
-			function detectFromTimezone() {
-				try {
-					const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-					const lang = navigator.language || "";
-
-					// Direct timezone match
-					if (tzMap[tz]) {
-						const d = tzMap[tz];
-						return { ...d, tz };
-					}
-
-					// Partial timezone match (e.g. "Asia/..." → Asia fallback)
-					if (tz.startsWith("Asia/"))    return { country: "Asia (Unknown)",    region: "UNKNOWN", city: "UNKNOWN", continent: "Asia",          tz };
-					if (tz.startsWith("America/")) return { country: "Americas (Unknown)",region: "UNKNOWN", city: "UNKNOWN", continent: "North America", tz };
-					if (tz.startsWith("Europe/"))  return { country: "Europe (Unknown)",  region: "UNKNOWN", city: "UNKNOWN", continent: "Europe",        tz };
-					if (tz.startsWith("Africa/"))  return { country: "Africa (Unknown)",  region: "UNKNOWN", city: "UNKNOWN", continent: "Africa",        tz };
-					if (tz.startsWith("Pacific/")) return { country: "Pacific (Unknown)", region: "UNKNOWN", city: "UNKNOWN", continent: "Oceania",       tz };
-					if (tz.startsWith("Australia/"))return{ country: "Australia",         region: "UNKNOWN", city: "UNKNOWN", continent: "Oceania",       tz };
-
-					return { country: "UNKNOWN", region: "UNKNOWN", city: "UNKNOWN", continent: "Unknown Location", tz };
-				} catch(e) {
-					return { country: "UNKNOWN", region: "UNKNOWN", city: "UNKNOWN", continent: "Unknown Location", tz: "UNKNOWN" };
-				}
-			}
-
-			// Try geo API first, fall back to timezone detection
-			async function detectLocation() {
-				const apis = [
-					async () => {
-						const r = await fetch("https://ipwho.is/");
-						const d = await r.json();
-						if (!d.success || !d.country) throw new Error("failed");
-						return { country: d.country, region: d.region||"UNKNOWN", city: d.city||"UNKNOWN", continent: d.continent||"UNKNOWN", ip: d.ip };
-					},
-					async () => {
-						const r = await fetch("https://freeipapi.com/api/json");
-						const d = await r.json();
-						if (!d.countryName) throw new Error("failed");
-						return { country: d.countryName, region: d.regionName||"UNKNOWN", city: d.cityName||"UNKNOWN", continent: d.continent||"UNKNOWN", ip: d.ipAddress };
-					}
-				];
-
-				for (let i = 0; i < apis.length; i++) {
-					try {
-						const raw = await Promise.race([
-							apis[i](),
-							new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 4000))
-						]);
-						// Normalize continent code if needed
-						const cMap = {"AS":"Asia","NA":"North America","EU":"Europe","AF":"Africa","OC":"Oceania","SA":"South America"};
-						const continent = cMap[raw.continent] || raw.continent;
-						status.textContent = `✔ Location via API-${i+1}: ${raw.country}, ${raw.region}, ${raw.city} [IP: ${raw.ip}]`;
-						return { country: raw.country, region: raw.region, city: raw.city, continent, ip: raw.ip };
-					} catch(e) {
-						console.warn(`API ${i+1} failed:`, e.message);
-					}
-				}
-
-				// All APIs failed → use browser timezone (works even behind proxy/Apache)
-				const tz = detectFromTimezone();
-				status.textContent = `✔ Location via Timezone (${tz.tz}): ${tz.country}, ${tz.region}, ${tz.city}`;
-				return { country: tz.country, region: tz.region, city: tz.city, continent: tz.continent, ip: "UNKNOWN" };
-			}
-			async function storeVisit()
-			{
-				const geo = await detectLocation();
-				console.log("Storing visit:", geo);
+			const db = getDatabase(app);
+			const tbody = document.getElementById("tbody");
+			async function storeVisit() {
 				await push(ref(db, "userAccess"), {
-					country: geo.country,
-					region: geo.region,
-					city: geo.city,
-					continent: geo.continent,
-					ip: geo.ip,
+					test: "NEW_TEST",
+					country: "TEST",
+					region: "TEST",
+					city: "TEST",
+					continent: "TEST",
+					ip: "TEST",
 					userAgent: navigator.userAgent,
 					timestamp: Date.now()
 				});
@@ -188,48 +63,46 @@
 			storeVisit();
 			function formatDate(ts)
 			{
+				if (!ts || isNaN(ts)) return "UNKNOWN";
 				const d = new Date(ts);
-				const days   = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-				const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+				if (isNaN(d.getTime())) return "UNKNOWN";
+				const days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+				const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 				return `${days[d.getDay()]} ${String(d.getDate()).padStart(2,"0")}-${months[d.getMonth()]}-${d.getFullYear()}`;
 			}
-
 			onValue(ref(db, "userAccess"), snapshot => {
-				tbody.innerHTML = "";
-				if (!snapshot.exists()) return;
-
-				const counts     = {};
-				const lastVisited= {};
-				const bestRegion = {};
-				const bestCity   = {};
-				const cMap = {"AS":"Asia","NA":"North America","EU":"Europe","AF":"Africa","OC":"Oceania","SA":"South America","AN":"Antarctica","OS":"Oceania","???":"Unknown Location","UNKNOWN":"Unknown Location"};
-				snapshot.forEach(child => {
-					const v = child.val();
-					let country   = (v.country   || "UNKNOWN").trim();
-					let continent = (v.continent || "UNKNOWN").trim();
-					const ts = Number(v.timestamp);
-					if (!ts) return;
-					const key = `${country}|${continent}`;
-					counts[key] = (counts[key] || 0) + 1;
-					if (!lastVisited[key] || lastVisited[key] < ts)
-						lastVisited[key] = ts;
-					if (v.region && v.region !== "UNKNOWN") bestRegion[key] = v.region;
-					if (v.city   && v.city   !== "UNKNOWN") bestCity[key]   = v.city;
-				});
-				Object.keys(counts)
-					.sort((a, b) => lastVisited[b] - lastVisited[a])
-					.forEach(k => {
+					tbody.innerHTML = "";
+					if (!snapshot.exists()) return;
+					const counts = {};
+					const lastVisited = {};
+					snapshot.forEach(child => {
+						const v = child.val();
+						const ts = Number(v.timestamp);
+						if (!ts || isNaN(ts)) return;
+						const country = (v.country || "UNKNOWN").trim();
+						const continent = (v.continent || "UNKNOWN").trim();
+						const key = `${country}|${continent}`;
+						counts[key] = (counts[key] || 0) + 1;
+						if (!lastVisited[key] || ts > lastVisited[key]) {
+							lastVisited[key] = ts;
+						}
+					});
+					Object.keys(counts)
+					.sort((a,b)=> lastVisited[b] - lastVisited[a])
+					.forEach(k=>{
 						const [country, continent] = k.split("|");
-						tbody.innerHTML += `<TR>
+						tbody.innerHTML += `
+						<TR>
 							<TD align="center">${String(counts[k]).padStart(4,"0")}</TD>
-							<TD valign='top' align='right'>${country}</TD>
-							<TD valign='top' align='right'>${bestRegion[k] || "UNKNOWN"}</TD>
-							<TD valign='top' align='right'>${bestCity[k]   || "UNKNOWN"}</TD>
-							<TD valign='top' align='right'>${continent}</TD>
-							<TD valign='top' align='right'>${formatDate(lastVisited[k])}</TD>
+							<TD>${country}</TD>
+							<TD>UNKNOWN</TD>
+							<TD>UNKNOWN</TD>
+							<TD>${continent}</TD>
+							<TD>${formatDate(lastVisited[k])}</TD>
 						</TR>`;
 					});
-			});
+				}
+			);
 		</SCRIPT>
 	</BODY>
 </HTML>
