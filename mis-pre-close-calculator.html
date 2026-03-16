@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>Pre-Close Calculation</TITLE>
+		<STYLE type='text/css'>
+			body
+			{
+				font-family: Arial, sans-serif;
+			}
+			table
+			{
+				width: 100%;
+				border-collapse: collapse;
+			}
+			th, td
+			{
+				border: 1px solid #000;
+				padding: 8px;
+				text-align: left;
+			}
+			.yellow-row
+			{
+				background-color: yellow;
+				color: black;
+				font-weight: bold;
+			}
+			input[type='number'], input[type='date']
+			{
+				padding: 5px;
+				width: 150px;
+			}
+			button
+			{
+				padding: 5px 10px;
+				margin-left: 5px;
+			}
+			#formatted-date
+			{
+				display: inline-block;
+				width: 159px;
+				font-weight: bold;
+				margin-right: 10px;
+				white-space: nowrap;
+			}
+			input[type='date']::-webkit-datetime-edit-text,
+			input[type='date']::-webkit-datetime-edit-month-field,
+			input[type='date']::-webkit-datetime-edit-day-field,
+			input[type='date']::-webkit-datetime-edit-year-field
+			{
+				color: transparent;
+			}
+			.advantage-row
+			{
+				background-color: #d0f0d0;
+				color: black;
+				font-weight: bold;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<TABLE border='1' style='width:100%;'>
+			<TR>
+				<TD valign='top' align='right' style='width:294px;'>
+					<DIV id='preclose-calculation'>
+						<LABEL for='principal'>Principal Amount:</LABEL>
+						<INPUT type='number' id='principal' value='34000.00' step='0.01' min='1000' max='900000'>
+				</TD>
+				<TD valign='top' align='right' style='width:204px;'>
+						<LABEL id='rateLabel' for='opendate'>Rate% during 2023: 7.4%</LABEL>
+				</TD>
+				<TD valign='top' align='right' style='width:164px;'>
+						<LABEL for='opendate'>MIS Opened Date:</LABEL>
+				</TD>
+				<TD valign='top' align='right' style='width:230px;'>
+						<DIV id='formatted-date'></DIV>
+				</TD>
+				<TD valign='top' align='right' style='width:20%;'>
+						<INPUT type='date' id='opendate' value='2023-11-04'>
+				</TD>
+				<TD valign='top' align='right'>
+						<BUTTON id='calculate-btn'>Display Loss Due to Pre Close</BUTTON>
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='right' colspan='6'>
+						<TABLE id='result-table' border='1' style='width:100%;'>
+							<TR>
+								<TH>Description</TH>
+								<TH>Amount ರೂ/ரூ/₹ INR</TH>
+							</TR>
+						</TABLE>
+					</DIV>
+				</TD>
+			</TR>
+		</TABLE>
+		<SCRIPT type='text/javascript'>
+			var currentRate=7.4;
+			function updateInterestRate()
+			{
+				var input=document.getElementById('opendate').value;
+				if( !input )
+				{
+					return;
+				}
+				var year=new Date(input).getFullYear();
+				var rates={
+					2011:8.0,
+					2012:8.2,
+					2013:8.4,
+					2014:8.5,
+					2015:8.4,
+					2016:8.0,
+					2017:7.8,
+					2018:7.7,
+					2019:7.6,
+					2020:7.4,
+					2021:7.4,
+					2022:7.4,
+					2023:7.4,
+					2024:7.4,
+					2025:7.4,
+					2026:7.4
+				};
+				var rate=rates[year] || 7.4;
+				currentRate=rate;
+				document.getElementById("rateLabel").textContent=
+				"Rate% during "+year+": "+rate+"%";
+			}
+			function formatDateDisplay()
+			{
+				var input=document.getElementById('opendate').value;
+				if( !input ) return;
+				var d=new Date(input);
+				var dd=d.getDate(); if(dd<10) dd="0"+dd;
+				var mmmArr=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+				var mmm=mmmArr[d.getMonth()];
+				var yyyy=d.getFullYear();
+				var daysArr=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+				var day=daysArr[d.getDay()];
+				var Ddd_dd_Mmm_yyyy=day+" "+dd+"-"+mmm+"-"+yyyy+" IST";
+				document.getElementById('formatted-date').textContent=Ddd_dd_Mmm_yyyy;
+			}
+			function validatePrincipal()
+			{
+				var input=parseFloat(document.getElementById('principal').value);
+				if( isNaN(input) || input<1000 ) input=1000;
+				if( input>900000 ) input=900000;
+				input=Math.round(input/1000)*1000;
+				document.getElementById('principal').value=input.toFixed(2);
+				return input;
+			}
+			function generateMonthlyMIS(principal, rate, years=5)
+			{
+				var totalMonths = years * 12;
+				var totalInterest = principal * rate / 100 * years;
+				var exactMonthly = totalInterest / totalMonths;
+				var floor = Math.floor(exactMonthly);
+				var ceil = Math.ceil(exactMonthly);
+				var ceilMonths = Math.round((totalInterest - floor * totalMonths));
+				var floorMonths = totalMonths - ceilMonths;
+				var monthlyDistribution = [];
+				for (var i=0;i<floorMonths;i++) monthlyDistribution.push(floor);
+				for (var i=0;i<ceilMonths;i++) monthlyDistribution.push(ceil);
+				return monthlyDistribution;
+			}
+			function displayLossRow()
+			{
+				var principal=validatePrincipal();
+				var monthlyIncome=(principal*currentRate/100)/12;
+				var table=document.getElementById('result-table');
+				if( 1 < table.rows.length )
+				{
+					while(table.rows.length>1) table.deleteRow(1);
+				}
+				var newRowIncome=table.insertRow(-1);
+				var cell1_inc=newRowIncome.insertCell(0);
+				var cell2_inc=newRowIncome.insertCell(1);
+				cell1_inc.innerHTML="Monthly MIS Income @ "+currentRate+"%";
+				cell2_inc.innerHTML=monthlyIncome.toFixed(2);
+				CheckRoundInd = cell2_inc.innerHTML;
+				if( 0 < ""+CheckRoundInd.indexOf( ".83") )
+				{
+					CheckRoundInd = Number( parseFloat( CheckRoundInd ).toFixed(2) );
+					var roundedValue = CheckRoundInd + 0.17;
+					CheckRoundInd=roundedValue;
+					cell2_inc.innerHTML=CheckRoundInd+".00 for 10 months (5 years)<BR>"+(CheckRoundInd-1)+".00 for 02 months (5 years)";
+				}
+				else if( 0 < ""+CheckRoundInd.indexOf( ".50") )
+				{
+					CheckRoundInd = Number( parseFloat( CheckRoundInd ).toFixed(2) );
+					var roundedValue = CheckRoundInd + 0.50;
+					CheckRoundInd=roundedValue;
+					cell2_inc.innerHTML=CheckRoundInd+".00 for 06 months(5 years).<BR>"+(CheckRoundInd-1)+".00 for 06 months(5 years)";
+				}
+				else if( 0 < ""+CheckRoundInd.indexOf( ".17") )
+				{
+					CheckRoundInd = Number( parseFloat( CheckRoundInd ).toFixed(2) );
+					var roundedValue = CheckRoundInd - 0.17;
+					CheckRoundInd=roundedValue;
+					cell2_inc.innerHTML=CheckRoundInd+".00 for 5 years.";
+				}
+				else if( 0 < ""+CheckRoundInd.indexOf( ".33") )
+				{
+					CheckRoundInd = Number( parseFloat( CheckRoundInd ).toFixed(2) );
+					var roundedValue = CheckRoundInd - 0.33;
+					CheckRoundInd=roundedValue;
+					cell2_inc.innerHTML=CheckRoundInd+".00 for 5 years.";
+				}
+				else if( 0 < ""+CheckRoundInd.indexOf( ".67") )
+				{
+					CheckRoundInd = Number( parseFloat( CheckRoundInd ).toFixed(2) );
+					var roundedValue = CheckRoundInd + 0.33;
+					CheckRoundInd=roundedValue;
+					cell2_inc.innerHTML=CheckRoundInd+".00 for 06 months (5 years)<BR>"+(CheckRoundInd-1)+".00 for 06 months (5 years)";
+				}
+				var inputDate=document.getElementById('opendate').value;
+				var d=new Date(inputDate);
+				var dd=d.getDate(); if(dd<10) dd="0"+dd;
+				var mmmArr=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+				var mmm=mmmArr[d.getMonth()];
+				var yyyy=d.getFullYear();
+				var daysArr=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+				var day=daysArr[d.getDay()];
+				var formatDate=function(dt)
+				{
+					var dd=dt.getDate(); if(dd<10) dd="0"+dd;
+					var mmm=mmmArr[dt.getMonth()];
+					var yyyy=dt.getFullYear();
+					var day=daysArr[dt.getDay()];
+					return day+" "+dd+"-"+mmm+"-"+yyyy;
+				};
+				// ===== 1-3 YEARS ROW =====
+				var preCloseStart3=new Date(d); preCloseStart3.setFullYear(preCloseStart3.getFullYear()+1);
+				var preCloseEnd3=new Date(d); preCloseEnd3.setFullYear(preCloseEnd3.getFullYear()+3);
+				var loss3=(principal*2)/100;
+				var newRow3=table.insertRow(-1); newRow3.className='yellow-row';
+				var cell1_3=newRow3.insertCell(0); var cell2_3=newRow3.insertCell(1);
+				cell1_3.innerHTML="Loss due to Pre Close Display Loss after 1-3 years<BR>"+
+					"Pre Close of MIS from "+formatDate(preCloseStart3)+" to "+formatDate(preCloseEnd3)+"<BR>";
+//					"<span style='color:red;'>If opening date was "+day+" "+dd+"-"+mmm+"-"+yyyy+", you cannot close MIS today and need to wait till "+formatDate(preCloseStart3)+" to complete 3 years of MIS.</span>";
+				cell2_3.innerHTML=loss3.toFixed(2);
+				// ===== 4 YEARS + 1 DAY ROW =====
+				var preCloseStart4=new Date(d); preCloseStart4.setFullYear(preCloseStart4.getFullYear()+4); preCloseStart4.setDate(preCloseStart4.getDate()+1);
+				var preCloseEnd4=new Date(d); preCloseEnd4.setFullYear(preCloseEnd4.getFullYear()+5); preCloseEnd4.setDate(preCloseEnd4.getDate()-1);
+				var loss4=(principal*1)/100;
+				var newRow4=table.insertRow(-1); newRow4.className='yellow-row';
+				var cell1_4=newRow4.insertCell(0); var cell2_4=newRow4.insertCell(1);
+				cell1_4.innerHTML="Loss due to Pre Close Display Loss after 4 years and 1 day before actual MIS closure date<BR>"+
+					"Pre Close of MIS from "+formatDate(preCloseStart4)+" to "+formatDate(preCloseEnd4)+"<BR>";
+//					"<span style='color:red;'>If opening date was "+day+" "+dd+"-"+mmm+"-"+yyyy+", you cannot close MIS today and need to wait till "+formatDate(preCloseStart4)+" to complete 4 years of MIS.</span>";
+				cell2_4.innerHTML=loss4.toFixed(2);
+				// ===== NEW MIS REOPENING ADVANTAGE =====
+				var reopenDates=[
+					new Date('2026-04-01'),
+					new Date('2026-04-04'),
+					new Date('2026-04-05'),
+					new Date('2026-04-06'),
+					new Date('2026-04-07'),
+					new Date('2026-03-15'),
+					new Date('2026-03-16')
+				];
+				var reopenPrincipal=5000;
+				var totalReopen=reopenDates.length*reopenPrincipal;
+				var yourProfit=(totalReopen*0.02); // assuming 2% average interest gain
+				var governmentProfit=(totalReopen*0.06); // assuming 6% govt income on deposits
+				var indirectIncome=(totalReopen*0.04); // reinvestment/medicine/donation/fees/etc.
+				var newRowAdv=table.insertRow(-1); newRowAdv.className='advantage-row';
+				var cell1_adv=newRowAdv.insertCell(0); var cell2_adv=newRowAdv.insertCell(1);
+				cell1_adv.innerHTML="I am reopening(using internet banking online) 07 MIS each using 5000.00 ₹ INR on<BR>Wed 01-Apr-2026<BR>Sat 04-Apr-2026<BR><B><U>Sun</B></U> 05-Apr-2026 <B><U>using internet banking online</B></U><BR>Mon 06-Apr-2026<BR>Tue 07-Apr-2026<BR>Sun 15-Mar-2026<BR>Mon 16-Mar-2026<BR>"+
+					"Advantages:<BR>"+
+					"1) Your Profit: ₹"+yourProfit.toFixed(2)+"<BR>"+
+					"2) Government Income: ₹"+governmentProfit.toFixed(2)+"<BR>"+
+					"3) Indirect/Spending/Donation/Fees/Reinvest: ₹"+indirectIncome.toFixed(2);
+				cell2_adv.innerHTML=totalReopen.toFixed(2);
+			}
+			document.getElementById('calculate-btn').addEventListener('click',function(){ formatDateDisplay(); displayLossRow(); });
+			document.getElementById('opendate').addEventListener('change',function(){
+				formatDateDisplay();
+				updateInterestRate();
+			});
+			document.getElementById('principal').addEventListener('change',validatePrincipal);
+			formatDateDisplay();
+			validatePrincipal();
+			displayLossRow();
+			updateInterestRate();
+		</SCRIPT>
+	</BODY>
+</HTML>

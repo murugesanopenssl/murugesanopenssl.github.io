@@ -964,6 +964,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "my-kt-rank-chatgpt-Fri-09-Jan-2026.html" && activeLink.textContent.trim() === "My ChatGPT Knowledge Transfer") ||
 							(htmlFileName === "pm-cm-india-relations.html" && activeLink.textContent.trim() === "India PM–CM Relations") ||
 							(htmlFileName === "ippb-awareness-indian-citizens.html" && activeLink.textContent.trim() === "IPPB Premium Savings Tips") ||
+							(htmlFileName === "mis-pre-close-calculator.html" && activeLink.textContent.trim() === "PRE CLOSE MIS CALC") ||
 							(htmlFileName === "Self-Insurance-Plan-for-Parents.html" && activeLink.textContent.trim() === "Personal Self-Insurance Example") ||
 							(htmlFileName === "post-office-nsc.html" && activeLink.textContent.trim() === "National Savings Certificate (NSC)") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Town city gold rate compare") ||
@@ -1504,6 +1505,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 								</LI>
 								<LI>
 									<A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>Monthly Income Scheme (MIS)</FONT></A>
+								</LI>
+								<LI>
+									<A href="#" onclick='javascript:loadHomeContent( event,  "mis-pre-close-calculator.html" );' class="nav-link"><FONT color='white'>PRE CLOSE MIS CALC</FONT></A>
 								</LI>
 								<LI>
 									<A href="#" onclick='javascript:window.open( "post-office-nsc.html" );' class="nav-link"><FONT color='#00ff00'>National Savings Certificate (NSC)</FONT></A>
