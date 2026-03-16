@@ -1669,6 +1669,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Indian-Oil-Cylinder-Booking-Online-Steps.html' );" class="nav-link">Indian Oil Booking Steps</A>
 						</LI>
 						<LI>
+							<!--
+							Utility
+							-->
 							<A href="#" onclick="javascript:loadHomeContent( event, 'how-to-know-sim-number.html' );" class="nav-link">How to find my SIM number?</A>
 						</LI>
 						<LI>
