@@ -996,6 +996,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "COUNTRIES-SUPPORTING-IRAN.html" && activeLink.textContent.trim() === "Countries Supporting Iran") ||
 							(htmlFileName === "bsnl-net-speed-no-parking-kannada.html" && activeLink.textContent.trim() === "BSNL Fibernet,Mobile kannada") ||
 							(htmlFileName === "BSNL-DATA1515-INVALID-SMS.html" && activeLink.textContent.trim() === "BSNL DATA1515 Invalid SMS") ||
+							(htmlFileName === "how-to-use-mobile-home-fibnernet-bsnl.html" && activeLink.textContent.trim() === "BSNL Mobile & Fibernet") ||
 							(htmlFileName === "epson-printer-requirement.html" && activeLink.textContent.trim() === "Epson Printer Rates") ||
 							(htmlFileName === "info-ltts.html" && activeLink.textContent.trim() === "L & T EMAIL AUTOMATION") ||
 							(htmlFileName === "talent-ibm.html" && activeLink.textContent.trim() === "IBM EMAIL AUTOMATION") ||
@@ -1452,6 +1453,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'BSNL-DATA1515-INVALID-SMS.html' );" class="nav-link">BSNL DATA1515 Invalid SMS</A>
 						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'how-to-use-mobile-home-fibnernet-bsnl.html' );" class="nav-link">BSNL Mobile & Fibernet</A>
+						</LI>
 					</UL>
 				</LI>
 				</UL>
@@ -1796,6 +1800,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'make-son-daughter-study-for-exam.html' );" class="nav-link">Parent/Teacher Exam Guide</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'find-your-birth-time-this-year.html' );" class="nav-link">FIND YOUR BIRTH TIME THIS YEAR</A>
 						</LI>
 					</UL>
 				</LI>

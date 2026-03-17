@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>Find Your Birth Time This Year</TITLE>
+		<STYLE type='text/css'>
+			body
+			{
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+			}
+			table
+			{
+				border-collapse: collapse;
+				width: 100%;
+			}
+			td, th
+			{
+				border: 1px solid #000;
+				padding: 5px;
+				text-align: left;
+			}
+			input, button
+			{
+				padding: 5px;
+				margin: 2px;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<TABLE border='1' style='width:100%;'>
+			<TR>
+				<TD valign='top' align='center' colspan='2'>
+					<B>Find Your Birth Time Each Year</B>
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					Enter your birth date and time (Example: 12-Mar-1982 08:00 AM):
+				</TD>
+				<TD valign='top' align='left'>
+					<input type='text' value='12-Mar-1982 08:00 AM' id='birthInput' size='30'>
+					<button onclick='computeBirthTimes()'>Compute</button>
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left' colspan='2'>
+					<B>Result:</B><BR>
+					<div id='result'></div>
+				</TD>
+			</TR>
+		</TABLE>
+		<SCRIPT type='text/javascript'>
+			function formatDateParts(d)
+			{
+				const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+				const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+				let dayName = days[d.getDay()];
+				let day = String(d.getDate()).padStart(2,'0');
+				let month = months[d.getMonth()];
+				let year = d.getFullYear();
+
+				let hours = d.getHours();
+				let minutes = String(d.getMinutes()).padStart(2,'0');
+				let ampm = hours >= 12 ? 'PM' : 'AM';
+				hours = hours % 12;
+				hours = hours ? hours : 12; // 0 -> 12
+				hours = String(hours).padStart(2,'0');
+
+				let tzShort = 'IST'; // Hardcode timezone
+
+				let datePart = `${dayName} ${day}-${month}-${year}`;
+				let timePart = `${hours}:${minutes} ${ampm} ${tzShort}`;
+
+				return { datePart, timePart };
+			}
+			function computeBirthTimes()
+			{
+				var input=document.getElementById('birthInput').value.trim()
+				if(!input)
+				{
+					document.getElementById('result').innerHTML="Please enter birth date and time."
+					return
+				}
+				var startDate=new Date(input)
+				if(isNaN(startDate.getTime()))
+				{
+					document.getElementById('result').innerHTML="Invalid date format. Use DD-MMM-YYYY HH:MM AM/PM"
+					return
+				}
+				var tropicalYearSec=365*86400 + 5*3600 + 48*60 + 45
+				var resultHTML="<TABLE border='1' style='width:100%;'><TR><TH valign='top' align='right'>Age</TH><TH valign='top' align='right'>Birthday</TH><TH valign='top' align='right'>TIME</TH></TR>"
+				var currentYear=new Date().getFullYear()
+				var prevTime=startDate.getTime()/1000
+				var age=0
+				while(true)
+				{
+					var bdayDate=new Date(prevTime*1000)
+					var bdayYear=bdayDate.getFullYear()
+					//resultHTML += "<TR><TD valign='top' align='right'>" + age.toString().padStart(2,'0') + "</TD><TD valign='top' align='right'>" + formatDate(bdayDate) + "</TD></TR>";
+					let parts = formatDateParts(bdayDate);
+					resultHTML += "<TR><TD valign='top' align='right'>" + age.toString().padStart(2,'0') + "</TD><TD valign='top' align='right'>" 
+								  + parts.datePart + "</TD><TD valign='top' align='right'>" + parts.timePart + "</TD></TR>";
+					age++
+					prevTime+=tropicalYearSec
+					if(bdayYear>=currentYear) break
+				}
+				resultHTML+="</TABLE><BR>Note: 1 Tropical year = 365 days 5 hours 48 minutes 45 seconds"
+				document.getElementById('result').innerHTML=resultHTML
+			}
+			computeBirthTimes();
+		</SCRIPT>
+		<DIV style="margin-top:20px; font-size:small; text-align:left;">
+			Note: The exact time of your birthday each year may vary slightly due to the Earth's rotation and its orbit around the Sun. 
+			Differences in location (time zone) and seasonal variations cause small shifts in the observed time each year.
+		</DIV>
+	</BODY>
+</HTML>
