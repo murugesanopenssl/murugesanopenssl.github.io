@@ -939,6 +939,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "eleventh-exam-dates.html" && activeLink.textContent.trim() === "11th EXAM CHART") ||
 							(htmlFileName === "SSLC-EXAM-DATES.html" && activeLink.textContent.trim() === "SSLC EXAM CHART") ||
 							(htmlFileName === "make-son-daughter-study-for-exam.html" && activeLink.textContent.trim() === "Parent/Teacher Exam Guide") ||
+							(htmlFileName === "find-your-birth-time-this-year.html" && activeLink.textContent.trim() === "FIND YOUR BIRTH TIME THIS YEAR") ||
 							(htmlFileName === "Tamilnadu-MLA.html" && activeLink.textContent.trim() === "Tamil Nadu MLAs") ||
 							(htmlFileName === "new-employee-sbi-account.html" && activeLink.textContent.trim() === "Employee Savings Guide") ||
 							(htmlFileName === "Indian-bank-to-other-bank.html" && activeLink.textContent.trim() === "Indian bank transfer err") ||
