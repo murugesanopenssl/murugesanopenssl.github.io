@@ -1,121 +1,113 @@
 <!DOCTYPE html>
-<HTML lang="en">
-	<HEAD>
-		<META charset="UTF-8">
-		<META name="viewport" content="width=device-width, initial-scale=1.0">
-		<TITLE>Find Your Birth Time This Year</TITLE>
-		<STYLE type='text/css'>
-			body
-			{
-				font-family: Arial, sans-serif;
-				margin: 0;
-				padding: 0;
-			}
-			table
-			{
-				border-collapse: collapse;
-				width: 100%;
-			}
-			td, th
-			{
-				border: 1px solid #000;
-				padding: 5px;
-				text-align: left;
-			}
-			input, button
-			{
-				padding: 5px;
-				margin: 2px;
-			}
-		</STYLE>
-	</HEAD>
-	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-		<TABLE border='1' style='width:100%;'>
-			<TR>
-				<TD valign='top' align='center' colspan='2'>
-					<B>Find Your Birth Time Each Year</B>
-				</TD>
-			</TR>
-			<TR>
-				<TD valign='top' align='left'>
-					Enter your birth date and time (Example: 12-Mar-1982 08:00 AM):
-				</TD>
-				<TD valign='top' align='left'>
-					<input type='text' value='12-Mar-1982 08:00 AM' id='birthInput' size='30'>
-					<button onclick='computeBirthTimes()'>Compute</button>
-				</TD>
-			</TR>
-			<TR>
-				<TD valign='top' align='left' colspan='2'>
-					<B>Result:</B><BR>
-					<div id='result'></div>
-				</TD>
-			</TR>
-		</TABLE>
-		<SCRIPT type='text/javascript'>
-			function formatDateParts(d)
-			{
-				const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-				const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Birth Time This Year</title>
+<style>
+body { font-family: Arial; margin:0; padding:0; }
+table { border-collapse: collapse; width: 100%; }
+td, th { border:1px solid #000; padding:5px; text-align:center; }
+input, button { padding:5px; margin:2px; }
+</style>
+</head>
+<body>
+<table border='1' style='width:100%;'>
+<tr><td valign='top' align='right' colspan="2"><b>Find Your Birth Time Each Year</b></td></tr>
+<tr>
+<td valign='top' align='right' id="labelText">Enter your birth date and time:<BR>Example:<BR>Sun 22-Mar-1982 08:00 AM</td>
+<td valign='top' align='right'>
+<input type="text" id="birthInput" size="30">
+<button onclick="computeBirthTimes()">Compute</button>
+</td>
+</tr>
+<tr>
+<td valign='top' align='right' colspan="2">
+<b>Result:</b><br>
+<div id="result"></div>
+</td>
+</tr>
+</table>
 
-				let dayName = days[d.getDay()];
-				let day = String(d.getDate()).padStart(2,'0');
-				let month = months[d.getMonth()];
-				let year = d.getFullYear();
+<script>
+const dateArray = [
+"03-Jan-1982","04-Jan-1982","06-Jan-1982","10-Jan-1982","13-Jan-1982",
+"19-Jan-2012","21-Jan-1982","23-Jan-1982","27-Jan-2008","01-Feb-2009",
+"06-Feb-2011","11-Feb-1982","13-Feb-1982","14-Feb-1982","18-Feb-1982",
+"19-Feb-1982","19-Feb-2010","21-Feb-2009","01-Mar-2008","02-Mar-1982",
+"08-Mar-2009","12-Mar-1982","22-Mar-1982","25-Mar-2007","03-Apr-1982",
+"06-Apr-1982","07-Apr-1982","15-Apr-1982","18-Apr-1982","30-Apr-2009",
+"14-May-1982","18-May-2009","23-May-2010","26-May-1982","05-Jun-1982",
+"10-Jun-1982","25-Jun-2007","30-Jun-1982","18-Jul-1982","18-Jul-2005",
+"20-Jul-1982","04-Aug-1982","08-Aug-1982","09-Aug-1981","21-Aug-2008",
+"23-Aug-2009","24-Aug-2009","27-Aug-2010","05-Sep-1982","06-Sep-2009",
+"13-Sep-1982","15-Sep-1982","18-Sep-1982","20-Sep-1982","25-Sep-1982",
+"04-Oct-1982","07-Oct-1982","11-Oct-1982","12-Oct-2008","14-Oct-1982",
+"16-Oct-1982","17-Oct-1982","27-Oct-1982","05-Nov-1982","10-Nov-1982",
+"27-Nov-1982","27-Nov-1982","27-Nov-2009","30-Nov-1982","03-Dec-1982",
+"06-Dec-2007","18-Dec-1982","24-Dec-1982","05-Dec-2011"
+];
+const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-				let hours = d.getHours();
-				let minutes = String(d.getMinutes()).padStart(2,'0');
-				let ampm = hours >= 12 ? 'PM' : 'AM';
-				hours = hours % 12;
-				hours = hours ? hours : 12; // 0 -> 12
-				hours = String(hours).padStart(2,'0');
+function formatDateParts(d){
+    let dayName = days[d.getDay()];
+    let day = String(d.getDate()).padStart(2,'0');
+    let month = months[d.getMonth()];
+    let year = d.getFullYear();
+    let h = d.getHours();
+    let m = String(d.getMinutes()).padStart(2,'0');
+    let ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return { datePart:`${dayName} ${day}-${month}-${year}`, timePart:`${String(h).padStart(2,'0')}:${m} ${ampm} IST` };
+}
 
-				let tzShort = 'IST'; // Hardcode timezone
+function setDefaultInput(){
+    let today = new Date();
+    let currentYear = today.getFullYear();
+    // Find the nearest date from dateArray
+    let nearest = dateArray.map(d=>{
+        let parts = d.split('-');
+        let day = parseInt(parts[0]);
+        let monthIndex = months.indexOf(parts[1]);
+        let dateObj = new Date(currentYear, monthIndex, day, 8, 0); // 08:00 AM
+        return { original: d, dateObj: dateObj };
+    });
+    nearest.sort((a,b)=> Math.abs(a.dateObj - today) - Math.abs(b.dateObj - today));
+    let best = nearest[0];
+    let weekday = days[best.dateObj.getDay()];
+    document.getElementById("birthInput").value = `${weekday} ${best.original} 08:00 AM`;
+}
 
-				let datePart = `${dayName} ${day}-${month}-${year}`;
-				let timePart = `${hours}:${minutes} ${ampm} ${tzShort}`;
+function computeBirthTimes(){
+    let input = document.getElementById('birthInput').value.trim();
+    let startDate = new Date(input);
+    if(isNaN(startDate)){ document.getElementById('result').innerHTML="Invalid date"; return; }
+    let tropical = 365*86400 + 5*3600 + 48*60 + 45; // tropical year in seconds
+    let currentYear = new Date().getFullYear();
+    let prev = startDate.getTime()/1000;
+    let age = 0;
+    let html = "<table border='1' style='width:100%;'><tr><th>Age</th><th>Birthday</th><th>Time</th></tr>";
+    while(true){
+        let d = new Date(prev*1000);
+        let p = formatDateParts(d);
+        html += `<tr><td>${age<10?'0'+age:age}</td><td>${p.datePart}</td><td>${p.timePart}</td></tr>`;
+        prev += tropical;
+        age++;
+        if(d.getFullYear() >= currentYear) break;
+    }
+    html += "</table>";
+    document.getElementById("result").innerHTML = html;
+}
 
-				return { datePart, timePart };
-			}
-			function computeBirthTimes()
-			{
-				var input=document.getElementById('birthInput').value.trim()
-				if(!input)
-				{
-					document.getElementById('result').innerHTML="Please enter birth date and time."
-					return
-				}
-				var startDate=new Date(input)
-				if(isNaN(startDate.getTime()))
-				{
-					document.getElementById('result').innerHTML="Invalid date format. Use DD-MMM-YYYY HH:MM AM/PM"
-					return
-				}
-				var tropicalYearSec=365*86400 + 5*3600 + 48*60 + 45
-				var resultHTML="<TABLE border='1' style='width:100%;'><TR><TH valign='top' align='right'>Age</TH><TH valign='top' align='right'>Birthday</TH><TH valign='top' align='right'>TIME</TH></TR>"
-				var currentYear=new Date().getFullYear()
-				var prevTime=startDate.getTime()/1000
-				var age=0
-				while(true)
-				{
-					var bdayDate=new Date(prevTime*1000)
-					var bdayYear=bdayDate.getFullYear()
-					//resultHTML += "<TR><TD valign='top' align='right'>" + age.toString().padStart(2,'0') + "</TD><TD valign='top' align='right'>" + formatDate(bdayDate) + "</TD></TR>";
-					let parts = formatDateParts(bdayDate);
-					resultHTML += "<TR><TD valign='top' align='right'>" + age.toString().padStart(2,'0') + "</TD><TD valign='top' align='right'>" 
-								  + parts.datePart + "</TD><TD valign='top' align='right'>" + parts.timePart + "</TD></TR>";
-					age++
-					prevTime+=tropicalYearSec
-					if(bdayYear>=currentYear) break
-				}
-				resultHTML+="</TABLE><BR>Note: 1 Tropical year = 365 days 5 hours 48 minutes 45 seconds"
-				document.getElementById('result').innerHTML=resultHTML
-			}
-			computeBirthTimes();
-		</SCRIPT>
-		<DIV style="margin-top:20px; font-size:small; text-align:left;">
-			Note: The exact time of your birthday each year may vary slightly due to the Earth's rotation and its orbit around the Sun. 
-			Differences in location (time zone) and seasonal variations cause small shifts in the observed time each year.
-		</DIV>
-	</BODY>
-</HTML>
+function initBirthTimePage(){
+    setDefaultInput();
+    computeBirthTimes();
+}
+
+// If loaded as a sub-page, call this manually after injecting HTML
+initBirthTimePage();
+window.onload = function() { initBirthTimePage(); };
+</script>
+</body>
+</html>
