@@ -1,113 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Find Your Birth Time This Year</title>
-<style>
-body { font-family: Arial; margin:0; padding:0; }
-table { border-collapse: collapse; width: 100%; }
-td, th { border:1px solid #000; padding:5px; text-align:center; }
-input, button { padding:5px; margin:2px; }
-</style>
-</head>
-<body>
-<table border='1' style='width:100%;'>
-<tr><td valign='top' align='right' colspan="2"><b>Find Your Birth Time Each Year</b></td></tr>
-<tr>
-<td valign='top' align='right' id="labelText">Enter your birth date and time:<BR>Example:<BR>Sun 22-Mar-1982 08:00 AM</td>
-<td valign='top' align='right'>
-<input type="text" id="birthInput" size="30">
-<button onclick="computeBirthTimes()">Compute</button>
-</td>
-</tr>
-<tr>
-<td valign='top' align='right' colspan="2">
-<b>Result:</b><br>
-<div id="result"></div>
-</td>
-</tr>
-</table>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>
+			Find Your Birth Time This Year
+		</TITLE>
+		<STYLE type='text/css'>
+			body
+			{
+				font-family: Arial;
+				margin:0; padding:0; }
+			table
+			{
+				border-collapse: collapse;
+				width: 100%; }
+			td, th
+			{
+				border:1px solid #000;
+				padding:5px;
+				text-align:center; }
+			input, button
+			{
+				padding:5px;
+				margin:2px;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<TABLE border='1' style='width:100%;'>
+			<TR>
+				<TD valign='top' align='right' colspan="2">
+					<B>
+						Find Your Birth Time Each Year
+					</B>
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='right' id="labelText">
+					Enter your birth date and time:<BR>
+					Example:<BR>
+					Mon 22-Mar-1982 08:00 AM
+				</TD>
+				<TD valign='top' align='right'>
+					<INPUT type="text" id="birthInput" size="30" value='Sun 22-Mar-1982 08:00 AM'>
+					<BUTTON onclick="javascript:computeBirthTimes( );">
+						Display related birth/annyversary time for this year.
+					</BUTTON>
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='right' colspan="2">
+					<B>
+						Result:
+					</B><BR>
+					<DIV id="result"></DIV>
+				</TD>
+			</TR>
+		</TABLE>
+		<SCRIPT type='text/javascript'>
+			const dateArray = [
+			"03-Jan-1982","04-Jan-1982","06-Jan-1982","10-Jan-1982","13-Jan-1982",
+			"19-Jan-2012","21-Jan-1982","23-Jan-1982","27-Jan-2008","01-Feb-2009",
+			"06-Feb-2011","11-Feb-1982","13-Feb-1982","14-Feb-1982","18-Feb-1982",
+			"19-Feb-1982","19-Feb-2010","21-Feb-2009","01-Mar-2008","02-Mar-1982",
+			"08-Mar-2009","12-Mar-1982","22-Mar-1982","25-Mar-2007","03-Apr-1982",
+			"06-Apr-1982","07-Apr-1982","15-Apr-1982","18-Apr-1982","30-Apr-2009",
+			"14-May-1982","18-May-2009","23-May-2010","26-May-1982","05-Jun-1982",
+			"10-Jun-1982","25-Jun-2007","30-Jun-1982","18-Jul-1982","18-Jul-2005",
+			"20-Jul-1982","04-Aug-1982","08-Aug-1982","09-Aug-1981","21-Aug-2008",
+			"23-Aug-2009","24-Aug-2009","27-Aug-2010","05-Sep-1982","06-Sep-2009",
+			"13-Sep-1982","15-Sep-1982","18-Sep-1982","20-Sep-1982","25-Sep-1982",
+			"04-Oct-1982","07-Oct-1982","11-Oct-1982","12-Oct-2008","14-Oct-1982",
+			"16-Oct-1982","17-Oct-1982","27-Oct-1982","05-Nov-1982","10-Nov-1982",
+			"27-Nov-1982","27-Nov-1982","27-Nov-2009","30-Nov-1982","03-Dec-1982",
+			"06-Dec-2007","18-Dec-1982","24-Dec-1982","05-Dec-2011"
+			];
+			const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+			const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+			function formatDateParts( d )
+			{
+				let dayName = days[ d.getDay( ) ];
+				let day = String( d.getDate( ) ).padStart(2,'0');
+				let month = months[ d.getMonth( ) ];
+				let year = d.getFullYear( );
+				let h = d.getHours( );
+				let m = String( d.getMinutes( ) ).padStart(2,'0');
+				let ampm = h >= 12 ? 'PM' : 'AM';
+				h = h % 12 || 12;
+				return { datePart:`${dayName} ${day}-${month}-${year}`, timePart:`${String(h).padStart(2,'0')}:${m} ${ampm} IST` };
+			}
+			function setDefaultInput( )
+			{
+				let today = new Date( );
+				let currentYear = today.getFullYear( );
+				let nearest = dateArray.map( d=> {
+						let parts = d.split('-');
+						let day = parseInt(parts[0]);
+						let monthIndex = months.indexOf(parts[1]);
+						let dateObj = new Date(currentYear, monthIndex, day, 8, 0); // 08:00 AM
+						return { original: d, dateObj: dateObj };
+					}
+				);
+				nearest.sort((a,b)=> Math.abs(a.dateObj - today) - Math.abs(b.dateObj - today));
+				let best = nearest[ 0 ];
+				let weekday = days[ best.dateObj.getDay( ) ];
+				document.getElementById("birthInput").value = `${weekday} ${best.original} 08:00 AM`;
+			}
+			function computeBirthTimes( )
+			{
+				let input = document.getElementById('birthInput').value.trim( );
+				let startDate = new Date(input);
+				if( isNaN( startDate ) )
+				{ 
+					document.getElementById('result').innerHTML="Invalid date"; 
+					return; 
+				}
+				let tropical = 365*86400 + 5*3600 + 48*60 + 45;
+				let today = new Date( );
+				let prev = startDate.getTime( )/1000;
+				let age = 0;
+				let rows = [];
+				while(true)
+				{
+					let d = new Date(prev*1000);
+					rows.push( {
+							age: age,
+							dateObj: d,
+							parts: formatDateParts(d)
+						}
+					);
+					prev += tropical;
+					age++;
 
-<script>
-const dateArray = [
-"03-Jan-1982","04-Jan-1982","06-Jan-1982","10-Jan-1982","13-Jan-1982",
-"19-Jan-2012","21-Jan-1982","23-Jan-1982","27-Jan-2008","01-Feb-2009",
-"06-Feb-2011","11-Feb-1982","13-Feb-1982","14-Feb-1982","18-Feb-1982",
-"19-Feb-1982","19-Feb-2010","21-Feb-2009","01-Mar-2008","02-Mar-1982",
-"08-Mar-2009","12-Mar-1982","22-Mar-1982","25-Mar-2007","03-Apr-1982",
-"06-Apr-1982","07-Apr-1982","15-Apr-1982","18-Apr-1982","30-Apr-2009",
-"14-May-1982","18-May-2009","23-May-2010","26-May-1982","05-Jun-1982",
-"10-Jun-1982","25-Jun-2007","30-Jun-1982","18-Jul-1982","18-Jul-2005",
-"20-Jul-1982","04-Aug-1982","08-Aug-1982","09-Aug-1981","21-Aug-2008",
-"23-Aug-2009","24-Aug-2009","27-Aug-2010","05-Sep-1982","06-Sep-2009",
-"13-Sep-1982","15-Sep-1982","18-Sep-1982","20-Sep-1982","25-Sep-1982",
-"04-Oct-1982","07-Oct-1982","11-Oct-1982","12-Oct-2008","14-Oct-1982",
-"16-Oct-1982","17-Oct-1982","27-Oct-1982","05-Nov-1982","10-Nov-1982",
-"27-Nov-1982","27-Nov-1982","27-Nov-2009","30-Nov-1982","03-Dec-1982",
-"06-Dec-2007","18-Dec-1982","24-Dec-1982","05-Dec-2011"
-];
-const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
-function formatDateParts(d){
-    let dayName = days[d.getDay()];
-    let day = String(d.getDate()).padStart(2,'0');
-    let month = months[d.getMonth()];
-    let year = d.getFullYear();
-    let h = d.getHours();
-    let m = String(d.getMinutes()).padStart(2,'0');
-    let ampm = h >= 12 ? 'PM' : 'AM';
-    h = h % 12 || 12;
-    return { datePart:`${dayName} ${day}-${month}-${year}`, timePart:`${String(h).padStart(2,'0')}:${m} ${ampm} IST` };
-}
-
-function setDefaultInput(){
-    let today = new Date();
-    let currentYear = today.getFullYear();
-    // Find the nearest date from dateArray
-    let nearest = dateArray.map(d=>{
-        let parts = d.split('-');
-        let day = parseInt(parts[0]);
-        let monthIndex = months.indexOf(parts[1]);
-        let dateObj = new Date(currentYear, monthIndex, day, 8, 0); // 08:00 AM
-        return { original: d, dateObj: dateObj };
-    });
-    nearest.sort((a,b)=> Math.abs(a.dateObj - today) - Math.abs(b.dateObj - today));
-    let best = nearest[0];
-    let weekday = days[best.dateObj.getDay()];
-    document.getElementById("birthInput").value = `${weekday} ${best.original} 08:00 AM`;
-}
-
-function computeBirthTimes(){
-    let input = document.getElementById('birthInput').value.trim();
-    let startDate = new Date(input);
-    if(isNaN(startDate)){ document.getElementById('result').innerHTML="Invalid date"; return; }
-    let tropical = 365*86400 + 5*3600 + 48*60 + 45; // tropical year in seconds
-    let currentYear = new Date().getFullYear();
-    let prev = startDate.getTime()/1000;
-    let age = 0;
-    let html = "<table border='1' style='width:100%;'><tr><th>Age</th><th>Birthday</th><th>Time</th></tr>";
-    while(true){
-        let d = new Date(prev*1000);
-        let p = formatDateParts(d);
-        html += `<tr><td>${age<10?'0'+age:age}</td><td>${p.datePart}</td><td>${p.timePart}</td></tr>`;
-        prev += tropical;
-        age++;
-        if(d.getFullYear() >= currentYear) break;
-    }
-    html += "</table>";
-    document.getElementById("result").innerHTML = html;
-}
-
-function initBirthTimePage(){
-    setDefaultInput();
-    computeBirthTimes();
-}
-
-// If loaded as a sub-page, call this manually after injecting HTML
-initBirthTimePage();
-window.onload = function() { initBirthTimePage(); };
-</script>
-</body>
-</html>
+					if( d.getFullYear( ) >= today.getFullYear( ) + 1 )
+					{
+						break;
+					}
+				}
+				let targetYear = today.getFullYear( );
+				let targetIndex = -1;
+				let todayOnly = new Date(today);
+				todayOnly.setHours(0,0,0,0);
+				for( let i=0; rows.length > i; i++)
+				{
+					let d = new Date(rows[i].dateObj);
+					let dOnly = new Date(d);
+					dOnly.setHours(0,0,0,0);
+					if( dOnly.getFullYear() === targetYear )
+					{
+						if( dOnly >= todayOnly )
+						{
+							targetIndex = i;
+						}
+						else
+						{
+							targetIndex = i+1;
+						}
+						break;
+					}
+				}
+				rows.reverse( );
+				if( -1 !== targetIndex )
+				{
+					targetIndex = rows.length - 1 - targetIndex;
+				}
+				let html = "<TABLE border='1' style='width:100%;'>\
+						<TR>\
+							<TH valign='top' align='right'>\
+								Age\
+							</TH>\
+							<TH valign='top' align='right'>\
+								Birthday\
+							</TH>\
+							<TH valign='top' align='right'>\
+								Time\
+							</TH>\
+						</TR>";
+				rows.forEach( (row, index) => {
+					let bg = (index === targetIndex) ? " style='background-color:#00ff00;'" : "";
+					html += `<TR${bg}>
+							<TD valign='top' align='right'>
+								${row.age<10?'0'+row.age:row.age}
+							</TD>
+							<TD valign='top' align='right'>
+								${row.parts.datePart}
+							</TD>
+							<TD valign='top' align='right'>
+								${row.parts.timePart}
+							</TD>
+						</TR>`;
+					}
+				);
+				html += "</TABLE>";
+				document.getElementById("result").innerHTML = html;
+			}
+			function initBirthTimePage( )
+			{
+				setDefaultInput( );
+				computeBirthTimes( );
+			}
+			initBirthTimePage( );
+			window.onload = function( ) { initBirthTimePage( ); };
+		</SCRIPT>
+	</BODY>
+</HTML>
