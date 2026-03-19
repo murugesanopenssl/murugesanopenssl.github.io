@@ -314,7 +314,7 @@ rankings</A> </TD> <TD valign='top' align='left'> <A HREF='.\MyProfileViewers.ht
 						INR
 					</TD>
 					<TD valign='top' align='left' style='width:216px;'>
-						<A href='#' onclick='window.open("https://wise.com/in/currency-converter/usd-to-inr-rate/history/"+dd_mm_yyyy);'><FONT color='white'>DOLLAR TO INR</FONT></A>
+						<A href='#' onclick='window.open("https://wise.com/in/currency-converter/usd-to-inr-rate/history/"+dd_mm_yyyy);'><FONT color='black'>DOLLAR TO INR</FONT></A>
 					</TD>
 					<TD valign='top' align='left'>
 						Ddd dd-Mmm-YYYY
@@ -326,7 +326,7 @@ rankings</A> </TD> <TD valign='top' align='left'> <A HREF='.\MyProfileViewers.ht
 						INR
 					</TD>
 					<TD valign='top' align='left'>
-	<A href='#' onclick='window.open("https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)");'><FONT color='white'>Top 10 Countries by Nominal GDP as of 2025</FONT></A>
+	<A href='#' onclick='window.open("https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)");'><FONT color='black'>Top 10 Countries by Nominal GDP as of 2025</FONT></A>
 					</TD>
 					<TD>
 						<A href='Disp-all-gdp.html'>Display01 other countries GDP</A>
@@ -673,11 +673,11 @@ According to a recent EY report, India's GDP, when measured in Purchasing Power 
 is projected to surpass that of the United States by 2038.</FONT>
 <TR>
 <SCRIPT type='text/javascript'>
-document.write( "<TD valign='top' align='left' style='width:145px;'>Ddd dd-Mmm-YYYY</TD><TD valign='top' align='left'>DOLLAR</TD><TD valign='top' align='left'>INR</TD><TD valign='top' align='left' style='width:216px;'><A href='#' onclick='javascript:window.open(\"https://wise.com/in/currency-converter/usd-to-inr-rate/history/\"+formattedYesterdayDate);'><FONT color='white'>DOLLAR TO INR</FONT></A></TD>");
+document.write( "<TD valign='top' align='left' style='width:145px;'>Ddd dd-Mmm-YYYY</TD><TD valign='top' align='left'>DOLLAR</TD><TD valign='top' align='left'>INR</TD><TD valign='top' align='left' style='width:216px;'><A href='#' onclick='javascript:window.open(\"https://wise.com/in/currency-converter/usd-to-inr-rate/history/\"+formattedYesterdayDate);'><FONT color='black'>DOLLAR TO INR</FONT></A></TD>");
 document.write( "<TD valign='top' align='left' colspan='11'>");
 document.write( "<TABLE style='width:100%;'>");
 document.write( "<TR><TD>");
-document.write( "<A href='#' onclick='javascript:window.open(\"https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)\");'><FONT color='white'>Top 10 Countries by Nominal GDP</FONT></A>");
+document.write( "<A href='#' onclick='javascript:window.open(\"https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)\");'><FONT color='black'>Top 10 Countries by Nominal GDP</FONT></A>");
 document.write( "</TD>");
 document.write( "<TD>");
 document.write( "<A href='Disp-all-gdp.html'>Display all countries GDP</A>");
@@ -690,12 +690,12 @@ let EachCountryEconomy = [
 	[ "United states", "0031.821293", "North America" ],
 	[ "China", "0020.650754", "Asia" ],
 	[ "Germany", "0005.328184", "Europe" ],
-	[ "India", "0004.125213", "Asia" ],
+	[ "India", "0004.515629", "Asia" ],
 	[ "Japan", "0004.463634", "Asia" ],
-	[ "United Kingdom", "0004.040844", "Europe" ],
+	[ "United Kingdom", "0004.225639", "Europe" ],
 	[ "France", "0003.558562", "Europe" ],
 	[ "Italy", "0002.701544", "Europe" ],
-	[ "Russia", "0002.545421", "Europe" ],
+	[ "Russia", "0002.509421", "Europe" ],
 	[ "Canada", "0002.420837", "North America" ],
 	[ "Brazil", "0002.292690", "South America" ],
 	[ "Spain", "0002.041830", "Europe" ],
@@ -910,6 +910,7 @@ let EachCountryEconomy = [
 	[ "Tuvalu", "0000.000058", "Oceania" ],
 ];
 let INR_DATA = [
+	[ "18-Mar-2025", "01", "92.402200" ],
 	[ "24-Dec-2025", "01", "89.436000" ],
 	[ "15-Dec-2025", "01", "90.584000" ],
 	[ "13-Dec-2025", "01", "90.584000" ],
@@ -1247,8 +1248,16 @@ let INR_DATA = [
 				}
 				let table = document.getElementById('countriesEconomyTable');
 				INNERHTMLROW="";
+				let indx="";
 				for( let i = 0; i < 10; i++)
 				{
+					if( 0 == i )
+					{
+					}
+					else
+					{
+						indx= padZero(i);
+					}
 					if( 0 == i )
 					{
 						if( "Not found" == `${EachCountryEconomy[i][1]}` )
@@ -1260,7 +1269,7 @@ let INR_DATA = [
 							var RED_TD_COL="<TD valign='top' align='left'>";
 						}
 						const row = `<TR>
-						<TD valign='top' align='left' style="text-align: right; padding-right: 10px;">${padZero(i + 1)}</TD>
+						<TD valign='top' align='left' style="text-align: right; padding-right: 10px;">${indx}</TD>
 						<TD valign='top' align='left'>${EachCountryEconomy[i][0]}</TD>
 						<TD valign='top' align='left'> ${EachCountryEconomy[i][1]}</TD>
 						${RED_TD_COL} ${EachCountryEconomy[i][2]}</TD>
@@ -1337,7 +1346,7 @@ In PPP, the United States (2,10) is present in the top ten.</TD>
 							var RED_TD_COL="<TD valign='top' align='left'>";
 						}
 						const row = `<TR>
-						<TD style="text-align: right; padding-right: 10px;">${padZero(i + 1)}</TD>
+						<TD valign='top' style="text-align: right; padding-right: 10px;">${indx}</TD>
 						<TD valign='top' align='left'>${EachCountryEconomy[i][0]}</TD>
 						${RED_TD_COL} ${EachCountryEconomy[i][1]}</TD>
 						<TD valign='top' align='left'>${EachCountryEconomy[i][2]}</TD>
@@ -1347,10 +1356,14 @@ In PPP, the United States (2,10) is present in the top ten.</TD>
 				}
 				for( let i = 51; i < INR_DATA.length; i++)
 				{
+					if( 0 != i )
+					{
+						indx=padZero(i);
+					}
 					if( 0 == i )
 					{
 						row = `<TR style='display:none;' name='${EachCountryEconomy[i][0]}'>
-						<TD valign='top' align='left' style="text-align: right; padding-right: 10px;">${padZero(i + 1)}</TD>
+						<TD valign='top' align='left' style="text-align: right; padding-right: 10px;">${indx}</TD>
 						<TD valign='top' align='left'>${EachCountryEconomy[i][0]}</TD>
 						<TD valign='top' align='left'>${EachCountryEconomy[i][1]}</TD>
 						<TD valign='top' align='left' style='width:105px;'>${EachCountryEconomy[i][2]}</TD>
@@ -1416,7 +1429,7 @@ In PPP, the United States (2,10) is present in the top ten.</TD>
 					else
 					{
 						const row = `<TR style='display:none;' name='${EachCountryEconomy[i][0]}'>
-						<TD style="text-align: right; padding-right: 10px;">${padZero(i + 1)}</TD>
+						<TD valign='top' style="text-align: right; padding-right: 10px;">${indx}</TD>
 						<TD valign='top' align='left'>${EachCountryEconomy[i][0]}</TD>
 						<TD valign='top' align='left'>${EachCountryEconomy[i][1]}</TD>
 						<TD valign='top' align='left'>${EachCountryEconomy[i][2]}</TD>
