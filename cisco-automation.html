@@ -1,0 +1,76 @@
+Use same reply email to:<BR>
+hiring@jobalerts.cisco.com, mail_delivery@res.cisco.com<BR>
+AUTOMATED SHELL SCRIPT:
+<TABLE>
+<TR>
+<TD>
+<PRE>$ /usr/bin/cat "cisco-replymail.sh"
+#!/bin/bash
+REPLY_TO="murugesan.nagarajan.future.mail@cisco.com"
+#TO="murugesangct@gmail.com"
+TO="hiring@jobalerts.cisco.com, mail_delivery@res.cisco.com"
+BCC="murugesanopenssl@gmail.com, murugesangct@gmail.com"
+FROM="murugesan.nagarajan.future.mail@cisco.com"
+SUBJECT="Re: Your Cisco Journey Begins Here – Next Steps for Your Application"
+DATE="$(/usr/bin/date "+%A %d-%b-%Y %I:%M %p %Z")"
+HTML_FILE="/home/NMurugesan/Din_Back/jobs/Send-Automatic-Email/CISCO-REPLYMAIL-Thu-19-Mar-2026-04-13-PM.html"
+if [[ ! -f "$MURUGESAN_OPENSSL_CV" ]]
+then
+	echo "ls -ltr \"$MURUGESAN_OPENSSL_CV\""
+	/usr/bin/ls -ltr "$MURUGESAN_OPENSSL_CV"
+else
+	if [[ -f "${HTML_FILE}" && -f "${MURUGESAN_OPENSSL_CV}" ]]
+	then
+		BODY_TOP="&lt;P&gt;Respected Hiring Team,&lt;/P&gt;
+		&lt;P&gt;I am following up regarding my application submitted through the Cisco careers portal.&lt;/P&gt;
+		&lt;P&gt;This message demonstrates my automation skills: it is generated using a shell script running on Cygwin and designed to work across a wide range of operating systems (CYGWIN_NT, MSYS_NT, UNIX, BSD, Linux, Minix, QNX, IRIX, Tru64, Haiku, BeOS, Android, AIX, SunOS, HP-UX, macOS).&lt;/P&gt;
+		&lt;P&gt;I am aware that automated systems often filter or reject profiles, but I wanted to showcase my technical ability and persistence in building cross-platform solutions.&lt;/P&gt;
+		&lt;P&gt;&lt;B&gt;Please find my profile attached for your reference.&lt;/B&gt;&lt;/P&gt;
+		&lt;P&gt;Thank you for your time and consideration.&lt;/P&gt;
+		&lt;P&gt;
+		BCC: ${BCC}&lt;BR&gt;
+		On ${DATE}, ${FROM} wrote:
+		&lt;/P&gt;
+		&lt;B&gt;Description&lt;/B&gt;: Use automated shell scripts across multiple operating systems.&lt;BR&gt;
+		&lt;BR&gt;
+		Regards,&lt;BR&gt;
+		N Murugesan&lt;BR&gt;
+		murugesan openssl&lt;BR&gt;
+		&lt;A href='https://murugesanopenssl.github.io'&gt;https://murugesanopenssl.github.io&lt;/A&gt;"
+		FOOTER_CONTENT="$(/usr/bin/sed '/&lt;html&gt;/Id;/&lt;\/html&gt;/Id;/&lt;body&gt;/Id;/&lt;\/body&gt;/Id' "${HTML_FILE}")"
+		BODY="${BODY_TOP}&lt;HR&gt;${FOOTER_CONTENT}"
+		BOUNDARY="====MIME_BOUNDARY_$$===="
+		FILENAME="$(/usr/bin/basename "$MURUGESAN_OPENSSL_CV")"
+		(
+			echo "From: ${FROM}"
+			echo "To: ${TO}"
+			echo "Reply-To: ${REPLY_TO}"
+			echo "Bcc: ${BCC}"
+			echo "Subject: ${SUBJECT}"
+			echo "MIME-Version: 1.0"
+			echo "Content-Type: multipart/mixed; boundary=\"$BOUNDARY\""
+			echo
+			echo "--$BOUNDARY"
+			echo "Content-Type: text/html; charset=UTF-8"
+			echo "Content-Transfer-Encoding: 7bit"
+			echo
+			echo "${BODY}"
+			echo
+			echo "--$BOUNDARY"
+			echo "Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document; name=\"$FILENAME\""
+			echo "Content-Transfer-Encoding: base64"
+			echo "Content-Disposition: attachment; filename=\"$FILENAME\""
+			echo
+			base64 "$MURUGESAN_OPENSSL_CV"
+			echo
+			echo "--$BOUNDARY--"
+		) | /usr/sbin/msmtp.exe --read-envelope-from -t
+		echo "Email sent to ${TO} with attachment"
+	else
+		echo "Required file missing:"
+		/usr/bin/ls -ltr "${HTML_FILE}" "${MURUGESAN_OPENSSL_CV}"
+	fi
+fi
+</PRE>
+</TD>
+</TR>
