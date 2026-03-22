@@ -183,21 +183,8 @@
 							var PARENT_AMT = 4650.00;
 							document.getElementById( "amount" ).innerHTML =
 							"<FONT color='red'><B><U>SAVED AMOUNT AT ETDR/POST: "+PARENT_AMT.toFixed( 2 ) + " ரூ/ரூ/₹ INR</B></U></FONT>";
-							var last_updated = "25-Feb-2026 09:58 PM IST";
-							var parts = last_updated.split( " " );
-							var dateOnly = parts[0];
-							var dateParts = dateOnly.split( "-" );
-							var day = parseInt( dateParts[0], 10 );
-							var monthStr = dateParts[1];
-							var year = parseInt( dateParts[2], 10 );
-							var months = {
-								Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5,
-								Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11
-							};
-							var dateObj = new Date( year, months[monthStr], day );
-							var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-							var dayName = days[dateObj.getDay()];
-							document.getElementById( "updated" ).innerHTML = "on " + dayName + " " + last_updated;
+							var LASTUPDATED_PARENT_INSURANCE_TIME = "Wed 18-Mar-2026 10:01 PM";
+							document.getElementById( "updated" ).innerHTML = "on " + LASTUPDATED_PARENT_INSURANCE_TIME;
 						})();
 								</SCRIPT>
 							</TD>
@@ -221,7 +208,7 @@
 								<SCRIPT type="text/javascript">
 								( function()
 						 {
-							var SAVED_EPSON_PRINTER = 1126.00;
+							var SAVED_EPSON_PRINTER = 66.00;
 							var YET_TO_SAVE = 12000.00 - SAVED_EPSON_PRINTER;
 							document.getElementById( "printerSaved" ).innerHTML =
 							"<FONT color='red'><B><U>SAVED AMOUNT AT ETDR/POST: "+SAVED_EPSON_PRINTER.toFixed( 2 )+"</B></U></FONT>";
@@ -290,7 +277,7 @@
 								<DIV id="pucsaved"></DIV>
 								<DIV id="YetToSavePuc"></DIV>
 				<SCRIPT type='text/javascript'>
-					var PUC01_AMT = 32627.00;
+					var PUC01_AMT = 32689.00;
 					var YET_TO_SAVE = 150000.00 - PUC01_AMT;
 					document.getElementById( "pucsaved" ).innerHTML = "<FONT color='red'><B><U>SAVED AMOUNT AT ETDR/POST:<BR>"+PUC01_AMT.toFixed( 2 )+" ರೂ/ரூ/₹ INR</B></U></FONT>";
 					document.getElementById( "YetToSavePuc" ).innerHTML = "YET TO SAVE: "+YET_TO_SAVE.toFixed( 2 )+" ರೂ/ரூ/₹ INR";

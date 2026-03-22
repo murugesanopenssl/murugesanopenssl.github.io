@@ -719,6 +719,97 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				window.addEventListener( 'beforeunload', saveMenuState );
 				}
 			);
+			function PreventLifeInsurance(event, htmlFileName, lang = 'kn')
+			{
+				event.preventDefault();
+				console.log("=== PreventLifeInsurance called ===");
+				console.log("Loading file:", htmlFileName, "with language:", lang);
+
+				// Update document title based on file name
+				const titles = {
+					"HandleBankAMB.html": "ATM Card exception usage",
+					"ippb-awareness-indian-citizens.html": "IPPB Premium Savings Tips",
+					"Self-Insurance-Plan-for-Parents.html": "Personal Self insurance Example",
+					"post-office-mis.html": "Monthly Income Scheme (MIS)",
+					"Steps-to-save-money-from-mis.html": "STEPS TO SAVE MONEY FROM MIS",
+					"spending.html": "Daily Spending",
+					"2-wheeler-4-wheeler-rank.html": "Vehicle ranking",
+					"my-gold-loan.html": "Apply gold loan only at SBI/banks",
+					"my-kt-rank-chatgpt-Fri-09-Jan-2026.html": "Knowledge Transfer Case Study – SBI Fixed Deposit Optimization"
+				};
+				if (titles[htmlFileName]) {
+					document.title = titles[htmlFileName];
+				}
+
+				// Load the HTML content via AJAX
+				var xhr = new XMLHttpRequest();
+				xhr.open("GET", htmlFileName, true);
+				xhr.responseType = "text";
+				xhr.onload = function () {
+					if (xhr.status === 200) {
+						let content = xhr.responseText;
+
+						// Remove unwanted DisplayMainMenu calls
+						content = content.replace(/<SCRIPT>\s*DisplayMainMenu\(\);\s*<\/SCRIPT>/gi, '');
+						content = content.replace(/DisplayMainMenu\(\);?/gi, '');
+
+						// Insert content into main content area
+						const mainContent = document.querySelector(".main-content");
+						if (mainContent) {
+							mainContent.innerHTML = content;
+
+							// Process scripts
+							const tempDiv = document.createElement('div');
+							tempDiv.innerHTML = content;
+							const scripts = tempDiv.querySelectorAll('script');
+							scripts.forEach(script => {
+								const newScript = document.createElement('script');
+								if (script.src) {
+									newScript.src = script.src;
+								} else {
+									if (!script.textContent.includes('DisplayMainMenu')) {
+										newScript.textContent = script.textContent;
+									}
+								}
+								if (script.type) newScript.type = script.type;
+								document.body.appendChild(newScript);
+							});
+
+							// Show selected language content
+							showLang(lang);
+
+							// Disable currently selected language in the submenu
+							const languageLinks = document.querySelectorAll("tr td a");
+							languageLinks.forEach(link => {
+								const linkLang = link.getAttribute("onclick")?.match(/showLang\('(\w+)'\)/)?.[1];
+								if (linkLang === lang) {
+									link.removeAttribute("href");
+									link.style.pointerEvents = "none";
+									link.style.cursor = "not-allowed";
+									link.style.opacity = "0.5";
+									link.style.textDecoration = "none";
+									link.style.color = "#888";
+								} else {
+									// restore other language links
+									link.style.pointerEvents = "auto";
+									link.style.cursor = "pointer";
+									link.style.opacity = "1";
+									link.style.textDecoration = "underline";
+									link.style.color = "";
+								}
+							});
+						}
+					} else {
+						console.error("XHR failed with status:", xhr.status);
+						alert("Failed to load content: " + xhr.status);
+					}
+				};
+				xhr.onerror = function () {
+					console.error("XHR error occurred");
+					alert("Request error occurred.");
+				};
+				xhr.send();
+			}
 			function loadHomeContent( event, htmlFileName )
 			{
 				console.log("=== loadHomeContent called ===");
@@ -975,6 +1066,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "gold-loan.html" && activeLink.textContent.trim() === "Loan Repayment Timing") ||
 							(htmlFileName === "2-wheeler-4-wheeler-rank.html" && activeLink.textContent.trim() === "Vehicle Cost Rankings") ||
 							(htmlFileName === "ITR-2025-2026.html" && activeLink.textContent.trim() === "ITR Filing Guide") ||
+							(htmlFileName === "form-15-TDS-Certificate-ITR-help.html" && activeLink.textContent.trim() === "TDS FORM15 ITR HELP") ||
 							(htmlFileName === "my-gold-loan.html" && activeLink.textContent.trim() === "SBI/Bank Gold Loans Only") ||
 							(htmlFileName === "Personal-Spending-Strategy.html" && activeLink.textContent.trim() === "Smart Spending Plan") ||
 							(htmlFileName === "ppf-info.html" && activeLink.textContent.trim() === "Steps to save at PPF?") ||
@@ -1569,6 +1661,12 @@ function loadMoneyHelpContent( event, htmlFileName )
 					</A>
 					<UL class="submenu">
 						<LI>
+							<a href="javascript:void(0);" 
+							   onclick="loadHomeContent(event, 'axis-bank-life-insurance-block.html', 'kn')">
+							   Avoid Private Bank Life Insurance
+							</a>
+						</LI>
+						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Handle-Pre-closure-bank.html' );" class="nav-link">Bank Account Closure & SMS Issue</A>
 						</LI>
 						<LI>
@@ -1619,6 +1717,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 				</LI>
 				<LI>
 					<A href="#" onclick="javascript:loadHomeContent(event, 'ITR-2025-2026.html');" class="nav-link">ITR Filing Guide</A>
+				</LI>
+				<LI>
+					<A href="#" onclick="javascript:loadHomeContent(event, 'form-15-TDS-Certificate-ITR-help.html');" class="nav-link">TDS FORM15 ITR HELP</A>
 				</LI>
 				<LI>
 					<A href="#" onclick="javascript:loadHomeContent( event, '2-wheeler-4-wheeler-rank.html' );" class="nav-link">Vehicle Cost Rankings</A>
