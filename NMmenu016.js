@@ -1037,6 +1037,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "world-currencies.html" && activeLink.textContent.trim() === "World Currency Rates") ||
 							(htmlFileName === "Last-year-investment-provit-at-earth.html" && activeLink.textContent.trim() === "Annual Investment Review") ||
 							(htmlFileName === "My-Daily-Interest-Allocation-Plan.html" && activeLink.textContent.trim() === "Daily Income Growth") ||
+							(htmlFileName === "PUC01-school-fees.html" && activeLink.textContent.trim() === "HANDLE 11TH SCHOOL FEE") ||
 							(htmlFileName === "gold-loan.html" && activeLink.textContent.trim() === "When to pay loan?") ||
 							(htmlFileName === "attibele-to-vijayanagar-bus-stops-intermediate-metro.html" && activeLink.textContent.trim() === "Bengaluru Attibele to Vijayanagar BMTC") ||
 							(htmlFileName === "2-wheeler-4-wheeler-rank.html" && activeLink.textContent.trim() === "Vehicle rankings amount") ||
@@ -1465,6 +1466,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 								</LI>
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'Last-year-investment-provit-at-earth.html' );" class="nav-link">Annual Investment Review</A>
+								</LI>
+								<LI>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'PUC01-school-fees.html' );" class="nav-link">HANDLE 11TH SCHOOL FEE</A>
 								</LI>
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'My-Daily-Interest-Allocation-Plan.html' );" class="nav-link">Daily Income Growth</A>
