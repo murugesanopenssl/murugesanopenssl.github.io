@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<HTML lang="kn">
+<HTML lang="en">
 	<HEAD>
 		<META charset="UTF-8">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,17 +35,18 @@
 			}
 		</STYLE>
 	</HEAD>
-	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0' onload="showLang('kn')">
+	<body TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 		<SCRIPT type='text/javascript'>
-			function showLang(l)
-			{
-				var x=document.getElementsByClassName('lang');
-				for(var i=0;i<x.length;i++)
-				{
-					x[i].style.display='none';
-				}
-				document.getElementById(l).style.display='block';
-			}
+			function showLang(l) {
+    var x = document.getElementsByClassName('lang');
+    for(var i=0; i<x.length; i++) {
+        x[i].style.display='none';
+    }
+    document.getElementById(l).style.display='block';
+}
+window.onload = function() {
+    showLang('en');  // English shown by default
+};
 		</SCRIPT>
 		<TABLE border='0' style='width:100%;'>
 			<TR>
@@ -57,34 +58,9 @@
 							<TD><A id="langHi" href="#" onclick="showLang('hi')">हिंदी/ಹಿಂದಿ/இந்தி/Hindi</A></TD>
 							<TD><A id="langEn" href="#" onclick="showLang('en')">English/ಇಂಗ್ಲೀಷ್/ஆங்கிலம்/अंग्रेज़ी</A></TD>
 						</TR>
-
-						<SCRIPT type='text/javascript'>
-							function showLang(l)
-							{
-								var x=document.getElementsByClassName('lang');
-								for(var i=0;i<x.length;i++)
-								{
-									x[i].style.display='none';
-								}
-								document.getElementById(l).style.display='block';
-
-								// Reset all hrefs to '#'
-								document.getElementById('langKn').removeAttribute('href');
-								document.getElementById('langTa').removeAttribute('href');
-								document.getElementById('langHi').removeAttribute('href');
-								document.getElementById('langEn').removeAttribute('href');
-
-								// Enable href for all except the selected one
-								if(l!=='kn') document.getElementById('langKn').setAttribute('href','#');
-								if(l!=='ta') document.getElementById('langTa').setAttribute('href','#');
-								if(l!=='hi') document.getElementById('langHi').setAttribute('href','#');
-								if(l!=='en') document.getElementById('langEn').setAttribute('href','#');
-							}
-						</SCRIPT>
 						<TR>
 							<TD class='box' colspan='4'>
-								
-								<DIV id='kn' class='lang' style='display:block;'>
+								<DIV id="kn" class="lang" style="display:none;">
 									<H1>ಖಾಸಗಿ ಬ್ಯಾಂಕ್ ಜೀವನ ವಿಮೆ ತೆಗೆದುಕೊಳ್ಳಬೇಡಿ</H1>
 									<P>ಅನೇಕ ಖಾಸಗಿ ಬ್ಯಾಂಕುಗಳು ಜೀವನ ವಿಮಾ ಯೋಜನೆಗಳನ್ನು ಹೂಡಿಕೆ ಸಾಧನಗಳಾಗಿ ಪ್ರಚಾರ ಮಾಡುತ್ತವೆ. ಈ ಯೋಜನೆಗಳು ಹಣವನ್ನು ಪರಿಣಾಮಕಾರಿಯಾಗಿ ಉಳಿಸಲು ಸೂಕ್ತವಾಗಿರುವುದಿಲ್ಲ.</P>
 									<P>ಹೆಚ್ಚಿನ ಪ್ರೀಮಿಯಂ, ಕಡಿಮೆ ಲಾಭ ಮತ್ತು ದೀರ್ಘಾವಧಿಯ ಲಾಕ್ ಅವಧಿ ಇವುಗಳನ್ನು ಇತರ ಹಣಕಾಸು ಆಯ್ಕೆಗಳಿಗಿಂತ ಕಡಿಮೆ ಉಪಯುಕ್ತವಾಗಿಸುತ್ತದೆ.</P>
@@ -118,8 +94,7 @@
 										<LI>ಪರಿಸರ ಲಾಭ ಇಲ್ಲ: ಕಚೇರಿ ಭೇಟಿ ಮತ್ತು ಕಾಗದ ಕೆಲಸ ಹೆಚ್ಚುತ್ತದೆ.</LI>
 									</UL>
 								</DIV>
-
-								<DIV id='ta' class='lang'>
+								<DIV id="ta" class="lang" style="display:none;">
 									<H1>தனியார் வங்கி வாழ்க்கை காப்பீடு வேண்டாம்</H1>
 									<P>பல தனியார் வங்கிகள் வாழ்க்கை காப்பீட்டை முதலீட்டு கருவியாக விளம்பரப்படுத்துகின்றன. இது சேமிப்பிற்கு பொருத்தமல்ல.</P>
 									<P>அதிக கட்டணம், குறைந்த வருமானம் மற்றும் நீண்ட கால பூட்டு இதை பயனற்றதாக்குகிறது.</P>
@@ -153,8 +128,7 @@
 										<LI>சுற்றுச்சூழல் நன்மை இல்லை: பத்திரப்பணிகளுக்கு நேரடி வருகை தேவை, எரிபொருள் மற்றும் மாசு அதிகம்.</LI>
 									</UL>
 								</DIV>
-
-								<DIV id='hi' class='lang'>
+								<DIV id="hi" class="lang" style="display:none;">
 									<H1>प्राइवेट बैंक जीवन बीमा न लें</H1>
 									<P>कई निजी बैंक जीवन बीमा योजनाओं को निवेश उपकरण के रूप में बढ़ावा देते हैं। ये योजनाएं धन बचाने के लिए अक्सर उपयुक्त नहीं होती हैं।</P>
 									<P>उच्च प्रीमियम, कम रिटर्न और लंबी लॉक-इन अवधि इन्हें अन्य वित्तीय विकल्पों की तुलना में कम लाभकारी बनाती हैं।</P>
@@ -188,8 +162,7 @@
 										<LI>पर्यावरण लाभ नहीं: शारीरिक दौरे और कागजी कार्रवाई की आवश्यकता होती है, जिससे ईंधन उपयोग और प्रदूषण बढ़ता है।</LI>
 									</UL>
 								</DIV>
-
-								<DIV id='en' class='lang'>
+								<DIV id="en" class="lang" style="display:block;">
 									<H1>Do Not Apply for Private Bank Life Insurance</H1>
 									<P>Many private banks promote life insurance policies as investment tools. These policies are often not suitable for saving money effectively.</P>
 									<P>High premiums, low returns, and long lock-in periods make these plans less beneficial compared to other financial options.</P>

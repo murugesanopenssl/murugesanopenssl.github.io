@@ -1662,7 +1662,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 					<UL class="submenu">
 						<LI>
 							<a href="javascript:void(0);" 
-							   onclick="loadHomeContent(event, 'axis-bank-life-insurance-block.html', 'kn')">
+							   onclick="loadHomeContent(event, 'axis-bank-life-insurance-block.html', 'en')">
 							   Avoid Private Bank Life Insurance
 							</a>
 						</LI>
