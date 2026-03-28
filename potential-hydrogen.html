@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Potential Hydrogen Values of Soaps</title>
+<style type='text/css'>
+#kannadaph, #teluguph, #tamilph, #hindi, #englishph {
+    display: none;
+}
+#kannadaph {
+    display: block;
+}
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: left;
+    }
+    .acidic, .neutral {
+        background-color: #00ff00;
+        color: black;
+    }
+    .alkaline {
+        background-color: red;
+        color: white;
+    }
+    .hand-GOOD {
+        background-color: #00ff00;
+        color: black;
+    }
+    .hand-bad {
+        background-color: red;
+        color: white;
+    }
+</style>
+</head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'>
+<!--
+	1)
+	onload of this sub page display only Kannada
+	disable href and onclick option to Kannada
+	2)
+	if I am clicking Display in Tamil
+	enable href and onclick to kannada
+	disable href and onclick to Tamil
+	display only tamil div alone
+-->
+<script type="text/javascript">
+  const links = ['linkKannada','linkTelugu','linkTamil','linkHindi','linkEnglish'];
+  const languages = ['kannadaph','teluguph','tamilph','hindi','englishph'];
+  let currentLink = 'linkKannada'; // default selected
+
+  function selectLanguage(langId, linkId){
+    // Show only selected language div
+    languages.forEach(id => {
+      document.getElementById(id).style.display = (id === langId) ? 'block' : 'none';
+    });
+
+    // Remove formatting from previous link
+    const prevLink = document.getElementById(currentLink);
+    prevLink.innerHTML = prevLink.textContent;
+    prevLink.style.color = ''; // reset color
+    prevLink.style.fontWeight = ''; 
+    prevLink.style.textDecoration = '';
+
+    // Apply bold/underline and black color to current link
+    const link = document.getElementById(linkId);
+    link.innerHTML = `<b><u>${link.textContent}</u></b>`;
+    link.style.color = 'black'; // set black color
+
+    // Disable the current link, enable others
+    links.forEach(id => {
+      const l = document.getElementById(id);
+      if(id === linkId){
+        l.style.pointerEvents = 'none';
+        l.style.opacity = '0.5';
+      } else {
+        l.style.pointerEvents = 'auto';
+        l.style.opacity = '1';
+      }
+    });
+
+    // Update currentLink
+    currentLink = linkId;
+  }
+
+  // On page load: show Kannada and style it
+document.addEventListener('DOMContentLoaded', function() {
+    const defaultLink = document.getElementById('linkKannada');
+    
+    // Disable the Kannada link completely
+    defaultLink.removeAttribute('href');       // remove href
+    defaultLink.removeAttribute('onclick');    // remove onclick
+    defaultLink.style.color = 'black';         // style
+    defaultLink.style.fontWeight = 'bold';
+    defaultLink.style.textDecoration = 'underline';
+    defaultLink.style.pointerEvents = 'none';  // prevent clicks
+    defaultLink.style.opacity = '0.5';
+
+    // Show only Kannada div
+    document.getElementById('kannadaph').style.display = 'block';
+
+    // Hide other language divs
+    const languages = ['teluguph','tamilph','hindi','englishph'];
+    languages.forEach(id => document.getElementById(id).style.display = 'none');
+});
+</script>
+<A id="linkKannada" href="javascript:void(0);" onclick="selectLanguage('kannadaph','linkKannada');">ಕನ್ನಡದಲ್ಲಿ ಪ್ರದರ್ಶಿಸಿ/Display in Kannada</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<A id="linkTelugu" href="javascript:void(0);" onclick="selectLanguage('teluguph','linkTelugu');">తెలుగులో ప్రదర్శించు/Display in Telugu</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<A id="linkTamil" href="javascript:void(0);" onclick="selectLanguage('tamilph','linkTamil');">தமிழில் காண்பிக்கவும்/Display in Tamil</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<A id="linkHindi" href="javascript:void(0);" onclick="selectLanguage('hindi','linkHindi');">हिंदी में दिखाएँ/Display in Hindi</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<A id="linkEnglish" href="javascript:void(0);" onclick="selectLanguage('englishph','linkEnglish');">Display in English</A>
+
+
+<div id='kannadaph'>
+ಸೋಪಿನ pH ಅದು ಆಮ್ಲೀಯ, ತಟಸ್ಥ ಅಥವಾ ಕ್ಷಾರೀಯವಾಗಿದೆಯೇ ಎಂದು ತೋರಿಸುತ್ತದೆ.<br>
+ಮಾನವ ಚರ್ಮವು 5.50 pH ಅನ್ನು ಹೊಂದಿರುತ್ತದೆ, ಇದು ಬ್ಯಾಕ್ಟೀರಿಯಾ ಮತ್ತು ವೈರಸ್‌ಗಳಿಂದ ನಮ್ಮನ್ನು ರಕ್ಷಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.<br>
+ಡವ್ (pH 5.00) ನಂತಹ ಸೋಪ್‌ಗಳು ಮೃದುವಾಗಿರುತ್ತವೆ, ಚರ್ಮವನ್ನು ಮೃದುವಾಗಿರಿಸುತ್ತದೆ, ಹೆಚ್ಚುವರಿ ಎಣ್ಣೆ ಉತ್ಪಾದನೆಯನ್ನು ತಡೆಯುತ್ತದೆ ಮತ್ತು ಚರ್ಮದ ಮೇಲಿನ ಸಣ್ಣ ತೆರೆಯುವಿಕೆಗಳು ಅಥವಾ "ರಂಧ್ರಗಳನ್ನು" ಕಡಿಮೆ ಮಾಡುತ್ತದೆ.<br>
+ಸಿಂಥಾಲ್ ಅಥವಾ ಲಕ್ಸ್‌ನಂತಹ ಕ್ಷಾರೀಯ ಸೋಪ್‌ಗಳನ್ನು ಆಗಾಗ್ಗೆ ಬಳಸಿದರೆ ಚರ್ಮವನ್ನು ಒಣಗಿಸಬಹುದು ಅಥವಾ ಎಣ್ಣೆಯುಕ್ತವಾಗಿಸಬಹುದು.<br>
+ಪೇರಳೆಗಳಂತಹ ತಟಸ್ಥ ಸೋಪ್‌ಗಳು ಸುರಕ್ಷಿತ.<br>
+ಕೈ ತೊಳೆಯಲು, ಸೌಮ್ಯವಾದ ಸೋಪ್‌ಗಳು ಉತ್ತಮ, ಆದರೆ ಸಾಂದರ್ಭಿಕವಾಗಿ ಕ್ಷಾರೀಯ ಸೋಪ್‌ಗಳನ್ನು ಬಳಸುವುದು ಸರಿ.<br>
+ಶುಕ್ರ 27-ಮಾರ್ಚ್-2026 (ಭಾರತೀಯ ಸಮಯ) ರಿಂದ ನಾನು ಸ್ನಾನ ಮಾಡುವಾಗ ಡವ್ ಸೋಪ್ ಅನ್ನು ಬಳಸಲು ಮತ್ತು ಕೈ ತೊಳೆಯಲು ಪೇರಳೆಗಳನ್ನು ಬಳಸಲು ನಿರ್ಧರಿಸಿದ್ದೇನೆ.
+</div>
+
+<div id='teluguph'>
+సబ్బు యొక్క pH విలువ, అది ఆమ్ల స్వభావం కలిగి ఉందా, తటస్థంగా ఉందా లేదా క్షార స్వభావం కలిగి ఉందా అనే విషయాన్ని సూచిస్తుంది.<br>
+మానవ చర్మం యొక్క pH విలువ 5.50 ఉంటుంది; ఇది మనల్ని బ్యాక్టీరియా మరియు వైరస్‌ల నుండి రక్షించడంలో సహాయపడుతుంది.<br>
+డోవ్ సబ్బు (pH 5.00) వంటి సబ్బులు చర్మంపై మృదువుగా పనిచేస్తాయి, చర్మాన్ని మృదువుగా ఉంచుతాయి, అధిక నూనె ఉత్పత్తిని నివారిస్తాయి మరియు చర్మంపై ఉండే చిన్న చిన్న రంధ్రాలను తగ్గిస్తాయి.<br>
+సింథోల్ సబ్బు లేదా లక్స్ సబ్బు వంటి క్షార స్వభావం కలిగిన సబ్బులను తరచుగా ఉపయోగిస్తే, అవి చర్మాన్ని పొడిగా లేదా జిడ్డుగా మార్చవచ్చు.<br>
+పేయర్స్ సోప్ వంటి తటస్థ స్వభావం కలిగిన సబ్బులు సురక్షితమైనవి.<br>
+<b><u>శుక్రవారం 27-మార్చి-2026 (భారత కాలమానం) నుండి — స్నానం చేసేటప్పుడు Dove సబ్బును, చేతులు కడుక్కోవడానికి Pears సబ్బును ఉపయోగించాలని నేను నిర్ణయించుకున్నాను.</b></u>
+</div>
+
+<div id='tamilph'>
+ஒரு சோப்பின் ஹைட்ரஜன் ஆற்றல் மதிப்பு, அது அமிலத்தன்மை கொண்டதா, நடுநிலைத்தன்மை கொண்டதா அல்லது காரத்தன்மை கொண்டதா என்பதை உணர்த்துகிறது.<br>
+மனிதத் தோலின் ஹைட்ரஜன் ஆற்றல் மதிப்பு 5.50 ஆகும்; இது நம்மை பாக்டீரியாக்கள் மற்றும் வைரஸ்களிடமிருந்து பாதுகாக்க உதவுகிறது.<br>
+டவ் சோப்பு (ஹைட்ரஜன் ஆற்றல் 5.00) போன்ற சோப்புகள் மென்மையானவை; இவை தோலை மிருதுவாக வைத்திருப்பதுடன், அதிகப்படியான எண்ணெய் சுரப்பதைத் தடுத்து, தோலில் உள்ள நுண்ணிய துளைகளைச் சுருக்கவும் உதவுகின்றன.<br>
+சின்தால் சோப்பு அல்லது லக்ஸ் சோப்பு போன்ற காரத்தன்மை கொண்ட சோப்புகளை அடிக்கடி பயன்படுத்தினால், அவை தோலை வறண்டு போகச் செய்யவோ அல்லது அதிக எண்ணெய் பிசுபிசுப்புடன் மாற்றவோ கூடும்.<br>
+பியர்ஸ் சோப்பு போன்ற நடுநிலைத்தன்மை கொண்ட சோப்புகள் பாதுகாப்பானவை.<br>
+கைகளைக் கழுவுவதற்கு மென்மையான சோப்புகளே மிகவும் சிறந்தவை என்றாலும், எப்போதாவது ஒருமுறை காரத்தன்மை கொண்ட சோப்புகளைப் பயன்படுத்துவதும் தவறில்லை.<BR>
+வெள்ளி 27-மார்ச்-2026 (இந்திய நேரம்) முதல், குளிப்பதற்கு டவ் சோப்பையும், கை கழுவுவதற்கு பெயர்ஸ் சோப்பையும் பயன்படுத்த நான் முடிவு செய்துள்ளேன்.
+</div>
+
+<div id='hindi'>
+साबुन का pH मान यह बताता है कि वह अम्लीय (acidic), उदासीन (neutral) है या क्षारीय (alkaline)।<br>
+इंसानी त्वचा का pH मान 5.50 होता है, जो हमें बैक्टीरिया और वायरस से बचाने में मदद करता है।<br>
+Dove (pH 5.00) जैसे साबुन सौम्य होते हैं, त्वचा को मुलायम रखते हैं, त्वचा में अतिरिक्त तेल बनने से रोकते हैं, और त्वचा पर मौजूद छोटे-छोटे छिद्रों को कम करते हैं।<br>
+Cinthol या Lux जैसे क्षारीय साबुनों का अगर बार-बार इस्तेमाल किया जाए, तो वे त्वचा को रूखा या तैलीय बना सकते हैं।<br>
+Pears जैसे उदासीन साबुन सुरक्षित होते हैं।<br>
+शुक्रवार 27-मार्च-2026 (भारतीय समय) से मैंने यह तय किया है कि नहाते समय मैं Dove साबुन का इस्तेमाल करूँगा और हाथ धोने के लिए पेअर्स सोप का।
+हाथ धोने के लिए सौम्य साबुन सबसे अच्छे होते हैं, लेकिन कभी-कभार क्षारीय साबुनों का इस्तेमाल करना भी ठीक है।<br>
+</div>
+
+<div id='englishph'>
+The pH of a soap shows if it is acidic, neutral, or alkaline.<br>
+Human skin has a pH of 5.50, which helps protect us from bacteria and viruses.<br>
+Soaps like Dove (pH 5.00) are gentle, keep the skin soft, prevent extra oil production, and reduce tiny openings or “holes” on the skin.<br>
+Alkaline soaps like Cinthol or Lux can make skin dry or oily if used often.<br>
+Neutral soaps like Pears are safe.<br>
+For hand washing, gentle soaps are best, but occasional use of alkaline soaps is okay.<br>
+<b><u>FROM Fri 27-Mar-2026 IST I HAVE DECIDED TO USE DOVE SOAP WHEN TAKING BATH AND TO USE PEARS FOR HAND WASH.</b></u>
+</div>
+
+<table>
+<tr>
+<th>SOAP NAME</th>
+<th>POTENTIAL HYDROGEN VALUE</th>
+<th>TYPE</th>
+<th>NOTES</th>
+</tr>
+<tr class='acidic'><td>DOVE</td><td>5.00</td><td>ACIDIC</td><td></td></tr>
+<tr class='acidic'><td>SKIN</td><td>5.50</td><td>ACIDIC</td><td>PREVENT FROM BACTERIA AND KEEP THE SKIN SMOOTH</td></tr>
+<tr class='neutral'><td>DRINKING WATER</td><td>7.00</td><td>NEUTRAL</td><td>NO PROBLEM WITH NEUTRAL</td></tr>
+<tr class='neutral'><td>CHANDRIKA</td><td>7.00</td><td>NEUTRAL</td><td></td></tr>
+<tr class='neutral'><td>FIAMA</td><td>7.00</td><td>NEUTRAL</td><td></td></tr>
+<tr class='neutral'><td>PEARS</td><td>7.00</td><td>NEUTRAL</td><td></td></tr>
+<tr class='neutral'><td>GOHNSON'S BABY SHOP</td><td>7.00</td><td>NEUTRAL</td><td></td></tr>
+<tr class='alkaline'><td>HIMALAYA BABY SHOP</td><td>7.00 TO 8.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>SANTOOR</td><td>8.00 TO 9.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>MYSORE SANDAL SOAP BENGALURU</td><td>8.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>LUX</td><td>8.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>NATURE POWER</td><td>8.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>REXONA</td><td>8.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>LIFEBUOY</td><td>8.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>MEDIMIX</td><td>8.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>CINTHOL</td><td>09.00 TO 10.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>GOKUL SANTAL</td><td>09.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>MARGO</td><td>09.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>DETTOL</td><td>09.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>HAMAM</td><td>09.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>HIMALAYA NEEM & TURMERIC</td><td>09.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='alkaline'><td>VIVEL</td><td>09.00 TO 10.00</td><td>ALKALINE</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+</table>
+
+<table style='margin-top:20px;'>
+<tr>
+<th>SOAP NAME</th>
+<th>POTENTIAL HYDROGEN VALUE</th>
+<th>HAND WASH SUITABILITY</th>
+</tr>
+<tr class='hand-GOOD'><td>DOVE</td><td>5.00</td><td>GOOD</td></tr>
+<tr class='hand-GOOD'><td>CHANDRIKA</td><td>7.00</td><td>GOOD</td></tr>
+<tr class='hand-GOOD'><td>FIAMA</td><td>7.00</td><td>GOOD</td></tr>
+<tr class='hand-GOOD'><td>PEARS</td><td>7.00</td><td>GOOD</td></tr>
+<tr class='hand-GOOD'><td>GOHNSON'S BABY SHOP</td><td>7.00</td><td>GOOD</td></tr>
+<tr class='hand-bad'><td>HIMALAYA BABY SHOP</td><td>7.00 TO 8.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>SANTOOR</td><td>8.00 TO 9.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>MYSORE SANDAL SOAP BENGALURU</td><td>8.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>LUX</td><td>8.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>NATURE POWER</td><td>8.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>REXONA</td><td>8.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>LIFEBUOY</td><td>8.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>MEDIMIX</td><td>8.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>CINTHOL</td><td>09.00 TO 10.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>GOKUL SANTAL</td><td>09.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>MARGO</td><td>09.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>DETTOL</td><td>09.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>HAMAM</td><td>09.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>HIMALAYA NEEM & TURMERIC</td><td>09.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+<tr class='hand-bad'><td>VIVEL</td><td>09.00 TO 10.00</td><td>I HAVE PREVENTED BUYING THIS SOAP FROM Fri 27-Mar-2026 IST</td></tr>
+</table>
+</body>
+</html>
