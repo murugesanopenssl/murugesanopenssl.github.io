@@ -1,0 +1,114 @@
+<TABLE border='1' style='width:100%;'>
+	<TR>
+		<TD valign='top' align='left' colspan='2'>
+			Connect 127.0.0.1 using putty.exe<BR>
+			CYGWIN_NT at Windows 10 pro localhost 64 bit<BR>
+			Try opening firefox.exe inside putty.exe<BR>
+			Opening firefox.exe inside the following are working fine:<BR>
+			a) explorer<BR>
+			b) Windows r<BR>
+			c) start menu<BR>
+			d) bash.exe inside cmd.exe<BR>
+			e) cmd.exe
+		</TD>
+	</TR>
+	<TR>
+		<TD valign='top' align='left'>
+			01.
+		</TD>
+		<TD valign='top' align='left'>
+			<TABLE style='background-color:black;color:white;'>
+				<TR>
+					<TD>
+						<PRE>murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 0 ]
+$ echo ":$MOZ_DISABLE_GPU:"
+::
+murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 0 ]
+$ type firefox
+firefox is a function
+firefox ()
+{
+	if [[ -z "$1" ]]
+	then
+		/cygdrive/c/Windows/System32/cmd.exe /c "START C:\PROGRA~1\MozillaFirefox\firefox.exe --disable-gpu" & echo "Process id: $!"
+	else
+		ACTUAL_FILE_NAME="$(echo "$PWD/$1" | /usr/bin/sed "s/\/cygdrive\/\([a-z]\)/\1\u/;" | /usr/bin/sed "s/^\/home/F:\/cygwin\/home/;")"
+		echo "Opening: $ACTUAL_FILE_NAME"
+		/cygdrive/c/Windows/System32/cmd.exe /c "START C:\PROGRA~1\MozillaFirefox\firefox.exe --disable-gpu \"$ACTUAL_FILE_NAME\"" & echo "Process id: $!"
+	fi
+	Ret=$?
+	return $Ret
+}
+murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 0 ]
+$ /usr/bin/ls -ltr "C:\PROGRA~1\MozillaFirefox\firefox.exe"
+-rwxr-xr-x 1 murugesan_openssl None 680064 Feb 13 02:41 'C:\PROGRA~1\MozillaFirefox\firefox.exe'
+murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 0 ]
+$ echo MozillaFirefox and not at Mozilla Firefox directory &gt;/dev/null 2&gt;&1
+murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 0 ]
+$ firefox
+[1] 2586344
+Process id: 2586344
+[1]+  Done                    /cygdrive/c/Windows/System32/cmd.exe /c "START C:\PROGRA~1\MozillaFirefox\firefox.exe --disable-gpu"
+murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 1 ]
+$ pca 2586344
+Image Name                     PID Session Name        Session#    Mem Usage
+murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 0 ]
+$ export MOZ_DISABLE_GPU=1
+murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 0 ]
+$ firefox
+[1] 2587145
+Process id: 2587145
+[1]+  Done                    /cygdrive/c/Windows/System32/cmd.exe /c "START C:\PROGRA~1\MozillaFirefox\firefox.exe --disable-gpu"
+murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 1 ]
+$ pca 2587145
+Image Name                     PID Session Name        Session#    Mem Usage
+murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 0 ]
+$ /usr/bin/ls -ltr /cygdrive/c/PROGRA~1/Opera/opera.exe
+-rwxr-x---+ 1 murugesan_openssl None 2023632 May 18  2025 /cygdrive/c/PROGRA~1/Opera/opera.exe
+murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 0 ]
+$ /cygdrive/c/PROGRA~1/Opera/opera.exe
+[0327/174540.729:ERROR:crashpad_client_win.cc(529)] CreateProcess: The system cannot find the file specified. (0x2)
+[48772:53888:0327/174540.760:ERROR:network_change_notifier_win.cc(228)] WSALookupServiceBegin failed with: 0
+murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 0 ]
+$ echo opening opera.exe is working fine &gt;/dev/null 2&gt;&1
+						</PRE>
+					</TD>
+				</TR>
+			</TABLE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			02
+		</TD>
+		<TD>
+			<TABLE style='background-color:black;color:white;'>
+				<TR>
+					<TD>
+						<PRE>murugesan_openssl@127.0.0.1 /home/murugesan_openssl [ 0 ]
+NMurugesan@127.0.0.1 /home/NMurugesan [ 0 ]
+$ type firefox
+firefox is a function
+firefox ()
+{
+    if [[ -z "$1" ]]
+	then
+        /cygdrive/c/Windows/System32/cmd.exe /c "START C:\PROGRA~1\MozillaFirefox\firefox.exe --disable-gpu" & echo "Process id: $!"
+    else
+        ACTUAL_FILE_NAME="$(echo "$PWD/$1" | /usr/bin/sed "s/\/cygdrive\/\([a-z]\)/\1\u/;" | /usr/bin/sed "s/^\/home/F:\/cygwin\/home/;")"
+        echo "Opening: $ACTUAL_FILE_NAME"
+        /cygdrive/c/Windows/System32/cmd.exe /c "START C:\PROGRA~1\MozillaFirefox\firefox.exe --disable-gpu \"$ACTUAL_FILE_NAME\"" & echo "Process id: $!"
+    fi
+    Ret=$?
+    return $Ret
+}
+$ firefox
+[1] 2704321
+Process id: 2704321
+</PRE>
+					</TD>
+				</TR>
+			</TABLE>
+		</TD>
+	</TR>
+</TABLE>
