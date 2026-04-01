@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>Post Office Holiday List</TITLE>
+		<STYLE type='text/css'>
+			body
+			{
+				font-family:Arial,Helvetica,sans-serif;
+				margin:0;
+				padding:0;
+			}
+			table
+			{
+				border-collapse:collapse;
+				width:100%;
+			}
+			th,td
+			{
+				border:1px solid #000;
+				padding:8px;
+			}
+			th
+			{
+				background-color:#f2f2f2;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV id='holidayContainer'>
+			<TABLE>
+				<THEAD>
+					<TR>
+						<TH valign='top' align='left'>Holiday Name</TH>
+						<TH valign='top' align='right'>Date (IST)</TH>
+					</TR>
+				</THEAD>
+				<TBODY id='holidayBody'>
+				</TBODY>
+			</TABLE>
+		</DIV>
+		<SCRIPT type='text/javascript'>
+			const fallbackData=[
+				['Republic Day','26-January-2026'],
+				['Id-ul-Fitr','21-March-2026'],
+				['Mahavir Jayanti','31-March-2026'],
+				['Good Friday','03-April-2026'],
+				['Buddha Purnima','01-May-2026'],
+				['Id-ul-Zuha','27-May-2026'],
+				['Muharram','26-June-2026'],
+				['Independence Day','15-August-2026'],
+				['Prophet Mohammad\'s Birthday (Id-e-Milad)','26-August-2026'],
+				['Mahatma Gandhi\'s Birthday','02-October-2026'],
+				['Dussehra (Vijay Dashmi)','20-October-2026'],
+				['Diwali (Deepavali)','08-November-2026'],
+				['Guru Nanak\'s Birthday','24-November-2026'],
+				['Christmas Day','25-December-2026']
+			];
+			function formatDate(dateStr)
+			{
+				const parts=dateStr.split('-');
+				const day=parts[0];
+				const monthMap={
+					'January':'Jan','February':'Feb','March':'Mar','April':'Apr','May':'May','June':'Jun',
+					'July':'Jul','August':'Aug','September':'Sep','October':'Oct','November':'Nov','December':'Dec'
+				};
+				const month=monthMap[parts[1]];
+				const year=parts[2];
+				const d=new Date(parts[1]+' '+day+', '+year);
+				const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+				const dow=days[d.getDay()];
+				return dow+' '+day+'-'+month+'-'+year;
+			}
+			function appendRow(data)
+			{
+				const body=document.getElementById('holidayBody');
+				const tr=document.createElement('tr');
+				const td1=document.createElement('td');
+				const td2=document.createElement('td');
+				td1.setAttribute('valign','top');
+				td1.setAttribute('align','left');
+				td2.setAttribute('valign','top');
+				td2.setAttribute('align','right');
+				td1.textContent=data[0];
+				td2.textContent=formatDate(data[1]);
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+				body.appendChild(tr);
+			}
+			function loadData()
+			{
+				fallbackData.forEach(d=>appendRow(d));
+			}
+			loadData();
+		</SCRIPT>
+	</BODY>
+</HTML>

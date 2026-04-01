@@ -1,0 +1,5 @@
+fetch('holidays.json')
+  .then(res => res.json())
+  .then(data => {
+      data.forEach(d => appendRow(d));
+  });
