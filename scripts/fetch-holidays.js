@@ -1,6 +1,8 @@
-const fetch = require('node-fetch');
-const { JSDOM } = require('jsdom');
+const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
 const fs = require('fs');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
 async function fetchHolidays() {
 	const url = 'https://api.allorigins.win/raw?url=https://www.indiapost.gov.in/holidays-list';
 	const res = await fetch(url);
@@ -22,4 +24,5 @@ async function fetchHolidays() {
 	fs.writeFileSync('holidays.json', JSON.stringify(data, null, 2));
 	console.log('holidays.json updated with', data.length, 'entries');
 }
+
 fetchHolidays().catch(err => console.error(err));
