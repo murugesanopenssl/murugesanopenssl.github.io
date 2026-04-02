@@ -1031,7 +1031,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "SSLC-EXAM-DATES.html" && activeLink.textContent.trim() === "SSLC EXAM CHART") ||
 							(htmlFileName === "make-son-daughter-study-for-exam.html" && activeLink.textContent.trim() === "Parent/Teacher Exam Guide") ||
 							(htmlFileName === "find-your-birth-time-this-year.html" && activeLink.textContent.trim() === "FIND YOUR BIRTH TIME THIS YEAR") ||
-							(htmlFileName === "Tamilnadu-MLA.html" && activeLink.textContent.trim() === "Tamil Nadu MLAs") ||
+//							(htmlFileName === "Tamilnadu-MLA.html" && activeLink.textContent.trim() === "Tamil Nadu MLAs") ||
 							(htmlFileName === "new-employee-sbi-account.html" && activeLink.textContent.trim() === "Employee Savings Guide") ||
 							(htmlFileName === "Indian-bank-to-other-bank.html" && activeLink.textContent.trim() === "Indian bank transfer err") ||
 							(htmlFileName === "world-currencies.html" && activeLink.textContent.trim() === "World Currency Rates") ||
@@ -1856,37 +1856,17 @@ function loadMoneyHelpContent( event, htmlFileName )
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent(event, 'Visitor_count.html');" class="nav-link">Visitor Information</A>
 						</LI>
-
-						<!-- Responsible Nations Index with submenu -->
-						<LI class="nav-item">
-							<TABLE  cellpadding="0" cellspacing="0" border="0">
-								<TR>
-									<TD valign='top' align='left' style='width:142px;'>
-										<FONT color='white'>
-											Responsible Nations Index
-										</FONT>
-									</TD>
-									<TD valign='top' align='right'>
-										<SPAN style="background-color:blue;color:white;padding:2px 6px;">&#9654;</SPAN>
-									</TD>
-								</TR>
-							</TABLE>
-							<UL class="submenu">
-								<LI>
-									<A href="#" onclick="javascript:window.open('COUNTRIES-SUPPORTING-IRAN.html');" class="nav-link">
-										<FONT color='#00ff00'>
-											Countries Supporting Iran
-										</FONT>
-									</A>
-								</LI>
-								<!-- Add more sub-submenus here if needed -->
-							</UL>
+						<LI>
+							<A href="#" onclick="javascript:window.open('COUNTRIES-SUPPORTING-IRAN.html');" class="nav-link">
+								<FONT color='#00ff00'>
+									Countries Supporting Iran
+								</FONT>
+							</A>
 						</LI>
-
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent(event, 'Tamilnadu-MLA.html');" class="nav-link">Tamil Nadu MLAs</A>
 						</LI>
-
+						-->
 						<LI>
 							<A href="#" onclick="javascript:window.open('earth_politics_or_general_age.html');" class="nav-link">
 								<FONT color='#00ff00'>Earth politics</FONT>
