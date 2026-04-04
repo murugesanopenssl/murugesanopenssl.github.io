@@ -1508,6 +1508,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 								</FONT>
 							</A>
 						</LI>
+						<!--
+							Spending menu
+						-->
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'health-insurance.html' );" class="nav-link">PARENT HEALTH INSURANCE</A>
 						</LI>
