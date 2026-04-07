@@ -1774,9 +1774,6 @@ function loadMoneyHelpContent( event, htmlFileName )
 					<A href="#" onclick="javascript:loadHomeContent(event, 'Steps-to-talk-with-indian-voter.html');" class="nav-link">Call Indian Voter Help</A>
 			</LI>
 			<LI>
-				<A href="#" onclick='javascript:window.open( "tamil-calendar.html" );' class="nav-link"><FONT color='#00ff00'>Tamil calendar</FONT></A>
-			</LI>
-			<LI>
 					<A href="#" onclick="javascript:loadHomeContent(event, 'TN-how-to-get-more-vote.html');" class="nav-link">TN Voter Increase Guide</A>
 			</LI>
 			<LI>
@@ -1925,6 +1922,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'find-your-birth-time-this-year.html' );" class="nav-link">FIND YOUR BIRTH TIME THIS YEAR</A>
+						</LI>
+						<LI>
+							<A href="#" onclick='javascript:window.open( "tamil-calendar.html" );' class="nav-link"><FONT color='#00ff00'>Tamil calendar</FONT></A>
 						</LI>
 					</UL>
 				</LI>
