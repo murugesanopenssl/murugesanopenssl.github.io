@@ -1,0 +1,182 @@
+<HTML>
+	<HEAD>
+		<LINK href="./MyMenu002.css" rel="stylesheet">
+		<TITLE>
+			cygwin_sshd_installation
+		</TITLE>
+	</HEAD>
+	<BODY topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'>
+		<TABLE border="1" height="100%" width="100%">
+			<TR>
+				<Td valign="top" align="left">
+					<PRE>
+ERROR:
+	Server refused to allocate pty
+INSTALL:
+	1) setup-x86_64.exe --no-admin
+	https://mirror.kernel.org
+	C:\cygwin64
+	C:\cygwin64\Downloads
+	install the following:
+	1) cygrunsrv
+	9) bc
+	10) automake cmake imake make makedepend
+	11) dos2unix
+	12) makepasswd
+rundll32.exe sysdm.cpl,EditEnvironmentVariables
+DO NOT UPDATE following lines at /etc/sshd_config:
+	a) #Port 22
+	b) #ListenAddress 0.0.0.0
+open cmd.exe as administrator
+bash.exe
+$ sc.exe STOP cygsshd
+$ sc.exe DELETE cygsshd
+$ cygrunsrv -h
+$ chmod a+x  /var
+$ ssh-host-config -y
+*** Query: Overwrite existing /etc/ssh_config file? (yes/no) yes
+*** Info: Creating default /etc/ssh_config file
+*** Query: Overwrite existing /etc/sshd_config file? (yes/no) yes
+*** Info: Creating default /etc/sshd_config file
+*** Info: Privilege separation is set to yes by default since OpenSSH 3.3.
+*** Info: However, this requires a non-privileged account called 'cygsshd'.
+*** Info: For more info on privilege separation read /usr/share/doc/openssh/READ
+ME.privsep.
+*** Query: Should privilege separation be used? (yes/no) yes
+*** Warning: cygsshd is in /etc/passwd, but the
+*** Warning: local machine's SAM does not know about cygsshd.
+*** Warning: Perhaps cygsshd is a pre-existing domain account.
+*** Warning: Continuing, but check if this is ok.
+*** Info: Updating /etc/sshd_config file
+
+*** Query: Do you want to install cygsshd as a service?
+*** Query: (Say "no" if it is already installed as a service) (yes/no) yes
+*** Query: Enter the value of CYGWIN for the daemon: [] cyg_sshd
+*** Info: On Windows Server 2003, Windows Vista, and above, the
+*** Info: SYSTEM account cannot setuid to other users -- a capability
+*** Info: cygsshd requires.  You need to have or to create a privileged
+*** Info: account.  This script will help you do so.
+
+*** Info: You appear to be running Windows XP 64bit, Windows 2003 Server,
+*** Info: or later.  On these systems, it's not possible to use the LocalSystem
+*** Info: account for services that can change the user id without an
+*** Info: explicit password (such as passwordless logins [e.g. public key
+*** Info: authentication] via cygsshd).
+
+*** Info: If you want to enable that functionality, it's required to create
+*** Info: a new account with special privileges (unless a similar account
+*** Info: already exists). This account is then used to run these special
+*** Info: servers.
+
+*** Info: Note that creating a new user requires that the current account
+*** Info: have Administrator privileges itself.
+
+*** Info: No privileged account could be found.
+
+*** Info: This script plans to use 'cyg_server'.
+*** Info: 'cyg_server' will only be used by registered services.
+*** Query: Do you want to use a different name? (yes/no) yeh
+*** Query: Enter the new user name: RajeshModi
+*** Query: Reenter: RajeshModi
+*** Query: Create new privileged user account 'RajeshModi'? (yes/no)
+*** Info: Please enter a password for new user RajeshModi.  Please be sure
+*** Info: that this password matches the password rules given on your system.
+*** Info: Entering no password will exit the configuration.
+*** Query: Please enter the password:dinesh
+*** Info: User 'RajeshModi' has been created with password 'dinesh'.
+*** Info: If you change the password, please remember also to change the
+*** Info: password for the installed services which use (or will soon use)
+*** Info: the 'RajeshModi' account.
+
+*** Info: Also keep in mind that the user 'RajeshModi' needs read permissions
+*** Info: on all users' relevant files for the services running as 'RajeshModi'.
+*** Info: In particular, for the cygsshd server all users' .ssh/authorized_keys
+*** Info: files must have appropriate permissions to allow public key
+*** Info: authentication. (Re-)running ssh-user-config for each user will set
+*** Info: these permissions correctly. [Similar restrictions apply, for
+*** Info: instance, for .rhosts files if the rshd server is running, etc].
+
+
+*** Info: The cygsshd service has been installed under the 'RajeshModi'
+*** Info: account.  To start the service now, call `net start sshd' or
+*** Info: `cygrunsrv -S sshd'.  Otherwise, it will start automatically
+*** Info: after the next reboot. </PRE>
+				</TD>
+			</TR>
+			<TR>
+			<TD valign='top' align='left'>
+			<FONT color='red'>Server refused to allocate pty</FONT><BR>
+			IF above error happens at Windows CYGWIN<BR>
+			RE-INSTALL cygwin at different directory and restart cygsshd service<BR>
+			</TD>
+			</TR>
+		</TABLE>
+		<HR>
+		<PRE>sendmail at windows
+		$ exim-config
+		************************************************
+		This script sets some key parameters of the exim
+		installation and starts the exim daemon.
+		See the details in /usr/share/doc/Cygwin/exim-X-Y.README.
+
+		LOCAL SERVICE:*:19:19:
+		NETWORK SERVICE:*:20:20:
+		NT SERVICE+TrustedInstaller:*:328384:328384:
+
+		WARNING: The usernames displayed above contain spaces.
+		    They cannot receive mail nor appear in /etc/aliases.
+		    If necessary edit /etc/passwd and use names without spaces.
+
+		OK. The /etc/aliases file contains "postmaster".
+
+		OK. /etc/exim.conf created from /etc/defaults/etc/exim.conf.
+
+		Looking for the fully qualified primary hostname.
+		Is it "laptop-ekh0db73"? (yes/no) yes
+		OK. Exim will autodiscover that name.
+
+		INFO: This version of Exim supports ipv6.
+		      This feature is currently disabled in /etc/exim.conf.
+		Do you want to change that setting? (yes/no) yes
+		OK. The setting was changed.
+
+		OK. The mode and ownership of the /etc/exim.conf file are now:
+		-rw-rw-r--+ 1 SYSTEM Administrators 47039 Apr 18 13:38 /etc/exim.conf
+
+		OK. /usr/bin/exim points to /usr/bin/exim-4.95-1.exe.
+
+		INFO: Some programs expect /usr/sbin/sendmail to handle mail.
+		Currently /usr/sbin/sendmail is a symbolic link to /usr/libexec/sendmail.exe via alternatives
+		You now have the ability to link /usr/sbin/sendmail, as well as /usr/lib/sendmail,
+		/usr/bin/mailq and /usr/bin/newaliases to /usr/bin/exim, using the alternatives package.
+		Doing so is not necessary for exim to function correctly, it is for the benefit of others.
+		Do you want /usr/sbin/sendmail & al. to be links to /usr/bin/exim ? (yes/no) yes
+		Other programs will also be linked to exim.
+		/usr/lib/sendmail is expected by some programs to point to a mailer
+		Currently /usr/lib/sendmail is a symbolic link to /usr/libexec/sendmail.exe via alternatives
+		/usr/bin/mailq can point to exim to serves as exim -bp shortcut
+		Currently /usr/bin/mailq is a symbolic link to /usr/libexec/sendmail.exe via alternatives
+		Some scripts expect /usr/bin/newaliases to point to a mailer
+		Currently /usr/bin/newaliases is a symbolic link to /usr/libexec/sendmail.exe via alternatives
+		OK. Links created with alternatives.
+
+		The exim daemon can run as a service or as a job. The latter is not recommended
+		Do you want to install the exim daemon as a service? (yes/no) yes
+		Enter the period of the queue runner, in minutes: [15] 15
+		Enter the value of CYGWIN for the daemon: [] cygexim
+
+		Do you want to start the exim daemon as a service now? (yes/no) yes
+		OK. The mail daemon is now accepting mail.
+		    You can test it with "telnet localhost 25".
+
+		INFO: The exim log files are in /var/log/exim.
+
+		WARNING: The default file permissions are only suitable for a casual environment.
+		    See /usr/share/doc/Cygwin/exim-X-Y.README for how to adjust them.
+
+		When everything else fails,
+		    read /usr/share/doc/Cygwin/exim-X-Y.README,
+		    or look up the documentation on www.exim.org.
+		Many happy mailings :)</PRE>
+	</BODY>
+</HTML>
