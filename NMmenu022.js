@@ -1093,6 +1093,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "BSNL-DATA1515-INVALID-SMS.html" && activeLink.textContent.trim() === "BSNL DATA1515 Invalid SMS") ||
 							(htmlFileName === "how-to-use-mobile-home-fibnernet-bsnl.html" && activeLink.textContent.trim() === "BSNL Mobile & Fibernet") ||
 							(htmlFileName === "epson-printer-requirement.html" && activeLink.textContent.trim() === "Epson Printer Rates") ||
+							(htmlFileName === "learn-vim-editor.html" && activeLink.textContent.trim() === "VIM/VI EDITOR") ||
 							(htmlFileName === "info-ltts.html" && activeLink.textContent.trim() === "L & T EMAIL AUTOMATION") ||
 							(htmlFileName === "talent-ibm.html" && activeLink.textContent.trim() === "IBM EMAIL AUTOMATION") ||
 							(htmlFileName === "cisco-automation.html" && activeLink.textContent.trim() === "CISCO EMAIL AUTOMATION") ||
@@ -1853,6 +1854,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 				</LI>
 				<LI>
 						<A href="#" onclick='javascript:window.open( "TamilLetters.html" );'><FONT color='#00ff00'>Tamil letters</FONT></A>
+				</LI>
+				<LI>
+					<A href="#" onclick='javascript:loadHomeContent( event, "learn-vim-editor.html" );'><FONT color='white'>VIM/VI EDITOR</FONT></A>
 				</LI>
 				<LI>
 					<A href="#" onclick='javascript:window.open( "Windows_ERR_HELP.html" );'><FONT color='#00ff00'>Windows Help Guide</FONT></A>

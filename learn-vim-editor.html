@@ -1,0 +1,1083 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+	<HEAD>
+		<LINK href="../../Cascading_Style_Sheets_Menu.css" rel="stylesheet">
+		<META content="MSHTML 6.00.2800.1400" name="GENERATOR" name="generator" content="Unix | Linux vim editor Tips and Tricks Murugesan GCT">
+		<TITLE>
+			vi/vim editor Command line options
+		</TITLE>
+	</HEAD>
+	<BODY topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'>
+		<SCRIPT type="text/javascript" src="../../HomeMenuItems.js">
+		</SCRIPT>
+		<SCRIPT type="text/javascript">
+			new menu (MENU_ITEMS, MENU_POS1);
+		</SCRIPT>
+		<A name="top"></A>
+		<TABLE width="100%" height="100%" border="1" cellpadding='0' cellspacing="0">
+			<TBODY>
+				<TR>
+					<TD align=LEFT Valign="top" width="33%" height="25" colspan="3">
+					</TD>
+				</TR>
+				<TR>
+					<TD valign="top" align="left" colspan="3" style="display:block;color:green;">
+									Learning basic vi/vi.exe/vim/vim.exe at all operating systems.
+						<TABLE border='1'>
+							<TR>
+								<TD colspan='8'>
+									AIX/HP-UX/Linux/SunOS/UNIX/Windows_CYGWIN_NT/Windows_mingw oriented
+									<FONT color="green">
+										<U>
+											<B>
+												vi/vim editors
+											</B>
+										</U>
+									</FONT>
+								</TD>
+							</TR>
+							<TR>
+								<TD valign="top" align="left">
+									/usr/bin/vi<BR>
+									/usr/bin/vim
+								</TD>
+								<TD valign="top" align="left">
+									/usr/bin/vi<BR>
+									/usr/bin/vim
+								</TD>
+								<TD valign="top" align="left">
+									/bin/vi<BR>
+									/bin/vim
+								</TD>
+								<TD valign="top" align="left">
+									/bin/vi<BR>
+									/bin/vim
+								</TD>
+								<TD valign="top" align="left">
+									/usr/bin/vi<BR>
+									/usr/bin/vi.exe
+								</TD>
+								<TD valign="top" align="left">
+									/usr/bin/vi.exe<BR>
+									/usr/bin/vim.exe
+								</TD>
+								<TD valign="top" align="left">
+									/bin/vi.exe<BR>
+									/bin/vim.exe
+								</TD>
+								<TD valign="top" align="left">
+									/bin/vi.exe<BR>
+									/bin/vim.exe
+								</TD>
+							</TR>
+						</TABLE>
+						vi/vim is a screen oriented text editor intially created at UNIX operating system
+						<TABLE border='1' width='100%'>
+							<TR>
+								<TD valign="top" align="left" colspan='3'>
+										$ #All kernel names mentioned above were written in sorted order.<BR>
+										$ echo "AIX/SunOS/HP-UX/Linux/UNIX/Windows_CYGWIN_NT/Windows_mingw" | /usr/bin/tr "/" "\n" |
+												/usr/bin/sort -u<BR>
+										AIX<BR>
+										HP-UX<BR>
+										Linux<BR>
+										SunOS<BR>
+										UNIX<BR>
+										Windows_CYGWIN_NT<BR>
+										Windows_mingw
+								</TD>
+							</TR>
+							<TR>
+								<TD valign="top" align="left" colspan="2">
+									When you open any file using /usr/bin/vi or /usr/bin/vim<BR>
+									There are two modes when you open any file:<BR>
+									1. Edit mode =&gt; You can start editing that file.<BR>
+									2. Command mode =&gt; you can search or go to next file or go to previous file or copy required number of lines or ...
+									By default the file is opened using command mode instead of edit mode after opening using /usr/bin/vi or /usr/bin/vim<BR>
+									<FONT color="green">
+										<B>
+											Here goes the actions which can be performed using Command mode:
+										</B>
+									</FONT>
+								</TD>
+								<TD valign="top" align="left">
+									Textpad Options
+								</TD>
+							</TR>
+							<TR>
+								<TD valign="top" align="left">
+									Copy Multiple lines/word/words/letter/letters.
+								</TD>
+								<TD valign="top" align="left">
+									v<BR>
+									Move cursor up/down.<BR>
+									Once finished press<BR>
+									y
+								</TD>
+								<TD valign="top" align="left">
+									Move cursor to required location<BR>
+									Press<BR>
+									p/P
+								</TD>
+							</TR>
+							<TR>
+								<TD valign="top" align="left">
+									How to open single file?
+								</TD>
+								<TD valign="top" align="left">
+									1.<BR>
+									/usr/bin/vim filename1.txt<BR>
+									Usage of .vimrc metioned at bottom of this page<BR>
+									This file used to have all options enabled using ~/.vimrc or ~/.virc file.
+								</TD>
+								<TD valign="top" align="left">
+									C:\Progra~2\TextPa~1\TextPad.exe filename1.txt
+								</TD>
+							</TR>
+							<TR>
+								<TD valign="top" align="left">
+									How to open multiple files?
+								</TD>
+								<TD valign="top" align="left">
+									$ /usr/bin/vim filename1.txt filename2.txt<BR>
+									OR<BR>
+									$ /bin/vim filename1.txt \<BR>
+									filename2.txt<BR>
+									OR<BR>
+									$ /usr/bin/vim $(find ./ -type f -maxdepth 2 -name "*.html" 2>/dev/null | /usr/bin/head -n 5)<BR>
+									We can get name of the file after opening using vim<BR>
+									Press Ctrl g after opening the file
+								</TD>
+								<TD valign="top" align="left">
+									C:\Progra~2\TextPa~1\TextPad.exe "1.txt" "2.txt" "3.txt"<BR>
+									<FONT color=red>
+										Remember to use double quotes when using file names here.
+									</FONT>
+								</TD>
+							</TR>
+							<TR>
+								<TD valign="top" align="left">
+									How many modes are there in vim editor
+								</TD>
+								<TD valign="top" align="left">
+									Command Mode =&gt; To execute any linux commands<BR>
+									Command Mode =&gt; To search or replace letter/words in current file<BR>
+									Command Mode =&gt; To copy some lines/word/character from current file and paste them in other/same file.<BR>
+									Command Mode =&gt; To save the file in same file name or different file name<BR>
+									Command Mode =&gt; To go to required file on opening multiple files<BR>
+									Command Mode =&gt; To undo<BR>
+									Command Mode =&gt; To redo last action.<BR>
+									Command Mode =&gt; Following actions are not supported using /usr/bin/vi<BR>
+									Assume that you have typed 1000 lines.<BR>
+									After typing that 1000 lines, you can undo (by pressing esc u followed by many times u)<BR>
+									This will remove those 1000 lines.<BR>
+									After this, you cannot redo using /usr/bin/vi<BR>
+									Edit Mode =&gt; All editing options =&gt; editing/copying/pasting/deleting<BR>
+									How ever you can redo last action again:<BR>
+									Example you can redo following actions:<BR>
+									a)<BR>
+									:%s/^/Murugesan/<BR>
+									Above replace beginning of each line using the word Murugesan.
+									You
+								</TD>
+								<TD valign="top" align="left">
+									View Help from Textpad.exe<BR>
+									Provided by Textpad.exe<BR>
+									You can undo many times.<BR>
+									You can redo many times.
+								</TD>
+							</TR>
+						</TABLE>
+						<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+							<TBODY>
+								<TR>
+									<TD colspan="2" valign="top">
+										<DIV align="center">
+											<U>
+												<B>
+													Command mode actions using /usr/bin/vi
+												</B>
+											</U>
+										</DIV>
+									</TD>
+								</TR>
+								<TR>
+									<TD valign='top' align='left'>
+				<TABLE border="1" cellpadding="0" cellspacing="0" width="100%">
+				<TBODY>
+				<TR>
+				<TD valign="top">
+				To know the file name
+				</TD>
+				<TD valign="top">
+				<B>
+				Ctrl + G<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to previous line after going to other line
+				</TD>
+				<TD valign="top">
+				<B>
+				'' ( Two single quotes )<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Include tab for five lines from current line [Left Indentation]
+				</TD>
+				<TD valign="top">
+				<B>
+				5 &gt;&gt;<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Release tab for five lines from current line [Right Indentation]
+				</TD>
+				<TD valign="top">
+				<B>
+				5 &lt;&lt;
+				<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To mark a line with a name to be used for coming back to marked line				</TD>
+				<TD valign="top">
+				<B>
+				m
+				</B>
+				<B>
+				&nbsp;Any_Letter
+				<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to a marked line				</TD>
+				<TD valign="top">
+				<B>
+				' Marked_Letter<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to next file opened				</TD>
+				<TD valign="top">
+				<B>
+				:n<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to previous file
+				</TD>
+				<TD valign="top">
+				<B>
+				:e#
+				</B>
+				<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to tenth file
+				</TD>
+				<TD valign="top">
+				<B>
+				:e#10
+				</B>
+				<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+					Move cursor left
+				</TD>
+				<TD valign="top">
+				<B>
+				h<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Move cursor right
+				</TD>
+				<TD valign="top">
+				<B>
+				l<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Move cursor up				</TD>
+				<TD valign="top">
+				<B>
+				k<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Move cursor down				</TD>
+				<TD valign="top">
+				<B>
+				j<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to end of current page
+				</TD>
+				<TD valign="top">
+				<B>
+				L
+				</B><BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to beginning of current page
+				</TD>
+				<TD valign="top">
+				<B>
+				H
+				</B><BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Merge current line to the next line
+				</TD>
+				<TD valign="top">
+				<B>
+				J<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Change from command mode to Append mode
+				</TD>
+				<TD valign="top">
+				<B>
+				a<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Change from command mode into Insert mode
+				</TD>
+				<TD valign="top">
+				<B>
+				i<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Go to beginning of first character at current line and change to insert mode
+				</TD>
+				<TD valign="top">
+				<B>
+				I<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Go to beginning of current line(assume that space or tab is present before first character) change to insert mode
+				</TD>
+				<TD valign="top">
+				<B>
+				0i<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Go to end of current line and change into insert mode
+				</TD>
+				<TD valign="top">
+				<B>
+				A<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Replace first occurrence of word1 alone with word2 in all lines				</TD>
+				<TD valign="top">
+				<B>
+				:%s/word1/word2/<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Replace first occurrence of word1 alone with word2 from first line to fifth line				</TD>
+				<TD valign="top">
+				<B>
+				:1,5 s/word1/word2/<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Replace first occurrence of word1 alone with word2 from first line to last line of the file				</TD>
+				<TD valign="top">
+				<B>
+				:1,$ s/word1/word2/<BR>
+				OR<BR>
+				:%s/word1/word2/
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Replace all occurrences of word1 alone with word2 in all lines
+				</TD>
+				<TD valign="top">
+				<B>
+				:1,$ s/word1/word2/g<BR>
+				OR<BR>
+				:%s/word1/word2/g
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Replace first occurrence of word1 alone with word2 from first current line to the next nine lines				</TD>
+				<TD valign="top">
+				<B>
+				:s/word1/word2/10<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Replace first occurrence of word1 in each line with word2 starting from line number 56 to last line				</TD>
+				<!--<TD valign="top">
+				<B>
+				:56%s/word1/word2/<BR>-->
+				<TD valign="top">
+				<B>
+				:56,$ s/word1/word2/<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Replace all the occurrences of word1 in each line with word2 starting from line number 56 to last line				</TD>
+				<!--<TD valign="top">
+				<B>
+				:56%s/word1/word2/g<BR>-->
+				<TD valign="top">
+				<B>
+				:56,$ s/word1/word2/g<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+					Replace first occurrence of word1 with word2 at line number 56
+				</TD>
+				<TD valign="top">
+				:56 s/word1/word2<BR>
+				OR<BR>
+				:56,56 s/word1/word2
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To change a word excluding special characters				</TD>
+				<TD valign="top">
+				<B>
+				cw<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To change a word including special characters				</TD>
+				<TD valign="top">
+				<B>
+				cW<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To forward to next page				</TD>
+				<TD valign="top">
+				<B>
+				Ctrl + F<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to previous page				</TD>
+				<TD valign="top">
+				<B>
+				Ctrl + B<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Search for word1 forward				</TD>
+				<TD valign="top">
+				<B>
+				/word1<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Search for same word again forward				</TD>
+				<TD valign="top">
+				<B>
+				n<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Search for same word again backward				</TD>
+				<TD valign="top">
+				<B>
+				N<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Search for word1 backward				</TD>
+				<TD valign="top">
+				<B>
+				?word1<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Search for loop end } for a given start loop{				</TD>
+				<TD valign="top">
+				<B>
+				%<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Search for the line that begins with the character { forward				</TD>
+				<TD valign="top">
+				<B>
+				/^{<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To change the case of character to upper / lower				</TD>
+				<TD valign="top">
+				<B>
+				~<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To cut a line				</TD>
+				<TD valign="top">
+				<B>
+				dd<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To cut 10 lines				</TD>
+				<TD valign="top">
+				<B>
+				10dd<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To paste copied lines below current cursor position				</TD>
+				<TD valign="top">
+				<B>
+				p<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To paste copied lines above current cursor position				</TD>
+				<TD valign="top">
+				<B>
+				P<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To delete a word excluding special characters				</TD>
+				<TD valign="top">
+				<B>
+				dw<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To delete a word ignoring special characters				</TD>
+				<TD valign="top">
+				<B>
+				dW
+				</B>
+				<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to next word excluding special characters				</TD>
+				<TD valign="top">
+				<B>
+				w<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to next word including special characters				</TD>
+				<TD valign="top">
+				<B>
+				W<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go back to previous word excluding special characters				</TD>
+				<TD valign="top">
+				<B>
+				b<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go back to previous word including special characters				</TD>
+				<TD valign="top">
+				<B>
+				B<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go end of file				</TD>
+				<TD valign="top">
+				<B>
+				G<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To set line numbers				</TD>
+				<TD valign="top">
+				<B>
+				:set nu<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To Unset line numbers				</TD>
+				<TD valign="top">
+				<B>
+				:set nonu<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To ignore case when searching				</TD>
+				<TD valign="top">
+				<B>
+				:set ic<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To include case when searching				</TD>
+				<TD valign="top">
+				<B>
+				:set noic<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to the beginning of first character in current line <FONT color=red><B>excluding</B></fONT> first character being tab and space characters
+				</TD>
+				<TD valign="top">
+				<B>
+				^<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to the beginning of first character in current line <FONT color=red>including</fONT> first character being tab and space characters
+				</TD>
+				<TD valign="top">
+				<B>
+				0<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to the end of a line				</TD>
+				<TD valign="top">
+				<B>
+				$
+				</B>
+				<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To delete all lines from current line to the end of file				</TD>
+				<TD valign="top">
+				<B>
+				dG
+				</B>
+				<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Insert new line below the current line and go to edit mode placing cursor at the new line				</TD>
+				<TD valign="top">
+				<B>
+				o
+				</B>
+				<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Insert new line above the current line and go to edit mode placing cursor at the new line				</TD>
+				<TD valign="top">
+				<B>
+				O
+				</B>
+				<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To go to line number 10				</TD>
+				<TD valign="top">
+				<B>
+				:10<BR>
+				OR<BR>
+				10G
+				</B>
+				<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To delete characters from current position to end of the current line				</TD>
+				<TD valign="top">
+				<B>
+				D
+				</B>
+				<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign='top' align='left'>
+				To yank three lines into buffer named a
+				</BLOCKQUOTE>
+				</TD>
+				<TD valign='top' align='left'>
+				"m3yy<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign='top' align='left'>
+				Now navigate to the desired location and press ", the buffer name (a) and p or P to put back the text
+				</BLOCKQUOTE>
+				</TD>
+				<TD valign='top' align='left'>
+				"mp<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign='top' align='left'>
+				How to copy lines/words from one file to other file<BR>
+				How to copy from one file to other file<BR>
+				How to copy from one file to next file<BR>
+				Using this feature you can copy required number of lines across two files
+				</BLOCKQUOTE>
+				</TD>
+				<TD valign='top' align='left'>
+				<FONT face="Calibri" size="2">
+				<SPAN style="font-size: 11pt;">
+				"m10yy<BR>
+				:e newFile.txt
+				</SPAN>
+				</FONT>
+				<SPAN style="font-family: calibri;">
+				<BR>
+				</SPAN>
+				<FONT face="Calibri" size="2">
+				<SPAN style="font-size: 11pt;">
+				10G
+				</SPAN>
+				</FONT>
+				<SPAN style="font-family: calibri;">
+				<BR>
+				</SPAN>
+				<FONT face="Calibri" size="2">
+				<SPAN style="font-size: 11pt;">
+				"mp
+				</SPAN>
+				</FONT>
+				<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Using this feature you can copy all the lines inside a block (Example: { stamementsWithinaBracket/CurlyBraces}) across two files<BR>
+				Press y% at <B>
+				{
+				</B><BR>
+				Type
+				<B>
+				:n
+				</B><BR>
+				Type
+				<B>
+				p
+				</B>
+				or
+				type
+				<B>
+				P
+				</B>
+				</TD>
+				<TD valign="top">
+				y%<BR>
+				:n<BR>
+				p<BR>
+				OR<BR>
+				"my%<BR>
+				:e#10<BR>
+				"mp
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To Save and quit:
+				</TD>
+				<TD valign="top">
+				:wq<BR>
+				OR<BR>
+				:x
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				Using this feature you can delete all the lines inside a block (Example: { stamementsWithinaBracket/CurlyBraces}) and paste into the next files<BR>
+				Press
+				<B>
+				d%
+				</B>
+				at
+				<B>
+				{<BR>
+				</B>
+				type
+				<B>
+				:w
+				</B>
+				if you prefer to save that in the current file<BR>
+				 type
+				<B>
+				:n
+				</B>
+				to go to the next file<BR>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type
+				<B>
+				p to paste below current line
+				</B><BR>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or type
+				<B>
+				P to paste above current line
+				</B>
+				</TD>
+				<TD valign="top">
+				d%<BR>
+				:w<BR>
+				:n<BR>
+				p<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign='top' align='left'>
+					The concept of numbered buffers : <BR>
+					&nbsp;&nbsp;&nbsp; This can be used to restore up to nine complete line deletions.<BR>
+					&nbsp;&nbsp;&nbsp; Buffers are numbered from 1 to 9.<BR>
+					&nbsp;&nbsp;&nbsp; The most recent deletion will be in buffer numbered 1, the next most in buffer numbered 2 and so on.<BR>
+					&nbsp;&nbsp;&nbsp; Here only entire lines can be restored and not Parts of lines.<BR>
+					&nbsp;&nbsp;&nbsp; To restore the most recently deleted group of lines , move the cursor to the desired location and use <BR>
+					&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "1p<BR>
+					&nbsp;&nbsp;&nbsp; and so on.<BR>
+					Example:<BR>
+					echo -n > delete.txt<BR>
+					for VAL in {1..10}<BR>
+					do<BR>
+					&nbsp;&nbsp;&nbsp;echo $VAL >> delete.txt<BR>
+					done<BR>
+					/usr/bin/vim delete.txt<BR>
+					After excecuting following commands, it reverse the content of nine lines.
+				</TD>
+				<TD valign='top' align='left'>
+					Delete only 9 lines.<BR>
+					dd =&gt; pointing 9p<BR>
+					dd =&gt; pointing 8p<BR>
+					dd =&gt; pointing 7p<BR>
+					dd =&gt; pointing 6p<BR>
+					dd =&gt; pointing 5p<BR>
+					dd =&gt; pointing 4p<BR>
+					dd =&gt; pointing 3p<BR>
+					dd =&gt; pointing 2p<BR>
+					dd =&gt; pointing 1p<BR>
+					Go to end of file using Shift G<BR>
+					"1p<BR>
+					"2p<BR>
+					"3p<BR>
+					"4p<BR>
+					"5p<BR>
+					"6p<BR>
+					"7p<BR>
+					"8p<BR>
+					"9p<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign='top' align='left'>
+				After opening a file using the following command:
+				vim murugesan.txt
+				How to view the updated file without coming out of that file using
+				</TD>
+				<TD valign='top' align='left'>
+				&nbsp;&nbsp;&nbsp;:e%
+				</TD>
+				</TR>
+				<TR>
+				<TD colspan="2" valign="top">
+				<B>
+				Edit Mode
+				</B>
+				<BR>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				To switch back to command mode				</TD>
+				<TD valign="top">
+				<B>
+				Esc
+				<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD valign="top">
+				All other characters/numbers are having normal meaning.
+				</TD>
+				<TD valign="top">
+				<BR>
+				</B>
+				</TD>
+				</TR>
+				<TR>
+				<TD colspan="2" valign="top">
+				Contents of following files<BR>
+				<B>
+					$HOME/.exrc OR<BR>
+					$HOME/.vimrc OR<BR>
+					$HOME/.virc
+				</B><BR>
+				<B>
+				#Comments here
+				</B><BR><BR>
+				#Always display line number using set nu or set number
+				<BR>
+				<B>
+				set nu
+				</B>
+				<BR><BR>
+				#Always disable color inside vi or vim using "syntax off"<BR>
+				#We can enable color inside vi or vim using "syntax on"<BR>
+				<B>
+				syntax off
+				</B>
+				<BR><BR>
+				#We we keep the curser at opening paranthesis, it used to display color at closing paranthesis.<BR>
+				#hi MatchParen NONE =&gt =&gt; used to disable color at paranthesis<BR>
+				#hi MatchParen ctermbg=6 =&gt; used to enable color at paranthesis. Number 6 referring cyan color<BR>
+				<!--
+				hi MatchParen term=reverse ctermbg=6<BR>
+				-->
+				<B>hi MatchParen NONE</B><BR><BR>
+				#Always line numbers used to display in yellow color<BR>
+				#We can enable that using =&gt; hi LineNr ctermfg=3 =&gt; Number 3 referring yellow color<BR>
+				#We can disable that using =&gt; hi LineNr None<BR>
+				<B>hi LineNr NONE</B><BR><BR>
+				#When pressing Ctrl f terminal having lines beyond last line of the file.<BR>
+				#Those lines having ~ at beginning of the line and if we double click those lines it used to appear blue color.<BR>
+				#Default value =&gt; hi NonText term=bold cterm=bold ctermfg=4<BR>
+				#We can change that color to white using<BR>
+				<B>hi NonText NONE</B><BR><BR>
+				#When searching any text it used to change the color of the test.
+				#We can change that color to white using<BR>
+				<B>hi Search NONE</B>
+				</TD>
+				</TR>
+				</TD>
+				</TR>
+				</TBODY>
+				</TABLE>
+				</TD>
+				</TR>
+				</TABLE>
+			</TBODY>
+		</TABLE>
+	</BODY>
+</HTML>
