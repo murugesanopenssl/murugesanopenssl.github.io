@@ -1,108 +1,138 @@
 <!DOCTYPE html>
 <HTML lang="en">
-	<HEAD>
-		<META charset="UTF-8">
-		<META name="keywords" content="murugesan,financial life management,india savings account awareness">
-		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-		<META http-equiv="Pragma" content="no-cache">
-		<META http-equiv="Expires" content="0">
-		<META name="viewport" content="width=device-width, initial-scale=1.0">
-		<TITLE>User access count (IP based)</TITLE>
-		<STYLE type='text/css'>
-			body { font-family: Arial, sans-serif; }
-			table { border-collapse: collapse; width: 100%; }
-			th, td { border: 1px solid black; padding: 4px; }
-			th { background-color: #f2f2f2; }
-			td { text-align: right; }
-			#status { font-size: 12px; color: #555; margin-bottom: 8px; }
-		</STYLE>
-	</HEAD>
-	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-		<H3>User Count (IP-based geolocation)</H3>
-		<DIV id="status">Detecting location...</DIV>
-		<TABLE>
-			<THEAD>
-				<TR>
-					<TH>User Count</TH>
-					<TH>Country</TH>
-					<TH>Region</TH>
-					<TH>City</TH>
-					<TH>Continent</TH>
-					<TH>Last Visited</TH>
-				</TR>
-			</THEAD>
-			<TBODY id="tbody"></TBODY>
-		</TABLE>
-		<SCRIPT type="module">
-			import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-			import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-			const firebaseConfig = {
-				apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
-				authDomain: "openmurugesan.firebaseapp.com",
-				databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
-				projectId: "openmurugesan",
-				storageBucket: "openmurugesan.firebasestorage.app",
-				messagingSenderId: "307675598593",
-				appId: "1:307675598593:web:4af163460ce2c3bc719500"
-			};
-			const app = initializeApp(firebaseConfig);
-			const db = getDatabase(app);
-			const tbody = document.getElementById("tbody");
-			async function storeVisit() {
-				await push(ref(db, "userAccess"), {
-					test: "NEW_TEST",
-					country: "TEST",
-					region: "TEST",
-					city: "TEST",
-					continent: "TEST",
-					ip: "TEST",
-					userAgent: navigator.userAgent,
-					timestamp: Date.now()
-				});
-			}
-			storeVisit();
-			function formatDate(ts)
-			{
-				if (!ts || isNaN(ts)) return "UNKNOWN";
-				const d = new Date(ts);
-				if (isNaN(d.getTime())) return "UNKNOWN";
-				const days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-				const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-				return `${days[d.getDay()]} ${String(d.getDate()).padStart(2,"0")}-${months[d.getMonth()]}-${d.getFullYear()}`;
-			}
-			onValue(ref(db, "userAccess"), snapshot => {
-					tbody.innerHTML = "";
-					if (!snapshot.exists()) return;
-					const counts = {};
-					const lastVisited = {};
-					snapshot.forEach(child => {
-						const v = child.val();
-						const ts = Number(v.timestamp);
-						if (!ts || isNaN(ts)) return;
-						const country = (v.country || "UNKNOWN").trim();
-						const continent = (v.continent || "UNKNOWN").trim();
-						const key = `${country}|${continent}`;
-						counts[key] = (counts[key] || 0) + 1;
-						if (!lastVisited[key] || ts > lastVisited[key]) {
-							lastVisited[key] = ts;
-						}
-					});
-					Object.keys(counts)
-					.sort((a,b)=> lastVisited[b] - lastVisited[a])
-					.forEach(k=>{
-						const [country, continent] = k.split("|");
-						tbody.innerHTML += `
-						<TR>
-							<TD align="center">${String(counts[k]).padStart(4,"0")}</TD>
-							<TD>${country}</TD>
-							<TD>UNKNOWN</TD>
-							<TD>UNKNOWN</TD>
-							<TD>${continent}</TD>
-							<TD>${formatDate(lastVisited[k])}</TD>
-						</TR>`;
-					});
-				}
-			);
-		</SCRIPT>
-	</BODY>
+    <HEAD>
+        <META charset="UTF-8">
+        <META name="viewport" content="width=device-width, initial-scale=1.0">
+        <TITLE>User access count (IP based)</TITLE>
+        <STYLE type='text/css'>
+            body { font-family: Arial, sans-serif; padding: 20px; }
+            table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+            th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+            th { background-color: #f2f2f2; }
+            .count-cell { text-align: center; font-family: monospace; font-weight: bold; }
+            #status { font-size: 13px; color: #666; margin-bottom: 10px; font-style: italic; }
+        </STYLE>
+    </HEAD>
+    <BODY TOPMARGIN='0' LEFTMARGIN='0'>
+        <H3>Visitor Analytics (Real-time)</H3>
+        <DIV id="status">Initializing geolocation...</DIV>
+        <TABLE>
+            <THEAD>
+                <TR>
+                    <TH>Visits</TH>
+                    <TH>Country</TH>
+                    <TH>Region</TH>
+                    <TH>City</TH>
+                    <TH>Continent</TH>
+                    <TH>Last Visited</TH>
+                </TR>
+            </THEAD>
+            <TBODY id="tbody"></TBODY>
+        </TABLE>
+
+        <SCRIPT type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+            import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
+                authDomain: "openmurugesan.firebaseapp.com",
+                databaseURL: "https://openmurugesan-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "openmurugesan",
+                storageBucket: "openmurugesan.firebasestorage.app",
+                messagingSenderId: "307675598593",
+                appId: "1:307675598593:web:4af163460ce2c3bc719500"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+            const tbody = document.getElementById("tbody");
+            const statusDiv = document.getElementById("status");
+
+            // 1. Function to capture and store the visit
+            async function storeVisit() {
+                try {
+                    statusDiv.innerText = "Detecting location via IP...";
+                    const response = await fetch('https://ipapi.co/json/');
+                    const data = await response.json();
+
+                    if(data.error) throw new Error("API Rate Limit or Error");
+
+                    await push(ref(db, "userAccess"), {
+                        country: data.country_name || "Unknown",
+                        region: data.region || "Unknown",
+                        city: data.city || "Unknown",
+                        continent: data.continent_code || "??",
+                        ip: data.ip || "Hidden",
+                        userAgent: navigator.userAgent,
+                        timestamp: Date.now()
+                    });
+                    statusDiv.innerText = `Location verified: ${data.city}, ${data.country_name}`;
+                } catch (error) {
+                    console.error("Geo-Error:", error);
+                    statusDiv.innerText = "Location access failed. Recording anonymous visit.";
+                    await push(ref(db, "userAccess"), {
+                        country: "Unknown (VPN/Adblock)",
+                        timestamp: Date.now()
+                    });
+                }
+            }
+
+            // 2. Date Formatter
+            function formatDate(ts) {
+                if (!ts || isNaN(ts)) return "N/A";
+                const d = new Date(ts);
+                const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+                const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+                return `${days[d.getDay()]} ${String(d.getDate()).padStart(2,"0")}-${months[d.getMonth()]}-${d.getFullYear()}`;
+            }
+
+            // 3. Listen for changes and update the table
+            onValue(ref(db, "userAccess"), snapshot => {
+                tbody.innerHTML = "";
+                if (!snapshot.exists()) return;
+
+                const groups = {};
+
+                snapshot.forEach(child => {
+                    const v = child.val();
+                    const ts = Number(v.timestamp) || 0;
+                    
+                    const country = v.country || "Unknown";
+                    const region = v.region || "Unknown";
+                    const city = v.city || "Unknown";
+                    const continent = v.continent || "Unknown";
+                    
+                    // Create a unique key for grouping (City + Region + Country)
+                    const key = `${country}|${region}|${city}|${continent}`;
+
+                    if (!groups[key]) {
+                        groups[key] = { count: 0, lastTs: 0 };
+                    }
+                    groups[key].count++;
+                    if (ts > groups[key].lastTs) groups[key].lastTs = ts;
+                });
+
+                // Sort by most recent visit
+                Object.keys(groups)
+                .sort((a, b) => groups[b].lastTs - groups[a].lastTs)
+                .forEach(k => {
+                    const [country, region, city, continent] = k.split("|");
+                    const row = `
+                    <TR>
+                        <TD class="count-cell">${String(groups[k].count).padStart(4, "0")}</TD>
+                        <TD>${country}</TD>
+                        <TD>${region}</TD>
+                        <TD>${city}</TD>
+                        <TD>${continent}</TD>
+                        <TD>${formatDate(groups[k].lastTs)}</TD>
+                    </TR>`;
+                    tbody.innerHTML += row;
+                });
+            });
+
+            // Start the process
+            storeVisit();
+        </SCRIPT>
+    </BODY>
 </HTML>

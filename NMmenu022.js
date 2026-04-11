@@ -1106,7 +1106,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "my-location.html" && activeLink.textContent.trim() === "Display my location") ||
 							(htmlFileName === "steps-to-recharge-any-sim.html" && activeLink.textContent.trim() === "Internet Recharge Exceptions") ||
 							(htmlFileName === "israel-usa-iran-war-2026.html" && activeLink.textContent.trim() === "Cylinder/Food Warnings due to War") ||
-							(htmlFileName === "Steps-to-pay-property-tax-bengaluru.html" && activeLink.textContent.trim() === "TO PAY BENGALURU PROPERTY TAX") ||
+							(htmlFileName === "Steps-to-pay-property-tax-bengaluru.html" && activeLink.textContent.trim() === "SOUTH INDIAN PROPERTY TAX PAYMENT") ||
 							(htmlFileName === "income-tax-documents.html" && activeLink.textContent.trim() === "INCOME TAX DOCS") ||
 							(htmlFileName === "axis-bank-life-insurance-block.html" && activeLink.textContent.trim() === "Avoid Private Bank Life Insurance") ||
 							(htmlFileName === "health-insurance.html" && activeLink.textContent.trim() === "PARENT HEALTH INSURANCE") ||
@@ -1514,7 +1514,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 							</FONT>
 							<UL class="submenu">
 								<LI>
-									<A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-pay-property-tax-bengaluru.html' );" class="nav-link">TO PAY BENGALURU PROPERTY TAX</A>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-pay-property-tax-bengaluru.html' );" class="nav-link">SOUTH INDIAN PROPERTY TAX PAYMENT</A>
 								</LI>
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'income-tax-documents.html' );" class="nav-link">INCOME TAX DOCS</A>
