@@ -859,7 +859,19 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				}
 				event.preventDefault();
 				var xhr = new XMLHttpRequest();
-				var url = "/" + htmlFileName;
+				// var url = htmlFileName;
+				// var url = "/" + htmlFileName;
+				// const url = window.location.origin + "/beggar-count.html";
+				// const url = window.location.origin + "/" + htmlFileName;
+				// const url = window.location.origin + "/murugesanopenssl.github.io/" + htmlFileName;
+				// Remove the leading slash if it exists
+				const sanitizedFileName = htmlFileName.startsWith('/') ? htmlFileName.substring(1) : htmlFileName;
+
+				// Use a relative path. 
+				// This works because index.html and the sub-files are in the same folder.
+				const url = "./" + sanitizedFileName;
+
+				console.log("Constructed URL:", url);
 				xhr.open("GET", url, true);
 				xhr.responseType = "text";
 				xhr.onload = function()
