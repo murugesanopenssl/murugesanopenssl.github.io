@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META CHARSET='UTF-8'>
+		<TITLE>
+			BEGGAR COUNT
+		</TITLE>
+	</HEAD>
+	<SCRIPT type='text/javascript'>
+		document.addEventListener("DOMContentLoaded", () => {
+    let indx = 0;
+    const cells = document.querySelectorAll(".rank");
+
+    cells.forEach(td => {
+        indx++;
+        td.textContent = indx < 10 ? "0" + indx : indx;
+    });
+});
+	</SCRIPT>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<TABLE border='1' style='width:100%;'>
+			<TR>
+				<TD valign='top' align='right'>
+					Beggar Count Rank
+				</TD>
+				<TD valign='top' align='right'>
+					Country
+				</TD>
+				<TD valign='top' align='right'>
+					State/Region
+				</TD>
+				<TD valign='top' align='right'>
+					Approximate beggar count on Wed 15-Apr-2026
+				</TD>
+			</TR>
+			<TR style='background-color:red;color:white;'>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					UNITED STATES OF AMERICA<BR>
+					DRUM
+				</TD>
+				<TD valign='top' align='right'>
+					California
+				</TD>
+				<TD valign='top' align='right'>
+				33	170000 to 190000
+				</TD>
+			</TR>
+			<TR style='background-color:red;color:white;'>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					New York
+				</TD>
+				<TD valign='top' align='right'>
+					95000 to 125000
+				</TD>
+			</TR>
+			<TR style='background-color:red;color:white;'>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Florida
+				</TD>
+				<TD valign='top' align='right'>
+					32000 to 42000
+				</TD>
+			</TR>
+			<TR style='background-color:red;color:white;'>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Texas
+				</TD>
+				<TD valign='top' align='right'>
+					28000 to 36000
+				</TD>
+			</TR>
+			<TR style='background-color:red;color:white;'>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Washington
+				</TD>
+				<TD valign='top' align='right'>
+					26000 to 32000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					China
+				</TD>
+				<TD valign='top' align='right'>
+					Guangdong
+				</TD>
+				<TD valign='top' align='right'>
+					65000 to 95000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Henan
+				</TD>
+				<TD valign='top' align='right'>
+					55000 to 85000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Sichuan
+				</TD>
+				<TD valign='top' align='right'>
+					50000 to 75000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Shandong
+				</TD>
+				<TD valign='top' align='right'>
+					45000 to 70000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Jiangsu
+				</TD>
+				<TD valign='top' align='right'>
+					40000 to 65000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					Pakistan
+				</TD>
+				<TD valign='top' align='right'>
+					Punjab
+				</TD>
+				<TD valign='top' align='right'>
+					95000 to 125000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Sindh
+				</TD>
+				<TD valign='top' align='right'>
+					75000 to 105000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Khyber Pakhtunkhwa
+				</TD>
+				<TD valign='top' align='right'>
+					55000 to 85000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Balochistan
+				</TD>
+				<TD valign='top' align='right'>
+					35000 to 55000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Islamabad
+				</TD>
+				<TD valign='top' align='right'>
+					6000 to 10000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					Bangladesh
+				</TD>
+				<TD valign='top' align='right'>
+					Dhaka
+				</TD>
+				<TD valign='top' align='right'>
+					90000 to 120000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Chattogram
+				</TD>
+				<TD valign='top' align='right'>
+					55000 to 75000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Khulna
+				</TD>
+				<TD valign='top' align='right'>
+					35000 to 55000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Rajshahi
+				</TD>
+				<TD valign='top' align='right'>
+					30000 to 45000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Sylhet
+				</TD>
+				<TD valign='top' align='right'>
+					25000 to 40000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					India
+				</TD>
+				<TD valign='top' align='right'>
+					Andhra Pradesh
+				</TD>
+				<TD valign='top' align='right'>
+					30000 to 45000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Karnataka
+				</TD>
+				<TD valign='top' align='right'>
+					12000 to 18000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Tamil Nadu
+				</TD>
+				<TD valign='top' align='right'>
+					8000 to 12000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Telangana
+				</TD>
+				<TD valign='top' align='right'>
+					5000 to 9000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Kerala
+				</TD>
+				<TD valign='top' align='right'>
+					4000 to 7000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					Turkey
+				</TD>
+				<TD valign='top' align='right'>
+					Istanbul
+				</TD>
+				<TD valign='top' align='right'>
+					75000 to 105000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Ankara
+				</TD>
+				<TD valign='top' align='right'>
+					35000 to 55000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Izmir
+				</TD>
+				<TD valign='top' align='right'>
+					28000 to 42000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Bursa
+				</TD>
+				<TD valign='top' align='right'>
+					22000 to 32000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Adana
+				</TD>
+				<TD valign='top' align='right'>
+					20000 to 30000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					Iran
+				</TD>
+				<TD valign='top' align='right'>
+					Tehran
+				</TD>
+				<TD valign='top' align='right'>
+					55000 to 85000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Khorasan
+				</TD>
+				<TD valign='top' align='right'>
+					35000 to 55000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Isfahan
+				</TD>
+				<TD valign='top' align='right'>
+					28000 to 42000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Fars
+				</TD>
+				<TD valign='top' align='right'>
+					22000 to 35000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Khuzestan
+				</TD>
+				<TD valign='top' align='right'>
+					20000 to 32000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					Afghanistan
+				</TD>
+				<TD valign='top' align='right'>
+					Kabul
+				</TD>
+				<TD valign='top' align='right'>
+					55000 to 85000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Herat
+				</TD>
+				<TD valign='top' align='right'>
+					35000 to 55000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Kandahar
+				</TD>
+				<TD valign='top' align='right'>
+					30000 to 45000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Mazar-i-Sharif
+				</TD>
+				<TD valign='top' align='right'>
+					25000 to 40000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Jalalabad
+				</TD>
+				<TD valign='top' align='right'>
+					20000 to 35000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					United Kingdom
+				</TD>
+				<TD valign='top' align='right'>
+					London
+				</TD>
+				<TD valign='top' align='right'>
+					55000 to 85000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					West Midlands
+				</TD>
+				<TD valign='top' align='right'>
+					22000 to 32000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Manchester
+				</TD>
+				<TD valign='top' align='right'>
+					20000 to 30000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					West Yorkshire
+				</TD>
+				<TD valign='top' align='right'>
+					17000 to 27000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Scotland
+				</TD>
+				<TD valign='top' align='right'>
+					15000 to 23000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					Japan
+				</TD>
+				<TD valign='top' align='right'>
+					Tokyo
+				</TD>
+				<TD valign='top' align='right'>
+					20000 to 30000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Osaka
+				</TD>
+				<TD valign='top' align='right'>
+					15000 to 22000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Kanagawa
+				</TD>
+				<TD valign='top' align='right'>
+					12000 to 18000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Aichi
+				</TD>
+				<TD valign='top' align='right'>
+					10000 to 15000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Fukuoka
+				</TD>
+				<TD valign='top' align='right'>
+					9000 to 14000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					Sri Lanka
+				</TD>
+				<TD valign='top' align='right'>
+					Western Province
+				</TD>
+				<TD valign='top' align='right'>
+					9000 to 13000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Southern Province
+				</TD>
+				<TD valign='top' align='right'>
+					7000 to 10000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Central Province
+				</TD>
+				<TD valign='top' align='right'>
+					6000 to 9000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Eastern Province
+				</TD>
+				<TD valign='top' align='right'>
+					5000 to 8000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Northern Province
+				</TD>
+				<TD valign='top' align='right'>
+					4000 to 7000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					Myanmar
+				</TD>
+				<TD valign='top' align='right'>
+					Yangon
+				</TD>
+				<TD valign='top' align='right'>
+					15000 to 22000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Mandalay
+				</TD>
+				<TD valign='top' align='right'>
+					12000 to 18000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Ayeyarwady
+				</TD>
+				<TD valign='top' align='right'>
+					10000 to 15000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Shan State
+				</TD>
+				<TD valign='top' align='right'>
+					9000 to 13000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Magway
+				</TD>
+				<TD valign='top' align='right'>
+					8000 to 12000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					United Arab Emirates
+				</TD>
+				<TD valign='top' align='right'>
+					Dubai
+				</TD>
+				<TD valign='top' align='right'>
+					13000 to 19000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Abu Dhabi
+				</TD>
+				<TD valign='top' align='right'>
+					11000 to 16000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Sharjah
+				</TD>
+				<TD valign='top' align='right'>
+					9000 to 13000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Ajman
+				</TD>
+				<TD valign='top' align='right'>
+					6000 to 9000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Ras Al Khaimah
+				</TD>
+				<TD valign='top' align='right'>
+					5000 to 8000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					Maldives
+				</TD>
+				<TD valign='top' align='right'>
+					Malé</TD>
+				<TD valign='top' align='right'>
+					2000 to 4000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Atolls North
+				</TD>
+				<TD valign='top' align='right'>
+					1500 to 3000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Atolls South
+				</TD>
+				<TD valign='top' align='right'>
+					1500 to 3000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Atolls East
+				</TD>
+				<TD valign='top' align='right'>
+					1200 to 2500
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Atolls West
+				</TD>
+				<TD valign='top' align='right'>
+					1200 to 2500
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right' rowspan='5'>
+					Bhutan
+				</TD>
+				<TD valign='top' align='right'>
+					Thimphu
+				</TD>
+				<TD valign='top' align='right'>
+					2500 to 4500
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Paro
+				</TD>
+				<TD valign='top' align='right'>
+					2000 to 3500
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Punakha
+				</TD>
+				<TD valign='top' align='right'>
+					1800 to 3000
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Wangdue
+				</TD>
+				<TD valign='top' align='right'>
+					1700 to 2800
+				</TD>
+			</TR>
+			<TR>
+				<TD class="rank" valign="top" align="right"></TD>
+				<TD valign='top' align='right'>
+					Trongsa
+				</TD>
+				<TD valign='top' align='right'>
+					1500 to 2500
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</HTML>

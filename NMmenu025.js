@@ -1089,7 +1089,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "Steps-to-save-money-from-mis.html" && activeLink.textContent.trim() === "Post Office Savings Guide") ||
 							(htmlFileName === "Responsible-Nations-Index-Jan-2026.html" && activeLink.textContent.trim() === "Responsible Nations Index") ||
 							(htmlFileName === "COUNTRIES-SUPPORTING-IRAN.html" && activeLink.textContent.trim() === "Countries Supporting Iran") ||
-							(htmlFileName === "begger-count.html" && activeLink.textContent.trim() === "Beggar Count Report") ||
+							(htmlFileName === "beggar-count.html" && activeLink.textContent.trim() === "Beggar Count Report") ||
 							(htmlFileName === "bsnl-net-speed-no-parking-kannada.html" && activeLink.textContent.trim() === "BSNL Fibernet,Mobile kannada") ||
 							(htmlFileName === "BSNL-DATA1515-INVALID-SMS.html" && activeLink.textContent.trim() === "BSNL DATA1515 Invalid SMS") ||
 							(htmlFileName === "how-to-use-mobile-home-fibnernet-bsnl.html" && activeLink.textContent.trim() === "BSNL Mobile & Fibernet") ||
@@ -1891,7 +1891,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 							<A href="#" onclick="javascript:loadHomeContent(event, 'Visitor_count.html');" class="nav-link">Visitor Information</A>
 						</LI>
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent(event, 'begger-count.html');" class="nav-link">
+							<A href="#" onclick="javascript:loadHomeContent(event, 'beggar-count.html');" class="nav-link">
 								<FONT color='white'>
 									Beggar Count Report
 								</FONT>
