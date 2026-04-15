@@ -859,7 +859,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				}
 				event.preventDefault();
 				var xhr = new XMLHttpRequest();
-				var url = htmlFileName;
+				var url = "/" + htmlFileName;
 				xhr.open("GET", url, true);
 				xhr.responseType = "text";
 				xhr.onload = function()
