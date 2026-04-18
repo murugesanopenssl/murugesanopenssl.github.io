@@ -3,11 +3,12 @@ send-cisco-replymail.sh<BR>
 AUTOMATED SHELL SCRIPT:
 <TABLE>
 <TR>
-<TD>
+<TD valign='top' align='left'>
 <PRE>$ /usr/bin/cat ./send-cisco-replymail.sh
 #!/bin/bash
 #set -x
 TO="hiring@jobalerts.cisco.com"
+#TO="murugesanopenssl@gmail.com"
 #USED FOLLOWING COMMENTED LINE FOR ME TO TEST at 127.0.0.1
 #TO="murugesanopenssl@gmail.com"
 #I will change TO to required email after completing the test with this script.
@@ -28,14 +29,14 @@ else
 	#ABOVE     MESSAGE FOR MYSELF
 	BCC="murugesangct@gmail.com"
 	FROM="murugesanopenssl@gmail.com"
-	REPLY_TO="murugesanopenssl@gmail.com"
-	#REPLY_TO="in_assistant@cisco.com, murugesanopenssl@gmail.com"
+	#REPLY_TO="murugesanopenssl@gmail.com"
+	REPLY_TO="hiring@jobalerts.cisco.com, murugesanopenssl@gmail.com"
 	#FROM_NAME="murugesanopenssl@gmail.com"
 	SUBJECT="Re: Thanks for Considering Cisco"
 	DATE="$(/usr/bin/date "+%A %d-%b-%Y %I:%M %p %Z")"
-	BODY=$(/usr/bin/cat << EOF
-<HTML>
-<BODY>
+	BODY=$(/usr/bin/cat &lt;&lt; EOF
+&lt;HTML>
+&lt;BODY>
 Respected Cisco Recruiting Team,&lt;BR>
 &lt;BR>
 Thank you for considering my application for the Senior Software Engineer position and for reviewing my profile.&lt;BR>
@@ -47,6 +48,7 @@ Debugging tools (gdb, dbx) and OpenSSL-based development&lt;BR>
 Operating systems: Linux, HP-UX, SunOS, AIX, Windows (Cygwin environment)&lt;BR>
 Shell scripting and build environments (bash, ksh, mksh)&lt;BR>
 Networking and system-level development, including enterprise integration (SAP IDOC)&lt;BR>
+My knowledge transfer to the team/required person across the word from 2003 to till now including expected way of SSL as per the countries and companies.&lt;BR>
 &lt;BR>
 I remain interested in future opportunities at Cisco that align with my experience and skill set.&lt;BR>
 &lt;BR>
@@ -57,8 +59,9 @@ Thank you for your time and consideration.&lt;BR>
 Regards,&lt;BR>
 N Murugesan&lt;BR>
 $ echo \$0 $0&lt;BR>
-<a href="https://murugesanopenssl.github.io">https://murugesanopenssl.github.io</a> (active since 2019)
-<PRE>On Fri 17-Apr-2026 04:28 PM IST, murugesanopenssl@gmail.com wrote:
+&lt;A href="https://murugesanopenssl.github.io/send-cisco-replymail.html">https://murugesanopenssl.github.io/send-cisco-replymail.html&lt;A> (sample automation)&lt;BR>
+&lt;A href="https://murugesanopenssl.github.io">https://murugesanopenssl.github.io&lt;A> (active since 2019)
+&lt;PRE>On Fri 17-Apr-2026 04:28 PM IST, murugesanopenssl@gmail.com wrote:
 > Hello N,
 >
 > Thank you for your interest in the Senior Software Engineer – C, Linux, Device Drivers, Networking (Req. 1451128).
@@ -76,9 +79,9 @@ $ echo \$0 $0&lt;BR>
 >
 > Power an inclusive future for all.
 > 		
-> This email was intended for murugesanopenssl@gmail.com</PRE>
-</BODY>
-</HTML>
+> This email was intended for murugesanopenssl@gmail.com&lt;PRE>
+&lt;BODY>
+&lt;HTML>
 EOF
 )
 	echo -e "From: ${FROM}
@@ -93,6 +96,9 @@ ${BODY}" 2>&1 |\
 	/usr/sbin/msmtp.exe --read-envelope-from -t
 	echo "Email sent to ${TO} with BCC to ${BCC}"
 fi
-</PRE>
-</TD>
-</TR>
+					</PRE>
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</HTML>

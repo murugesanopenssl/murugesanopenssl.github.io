@@ -1109,9 +1109,8 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "learn-vim-editor.html" && activeLink.textContent.trim() === "VIM/VI EDITOR") ||
 							(htmlFileName === "info-ltts.html" && activeLink.textContent.trim() === "L & T EMAIL AUTOMATION") ||
 							(htmlFileName === "talent-ibm.html" && activeLink.textContent.trim() === "IBM EMAIL AUTOMATION") ||
-							(htmlFileName === "cisco-automation.html" && activeLink.textContent.trim() === "CISCO EMAIL AUTOMATION") ||
-							(htmlFileName === "talent-accenture.html" && activeLink.textContent.trim() === "ACCENTURE EMAIL AUTOMATION") ||
 							(htmlFileName === "send-cisco-replymail.html" && activeLink.textContent.trim() === "CISCO EMAIL AUTOMATION") ||
+							(htmlFileName === "talent-accenture.html" && activeLink.textContent.trim() === "ACCENTURE EMAIL AUTOMATION") ||
 							(htmlFileName === "never-recharge-sim-on-expiry-date.html" && activeLink.textContent.trim() === "RechargeSIM@NextDayofExpiryDate") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Gold Rate Comparison") ||
 							(htmlFileName === "futura-brush-buying-guide.html" && activeLink.textContent.trim() === "Futura Brush: Save AMB Interest (Cash Only)") ||
@@ -1863,13 +1862,10 @@ function loadMoneyHelpContent( event, htmlFileName )
 					<SPAN class="nav-icon"><FONT color='white'>EMAIL AUTOMATION</FONT></SPAN>
 					<UL class="submenu">
 						<LI>
-							<A href="#" onclick="loadHomeContent( event, 'cisco-automation.html' )" class="nav-link">CISCO EMAIL AUTOMATION</A>
+							<A href="#" onclick="loadHomeContent( event, 'send-cisco-replymail.html' )" class="nav-link">CISCO EMAIL AUTOMATION</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="loadHomeContent( event, 'talent-accenture.html' )" class="nav-link">ACCENTURE EMAIL AUTOMATION</A>
-						</LI>
-						<LI>
-							<A href="#" onclick="loadHomeContent( event, 'send-cisco-replymail.html' )" class="nav-link">CISCO EMAIL AUTOMATION</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="loadHomeContent( event, 'info-ltts.html' )" class="nav-link">L & T EMAIL AUTOMATION</A>
