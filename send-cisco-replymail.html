@@ -1,0 +1,98 @@
+Use same reply email to:<BR>
+send-cisco-replymail.sh<BR>
+AUTOMATED SHELL SCRIPT:
+<TABLE>
+<TR>
+<TD>
+<PRE>$ /usr/bin/cat ./send-cisco-replymail.sh
+#!/bin/bash
+#set -x
+TO="hiring@jobalerts.cisco.com"
+#USED FOLLOWING COMMENTED LINE FOR ME TO TEST at 127.0.0.1
+#TO="murugesanopenssl@gmail.com"
+#I will change TO to required email after completing the test with this script.
+if [[ ! -s ~/.msmtprc ]]
+then
+	#FOLLOWING MESSAGE FOR MYSELF
+	echo "Enable 2 step verifiction for $TO email id"
+	echo "Save automated password from your email received at browser inside ~/.msmtprc"
+	echo "$ ls -ltr ~/.msmtprc"
+	/usr/bin/ls -ltr ~/.msmtprc
+	Ret=$?
+	exit $Ret
+	#ABOVE     MESSAGE FOR MYSELF
+else
+	#FOLLOWING MESSAGE FOR MYSELF
+	echo "Enable 2 step verifiction for $TO email id"
+	echo "Enter the automated password at ~/.msmtprc"
+	#ABOVE     MESSAGE FOR MYSELF
+	BCC="murugesangct@gmail.com"
+	FROM="murugesanopenssl@gmail.com"
+	REPLY_TO="murugesanopenssl@gmail.com"
+	#REPLY_TO="in_assistant@cisco.com, murugesanopenssl@gmail.com"
+	#FROM_NAME="murugesanopenssl@gmail.com"
+	SUBJECT="Re: Thanks for Considering Cisco"
+	DATE="$(/usr/bin/date "+%A %d-%b-%Y %I:%M %p %Z")"
+	BODY=$(/usr/bin/cat << EOF
+<HTML>
+<BODY>
+Respected Cisco Recruiting Team,&lt;BR>
+&lt;BR>
+Thank you for considering my application for the Senior Software Engineer position and for reviewing my profile.&lt;BR>
+&lt;BR>
+I understand your decision regarding this role. I have over 18 years and 3 months of experience in software engineering, including:&lt;BR>
+&lt;BR>
+C and C++ programming&lt;BR>
+Debugging tools (gdb, dbx) and OpenSSL-based development&lt;BR>
+Operating systems: Linux, HP-UX, SunOS, AIX, Windows (Cygwin environment)&lt;BR>
+Shell scripting and build environments (bash, ksh, mksh)&lt;BR>
+Networking and system-level development, including enterprise integration (SAP IDOC)&lt;BR>
+&lt;BR>
+I remain interested in future opportunities at Cisco that align with my experience and skill set.&lt;BR>
+&lt;BR>
+If possible, I would appreciate any brief feedback on my application, as it would help me improve further.&lt;BR>
+&lt;BR>
+Thank you for your time and consideration.&lt;BR>
+&lt;BR>
+Regards,&lt;BR>
+N Murugesan&lt;BR>
+$ echo \$0 $0&lt;BR>
+<a href="https://murugesanopenssl.github.io">https://murugesanopenssl.github.io</a> (active since 2019)
+<PRE>On Fri 17-Apr-2026 04:28 PM IST, murugesanopenssl@gmail.com wrote:
+> Hello N,
+>
+> Thank you for your interest in the Senior Software Engineer – C, Linux, Device Drivers, Networking (Req. 1451128).
+>
+> We appreciate the time and effort you have taken to apply and regret to inform you that we won't be moving forward with you for the position.
+>
+> Although this position was not a fit, we encourage you to continue exploring opportunities that match your skills and experience on Cisco Careers. Once on the career site, click "Sign In" for a link to access your profile. From your profile, you can search for available jobs, sign up to be notified about similar roles, and manage your Job Alerts. We also invite you to join our Talent Community to receive the latest news about Cisco.
+>
+> Thank you for being a part of the #WeAreCisco community and for your interest in the role.
+>
+> Regards,
+>
+> Cisco Recruiting
+> #WeAreCisco
+>
+> Power an inclusive future for all.
+> 		
+> This email was intended for murugesanopenssl@gmail.com</PRE>
+</BODY>
+</HTML>
+EOF
+)
+	echo -e "From: ${FROM}
+To: ${TO}
+Reply-To: ${REPLY_TO}
+Bcc: ${BCC}
+Subject: ${SUBJECT}
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+
+${BODY}" 2>&1 |\
+	/usr/sbin/msmtp.exe --read-envelope-from -t
+	echo "Email sent to ${TO} with BCC to ${BCC}"
+fi
+</PRE>
+</TD>
+</TR>

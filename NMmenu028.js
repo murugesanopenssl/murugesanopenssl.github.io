@@ -1111,6 +1111,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "talent-ibm.html" && activeLink.textContent.trim() === "IBM EMAIL AUTOMATION") ||
 							(htmlFileName === "cisco-automation.html" && activeLink.textContent.trim() === "CISCO EMAIL AUTOMATION") ||
 							(htmlFileName === "talent-accenture.html" && activeLink.textContent.trim() === "ACCENTURE EMAIL AUTOMATION") ||
+							(htmlFileName === "send-cisco-replymail.html" && activeLink.textContent.trim() === "CISCO EMAIL AUTOMATION") ||
 							(htmlFileName === "never-recharge-sim-on-expiry-date.html" && activeLink.textContent.trim() === "RechargeSIM@NextDayofExpiryDate") ||
 							(htmlFileName === "dynamic-gold-rate-comparison-tool.html" && activeLink.textContent.trim() === "Gold Rate Comparison") ||
 							(htmlFileName === "futura-brush-buying-guide.html" && activeLink.textContent.trim() === "Futura Brush: Save AMB Interest (Cash Only)") ||
@@ -1494,18 +1495,6 @@ function loadMoneyHelpContent( event, htmlFileName )
 								</LI>
 							</UL>
 						</LI>
-						<LI class="nav-item">
-							<A href='javascript:void( 0 );' class="nav-link" style="cursor: text; text-decoration: none;">
-								<SPAN class="nav-icon">&#127974;</SPAN>
-								<SPAN class="nav-text"><FONT color='black'>Location</FONT></SPAN>
-								<SPAN class="nav-arrow">&gt;</SPAN>
-							</A>
-							<UL class="submenu">
-								<LI>
-									<A href="#" onclick="javascript:loadHomeContent( event, 'my-location.html' );" class="nav-link">Display my location</A>
-								</LI>
-							</UL>
-						</LI>
 				<LI class="nav-item">
 					<A href="#" class="nav-link">
 						<SPAN class="nav-icon">&#127974;</SPAN>
@@ -1778,68 +1767,86 @@ function loadMoneyHelpContent( event, htmlFileName )
 			</UL>
 		</LI>
 	</LI>
-	<LI class="nav-item">
-		<A href="#" class="nav-link">
-			<SPAN class="nav-icon">&#x1F527;</SPAN>
-			<SPAN class="nav-text"><FONT color='black'>Utility</FONT></SPAN>
-			<SPAN CLASS="NAV-ARROW">&gt;</SPAN>
-		</A>
-		<UL class="submenu">
-			<LI>
-					<A href="#" onclick="javascript:loadHomeContent(event, 'potential-hydrogen.html');" class="nav-link">How to select best bathing soap</A>
-			</LI>
-			<LI>
-					<A href="#" onclick="javascript:loadHomeContent(event, 'Steps-to-talk-with-indian-voter.html');" class="nav-link">Call Indian Voter Help</A>
-			</LI>
-			<LI>
-					<A href="#" onclick="javascript:loadHomeContent(event, 'TN-how-to-get-more-vote.html');" class="nav-link">TN Voter Increase Guide</A>
-			</LI>
-			<LI>
-				<A href="#" onclick="javascript:loadHomeContent(event, 'vegetables-health.html');" class="nav-link">Vegetables & Health Guide</A>
-			</LI>
-			<LI>
-				<A href="#" onclick="javascript:loadHomeContent(event, 'ShareKnowledgeTransferToPeople.html');" class="nav-link">Share knowledge transfer</A>
-			</LI>
-			<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'pm-cm-india-relations.html' );" class="nav-link">India politician relationships</A>
-						</LI>
-						<LI>
-							<A href="#" onclick="javascript:loadHomeContent(event, 'remove-blockages-kitchen-pvc-outflow-pipe.html');" class="nav-link">Kitchen Drain Fixes</A>
-						</LI>
-						<LI class="nav-item">
-							<A href="#" class="nav-link">Washing Machine<SPAN class="nav-arrow">&gt;</SPAN></A>
-							<UL class="submenu">
-								<LI>
-									<A href="#" onclick="javascript:loadHomeContent(event, 'bpl-washing-machine.html');" class="nav-link">BPL Washing Machine</A>
-								</LI>
-								<LI>
-									<A href="#" onclick="javascript:loadHomeContent(event, 'washing-machine-repair.html');" class="nav-link">How to use rinse when using washing steps?</A>
-								</LI>
-							</UL>
-						</LI>
-						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'Set-Black-Image-lock-screen-home-screen.html' );" class="nav-link">Samsung Wallpaper Home Lock</A>
-						</LI>
-						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'Bharath_gas_booking_steps.html' );" class="nav-link">Bharat Gas Booking Steps</A>
-						</LI>
-						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'Indian-Oil-Cylinder-Booking-Online-Steps.html' );" class="nav-link">Indian Oil Booking Steps</A>
-						</LI>
-						<LI>
-							<!--
-							Utility
-							-->
-							<A href="#" onclick="javascript:loadHomeContent( event, 'how-to-know-sim-number.html' );" class="nav-link">How to find my SIM number?</A>
-						</LI>
-						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-port-jio-to-bsnl.html' );" class="nav-link">Port from Jio to BSNL</A>
-						</LI>
-						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'world-currencies.html' );" class="nav-link">World Currency Rates</A>
-						</LI>
-					</UL>
+<LI class="nav-item">
+	<A href="#" class="nav-link">
+		<SPAN class="nav-icon">&#x1F527;</SPAN>
+		<SPAN class="nav-text"><FONT color='black'>Utility</FONT></SPAN>
+		<SPAN class="nav-arrow">&gt;</SPAN>
+	</A>
+
+	<UL class="submenu">
+
+		<!-- Location -->
+		<LI class="nav-item">
+			<A href="#" class="nav-link">Location <SPAN class="nav-arrow">&gt;</SPAN></A>
+			<UL class="submenu">
+				<LI>
+					<A href="#" onclick="loadHomeContent(event, 'my-location.html');" class="nav-link">
+						Display my location
+					</A>
 				</LI>
+			</UL>
+		</LI>
+
+		<!-- Household -->
+		<LI class="nav-item">
+			<A href="#" class="nav-link">Household <SPAN class="nav-arrow">&gt;</SPAN></A>
+			<UL class="submenu">
+				<LI><A href="#" onclick="loadHomeContent(event, 'potential-hydrogen.html');" class="nav-link">Bathing Soap Guide</A></LI>
+				<LI><A href="#" onclick="loadHomeContent(event, 'vegetables-health.html');" class="nav-link">Vegetables & Health</A></LI>
+				<LI><A href="#" onclick="loadHomeContent(event, 'remove-blockages-kitchen-pvc-outflow-pipe.html');" class="nav-link">Kitchen Drain Fix</A></LI>
+			</UL>
+		</LI>
+
+		<!-- Voting / Public Info -->
+		<LI class="nav-item">
+			<A href="#" class="nav-link">Public Services <SPAN class="nav-arrow">&gt;</SPAN></A>
+			<UL class="submenu">
+				<LI><A href="#" onclick="loadHomeContent(event, 'Steps-to-talk-with-indian-voter.html');" class="nav-link">Voter Help</A></LI>
+				<LI><A href="#" onclick="loadHomeContent(event, 'TN-how-to-get-more-vote.html');" class="nav-link">TN Voter Guide</A></LI>
+				<LI><A href="#" onclick="loadHomeContent(event, 'pm-cm-india-relations.html');" class="nav-link">Politician Relations</A></LI>
+			</UL>
+		</LI>
+
+		<!-- Appliances -->
+		<LI class="nav-item">
+			<A href="#" class="nav-link">Appliances <SPAN class="nav-arrow">&gt;</SPAN></A>
+			<UL class="submenu">
+				<LI><A href="#" onclick="loadHomeContent(event, 'bpl-washing-machine.html');" class="nav-link">BPL Washing Machine</A></LI>
+				<LI><A href="#" onclick="loadHomeContent(event, 'washing-machine-repair.html');" class="nav-link">Washing Machine Rinse</A></LI>
+			</UL>
+		</LI>
+
+		<!-- Mobile & SIM -->
+		<LI class="nav-item">
+			<A href="#" class="nav-link">Mobile & SIM <SPAN class="nav-arrow">&gt;</SPAN></A>
+			<UL class="submenu">
+				<LI><A href="#" onclick="loadHomeContent(event, 'how-to-know-sim-number.html');" class="nav-link">Find SIM Number</A></LI>
+				<LI><A href="#" onclick="loadHomeContent(event, 'steps-to-port-jio-to-bsnl.html');" class="nav-link">Port Jio to BSNL</A></LI>
+				<LI><A href="#" onclick="loadHomeContent(event, 'Set-Black-Image-lock-screen-home-screen.html');" class="nav-link">Samsung Wallpaper</A></LI>
+			</UL>
+		</LI>
+
+		<!-- Gas Booking -->
+		<LI class="nav-item">
+			<A href="#" class="nav-link">Gas Booking <SPAN class="nav-arrow">&gt;</SPAN></A>
+			<UL class="submenu">
+				<LI><A href="#" onclick="loadHomeContent(event, 'Bharath_gas_booking_steps.html');" class="nav-link">Bharat Gas</A></LI>
+				<LI><A href="#" onclick="loadHomeContent(event, 'Indian-Oil-Cylinder-Booking-Online-Steps.html');" class="nav-link">Indian Oil</A></LI>
+			</UL>
+		</LI>
+
+		<!-- Misc -->
+		<LI class="nav-item">
+			<A href="#" class="nav-link">Others <SPAN class="nav-arrow">&gt;</SPAN></A>
+			<UL class="submenu">
+				<LI><A href="#" onclick="loadHomeContent(event, 'ShareKnowledgeTransferToPeople.html');" class="nav-link">Knowledge Share</A></LI>
+				<LI><A href="#" onclick="loadHomeContent(event, 'world-currencies.html');" class="nav-link">Currency Rates</A></LI>
+			</UL>
+		</LI>
+
+	</UL>
+</LI>
 				<LI class="nav-item">
 					<A href="#" onclick="loadHomeContent( event, 'Prediction_04.html' )" class="nav-link">
 						<SPAN class="nav-icon">&#x1F465;<FONT color='black'>MyPredict</FONT></SPAN>
@@ -1860,6 +1867,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 						</LI>
 						<LI>
 							<A href="#" onclick="loadHomeContent( event, 'talent-accenture.html' )" class="nav-link">ACCENTURE EMAIL AUTOMATION</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="loadHomeContent( event, 'send-cisco-replymail.html' )" class="nav-link">CISCO EMAIL AUTOMATION</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="loadHomeContent( event, 'info-ltts.html' )" class="nav-link">L & T EMAIL AUTOMATION</A>
