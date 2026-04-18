@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Multi Language Lyrics</title>
+
+<script>
+const data={
+
+tamil:`<TR><TD valign='top' align='middle' colspan='2'>ஒவ்வொரு மாதமும் 20-ஆம் தேதியிலிருந்து பின்வரும் பாடலைக் கேளுங்கள்.</TD></TR>
+<TR><TD valign='top' align='left'>இசை</TD><TD valign='top' align='left'>எம்.எஸ். விஸ்வநாதன்</TD></TR>
+<TR><TD valign='top' align='left'>பாடல் வரிகள்</TD><TD valign='top' align='left'>கவிஞர் கண்ணதாசன்</TD></TR>
+<TR><TD valign='top' align='left'>ஆண்</TD><TD valign='top' align='left'>வரவு எட்டணா<BR>செலவு பத்தனா<BR>அதிகம் ரெண்டனா<BR>கடைசியில் துந்தனா</TD></TR>
+<TR><TD valign='top' align='left'>பாடகர்களின் குழுவின் பாடல்</TD><TD valign='top' align='left'>வரவு எட்டணா<BR>செலவு பத்தனா<BR>அதிகம் ரெண்டனா<BR>கடைசியில் துந்தனா<BR>துந்தனா துந்தனா..ஆஆ</TD></TR>
+<TR><TD valign='top' align='left'>ஆண்</TD><TD valign='top' align='left'>ஒன் டு த்ரீ போர்<BR>பைவ் சிக்ஸ் செவன் எயிட்</TD></TR>
+<TR><TD valign='top' align='left'>பாடகர்களின் குழுவின் பாடல்</TD><TD valign='top' align='left'>வரவு எட்டணா<BR>செலவு பத்தனா<BR>அதிகம் ரெண்டானா<BR>கடைசியில் துந்தனா</TD></TR>
+<TR><TD valign='top' align='left'>பாடகர்களின் குழுவின் பாடல்</TD><TD valign='top' align='left'>திரைமைக்கு மேலே நினைப்பு வந்தா<BR>நிம்மதி இருக்காது<BR>அளவுக்கு மேலே ஆசை வந்தா<BR>உள்ளதும் நிலைக்காது</TD></TR>
+<TR><TD valign='top' align='left'>பெண்</TD><TD valign='top' align='left'>வயசுக்குமேலே உலகத்தில் உள்ள<BR>நல்லது பிடிக்காது</TD></TR>
+<TR><TD valign='top' align='left'>பாடகர்களின்(பெண்கள்)</TD><TD valign='top' align='left'>வயசுக்குமேலே உலகத்தில் உள்ள<BR>நல்லது பிடிக்காது</TD></TR>
+<TR><TD valign='top' align='left'>ஆண்</TD><TD valign='top' align='left'>வயசுப் பிள்ளைகள் புதுசா பெருசா<BR>வாழ்வது பொறுக்காது</TD></TR>
+<TR><TD valign='top' align='left'>பாடகர்களின்(ஆண்கள்)</TD><TD valign='top' align='left'>வயசுப் பிள்ளைகள் புதுசா பெருசா<BR>வாழ்வது பொறுக்காது</TD></TR>
+<TR><TD valign='top' align='left'>ஆண்</TD><TD valign='top' align='left'>வாடகை சோபா<BR>இருவது ரூபா<BR>விலைக்கு வாங்கினா<BR>முப்பதே ரூபா</TD></TR>
+<TR><TD valign='top' align='left'>பாடகர்களின் குழு</TD><TD valign='top' align='left'>வாடகை சோபா<BR>இருவது ரூபா<BR>முப்பதே ரூபா</TD></TR>
+<TR><TD valign='top' align='left'>ஆண்</TD><TD valign='top' align='left'>பட்டால் தெரியும் பழசும் புதுசும்<BR>கெட்டால் தெரியும் கேள்வியும் பதிலும்</TD></TR>`,
+
+kannada:`<TR><TD valign='top' align='middle' colspan='2'>ಪ್ರತಿ ತಿಂಗಳ 20ನೇ ತಾರೀಖಿನ ಈ ಕೆಳಗಿನ ಹಾಡನ್ನು ಕೇಳಿ.</TD></TR>
+<TR><TD valign='top' align='left'>ಸಂಗೀತ</TD><TD valign='top' align='left'>ಎಂ.ಎಸ್. ವಿಶ್ವನಾಥನ್</TD></TR>
+<TR><TD valign='top' align='left'>ಸಾಹಿತ್ಯ</TD><TD valign='top' align='left'>ಕನ್ನಡಾಸನ್</TD></TR>
+<TR><TD valign='top' align='left'>ಪುರುಷ</TD><TD valign='top' align='left'>ಆದಾಯ ಎಂಟು<BR>ಖರ್ಚು ಹತ್ತು<BR>ಹೆಚ್ಚು ಎರಡು<BR>ಕೊನೆಗೆ ನಷ್ಟ</TD></TR>
+<TR><TD valign='top' align='left'>ಗುಂಪು</TD><TD valign='top' align='left'>ಆದಾಯ ಎಂಟು<BR>ಖರ್ಚು ಹತ್ತು<BR>ಹೆಚ್ಚು ಎರಡು<BR>ಕೊನೆಗೆ ನಷ್ಟ</TD></TR>
+<TR><TD valign='top' align='left'>ಪುರುಷ</TD><TD valign='top' align='left'>ಒನ್ ಟು ತ್ರೀ ಫೋರ್<BR>ಫೈವ್ ಸಿಕ್ಸ್ ಸೆವನ್ ಎಯ್ಟ್</TD></TR>
+<TR><TD valign='top' align='left'>ಗುಂಪು</TD><TD valign='top' align='left'>ಆದಾಯ ಎಂಟು<BR>ಖರ್ಚು ಹತ್ತು</TD></TR>
+<TR><TD valign='top' align='left'>ಗುಂಪು</TD><TD valign='top' align='left'>ಆಸೆ ಹೆಚ್ಚು ಬಂದರೆ ಶಾಂತಿ ಇಲ್ಲ</TD></TR>
+<TR><TD valign='top' align='left'>ಸ್ತ್ರೀ</TD><TD valign='top' align='left'>ವಯಸ್ಸಾದ ಮೇಲೆ ಒಳ್ಳೆಯದು ಇಷ್ಟವಿಲ್ಲ</TD></TR>
+<TR><TD valign='top' align='left'>ಗುಂಪು</TD><TD valign='top' align='left'>ವಯಸ್ಸಾದ ಮೇಲೆ ಒಳ್ಳೆಯದು ಇಷ್ಟವಿಲ್ಲ</TD></TR>
+<TR><TD valign='top' align='left'>ಪುರುಷ</TD><TD valign='top' align='left'>ಮಕ್ಕಳು ಬೆಳೆದರೆ ಸಹಿಸಲು ಆಗದು</TD></TR>
+<TR><TD valign='top' align='left'>ಗುಂಪು</TD><TD valign='top' align='left'>ಮಕ್ಕಳು ಬೆಳೆದರೆ ಸಹಿಸಲು ಆಗದು</TD></TR>
+<TR><TD valign='top' align='left'>ಪುರುಷ</TD><TD valign='top' align='left'>ಬಾಡಿಗೆ ಸೋಫಾ<BR>ಇಪ್ಪತ್ತು ರೂಪಾಯಿ<BR>ಖರೀದಿಸಿದರೆ<BR>ಮೂವತ್ತು ರೂಪಾಯಿ</TD></TR>
+<TR><TD valign='top' align='left'>ಗುಂಪು</TD><TD valign='top' align='left'>ಬಾಡಿಗೆ ಸೋಫಾ<BR>ಇಪ್ಪತ್ತು ರೂಪಾಯಿ</TD></TR>
+<TR><TD valign='top' align='left'>ಪುರುಷ</TD><TD valign='top' align='left'>ಪಟ್ಟರೆ ತಿಳಿಯುವುದು ಹಳೆಯದು ಹೊಸದು<BR>ಕೆಟ್ಟರೆ ತಿಳಿಯುವುದು ಪ್ರಶ್ನೆ ಉತ್ತರ</TD></TR>`,
+
+telugu:`<TR><TD valign='top' align='middle' colspan='2'>ప్రతి నెల 20వ తేదీ నుండి ఈ పాట వినండి.</TD></TR>
+<TR><TD valign='top' align='left'>సంగీతం</TD><TD valign='top' align='left'>ఎం.ఎస్. విశ్వనాథన్</TD></TR>
+<TR><TD valign='top' align='left'>పాట రచన</TD><TD valign='top' align='left'>కన్నదాసన్</TD></TR>
+<TR><TD valign='top' align='left'>పురుషుడు</TD><TD valign='top' align='left'>ఆదాయం ఎనిమిది<BR>ఖర్చు పది</TD></TR>
+<TR><TD valign='top' align='left'>గుంపు</TD><TD valign='top' align='left'>ఆదాయం ఎనిమిది</TD></TR>
+<TR><TD valign='top' align='left'>పురుషుడు</TD><TD valign='top' align='left'>వన్ టు త్రీ ఫోర్</TD></TR>
+<TR><TD valign='top' align='left'>పురుషుడు</TD><TD valign='top' align='left'>పడితే తెలుస్తుంది పాతది కొత్తది<BR>చెడితే తెలుస్తుంది ప్రశ్నలు జవాబులు</TD></TR>`,
+
+malayalam:`<TR><TD valign='top' align='middle' colspan='2'>ഓരോ മാസവും 20ാം തീയതി മുതൽ ഈ പാട്ട് കേൾക്കുക.</TD></TR>
+<TR><TD valign='top' align='left'>സംഗീതം</TD><TD valign='top' align='left'>എം.എസ്. വിശ്വനാഥൻ</TD></TR>
+<TR><TD valign='top' align='left'>വരികൾ</TD><TD valign='top' align='left'>കണ്ണദാസൻ</TD></TR>
+<TR><TD valign='top' align='left'>പുരുഷൻ</TD><TD valign='top' align='left'>വരുമാനം എട്ട്</TD></TR>
+<TR><TD valign='top' align='left'>പുരുഷൻ</TD><TD valign='top' align='left'>പറ്റാൽ അറിയാം പഴയതും പുതുതും</TD></TR>`,
+
+hindi:`<TR><TD valign='top' align='middle' colspan='2'>हर महीने 20 तारीख से यह गीत सुनें।</TD></TR>
+<TR><TD valign='top' align='left'>संगीत</TD><TD valign='top' align='left'>एम.एस. विश्वनाथन</TD></TR>
+<TR><TD valign='top' align='left'>गीतकार</TD><TD valign='top' align='left'>कन्नदासन</TD></TR>
+<TR><TD valign='top' align='left'>पुरुष</TD><TD valign='top' align='left'>आमदनी आठ</TD></TR>
+<TR><TD valign='top' align='left'>पुरुष</TD><TD valign='top' align='left'>पड़ने पर पता चलता है पुराना नया</TD></TR>`,
+
+english:`<TR><TD valign='top' align='middle' colspan='2'>Listen from 20th of every month.</TD></TR>
+<TR><TD valign='top' align='left'>Music</TD><TD valign='top' align='left'>M.S. Viswanathan</TD></TR>
+<TR><TD valign='top' align='left'>Lyrics</TD><TD valign='top' align='left'>Kannadasan</TD></TR>
+<TR><TD valign='top' align='left'>Male</TD><TD valign='top' align='left'>Income eight</TD></TR>
+<TR><TD valign='top' align='left'>Male</TD><TD valign='top' align='left'>When tested old and new are known</TD></TR>`
+};
+
+function loadLang(l){document.getElementById('tbody').innerHTML=data[l];}
+window.onload=function(){loadLang('tamil');};
+</script>
+</head>
+
+<body>
+<button onclick="loadLang('tamil')">Tamil</button>
+<button onclick="loadLang('kannada')">Kannada</button>
+<button onclick="loadLang('telugu')">Telugu</button>
+<button onclick="loadLang('malayalam')">Malayalam</button>
+<button onclick="loadLang('hindi')">Hindi</button>
+<button onclick="loadLang('english')">English</button>
+
+<table border='1' style='width:100%;'>
+<tbody id='tbody'></tbody>
+</table>
+
+</body>
+</html>
