@@ -1124,7 +1124,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "income-tax-documents.html" && activeLink.textContent.trim() === "INCOME TAX DOCS") ||
 							(htmlFileName === "axis-bank-life-insurance-block.html" && activeLink.textContent.trim() === "Avoid Private Bank Life Insurance") ||
 							(htmlFileName === "health-insurance.html" && activeLink.textContent.trim() === "PARENT HEALTH INSURANCE") ||
-							(htmlFileName === "parents-insurance-steps.html" && activeLink.textContent.trim() === "Savings Strategy for Parents' Insurance") ||
+							(htmlFileName === "parents-insurance-steps1.html" && activeLink.textContent.trim() === "Savings Strategy for Parents' Insurance") ||
 							(htmlFileName === "Increase-Daily-Salary.html" && activeLink.textContent.trim() === "Income Growth Strategies") ||
 							(htmlFileName === "Bharath_gas_booking_steps.html" && activeLink.textContent.trim() === "Bharat Gas Booking Steps") ||
 							(htmlFileName === "Indian-Oil-Cylinder-Booking-Online-Steps.html" && activeLink.textContent.trim() === "Indian Oil Booking Steps") ||
@@ -1527,7 +1527,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 							</UL>
 						</LI>
 						<LI>
-							<A href="#" onclick="javascript:window.open( 'parents-insurance-steps.html' );" class="nav-link"><FONT color='#00ff00'>Savings Strategy for Parents' Insurance</FONT></A>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'parents-insurance-steps1.html' );" class="nav-link"><FONT color='#00ff00'>Savings Strategy for Parents' Insurance</FONT></A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'israel-usa-iran-war-2026.html' );" class="nav-link">Cylinder/Food Warnings due to War</A>
