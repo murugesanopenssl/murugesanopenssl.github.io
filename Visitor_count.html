@@ -98,13 +98,82 @@
                     const v = child.val();
                     const ts = Number(v.timestamp) || 0;
                     
-                    const country = v.country || "Unknown";
+                    let country = v.country || "Unknown";
                     const region = v.region || "Unknown";
                     const city = v.city || "Unknown";
                     let continent = v.continent || "Unknown";
-					if( "AS" == v.continent )
+					switch( country )
 					{
-						continent = "Asia";
+						case "United States":
+							continent = "North America";
+							break;
+						case "INDIA":
+						case "India":
+						case "IN":
+							country="India";
+							continent = "Asia";
+							break;
+						case "Asia/Calcutta":
+							continent="Asia";
+							break;
+						case "Asia (Other)":
+							continent = "Asia";
+							break;
+						case "Europe (Other)":
+							continent="Europe";
+							break;
+						case "Ukraine":
+							continent = "Europe";
+								break;
+						case "South Africa":
+							continent = "Africa";
+								break;
+						case "Atlantic":
+						case "USA (Atlantic Time Zone)":
+						case "USA (Eastern Time Zone)":
+						case "USA (Central Time Zone)":
+						case "USA (Mountain Time Zone)":
+						case "USA (Pacific Time Zone)":
+						case "USA (Alaska Time Zone)":
+						case "USA (Hawaii-Aleutian Time Zone)":
+						case "America/Los_Angeles":
+						case "Mexico":
+							continent = "North America";
+							break;
+						case "Africa (Other)":
+						case "Cape Verde":
+						case "Morocco":
+						case "Nigeria":
+						case "Egypt":
+							continent = "Africa";
+							break;
+						case "Romania":
+						case "Poland":
+						case "France":
+						case "Hungary":
+						case "Germany":
+						case "Iceland":
+						case "United Kingdom":
+						case "Portugal (Azores)":
+							continent = "Europe";
+							break;
+
+						case "Argentina":
+						case "Brazil":
+						case "Chile":
+						case "Venezuela":
+						case "Colombia":
+						case "Americas (Other)":
+							continent = "South America";
+							break;
+						case "Pacific Islands":
+							continent = "Ausralia/Oceania";
+							break;
+						default:
+							if( "AS" == v.continent )
+							{
+								continent = "Asia";
+							}
 					}
                     // Create a unique key for grouping (City + Region + Country)
                     const key = `${country}|${region}|${city}|${continent}`;
