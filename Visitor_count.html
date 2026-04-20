@@ -101,8 +101,11 @@
                     const country = v.country || "Unknown";
                     const region = v.region || "Unknown";
                     const city = v.city || "Unknown";
-                    const continent = v.continent || "Unknown";
-                    
+                    let continent = v.continent || "Unknown";
+					if( "AS" == v.continent )
+					{
+						continent = "Asia";
+					}
                     // Create a unique key for grouping (City + Region + Country)
                     const key = `${country}|${region}|${city}|${continent}`;
 
