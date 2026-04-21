@@ -1,24 +1,6 @@
-<!DOCTYPE html>
-	<HTML lang="en">
-		<HEAD>
-			<META charset="UTF-8">
-			<META name="viewport" content="width=device-width, initial-scale=1.0">
-			<TITLE>User access count (IP based)</TITLE>
-			<STYLE type='text/css'>
-				body{font-family:Arial,sans-serif;padding:20px}
-				table{border-collapse:collapse;width:100%;margin-top:10px}
-				th,td{border:1px solid #ccc;padding:8px;text-align:left}
-				th{background-color:#f2f2f2;cursor:pointer}
-				.count-cell{text-align:center;font-family:monospace;font-weight:bold}
-				#status{font-size:13px;color:#666;margin-bottom:10px;font-style:italic}
-				.counter{font-size:40px;color:green}
-				a{color:inherit;text-decoration:none;display:block}
-			</STYLE>
-		</HEAD>
-		<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 	<H3>Visitor Analytics (Real-time)</H3>
 	<DIV id="status">Initializing geolocation...</DIV>
-	<TABLE>
+	<TABLE style='width:100%; border:1px solid #ccc; border-collapse:collapse; margin-top:20px;'>
 	<THEAD>
 	<TR>
 	<TH><A HREF="#" onclick="sortTable('count')"><B><U>VISITS</B></U></A></TH>
@@ -63,7 +45,7 @@
 	const d=new Date(ts);
 	const days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 	const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-	return`${days[d.getDay()]}${String(d.getDate()).padStart(2,"0")}-${months[d.getMonth()]}-${d.getFullYear()}`;
+	return `${days[d.getDay()]} ${String(d.getDate()).padStart(2,"0")}-${months[d.getMonth()]}-${d.getFullYear()}`;
 	}
 	let rows=[];
 	function render(){
@@ -91,72 +73,85 @@
 	const region=v.region||"Unknown";
 	const city=v.city||"Unknown";
 	let continent=v.continent||"Unknown";
-	switch(country){
-	case"United States":
-	case"USA":
-	continent="North America";
-	break;
-	case"INDIA":
-	case"India":
-	case"IN":
-	country="India";
-	continent="Asia";
-	break;
-	case"Asia/Calcutta":
-	case"Asia (Other)":
-	continent="Asia";
-	break;
-	case"Europe (Other)":
-	continent="Europe";
-	break;
-	case"Ukraine":
-	continent="Europe";
-	break;
-	case"South Africa":
-	continent="Africa";
-	break;
-	case"Atlantic":
-	case"USA (Atlantic Time Zone)":
-	case"USA (Eastern Time Zone)":
-	case"USA (Central Time Zone)":
-	case"USA (Mountain Time Zone)":
-	case"USA (Pacific Time Zone)":
-	case"USA (Alaska Time Zone)":
-	case"USA (Hawaii-Aleutian Time Zone)":
-	case"America/Los_Angeles":
-	case"Mexico":
-	continent="North America";
-	break;
-	case"Africa (Other)":
-	case"Cape Verde":
-	case"Morocco":
-	case"Nigeria":
-	case"Egypt":
-	continent="Africa";
-	break;
-	case"Romania":
-	case"Poland":
-	case"France":
-	case"Hungary":
-	case"Germany":
-	case"Iceland":
-	case"United Kingdom":
-	case"Portugal (Azores)":
-	continent="Europe";
-	break;
-	case"Argentina":
-	case"Brazil":
-	case"Chile":
-	case"Venezuela":
-	case"Colombia":
-	case"Americas (Other)":
-	continent="South America";
-	break;
-	case"Pacific Islands":
-	continent="Oceania";
-	break;
-	default:
-	if(v.continent==="AS")continent="Asia";
+	switch( country )
+	{
+		case "United States":
+		case "USA":
+			continent="North America";
+			break;
+		case "INDIA":
+		case "India":
+		case "IN":
+			country="India";
+			continent="Asia";
+			break;
+		case "Asia/Calcutta":
+		case "Asia (Other)":
+			country = "Unknown";
+			continent="Asia";
+			break;
+		case "Europe (Other)":
+			continent="Europe";
+			break;
+		case "Ukraine":
+			continent="Europe";
+			break;
+		case "South Africa":
+			continent="Africa";
+			break;
+		case "Atlantic":
+		case "USA (Atlantic Time Zone)":
+		case "USA (Eastern Time Zone)":
+		case "USA (Central Time Zone)":
+		case "USA (Mountain Time Zone)":
+		case "USA (Pacific Time Zone)":
+		case "USA (Alaska Time Zone)":
+		case "USA (Hawaii-Aleutian Time Zone)":
+		case "America/Los_Angeles":
+		case "Mexico":
+			continent="North America";
+			break;
+		case "Africa (Other)":
+		case "Cape Verde":
+		case "Morocco":
+		case "Nigeria":
+		case "Egypt":
+			continent="Africa";
+			break;
+		case "Romania":
+		case "Poland":
+		case "France":
+		case "Hungary":
+		case "Germany":
+		case "Iceland":
+		case "United Kingdom":
+		case "Portugal (Azores)":
+			continent="Europe";
+			break;
+		case "Argentina":
+		case "Brazil":
+		case "Chile":
+		case "Venezuela":
+		case "Colombia":
+		case "Americas (Other)":
+			continent="South America";
+			break;
+		case "Pacific Islands":
+			continent="Oceania";
+			break;
+		default:
+			if( "AS" === v.continent )
+			{
+				continent="Asia";
+			}
+			else if( 'undefined' !== typeof v.continent )
+			{
+				alert(v.continent);
+			}
+			else if( "Location: UNKNOWN – location for these users is not available due to VPN, proxy, or privacy settings on their device." == v.country)
+			{
+				continent="Unknown";
+			}
 	}
 	const key=`${country}|${region}|${city}|${continent}`;
 	if(!groups[key])groups[key]={country,region,city,continent,count:0,last:0};
