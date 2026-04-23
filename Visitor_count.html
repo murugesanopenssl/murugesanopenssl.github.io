@@ -4,12 +4,12 @@
 	<TABLE style='width:100%; border:1px solid #ccc; border-collapse:collapse; margin-top:20px;'>
 	<THEAD>
 	<TR>
-	<TH><A HREF="#" onclick="sortTable('count')"><B><U>VISITS</B></U></A></TH>
-	<TH><A HREF="#" onclick="sortTable('country')"><B><U>COUNTRY</B></U></A></TH>
-	<TH><A HREF="#" onclick="sortTable('region')"><B><U>REGION</B></U></A></TH>
-	<TH><A HREF="#" onclick="sortTable('city')"><B><U>CITY</B></U></A></TH>
-	<TH><A HREF="#" onclick="sortTable('continent')"><B><U>CONTINENT</B></U></A></TH>
-	<TH><A HREF="#" onclick="sortTable('last')"><B><U>LAST VISITED</B></U></A></TH>
+	<TH valign='top' align='right'><A HREF="#" onclick="sortTable('count')"><B><U>VISITS</B></U></A></TH>
+	<TH valign='top' align='right'><A HREF="#" onclick="sortTable('country')"><B><U>COUNTRY</B></U></A></TH>
+	<TH valign='top' align='right'><A HREF="#" onclick="sortTable('region')"><B><U>REGION</B></U></A></TH>
+	<TH valign='top' align='right'><A HREF="#" onclick="sortTable('city')"><B><U>CITY</B></U></A></TH>
+	<TH valign='top' align='right'><A HREF="#" onclick="sortTable('continent')"><B><U>CONTINENT</B></U></A></TH>
+	<TH valign='top' align='right'><A HREF="#" onclick="sortTable('last')"><B><U>LAST VISITED</B></U></A></TH>
 	</TR>
 	</THEAD>
 	<TBODY id="tbody"></TBODY>
@@ -60,8 +60,84 @@
 	if(x>y)return sortDir==="asc"?1:-1;
 	return 0;
 	});
-	sorted.forEach(r=>{
-	tbody.innerHTML+=`<TR><TD class="count-cell">${String(r.count).padStart(4,"0")}</TD><TD>${r.country}</TD><TD>${r.region}</TD><TD>${r.city}</TD><TD>${r.continent}</TD><TD>${formatDate(r.last)}</TD></TR>`;
+	sorted.forEach(r => {
+
+	var UsDrum = r.country && r.country === "United States";
+	if ( !UsDrum )
+	{
+		UsDrum = r.country && r.country === "Ukraine";
+	}
+	if ( !UsDrum )
+	{
+		UsDrum = r.country && r.country === "Americas (Other)";
+	}
+	if ( !UsDrum )
+	{
+		UsDrum = r.country && r.country === "USA (Atlantic Time Zone)";
+	}
+	if ( !UsDrum )
+	{
+		UsDrum = r.country && r.country === "USA (Eastern Time Zone)";
+	}
+	if ( !UsDrum )
+	{
+		UsDrum = r.country && r.country === "USA (Central Time Zone)";
+	}
+	if ( !UsDrum )
+	{
+		UsDrum = r.country && r.country === "USA (Mountain Time Zone)";
+	}
+	if ( !UsDrum )
+	{
+		UsDrum = r.country && r.country === "USA (Pacific Time Zone)";
+	}
+	if ( !UsDrum )
+	{
+		UsDrum = r.country && r.country === "USA (Alaska Time Zone)";
+	}
+	if ( !UsDrum )
+	{
+		UsDrum = r.country && r.country === "USA (Hawaii-Aleutian Time Zone)";
+	}
+	if ( !UsDrum )
+	{
+		UsDrum = r.country && r.country === "America/Los_Angeles";
+	}
+	var UnkownCountry=false;
+	if ( !UsDrum )
+	{
+		UnkownCountry = (r.country || "").indexOf("Unknown") !== -1;
+		if( !UnkownCountry )
+		{
+			UnkownCountry = (r.country || "").indexOf("UNKNOWN") !== -1;
+		}
+	}
+	var RegionUnknown = r.region && r.region !== "Unknown";
+
+	let style = "";
+
+	// 🔴 United States = #00ff00 background + white text
+	if (UsDrum) {
+		style = "background-color:#3498db; color:#ffffff;";
+
+	// 🟢 Otherwise region known = green
+	}
+	else if (RegionUnknown) {
+		style = "background-color:#2ecc71; color:#ffffff;";
+	}
+	else if (UnkownCountry) {
+		style = "background-color:#8e2a2a; color:#ffffff;";
+	}
+
+	tbody.innerHTML += `
+	<TR style="${style}">
+		<TD class="count-cell">${String(r.count).padStart(4,"0")}</TD>
+		<TD valign='top' align='right'>${r.country}</TD>
+		<TD valign='top' align='right'>${r.region}</TD>
+		<TD valign='top' align='right'>${r.city}</TD>
+		<TD valign='top' align='right'>${r.continent}</TD>
+		<TD valign='top' align='right'>${formatDate(r.last)}</TD>
+	</TR>`;
 	});
 	}
 	onValue(ref(db,"userAccess"),snap=>{
