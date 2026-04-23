@@ -191,8 +191,14 @@
 				var ceilMonths = Math.round((totalInterest - floor * totalMonths));
 				var floorMonths = totalMonths - ceilMonths;
 				var monthlyDistribution = [];
-				for (var i=0;i<floorMonths;i++) monthlyDistribution.push(floor);
-				for (var i=0;i<ceilMonths;i++) monthlyDistribution.push(ceil);
+				for( var i=0; i < floorMonths; i++)
+				{
+					monthlyDistribution.push(floor);
+				}
+				for( var i=0; i < ceilMonths; i++)
+				{
+					monthlyDistribution.push(ceil);
+				}
 				return monthlyDistribution;
 			}
 			function displayLossRow()
@@ -269,7 +275,7 @@
 				var cell1_3=newRow3.insertCell(0); var cell2_3=newRow3.insertCell(1);
 				cell1_3.innerHTML="Loss due to Pre Close Display Loss after 1-3 years<BR>"+
 					"Pre Close of MIS from "+formatDate(preCloseStart3)+" to "+formatDate(preCloseEnd3)+"<BR>";
-//					"<span style='color:red;'>If opening date was "+day+" "+dd+"-"+mmm+"-"+yyyy+", you cannot close MIS today and need to wait till "+formatDate(preCloseStart3)+" to complete 3 years of MIS.</span>";
+//					"<SPAN style='color:red;'>If opening date was "+day+" "+dd+"-"+mmm+"-"+yyyy+", you cannot close MIS today and need to wait till "+formatDate(preCloseStart3)+" to complete 3 years of MIS.</SPAN>";
 				cell2_3.innerHTML=loss3.toFixed(2);
 				// ===== 4 YEARS + 1 DAY ROW =====
 				var preCloseStart4=new Date(d); preCloseStart4.setFullYear(preCloseStart4.getFullYear()+4); preCloseStart4.setDate(preCloseStart4.getDate()+1);
@@ -279,7 +285,7 @@
 				var cell1_4=newRow4.insertCell(0); var cell2_4=newRow4.insertCell(1);
 				cell1_4.innerHTML="Loss due to Pre Close Display Loss after 4 years and 1 day before actual MIS closure date<BR>"+
 					"Pre Close of MIS from "+formatDate(preCloseStart4)+" to "+formatDate(preCloseEnd4)+"<BR>";
-//					"<span style='color:red;'>If opening date was "+day+" "+dd+"-"+mmm+"-"+yyyy+", you cannot close MIS today and need to wait till "+formatDate(preCloseStart4)+" to complete 4 years of MIS.</span>";
+//					"<SPAN style='color:red;'>If opening date was "+day+" "+dd+"-"+mmm+"-"+yyyy+", you cannot close MIS today and need to wait till "+formatDate(preCloseStart4)+" to complete 4 years of MIS.</SPAN>";
 				cell2_4.innerHTML=loss4.toFixed(2);
 				// ===== NEW MIS REOPENING ADVANTAGE =====
 				var reopenDates=[

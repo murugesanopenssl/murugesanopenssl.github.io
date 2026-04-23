@@ -11,7 +11,7 @@
 <TR>
 <TD valign='top' align='right'>
 <B><U>BMTC BUS STOPS FROM ATTIBELE TO VIJAYANAGAR METRO STATION</B></U>
-<div id="busTable"></div>
+<DIV id="busTable"></DIV>
 <DIV STYLE="DISPLAY:FLEX;FONT-WEIGHT:BOLD;BORDER-BOTTOM:2PX SOLID #000">
 <DIV STYLE="WIDTH:80PX">S.NO</DIV>
 <DIV STYLE="FLEX:1">BENGALURU BUS STOP NAMES</DIV>
@@ -30,20 +30,20 @@ function row(name, toll)
     {
         tolltext="BMTC BUS NOT STOPPED IF TRAVELLING THROUGH TOLL GATE";
 		document.getElementById("busTable").insertAdjacentHTML("beforeend",
-		"<div style='display:flex;border-bottom:1px solid #000;background-color:yellow;'>" +
-		"<div style='width:80px'>"+no+"</div>" +
-		"<div style='flex:1'>"+name+"</div>" +
-		"<div style='flex:1;'>"+(toll==="nostop"?tolltext:name)+"</div>" +
-		"</div>");
+		"<DIV style='display:flex;border-bottom:1px solid #000;background-color:yellow;'>" +
+		"<DIV style='width:80px'>"+no+"</DIV>" +
+		"<DIV style='flex:1'>"+name+"</DIV>" +
+		"<DIV style='flex:1;'>"+(toll==="nostop"?tolltext:name)+"</DIV>" +
+		"</DIV>");
     }
 	else
 	{
 		document.getElementById("busTable").insertAdjacentHTML("beforeend",
-		"<div style='display:flex;border-bottom:1px solid #000'>" +
-		"<div style='width:80px'>"+no+"</div>" +
-		"<div style='flex:1'>"+name+"</div>" +
-		"<div style='flex:1'>"+(toll==="nostop"?tolltext:name)+"</div>" +
-		"</div>");
+		"<DIV style='display:flex;border-bottom:1px solid #000'>" +
+		"<DIV style='width:80px'>"+no+"</DIV>" +
+		"<DIV style='flex:1'>"+name+"</DIV>" +
+		"<DIV style='flex:1'>"+(toll==="nostop"?tolltext:name)+"</DIV>" +
+		"</DIV>");
 	}
 }
 </SCRIPT>

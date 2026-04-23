@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+<HTML lang="en">
+<HEAD>
+<META charset="UTF-8">
 		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<title>Multi Language Lyrics</title>
+<TITLE>Multi Language Lyrics</TITLE>
 
-<script>
+<SCRIPT>
 const data={
 
 tamil:`<TR><TD valign='top' align='middle' colspan='2'>ஒவ்வொரு மாதமும் 20-ஆம் தேதியிலிருந்து பின்வரும் பாடலைக் கேளுங்கள்.</TD></TR>
@@ -69,20 +69,20 @@ english:`<TR><TD valign='top' align='middle' colspan='2'>Listen from 20th of eve
 
 function loadLang(l){document.getElementById('tbody').innerHTML=data[l];}
 window.onload=function(){loadLang('tamil');};
-</script>
-</head>
+</SCRIPT>
+</HEAD>
 
-<body>
-<button onclick="loadLang('tamil')">Tamil</button>
-<button onclick="loadLang('kannada')">Kannada</button>
-<button onclick="loadLang('telugu')">Telugu</button>
-<button onclick="loadLang('malayalam')">Malayalam</button>
-<button onclick="loadLang('hindi')">Hindi</button>
-<button onclick="loadLang('english')">English</button>
+<BODY>
+<BUTTON onclick="loadLang('tamil')">Tamil</BUTTON>
+<BUTTON onclick="loadLang('kannada')">Kannada</BUTTON>
+<BUTTON onclick="loadLang('telugu')">Telugu</BUTTON>
+<BUTTON onclick="loadLang('malayalam')">Malayalam</BUTTON>
+<BUTTON onclick="loadLang('hindi')">Hindi</BUTTON>
+<BUTTON onclick="loadLang('english')">English</BUTTON>
 
-<table border='1' style='width:100%;'>
-<tbody id='tbody'></tbody>
-</table>
+<TABLE border='1' style='width:100%;'>
+<TBODY id='tbody'></TBODY>
+</TABLE>
 
-</body>
-</html>
+</BODY>
+</HTML>

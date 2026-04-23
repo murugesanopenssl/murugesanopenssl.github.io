@@ -625,8 +625,8 @@
 					// Pattern 2: Table format
 					if (!rates.gold22k || !rates.gold24k)
 					{
-						const tableMatch22 = html.match(/<td[^>]*>.*?22.*?<\/td>\s*<td[^>]*>.*?([0-9,]+).*?<\/td>/i);
-						const tableMatch24 = html.match(/<td[^>]*>.*?24.*?<\/td>\s*<td[^>]*>.*?([0-9,]+).*?<\/td>/i);
+						const tableMatch22 = html.match(/<TD[^>]*>.*?22.*?<\/td>\s*<TD[^>]*>.*?([0-9,]+).*?<\/td>/i);
+						const tableMatch24 = html.match(/<TD[^>]*>.*?24.*?<\/td>\s*<TD[^>]*>.*?([0-9,]+).*?<\/td>/i);
 						
 						if (tableMatch22 && !rates.gold22k) rates.gold22k = parseFloat(tableMatch22[1].replace(/,/g, ''));
 						if (tableMatch24 && !rates.gold24k) rates.gold24k = parseFloat(tableMatch24[1].replace(/,/g, ''));

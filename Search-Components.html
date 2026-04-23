@@ -265,7 +265,7 @@ url="https://www.youtube.com/results?search_query=tamil+news+sathiyam+"+disp_dd+
 					</TR>
 					<TR>
 						<TD colspan="6" valign="top" align="left">
-							<input type="text" id="searchBox" placeholder="Search..." onkeypress="if(event.key==='Enter'){searchTable();}" style="width:300px;">
+							<INPUT type="text" id="searchBox" placeholder="Search..." onkeypress="if(event.key==='Enter'){searchTable();}" style="width:300px;">
 						</TD>
 					</TR>
 				</TBODY>
@@ -300,7 +300,7 @@ url="https://www.youtube.com/results?search_query=tamil+news+sathiyam+"+disp_dd+
  (input === "rewardz" && text.includes("rewards"))
  ) {
  if (!seenTexts.has(text)) {
- let rowHtml = rows[i].innerHTML.replace(/<a /gi, "<a style='color:#00FFFF;' ");
+ let rowHtml = rows[i].innerHTML.replace(/<A /gi, "<A style='color:#00FFFF;' ");
  foundRows.push(rowHtml);
  seenTexts.add(text);
  }

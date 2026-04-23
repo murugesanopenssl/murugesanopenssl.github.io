@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<HTML lang="en">
+<HEAD>
 		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta charset="UTF-8">
-<title>12th Exam Dates</title>
-<style>
+<META charset="UTF-8">
+<TITLE>12th Exam Dates</TITLE>
+<STYLE>
   table { width:100%; border-collapse: collapse; }
   th, td { border: 1px solid black; padding: 8px; text-align: left; vertical-align: top; }
   th { background-color: #f2f2f2; }
-</style>
-</head>
+</STYLE>
+</HEAD>
 <BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-<h2>12th Exam Chart</h2>
-<div id="year"></div>
-<table id="examTable">
-  <tr>
-    <th>DATE IST</th>
-    <th>SUBJECTS</th>
-  </tr>
-</table>
+<H2>12th Exam Chart</H2>
+<DIV id="year"></DIV>
+<TABLE id="examTable">
+  <TR>
+    <TH valign='top' align='left'>DATE IST</TH>
+    <TH valign='top' align='left'>SUBJECTS</TH>
+  </TR>
+</TABLE>
 
-<script>
+<SCRIPT>
 const yyyy = new Date().getFullYear();
 document.getElementById('year').innerText = yyyy;
 
@@ -58,12 +58,12 @@ exams.forEach((exam, index) => {
   tdDate.style.textAlign = 'right';
 
   const tdSubjects = document.createElement('td');
-  tdSubjects.innerHTML = subjects.join('<br>');
+  tdSubjects.innerHTML = subjects.join('<BR>');
 
   tr.appendChild(tdDate);
   tr.appendChild(tdSubjects);
   table.appendChild(tr);
 });
-</script>
-</body>
-</html>
+</SCRIPT>
+</BODY>
+</HTML>

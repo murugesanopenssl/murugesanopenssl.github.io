@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<HTML lang="en">
+<HEAD>
 		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recharge SIM One Day After Expiry</title>
-    <style>
+    <META charset="UTF-8">
+    <META name="viewport" content="width=device-width, initial-scale=1.0">
+    <TITLE>Recharge SIM One Day After Expiry</TITLE>
+    <STYLE>
         body {
             font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
@@ -33,9 +33,9 @@
         pre {
             white-space: pre-wrap;
         }
-    </style>
-</head>
-<script>
+    </STYLE>
+</HEAD>
+<SCRIPT>
     var monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
     function formatDateToDDMMMYYYY(d) {
@@ -71,7 +71,7 @@
         var mmm = document.getElementById('mmm').value;
         var yyyy = document.getElementById('yyyy').value;
         if(sim == '' || dd == '' || mmm == '' || yyyy == '') {
-            document.getElementById('result').innerHTML = '<span class="err">Please select SIM type and expiry date.</span>';
+            document.getElementById('result').innerHTML = '<SPAN class="err">Please select SIM type and expiry date.</SPAN>';
             return;
         }
         var monthIndex = monthNames.indexOf(mmm);
@@ -81,16 +81,16 @@
         var formattedNextDay = formatDateToDDMMMYYYY(nextDay);
 
         document.getElementById('result').innerHTML =
-            'SIM: ' + sim + ' | Expiry Date: ' + dd + '-' + mmm + '-' + yyyy + ' IST<br>' +
-            '<FONT color=red><B><U>RECHARGE</FONT></B></U> ONE DAY AFTER EXPIRY DATE <FONT color=red><B><U>ON ' + formattedNextDay + ' IST</B></U></FONT><br>' +
+            'SIM: ' + sim + ' | Expiry Date: ' + dd + '-' + mmm + '-' + yyyy + ' IST<BR>' +
+            '<FONT color=red><B><U>RECHARGE</FONT></B></U> ONE DAY AFTER EXPIRY DATE <FONT color=red><B><U>ON ' + formattedNextDay + ' IST</B></U></FONT><BR>' +
             'This helps maintain your Average Monthly Balance (AMB) interest in any bank on Earth when interest is calculated once every 3 months.';
     }
-</script>
+</SCRIPT>
 
-<table border="1">
-    <tr>
-        <td valign="top" align="left">
-<pre>
+<TABLE border="1">
+    <TR>
+        <TD valign="top" align="left">
+<PRE>
 I prefer all users on Earth to recharge their mobile one day after the SIM expiry date.
 
 All banks in this world provide interest to customers once every 3 months.
@@ -116,47 +116,47 @@ Hence, my AMB interest may be slightly affected if I recharge exactly on expiry 
 I have been following this practice for my own SIM from 2003 until now,
 for my mother from 2005 until now,
 and for my father from 2024 until now.
-</pre>
+</PRE>
 
-<h1>
-a) Never recharge a SIM on the expiry date.<br>
+<H1>
+a) Never recharge a SIM on the expiry date.<BR>
 b) Always recharge any SIM for one year instead of 28 / 84 / 90 days to prevent wastage of money.
-</h1>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" align="left">
+</H1>
+        </TD>
+    </TR>
+    <TR>
+        <TD valign="top" align="left">
             Select SIM:
-            <select id="sim">
-                <option value="BSNL">BSNL</option>
-                <option value="Airtel">Airtel</option>
-                <option value="Jio">Jio</option>
-                <option value="Vodafone">Vodafone</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" align="left">
-            Select Expiry Date: <FONT color='red'><B><U>mm/dd/yyyy</B></U></FONT> <input type="date" id="calendar" onchange="updateDate()">
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" align="left">
+            <SELECT id="sim">
+                <OPTION value="BSNL">BSNL</OPTION>
+                <OPTION value="Airtel">Airtel</OPTION>
+                <OPTION value="Jio">Jio</OPTION>
+                <OPTION value="Vodafone">Vodafone</OPTION>
+            </SELECT>
+        </TD>
+    </TR>
+    <TR>
+        <TD valign="top" align="left">
+            Select Expiry Date: <FONT color='red'><B><U>mm/dd/yyyy</B></U></FONT> <INPUT type="date" id="calendar" onchange="updateDate()">
+        </TD>
+    </TR>
+    <TR>
+        <TD valign="top" align="left">
             Selected Date:
-            <input type="text" id="dd" readonly>
-            <input type="text" id="mmm" readonly>
-            <input type="text" id="yyyy" readonly>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" align="left">
-            <input type="button" value="Check" onclick="showmsg()">
-        </td>
-    </tr>
-    <tr>
-        <td valign="top" align="left" id="result">
-        </td>
-    </tr>
-</table>
-</body>
-</html>
+            <INPUT type="text" id="dd" readonly>
+            <INPUT type="text" id="mmm" readonly>
+            <INPUT type="text" id="yyyy" readonly>
+        </TD>
+    </TR>
+    <TR>
+        <TD valign="top" align="left">
+            <INPUT type="button" value="Check" onclick="showmsg()">
+        </TD>
+    </TR>
+    <TR>
+        <TD valign="top" align="left" id="result">
+        </TD>
+    </TR>
+</TABLE>
+</BODY>
+</HTML>
