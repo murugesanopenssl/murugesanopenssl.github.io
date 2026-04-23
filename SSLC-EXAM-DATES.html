@@ -7,9 +7,15 @@
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 		<TABLE class="td-black-text" border='1' style='width:100%;'>
 			<TR>
-				<TD align='middle' valign='top' colspan='2'>
+				<TD align='middle' valign='top' colspan='1'>
 					SSLC EXAM CHART
 					<DIV id='yyyy'></DIV>
+				</TD>
+				<TD align='middle' valign='top' colspan='1'>
+					SSLC EXAM RESULTS AT KARNATAKA<BR>
+					<A href='' onclick='window.open("https://karresults.nic.in");'>https://karresults.nic.in</A><BR>
+					IGCSE(10th) EXAM RESULTS AT CAMBRIDGE<BR>
+					<A href='' onclick='window.open("https://myresults.cie.org.uk");'>https://myresults.cie.org.uk</A>
 				</TD>
 			</TR>
 			<TR>
@@ -68,22 +74,31 @@
 					OPTIONAL LANGUAGE
 				</TD>
 			</TR>
+			<TR id='r6'>
+				<TD align='right' valign='top'>
+					ONLY AFTER KARNATAKA/TAMILNADU/TELUNGANA/KERALA SSLC EXAM RESULTS,
+					IGCSE Exam results used to happen approximately on:<BR>
+				</TD>
+				<TD align='right' valign='top'>
+					<DIV id='d7'></DIV>
+				</TD>
+			</TR>
 		</TABLE>
 		<SCRIPT type='text/javascript'>
 			var yyyy=new Date().getFullYear();
 			document.getElementById('yyyy').innerText=yyyy;
+			var days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 			function f(y,m,d)
 			{
-				var a=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 				var b=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 				var x=new Date(y,m,d);
 				if(10>d)
 				{
-					return a[x.getDay()]+' 0'+d+'-'+b[m]+'-'+y;
+					return days[x.getDay()]+' 0'+d+'-'+b[m]+'-'+y;
 				}
 				else
 				{
-					return a[x.getDay()]+' '+d+'-'+b[m]+'-'+y;
+					return days[x.getDay()]+' '+d+'-'+b[m]+'-'+y;
 				}
 			}
 			function c(r,y,m,d)
@@ -105,6 +120,14 @@
 			document.getElementById('d4').innerText=f(yyyy,2,30);
 			document.getElementById('d5').innerText=f(yyyy,3,2);
 			document.getElementById('d6').innerText=f(yyyy,3,6);
+			document.addEventListener("DOMContentLoaded", function() {
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var yyyy = new Date().getFullYear();
+    var date = new Date(yyyy, 4, 20);
+
+    var result = days[date.getDay()] + " 20-May-" + date.getFullYear();
+    document.getElementById('d7').innerText = result;
+});
 			c('r1',yyyy,2,11);
 			c('r2',yyyy,2,16);
 			c('r3',yyyy,2,25);
