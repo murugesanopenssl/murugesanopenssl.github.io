@@ -1795,6 +1795,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 			<A href="#" class="nav-link">Household <SPAN class="nav-arrow">&gt;</SPAN></A>
 			<UL class="submenu">
 				<LI><A href="#" onclick="loadHomeContent(event, 'potential-hydrogen.html');" class="nav-link">Bathing Soap Guide</A></LI>
+				<LI><A href="#" onclick="loadHomeContent(event, 'shampoo-potential-hydrogen.html');" class="nav-link">Shampoo Guide</A></LI>
 				<LI><A href="#" onclick="loadHomeContent(event, 'vegetables-health.html');" class="nav-link">Vegetables & Health</A></LI>
 				<LI><A href="#" onclick="loadHomeContent(event, 'remove-blockages-kitchen-pvc-outflow-pipe.html');" class="nav-link">Kitchen Drain Fix</A></LI>
 			</UL>
