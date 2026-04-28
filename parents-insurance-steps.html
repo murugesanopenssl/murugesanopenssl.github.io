@@ -391,18 +391,25 @@
 						pointRadius:4
 						}]
 						},
-						options:{
-								responsive:true,
-								plugins:{
-									legend:{position:'top'},
-									title:{
-										display:true,
-										text:'Murugesan finance Parent Insurance Fund Growth'
+						options: {
+							responsive: true,
+							plugins: {
+								legend: { position: 'top' },
+								title: {
+									display: true,
+									text: 'Murugesan finance Parent Insurance Fund Growth'
+								}
+							},
+							scales: {
+								x: {
+									ticks: {
+										autoSkip: false,
+										maxRotation: 45,
+										minRotation: 45
 									}
 								},
-							scales:{
-								y:{
-									beginAtZero:true
+								y: {
+									beginAtZero: true
 								}
 							}
 						}
