@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<META http-equiv="Expires" content="0">
+		<META http-equiv="Pragma" content="no-cache">
+		<TITLE>Income Tax Return Filing Steps</TITLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<SCRIPT type='text/javascript'>
+			function DISP_ITR_FILING_START_END_DATE()
+			{
+				var yyyy = new Date().getFullYear();
+				var d = new Date( yyyy, 4, 2 );
+				var closeItrDate = new Date( yyyy, 5, 30);
+				var w = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+				var text = "<B><U>FILE YOUR INCOME TAX ON OR AFTER " 
+				+ w[d.getDay()] + " 02-May-" + yyyy + " IST AND ON OR BEFORE " 
+				+ w[closeItrDate.getDay()] + " 30-Jun-" + yyyy + " IST</B></U>";
+				var el=document.getElementById("taxDate");
+				if( el )
+				{
+					el.innerHTML=text;
+				}
+			}
+			if( "loading" === document.readyState )
+			{
+				document.addEventListener( "DOMContentLoaded", DISP_ITR_FILING_START_END_DATE );
+			}
+			else
+			{
+				DISP_ITR_FILING_START_END_DATE( );
+			}
+		</SCRIPT>
+		<TABLE border='1' style='width:100%;border-collapse:collapse;'>
+			<TR>
+				<TD valign='top' align='center' colspan='2'>
+					<IMG src='images/itr-waiting-info-30-Apr-2026-08-40-AM.jpg' style='width:80%;'>
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='center' colspan='2'>
+				<DIV id='taxDate' style='color:red;'></DIV><BR>
+				Open the following website in your browser:<BR>
+				<A href="https://eportal.incometax.gov.in" target="_blank">https://eportal.incometax.gov.in</A>
+				<BR><BR>
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top'>
+				Enter your PAN and click <B>Continue</B>.
+				</TD>
+				<TD valign='top'>
+				<IMG src="images/itr-continue1.jpg" style="width:45%;">
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top'>
+				1)<BR>
+				Confirm your secure access message (if displayed).<BR><BR>
+				2)<BR>
+				Select <B>OTP</B> if you have forgotten your password,<BR>
+				or select <B>Password</B> to log in.<BR>
+				(Password option selected here)<BR>
+				Click <B>Continue</B>.
+				</TD>
+				<TD valign='top'>
+				<IMG src="images/provide-password.jpg" style="width:45%;">
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top'>
+				Navigate to the <B>e-File</B> menu.<BR>
+				Click <B>Income Tax Returns</B>.<BR>
+				Select <B>File Income Tax Return</B>.
+				</TD>
+				<TD valign='top'>
+				<IMG src="images/file-income-tax-return.jpg" style="width:45%;">
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top'>
+				In the <B>Assessment Year</B> dropdown,<BR>
+				select <B>AY 2026–2027</B> for filing returns for the period:<BR>
+				From: Tue 01-Apr-2025<BR>
+				To: Tue 31-Mar-2026
+				</TD>
+				<TD valign='top'>
+				<IMG src="images/assessment-year.jpg" style="width:45%;">
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top'>
+				The Assessment Year <B>2026–2027</B><BR>
+				is not yet available in the dropdown as of current status.
+				</TD>
+				<TD valign='top'>
+				Hence, we need to wait until it becomes available on the portal to file the return
+				for the period Tue 01-Apr-2025 to Tue 31-Mar-2026.
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</HTML>
