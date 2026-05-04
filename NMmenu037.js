@@ -2048,6 +2048,15 @@ function loadMoneyHelpContent( event, htmlFileName )
 					}
 				}
 			})();
+			document.addEventListener('DOMContentLoaded', function() {
+				// Check if URL has a hash
+				const hash = window.location.hash.substring(1); // remove the '#' symbol
+				if (hash) {
+					console.log("Detected hash on page load:", hash);
+					// Call your function to load the subpage
+					loadHomeContent(new Event('load'), hash + '.html');
+				}
+			});
 			(function loadSubpageFromQuery() {
 				const params = new URLSearchParams(window.location.search);
 				const pageToLoad = params.get('load'); // e.g., "NMurugesan_cv.html"
