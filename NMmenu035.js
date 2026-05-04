@@ -2022,3 +2022,18 @@ function loadMoneyHelpContent( event, htmlFileName )
 					container.innerHTML = '<A href="#" onclick="loadHomeContent(event, \'privacy.html\');" class="nav-link">Privacy Policy</A>';
 				}
 			}
+			(function loadSubpageFromQuery() {
+				const params = new URLSearchParams(window.location.search);
+				const pageToLoad = params.get('load'); // e.g., "NMurugesan_cv.html"
+				if (pageToLoad) {
+					console.log("Auto-loading page from query:", pageToLoad);
+					// Use your existing function to load content
+					const link = document.querySelector(`.nav-item a[onclick*="${pageToLoad}"]`);
+					if (link) {
+						link.click(); // Simulate click to load content
+					} else {
+						// If nav link not found, load manually
+						loadHomeContent(new Event('click'), pageToLoad);
+					}
+				}
+			})();
