@@ -2022,6 +2022,32 @@ function loadMoneyHelpContent( event, htmlFileName )
 					container.innerHTML = '<A href="#" onclick="loadHomeContent(event, \'privacy.html\');" class="nav-link">Privacy Policy</A>';
 				}
 			}
+			(function loadSubpageFromHash() {
+				const hash = window.location.hash; // e.g., #NMurugesan_cv
+				if (hash) {
+					const pageName = hash.substring(1); // Remove the #
+					console.log("Detected hash, loading page:", pageName);
+
+					// Attempt to load using existing function
+					const navLink = document.querySelector(`.nav-item a[onclick*="${pageName}"]`);
+					if (navLink) {
+						navLink.click(); // Simulate a click to trigger your existing loader
+					} else {
+						// If nav link not found, try default loader (you may need to map hash → filename)
+						const filenameMap = {
+							"NMurugesan_cv": "NMurugesan_cv.html",
+							"spending": "spending.html",
+							// Add other hash → file mappings here
+						};
+						const fileToLoad = filenameMap[pageName];
+						if (fileToLoad) {
+							loadHomeContent(new Event('click'), fileToLoad);
+						} else {
+							console.warn("No file mapped for hash:", pageName);
+						}
+					}
+				}
+			})();
 			(function loadSubpageFromQuery() {
 				const params = new URLSearchParams(window.location.search);
 				const pageToLoad = params.get('load'); // e.g., "NMurugesan_cv.html"
