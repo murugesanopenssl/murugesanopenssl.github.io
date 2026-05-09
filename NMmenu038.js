@@ -1097,6 +1097,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "pm-cm-india-relations.html" && activeLink.textContent.trim() === "India politician relationships") ||
 							(htmlFileName === "washing-machine-repair.html" && activeLink.textContent.trim() === "Washing Machine") ||
 							(htmlFileName === "how-to-know-sim-number.html" && activeLink.textContent.trim() === "How to know SIM number?") ||
+							(htmlFileName === "bsnl-sim-change-not-working.html" && activeLink.textContent.trim() === "BSNL SIM Voice Fix by State") ||
 							(htmlFileName === "TamilLetters.html" && activeLink.textContent.trim() === "Tamil letters") ||
 							(htmlFileName === "Steps-to-save-money-from-mis.html" && activeLink.textContent.trim() === "Post Office Savings Guide") ||
 							(htmlFileName === "Responsible-Nations-Index-Jan-2026.html" && activeLink.textContent.trim() === "Responsible Nations Index") ||
@@ -1826,6 +1827,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 			<A href="#" class="nav-link">Mobile & SIM <SPAN class="nav-arrow">&gt;</SPAN></A>
 			<UL class="submenu">
 				<LI><A href="#" onclick="loadHomeContent(event, 'how-to-know-sim-number.html');" class="nav-link">Find SIM Number</A></LI>
+				<LI><A href="#" onclick="loadHomeContent(event, 'bsnl-sim-change-not-working.html');" class="nav-link">BSNL SIM Voice Fix by State</A></LI>
 				<LI><A href="#" onclick="loadHomeContent(event, 'steps-to-port-jio-to-bsnl.html');" class="nav-link">Port Jio to BSNL</A></LI>
 				<LI><A href="#" onclick="loadHomeContent(event, 'Set-Black-Image-lock-screen-home-screen.html');" class="nav-link">Samsung Wallpaper</A></LI>
 			</UL>
