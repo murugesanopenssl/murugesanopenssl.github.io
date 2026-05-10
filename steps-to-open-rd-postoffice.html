@@ -95,6 +95,7 @@
 
             async function load() {
                 let rate = 6.7; // Default
+				/*
                 try {
                     let res = await fetch('https://r.jina.ai/http://www.indiapost.gov.in/banking-services/savings');
                     let txt = await res.text();
@@ -106,6 +107,7 @@
                 } catch(e) {
                     console.log("Fetch failed, using default");
                 }
+				*/
                 document.getElementById('rd_rate').innerHTML = rate + '%';
                 compute(rate);
             }
