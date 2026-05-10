@@ -731,6 +731,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					"ippb-awareness-indian-citizens.html": "IPPB Premium Savings Tips",
 					"Self-Insurance-Plan-for-Parents.html": "Personal Self insurance Example",
 					"post-office-mis.html": "Monthly Income Scheme (MIS)",
+					"steps-to-open-rd-postoffice.html": "Recurring Deposit (RD)",
 					"Steps-to-save-money-from-mis.html": "STEPS TO SAVE MONEY FROM MIS",
 					"spending.html": "Daily Spending",
 					"2-wheeler-4-wheeler-rank.html": "Vehicle ranking",
@@ -829,6 +830,10 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				else if( "post-office-mis.html" == htmlFileName )
 				{
 					document.title = "Monthly Income Scheme (MIS)";
+				}
+				else if( "steps-to-open-rd-postoffice.html" == htmlFileName )
+				{
+					document.title = "Recurring Deposit (RD)";
 				}
 				else if( "Steps-to-save-money-from-mis.html" == htmlFileName )
 				{
@@ -1100,6 +1105,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							(htmlFileName === "bsnl-sim-change-not-working.html" && activeLink.textContent.trim() === "BSNL SIM Voice Fix by State") ||
 							(htmlFileName === "TamilLetters.html" && activeLink.textContent.trim() === "Tamil letters") ||
 							(htmlFileName === "Steps-to-save-money-from-mis.html" && activeLink.textContent.trim() === "Post Office Savings Guide") ||
+							(htmlFileName === "steps-to-open-rd-postoffice.html" && activeLink.textContent.trim() === "Recurring Deposit (RD)") ||
 							(htmlFileName === "Responsible-Nations-Index-Jan-2026.html" && activeLink.textContent.trim() === "Responsible Nations Index") ||
 							(htmlFileName === "COUNTRIES-SUPPORTING-IRAN.html" && activeLink.textContent.trim() === "Countries Supporting Iran") ||
 							(htmlFileName === "beggar-count.html" && activeLink.textContent.trim() === "Beggar Count Report") ||
@@ -1647,6 +1653,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 								</LI>
 								<LI>
 									<A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>Monthly Income Scheme (MIS)</FONT></A>
+								</LI>
+								<LI>
+									<A href="#" onclick='javascript:loadHomeContent( event,  "steps-to-open-rd-postoffice.html" );' class="nav-link">Recurring Deposit (RD)</A>
 								</LI>
 								<LI>
 									<A href="#" onclick='javascript:loadHomeContent( event,  "mis-pre-close-calculator.html" );' class="nav-link"><FONT color='white'>PRE CLOSE MIS CALC</FONT></A>

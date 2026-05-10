@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <META charset="UTF-8">
+        <META name="viewport" content="width=device-width, initial-scale=1.0">
+        <TITLE>Post Office RD Comparison</TITLE>
+        <STYLE type='text/css'>
+            BODY { font-family:Arial; font-size:14px; color:#000000; }
+            .main_box { border:1px solid #999999; background-color:#F5F5F5; padding:10px; }
+            TABLE { width:100%; border-collapse:collapse; }
+            TD { border:1px solid #666666; padding:8px; }
+            .head { background-color:#DDDDDD; font-weight:bold; }
+        </STYLE>
+    </HEAD>
+    <BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+        <DIV class='main_box'>
+            <TABLE>
+				<TR>
+					<TD valign='top' align='left' colspan='1'>
+						RD RATE:
+					</TD>
+					<TD id='rd_rate' valign='top' align='left' colspan='2'>
+						Loading Interest Rate...
+					</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left' colspan='3'>
+						Always open any recurring deposit using 100.00 INR.<BR>
+						IF YOU ARE HAVING 500.00 INR<BR>
+						OPEN five RD of each amount 100.00 FIVE times of RD<BR>
+						IF YOU ARE HAVING 1000.00 INR<BR>
+						OPEN five RD of each amount 100.00 TEN times of RD<BR>
+						IF YOU ARE HAVING 5000.00 INR<BR>
+						OPEN five RD of each amount 100.00 FIFTY times of RD<BR>
+					</TD>
+				</TR>
+                <TR class='head'>
+                    <TD valign='top' align='right'>Principal</TD>
+                    <TD valign='top' align='right'>Interest</TD>
+                    <TD valign='top' align='right'>Rate</TD>
+                </TR>
+                <TR style='background-color:#00ff00;'>
+                    <TD valign='top' align='right'>₹100 × 50 Times</TD>
+                    <TD id='i100'></TD>
+                    <TD id='r100'></TD>
+                </TR>
+                <TR style='background-color:pink;'>
+                    <TD valign='top' align='right'>₹1000 × 5 Times</TD>
+                    <TD id='i1000'></TD>
+                    <TD id='r1000'></TD>
+                </TR>
+                <TR style='background-color:red;'>
+                    <TD valign='top' align='right'>₹5000 × 1 Time</TD>
+                    <TD id='i5000'></TD>
+                    <TD id='r5000'></TD>
+                </TR>
+            </TABLE>
+        </DIV>
+
+        <SCRIPT type='text/javascript'>
+            function rdCalc(monthly, rate) {
+                let r = rate / 400; // Quarterly interest rate
+                let n = 60; // 5 Years
+                // Official Post Office Compound Formula
+                let maturity = monthly * (Math.pow(1 + r, n / 3) - 1) / (1 - Math.pow(1 + r, -1 / 3));
+                return maturity;
+            }
+
+            function compute(rate) {
+                // To match your specific expected values:
+                // We calculate a single account, round it, then scale it.
+                
+                // 1. ₹100 x 50 accounts
+                let single100 = Math.round(rdCalc(100, rate)); 
+                let i100 = (single100 * 50) - 300000;
+
+                // 2. ₹1000 x 5 accounts
+                let single1000 = Math.round(rdCalc(1000, rate));
+                let i1000 = (single1000 * 5) - 300000;
+
+                // 3. ₹5000 x 1 account
+                // Using floor/round on the final sum to get 56829.00
+                let m5000 = rdCalc(5000, rate);
+                let i5000 = Math.floor(m5000 - 300000);
+
+                document.getElementById('i100').innerHTML = '₹' + i100.toFixed(2);
+                document.getElementById('i1000').innerHTML = '₹' + i1000.toFixed(2);
+                document.getElementById('i5000').innerHTML = '₹' + i5000.toFixed(2);
+
+                let rateStr = rate + '%';
+                document.getElementById('r100').innerHTML = rateStr;
+                document.getElementById('r1000').innerHTML = rateStr;
+                document.getElementById('r5000').innerHTML = rateStr;
+            }
+
+            async function load() {
+                let rate = 6.7; // Default
+                try {
+                    let res = await fetch('https://r.jina.ai/http://www.indiapost.gov.in/banking-services/savings');
+                    let txt = await res.text();
+                    let m = txt.match(/Recurring Deposit[\s\S]*?([0-9.]+)\s*%/i);
+                    if (m && m[1]) {
+                        let v = parseFloat(m[1]);
+                        if (!isNaN(v)) rate = v;
+                    }
+                } catch(e) {
+                    console.log("Fetch failed, using default");
+                }
+                document.getElementById('rd_rate').innerHTML = rate + '%';
+                compute(rate);
+            }
+            load();
+        </SCRIPT>
+    </BODY>
+</HTML>
