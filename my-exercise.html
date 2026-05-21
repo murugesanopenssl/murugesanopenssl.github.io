@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>My Exercise</TITLE>
+		<STYLE type='text/css'>
+			BODY
+			{
+				font-family:Arial;
+				font-size:14px;
+			}
+			TABLE
+			{
+				border-collapse:collapse;
+				width:100%;
+			}
+			TD,TH
+			{
+				border:1px solid #000000;
+				padding:5px;
+			}
+			SELECT,INPUT
+			{
+				font-size:14px;
+			}
+			.button1
+			{
+				padding:5px 10px;
+				cursor:pointer;
+			}
+		</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV style='padding:10px;'>
+			<TABLE>
+				<TR>
+					<TD valign='top' align='left' style='width:200px;'>
+						Month :
+						<SELECT id='monthSelect'></SELECT>
+					</TD>
+					<TD valign='top' align='left'>
+						Today Exercise Entry
+					</TD>
+				</TR>
+			</TABLE>
+			<BR>
+			<TABLE>
+				<TR>
+					<TH>Date</TH>
+					<TH>Time</TH>
+					<TH>Walking</TH>
+					<TH>Sit on Floor</TH>
+				</TR>
+				<TBODY id='exerciseBody'>
+				</TBODY>
+			</TABLE>
+			<BR>
+			<TABLE>
+	<TR>
+		<TD valign='top' align='left' style='width:200px;'>
+			Date
+		</TD>
+		<TD valign='top' align='left'>
+			<INPUT type='date' id='exerciseDate' onchange='checkExistingData();'>
+		</TD>
+	</TR>
+	<TR>
+		<TD valign='top' align='left'>
+			Time
+		</TD>
+		<TD valign='top' align='left'>
+			Minutes
+			<INPUT type='number' id='exerciseMinutes' value='15' min='0' style='width:80px;'>
+			Seconds
+			<INPUT type='number' id='exerciseSeconds' value='0' min='0' max='59' style='width:80px;'>
+		</TD>
+	</TR>
+	<TR>
+		<TD valign='top' align='left'>
+			Walking
+		</TD>
+		<TD valign='top' align='left'>
+			<INPUT type='number' id='walkingSeconds' value='10' min='0' style='width:80px;'>
+		</TD>
+	</TR>
+	<TR>
+		<TD valign='top' align='left'>
+			Sit on Floor
+		</TD>
+		<TD valign='top' align='left'>
+			<INPUT type='number' id='sitFloorSeconds' value='10' min='0' style='width:80px;'>
+		</TD>
+	</TR>
+	<TR>
+		<TD valign='top' align='left'>
+		</TD>
+		<TD valign='top' align='left'>
+			<INPUT type='button' class='button1' id='saveButton' value='Save' onclick='saveExerciseData();'>
+			<INPUT type='button' class='button1' id='updateButton' value='Update' onclick='updateExerciseData();' style='display:none;'>
+		</TD>
+	</TR>
+</TABLE>
+		</DIV>
+		<SCRIPT type='text/javascript'>
+			var monthNames=[
+				'Jan',
+				'Feb',
+				'Mar',
+				'Apr',
+				'May',
+				'Jun',
+				'Jul',
+				'Aug',
+				'Sep',
+				'Oct',
+				'Nov',
+				'Dec'
+			];
+
+			var dayNames=[
+				'Sun',
+				'Mon',
+				'Tue',
+				'Wed',
+				'Thu',
+				'Fri',
+				'Sat'
+			];
+
+			var defaultData=[
+				{
+					date:'Tue 19-May-2026',
+					time:'15 minutes 21 seconds',
+					walking:'10 seconds',
+					sit:'10 seconds'
+				},
+				{
+					date:'Wed 20-May-2026',
+					time:'13 minutes 52 seconds',
+					walking:'10 seconds',
+					sit:'10 seconds'
+				},
+				{
+					date:'Thu 21-May-2026',
+					time:'21 minutes 41 seconds',
+					walking:'20 seconds',
+					sit:'20 seconds'
+				}
+			];
+
+			function formatDateDisplay(dateObj)
+			{
+				var month=('0'+(dateObj.getMonth()+1)).slice(-2);
+				var day=('0'+dateObj.getDate()).slice(-2);
+				var year=dateObj.getFullYear();
+
+				return month+'/'+day+'/'+year;
+			}
+
+			function fillMonthOptions()
+			{
+				var selectObj=document.getElementById('monthSelect');
+				var currentDate=new Date();
+				var currentYear=currentDate.getFullYear();
+				var currentMonth=currentDate.getMonth();
+
+				for(var year=2026;year<=2035;year++)
+				{
+					var startMonth=0;
+
+					if(year===2026)
+					{
+						startMonth=4;
+					}
+
+					for(var month=startMonth;month<12;month++)
+					{
+						var optionObj=document.createElement('OPTION');
+
+						optionObj.value=year+'-'+('0'+(month+1)).slice(-2);
+						optionObj.text=monthNames[month]+'-'+year;
+
+						if(year===currentYear && month===currentMonth)
+						{
+							optionObj.selected=true;
+						}
+
+						selectObj.appendChild(optionObj);
+					}
+				}
+
+				if(currentYear<2026)
+				{
+					selectObj.selectedIndex=0;
+				}
+			}
+
+			function getExerciseData()
+			{
+				var data=localStorage.getItem('exerciseData');
+
+				if(data===null)
+				{
+					localStorage.setItem('exerciseData',JSON.stringify(defaultData));
+					return defaultData;
+				}
+
+				return JSON.parse(data);
+			}
+
+			function loadTable()
+			{
+				var tbody=document.getElementById('exerciseBody');
+				var data=getExerciseData();
+
+				tbody.innerHTML='';
+
+				for(var i=0;i<data.length;i++)
+				{
+					var row=document.createElement('TR');
+
+					var td1=document.createElement('TD');
+					var td2=document.createElement('TD');
+					var td3=document.createElement('TD');
+					var td4=document.createElement('TD');
+
+					td1.innerHTML=data[i].date;
+					td2.innerHTML=data[i].time;
+					td3.innerHTML=data[i].walking;
+					td4.innerHTML=data[i].sit;
+
+					row.appendChild(td1);
+					row.appendChild(td2);
+					row.appendChild(td3);
+					row.appendChild(td4);
+
+					tbody.appendChild(row);
+				}
+			}
+
+			function setTodayDate()
+			{
+				var today=new Date();
+
+				document.getElementById('todayDate').value=formatDateDisplay(today);
+			}
+
+			function saveTodayExercise()
+			{
+				var data=getExerciseData();
+
+				var todayDate=document.getElementById('todayDate').value;
+				var exerciseTime=document.getElementById('exerciseTime').value;
+				var walkingTime=document.getElementById('walkingTime').value;
+				var sitFloorTime=document.getElementById('sitFloorTime').value;
+
+				var foundIndex=-1;
+
+				for(var i=0;i<data.length;i++)
+				{
+					if(data[i].date===todayDate)
+					{
+						foundIndex=i;
+						break;
+					}
+				}
+
+				var rowData={
+					date:todayDate,
+					time:exerciseTime,
+					walking:walkingTime,
+					sit:sitFloorTime
+				};
+
+				if(foundIndex>=0)
+				{
+					data[foundIndex]=rowData;
+				}
+				else
+				{
+					data.push(rowData);
+				}
+
+				localStorage.setItem('exerciseData',JSON.stringify(data));
+
+				loadTable();
+
+				alert('Today exercise saved');
+			}
+
+			fillMonthOptions();
+			loadTable();
+			setTodayDate();
+		</SCRIPT>
+	</BODY>
+</HTML>
