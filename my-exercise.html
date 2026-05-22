@@ -48,8 +48,7 @@
 			<TABLE>
 				<TR>
 					<TH>Date</TH>
-					<TH>Time</TH>
-					<TH>Walking</TH>
+					<TH>Walking time</TH>
 					<TH>Sit on Floor</TH>
 				</TR>
 				<TBODY id='exerciseBody'>
@@ -62,7 +61,7 @@
 			Date
 		</TD>
 		<TD valign='top' align='left'>
-			<INPUT type='date' id='exerciseDate' onchange='checkExistingData();'>
+			<INPUT type='date' id='exerciseDate' onchange='checkExistingData( );'>
 		</TD>
 	</TR>
 	<TR>
@@ -96,8 +95,8 @@
 		<TD valign='top' align='left'>
 		</TD>
 		<TD valign='top' align='left'>
-			<INPUT type='button' class='button1' id='saveButton' value='Save' onclick='saveExerciseData();'>
-			<INPUT type='button' class='button1' id='updateButton' value='Update' onclick='updateExerciseData();' style='display:none;'>
+			<INPUT type='button' class='button1' id='saveButton' value='Save' onclick='saveExerciseData( );'>
+			<INPUT type='button' class='button1' id='updateButton' value='Update' onclick='updateExerciseData( );' style='display:none;'>
 		</TD>
 	</TR>
 </TABLE>
@@ -117,7 +116,6 @@
 				'Nov',
 				'Dec'
 			];
-
 			var dayNames=[
 				'Sun',
 				'Mon',
@@ -127,171 +125,135 @@
 				'Fri',
 				'Sat'
 			];
-
 			var defaultData=[
 				{
 					date:'Tue 19-May-2026',
 					time:'15 minutes 21 seconds',
-					walking:'10 seconds',
 					sit:'10 seconds'
 				},
 				{
 					date:'Wed 20-May-2026',
 					time:'13 minutes 52 seconds',
-					walking:'10 seconds',
 					sit:'10 seconds'
 				},
 				{
 					date:'Thu 21-May-2026',
 					time:'21 minutes 41 seconds',
-					walking:'20 seconds',
 					sit:'20 seconds'
+				},
+				{
+					date:'Fri 22-May-2026',
+					time:'26 minutes 34 seconds',
+					sit:'25 seconds'
 				}
 			];
-
-			function formatDateDisplay(dateObj)
+			function formatDateDisplay( dateObj )
 			{
-				var month=('0'+(dateObj.getMonth()+1)).slice(-2);
-				var day=('0'+dateObj.getDate()).slice(-2);
-				var year=dateObj.getFullYear();
-
+				var month=( '0'+( dateObj.getMonth( )+1 ) ).slice( -2 );
+				var day=( '0'+dateObj.getDate( ) ).slice( -2 );
+				var year=dateObj.getFullYear( );
 				return month+'/'+day+'/'+year;
 			}
-
-			function fillMonthOptions()
+			function fillMonthOptions( )
 			{
-				var selectObj=document.getElementById('monthSelect');
-				var currentDate=new Date();
-				var currentYear=currentDate.getFullYear();
-				var currentMonth=currentDate.getMonth();
-
-				for(var year=2026;year<=2035;year++)
+				var selectObj=document.getElementById( 'monthSelect' );
+				var currentDate=new Date( );
+				var currentYear=currentDate.getFullYear( );
+				var currentMonth=currentDate.getMonth( );
+				for( var year=2026; 2035 >= year; ++year)
 				{
 					var startMonth=0;
-
-					if(year===2026)
+					if( 2026 == year)
 					{
 						startMonth=4;
 					}
-
-					for(var month=startMonth;month<12;month++)
+					for( var month=startMonth; 12 > month; ++month)
 					{
-						var optionObj=document.createElement('OPTION');
-
-						optionObj.value=year+'-'+('0'+(month+1)).slice(-2);
+						var optionObj=document.createElement( 'OPTION' );
+						optionObj.value=year+'-'+( '0'+( month+1 ) ).slice( -2 );
 						optionObj.text=monthNames[month]+'-'+year;
-
-						if(year===currentYear && month===currentMonth)
+						if( ( currentYear === year ) && ( currentMonth === month ) )
 						{
 							optionObj.selected=true;
 						}
-
-						selectObj.appendChild(optionObj);
+						selectObj.appendChild( optionObj );
 					}
 				}
-
-				if(currentYear<2026)
+				if( 2026 > currentYear)
 				{
 					selectObj.selectedIndex=0;
 				}
 			}
-
-			function getExerciseData()
+			function getExerciseData( )
 			{
-				var data=localStorage.getItem('exerciseData');
-
-				if(data===null)
+				var data=localStorage.getItem( 'exerciseData' );
+				if( null === data )
 				{
-					localStorage.setItem('exerciseData',JSON.stringify(defaultData));
+					localStorage.setItem( 'exerciseData', JSON.stringify( defaultData ) );
 					return defaultData;
 				}
-
-				return JSON.parse(data);
+				return JSON.parse( data );
 			}
-
-			function loadTable()
+			function loadTable( )
 			{
-				var tbody=document.getElementById('exerciseBody');
-				var data=getExerciseData();
-
+				var tbody=document.getElementById( 'exerciseBody' );
+				var data=getExerciseData( );
 				tbody.innerHTML='';
-
-				for(var i=0;i<data.length;i++)
+				for( var i=0; data.length > i; ++i)
 				{
-					var row=document.createElement('TR');
-
-					var td1=document.createElement('TD');
-					var td2=document.createElement('TD');
-					var td3=document.createElement('TD');
-					var td4=document.createElement('TD');
-
+					var row=document.createElement( 'TR' );
+					var td1=document.createElement( 'TD' );
+					var td2=document.createElement( 'TD' );
+					var td3=document.createElement( 'TD' );
 					td1.innerHTML=data[i].date;
 					td2.innerHTML=data[i].time;
-					td3.innerHTML=data[i].walking;
-					td4.innerHTML=data[i].sit;
-
-					row.appendChild(td1);
-					row.appendChild(td2);
-					row.appendChild(td3);
-					row.appendChild(td4);
-
-					tbody.appendChild(row);
+					td3.innerHTML=data[i].sit;
+					row.appendChild( td1 );
+					row.appendChild( td2 );
+					row.appendChild( td3 );
+					tbody.appendChild( row );
 				}
 			}
-
-			function setTodayDate()
+			function setTodayDate( )
 			{
-				var today=new Date();
-
-				document.getElementById('todayDate').value=formatDateDisplay(today);
+				var today=new Date( );
+				document.getElementById( 'todayDate' ).value=formatDateDisplay( today );
 			}
-
-			function saveTodayExercise()
+			function saveTodayExercise( )
 			{
-				var data=getExerciseData();
-
-				var todayDate=document.getElementById('todayDate').value;
-				var exerciseTime=document.getElementById('exerciseTime').value;
-				var walkingTime=document.getElementById('walkingTime').value;
-				var sitFloorTime=document.getElementById('sitFloorTime').value;
-
+				var data=getExerciseData( );
+				var todayDate=document.getElementById( 'todayDate' ).value;
+				var exerciseTime=document.getElementById( 'exerciseTime' ).value;
+				var sitFloorTime=document.getElementById( 'sitFloorTime' ).value;
 				var foundIndex=-1;
-
-				for(var i=0;i<data.length;i++)
+				for( var i=0; data.length > i; ++i)
 				{
-					if(data[i].date===todayDate)
+					if( todayDate === data[i].date )
 					{
 						foundIndex=i;
 						break;
 					}
 				}
-
 				var rowData={
 					date:todayDate,
 					time:exerciseTime,
-					walking:walkingTime,
 					sit:sitFloorTime
 				};
-
-				if(foundIndex>=0)
+				if( 0 <= foundIndex )
 				{
 					data[foundIndex]=rowData;
 				}
 				else
 				{
-					data.push(rowData);
+					data.push( rowData );
 				}
-
-				localStorage.setItem('exerciseData',JSON.stringify(data));
-
-				loadTable();
-
-				alert('Today exercise saved');
+				localStorage.setItem( 'exerciseData', JSON.stringify( data ) );
+				loadTable( );
+				alert( 'Today exercise saved' );
 			}
-
-			fillMonthOptions();
-			loadTable();
-			setTodayDate();
+			fillMonthOptions( );
+			loadTable( );
+			setTodayDate( );
 		</SCRIPT>
 	</BODY>
 </HTML>
