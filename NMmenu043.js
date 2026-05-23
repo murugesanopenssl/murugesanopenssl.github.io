@@ -1919,9 +1919,8 @@ function loadMoneyHelpContent( event, htmlFileName )
 							</A>
 						</LI>
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent(event, 'Tamilnadu-MLA.html');" class="nav-link">Tamil Nadu MLAs</A>
+							<A href="#" onclick="javascript:window.open('Politician_assets.html');" class="nav-link">Politician assets</A>
 						</LI>
-						-->
 						<LI>
 							<A href="#" onclick="javascript:window.open('earth_politics_or_general_age.html');" class="nav-link">
 								<FONT color='#00ff00'>Earth politics</FONT>
