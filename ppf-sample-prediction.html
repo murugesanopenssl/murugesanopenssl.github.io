@@ -117,105 +117,76 @@
 				{date:'02-Apr-2026',amount:500},
 				{date:'06-May-2026',amount:500}
 			];
-
 			const start_year=2024;
 			const maturity_year=2039;
 			const interest_rate=0.071;
-
 			function fill_table()
 			{
 				const table=document.getElementById('payment_table');
-
-				for(let i=0;i<payment_data.length;i++)
+				for(let i=0; payment_data.length > i; ++i)
 				{
 					const row=table.insertRow(-1);
-
 					const cell1=row.insertCell(0);
 					const cell2=row.insertCell(1);
-
 					cell1.innerHTML=payment_data[i].date;
 					cell2.innerHTML=payment_data[i].amount.toFixed(2);
 				}
 			}
-
 			function fill_range()
 			{
 				const select=document.getElementById('range_select');
-
 				const option_today=document.createElement('OPTION');
-
 				option_today.value='0';
 				option_today.text='Till Now Today Date';
-
 				select.appendChild(option_today);
-
 				for(let year=1;year<=(maturity_year-start_year);year++)
 				{
 					const option=document.createElement('OPTION');
-
 					option.value=year;
 					option.text='From Start Date To '+year+' Year';
-
 					select.appendChild(option);
 				}
-
 				select.onchange=function()
 				{
 					draw_graph(parseInt(this.value));
 				};
 			}
-
 			function add_graph_row(text,value)
 			{
 				const graph=document.getElementById('graph_area');
-
 				const row=document.createElement('DIV');
 				row.className='graph_row';
-
 				const label=document.createElement('DIV');
 				label.className='graph_text';
 				label.innerHTML=text;
-
 				const bar=document.createElement('DIV');
 				bar.className='graph_bar';
 				bar.style.width=(value/40)+'px';
-
 				row.appendChild(label);
 				row.appendChild(bar);
-
 				graph.appendChild(row);
 			}
-
 			function draw_graph(selected_year)
 			{
 				const graph=document.getElementById('graph_area');
-
 				graph.innerHTML='';
-
 				let total=0;
-
-				for(let i=0;i<payment_data.length;i++)
+				for(let i=0; payment_data.length > i; ++i)
 				{
 					total+=payment_data[i].amount;
-
 					add_graph_row(payment_data[i].date+' : '+total.toFixed(2),total);
 				}
-
 				if(selected_year===0)
 				{
 					return;
 				}
-
 				let predict_total=total;
-
 				for(let year=1;year<=selected_year;year++)
 				{
 					predict_total=predict_total+(predict_total*interest_rate);
-
 					add_graph_row('Prediction Year '+(start_year+year)+' : '+predict_total.toFixed(2),predict_total);
 				}
 			}
-
 			fill_table();
 			fill_range();
 			draw_graph(0);

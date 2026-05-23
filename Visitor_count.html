@@ -58,8 +58,8 @@
 	let x=a[sortKey],y=b[sortKey];
 	if(sortKey==="count"||sortKey==="last")x=Number(x),y=Number(y);
 	else x=(x||"").toString().toLowerCase(),y=(y||"").toString().toLowerCase();
-	if(x<y)return sortDir==="asc"?-1:1;
-	if(x>y)return sortDir==="asc"?1:-1;
+	if( x < y )return sortDir==="asc"?-1:1;
+	if( x > y )return sortDir==="asc"?1:-1;
 	return 0;
 	});
 	sorted.forEach(r => {

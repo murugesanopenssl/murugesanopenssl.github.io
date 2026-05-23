@@ -42,7 +42,8 @@
 		<SCRIPT type='text/javascript'>
 			function showLang(l) {
     var x = document.getElementsByClassName('lang');
-    for(var i=0; i<x.length; i++) {
+    for(var i=0; x.length > i; ++i)
+    {
         x[i].style.display='none';
     }
     document.getElementById(l).style.display='block';
