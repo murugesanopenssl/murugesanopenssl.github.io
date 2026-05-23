@@ -1074,6 +1074,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"remove-blockages-kitchen-pvc-outflow-pipe.html": ["Kitchen Drain Fix", "Kitchen Drain Fixes"],
 								"shampoo-potential-hydrogen.html": ["Shampoo Guide"],
 								"potential-hydrogen.html": ["Bathing Soap Guide", "How to select best bathing soap"],
+								"Bathing-Soap-Handler-paste.html": ["Bathing Soap Handler paste", "Which paste to use to paste bathing soap handler if not pasted perfectly?"],
 								"Air-Cooler-Plan.html": ["Air cooler plan"],
 								"ITR-2025-2026.html": ["ITR Fri 31-Jul-2026 IST", "ITR Filing Guide"],
 								"TN-how-to-get-more-vote.html": ["TN Voter Increase Guide"],
@@ -1754,6 +1755,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 			<A href="#" class="nav-link">Household <SPAN class="nav-arrow">&gt;</SPAN></A>
 			<UL class="submenu">
 				<LI><A href="#" onclick="loadHomeContent(event, 'Air-Cooler-Plan.html');" class="nav-link">Air cooler plan</A></LI>
+				<LI><A href="#" onclick="loadHomeContent(event, 'Bathing-Soap-Handler-paste.html');" class="nav-link">Bathing Soap Handler paste</A></LI>
 				<LI><A href="#" onclick="loadHomeContent(event, 'potential-hydrogen.html');" class="nav-link">Bathing Soap Guide</A></LI>
 				<LI><A href="#" onclick="loadHomeContent(event, 'shampoo-potential-hydrogen.html');" class="nav-link">Shampoo Guide</A></LI>
 				<LI><A href="#" onclick="loadHomeContent(event, 'vegetables-health.html');" class="nav-link">Vegetables & Health</A></LI>
