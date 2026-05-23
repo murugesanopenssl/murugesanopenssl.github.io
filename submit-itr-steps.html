@@ -1,4 +1,42 @@
-During any year, always submit your income tax return on or after 20-May-EachYear and on or before 30-Jun-SameYear<BR>
+<p id="taxMessage"></p>
+
+<script>
+    const today = new Date();
+
+    const currentYear = today.getFullYear();
+
+    // 01-Apr-currentYear
+    const startDate = new Date(currentYear, 3, 1);
+
+    // 30-Jun-currentYear
+    const endDate = new Date(currentYear, 5, 30);
+
+    let displayYear;
+
+    function formatDate(date) {
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        return `${days[date.getDay()]} ${String(date.getDate()).padStart(2, '0')}-${months[date.getMonth()]}-${date.getFullYear()} IST`;
+    }
+
+    if (today >= startDate && today <= endDate) {
+
+        displayYear = currentYear;
+
+    } else {
+
+        displayYear = currentYear + 1;
+
+    }
+
+    const fromDate = new Date(displayYear, 4, 20); // 20-May
+    const toDate = new Date(displayYear, 5, 30);   // 30-Jun
+
+    document.getElementById("taxMessage").innerHTML =
+        `In India, always submit your income tax return on or after ${formatDate(fromDate)} and on or before ${formatDate(toDate)}`;
+</script>
 Initially login using your PAN and your password at:<BR>
 <A onclick='javascript:window.open("https://eportal.incometax.gov.in/iec/foservices/#/login");'><FONT color='blue'><B><U>https://eportal.incometax.gov.in/iec/foservices/#/login</B></U></FONT></A><BR>
 <TABLE border='1' style='width:100%;'>
