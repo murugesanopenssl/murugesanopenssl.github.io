@@ -1,242 +1,195 @@
-<p id="taxMessage"></p>
-
-<script>
-    const today = new Date();
-
-    const currentYear = today.getFullYear();
-
-    // 01-Apr-currentYear
-    const startDate = new Date(currentYear, 3, 1);
-
-    // 30-Jun-currentYear
-    const endDate = new Date(currentYear, 5, 30);
-
-    let displayYear;
-
-    function formatDate(date) {
-        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-        return `${days[date.getDay()]} ${String(date.getDate()).padStart(2, '0')}-${months[date.getMonth()]}-${date.getFullYear()} IST`;
-    }
-
-    if (today >= startDate && today <= endDate) {
-
-        displayYear = currentYear;
-
-    } else {
-
-        displayYear = currentYear + 1;
-
-    }
-
-    const fromDate = new Date(displayYear, 4, 20); // 20-May
-    const toDate = new Date(displayYear, 5, 30);   // 30-Jun
-
-    document.getElementById("taxMessage").innerHTML =
-        `In India, always submit your income tax return on or after ${formatDate(fromDate)} and on or before ${formatDate(toDate)}`;
-</script>
+<P id="taxMessage"></P>
+<SCRIPT type='text/javascript'>
+	const today = new Date();
+	const currentYear = today.getFullYear();
+	// 01-Apr-currentYear
+	const startDate = new Date(currentYear, 3, 1);
+	// 30-Jun-currentYear
+	const endDate = new Date(currentYear, 5, 30);
+	let displayYear;
+	function formatDate(date)
+	{
+		const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+		const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+				"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		return `${days[date.getDay()]} ${String(date.getDate()).padStart(2, '0')}-${months[date.getMonth()]}-${date.getFullYear()} IST`;
+	}
+	if (today >= startDate && today <= endDate)
+	{
+		displayYear = currentYear;
+	}
+	else
+	{
+		displayYear = currentYear + 1;
+	}
+	const fromDate = new Date(displayYear, 4, 20); // 20-May
+	const toDate = new Date(displayYear, 5, 30); // 30-Jun
+	document.getElementById("taxMessage").innerHTML = `In India, this is my preferred period for submitting income tax returns: ${formatDate(fromDate)} to ${formatDate(toDate)}`;
+</SCRIPT>
 Initially login using your PAN and your password at:<BR>
-<A onclick='javascript:window.open("https://eportal.incometax.gov.in/iec/foservices/#/login");'><FONT color='blue'><B><U>https://eportal.incometax.gov.in/iec/foservices/#/login</B></U></FONT></A><BR>
-<TABLE border='1' style='width:100%;'>
-<TR>
-<TD valign='top' align='left'>
-S.No
-</TD>
-
-<TD valign='top' align='left'>
-Action
-</TD>
-
-<TD valign='top' align='left'>
-Snapshot
-</TD>
-</TR>
-<TR>
-<TD valign='top' align='left'>
-<A name='top'></A>
-<A name='step01'></A>
-01
-</TD>
-
-<TD valign='top' align='left'>
-Initially drill down e-File menu<BR>
-
-Click File Now<BR>
-
-<A href='#step02'>Next</A><BR>
-
-<A href='#bottom'>Bottom</A>
-</TD>
-
-<TD valign='top' align='left'>
-<IMG src='images/file-now.jpg' style='width:50%;'>
-</TD>
-</TR>
-
-<TR>
-<TD valign='top' align='left'>
-<A name='step02'></A>
-02
-</TD>
-
-<TD valign='top' align='left'>
-On Fri 23-May-2026,<BR>
-using drill down option,<BR>
-I have selected<BR>
-
-01) 2026-27 (Current A.Y.)<BR>
-02) Online<BR>
-03) Click Continue<BR>
-
-<A href='#step01'>Previous</A><BR>
-
-<A href='#step03'>Next</A><BR>
-
-<A href='#top'>Top</A><BR>
-
-<A href='#bottom'>Bottom</A>
-</TD>
-
-<TD valign='top' align='left'>
-<IMG src='images/click-continue-itr.jpg' style='width:50%;'>
-</TD>
-</TR>
-
-<TR>
-<TD valign='top' align='left'>
-<A name='step03'></A>
-03
-</TD>
-<TD valign='top' align='left'>
-Click<BR>
-Start New Filing<BR>
-
-<A href='#step02'>Previous</A><BR>
-
-<A href='#step04'>Next</A><BR>
-
-<A href='#top'>Top</A><BR>
-
-<A href='#bottom'>Bottom</A>
-</TD>
-
-<TD valign='top' align='left'>
-<IMG src='images/start-new-filing.jpg' style='width:50%;'>
-</TD>
-</TR>
-
-<TR>
-<TD valign='top' align='left'>
-<A name='step04'></A>
-04
-</TD>
-
-<TD valign='top' align='left'>
-Select<BR>
-Individual<BR>
-
-Click Proceed<BR>
-
-<A href='#step03'>Previous</A><BR>
-
-<A href='#step05'>Next</A><BR>
-
-<A href='#top'>Top</A><BR>
-
-<A href='#bottom'>Bottom</A>
-</TD>
-
-<TD valign='top' align='left'>
-<IMG src='images/click-proceed-itr.jpg' style='width:50%;'>
-</TD>
-</TR>
-
-<TR>
-<TD valign='top' align='left'>
-<A name='step05'></A>
-05
-</TD>
-
-<TD valign='top' align='left'>
-Select<BR>
-ITR-1<BR>
-
-Click Proceed With ITR-1<BR>
-
-<A href='#step04'>Previous</A><BR>
-
-<A href='#step06'>Next</A><BR>
-
-<A href='#top'>Top</A><BR>
-
-<A href='#bottom'>Bottom</A>
-</TD>
-
-<TD valign='top' align='left'>
-<IMG src='images/select-itr1.jpg' style='width:50%;'>
-</TD>
-</TR>
-
-<TR>
-<TD valign='top' align='left'>
-<A name='step06'></A>
-06
-</TD>
-
-<TD valign='top' align='left'>
-Click Ok<BR>
-
-<A href='#step05'>Previous</A><BR>
-
-<A href='#step07'>Next</A><BR>
-
-<A href='#top'>Top</A><BR>
-
-<A href='#bottom'>Bottom</A>
-</TD>
-
-<TD valign='top' align='left'>
-<IMG src='images/click-ok-itr.jpg' style='width:50%;'>
-</TD>
-</TR>
-
-<TR>
-<TD valign='top' align='left'>
-<A name='step07'></A>
-07
-</TD>
-
-<TD valign='top' align='left'>
-Continue in sequence on clicking:<BR>
-
-01) Personal Information (Confirm with your bank number validated?)<BR>
-
-02) Gross Total Income<BR>
-
-03) Total deductions<BR>
-
-04) Tax Paid<BR>
-
-05) Verify your liability details<BR>
-
-06) Click Proceed for verification<BR>
-
-07) Once verified without any error, submit the ITR.<BR>
-
-<A href='#step06'>Previous</A><BR>
-
-<A href='#top'>Top</A><BR>
-
-<A href='#bottom'>Bottom</A>
-</TD>
-
-<TD valign='top' align='left'>
-<IMG src='images/proceed-to-verification.jpg' style='width:50%;'>
-</TD>
-</TR>
-
+<A href="https://eportal.incometax.gov.in/iec/foservices/#/login" target="_blank" rel="noopener noreferrer" style="color:blue;font-weight:bold;text-decoration:underline;">https://eportal.incometax.gov.in/iec/foservices/#/login</A><BR>
+<TABLE border='1' style='width:100%;border-collapse:collapse;'>
+	<TR>
+		<TD valign='top' align='left'>
+			S.No
+		</TD>
+		<TD valign='top' align='left'>
+			ACTION
+		</TD>
+		<TD valign='top' align='left'>
+			SNAPSHOT
+		</TD>
+	</TR>
+	<TR>
+		<TD valign='top' align='left'>
+			<DIV id="top"></DIV>
+			<DIV id="step01"></DIV>
+			01
+		</TD>
+		<TD valign='top' align='left'>
+			After login drill down e-File<BR>
+			open right menu of Income Tax Returns<BR>
+			Click File Income Tax Return<BR>
+			<A href='#step02'>Next</A><BR>
+			<A href='#bottom'>Bottom</A>
+		</TD>
+		<TD valign='top' align='left'>
+			<IMG src='images/after-login-click-efile-file-incometax.jpg' style='max-width:100%;width:50%;height:auto;'>
+		</TD>
+	</TR>
+	<!--
+	<TR>
+		<TD valign='top' align='left'>
+			<A name='top'></A>
+			<DIV id="step02"></DIV>
+			02
+		</TD>
+		<TD valign='top' align='left'>
+			Initially drill down e-File menu<BR>
+			Click File Now<BR>
+			<A href='#step02'>Next</A><BR>
+			<A href='#bottom'>Bottom</A>
+		</TD>
+		<TD valign='top' align='left'>
+			<IMG src='images/file-now.jpg' style='max-width:100%;width:50%;height:auto;'>
+		</TD>
+	</TR>
+	-->
+	<TR>
+		<TD valign='top' align='left'>
+			<DIV id="step02"></DIV>
+			02
+		</TD>
+		<TD valign='top' align='left'>
+			Sample steps I followed during Fri 23-May-2026 to submit my Indian ITR:<BR>
+			Using drill down option,<BR>
+			I have selected<BR>
+			01) 2026-27 (Current A.Y.)<BR>
+			02) Online<BR>
+			03) Click Continue<BR>
+			<A href='#step01'>Previous</A><BR>
+			<A href='#step03'>Next</A><BR>
+			<A href='#top'>Top</A><BR>
+			<A href='#bottom'>Bottom</A>
+		</TD>
+		<TD valign='top' align='left'>
+			<IMG src='images/click-continue-itr.jpg' style='max-width:100%;width:50%;height:auto;'>
+		</TD>
+	</TR>
+	<TR>
+		<TD valign='top' align='left'>
+			<DIV id="step03"></DIV>
+			03
+		</TD>
+		<TD valign='top' align='left'>
+			Click<BR>
+			Start New Filing<BR>
+			<A href='#step02'>Previous</A><BR>
+			<A href='#step04'>Next</A><BR>
+			<A href='#top'>Top</A><BR>
+			<A href='#bottom'>Bottom</A>
+		</TD>
+		<TD valign='top' align='left'>
+			<IMG src='images/start-new-filing.jpg' style='max-width:100%;width:50%;height:auto;'>
+		</TD>
+	</TR>
+	<TR>
+		<TD valign='top' align='left'>
+			<DIV id="step04"></DIV>
+			04
+		</TD>
+		<TD valign='top' align='left'>
+			Select<BR>
+			Individual<BR>
+			Click Proceed<BR>
+			<A href='#step03'>Previous</A><BR>
+			<A href='#step05'>Next</A><BR>
+			<A href='#top'>Top</A><BR>
+			<A href='#bottom'>Bottom</A>
+		</TD>
+		<TD valign='top' align='left'>
+			<IMG src='images/click-proceed-itr.jpg' style='max-width:100%;width:50%;height:auto;'>
+		</TD>
+	</TR>
+	<TR>
+		<TD valign='top' align='left'>
+			<DIV id="step05"></DIV>
+			05
+		</TD>
+		<TD valign='top' align='left'>
+			Select<BR>
+			ITR-1<BR>
+			Click Proceed With ITR-1<BR>
+			<A href='#step04'>Previous</A><BR>
+			<A href='#step06'>Next</A><BR>
+			<A href='#top'>Top</A><BR>
+			<A href='#bottom'>Bottom</A>
+		</TD>
+		<TD valign='top' align='left'>
+			<IMG src='images/select-itr1.jpg' style='max-width:100%;width:50%;height:auto;'>
+		</TD>
+	</TR>
+	<TR>
+		<TD valign='top' align='left'>
+			<DIV id="step06"></DIV>
+			06
+		</TD>
+		<TD valign='top' align='left'>
+			Click Ok<BR>
+			<A href='#step05'>Previous</A><BR>
+			<A href='#step07'>Next</A><BR>
+			<A href='#top'>Top</A><BR>
+			<A href='#bottom'>Bottom</A>
+		</TD>
+		<TD valign='top' align='left'>
+			<IMG src='images/click-ok-itr.jpg' style='max-width:100%;width:50%;height:auto;'>
+		</TD>
+	</TR>
+	<TR>
+		<TD valign='top' align='left'>
+			<DIV id="step07"></DIV>
+			07
+		</TD>
+		<TD valign='top' align='left'>
+			Continue in sequence on clicking:<BR>
+			01) Personal Information (Confirm with your bank number validated?)<BR>
+			02) Gross Total Income<BR>
+			03) Total deductions<BR>
+			04) Tax Paid<BR>
+			Inside taxes paid I found the following:<BR>
+			RTKP11592A<BR>
+			POWERGRID INFRASTRUCTURE INVESTMENT TRUST<BR>
+			After verification, I found that this entry did not belong to me, so I removed it.<BR>
+			05) Verify your liability details<BR>
+			06) Click Proceed for verification<BR>
+			07) Once verified without any error, submit and e-Verify the ITR.<BR>
+			<A href='#step06'>Previous</A><BR>
+			<A href='#top'>Top</A><BR>
+			<A href='#bottom'>Bottom</A>
+		</TD>
+		<TD valign='top' align='left'>
+			<IMG src='images/proceed-to-verification.jpg' style='max-width:100%;width:50%;height:auto;'>
+		</TD>
+	</TR>
 </TABLE>
-
-<A name='bottom'></A>
+<DIV id="bottom"></DIV>
