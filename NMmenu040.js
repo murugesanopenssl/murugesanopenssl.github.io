@@ -1475,7 +1475,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 							</FONT>
 							<UL class="submenu">
 								<LI>
-									<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-submit-itr-india.html' );" class="nav-link">ITR Filing Steps</A>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'submit-itr-steps.html' );" class="nav-link">ITR Filing Steps</A>
 								</LI>
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-pay-property-tax-bengaluru.html' );" class="nav-link">SOUTH INDIAN PROPERTY TAX PAYMENT</A>
