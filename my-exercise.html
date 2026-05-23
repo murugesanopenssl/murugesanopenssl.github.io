@@ -6,33 +6,27 @@
 		<META http-equiv="Expires" content="0">
 		<META charset="UTF-8">
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
-
 		<TITLE>My Exercise</TITLE>
-
 		<STYLE type='text/css'>
 			BODY
 			{
 				font-family:Arial;
 				font-size:14px;
 			}
-
 			TABLE
 			{
 				border-collapse:collapse;
 				width:100%;
 			}
-
 			TD,TH
 			{
 				border:1px solid #000000;
 				padding:5px;
 			}
-
 			SELECT,INPUT
 			{
 				font-size:14px;
 			}
-
 			.button1
 			{
 				padding:5px 10px;
@@ -40,52 +34,40 @@
 			}
 		</STYLE>
 	</HEAD>
-
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-
 		<DIV style='padding:10px;'>
-
 			<TABLE>
 				<TR>
 					<TD valign='top' align='left' style='width:200px;'>
 						Month :
 						<SELECT id='monthSelect'></SELECT>
 					</TD>
-
 					<TD valign='top' align='left'>
 						Today Exercise Entry
 					</TD>
 				</TR>
 			</TABLE>
-
 			<BR>
-
 			<TABLE>
 				<TBODY id='exerciseBody'>
 				</TBODY>
 			</TABLE>
-
 			<BR>
-
 			<TABLE>
 				<TR>
 					<TD valign='top' align='left' style='width:200px;'>
 						Date
 					</TD>
-
 					<TD valign='top' align='left'>
 						<INPUT type='date' id='exerciseDate'>
 					</TD>
 				</TR>
-
 				<TR>
 					<TD valign='top' align='left'>
 						Time
 					</TD>
-
 					<TD valign='top' align='left'>
 						Minutes
-
 						<INPUT
 							type='number'
 							id='exerciseMinutes'
@@ -93,9 +75,7 @@
 							min='0'
 							style='width:80px;'
 						>
-
 						Seconds
-
 						<INPUT
 							type='number'
 							id='exerciseSeconds'
@@ -106,12 +86,10 @@
 						>
 					</TD>
 				</TR>
-
 				<TR>
 					<TD valign='top' align='left'>
 						Sit on Floor
 					</TD>
-
 					<TD valign='top' align='left'>
 						<INPUT
 							type='number'
@@ -120,15 +98,12 @@
 							min='0'
 							style='width:80px;'
 						>
-
 						seconds
 					</TD>
 				</TR>
-
 				<TR>
 					<TD valign='top' align='left'>
 					</TD>
-
 					<TD valign='top' align='left'>
 						<INPUT
 							type='button'
@@ -139,11 +114,8 @@
 					</TD>
 				</TR>
 			</TABLE>
-
 		</DIV>
-
 		<SCRIPT type='text/javascript'>
-
 			var monthNames=[
 				'Jan',
 				'Feb',
@@ -158,7 +130,6 @@
 				'Nov',
 				'Dec'
 			];
-
 			var dayNames=[
 				'Sun',
 				'Mon',
@@ -168,7 +139,6 @@
 				'Fri',
 				'Sat'
 			];
-
 			var defaultData=[
 				{
 					date:'Tue 19-May-2026',
@@ -196,44 +166,34 @@
 					sit:'30 seconds'
 				}
 			];
-
 			function fillMonthOptions( )
 			{
 				var selectObj=document.getElementById(
 					'monthSelect'
 				);
-
 				var currentDate=new Date( );
-
 				var currentYear=currentDate.getFullYear( );
-
 				var currentMonth=currentDate.getMonth( );
-
 				for( var year=2026; 2035 >= year; ++year)
 				{
 					var startMonth=0;
-
 					if( 2026 == year )
 					{
 						startMonth=4;
 					}
-
 					for( var month=startMonth; 12 > month; ++month)
 					{
 						var optionObj=document.createElement(
 							'OPTION'
 						);
-
 						optionObj.value=
 							year+
 							'-'+
 							( '0'+( month+1 ) ).slice( -2 );
-
 						optionObj.text=
 							monthNames[month]+
 							'-'+
 							year;
-
 						if(
 							( currentYear === year ) &&
 							( currentMonth === month )
@@ -241,53 +201,41 @@
 						{
 							optionObj.selected=true;
 						}
-
 						selectObj.appendChild(
 							optionObj
 						);
 					}
 				}
 			}
-
 			function getExerciseData( )
 			{
 				var data=localStorage.getItem(
 					'exerciseData'
 				);
-
 				if( null === data )
 				{
 					localStorage.setItem(
 						'exerciseData',
 						JSON.stringify( defaultData )
 					);
-
 					return defaultData;
 				}
-
 				return JSON.parse( data );
 			}
-
 			function loadTable( )
 			{
 				var tbody=document.getElementById(
 					'exerciseBody'
 				);
-
 				var data=getExerciseData( );
-
 				tbody.innerHTML='';
-
 				var totalMinutes=0;
-
 				var totalSitSeconds=0;
-
 				for( var i=0; data.length > i; ++i)
 				{
 					var timeMatch=data[i].time.match(
 						/(\d+)\s+minutes?\s+(\d+)\s+seconds?/i
 					);
-
 					if( null !== timeMatch )
 					{
 						totalMinutes+=parseInt(
@@ -295,11 +243,9 @@
 							10
 						);
 					}
-
 					var sitMatch=data[i].sit.match(
 						/(\d+)\s+seconds?/i
 					);
-
 					if( null !== sitMatch )
 					{
 						totalSitSeconds+=parseInt(
@@ -308,38 +254,30 @@
 						);
 					}
 				}
-
 				var totalHours=Math.floor(
 					totalMinutes/60
 				);
-
 				var remainingMinutes=
 					totalMinutes%60;
-
 				var sitMinutes=Math.floor(
 					totalSitSeconds/60
 				);
-
 				var remainingSitSeconds=
 					totalSitSeconds%60;
-
 				var summaryRow=document.createElement(
 					'TR'
 				);
-
 				var summaryTd1=document.createElement(
 					'TD'
 				);
-
 				var summaryTd2=document.createElement(
 					'TD'
 				);
-
 				var summaryTd3=document.createElement(
 					'TD'
 				);
 				DayCnt=data.length;
-				if(10 > DayCnt)
+				if( 10 > DayCnt )
 				{
 					DayCnt="0"+DayCnt;
 				}
@@ -348,104 +286,83 @@
 					DayCnt+
 					' day'+
 					( 1 < data.length ? 's' : '' );
-
 				summaryTd2.innerHTML=
 					'<B>Walking time '+
 					( '0'+totalHours ).slice( -2 )+
 					' hour '+
 					( '0'+remainingMinutes ).slice( -2 )+
 					' minutes';
-
 				summaryTd3.innerHTML=
 					'<B>Sit on Floor '+
 					( '0'+sitMinutes ).slice( -2 )+
 					' minute '+
 					( '0'+remainingSitSeconds ).slice( -2 )+
 					' seconds';
-
 				summaryRow.appendChild(
 					summaryTd1
 				);
-
 				summaryRow.appendChild(
 					summaryTd2
 				);
-
 				summaryRow.appendChild(
 					summaryTd3
 				);
-
 				tbody.appendChild(
 					summaryRow
 				);
-
 				for( var i=0; data.length > i; ++i)
 				{
 					var row=document.createElement(
 						'TR'
 					);
-
 					var td1=document.createElement(
 						'TD'
 					);
-
 					var td2=document.createElement(
 						'TD'
 					);
-
 					var td3=document.createElement(
 						'TD'
 					);
-
 					td1.innerHTML=data[i].date;
-
 					td2.innerHTML=data[i].time;
-
 					td3.innerHTML=data[i].sit;
-
 					row.appendChild( td1 );
-
 					row.appendChild( td2 );
-
 					row.appendChild( td3 );
-
 					tbody.appendChild( row );
 				}
 			}
-
 			function saveExerciseData( )
 			{
 				var data=getExerciseData( );
-
 				var exerciseDate=document.getElementById(
 					'exerciseDate'
 				).value;
-
 				var exerciseMinutes=parseInt(
 					document.getElementById(
 						'exerciseMinutes'
 					).value,
 					10
 				);
-
 				var exerciseSeconds=parseInt(
 					document.getElementById(
 						'exerciseSeconds'
 					).value,
 					10
 				);
-
 				var sitFloorSeconds=parseInt(
 					document.getElementById(
 						'sitFloorSeconds'
 					).value,
 					10
 				);
-
+				var parts=exerciseDate.split( '-' );
 				var dateObj=new Date(
-					exerciseDate
+					parseInt( parts[0], 10 ),
+					parseInt( parts[1], 10 )-1,
+					parseInt( parts[2], 10 )
 				);
-
 				var formattedDate=
 					dayNames[dateObj.getDay( )]+
 					' '+
@@ -454,7 +371,6 @@
 					monthNames[dateObj.getMonth( )]+
 					'-'+
 					dateObj.getFullYear( );
-
 				data.push(
 					{
 						date:formattedDate,
@@ -468,24 +384,17 @@
 							' seconds'
 					}
 				);
-
 				localStorage.setItem(
 					'exerciseData',
 					JSON.stringify( data )
 				);
-
 				loadTable( );
-
 				alert(
 					'Exercise data saved'
 				);
 			}
-
 			fillMonthOptions( );
-
 			loadTable( );
-
 		</SCRIPT>
-
 	</BODY>
 </HTML>
