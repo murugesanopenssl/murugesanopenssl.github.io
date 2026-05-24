@@ -6,27 +6,34 @@
 <META http-equiv="Expires" content="0">
 <META charset="UTF-8">
 <META name="viewport" content="width=device-width, initial-scale=1.0">
+
 <TITLE>My Exercise</TITLE>
+
 <STYLE type='text/css'>
 BODY
 {
 	font-family:Arial;
 	font-size:14px;
 }
+
 TABLE
 {
 	border-collapse:collapse;
 	width:100%;
 }
+
 TD,TH
 {
 	border:1px solid #000000;
 	padding:5px;
+	vertical-align:top;
 }
+
 SELECT,INPUT
 {
 	font-size:14px;
 }
+
 .button1
 {
 	padding:5px 10px;
@@ -34,105 +41,35 @@ SELECT,INPUT
 }
 </STYLE>
 </HEAD>
+
 <BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+
 <DIV style='padding:10px;'>
+
 <TABLE>
 <TR>
 <TD valign='top' align='left' style='width:200px;'>
 Month :
 <SELECT id='monthSelect'></SELECT>
 </TD>
+
 <TD valign='top' align='left'>
 Today Exercise Entry
 </TD>
 </TR>
 </TABLE>
+
 <BR>
+
 <TABLE>
 <TBODY id='exerciseBody'>
 </TBODY>
 </TABLE>
-<!--
-<BR>
-<TABLE>
-<TR>
-<TD valign='top' align='left' style='width:200px;'>
-Date
-</TD>
-<TD valign='top' align='left'>
-<INPUT type='date' id='exerciseDate'>
-</TD>
-</TR>
-<TR>
-<TD valign='top' align='left'>
-Time
-</TD>
-<TD valign='top' align='left'>
-Minutes
-<INPUT
-type='number'
-id='exerciseMinutes'
-value='15'
-min='0'
-style='width:80px;'
->
-Seconds
-<INPUT
-type='number'
-id='exerciseSeconds'
-value='0'
-min='0'
-max='59'
-style='width:80px;'
->
-</TD>
-</TR>
-<TR>
-<TD valign='top' align='left'>
-Sit on Floor
-</TD>
-<TD valign='top' align='left'>
-<INPUT
-type='number'
-id='sitFloorSeconds'
-value='10'
-min='0'
-style='width:80px;'
->
-seconds
-</TD>
-</TR>
-<TR>
-<TD valign='top' align='left'>
-Standing Toe Touch
-</TD>
-<TD valign='top' align='left'>
-<INPUT
-type='number'
-id='toeTouchCount'
-value='10'
-min='0'
-style='width:80px;'
->
-times
-</TD>
-</TR>
-<TR>
-<TD valign='top' align='left'>
-</TD>
-<TD valign='top' align='left'>
-<INPUT
-type='button'
-class='button1'
-value='Save'
-onclick='saveExerciseData( );'
->
-</TD>
-</TR>
-</TABLE>
--->
+
 </DIV>
+
 <SCRIPT type='text/javascript'>
+
 var monthNames=[
 'Jan',
 'Feb',
@@ -147,6 +84,7 @@ var monthNames=[
 'Nov',
 'Dec'
 ];
+
 var dayNames=[
 'Sun',
 'Mon',
@@ -156,320 +94,374 @@ var dayNames=[
 'Fri',
 'Sat'
 ];
+
 var defaultData=[
 {
 date:'Tue 19-May-2026',
 time:'15 minutes 21 seconds',
 sit:'10 seconds',
-toeTouch:'0'
+toeTouch:'0',
+issue:""
 },
 {
 date:'Wed 20-May-2026',
 time:'13 minutes 52 seconds',
 sit:'10 seconds',
-toeTouch:'0'
+toeTouch:'0',
+issue:""
 },
 {
 date:'Thu 21-May-2026',
 time:'21 minutes 41 seconds',
 sit:'20 seconds',
-toeTouch:'0'
+toeTouch:'0',
+issue:""
 },
 {
 date:'Fri 22-May-2026',
 time:'26 minutes 34 seconds',
 sit:'25 seconds',
-toeTouch:'0'
+toeTouch:'0',
+issue:""
 },
 {
 date:'Sat 23-May-2026',
 time:'30 minutes 32 seconds',
 sit:'30 seconds',
-toeTouch:10
+toeTouch:'10',
+issue:""
+},
+{
+date:'Sun 24-May-2026',
+time:'27 minutes 57 seconds',
+sit:'30 seconds',
+toeTouch:'20',
+issue:"Left leg second toe frozen for 8 minutes after the walk time.<BR>I sat idle (rest) for 20 minutes."
 }
 ];
+
 function fillMonthOptions( )
 {
-var selectObj=document.getElementById(
-'monthSelect'
-);
-var currentDate=new Date( );
-var currentYear=currentDate.getFullYear( );
-var currentMonth=currentDate.getMonth( );
-for( var year=2026; 2035 >= year; ++year)
-{
-var startMonth=0;
-if( 2026 == year )
-{
-startMonth=4;
+	var selectObj=document.getElementById(
+	'monthSelect'
+	);
+
+	var currentDate=new Date( );
+	var currentYear=currentDate.getFullYear( );
+	var currentMonth=currentDate.getMonth( );
+
+	for( var year=2026; 2035 >= year; ++year)
+	{
+		var startMonth=0;
+
+		if( 2026 == year )
+		{
+			startMonth=4;
+		}
+
+		for( var month=startMonth; 12 > month; ++month)
+		{
+			var optionObj=document.createElement(
+			'OPTION'
+			);
+
+			optionObj.value=
+			year+
+			'-'+
+			( '0'+( month+1 ) ).slice( -2 );
+
+			optionObj.text=
+			monthNames[month]+
+			'-'+
+			year;
+
+			if(
+			( currentYear === year ) &&
+			( currentMonth === month )
+			)
+			{
+				optionObj.selected=true;
+			}
+
+			selectObj.appendChild(
+			optionObj
+			);
+		}
+	}
 }
-for( var month=startMonth; 12 > month; ++month)
-{
-var optionObj=document.createElement(
-'OPTION'
-);
-optionObj.value=
-year+
-'-'+
-( '0'+( month+1 ) ).slice( -2 );
-optionObj.text=
-monthNames[month]+
-'-'+
-year;
-if(
-( currentYear === year ) &&
-( currentMonth === month )
-)
-{
-optionObj.selected=true;
-}
-selectObj.appendChild(
-optionObj
-);
-}
-}
-}
+
 function getExerciseData( )
 {
-var data=localStorage.getItem(
-'exerciseData'
-);
-if( null === data )
-{
-localStorage.setItem(
-'exerciseData',
-JSON.stringify( defaultData )
-);
-return defaultData;
+	var data=localStorage.getItem(
+	'exerciseData'
+	);
+
+	if( null === data )
+	{
+		localStorage.setItem(
+		'exerciseData',
+		JSON.stringify( defaultData )
+		);
+
+		return defaultData;
+	}
+
+	return JSON.parse( data );
 }
-return JSON.parse( data );
-}
+
 function loadTable( )
 {
-var tbody=document.getElementById(
-'exerciseBody'
-);
-var data=getExerciseData( );
-tbody.innerHTML='';
-var totalMinutes=0;
-var totalSitSeconds=0;
-var totalToeTouchCount=0;
-for( var i=0; data.length > i; ++i)
-{
-var timeMatch=data[i].time.match(
-/(\d+)\s+minutes?\s+(\d+)\s+seconds?/i
-);
-if( null !== timeMatch )
-{
-totalMinutes+=parseInt(
-timeMatch[1],
-10
-);
+	var tbody=document.getElementById(
+	'exerciseBody'
+	);
+
+	var data=getExerciseData( );
+
+	tbody.innerHTML='';
+
+	var totalMinutes=0;
+	var totalSitSeconds=0;
+	var totalToeTouchCount=0;
+
+	for( var i=0; data.length > i; ++i)
+	{
+		var timeMatch=data[i].time.match(
+		/(\d+)\s+minutes?\s+(\d+)\s+seconds?/i
+		);
+
+		if( null !== timeMatch )
+		{
+			totalMinutes+=parseInt(
+			timeMatch[1],
+			10
+			);
+		}
+
+		var sitMatch=data[i].sit.match(
+		/(\d+)\s+seconds?/i
+		);
+
+		if( null !== sitMatch )
+		{
+			totalSitSeconds+=parseInt(
+			sitMatch[1],
+			10
+			);
+		}
+
+		totalToeTouchCount+=parseInt(
+		(
+		undefined === data[i].toeTouch
+		?
+		'0'
+		:
+		data[i].toeTouch
+		),
+		10
+		);
+	}
+
+	var totalHours=Math.floor(
+	totalMinutes/60
+	);
+
+	var remainingMinutes=
+	totalMinutes%60;
+
+	var sitMinutes=Math.floor(
+	totalSitSeconds/60
+	);
+
+	var remainingSitSeconds=
+	totalSitSeconds%60;
+
+
+
+
+
+	/* HEADER ROW */
+
+	var headerRow=document.createElement(
+	'TR'
+	);
+
+	headerRow.style.backgroundColor='#DDDDDD';
+
+	var h1=document.createElement('TD');
+	var h2=document.createElement('TD');
+	var h3=document.createElement('TD');
+	var h4=document.createElement('TD');
+	var h5=document.createElement('TD');
+
+	h1.innerHTML='<B>Date';
+	h2.innerHTML='<B>Walking Time';
+	h3.innerHTML='<B>Sit on Floor';
+	h4.innerHTML='<B>Toe Touch';
+	h5.innerHTML='<B>Issue';
+
+	headerRow.appendChild(h1);
+	headerRow.appendChild(h2);
+	headerRow.appendChild(h3);
+	headerRow.appendChild(h4);
+	headerRow.appendChild(h5);
+
+	tbody.appendChild(headerRow);
+
+
+
+
+
+	/* SUMMARY ROW */
+
+	var summaryRow=document.createElement(
+	'TR'
+	);
+
+	var summaryTd1=document.createElement(
+	'TD'
+	);
+
+	var summaryTd2=document.createElement(
+	'TD'
+	);
+
+	var summaryTd3=document.createElement(
+	'TD'
+	);
+
+	var summaryTd4=document.createElement(
+	'TD'
+	);
+
+	var summaryTd5=document.createElement(
+	'TD'
+	);
+
+	var DayCnt=data.length;
+
+	if( 10 > DayCnt )
+	{
+		DayCnt="0"+DayCnt;
+	}
+
+	summaryTd1.innerHTML=
+	'<B>'+DayCnt+' days';
+
+	summaryTd2.innerHTML=
+	'<B>'+
+	( '0'+totalHours ).slice( -2 )+
+	' hour '+
+	( '0'+remainingMinutes ).slice( -2 )+
+	' minutes';
+
+	summaryTd3.innerHTML=
+	'<B>'+
+	( '0'+sitMinutes ).slice( -2 )+
+	' minute '+
+	( '0'+remainingSitSeconds ).slice( -2 )+
+	' seconds';
+
+	summaryTd4.innerHTML=
+	'<B>'+
+	totalToeTouchCount+
+	' times';
+
+	summaryTd5.innerHTML=
+	'';
+
+	if( 0 === totalToeTouchCount )
+	{
+		summaryTd4.style.backgroundColor='red';
+		summaryTd4.style.color='white';
+	}
+
+	summaryRow.appendChild(summaryTd1);
+	summaryRow.appendChild(summaryTd2);
+	summaryRow.appendChild(summaryTd3);
+	summaryRow.appendChild(summaryTd4);
+	summaryRow.appendChild(summaryTd5);
+
+	tbody.appendChild(summaryRow);
+
+
+
+
+
+	/* DATA ROWS */
+
+	for( var i=0; data.length > i; ++i)
+	{
+		var row=document.createElement(
+		'TR'
+		);
+
+		var td1=document.createElement(
+		'TD'
+		);
+
+		var td2=document.createElement(
+		'TD'
+		);
+
+		var td3=document.createElement(
+		'TD'
+		);
+
+		var td4=document.createElement(
+		'TD'
+		);
+
+		var td5=document.createElement(
+		'TD'
+		);
+
+		td1.innerHTML=data[i].date;
+
+		td2.innerHTML=data[i].time;
+
+		td3.innerHTML=data[i].sit;
+
+		td4.innerHTML=
+		(
+		undefined === data[i].toeTouch
+		?
+		'0'
+		:
+		data[i].toeTouch
+		);
+
+		if(
+		'0' == td4.innerHTML
+		)
+		{
+			td4.innerHTML="NOT STARTED";
+			td4.style.backgroundColor='red';
+			td4.style.color='white';
+		}
+
+		td5.innerHTML=
+		(
+		undefined === data[i].issue
+		?
+		''
+		:
+		data[i].issue
+		);
+
+		row.appendChild(td1);
+		row.appendChild(td2);
+		row.appendChild(td3);
+		row.appendChild(td4);
+		row.appendChild(td5);
+
+		tbody.appendChild(row);
+	}
 }
-var sitMatch=data[i].sit.match(
-/(\d+)\s+seconds?/i
-);
-if( null !== sitMatch )
-{
-totalSitSeconds+=parseInt(
-sitMatch[1],
-10
-);
-}
-totalToeTouchCount+=parseInt(
-(
-undefined === data[i].toeTouch
-?
-'0'
-:
-data[i].toeTouch
-),
-10
-);
-}
-var totalHours=Math.floor(
-totalMinutes/60
-);
-var remainingMinutes=
-totalMinutes%60;
-var sitMinutes=Math.floor(
-totalSitSeconds/60
-);
-var remainingSitSeconds=
-totalSitSeconds%60;
-var summaryRow=document.createElement(
-'TR'
-);
-var summaryTd1=document.createElement(
-'TD'
-);
-var summaryTd2=document.createElement(
-'TD'
-);
-var summaryTd3=document.createElement(
-'TD'
-);
-var summaryTd4=document.createElement(
-'TD'
-);
-DayCnt=data.length;
-if( 10 > DayCnt )
-{
-DayCnt="0"+DayCnt;
-}
-summaryTd1.innerHTML=
-'<B>Date '+
-DayCnt+
-' days';
-summaryTd2.innerHTML=
-'<B>Walking time '+
-( '0'+totalHours ).slice( -2 )+
-' hour '+
-( '0'+remainingMinutes ).slice( -2 )+
-' minutes';
-summaryTd3.innerHTML=
-'<B>Sit on Floor '+
-( '0'+sitMinutes ).slice( -2 )+
-' minute '+
-( '0'+remainingSitSeconds ).slice( -2 )+
-' seconds';
-summaryTd4.innerHTML=
-'<B>Standing Toe Touch (left and right sides) count: '+
-totalToeTouchCount+
-' times';
-if( 0 === totalToeTouchCount )
-{
-summaryTd4.style.backgroundColor='red';
-summaryTd4.style.color='white';
-}
-summaryRow.appendChild(
-summaryTd1
-);
-summaryRow.appendChild(
-summaryTd2
-);
-summaryRow.appendChild(
-summaryTd3
-);
-summaryRow.appendChild(
-summaryTd4
-);
-tbody.appendChild(
-summaryRow
-);
-for( var i=0; data.length > i; ++i)
-{
-var row=document.createElement(
-'TR'
-);
-var td1=document.createElement(
-'TD'
-);
-var td2=document.createElement(
-'TD'
-);
-var td3=document.createElement(
-'TD'
-);
-var td4=document.createElement(
-'TD'
-);
-td1.innerHTML=data[i].date;
-td2.innerHTML=data[i].time;
-td3.innerHTML=data[i].sit;
-td4.innerHTML=
-(
-undefined === data[i].toeTouch
-?
-'0'
-:
-data[i].toeTouch
-);
-if(
-'0' == td4.innerHTML
-)
-{
-td4.innerHTML="NOT STARTED";
-td4.style.backgroundColor='red';
-td4.style.color='white';
-}
-row.appendChild( td1 );
-row.appendChild( td2 );
-row.appendChild( td3 );
-row.appendChild( td4 );
-tbody.appendChild( row );
-}
-}
-function saveExerciseData( )
-{
-var data=getExerciseData( );
-var exerciseDate=document.getElementById(
-'exerciseDate'
-).value;
-var exerciseMinutes=parseInt(
-document.getElementById(
-'exerciseMinutes'
-).value,
-10
-);
-var exerciseSeconds=parseInt(
-document.getElementById(
-'exerciseSeconds'
-).value,
-10
-);
-var sitFloorSeconds=parseInt(
-document.getElementById(
-'sitFloorSeconds'
-).value,
-10
-);
-var toeTouchCount=parseInt(
-document.getElementById(
-'toeTouchCount'
-).value,
-10
-);
-var parts=exerciseDate.split( '-' );
-var dateObj=new Date(
-parseInt( parts[0], 10 ),
-parseInt( parts[1], 10 )-1,
-parseInt( parts[2], 10 )
-);
-var formattedDate=
-dayNames[dateObj.getDay( )]+
-' '+
-( '0'+dateObj.getDate( ) ).slice( -2 )+
-'-'+
-monthNames[dateObj.getMonth( )]+
-'-'+
-dateObj.getFullYear( );
-data.push(
-{
-date:formattedDate,
-time:
-exerciseMinutes+
-' minutes '+
-exerciseSeconds+
-' seconds',
-sit:
-sitFloorSeconds+
-' seconds',
-toeTouch:
-toeTouchCount+''
-}
-);
-localStorage.setItem(
-'exerciseData',
-JSON.stringify( data )
-);
-loadTable( );
-alert(
-'Exercise data saved'
-);
-}
+
 fillMonthOptions( );
 loadTable( );
+
 </SCRIPT>
+
 </BODY>
 </HTML>
