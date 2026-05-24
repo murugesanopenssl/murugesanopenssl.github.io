@@ -101,35 +101,35 @@ date:'Tue 19-May-2026',
 time:'15 minutes 21 seconds',
 sit:'10 seconds',
 toeTouch:'0',
-issue:""
+issue:"NO ISSUE"
 },
 {
 date:'Wed 20-May-2026',
 time:'13 minutes 52 seconds',
 sit:'10 seconds',
 toeTouch:'0',
-issue:""
+issue:"NO ISSUE"
 },
 {
 date:'Thu 21-May-2026',
 time:'21 minutes 41 seconds',
 sit:'20 seconds',
 toeTouch:'0',
-issue:""
+issue:"NO ISSUE"
 },
 {
 date:'Fri 22-May-2026',
 time:'26 minutes 34 seconds',
 sit:'25 seconds',
 toeTouch:'0',
-issue:""
+issue:"NO ISSUE"
 },
 {
 date:'Sat 23-May-2026',
 time:'30 minutes 32 seconds',
 sit:'30 seconds',
 toeTouch:'10',
-issue:""
+issue:"NO ISSUE"
 },
 {
 date:'Sun 24-May-2026',
@@ -446,7 +446,15 @@ function loadTable( )
 		''
 		:
 		data[i].issue
-		);
+		)
+		if(
+		"NO ISSUE" == td5.innerHTML
+		)
+		{
+			td5.innerHTML="NO ISSUE";
+			td5.style.backgroundColor='#00ff00';
+			td5.style.color='black';
+		};
 
 		row.appendChild(td1);
 		row.appendChild(td2);
