@@ -732,6 +732,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					"Self-Insurance-Plan-for-Parents.html": "Personal Self insurance Example",
 					"post-office-mis.html": "Monthly Income Scheme (MIS)",
 					"steps-to-open-rd-postoffice.html": "Recurring Deposit (RD)",
+					"ssa-account-deposit.html": "SSA Account",
 					"Steps-to-save-money-from-mis.html": "STEPS TO SAVE MONEY FROM MIS",
 					"spending.html": "Daily Spending",
 					"2-wheeler-4-wheeler-rank.html": "Vehicle ranking",
@@ -834,6 +835,10 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				else if( "steps-to-open-rd-postoffice.html" == htmlFileName )
 				{
 					document.title = "Recurring Deposit (RD)";
+				}
+				else if( "ssa-account-deposit.html" == htmlFileName )
+				{
+					document.title = "SSA Account";
 				}
 				else if( "Steps-to-save-money-from-mis.html" == htmlFileName )
 				{
@@ -1064,6 +1069,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"Steps-to-save-money-from-mis.html": ["Post Office Savings Guide"],
 								"ppf-info.html": ["Steps to save at PPF?"],
 								"steps-to-open-rd-postoffice.html": ["Recurring Deposit (RD)"],
+								"ssa-account-deposit.html": ["SSA Account"],
 								"mis-pre-close-calculator.html": ["PRE CLOSE MIS CALC"],
 								"ippb-awareness-indian-citizens.html": ["IPPB Premium Savings Tips"],
 								"Self-Insurance-Plan-for-Parents.html": ["Personal Self-Insurance Example"],
@@ -1633,6 +1639,9 @@ function loadMoneyHelpContent( event, htmlFileName )
 								</LI>
 								<LI>
 									<A href="#" onclick='javascript:loadHomeContent( event,  "steps-to-open-rd-postoffice.html" );' class="nav-link">Recurring Deposit (RD)</A>
+								</LI>
+								<LI>
+									<A href="#" onclick='javascript:loadHomeContent( event,  "ssa-account-deposit.html" );' class="nav-link">SSA Account</A>
 								</LI>
 								<LI>
 									<A href="#" onclick='javascript:loadHomeContent( event,  "mis-pre-close-calculator.html" );' class="nav-link"><FONT color='white'>PRE CLOSE MIS CALC</FONT></A>

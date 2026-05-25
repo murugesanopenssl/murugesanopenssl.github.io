@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>SSA Account Deposit</TITLE>
+		<STYLE type='text/css'>
+			body
+			{
+				font-family:Arial,Helvetica,sans-serif;
+				font-size:14px;
+				color:#000000;
+			}
+			.container
+			{
+				width:100%;
+				padding:10px;
+				box-sizing:border-box;
+			}
+			.title
+			{
+				font-size:20px;
+				font-weight:bold;
+				padding-bottom:10px;
+			}
+			.statement
+			{
+				padding-top:10px;
+				line-height:24px;
+			}
+			.languageButton
+			{
+				cursor:pointer;
+				color:#0000FF;
+				font-weight:bold;
+			}
+		</STYLE>
+	</HEAD>
+		<TABLE border='1' style='width:100%;border-collapse:collapse;'>
+			<TR>
+				<TD valign='top' align='center'>
+					<SPAN id='languageTamil' class='languageButton' onclick='loadLanguage("tamil");'>
+						தமிழ்/తమిళం/ತಮಿಳು/तमिल/Tamil
+					</SPAN>
+				</TD>
+				<TD valign='top' align='center'>
+					<SPAN id='languageTelugu' class='languageButton' onclick='loadLanguage("telugu");'>
+						తెలుగు/தெலுங்கு/ತೆಲುಗು/तेलुगु/Telugu
+					</SPAN>
+				</TD>
+				<TD valign='top' align='center'>
+					<SPAN id='languageKannada' class='languageButton' onclick='loadLanguage("kannada");'>
+						ಕನ್ನಡ/கன்னடம்/కన్నడ/कन्नडा/Kannada
+					</SPAN>
+				</TD>
+				<TD valign='top' align='center'>
+					<SPAN id='languageHindi' class='languageButton' onclick='loadLanguage("hindi");'>
+						हिन्दी/இந்தி/హిందీ/ಹಿಂದಿ/Hindi
+					</SPAN>
+				</TD>
+				<TD valign='top' align='center'>
+					<SPAN id='languageEnglish' class='languageButton' onclick='loadLanguage("english");'>
+						English/ஆங்கிலம்/ఆంగ్లం/ಇಂಗ್ಲೀಷ್/अंग्रेज़ी
+					</SPAN>
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left' colspan='5'>
+					<DIV class='container'>
+						<DIV id='titleMessage' class='title'>
+						</DIV>
+						<DIV id='depositMessage' class='statement'>
+						</DIV>
+						<DIV id='paymentMessage' class='statement'>
+						</DIV>
+						<DIV id='minimumYearlyMessage' class='statement'>
+						</DIV>
+						<DIV id='maximumYearlyMessage' class='statement'>
+						</DIV>
+					</DIV>
+				</TD>
+			</TR>
+		</TABLE>
+		<SCRIPT type='text/javascript'>
+			var currentDate=new Date();
+			var currentYear=currentDate.getFullYear();
+			var financialStartYear=currentYear;
+			var financialEndYear=currentYear+1;
+			var yearlyMinimumAmount=250.00;
+			var yearlyMaximumAmount=150000.00;
+			var yearlyInterestRate=8.2;
+			var totalYears=15;
+			if(currentDate.getMonth()<3)
+			{
+				financialStartYear=currentYear-1;
+				financialEndYear=currentYear;
+			}
+			function getIndianCurrency(amount)
+			{
+				return amount.toLocaleString
+				(
+					'en-IN',
+					{
+						minimumFractionDigits:2,
+						maximumFractionDigits:2
+					}
+				);
+			}
+			function getMaturityAmount(yearlyDeposit,years,interestRate)
+			{
+				var totalAmount=0;
+				var yearCount=0;
+				for(yearCount=0;yearCount<years;yearCount++)
+				{
+					totalAmount=(totalAmount+yearlyDeposit)*(1+(interestRate/100));
+				}
+				return totalAmount;
+			}
+			function getFormattedDate(dateValue,startDateValue,languageName)
+			{
+				var dayNames=
+				{
+					tamil:["ஞாயிறு","திங்கள்","செவ்வாய்","புதன்","வியாழன்","வெள்ளி","சனி"],
+					telugu:["ఆది","సోమ","మంగళ","బుధ","గురు","శుక్ర","శని"],
+					kannada:["ಭಾನು","ಸೋಮ","ಮಂಗಳ","ಬುಧ","ಗುರು","ಶುಕ್ರ","ಶನಿ"],
+					hindi:["रवि","सोम","मंगल","बुध","गुरु","शुक्र","शनि"],
+					english:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+				};
+				var monthNames=
+				{
+					tamil:["ஜன","பிப்","மார்","ஏப்","மே","ஜூன்","ஜூலை","ஆக","செப்","அக்","நவ","டிச"],
+					telugu:["జన","ఫిబ్ర","మార్","ఏప్రి","మే","జూన్","జూలై","ఆగ","సెప్","అక్టో","నవ","డిసె"],
+					kannada:["ಜನ","ಫೆಬ್","ಮಾರ್","ಏಪ್ರಿ","ಮೇ","ಜೂನ್","ಜುಲೈ","ಆಗ","ಸೆಪ್","ಅಕ್ಟೋ","ನವೆಂ","ಡಿಸೆಂ"],
+					hindi:["जन","फर","मार्च","अप्रै","मई","जून","जुल","अग","सित","अक्टू","नव","दिस"],
+					english:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+				};
+				var currentDayName=dayNames[languageName][dateValue.getDay()];
+				var currentDateValue=dateValue.getDate().toString().padStart(2,"0");
+				var currentMonthName=monthNames[languageName][dateValue.getMonth()];
+				var currentYearValue=dateValue.getFullYear();
+				return currentDayName+" "+currentDateValue+"-"+currentMonthName+"-"+currentYearValue+" IST";
+			}
+			function loadLanguage(languageName)
+			{
+				var languages=["tamil","telugu","kannada","hindi","english"];
+				var labels=
+				{
+					tamil:"தமிழ்/తమిళం/ತಮಿಳು/तमिल/Tamil",
+					telugu:"తెలుగు/தெலுங்கு/ತೆಲುಗು/तेलुगु/Telugu",
+					kannada:"ಕನ್ನಡ/கன்னடம்/కన్నడ/कन्नडा/Kannada",
+					hindi:"हिन्दी/இந்தி/హిందీ/ಹಿಂದಿ/Hindi",
+					english:"English/ஆங்கிலம்/ఆంగ్లం/ಇಂಗ್ಲೀಷ್/अंग्रेज़ी"
+				};
+				var i=0;
+				for (i = 0; i < languages.length; i++) {
+					var lang = languages[i];
+					var el = document.getElementById("language" + lang.charAt(0).toUpperCase() + lang.slice(1));
+
+					if (el != null) {
+						el.innerHTML = labels[lang];
+
+						if (lang === languageName) {
+							// ACTIVE LANGUAGE
+							el.removeAttribute("onclick");
+							el.style.pointerEvents = "none";
+							el.style.opacity = "0.6";
+							el.style.color = "red";   // ✅ ACTIVE = RED
+						} else {
+							// INACTIVE LANGUAGE
+							el.setAttribute("onclick", 'loadLanguage("' + lang + '");');
+							el.style.pointerEvents = "auto";
+							el.style.opacity = "1";
+							el.style.color = "#0000FF"; // BLUE
+						}
+					}
+				}
+				var selectedEl=document.getElementById("language"+languageName.charAt(0).toUpperCase()+languageName.slice(1));
+				if(selectedEl!=null)
+				{
+					selectedEl.innerHTML=labels[languageName];
+					selectedEl.removeAttribute("onclick");
+				}
+				var maturityDate=new Date(currentDate);
+				maturityDate.setFullYear(currentDate.getFullYear()+21);
+				var formattedDate=getFormattedDate(maturityDate,currentDate,languageName);
+				var minimumMaturityAmount=getMaturityAmount(yearlyMinimumAmount,totalYears,yearlyInterestRate);
+				var maximumMaturityAmount=getMaturityAmount(yearlyMaximumAmount,totalYears,yearlyInterestRate);
+				var languageContent=
+				{
+					tamil:
+					{
+						title:"இந்திய தபால் நிலையத்தில் செல்வமகள் சேமிப்பு கணக்கு வைப்பு",
+						deposit:"இந்திய தபால் நிலையத்தில் செல்வமகள் சேமிப்பு கணக்கு தொடங்கிய பிறகு முதல் முறையாக குறைந்தபட்சம் 250.00 ரூபாய் செலுத்த வேண்டும்.<BR>ஒவ்வொரு ஆண்டும் குறைந்தபட்சம் 250.00 ரூபாய் முதல் அதிகபட்சம் 150000.00 ரூபாய் வரை செலுத்தலாம்.<BR>01-ஏப்-"+financialStartYear+" முதல் 31-மார்-"+financialEndYear+" வரை முதல் தொகை செலுத்த வேண்டும்.",
+						payment:"குறைந்தபட்ச தொகை செலுத்திய பிறகு இணைய வங்கியின் மூலம் 50.00 ரூபாய் அல்லது அதன் மடங்குகளில் தொகை செலுத்தலாம்.",
+						minimum:"25-மே-2026 IST முதல் ஒவ்வொரு ஆண்டும் 250.00 ரூபாய் செலுத்தினால் "+totalYears+" ஆண்டுகளுக்குப் பிறகு "+formattedDate+" அன்று மொத்தமாக "+getIndianCurrency(minimumMaturityAmount)+" ரூபாய் கிடைக்கும்.",
+						maximum:"முதல் ஆண்டிலிருந்து "+totalYears+" ஆண்டுகள் வரை ஒவ்வொரு ஆண்டும் 150000.00 ரூபாய் செலுத்தினால் "+formattedDate+" அன்று மொத்தமாக "+getIndianCurrency(maximumMaturityAmount)+" ரூபாய் கிடைக்கும்."
+					},
+					telugu:
+					{
+						title:"భారత తపాలా కార్యాలయంలో సుకన్య సమృద్ధి ఖాతా జమ",
+						deposit:"భారత తపాలా కార్యాలయంలో సుకన్య సమృద్ధి ఖాతా ప్రారంభించిన తరువాత మొదటిసారి కనీసం 250.00 రూపాయలు జమ చేయాలి.<BR>ప్రతి సంవత్సరం కనీసం 250.00 రూపాయల నుండి గరిష్టంగా 150000.00 రూపాయల వరకు జమ చేయవచ్చు.<BR>01-ఏప్రి-"+financialStartYear+" నుండి 31-మార్-"+financialEndYear+" వరకు మొదటి మొత్తం జమ చేయాలి.",
+						payment:"కనీస మొత్తం జమ చేసిన తరువాత ఇంటర్నెట్ బ్యాంకింగ్ ద్వారా 50.00 రూపాయలు లేదా దాని గుణితాలలో జమ చేయవచ్చు.",
+						minimum:"25-మే-2026 IST నుండి ప్రతి సంవత్సరం 250.00 రూపాయలు జమ చేస్తే "+totalYears+" సంవత్సరాల తరువాత "+formattedDate+" నాటికి మొత్తం "+getIndianCurrency(minimumMaturityAmount)+" రూపాయలు లభిస్తాయి.",
+						maximum:"మొదటి సంవత్సరం నుండి "+totalYears+" సంవత్సరాల వరకు ప్రతి సంవత్సరం 150000.00 రూపాయలు జమ చేస్తే "+formattedDate+" నాటికి మొత్తం "+getIndianCurrency(maximumMaturityAmount)+" రూపాయలు లభిస్తాయి."
+					},
+					kannada:
+					{
+						title:"ಭಾರತ ಅಂಚೆ ಕಚೇರಿಯಲ್ಲಿ ಸುಕನ್ಯ ಸಮೃದ್ಧಿ ಖಾತೆ ಠೇವಣಿ",
+						deposit:"ಭಾರತ ಅಂಚೆ ಕಚೇರಿಯಲ್ಲಿ ಸುಕನ್ಯ ಸಮೃದ್ಧಿ ಖಾತೆ ತೆರೆಯುವ ನಂತರ ಮೊದಲ ಬಾರಿ ಕನಿಷ್ಠ 250.00 ರೂಪಾಯಿ ಠೇವಣಿ ಮಾಡಬೇಕು.<BR>ಪ್ರತಿ ವರ್ಷ ಕನಿಷ್ಠ 250.00 ರೂಪಾಯಿಯಿಂದ ಗರಿಷ್ಠ 150000.00 ರೂಪಾಯಿವರೆಗೆ ಠೇವಣಿ ಮಾಡಬಹುದು.<BR>01-ಏಪ್ರಿ-"+financialStartYear+" ರಿಂದ 31-ಮಾರ್-"+financialEndYear+" ರವರೆಗೆ ಮೊದಲ ಮೊತ್ತ ಠೇವಣಿ ಮಾಡಬೇಕು.",
+						payment:"ಕನಿಷ್ಠ ಮೊತ್ತ ಠೇವಣಿ ಮಾಡಿದ ನಂತರ ಇಂಟರ್ನೆಟ್ ಬ್ಯಾಂಕಿಂಗ್ ಮೂಲಕ 50.00 ರೂಪಾಯಿ ಅಥವಾ ಅದರ ಗುಣಾಕಾರ ಮೊತ್ತಗಳನ್ನು ಠೇವಣಿ ಮಾಡಬಹುದು.",
+						minimum:"25-ಮೇ-2026 IST ರಿಂದ ಪ್ರತಿ ವರ್ಷ 250.00 ರೂಪಾಯಿ ಠೇವಣಿ ಮಾಡಿದರೆ "+totalYears+" ವರ್ಷಗಳ ನಂತರ "+formattedDate+" ರಂದು ಒಟ್ಟು "+getIndianCurrency(minimumMaturityAmount)+" ರೂಪಾಯಿ ದೊರೆಯುತ್ತದೆ.",
+						maximum:"ಮೊದಲ ವರ್ಷದಿನಿಂದ "+totalYears+" ವರ್ಷಗಳವರೆಗೆ ಪ್ರತಿ ವರ್ಷ 150000.00 ರೂಪಾಯಿ ಠೇವಣಿ ಮಾಡಿದರೆ "+formattedDate+" ರಂದು ಒಟ್ಟು "+getIndianCurrency(maximumMaturityAmount)+" ರೂಪಾಯಿ ದೊರೆಯುತ್ತದೆ."
+					},
+					hindi:
+					{
+						title:"भारतीय डाकघर में सुकन्या समृद्धि खाता जमा",
+						deposit:"भारतीय डाकघर में सुकन्या समृद्धि खाता खोलने के बाद पहली बार न्यूनतम 250.00 रुपये जमा करना आवश्यक है.<BR>प्रत्येक वर्ष न्यूनतम 250.00 रुपये से अधिकतम 150000.00 रुपये तक जमा किया जा सकता है.<BR>01-अप्रै-"+financialStartYear+" से 31-मार्च-"+financialEndYear+" तक पहली राशि जमा करनी होगी.",
+						payment:"न्यूनतम राशि जमा करने के बाद इंटरनेट बैंकिंग द्वारा 50.00 रुपये या उसके गुणकों में राशि जमा की जा सकती है.",
+						minimum:"25-मई-2026 IST से प्रत्येक वर्ष 250.00 रुपये जमा करने पर "+totalYears+" वर्षों के बाद "+formattedDate+" को कुल "+getIndianCurrency(minimumMaturityAmount)+" रुपये प्राप्त होंगे.",
+						maximum:"पहले वर्ष से "+totalYears+" वर्षों तक प्रत्येक वर्ष 150000.00 रुपये जमा करने पर "+formattedDate+" को कुल "+getIndianCurrency(maximumMaturityAmount)+" रुपये प्राप्त होंगे."
+					},
+					english:
+					{
+						title:"SSA (SUKANYA SAMRIDDHI ACCOUNT) ACCOUNT DEPOSIT AT INDIAN POST OFFICE",
+						deposit:"After opening a SSA account at indian post office, minimum amount of 250.00 INR should be deposited for the first time.<BR>During each year minimum amount of 250.00 INR to maximum amount of 150000.00 INR can be deposited.<BR>Minimum amount for the first time on or after 01-Apr-"+financialStartYear+" till 31-Mar-"+financialEndYear+".",
+						payment:"Once minimum amount is deposited, 50.00 INR or multiples of 50.00 INR can be deposited using internet banking.",
+						minimum:"If you deposit minimum amount of 250.00 INR each year from 25-May-2026 IST, after "+totalYears+" years you will receive total amount of "+getIndianCurrency(minimumMaturityAmount)+" INR on "+formattedDate+".",
+						maximum:"If you deposit maximum amount of 150000.00 INR each year for "+totalYears+" years, you will receive total amount of "+getIndianCurrency(maximumMaturityAmount)+" INR on "+formattedDate+"."
+					}
+				};
+				document.getElementById("titleMessage").innerHTML=languageContent[languageName].title;
+				document.getElementById("depositMessage").innerHTML=languageContent[languageName].deposit;
+				document.getElementById("paymentMessage").innerHTML=languageContent[languageName].payment;
+				document.getElementById("minimumYearlyMessage").innerHTML=languageContent[languageName].minimum;
+				document.getElementById("maximumYearlyMessage").innerHTML=languageContent[languageName].maximum;
+			}
+			function initSSA() {
+				loadLanguage("tamil");
+			}
+			if (document.readyState === "loading") {
+				document.addEventListener("DOMContentLoaded", initSSA);
+			} else {
+				initSSA();
+			}
+		</SCRIPT>
+	</BODY>
+</HTML>

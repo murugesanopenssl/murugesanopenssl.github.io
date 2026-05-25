@@ -1,475 +1,159 @@
 <!DOCTYPE html>
-<HTML lang="en">
-<HEAD>
-<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<META http-equiv="Pragma" content="no-cache">
-<META http-equiv="Expires" content="0">
-<META charset="UTF-8">
-<META name="viewport" content="width=device-width, initial-scale=1.0">
-
-<TITLE>My Exercise</TITLE>
-
-<STYLE type='text/css'>
-BODY
-{
-	font-family:Arial;
-	font-size:14px;
-}
-
-TABLE
-{
-	border-collapse:collapse;
-	width:100%;
-}
-
-TD,TH
-{
-	border:1px solid #000000;
-	padding:5px;
-	vertical-align:top;
-}
-
-SELECT,INPUT
-{
-	font-size:14px;
-}
-
-.button1
-{
-	padding:5px 10px;
-	cursor:pointer;
-}
-</STYLE>
-</HEAD>
-
-<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-
-<DIV style='padding:10px;'>
-
-<TABLE>
-<TR>
-<TD valign='top' align='left' style='width:200px;'>
-Month :
-<SELECT id='monthSelect'></SELECT>
-</TD>
-
-<TD valign='top' align='left'>
-Today Exercise Entry
-</TD>
-</TR>
-</TABLE>
-
-<BR>
-
-<TABLE>
-<TBODY id='exerciseBody'>
-</TBODY>
-</TABLE>
-
-</DIV>
-
-<SCRIPT type='text/javascript'>
-
-var monthNames=[
-'Jan',
-'Feb',
-'Mar',
-'Apr',
-'May',
-'Jun',
-'Jul',
-'Aug',
-'Sep',
-'Oct',
-'Nov',
-'Dec'
-];
-
-var dayNames=[
-'Sun',
-'Mon',
-'Tue',
-'Wed',
-'Thu',
-'Fri',
-'Sat'
-];
-
-var defaultData=[
-{
-date:'Tue 19-May-2026',
-time:'15 minutes 21 seconds',
-sit:'10 seconds',
-toeTouch:'0',
-issue:"NO ISSUE"
-},
-{
-date:'Wed 20-May-2026',
-time:'13 minutes 52 seconds',
-sit:'10 seconds',
-toeTouch:'0',
-issue:"NO ISSUE"
-},
-{
-date:'Thu 21-May-2026',
-time:'21 minutes 41 seconds',
-sit:'20 seconds',
-toeTouch:'0',
-issue:"NO ISSUE"
-},
-{
-date:'Fri 22-May-2026',
-time:'26 minutes 34 seconds',
-sit:'25 seconds',
-toeTouch:'0',
-issue:"NO ISSUE"
-},
-{
-date:'Sat 23-May-2026',
-time:'30 minutes 32 seconds',
-sit:'30 seconds',
-toeTouch:'10',
-issue:"NO ISSUE"
-},
-{
-date:'Sun 24-May-2026',
-time:'27 minutes 57 seconds',
-sit:'30 seconds',
-toeTouch:'20',
-issue:"Left leg second toe frozen for 8 minutes after the walk time.<BR>I sat idle (rest) for 20 minutes."
-}
-];
-
-function fillMonthOptions( )
-{
-	var selectObj=document.getElementById(
-	'monthSelect'
-	);
-
-	var currentDate=new Date( );
-	var currentYear=currentDate.getFullYear( );
-	var currentMonth=currentDate.getMonth( );
-
-	for( var year=2026; 2035 >= year; ++year)
-	{
-		var startMonth=0;
-
-		if( 2026 == year )
-		{
-			startMonth=4;
-		}
-
-		for( var month=startMonth; 12 > month; ++month)
-		{
-			var optionObj=document.createElement(
-			'OPTION'
-			);
-
-			optionObj.value=
-			year+
-			'-'+
-			( '0'+( month+1 ) ).slice( -2 );
-
-			optionObj.text=
-			monthNames[month]+
-			'-'+
-			year;
-
-			if(
-			( currentYear === year ) &&
-			( currentMonth === month )
-			)
-			{
-				optionObj.selected=true;
-			}
-
-			selectObj.appendChild(
-			optionObj
-			);
-		}
-	}
-}
-
-function getExerciseData( )
-{
-	var data=localStorage.getItem(
-	'exerciseData'
-	);
-
-	if( null === data )
-	{
-		localStorage.setItem(
-		'exerciseData',
-		JSON.stringify( defaultData )
-		);
-
-		return defaultData;
-	}
-
-	return JSON.parse( data );
-}
-
-function loadTable( )
-{
-	var tbody=document.getElementById(
-	'exerciseBody'
-	);
-
-	var data=getExerciseData( );
-
-	tbody.innerHTML='';
-
-	var totalMinutes=0;
-	var totalSitSeconds=0;
-	var totalToeTouchCount=0;
-
-	for( var i=0; data.length > i; ++i)
-	{
-		var timeMatch=data[i].time.match(
-		/(\d+)\s+minutes?\s+(\d+)\s+seconds?/i
-		);
-
-		if( null !== timeMatch )
-		{
-			totalMinutes+=parseInt(
-			timeMatch[1],
-			10
-			);
-		}
-
-		var sitMatch=data[i].sit.match(
-		/(\d+)\s+seconds?/i
-		);
-
-		if( null !== sitMatch )
-		{
-			totalSitSeconds+=parseInt(
-			sitMatch[1],
-			10
-			);
-		}
-
-		totalToeTouchCount+=parseInt(
-		(
-		undefined === data[i].toeTouch
-		?
-		'0'
-		:
-		data[i].toeTouch
-		),
-		10
-		);
-	}
-
-	var totalHours=Math.floor(
-	totalMinutes/60
-	);
-
-	var remainingMinutes=
-	totalMinutes%60;
-
-	var sitMinutes=Math.floor(
-	totalSitSeconds/60
-	);
-
-	var remainingSitSeconds=
-	totalSitSeconds%60;
-
-
-
-
-
-	/* HEADER ROW */
-
-	var headerRow=document.createElement(
-	'TR'
-	);
-
-	headerRow.style.backgroundColor='#DDDDDD';
-
-	var h1=document.createElement('TD');
-	var h2=document.createElement('TD');
-	var h3=document.createElement('TD');
-	var h4=document.createElement('TD');
-	var h5=document.createElement('TD');
-
-	h1.innerHTML='<B>Date';
-	h2.innerHTML='<B>Walking Time';
-	h3.innerHTML='<B>Sit on Floor';
-	h4.innerHTML='<B>Toe Touch';
-	h5.innerHTML='<B>Issue';
-
-	headerRow.appendChild(h1);
-	headerRow.appendChild(h2);
-	headerRow.appendChild(h3);
-	headerRow.appendChild(h4);
-	headerRow.appendChild(h5);
-
-	tbody.appendChild(headerRow);
-
-
-
-
-
-	/* SUMMARY ROW */
-
-	var summaryRow=document.createElement(
-	'TR'
-	);
-
-	var summaryTd1=document.createElement(
-	'TD'
-	);
-
-	var summaryTd2=document.createElement(
-	'TD'
-	);
-
-	var summaryTd3=document.createElement(
-	'TD'
-	);
-
-	var summaryTd4=document.createElement(
-	'TD'
-	);
-
-	var summaryTd5=document.createElement(
-	'TD'
-	);
-
-	var DayCnt=data.length;
-
-	if( 10 > DayCnt )
-	{
-		DayCnt="0"+DayCnt;
-	}
-
-	summaryTd1.innerHTML=
-	'<B>'+DayCnt+' days';
-
-	summaryTd2.innerHTML=
-	'<B>'+
-	( '0'+totalHours ).slice( -2 )+
-	' hour '+
-	( '0'+remainingMinutes ).slice( -2 )+
-	' minutes';
-
-	summaryTd3.innerHTML=
-	'<B>'+
-	( '0'+sitMinutes ).slice( -2 )+
-	' minute '+
-	( '0'+remainingSitSeconds ).slice( -2 )+
-	' seconds';
-
-	summaryTd4.innerHTML=
-	'<B>'+
-	totalToeTouchCount+
-	' times';
-
-	summaryTd5.innerHTML=
-	'';
-
-	if( 0 === totalToeTouchCount )
-	{
-		summaryTd4.style.backgroundColor='red';
-		summaryTd4.style.color='white';
-	}
-
-	summaryRow.appendChild(summaryTd1);
-	summaryRow.appendChild(summaryTd2);
-	summaryRow.appendChild(summaryTd3);
-	summaryRow.appendChild(summaryTd4);
-	summaryRow.appendChild(summaryTd5);
-
-	tbody.appendChild(summaryRow);
-
-
-
-
-
-	/* DATA ROWS */
-
-	for( var i=0; data.length > i; ++i)
-	{
-		var row=document.createElement(
-		'TR'
-		);
-
-		var td1=document.createElement(
-		'TD'
-		);
-
-		var td2=document.createElement(
-		'TD'
-		);
-
-		var td3=document.createElement(
-		'TD'
-		);
-
-		var td4=document.createElement(
-		'TD'
-		);
-
-		var td5=document.createElement(
-		'TD'
-		);
-
-		td1.innerHTML=data[i].date;
-
-		td2.innerHTML=data[i].time;
-
-		td3.innerHTML=data[i].sit;
-
-		td4.innerHTML=
-		(
-		undefined === data[i].toeTouch
-		?
-		'0'
-		:
-		data[i].toeTouch
-		);
-
-		if(
-		'0' == td4.innerHTML
-		)
-		{
-			td4.innerHTML="NOT STARTED";
-			td4.style.backgroundColor='red';
-			td4.style.color='white';
-		}
-
-		td5.innerHTML=
-		(
-		undefined === data[i].issue
-		?
-		''
-		:
-		data[i].issue
-		)
-		if(
-		"NO ISSUE" == td5.innerHTML
-		)
-		{
-			td5.innerHTML="NO ISSUE";
-			td5.style.backgroundColor='#00ff00';
-			td5.style.color='black';
-		};
-
-		row.appendChild(td1);
-		row.appendChild(td2);
-		row.appendChild(td3);
-		row.appendChild(td4);
-		row.appendChild(td5);
-
-		tbody.appendChild(row);
-	}
-}
-
-fillMonthOptions( );
-loadTable( );
-
-</SCRIPT>
-
-</BODY>
-</HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise Tracker</title>
+</head>
+<body>
+
+    <h3>Exercise Master Plan</h3>
+    <table border='1' style='width:100%; border-collapse: collapse; margin-bottom: 20px;'>
+        <tr style='background-color:#d3d3d3;'>
+            <th align='left'>S.No.</th>
+            <th align='left'>Exercise Details</th>
+            <th align='left'>Primary Benefit & Stomach Fat Loss Status</th>
+        </tr>
+        <tr style='background-color:#00ff00;'>
+            <td>01</td>
+            <td><strong>Walking</strong><br>Burns overall body fat, including stomach fat, by burning calories.</td>
+            <td>Required (Most important)</td>
+        </tr>
+        <tr style='background-color:#00ff00;'>
+            <td>02</td>
+            <td><strong>Sit on the Floor</strong><br>Sit on the floor without letting your backside touch the ground for 35 seconds.</td>
+            <td>Required</td>
+        </tr>
+        <tr style='background-color:#00ff00;'>
+            <td>03</td>
+            <td><strong>Single Leg Raises / Circles</strong><br>Lay on floor. Raise leg 90 degrees / circle. Builds lower abdominal stability.</td>
+            <td>Required</td>
+        </tr>
+        <tr style='background-color:#00ff00;'>
+            <td>04</td>
+            <td><strong>Wall Plank</strong><br>Stand in front of wall<BR>Tooch the wall<BR>Go front and back by moving the body</td>
+            <td>Required</td>
+        </tr>
+        <tr style='background-color:#00ffff;'>
+            <td>05</td>
+            <td><strong>Foot Rotation</strong><br>Sit on chair, rotate foot/ankle, do not move legs. Therapeutic movement.</td>
+            <td>Therapeutic (For Left Toe Recovery Only)</td>
+        </tr>
+        <tr style='background-color:red; color:white;'>
+            <td>06</td>
+            <td><strong>Foot Touching</strong><br>Touching foot from Tue 19-May-2026 to Mon 25-May-2026.</td>
+            <td>Not required to reduce fat</td>
+        </tr>
+        <tr style='background-color:red; color:white;'>
+            <td>07</td>
+            <td><strong>Dynamic Upper-Body Expansion Exercise</strong><br>I stood, keep fingers at mid of chest, expand hands moving away and keep touching mid of chest again. Done from Tue 19-May-2026 to Mon 25-May-2026.</td>
+            <td>Not required to reduce fat</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>Daily Progress Log (May 2026)</h3>
+    <table border='1' id='logTable' style='width:100%; border-collapse: collapse;'>
+        <thead>
+            <tr style='background-color:#d3d3d3;'>
+                <th valign='top' align='left'>Day</th>
+                <th valign='top' align='left'>Date</th>
+                <th valign='top' align='left'>Walking Time<br>(MM:SS)</th>
+                <th valign='top' align='left'>Sit on Floor<br>(Seconds)</th>
+                <th valign='top' align='left'>
+                    Leg Raises/Circles<BR>
+                    Lay on floor at sleep position.<BR>
+                    Raise right leg for n times.<BR>
+                    Do the same using left leg.
+                </th>
+                <th valign='top' align='left'>Wall Plank<br>Stand in front of wall<BR>Tooch the wall<BR>Go front and back by moving the body</th>
+                <th valign='top' align='left'>Foot Rotation<br>Sit on chair</th>
+                <th valign='top' align='left'>Issue / Notes</th>
+            </tr>
+            <tr style='background-color:#ffffcc; font-weight:bold;'>
+                <td>Total:</td>
+                <td>7 days</td>
+                <td>2h 41m 51s</td>
+                <td>135 seconds</td>
+                <td>NOT STARTED</td>
+                <td>10 times</td>
+                <td>280 times</td>
+                <td>Review medical issues below</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01</td>
+                <td>Tue 19-May-2026</td>
+                <td>15:21</td>
+                <td>10</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td>40</td>
+                <td>NO ISSUE</td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>Wed 20-May-2026</td>
+                <td>13:52</td>
+                <td>10</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td>40</td>
+                <td>NO ISSUE</td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>Thu 21-May-2026</td>
+                <td>21:41</td>
+                <td>10</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td>40</td>
+                <td>NO ISSUE</td>
+            </tr>
+            <tr>
+                <td>04</td>
+                <td>Fri 22-May-2026</td>
+                <td>26:34</td>
+                <td>10</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td>40</td>
+                <td>NO ISSUE</td>
+            </tr>
+            <tr>
+                <td>05</td>
+                <td>Sat 23-May-2026</td>
+                <td>30:32</td>
+                <td>20</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td>40</td>
+                <td>NO ISSUE</td>
+            </tr>
+            <tr>
+                <td>06</td>
+                <td>Sun 24-May-2026</td>
+                <td>27:57</td>
+                <td>35</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td>40</td>
+                <td style="background-color: #ffcccc;">Second toe at Left leg frozen for 8 mins after walk. Sat idle 20 mins.</td>
+            </tr>
+            <tr>
+                <td>07</td>
+                <td>Mon 25-May-2026</td>
+                <td>36:00</td>
+                <td>40</td>
+                <td style='background-color:red;color:white;'>NOT STARTED</td>
+                <td>10</td>
+                <td>40</td>
+                <td style="background-color: #ffcccc;">Second toe at left frozen for 5 seconds when taking bath.</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
