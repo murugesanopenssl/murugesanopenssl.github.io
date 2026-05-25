@@ -733,7 +733,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					"post-office-mis.html": "Monthly Income Scheme (MIS)",
 					"steps-to-open-rd-postoffice.html": "Recurring Deposit (RD)",
 					"ssa-account-deposit.html": "SSA Account",
-					"td-better-than-mis.html": "TD vs MIS: Which Strategy Wins?",
+					"td-better-than-mis-nsc.html": "TD vs MIS: Which Strategy Wins?",
 					"Steps-to-save-money-from-mis.html": "STEPS TO SAVE MONEY FROM MIS",
 					"spending.html": "Daily Spending",
 					"2-wheeler-4-wheeler-rank.html": "Vehicle ranking",
@@ -841,7 +841,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
     {
         document.title = "SSA Account";
     }
-    else if( "td-better-than-mis.html" == htmlFileName )
+    else if( "td-better-than-mis-nsc.html" == htmlFileName )
     {
         document.title = "TD vs MIS: Which Strategy Wins?";
     }
@@ -959,7 +959,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
                 // ==========================================
                 // FIX: MANUAL LANGUAGES INITIALIZATION FOR INJECTED DOM
                 // ==========================================
-                if (htmlFileName.includes("td-better-than-mis.html")) {
+                if (htmlFileName.includes("td-better-than-mis-nsc.html")) {
                     console.log("=== Triggering manual loadLanguage configuration ===");
                     // Short timeout ensures the inline scripts have fully bound variables to 'window'
                     setTimeout(function() {
@@ -1093,7 +1093,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
                     "ppf-info.html": ["Steps to save at PPF?"],
                     "steps-to-open-rd-postoffice.html": ["Recurring Deposit (RD)"],
                     "ssa-account-deposit.html": ["SSA Account"],
-                    "td-better-than-mis.html": ["TD vs MIS: Which Strategy Wins?"],
+                    "td-better-than-mis-nsc.html": ["TD vs MIS: Which Strategy Wins?"],
                     "mis-pre-close-calculator.html": ["PRE CLOSE MIS CALC"],
                     "ippb-awareness-indian-citizens.html": ["IPPB Premium Savings Tips"],
                     "Self-Insurance-Plan-for-Parents.html": ["Personal Self-Insurance Example"],
@@ -1638,7 +1638,7 @@ function loadMoneyHelpContent( event, htmlFileName )
 									<A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>Monthly Income Scheme (MIS)</FONT></A>
 								</LI>
 								<LI>
-									<A href="#" onclick='javascript:loadHomeContent( event,  "td-better-than-mis.html" );' class="nav-link">TD vs MIS: Which Strategy Wins?</A>
+									<A href="#" onclick='javascript:loadHomeContent( event,  "td-better-than-mis-nsc.html" );' class="nav-link">TD vs MIS: Which Strategy Wins?</A>
 								</LI>
 								<LI>
 									<A href="#" onclick='javascript:loadHomeContent( event,  "steps-to-open-rd-postoffice.html" );' class="nav-link">Recurring Deposit (RD)</A>
