@@ -1,159 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Exercise Tracker</title>
+	<meta charset="UTF-8">
+	<title>Exercise Master Plan Sub-Page</title>
+	<style>
+		body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+		table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background-color: #fff; }
+		th, TD { border: 1px solid #ccc; padding: 10px; text-align: left; font-size: 14px; }
+		th { background-color: #f2f2f2; font-weight: bold; }
+		h2, h3 { color: #333; margin-bottom: 10px; }
+	</style>
 </head>
 <body>
-
-    <h3>Exercise Master Plan</h3>
-    <table border='1' style='width:100%; border-collapse: collapse; margin-bottom: 20px;'>
-        <tr style='background-color:#d3d3d3;'>
-            <th align='left'>S.No.</th>
-            <th align='left'>Exercise Details</th>
-            <th align='left'>Primary Benefit & Stomach Fat Loss Status</th>
-        </tr>
-        <tr style='background-color:#00ff00;'>
-            <td>01</td>
-            <td><strong>Walking</strong><br>Burns overall body fat, including stomach fat, by burning calories.</td>
-            <td>Required (Most important)</td>
-        </tr>
-        <tr style='background-color:#00ff00;'>
-            <td>02</td>
-            <td><strong>Sit on the Floor</strong><br>Sit on the floor without letting your backside touch the ground for 35 seconds.</td>
-            <td>Required</td>
-        </tr>
-        <tr style='background-color:#00ff00;'>
-            <td>03</td>
-            <td><strong>Single Leg Raises / Circles</strong><br>Lay on floor. Raise leg 90 degrees / circle. Builds lower abdominal stability.</td>
-            <td>Required</td>
-        </tr>
-        <tr style='background-color:#00ff00;'>
-            <td>04</td>
-            <td><strong>Wall Plank</strong><br>Stand in front of wall<BR>Tooch the wall<BR>Go front and back by moving the body</td>
-            <td>Required</td>
-        </tr>
-        <tr style='background-color:#00ffff;'>
-            <td>05</td>
-            <td><strong>Foot Rotation</strong><br>Sit on chair, rotate foot/ankle, do not move legs. Therapeutic movement.</td>
-            <td>Therapeutic (For Left Toe Recovery Only)</td>
-        </tr>
-        <tr style='background-color:red; color:white;'>
-            <td>06</td>
-            <td><strong>Foot Touching</strong><br>Touching foot from Tue 19-May-2026 to Mon 25-May-2026.</td>
-            <td>Not required to reduce fat</td>
-        </tr>
-        <tr style='background-color:red; color:white;'>
-            <td>07</td>
-            <td><strong>Dynamic Upper-Body Expansion Exercise</strong><br>I stood, keep fingers at mid of chest, expand hands moving away and keep touching mid of chest again. Done from Tue 19-May-2026 to Mon 25-May-2026.</td>
-            <td>Not required to reduce fat</td>
-        </tr>
-    </table>
-
-    <hr>
-
-    <h3>Daily Progress Log (May 2026)</h3>
-    <table border='1' id='logTable' style='width:100%; border-collapse: collapse;'>
-        <thead>
-            <tr style='background-color:#d3d3d3;'>
-                <th valign='top' align='left'>Day</th>
-                <th valign='top' align='left'>Date</th>
-                <th valign='top' align='left'>Walking Time<br>(MM:SS)</th>
-                <th valign='top' align='left'>Sit on Floor<br>(Seconds)</th>
-                <th valign='top' align='left'>
-                    Leg Raises/Circles<BR>
-                    Lay on floor at sleep position.<BR>
-                    Raise right leg for n times.<BR>
-                    Do the same using left leg.
-                </th>
-                <th valign='top' align='left'>Wall Plank<br>Stand in front of wall<BR>Tooch the wall<BR>Go front and back by moving the body</th>
-                <th valign='top' align='left'>Foot Rotation<br>Sit on chair</th>
-                <th valign='top' align='left'>Issue / Notes</th>
-            </tr>
-            <tr style='background-color:#ffffcc; font-weight:bold;'>
-                <td>Total:</td>
-                <td>7 days</td>
-                <td>2h 41m 51s</td>
-                <td>135 seconds</td>
-                <td>NOT STARTED</td>
-                <td>10 times</td>
-                <td>280 times</td>
-                <td>Review medical issues below</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>01</td>
-                <td>Tue 19-May-2026</td>
-                <td>15:21</td>
-                <td>10</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td>40</td>
-                <td>NO ISSUE</td>
-            </tr>
-            <tr>
-                <td>02</td>
-                <td>Wed 20-May-2026</td>
-                <td>13:52</td>
-                <td>10</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td>40</td>
-                <td>NO ISSUE</td>
-            </tr>
-            <tr>
-                <td>03</td>
-                <td>Thu 21-May-2026</td>
-                <td>21:41</td>
-                <td>10</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td>40</td>
-                <td>NO ISSUE</td>
-            </tr>
-            <tr>
-                <td>04</td>
-                <td>Fri 22-May-2026</td>
-                <td>26:34</td>
-                <td>10</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td>40</td>
-                <td>NO ISSUE</td>
-            </tr>
-            <tr>
-                <td>05</td>
-                <td>Sat 23-May-2026</td>
-                <td>30:32</td>
-                <td>20</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td>40</td>
-                <td>NO ISSUE</td>
-            </tr>
-            <tr>
-                <td>06</td>
-                <td>Sun 24-May-2026</td>
-                <td>27:57</td>
-                <td>35</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td>40</td>
-                <td style="background-color: #ffcccc;">Second toe at Left leg frozen for 8 mins after walk. Sat idle 20 mins.</td>
-            </tr>
-            <tr>
-                <td>07</td>
-                <td>Mon 25-May-2026</td>
-                <td>36:00</td>
-                <td>40</td>
-                <td style='background-color:red;color:white;'>NOT STARTED</td>
-                <td>10</td>
-                <td>40</td>
-                <td style="background-color: #ffcccc;">Second toe at left frozen for 5 seconds when taking bath.</td>
-            </tr>
-        </tbody>
-    </table>
-
+	<h2>Exercise Master Plan & Status</h2>
+	<table id="masterPlanTable">
+		<thead>
+			<tr>
+				<th>S.No.</th>
+				<th>Exercise Details</th>
+				<th>Primary Benefit & Stomach Fat Loss Status</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<h3>Weekly Log & Tracking</h3>
+	<table id="logTable">
+		<thead>
+			<tr>
+				<th>Day</th>
+				<th>Date</th>
+				<th>Walking Time<br>(MM:SS)</th>
+				<th>Sit on Floor<br>(Seconds)</th>
+				<th>Foot Rotation<br>(Each Leg)</th>
+				<th>Wall Plank</th>
+				<th>Bed/Floor Plank</th>
+				<th>Issue / Notes</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<script type='text/javascript'>
+		const indexData = [
+			{ date: "Tue 26-May-2026", summary: "35:19 Walk, 50s Sit, 20 Planks, 80 Foot Rotations. Status: NO ISSUE." },
+			{ date: "Mon 25-May-2026", summary: "36:00 Walk, 40s Sit, 10 Planks, 40 Foot Rotations. Status: Left second toe frozen 5s during bath." },
+			{ date: "Sun 24-May-2026", summary: "27:57 Walk, 35s Sit, 40 Foot Rotations. Status: Left second toe frozen 8m after walk." },
+			{ date: "Sat 23-May-2026", summary: "30:32 Walk, 20s Sit, 40 Foot Rotations. Status: NO ISSUE." },
+			{ date: "Fri 22-May-2026", summary: "26:34 Walk, 10s Sit, 40 Foot Rotations. Status: NO ISSUE." },
+			{ date: "Thu 21-May-2026", summary: "21:41 Walk, 10s Sit, 40 Foot Rotations. Status: NO ISSUE." },
+			{ date: "Wed 20-May-2026", summary: "13:52 Walk, 10s Sit, 40 Foot Rotations. Status: NO ISSUE." },
+			{ date: "Tue 19-May-2026", summary: "15:21 Walk, 10s Sit, 40 Foot Rotations. Status: NO ISSUE." }
+		];
+		const masterPlanData = [
+			{ details: "<strong>Walking</strong><br>Burns overall body fat, including stomach fat, by burning calories.", status: "Required (Most important)" },
+			{ details: "<strong>Sit on the Floor</strong><br>Sit on the floor without letting your backside touch the ground for 35 seconds.", status: "Required" },
+			{ details: "<strong>Single Leg Raises / Circles</strong><br>Lay on floor. Raise leg 90 degrees / circle. Builds lower abdominal stability.", status: "Required" },
+			{ details: "<strong>Wall Plank</strong><br>Stand in front of wall. Touch the wall. Go front and back by moving the body.", status: "Required" },
+			{ details: "<strong>Bed/Floor Plank</strong><br>Lay on floor/bed viewing the ceiling. Raise the left leg 20 times.Perform the same using right leg again.", status: "Required" },
+			{ details: "<strong>Foot Rotation</strong><br>Sit on chair, Foot Rotation/ankle, do not move legs. Therapeutic movement.", status: "Therapeutic (For Left Toe Recovery Only)" },
+			{ details: "<strong>Foot Touching</strong><br>Touching foot from Tue 19-May-2026 to Mon 25-May-2026.", status: "Not required to reduce fat" },
+			{ details: "<strong>Dynamic Upper-Body Expansion Exercise</strong><br>I stood, keep fingers at mid of chest, expand hands moving away and keep touching mid of chest again. Done from Tue 19-May-2026 to Mon 25-May-2026.", status: "Not required to reduce fat" }
+		];
+		const logData = [
+			{ date: "Tue 26-May-2026", walk: "35:19", sit: "50", leg: "EACH LEG 20 times", bed_plank: "20 times at each leg",	wall_plank: "20",			foot: "40", notes: "NO ISSUE." },
+			{ date: "Mon 25-May-2026", walk: "36:00", sit: "40", leg: "EACH LEG 20 times", bed_plank: "NOT STARTED",			wall_plank: "10",			foot: "NOT STARTED", notes: "Second toe at left frozen for 5 seconds when taking bath." },
+			{ date: "Sun 24-May-2026", walk: "27:57", sit: "35", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",			wall_plank: "NOT STARTED",	foot: "NOT STARTED", notes: "Second toe at Left leg frozen for 8 mins after walk. Sat idle 20 mins." },
+			{ date: "Sat 23-May-2026", walk: "30:32", sit: "20", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",			wall_plank: "NOT STARTED",	foot: "NOT STARTED", notes: "NO ISSUE" },
+			{ date: "Fri 22-May-2026", walk: "26:34", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",			wall_plank: "NOT STARTED",	foot: "NOT STARTED", notes: "NO ISSUE" },
+			{ date: "Thu 21-May-2026", walk: "21:41", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",			wall_plank: "NOT STARTED",	foot: "NOT STARTED", notes: "NO ISSUE" },
+			{ date: "Wed 20-May-2026", walk: "13:52", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",			wall_plank: "NOT STARTED",	foot: "NOT STARTED", notes: "NO ISSUE" },
+			{ date: "Tue 19-May-2026", walk: "15:21", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",			wall_plank: "NOT STARTED",	foot: "NOT STARTED", notes: "NO ISSUE" }
+		];
+		const totals = { day: "Total:", date: "8 days", walk: "2h 41m 51s", sit: "135 seconds", leg: "100 TIMES", bed_plank: "30 times", wall_plank: "10 times", foot: "40 times", notes: "Issues happend two times on:<BR> 01) Mon 25-May-2026<BR>02) Sun 24-May-2026)" };
+		const masterBody = document.getElementById("masterPlanTable").getElementsByTagName("tbody")[0];
+		masterPlanData.forEach((item, index) => {
+			let row = masterBody.insertRow();
+			let cell1 = row.insertCell(0);
+			let cell2 = row.insertCell(1);
+			let cell3 = row.insertCell(2);
+			let currentSno = index + 1;
+			let formattedMasterSno = currentSno < 10 ? "0" + currentSno : currentSno;
+			cell1.outerHTML = "<TD valign='top' align='right'>" + formattedMasterSno + "</TD>";
+			cell2.outerHTML = "<TD valign='top' align='left'>" + item.details + "</TD>";
+			cell3.outerHTML = "<TD valign='top' align='left'>" + item.status + "</TD>";
+		});
+		const logBody = document.getElementById("logTable").getElementsByTagName("tbody")[0];
+		let totalRow = logBody.insertRow();
+		totalRow.style.fontWeight = "bold";
+		totalRow.style.backgroundColor = "#eaeded";
+		totalRow.insertCell(0).outerHTML = "<TD valign='top' align='right'>" + totals.day + "</TD>";
+		totalRow.insertCell(1).outerHTML = "<TD valign='top' align='right'>" + totals.date + "</TD>";
+		totalRow.insertCell(2).outerHTML = "<TD valign='top' align='right'>" + totals.walk + "</TD>";
+		totalRow.insertCell(3).outerHTML = "<TD valign='top' align='right'>" + totals.sit + "</TD>";
+		totalRow.insertCell(4).outerHTML = "<TD valign='top' align='right'>" + totals.leg + "</TD>";
+		totalRow.insertCell(5).outerHTML = "<TD valign='top' align='right'>" + totals.bed_plank + "</TD>";
+		totalRow.insertCell(6).outerHTML = "<TD valign='top' align='right'>" + totals.foot + "</TD>";
+		totalRow.insertCell(7).outerHTML = "<TD valign='top' align='left'>" + totals.notes + "</TD>";
+		logData.forEach((item, index) => {
+			let row = logBody.insertRow();
+			let c0 = row.insertCell(0);
+			let c1 = row.insertCell(1);
+			let c2 = row.insertCell(2);
+			let c3 = row.insertCell(3);
+			let c4 = row.insertCell(4);
+			let c5 = row.insertCell(5);
+			let c6 = row.insertCell(6);
+			let c7 = row.insertCell(7);
+			let calculatedDay = logData.length - index;
+			let formattedDay = calculatedDay < 10 ? "0" + calculatedDay : calculatedDay;
+			c0.outerHTML = "<TD valign='top' align='right'>" + formattedDay + "</TD>";
+			c1.outerHTML = "<TD valign='top' align='right'>" + item.date + "</TD>";
+			c2.outerHTML = "<TD valign='top' align='right'>" + item.walk + "</TD>";
+			c3.outerHTML = "<TD valign='top' align='right'>" + item.sit + "</TD>";
+			c4.outerHTML = "<TD valign='top' align='right'>" + item.leg + "</TD>";
+			c5.outerHTML = "<TD valign='top' align='right'>" + item.wall_plank + "</TD>";
+			c5.outerHTML = "<TD valign='top' align='right'>" + item.bed_plank + "</TD>";
+			c6.outerHTML = "<TD valign='top' align='right'>" + item.foot + "</TD>";
+			c7.outerHTML = "<TD valign='top' align='left'>" + item.notes + "</TD>";
+		});
+	</script>
 </body>
 </html>
