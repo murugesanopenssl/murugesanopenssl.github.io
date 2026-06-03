@@ -19,7 +19,7 @@
 		Try acting like to sit down on a bench.
 		20 times
 	Exercise 08)
-		Bench squat protecting chest
+		Sit back squat protecting chest
 -->
 <!DOCTYPE html>
 <HTML lang="en">
@@ -34,6 +34,48 @@
         h2, h3 { color: #333; margin-bottom: 10px; }
     </STYLE>
 </HEAD>
+    <H3>தினசரி உடற்பயிற்சியைக் கண்காணிக்கும் முறை<BR>A method for tracking daily exercise.</H3>
+	<SELECT id='monthFilter' onchange='FilterData();'>
+		<OPTION value='ALL'>All</OPTION>
+		<OPTION value='Jun-2026' selected>Jun-2026</OPTION>
+		<OPTION value='May-2026'>May-2026</OPTION>
+	</SELECT>
+    <TABLE id="logTable">
+        <THEAD>
+            <TR>
+                <TH>நாள்<BR>Day</TH>
+                <TH>தேதி<BR>Date</TH>
+                <TH>01) நடைப்பயிற்சி நேரம்/<BR>Walking Time<BR>(MM:SS)</TH>
+                <TH title='Try to sit on the floor without allowing the back of your hips to touch the floor.'>
+					தரையில் அமர்வது போன்ற உடற்பயிற்சி<BR>
+					Sit on Floor<BR>(Seconds)
+				</TH>
+                <TH title='01) Sit on chair&#10;02) Rotate left foot clockwise&#10;03) Rotate right foot clockwise&#10;04) Rotate left foot anti-clockwise&#10;05) Rotate right foot anti-clockwise'>
+					பாதம் சுற்றும் உடற்பயிற்சி<BR>
+					Foot Rotation<BR>(Each Leg)
+				</TH>
+                <TH title='01) Stand near a wall&#10;02) Keep both hands on the wall aligned with your standing position&#10;03) Move your body forward while pushing your hips backward&#10;04) Return to the starting position by bringing your hips forward&#10;05) Repeat slowly and comfortably'>
+					சுவரில் முன்-பின் இடுப்பு இயக்கப் பயிற்சி<BR>
+					Wall Plank
+				</TH>
+               <TH title='01) Lay flat on a bed or floor&#10;02) Keep your back touching the bed or floor&#10;03) Raise the right leg to approximately 80-90 degrees and lower it&#10;04) Repeat for the required number of times&#10;05) Raise the left leg to approximately 80-90 degrees and lower it&#10;06) Repeat for the required number of times'>
+					படுக்கை/தரையில் படுத்து கால் உயர்த்தும் பயிற்சி<BR>
+					Bed/Floor Plank
+				</TH>
+                <TH title='01) Stand on the floor&#10;02) Raise the left leg and lower it&#10;03) Repeat for the required number of times&#10;04) After completing the left leg repetitions, raise the right leg and lower it&#10;05) Repeat for the required number of times'>
+					நின்று வலது/இடது கால் உயர்த்தும் பயிற்சி<BR>
+					Stand Alternating<BR>Leg/Hand Raise
+				</TH>
+                <TH title='01) Stand on the floor&#10;02) Keep both hands together at the middle of the chest&#10;03) Lower the hips as if sitting on an invisible bench&#10;04) Stop before reaching a deep squat position&#10;05) Return to the standing position&#10;06) Repeat for the required number of times'>
+					நின்று கற்பனை இருக்கையில் அமர்ந்து எழும் பயிற்சி<BR>
+					Sit back squat<BR>(Protected Chest)
+				</TH>
+                <TH>Issue / Notes</TH>
+            </TR>
+        </THEAD>
+        <tbody>
+        </tbody>
+    </TABLE>
     <H2>Exercise Master Plan & Status</H2>
     <TABLE id="masterPlanTable">
         <THEAD>
@@ -45,25 +87,6 @@
         </THEAD>
         <TBODY>
         </TBODY>
-    </TABLE>
-    <H3>Weekly Log & Tracking</H3>
-    <TABLE id="logTable">
-        <THEAD>
-            <TR>
-                <TH>Day</TH>
-                <TH>Date</TH>
-                <TH>01) Walking Time<BR>(MM:SS)</TH>
-                <TH>Sit on Floor<BR>(Seconds)</TH>
-                <TH>Foot Rotation<BR>(Each Leg)</TH>
-                <TH>Wall Plank</TH>
-                <TH>Bed/Floor Plank</TH>
-                <TH>Stand Alternating<BR>Leg/Hand Raise</TH>
-                <TH>Bench Squat<BR>(Protected Chest)</TH>
-                <TH>Issue / Notes</TH>
-            </TR>
-        </THEAD>
-        <tbody>
-        </tbody>
     </TABLE>
     <SCRIPT type='text/javascript'>
         const indexData = [
@@ -77,26 +100,32 @@
             { date: "Tue 19-May-2026", summary: "15:21 Walk, 10s Sit, 40 Foot Rotations. Status: NO ISSUE." }
         ];
         const masterPlanData = [
-            { details: "<strong>Walking</strong><BR>Burns overall body fat, including stomach fat, by burning calories.", status: "Required (Most important)" },
-            { details: "<strong>Sit on the Floor</strong><BR>Sit on the floor without letting your backside touch the ground for 35 seconds.", status: "Required" },
-            { details: "<strong>Single Leg Raises / Circles</strong><BR>Lay on floor. Raise leg 90 degrees / circle. Builds lower abdominal stability.", status: "Required" },
-            { details: "<strong>Wall Plank</strong><BR>Stand in front of wall. Touch the wall. Go front and back by moving the body.", status: "Required" },
-            { details: "<strong>Bed/Floor Plank</strong><BR>Lay on floor/bed viewing the ceiling. Raise the left leg 20 times.Perform the same using right leg again.", status: "Required" },
-            { details: "<strong>Foot Rotation</strong><BR>Sit on chair, Foot Rotation/ankle, do not move legs. Therapeutic movement.", status: "Therapeutic (For Left Toe Recovery Only)" },
-            { details: "<strong>Foot Touching</strong><BR>Touching foot from Tue 19-May-2026 to Mon 25-May-2026.", status: "Not required to reduce fat" },
-            { details: "<strong>Dynamic Upper-Body Expansion Exercise</strong><BR>I stood, keep fingers at mid of chest, expand hands moving away and keep touching mid of chest again. Done from Tue 19-May-2026 to Mon 25-May-2026.", status: "Not required to reduce fat" },
-            { details: "<strong>Stand, raise left leg, right leg simultaneously</strong><BR>Touch left leg mid using right hand, touch right leg mid using left hand.", status: "Required" },
-            { details: "<strong>Bench Squat (Hand Protected Chest)</strong><BR>Stand, touch hand fingers together protecting mid of chest, lower hip like sitting on a bench.", status: "Required" }
-        ];
+			{ details: "<strong>Exercise 01</strong><BR>35 நிமிடங்கள் நடக்கவும்.<BR>Walk for 35 minutes", status: "Required (Most important)" },
+			{ details: "<strong>Exercise 02</strong><BR>நாற்காலியில் அமர்ந்து, ஒவ்வொரு காலையும் 20 முறை சுழற்றுங்கள்.<BR>Sit on chair and rotate legs 20 times for each leg", status: "Required" },
+			{ details: "<strong>Exercise 03</strong><BR>பின்புறம் தரையில் படாமல், தரையில் அமர்வது போல 50 முறை செய்யவும்.<BR>Sit on floor without backside touching the ground 50 times", status: "Required" },
+			{ details: "<strong>Exercise 04</strong><BR>படுக்கையில் படுத்துக்கொண்டு, இடது காலை மட்டும் 20 முறை உயர்த்தவும்.<BR>வலது காலை மட்டும் 20 முறை உயர்த்தவும்.<BR>Lay on bed raise left leg alone for 20 times<BR>Raise right leg alone for 20 times", status: "Required" },
+			{ details: "<strong>Exercise 05</strong><BR>நின்றுகொண்டு, தலை சுவரில் படாதவாறு 20 முறை முன்னும் பின்னும் நகரவும்.<BR>Stand, move front and back without making the head touch the wall 20 times", status: "Required" },
+			{ details: "<strong>Exercise 06</strong><BR>நின்ற நிலையில் இடது காலை உயர்த்தி, வலது கையால் இடது முழங்காலைத் தொடவும்.<BR>நின்ற நிலையில் வலது காலை உயர்த்தி, இடது கையால் வலது முழங்காலைத் தொடவும்.<BR>இதை 20 முறை செய்யவும்.<BR>Stand raise left leg and touch left leg knee using right hand<BR>Stand raise right leg and touch right leg knee using left hand<BR>Repeat 20 times", status: "Required" },
+			{ details: "<strong>Exercise 07</strong><BR>நின்றுகொண்டு, விரல்களை ஒன்றிணைத்து நெஞ்சின் மையப்பகுதியில் வையுங்கள். உள்ளங்கைகளை ஒன்றுடன் ஒன்று அழுத்தியவாறே, ஒரு பெஞ்சில் அமர்வது போல 20 முறை செய்யுங்கள்.<BR><BR>Stand, keep combined fingers at mid of chest. Push palms together and act like sitting on a bench 20 times", status: "Required" },
+			{ details: "<strong>Exercise 08</strong><BR>மார்பைப் பாதுகாக்கும் வகையில் பின்னால் சாய்ந்து உட்காருங்கள்.<BR>Sit back squat protecting chest", status: "Required" }
+		];
         const logData = [
-            { date: "Tue 26-May-2026", walk: "35:19", sit: "50", leg: "EACH LEG 20 times", bed_plank: "20 times at each leg",    wall_plank: "20",            foot: "40", combo_raise: "20 times", bench_squat: "20 times", notes: "NO ISSUE." },
-            { date: "Mon 25-May-2026", walk: "36:00", sit: "40", leg: "EACH LEG 20 times", bed_plank: "NOT STARTED",            wall_plank: "10",            foot: "NOT STARTED", combo_raise: "NOT STARTED", bench_squat: "NOT STARTED", notes: "Second toe at left frozen for 5 seconds when taking bath." },
-            { date: "Sun 24-May-2026", walk: "27:57", sit: "35", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", bench_squat: "NOT STARTED", notes: "Second toe at Left leg frozen for 8 mins after walk. Sat idle 20 mins." },
-            { date: "Sat 23-May-2026", walk: "30:32", sit: "20", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", bench_squat: "NOT STARTED", notes: "NO ISSUE" },
-            { date: "Fri 22-May-2026", walk: "26:34", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", bench_squat: "NOT STARTED", notes: "NO ISSUE" },
-            { date: "Thu 21-May-2026", walk: "21:41", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", bench_squat: "NOT STARTED", notes: "NO ISSUE" },
-            { date: "Wed 20-May-2026", walk: "13:52", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", bench_squat: "NOT STARTED", notes: "NO ISSUE" },
-            { date: "Tue 19-May-2026", walk: "15:21", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", bench_squat: "NOT STARTED", notes: "NO ISSUE" }
+            { date: "Wed 03-Jun-2026", walk: "51:43", sit: "75", leg: "EACH LEG 25 times", bed_plank: "0 times at each leg",    wall_plank: "75",            foot: "0", combo_raise: "0 times", sit_back_squat: "0 times", notes: "NO ISSUE." },
+            { date: "Tue 02-Jun-2026", walk: "47:21", sit: "75", leg: "EACH LEG 75 times", bed_plank: "0 times at each leg",    wall_plank: "75",            foot: "0", combo_raise: "0 times", sit_back_squat: "0 times", notes: "TIRED DUE TO TRAVEL FROM TN TO KA." },
+            { date: "Mon 01-Jun-2026", walk: "46:53", sit: "53", leg: "EACH LEG 53 times", bed_plank: "53 times at each leg",    wall_plank: "53",            foot: "53", combo_raise: "53 times", sit_back_squat: "53 times", notes: "NO ISSUE." },
+            { date: "Sun 31-May-2026", walk: "48:14", sit: "53", leg: "EACH LEG 53 times", bed_plank: "53 times at each leg",    wall_plank: "53",            foot: "53", combo_raise: "53 times", sit_back_squat: "53 times", notes: "NO ISSUE." },
+            { date: "Sat 30-May-2026", walk: "44:32", sit: "50", leg: "EACH LEG 50 times", bed_plank: "50 times at each leg",    wall_plank: "50",            foot: "50", combo_raise: "50 times", sit_back_squat: "50 times", notes: "NO ISSUE." },
+            { date: "Fri 29-May-2026", walk: "44:03", sit: "50", leg: "EACH LEG 50 times", bed_plank: "50 times at each leg",    wall_plank: "50",            foot: "50", combo_raise: "50 times", sit_back_squat: "50 times", notes: "NO ISSUE." },
+            { date: "Thu 28-May-2026", walk: "45:01", sit: "50", leg: "EACH LEG 50 times", bed_plank: "50 times at each leg",    wall_plank: "50",            foot: "50", combo_raise: "50 times", sit_back_squat: "50 times", notes: "NO ISSUE." },
+            { date: "Wed 27-May-2026", walk: "49:10", sit: "50", leg: "EACH LEG 40 times", bed_plank: "40 times at each leg",    wall_plank: "30",            foot: "40", combo_raise: "20 times", sit_back_squat: "50 times", notes: "NO ISSUE." },
+            { date: "Tue 26-May-2026", walk: "35:19", sit: "50", leg: "EACH LEG 20 times", bed_plank: "20 times at each leg",    wall_plank: "20",            foot: "40", combo_raise: "20 times", sit_back_squat: "20 times", notes: "NO ISSUE." },
+            { date: "Mon 25-May-2026", walk: "36:00", sit: "40", leg: "EACH LEG 20 times", bed_plank: "NOT STARTED",            wall_plank: "10",            foot: "NOT STARTED", combo_raise: "NOT STARTED", sit_back_squat: "NOT STARTED", notes: "Second toe at left frozen for 5 seconds when taking bath." },
+            { date: "Sun 24-May-2026", walk: "27:57", sit: "35", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", sit_back_squat: "NOT STARTED", notes: "Second toe at Left leg frozen for 8 mins after walk. Sat idle 20 mins." },
+            { date: "Sat 23-May-2026", walk: "30:32", sit: "20", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", sit_back_squat: "NOT STARTED", notes: "NO ISSUE" },
+            { date: "Fri 22-May-2026", walk: "26:34", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", sit_back_squat: "NOT STARTED", notes: "NO ISSUE" },
+            { date: "Thu 21-May-2026", walk: "21:41", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", sit_back_squat: "NOT STARTED", notes: "NO ISSUE" },
+            { date: "Wed 20-May-2026", walk: "13:52", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", sit_back_squat: "NOT STARTED", notes: "NO ISSUE" },
+            { date: "Tue 19-May-2026", walk: "15:21", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", sit_back_squat: "NOT STARTED", notes: "NO ISSUE" }
         ];
         DayCount = logData.length;
         // 1. Get the raw numeric count from your array length
@@ -147,7 +176,7 @@
             wall_plank: "10 times", 
             bed_plank: "30 times", 
             combo_raise: "20 times", 
-            bench_squat: "20 times",
+            sit_back_squat: "20 times",
             notes: "Issues happened two times on:<BR> 01) Mon 25-May-2026<BR>02) Sun 24-May-2026)" 
         };
         const masterBody = document.getElementById("masterPlanTable").getElementsByTagName("tbody")[0];
@@ -175,7 +204,7 @@
         totalRow.insertCell(5).outerHTML = "<TD valign='top' align='right'>" + totals.wall_plank + "</TD>";
         totalRow.insertCell(6).outerHTML = "<TD valign='top' align='right'>" + totals.bed_plank + "</TD>";
         totalRow.insertCell(7).outerHTML = "<TD valign='top' align='right'>" + totals.combo_raise + "</TD>";
-        totalRow.insertCell(8).outerHTML = "<TD valign='top' align='right'>" + totals.bench_squat + "</TD>";
+        totalRow.insertCell(8).outerHTML = "<TD valign='top' align='right'>" + totals.sit_back_squat + "</TD>";
         totalRow.insertCell(9).outerHTML = "<TD valign='top' align='left'>" + totals.notes + "</TD>";
         
         logData.forEach((item, index) => {
@@ -201,9 +230,78 @@
             c5.outerHTML = "<TD valign='top' align='right'>" + item.wall_plank + "</TD>";
             c6.outerHTML = "<TD valign='top' align='right'>" + item.bed_plank + "</TD>";
             c7.outerHTML = "<TD valign='top' align='right'>" + item.combo_raise + "</TD>";
-            c8.outerHTML = "<TD valign='top' align='right'>" + item.bench_squat + "</TD>";
+            c8.outerHTML = "<TD valign='top' align='right'>" + item.sit_back_squat + "</TD>";
             c9.outerHTML = "<TD valign='top' align='left'>" + item.notes + "</TD>";
         });
+		function GetMonthYear(dateText)
+{
+    let parts = dateText.split("-");
+    return parts[1] + "-" + parts[2];
+}
+
+function PopulateLogTable()
+{
+    const logBody = document.getElementById("logTable").getElementsByTagName("tbody")[0];
+    logBody.innerHTML = "";
+
+    let selectedMonth = document.getElementById("monthFilter").value;
+
+    let filteredData = [];
+
+    logData.forEach((item)=>
+    {
+        let itemMonth = GetMonthYear(item.date);
+
+        if(selectedMonth !== "ALL" && itemMonth !== selectedMonth)
+        {
+            return;
+        }
+
+        filteredData.push(item);
+    });
+
+    let totalRow = logBody.insertRow();
+    totalRow.style.fontWeight = "bold";
+    totalRow.style.backgroundColor = "#eaeded";
+
+    totalRow.insertCell(0).outerHTML = "<TD valign='top' align='right'>" + totals.day + "</TD>";
+    totalRow.insertCell(1).outerHTML = "<TD valign='top' align='right'>" + totals.date + "</TD>";
+    totalRow.insertCell(2).outerHTML = "<TD valign='top' align='right'>" + totals.walk + "</TD>";
+    totalRow.insertCell(3).outerHTML = "<TD valign='top' align='right'>" + totals.sit + "</TD>";
+    totalRow.insertCell(4).outerHTML = "<TD valign='top' align='right'>" + totals.leg + "</TD>";
+    totalRow.insertCell(5).outerHTML = "<TD valign='top' align='right'>" + totals.wall_plank + "</TD>";
+    totalRow.insertCell(6).outerHTML = "<TD valign='top' align='right'>" + totals.bed_plank + "</TD>";
+    totalRow.insertCell(7).outerHTML = "<TD valign='top' align='right'>" + totals.combo_raise + "</TD>";
+    totalRow.insertCell(8).outerHTML = "<TD valign='top' align='right'>" + totals.sit_back_squat + "</TD>";
+    totalRow.insertCell(9).outerHTML = "<TD valign='top' align='left'>" + totals.notes + "</TD>";
+
+    let dayNo = filteredData.length;
+
+    filteredData.forEach((item)=>
+    {
+        let row = logBody.insertRow();
+
+        row.insertCell(0).outerHTML = "<TD valign='top' align='right'>" + String(dayNo).padStart(2,'0') + ")</TD>";
+        row.insertCell(1).outerHTML = "<TD valign='top' align='right'>" + item.date + "</TD>";
+        row.insertCell(2).outerHTML = "<TD valign='top' align='right'>" + item.walk + "</TD>";
+        row.insertCell(3).outerHTML = "<TD valign='top' align='right'>" + item.sit + "</TD>";
+        row.insertCell(4).outerHTML = "<TD valign='top' align='right'>" + item.leg + "</TD>";
+        row.insertCell(5).outerHTML = "<TD valign='top' align='right'>" + item.wall_plank + "</TD>";
+        row.insertCell(6).outerHTML = "<TD valign='top' align='right'>" + item.bed_plank + "</TD>";
+        row.insertCell(7).outerHTML = "<TD valign='top' align='right'>" + item.combo_raise + "</TD>";
+        row.insertCell(8).outerHTML = "<TD valign='top' align='right'>" + item.sit_back_squat + "</TD>";
+        row.insertCell(9).outerHTML = "<TD valign='top' align='left'>" + item.notes + "</TD>";
+
+        dayNo--;
+    });
+}
+
+function FilterData()
+{
+    PopulateLogTable();
+}
+
+PopulateLogTable();
     </SCRIPT>
 </BODY>
 </HTML>
