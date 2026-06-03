@@ -27,8 +27,27 @@
     <META charset="UTF-8">
     <TITLE>Exercise Master Plan Sub-Page</TITLE>
     <STYLE type='text/css'>
+		.notStartedValue
+		{
+			background-color: cyan;
+			color: black;
+			font-weight: bold;
+		}
+		.zeroValue
+		{
+			background-color:#c00000;
+			color:white;
+			font-weight:bold;
+		}
         body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background-color: #fff; }
+        table
+		{
+			width: 100%;
+			border-collapse:collapse;
+			margin-bottom:30px;
+			background-color:
+			#fff;
+		}
         th, TD { border: 1px solid #ccc; padding: 10px; text-align: left; font-size: 14px; }
         th { background-color: #f2f2f2; font-weight: bold; }
         h2, h3 { color: #333; margin-bottom: 10px; }
@@ -40,7 +59,7 @@
 		<OPTION value='Jun-2026' selected>Jun-2026</OPTION>
 		<OPTION value='May-2026'>May-2026</OPTION>
 	</SELECT>
-    <TABLE id="logTable">
+	<TABLE border='1' style='width:100%;' id="logTable">
         <THEAD>
             <TR>
                 <TH>நாள்<BR>Day</TH>
@@ -89,6 +108,195 @@
         </TBODY>
     </TABLE>
     <SCRIPT type='text/javascript'>
+		function GetCellHtml(value)
+		{
+			let text = String(value).trim().toLowerCase();
+
+			if
+			(
+				text.startsWith("0 times") ||
+				text === "0" ||
+				text.startsWith("0 times at each leg")
+			)
+			{
+				return "<TD class='zeroValue' valign='top' align='right'>" + value + "</TD>";
+			}
+
+			if
+			(
+				text === "not started" ||
+				text === "no issue" ||
+				text === "no issue."
+			)
+			{
+				return "<TD class='notStartedValue' valign='top' align='left'>" + value + "</TD>";
+			}
+
+			return "<TD valign='top' align='right'>" + value + "</TD>";
+		}
+		function FormatDuration(totalSeconds)
+		{
+			let hours = Math.floor(totalSeconds / 3600);
+			let minutes = Math.floor((totalSeconds % 3600) / 60);
+			let seconds = totalSeconds % 60;
+
+			if(hours > 0)
+			{
+				return `${hours} hour${hours > 1 ? "s" : ""} ${minutes} minute${minutes !== 1 ? "s" : ""} ${seconds} second${seconds !== 1 ? "s" : ""}`;
+			}
+
+			if(minutes > 0)
+			{
+				return `${minutes} minute${minutes > 1 ? "s" : ""} ${seconds} second${seconds !== 1 ? "s" : ""}`;
+			}
+
+			return `${seconds} second${seconds !== 1 ? "s" : ""}`;
+		}
+		function FormatWalkDuration(totalSeconds)
+		{
+			const SEC_PER_MIN = 60;
+			const SEC_PER_HOUR = 60 * 60;
+			const SEC_PER_DAY = 24 * SEC_PER_HOUR;
+			const SEC_PER_MONTH = 30 * SEC_PER_DAY;
+			const SEC_PER_YEAR = 12 * SEC_PER_MONTH;
+
+			let years = Math.floor(totalSeconds / SEC_PER_YEAR);
+			totalSeconds %= SEC_PER_YEAR;
+
+			let months = Math.floor(totalSeconds / SEC_PER_MONTH);
+			totalSeconds %= SEC_PER_MONTH;
+
+			let days = Math.floor(totalSeconds / SEC_PER_DAY);
+			totalSeconds %= SEC_PER_DAY;
+
+			let hours = Math.floor(totalSeconds / SEC_PER_HOUR);
+			totalSeconds %= SEC_PER_HOUR;
+
+			let minutes = Math.floor(totalSeconds / SEC_PER_MIN);
+			let seconds = totalSeconds % SEC_PER_MIN;
+
+			const pad = n => String(n).padStart(2, '0');
+
+			if(years > 0)
+			{
+				return `${pad(years)}YY ${pad(months)}MM ${pad(days)}DD ${pad(hours)}Hr ${pad(minutes)}Min ${pad(seconds)}Sec`;
+			}
+
+			if(months > 0)
+			{
+				return `${pad(months)}MM ${pad(days)}DD ${pad(hours)}Hr ${pad(minutes)}Min ${pad(seconds)}Sec`;
+			}
+
+			if(days > 0)
+			{
+				return `${pad(days)}Day ${pad(hours)}Hr ${pad(minutes)}Min ${pad(seconds)}Sec`;
+			}
+
+			if(hours > 0)
+			{
+				return `${pad(hours)}Hr ${pad(minutes)}Min ${pad(seconds)}Sec`;
+			}
+
+			if(minutes > 0)
+			{
+				return `${pad(minutes)}Min ${pad(seconds)}Sec`;
+			}
+
+			return `${pad(seconds)}Sec`;
+		}
+		function GetTotalSit()
+		{
+			let totalSeconds = 0;
+
+			logData.forEach(item =>
+			{
+				totalSeconds += parseInt(item.sit) || 0;
+			});
+
+			return FormatDuration(totalSeconds);
+		}
+		function ExtractNumber(value)
+{
+    let match = String(value).match(/\d+/);
+
+    if(match)
+    {
+        return parseInt(match[0]);
+    }
+
+    return 0;
+}
+
+function GetTotalLeg()
+{
+    let total = 0;
+
+    logData.forEach(item =>
+    {
+        total += ExtractNumber(item.leg);
+    });
+
+    return total + " times";
+}
+
+function GetTotalWallPlank()
+{
+    let total = 0;
+
+    logData.forEach(item =>
+    {
+        total += ExtractNumber(item.wall_plank);
+    });
+
+    return total + " times";
+}
+
+function GetTotalBedPlank()
+{
+    let total = 0;
+
+    logData.forEach(item =>
+    {
+        total += ExtractNumber(item.bed_plank);
+    });
+
+    return total + " times";
+}
+
+function GetTotalComboRaise()
+{
+    let total = 0;
+
+    logData.forEach(item =>
+    {
+        total += ExtractNumber(item.combo_raise);
+    });
+
+    return total + " times";
+}
+
+function GetTotalSitBackSquat()
+{
+    let total = 0;
+
+    logData.forEach(item =>
+    {
+        total += ExtractNumber(item.sit_back_squat);
+    });
+
+    return total + " times";
+}
+		function GetTotalWalkTime()
+		{
+			let totalSeconds = 0;
+			logData.forEach(item =>
+			{
+				let [mins, secs] = item.walk.split(":").map(Number);
+				totalSeconds += mins * 60 + secs;
+			});
+			return FormatWalkDuration(totalSeconds);
+		}
+		/*
         const indexData = [
             { date: "Tue 26-May-2026", summary: "35:19 Walk, 50s Sit, 20 Planks, 80 Foot Rotations. Status: NO ISSUE." },
             { date: "Mon 25-May-2026", summary: "36:00 Walk, 40s Sit, 10 Planks, 40 Foot Rotations. Status: Left second toe frozen 5s during bath." },
@@ -99,6 +307,7 @@
             { date: "Wed 20-May-2026", summary: "13:52 Walk, 10s Sit, 40 Foot Rotations. Status: NO ISSUE." },
             { date: "Tue 19-May-2026", summary: "15:21 Walk, 10s Sit, 40 Foot Rotations. Status: NO ISSUE." }
         ];
+		*/
         const masterPlanData = [
 			{ details: "<strong>Exercise 01</strong><BR>35 நிமிடங்கள் நடக்கவும்.<BR>Walk for 35 minutes", status: "Required (Most important)" },
 			{ details: "<strong>Exercise 02</strong><BR>நாற்காலியில் அமர்ந்து, ஒவ்வொரு காலையும் 20 முறை சுழற்றுங்கள்.<BR>Sit on chair and rotate legs 20 times for each leg", status: "Required" },
@@ -110,7 +319,7 @@
 			{ details: "<strong>Exercise 08</strong><BR>மார்பைப் பாதுகாக்கும் வகையில் பின்னால் சாய்ந்து உட்காருங்கள்.<BR>Sit back squat protecting chest", status: "Required" }
 		];
         const logData = [
-            { date: "Wed 03-Jun-2026", walk: "51:44", sit: "75", leg: "EACH LEG 25 times", bed_plank: "0 times at each leg",    wall_plank: "75",            foot: "0", combo_raise: "0 times", sit_back_squat: "0 times", notes: "NO ISSUE." },
+            { date: "Wed 03-Jun-2026", walk: "51:44", sit: "75", leg: "EACH LEG 25 times", bed_plank: "0 times at each leg",    wall_plank: "75",            foot: "25", combo_raise: "75 times", sit_back_squat: "75 times", notes: "NO ISSUE." },
             { date: "Tue 02-Jun-2026", walk: "47:21", sit: "75", leg: "EACH LEG 75 times", bed_plank: "0 times at each leg",    wall_plank: "75",            foot: "0", combo_raise: "0 times", sit_back_squat: "0 times", notes: "TIRED DUE TO TRAVEL FROM TN TO KA." },
             { date: "Mon 01-Jun-2026", walk: "46:53", sit: "53", leg: "EACH LEG 53 times", bed_plank: "53 times at each leg",    wall_plank: "53",            foot: "53", combo_raise: "53 times", sit_back_squat: "53 times", notes: "NO ISSUE." },
             { date: "Sun 31-May-2026", walk: "48:14", sit: "53", leg: "EACH LEG 53 times", bed_plank: "53 times at each leg",    wall_plank: "53",            foot: "53", combo_raise: "53 times", sit_back_squat: "53 times", notes: "NO ISSUE." },
@@ -127,7 +336,7 @@
             { date: "Wed 20-May-2026", walk: "13:52", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", sit_back_squat: "NOT STARTED", notes: "NO ISSUE" },
             { date: "Tue 19-May-2026", walk: "15:21", sit: "10", leg: "EACH LEG 10 times", bed_plank: "NOT STARTED",            wall_plank: "NOT STARTED",    foot: "NOT STARTED", combo_raise: "NOT STARTED", sit_back_squat: "NOT STARTED", notes: "NO ISSUE" }
         ];
-        DayCount = logData.length;
+        let DayCount = logData.length;
         // 1. Get the raw numeric count from your array length
         let rawDays = logData.length; 
         // 2. Calculate Years, Months, and remaining Days based on a 30-day month
@@ -170,13 +379,13 @@
         const totals = { 
             day: "Total:", 
             date: displayDateString, 
-            walk: "2h 41m 51s", 
-            sit: "135 seconds", 
-            leg: "100 TIMES", 
-            wall_plank: "10 times", 
-            bed_plank: "30 times", 
-            combo_raise: "20 times", 
-            sit_back_squat: "20 times",
+            walk: GetTotalWalkTime(),
+            sit: GetTotalSit(),
+            leg: GetTotalLeg(),
+			wall_plank: GetTotalWallPlank(),
+			bed_plank: GetTotalBedPlank(),
+			combo_raise: GetTotalComboRaise(),
+			sit_back_squat: GetTotalSitBackSquat(),
             notes: "Issues happened two times on:<BR> 01) Mon 25-May-2026<BR>02) Sun 24-May-2026)" 
         };
         const masterBody = document.getElementById("masterPlanTable").getElementsByTagName("tbody")[0];
@@ -200,11 +409,11 @@
         totalRow.insertCell(1).outerHTML = "<TD valign='top' align='right'>" + totals.date + "</TD>";
         totalRow.insertCell(2).outerHTML = "<TD valign='top' align='right'>" + totals.walk + "</TD>";
         totalRow.insertCell(3).outerHTML = "<TD valign='top' align='right'>" + totals.sit + "</TD>";
-        totalRow.insertCell(4).outerHTML = "<TD valign='top' align='right'>" + totals.leg + "</TD>";
-        totalRow.insertCell(5).outerHTML = "<TD valign='top' align='right'>" + totals.wall_plank + "</TD>";
-        totalRow.insertCell(6).outerHTML = "<TD valign='top' align='right'>" + totals.bed_plank + "</TD>";
-        totalRow.insertCell(7).outerHTML = "<TD valign='top' align='right'>" + totals.combo_raise + "</TD>";
-        totalRow.insertCell(8).outerHTML = "<TD valign='top' align='right'>" + totals.sit_back_squat + "</TD>";
+        totalRow.insertCell(4).outerHTML = GetCellHtml(totals.leg);
+		totalRow.insertCell(5).outerHTML = GetCellHtml(totals.wall_plank);
+		totalRow.insertCell(6).outerHTML = GetCellHtml(totals.bed_plank);
+		totalRow.insertCell(7).outerHTML = GetCellHtml(totals.combo_raise);
+		totalRow.insertCell(8).outerHTML = GetCellHtml(totals.sit_back_squat);
         totalRow.insertCell(9).outerHTML = "<TD valign='top' align='left'>" + totals.notes + "</TD>";
         
         logData.forEach((item, index) => {
@@ -226,12 +435,12 @@
             c1.outerHTML = "<TD valign='top' align='right'>" + item.date + "</TD>";
             c2.outerHTML = "<TD valign='top' align='right'>" + item.walk + "</TD>";
             c3.outerHTML = "<TD valign='top' align='right'>" + item.sit + "</TD>";
-            c4.outerHTML = "<TD valign='top' align='right'>" + item.leg + "</TD>";
-            c5.outerHTML = "<TD valign='top' align='right'>" + item.wall_plank + "</TD>";
-            c6.outerHTML = "<TD valign='top' align='right'>" + item.bed_plank + "</TD>";
-            c7.outerHTML = "<TD valign='top' align='right'>" + item.combo_raise + "</TD>";
-            c8.outerHTML = "<TD valign='top' align='right'>" + item.sit_back_squat + "</TD>";
-            c9.outerHTML = "<TD valign='top' align='left'>" + item.notes + "</TD>";
+            c4.outerHTML = GetCellHtml(item.leg);
+			c5.outerHTML = GetCellHtml(item.wall_plank);
+			c6.outerHTML = GetCellHtml(item.bed_plank);
+			c7.outerHTML = GetCellHtml(item.combo_raise);
+			c8.outerHTML = GetCellHtml(item.sit_back_squat);
+            c9.outerHTML = GetCellHtml(item.notes);
         });
 		function GetMonthYear(dateText)
 {
@@ -268,11 +477,11 @@ function PopulateLogTable()
     totalRow.insertCell(1).outerHTML = "<TD valign='top' align='right'>" + totals.date + "</TD>";
     totalRow.insertCell(2).outerHTML = "<TD valign='top' align='right'>" + totals.walk + "</TD>";
     totalRow.insertCell(3).outerHTML = "<TD valign='top' align='right'>" + totals.sit + "</TD>";
-    totalRow.insertCell(4).outerHTML = "<TD valign='top' align='right'>" + totals.leg + "</TD>";
-    totalRow.insertCell(5).outerHTML = "<TD valign='top' align='right'>" + totals.wall_plank + "</TD>";
-    totalRow.insertCell(6).outerHTML = "<TD valign='top' align='right'>" + totals.bed_plank + "</TD>";
-    totalRow.insertCell(7).outerHTML = "<TD valign='top' align='right'>" + totals.combo_raise + "</TD>";
-    totalRow.insertCell(8).outerHTML = "<TD valign='top' align='right'>" + totals.sit_back_squat + "</TD>";
+    totalRow.insertCell(4).outerHTML = GetCellHtml(totals.leg);
+	totalRow.insertCell(5).outerHTML = GetCellHtml(totals.wall_plank);
+	totalRow.insertCell(6).outerHTML = GetCellHtml(totals.bed_plank);
+	totalRow.insertCell(7).outerHTML = GetCellHtml(totals.combo_raise);
+	totalRow.insertCell(8).outerHTML = GetCellHtml(totals.sit_back_squat);
     totalRow.insertCell(9).outerHTML = "<TD valign='top' align='left'>" + totals.notes + "</TD>";
 
     let dayNo = filteredData.length;
@@ -285,23 +494,21 @@ function PopulateLogTable()
         row.insertCell(1).outerHTML = "<TD valign='top' align='right'>" + item.date + "</TD>";
         row.insertCell(2).outerHTML = "<TD valign='top' align='right'>" + item.walk + "</TD>";
         row.insertCell(3).outerHTML = "<TD valign='top' align='right'>" + item.sit + "</TD>";
-        row.insertCell(4).outerHTML = "<TD valign='top' align='right'>" + item.leg + "</TD>";
-        row.insertCell(5).outerHTML = "<TD valign='top' align='right'>" + item.wall_plank + "</TD>";
-        row.insertCell(6).outerHTML = "<TD valign='top' align='right'>" + item.bed_plank + "</TD>";
-        row.insertCell(7).outerHTML = "<TD valign='top' align='right'>" + item.combo_raise + "</TD>";
-        row.insertCell(8).outerHTML = "<TD valign='top' align='right'>" + item.sit_back_squat + "</TD>";
-        row.insertCell(9).outerHTML = "<TD valign='top' align='left'>" + item.notes + "</TD>";
+        row.insertCell(4).outerHTML = GetCellHtml(item.leg);
+		row.insertCell(5).outerHTML = GetCellHtml(item.wall_plank);
+		row.insertCell(6).outerHTML = GetCellHtml(item.bed_plank);
+		row.insertCell(7).outerHTML = GetCellHtml(item.combo_raise);
+		row.insertCell(8).outerHTML = GetCellHtml(item.sit_back_squat);
+        row.insertCell(9).outerHTML = GetCellHtml(item.notes);
 
         dayNo--;
     });
 }
-
-function FilterData()
-{
-    PopulateLogTable();
-}
-
-PopulateLogTable();
+		function FilterData()
+		{
+			PopulateLogTable();
+		}
+		PopulateLogTable();
     </SCRIPT>
 </BODY>
 </HTML>
