@@ -1620,7 +1620,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							<A>
 								<TABLE cellpadding="0" cellspacing="0" border="0">
 									<TR>
-										<TD valign='top' align='left' style='width:142px;'>
+										<TD style='background-color:blue;color:white;' valign='top' align='left' style='width:142px;'>
 											Post Office Schemes
 										</TD>
 										<TD>
@@ -1680,7 +1680,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					<A>
 						<TABLE cellpadding="0" cellspacing="0" border="0">
 							<TR>
-								<TD valign='top' align='left' style='width:142px;'>
+								<TD valign='top' align='left' style='width:142px;' style='background-color:blue;color:white;'>
 									SBI
 								</TD>
 								<TD valign='top' align='right'>
