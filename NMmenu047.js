@@ -1144,7 +1144,15 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"bpl-washing-machine.html": ["BPL Washing Machine", "BPL Washing Machine"],
 								"washing-machine-repair.html": ["Washing Machine Rinse", "Washing Machine Rinse"],
 								"epson-printer-requirement.html": ["Epson printer rates", "Epson Printer Rates"],
+								"learn-vim-editor.html": ["VIM/VI EDITOR", "VIM/VI EDITOR"],
+								"send-cisco-replymail.html": ["CISCO EMAIL AUTOMATION", "CISCO EMAIL AUTOMATION"],
+								"talent-accenture.html": ["ACCENTURE EMAIL AUTOMATION", "ACCENTURE EMAIL AUTOMATION"],
+								"info-ltts.html": ["L & T EMAIL AUTOMATION", "L & T EMAIL AUTOMATION"],
+								"talent-ibm.html": ["IBM EMAIL AUTOMATION", "IBM EMAIL AUTOMATION"],
 								"My_Drawings.html": ["My drawings"],
+								"Visitor_count.html": ["Visitor Information"],
+								"beggar-count.html": ["Beggar Count Report"],
+								"my-kt-rank-chatgpt-Fri-09-Jan-2026.html": ["My ChatGPT Knowledge Transfer"],
 								"my-exercise.html": ["My exercise"],
 								"NMurugesan_cv.html": ["My profile"],
 								"openssl_speed.html": ["OpenSSL Speed Test"],
@@ -1933,7 +1941,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							</A>
 						</LI>
 						<LI>
-							<A href="#" onclick="javascript:window.open('Politician_assets.html');" class="nav-link">Politician assets</A>
+							<A href="#" onclick="javascript:window.open('Politician_assets.html');" class="nav-link"><FONT color='#00ff00'>Politician assets</FONT></A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:window.open('earth_politics_or_general_age.html');" class="nav-link">
