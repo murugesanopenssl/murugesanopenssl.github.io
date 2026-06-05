@@ -1767,7 +1767,13 @@ GOTO :EOF</PRE>
       <TR><TD>02</TD><TD>WSearch</TD><TD>Windows Search</TD><TD>Disabled</TD></TR>
       <TR><TD>03</TD><TD>mpssvc</TD><TD>Windows Defender Firewall</TD><TD>Disabled</TD></TR>
       <TR><TD>04</TD><TD>bthserv</TD><TD>Bluetooth Support Service</TD><TD>Disabled</TD></TR>
-      <TR><TD>05</TD><TD colspan="3">sc.exe config ACCSvc start= disabled / sc.exe config LanmanServer start= disabled / sc.exe config GameInputSvc start= disabled / sc.exe config AdobeARMservice start= disabled</TD></TR>
+      <TR><TD>05</TD><TD colspan="3">
+			C:\Windows\System32\sc.exe config ACCSvc start= disabled<BR>
+			C:\Windows\System32\sc.exe config LanmanServer start= disabled<BR>
+			C:\Windows\System32\sc.exe config GameInputSvc start= disabled<BR>
+			C:\Windows\System32\sc.exe config AdobeARMservice start= disabled<BR>
+			C:\Windows\System32\sc.exe config AGMService start= disabled
+		</TD></TR>
     </TABLE>
     <BR><B><A name="67d">67d)</A></B> Press Start → Settings → Privacy &amp; security → Windows Security → Virus &amp; threat protection → Manage settings → disable all options.
     <BR>Open regedit.exe (Administrator) → create REG_DWORD at <SPAN class="code-inline">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender</SPAN>:
@@ -1777,6 +1783,40 @@ GOTO :EOF</PRE>
     <BR>After restart → open regedit.exe → navigate to <SPAN class="code-inline">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinDefend</SPAN>
     <BR>Rename key from "WinDefend" to "WinDefend-BLOCKED"
     <BR>Open msconfig.exe → Disable Safe boot → Reboot
+	<BR>gzip following files using administrator cmd/bash.exe:<BR>
+	<TABLE>
+		<TR>
+			<TD>
+				<P>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\AcrobatInfo.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\acrobat_sl.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\AcroBroker.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\AcroTextExtractor.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\ADelRCP.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\ADNotificationManager.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\Adobe Crash Processor.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\AdobeCollabSync.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\CPInstCU.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\CRLogTransport.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\CRWindowsClientService.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\Eula.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\LogTransport2.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\ShowAppPickerForPDF.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\AcroCEF\AcroCEF.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\AcroCEF\SingleClientServicesUpdater.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\Browser\WCChromeExtn\WCChromeNativeMessagingHost.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\NGL\cefWorkflow\adobe_licensing_wf_acro.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\NGL\cefWorkflow\adobe_licensing_wf_helper_acro.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\OSSLLibs\AdobeFips.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\plug_ins\pi_brokers\32BitMAPIBroker.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\plug_ins\pi_brokers\64BitMAPIBroker.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\plug_ins\pi_brokers\MSRMSPIBroker.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\RDCNotificationClient\FullTrustNotifier.exe.gz<BR>
+				C:\PROGRA~1\Adobe\ACROBA~1\Acrobat\x86\Acrobat\Acrobat.exe.gz
+				</P>
+			</TD>
+		</TR>
+	</TABLE>
   </TD>
   <TD class="nav"><A href="#top">Top</A><A href="#66">Prev</A><A href="#68">Next</A></TD>
 </TR>
@@ -1948,22 +1988,23 @@ C:\PROGRA~1\WindowsApps\Microsoft.OutlookForWindows_1.2024.821.200_x64__8wekyb3d
     <B>Services disabled from Windows 11 at Acer laptop (Administrator) to handle performance issues, background automation, and security:</B>
     <TABLE class="nav-inner">
       <TR><TD><B>#</B></TD><TD><B>Display name</B></TD><TD><B>Service name</B></TD><TD><B>Disable command</B></TD></TR>
-      <TR><TD>00</TD><TD>Web Threat Defense User Service</TD><TD>webthreatdefusersvc_1c1fc6894</TD><TD>sc config "webthreatdefusersvc_1c1fc6894" start= disabled</TD></TR>
-      <TR><TD>01</TD><TD>Windows Remote Management (WS-Management)</TD><TD>WinRM</TD><TD>sc config "WinRM" start= disabled</TD></TR>
-      <TR><TD>02</TD><TD>Web Threat Defense Service</TD><TD>webthreatdefsvc</TD><TD>sc config "webthreatdefsvc" start= disabled</TD></TR>
-      <TR><TD>03</TD><TD>Microsoft Update Health Service</TD><TD>uhssvc</TD><TD>sc config "uhssvc" start= disabled</TD></TR>
-      <TR><TD>04</TD><TD>User Experience Improvement Program</TD><TD>UEIPSvc</TD><TD>sc config "UEIPSvc" start= disabled</TD></TR>
-      <TR><TD>05</TD><TD>Auto Time Zone Updater</TD><TD>tzautoupdate</TD><TD>sc config "tzautoupdate" start= disabled</TD></TR>
-      <TR><TD>06</TD><TD>OpenSSH Authentication Agent</TD><TD>ssh-agent</TD><TD>sc config "ssh-agent" start= disabled</TD></TR>
-      <TR><TD>07</TD><TD>Realtek Audio Universal Service</TD><TD>RtkAudioUniversalService</TD><TD>sc config "RtkAudioUniversalService" start= disabled</TD></TR>
-      <TR><TD>08</TD><TD>Remote Registry</TD><TD>RemoteRegistry</TD><TD>sc config "RemoteRegistry" start= disabled</TD></TR>
-      <TR><TD>09</TD><TD>Routing and Remote Access</TD><TD>RemoteAccess</TD><TD>sc config "RemoteAccess" start= disabled</TD></TR>
-      <TR><TD>10</TD><TD>Server</TD><TD>LanmanServer</TD><TD>sc config "LanmanServer" start= disabled</TD></TR>
-      <TR><TD>11</TD><TD>GameInput Service</TD><TD>GameInputSvc</TD><TD>sc config "GameInputSvc" start= disabled</TD></TR>
-      <TR><TD>12</TD><TD>Bluetooth Support Service</TD><TD>bthserv</TD><TD>sc config "bthserv" start= disabled</TD></TR>
-      <TR><TD>13</TD><TD>Bluetooth Audio Gateway Service</TD><TD>BTAGService</TD><TD>sc config "BTAGService" start= disabled</TD></TR>
-      <TR><TD>14</TD><TD>Acer Care Center</TD><TD>AcerCCAgentSvis</TD><TD>sc config "AcerCCAgentSvis" start= disabled</TD></TR>
-      <TR><TD>15</TD><TD>Adobe Acrobat Update Service</TD><TD>AdobeARMservice</TD><TD>sc config "AdobeARMservice" start= disabled</TD></TR>
+      <TR><TD>00</TD><TD>Web Threat Defense User Service</TD><TD>webthreatdefusersvc_1c1fc6894</TD><TD>C:\Windows\System32\sc.exe config "webthreatdefusersvc_1c1fc6894" start= disabled</TD></TR>
+      <TR><TD>01</TD><TD>Windows Remote Management (WS-Management)</TD><TD>WinRM</TD><TD>C:\Windows\System32\sc.exe config "WinRM" start= disabled</TD></TR>
+      <TR><TD>02</TD><TD>Web Threat Defense Service</TD><TD>webthreatdefsvc</TD><TD>C:\Windows\System32\sc.exe config "webthreatdefsvc" start= disabled</TD></TR>
+      <TR><TD>03</TD><TD>Microsoft Update Health Service</TD><TD>uhssvc</TD><TD>C:\Windows\System32\sc.exe config "uhssvc" start= disabled</TD></TR>
+      <TR><TD>04</TD><TD>User Experience Improvement Program</TD><TD>UEIPSvc</TD><TD>C:\Windows\System32\sc.exe config "UEIPSvc" start= disabled</TD></TR>
+      <TR><TD>05</TD><TD>Auto Time Zone Updater</TD><TD>tzautoupdate</TD><TD>C:\Windows\System32\sc.exe config "tzautoupdate" start= disabled</TD></TR>
+      <TR><TD>06</TD><TD>OpenSSH Authentication Agent</TD><TD>ssh-agent</TD><TD>C:\Windows\System32\sc.exe config "ssh-agent" start= disabled</TD></TR>
+      <TR><TD>07</TD><TD>Realtek Audio Universal Service</TD><TD>RtkAudioUniversalService</TD><TD>C:\Windows\System32\sc.exe config "RtkAudioUniversalService" start= disabled</TD></TR>
+      <TR><TD>08</TD><TD>Remote Registry</TD><TD>RemoteRegistry</TD><TD>C:\Windows\System32\sc.exe config "RemoteRegistry" start= disabled</TD></TR>
+      <TR><TD>09</TD><TD>Routing and Remote Access</TD><TD>RemoteAccess</TD><TD>C:\Windows\System32\sc.exe config "RemoteAccess" start= disabled</TD></TR>
+      <TR><TD>10</TD><TD>Server</TD><TD>LanmanServer</TD><TD>C:\Windows\System32\sc.exe config "LanmanServer" start= disabled</TD></TR>
+      <TR><TD>11</TD><TD>GameInput Service</TD><TD>GameInputSvc</TD><TD>C:\Windows\System32\sc.exe config "GameInputSvc" start= disabled</TD></TR>
+      <TR><TD>12</TD><TD>Bluetooth Support Service</TD><TD>bthserv</TD><TD>C:\Windows\System32\sc.exe config "bthserv" start= disabled</TD></TR>
+      <TR><TD>13</TD><TD>Bluetooth Audio Gateway Service</TD><TD>BTAGService</TD><TD>C:\Windows\System32\sc.exe config "BTAGService" start= disabled</TD></TR>
+      <TR><TD>14</TD><TD>Acer Care Center</TD><TD>AcerCCAgentSvis</TD><TD>C:\Windows\System32\sc.exe config "AcerCCAgentSvis" start= disabled</TD></TR>
+      <TR><TD>15</TD><TD>Adobe Acrobat Service</TD><TD>AdobeARMservice</TD><TD>C:\Windows\System32\sc.exe config "AdobeARMservice" start= disabled</TD></TR>
+      <TR><TD>16</TD><TD>Adobe Acrobat Service</TD><TD>AGMService</TD><TD>C:\Windows\System32\sc.exe config "AGMService" start= disabled</TD></TR>
       <TR><TD colspan="4" style="color:#0FF;"><I>SQL Server services (green) — kept because Oracle database is used instead</I></TD></TR>
     </TABLE>
   </TD>
