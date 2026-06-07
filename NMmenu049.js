@@ -1536,6 +1536,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 									<A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-pay-property-tax-bengaluru.html' );" class="nav-link">SOUTH INDIAN PROPERTY TAX PAYMENT</A>
 								</LI>
 								<LI>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'how-to-link-aadhaar-with-pan-online.html' );" class="nav-link">PAN-Aadhaar Linking Guide</A>
+								</LI>
+								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'income-tax-documents.html' );" class="nav-link">INCOME TAX DOCS</A>
 								</LI>
 							</UL>
