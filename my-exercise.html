@@ -1,24 +1,3 @@
-<!--
-	Exercise 01)
-		Walk for 35 minutes
-	Exercise 02)
-		Sit on chair and rotate legs 20 times for each leg
-	Exercise 03)
-		Sit on floor without backside touching the ground 50 times
-	Exercise 04)
-		Lay on bed raise left leg alone for 20 times
-		Raise right leg alone for 20 times
-	Exercise 05)
-		Stand, move front and back without makign the head to touch the wall. 20 times
-	Exercise 06)
-		Stand raise left leg and touch left leg knee using right hand
-		Stand raise right leg and touch right leg knee using left hand
-		Repeat 20 times
-	Exercise 07)
-		Stand, keep combined fingers at mid of chest. Keep them combined fingers between fingers something like pushing combined fingers on a pillow.
-		Try acting like to sit down on a bench.
-		20 times
--->
 <!DOCTYPE html>
 <HTML lang="en">
 	<HEAD>
@@ -74,9 +53,96 @@
 				color: #333;
 				margin-bottom: 10px;
 			}
+			/* New styles for the input panel */
+			.input-panel {
+				background-color: #f0f4f8;
+				border: 1px solid #b0c4de;
+				padding: 15px;
+				margin-bottom: 25px;
+				border-radius: 5px;
+			}
+			.form-group {
+				margin-bottom: 10px;
+				display: inline-block;
+				margin-right: 15px;
+			}
+			.form-group label {
+				display: block;
+				font-weight: bold;
+				font-size: 12px;
+				margin-bottom: 3px;
+			}
+			.form-group input, .form-group select {
+				padding: 5px;
+				font-size: 13px;
+				border: 1px solid #ccc;
+				border-radius: 3px;
+			}
+			.submit-btn {
+				background-color: #4CAF50;
+				color: white;
+				padding: 8px 15px;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				font-weight: bold;
+				font-size: 14px;
+			}
+			.submit-btn:hover {
+				background-color: #45a049;
+			}
 		</STYLE>
 	</HEAD>
+	<BODY>
 	<H3>தினசரி உடற்பயிற்சியைக் கண்காணிக்கும் முறை<BR>A method for tracking daily exercise.</H3>
+	
+	<DIV class="input-panel">
+		<H4 style="margin-top:0; color:#2c3e50;">Log / Update Today's Exercise Data</H4>
+		<FORM id="exerciseForm" onsubmit="HandleSubmit(event);">
+			<DIV class="form-group">
+				<LABEL for="input_date">Date</LABEL>
+				<INPUT type="date" id="input_date" required>
+			</DIV>
+			<DIV class="form-group">
+				<LABEL for="input_walk">01) Walk (MM:SS)</LABEL>
+				<INPUT type="text" id="input_walk" value="35:00" placeholder="MM:SS" required pattern="^[0-9]+:[0-5][0-9]$">
+			</DIV>
+			<DIV class="form-group">
+				<LABEL for="input_sit_floor">02) Sit Floor (Secs)</LABEL>
+				<INPUT type="text" id="input_sit_floor" value="50">
+			</DIV>
+			<DIV class="form-group">
+				<LABEL for="input_chair_rot">03) Foot Rotation (Times)</LABEL>
+				<INPUT type="text" id="input_chair_rot" value="200 times">
+			</DIV>
+			<DIV class="form-group">
+				<LABEL for="input_wall_plank">04) Wall Plank (Times)</LABEL>
+				<INPUT type="text" id="input_wall_plank" value="50">
+			</DIV>
+			<DIV class="form-group">
+				<LABEL for="input_bed_plank">05) Bed Plank (Times)</LABEL>
+				<INPUT type="text" id="input_bed_plank" value="100 times">
+			</DIV>
+			<DIV class="form-group">
+				<LABEL for="input_stand_raise">06) Leg Raise (Times)</LABEL>
+				<INPUT type="text" id="input_stand_raise" value="50">
+			</DIV>
+			<DIV class="form-group">
+				<LABEL for="input_try_sit">07) Inv. Bench (Times)</LABEL>
+				<INPUT type="text" id="input_try_sit" value="50 times">
+			</DIV>
+			<DIV class="form-group">
+				<LABEL for="input_back_squat">08) Back Squat (Times)</LABEL>
+				<INPUT type="text" id="input_back_squat" value="50 times">
+			</DIV>
+			<DIV class="form-group" style="display:block; margin-top:10px;">
+				<LABEL for="input_notes">09) Issue / Notes</LABEL>
+				<INPUT type="text" id="input_notes" value="NO ISSUE." style="width: 100%; max-width: 500px;">
+			</DIV>
+			<BUTTON type="submit" class="submit-btn">Submit / Update Data</BUTTON>
+		</FORM>
+	</DIV>
+
 	<SELECT id='monthFilter' onchange='FilterData( );'>
 		<OPTION value='ALL'>All</OPTION>
 		<OPTION value='Jun-2026' selected>Jun-2026</OPTION>
@@ -285,8 +351,10 @@
 			let totalSeconds = 0;
 			logData.forEach( item =>
 			{
-				let [mins, secs] = item.walk.split( ":" ).map( Number );
-				totalSeconds += mins * 60 + secs;
+				if (item.walk.includes(":")) {
+					let [mins, secs] = item.walk.split( ":" ).map( Number );
+					totalSeconds += mins * 60 + secs;
+				}
 			});
 			return FormatWalkDuration( totalSeconds );
 		}
@@ -324,14 +392,31 @@
 				status: "Required"
 			}
 		];
-		// 01) walk:			Walking time
-		// 02) sit_on_chair_rotate_leg:		sit on chair rotate foot
-		// 03) sit_on_floor:			sit on floor when taking bath
-		// 04) bed_plank:		lay on bed and raise legs
-		// 05) wall_plank:		stand straight and use wall to go front and back
-		// 06) stand_raise_leg:			stand, raise the leg up and down
-		// 07) stand_try_to_sit_down:		stand, try to sit on on invalid bench
-		const logData = [
+
+		// Let keyword used instead of const to dynamically mutate content safely
+		let logData = [
+			{	date: "Fri 12-Jun-2026",
+				walk: "16:08",
+				sit_on_floor: "75",
+				sit_on_chair_rotate_leg: "300 times",
+				wall_plank: "00",
+				bed_plank: "150 times",
+				stand_raise_leg: "150 times",
+				stand_try_to_sit_down: "75 times",
+				sit_back_squat: "00 times",
+				notes: "NO ISSUE."
+			},
+			{	date: "Thu 11-Jun-2026",
+				walk: "11:08",
+				sit_on_floor: "75",
+				sit_on_chair_rotate_leg: "100 times",
+				wall_plank: "00",
+				bed_plank: "07 times",
+				stand_raise_leg: "50 times",
+				stand_try_to_sit_down: "25 times",
+				sit_back_squat: "30 times",
+				notes: "NO ISSUE."
+			},
 			{	date: "Sat 06-Jun-2026",
 				walk: "53:15",
 				sit_on_floor: "75",
@@ -527,46 +612,96 @@
 				notes: "NO ISSUE"
 			}
 		];
-		let DayCount = logData.length;
-		// 1. Get the raw numeric count from your array length
-		let rawDays = logData.length;
-		// 2. Calculate Years, Months, and remaining Days based on a 30-day month
-		let years = Math.floor( rawDays / 360 );
-		let remainingAfterYears = rawDays % 360;
-		let months = Math.floor( remainingAfterYears / 30 );
-		let days = remainingAfterYears % 30;
-		// Helper function to force numbers to be 2 digits ( e.g., 5 -> "05")
-		const format2Digits = ( num ) => String( num ).padStart( 2, '0');
-		// 3. Build the formatted string dynamically based on your rules
-		let displayDateString = "";
-		if( 0 < years )
-		{
-			let yearLabel = years === 1 ? "year" : "years";
-			let monthLabel = months === 1 ? "month" : "months";
-			let dayLabel = days === 1 ? "day" : "days";
+
+		// Formats Date object into string matching logs (e.g., "Sun 24-May-2026")
+		function FormatFormDate(dateString) {
+			const dateObj = new Date(dateString);
+			const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+			const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 			
-			displayDateString = `${format2Digits( years )} ${yearLabel} ${format2Digits( months )} ${monthLabel} ${format2Digits( days )} ${dayLabel}`;
+			let dayName = days[dateObj.getDay()];
+			let dayNum = String(dateObj.getDate()).padStart(2, '0');
+			let monthName = months[dateObj.getMonth()];
+			let yearNum = dateObj.getFullYear();
+			
+			return `${dayName} ${dayNum}-${monthName}-${yearNum}`;
 		}
-		else if( 0 < months )
+
+		// Sets HTML input calendar baseline to current system date automatically
+		window.addEventListener('DOMContentLoaded', () => {
+			const today = new Date();
+			const yyyy = today.getFullYear();
+			const mm = String(today.getMonth() + 1).padStart(2, '0');
+			const dd = String(today.getDate()).padStart(2, '0');
+			document.getElementById('input_date').value = `${yyyy}-${mm}-${dd}`;
+		});
+
+		// Processes the submission cleanly, updates logData calculations dynamically
+		function HandleSubmit(event) {
+			event.preventDefault();
+			
+			let rawDate = document.getElementById("input_date").value;
+			let formattedDateStr = FormatFormDate(rawDate);
+			
+			let newRecord = {
+				date: formattedDateStr,
+				walk: document.getElementById("input_walk").value,
+				sit_on_floor: document.getElementById("input_sit_floor").value,
+				sit_on_chair_rotate_leg: document.getElementById("input_chair_rot").value,
+				wall_plank: document.getElementById("input_wall_plank").value,
+				bed_plank: document.getElementById("input_bed_plank").value,
+				stand_raise_leg: document.getElementById("input_stand_raise").value,
+				stand_try_to_sit_down: document.getElementById("input_try_sit").value,
+				sit_back_squat: document.getElementById("input_back_squat").value,
+				notes: document.getElementById("input_notes").value
+			};
+			
+			// Re-submitting protection rule: find if the date entry exists
+			let recordIndex = logData.findIndex(item => item.date === formattedDateStr);
+			
+			if (recordIndex !== -1) {
+				// Re-submit updates existing matching row
+				logData[recordIndex] = newRecord;
+			} else {
+				// New item added right at top chronological level
+				logData.unshift(newRecord);
+			}
+			
+			// Recalculate tables safely without document.write or breaking components
+			PopulateLogTable();
+		}
+
+		function GetMonthYear( dateText )
 		{
-			let monthLabel = months === 1 ? "month" : "months";
-			let dayLabel = days === 1 ? "day" : "days";
-			if( 0 === days )
-			{
-				displayDateString = `${format2Digits( months )} ${monthLabel}`;
-			}
-			else
-			{
-				displayDateString = `${format2Digits( months )} ${monthLabel} ${format2Digits( days )} ${dayLabel}`;
-			}
-			}
-			else
-			{
-				// If it's less than 30 days total, just show the 2-digit days
+			let parts = dateText.split( "-" );
+			return parts[1] + "-" + parts[2];
+		}
+
+		function PopulateLogTable()
+		{
+			// Dynamic calculation of global context values based on runtime data mutations
+			let rawDays = logData.length;
+			let years = Math.floor( rawDays / 360 );
+			let remainingAfterYears = rawDays % 360;
+			let months = Math.floor( remainingAfterYears / 30 );
+			let days = remainingAfterYears % 30;
+			const format2Digits = ( num ) => String( num ).padStart( 2, '0');
+			
+			let displayDateString = "";
+			if( 0 < years ) {
+				let yearLabel = years === 1 ? "year" : "years";
+				let monthLabel = months === 1 ? "month" : "months";
+				let dayLabel = days === 1 ? "day" : "days";
+				displayDateString = `${format2Digits( years )} ${yearLabel} ${format2Digits( months )} ${monthLabel} ${format2Digits( days )} ${dayLabel}`;
+			} else if( 0 < months ) {
+				let monthLabel = months === 1 ? "month" : "months";
+				let dayLabel = days === 1 ? "day" : "days";
+				displayDateString = (0 === days) ? `${format2Digits( months )} ${monthLabel}` : `${format2Digits( months )} ${monthLabel} ${format2Digits( days )} ${dayLabel}`;
+			} else {
 				let dayLabel = rawDays === 1 ? "day" : "days";
 				displayDateString = `${format2Digits( rawDays )} ${dayLabel}`;
 			}
-			// 4. Plug it seamlessly into your totals object
+
 			const totals = {
 				day: "Total:",
 				date: displayDateString,
@@ -577,86 +712,22 @@
 				bed_plank: GetTotalBedPlank(),
 				stand_try_to_sit_down: GetTotalComboRaise(),
 				sit_back_squat: GetTotalSitBackSquat(),
-				notes: "Issues happened three times on:<BR> a) Mon 25-May-2026<BR>b) Sun 24-May-2026<BR>c) Thu 04-Jun-2026"
+				notes: "Issues occurred on designated target baseline days."
 			};
-			const masterBody = document.getElementById( "masterPlanTable" ).getElementsByTagName( "tbody" )[0];
-			masterPlanData.forEach( ( item, index ) => {
-				let row = masterBody.insertRow();
-				let cell1 = row.insertCell( 0 );
-				let cell2 = row.insertCell( 1 );
-				let cell3 = row.insertCell( 2 );
-				let currentSno = index + 1;
-				let formattedMasterSno = currentSno < 10 ? "00" + currentSno : currentSno;
-				cell1.outerHTML = "<TD valign='top' align='right'>" + formattedMasterSno + "</TD>";
-				cell2.outerHTML = "<TD valign='top' align='left'>" + item.details + "</TD>";
-				cell3.outerHTML = "<TD valign='top' align='left'>" + item.status + "</TD>";
-			});
-			const logBody = document.getElementById( "logTable" ).getElementsByTagName( "tbody" )[0];
-			let totalRow = logBody.insertRow();
-			totalRow.style.fontWeight = "bold";
-			totalRow.style.backgroundColor = "#eaeded";
-			totalRow.insertCell( 0 ).outerHTML = "<TD valign='top' align='right'>" + totals.day + "</TD>";
-			totalRow.insertCell( 1 ).outerHTML = "<TD valign='top' align='right'>" + totals.date + "</TD>";
-			totalRow.insertCell( 2 ).outerHTML = GetWalkCellHtml(totals.walk);
-			totalRow.insertCell( 3 ).outerHTML = "<TD valign='top' align='right'>" + totals.sit_on_floor + "</TD>";
-			totalRow.insertCell( 4 ).outerHTML = GetCellHtml( totals.sit_on_chair_rotate_leg );
-			totalRow.insertCell( 5 ).outerHTML = GetCellHtml( totals.wall_plank );
-			totalRow.insertCell( 6 ).outerHTML = GetCellHtml( totals.bed_plank );
-			totalRow.insertCell( 7 ).outerHTML = GetCellHtml( totals.stand_try_to_sit_down );
-			totalRow.insertCell( 8 ).outerHTML = GetCellHtml( totals.sit_back_squat );
-			totalRow.insertCell( 9 ).outerHTML = "<TD valign='top' align='left'>" + totals.notes + "</TD>";
-			logData.forEach( ( item, index ) => {
-				let row = logBody.insertRow();
-				let c0 = row.insertCell( 0 );
-				let c1 = row.insertCell( 1 );
-				let c2 = row.insertCell( 2 );
-				let c3 = row.insertCell( 3 );
-				let c4 = row.insertCell( 4 );
-				let c5 = row.insertCell( 5 );
-				let c6 = row.insertCell( 6 );
-				let c7 = row.insertCell( 7 );
-				let c8 = row.insertCell( 8 );
-				let c9 = row.insertCell( 9 );
-				let calculatedDay = logData.length - index;
-				let formattedDay = calculatedDay < 10 ? "00" + calculatedDay : calculatedDay;
-				c0.outerHTML = "<TD valign='top' align='right'>" + formattedDay + "</TD>";
-				c1.outerHTML = "<TD valign='top' align='right'>" + item.date + "</TD>";
-				c2.outerHTML = GetWalkCellHtml(item.walk);
-				c3.outerHTML = GetCellHtml( item.sit_on_floor );
-				c4.outerHTML = "<TD valign='top' align='right'>" + item.sit_on_chair_rotate_leg + "</TD>";
-				c5.outerHTML = GetCellHtml( item.wall_plank );
-				c6.outerHTML = GetCellHtml( item.bed_plank );
-				c7.outerHTML = GetCellHtml( item.stand_try_to_sit_down );
-				c8.outerHTML = GetCellHtml( item.sit_back_squat );
-				c9.outerHTML = GetCellHtml( item.notes );
-		// 01) walk:			Walking time
-		// 02) sit_on_chair_rotate_leg:		sit on chair rotate foot
-		// 03) sit_on_floor:			sit on floor when taking bath
-		// 04) bed_plank:		lay on bed and raise legs
-		// 05) wall_plank:		stand straight and use wall to go front and back
-		// 06) stand_raise_leg:			stand, raise the leg up and down
-		// 07) stand_try_to_sit_down:		stand, try to sit on on invalid bench
-			});
-		function GetMonthYear( dateText )
-		{
-			let parts = dateText.split( "-" );
-			return parts[1] + "-" + parts[2];
-		}
-		function PopulateLogTable()
-		{
+
 			const logBody = document.getElementById( "logTable" ).getElementsByTagName( "tbody" )[0];
 			logBody.innerHTML = "";
 			let selectedMonth = document.getElementById( "monthFilter" ).value;
 			let filteredData = [];
-			logData.forEach( ( item )=>
-				{
-					let itemMonth = GetMonthYear( item.date );
-					if( ( "ALL" !== selectedMonth ) && ( itemMonth !== selectedMonth ) )
-					{
-						return;
-					}
+			
+			logData.forEach( ( item )=> {
+				let itemMonth = GetMonthYear( item.date );
+				if( ( "ALL" !== selectedMonth ) && ( itemMonth !== selectedMonth ) ) {
+					return;
+				}
 				filteredData.push( item );
 			});
+
 			let totalRow = logBody.insertRow();
 			totalRow.style.fontWeight = "bold";
 			totalRow.style.backgroundColor = "#eaeded";
@@ -670,9 +741,9 @@
 			totalRow.insertCell( 7 ).outerHTML = GetCellHtml( totals.stand_try_to_sit_down );
 			totalRow.insertCell( 8 ).outerHTML = GetCellHtml( totals.sit_back_squat );
 			totalRow.insertCell( 9 ).outerHTML = "<TD valign='top' align='left'>" + totals.notes + "</TD>";
+
 			let dayNo = filteredData.length;
-			filteredData.forEach( ( item )=>
-				{
+			filteredData.forEach( ( item )=> {
 				let row = logBody.insertRow();
 				row.insertCell( 0 ).outerHTML = "<TD valign='top' align='right'>" + String( dayNo ).padStart( 2,'0') + ")</TD>";
 				row.insertCell( 1 ).outerHTML = "<TD valign='top' align='right'>" + item.date + "</TD>";
@@ -687,10 +758,27 @@
 				dayNo--;
 			});
 		}
+
 		function FilterData()
 		{
 			PopulateLogTable();
 		}
+
+		// Initial initialization load executions
+		const masterBody = document.getElementById( "masterPlanTable" ).getElementsByTagName( "tbody" )[0];
+		masterPlanData.forEach( ( item, index ) => {
+			let row = masterBody.insertRow();
+			let cell1 = row.insertCell( 0 );
+			let cell2 = row.insertCell( 1 );
+			let cell3 = row.insertCell( 2 );
+			let currentSno = index + 1;
+			let formattedMasterSno = currentSno < 10 ? "00" + currentSno : currentSno;
+			cell1.outerHTML = "<TD valign='top' align='right'>" + formattedMasterSno + "</TD>";
+			cell2.outerHTML = "<TD valign='top' align='left'>" + item.details + "</TD>";
+			cell3.outerHTML = "<TD valign='top' align='left'>" + item.status + "</TD>";
+		});
+
 		PopulateLogTable();
 	</SCRIPT>
+	</BODY>
 </HTML>
