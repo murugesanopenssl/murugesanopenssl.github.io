@@ -1096,6 +1096,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"ippb-awareness-indian-citizens.html": ["IPPB Premium Savings Tips"],
 								"Self-Insurance-Plan-for-Parents.html": ["Personal Self-Insurance Example"],
 								"why-to-open-fixed-deposit.html": ["Why Choose Fixed Deposit?"],
+								"sbi-yono-registration-error.html": ["YONO SBI REGISTRATION ISSUE"],
 								"dynamic-gold-rate-comparison-tool.html": ["Gold Rate Comparison"],
 								"futura-brush-buying-guide.html": ["Futura Brush: Save AMB Interest (Cash Only)"],
 								"axis-bank-life-insurance-block.html": ["Avoid Private Bank Life Insurance"],
@@ -1698,6 +1699,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 						</TABLE>
 					</A>
 					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'sbi-yono-registration-error.html' );" class="nav-link">YONO SBI REGISTRATION ISSUE</A>
+						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'why-to-open-fixed-deposit.html' );" class="nav-link">Why Choose Fixed Deposit?</A>
 						</LI>

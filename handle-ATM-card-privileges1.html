@@ -10,6 +10,43 @@
 		<META http-equiv="Pragma" content="no-cache">
 		<META http-equiv="Expires" content="0">
 		<SCRIPT src='NMmenu051.js'></SCRIPT>
+		<SCRIPT type='text/javascript'>
+			// Function to toggle language visibility dynamically
+			function toggleLanguage(lang) {
+				const englishElements = document.querySelectorAll('.en-text, [id^="tip"][id$="Title"], #mainTitle');
+				const tamilElements = document.querySelectorAll('.ta-text, [id^="tip"][id$="TitleTa"], #mainTitleTamil');
+				const englishBtn = document.getElementById('englishBtn');
+				const tamilBtn = document.getElementById('tamilBtn');
+
+				if (lang === 'english') {
+					// Show English, Hide Tamil
+					englishElements.forEach(el => el.classList.remove('hidden'));
+					tamilElements.forEach(el => el.classList.add('hidden'));
+					englishBtn.classList.add('active');
+					tamilBtn.classList.remove('active');
+				} else if (lang === 'tamil') {
+					// Show Tamil, Hide English
+					tamilElements.forEach(el => el.classList.remove('hidden'));
+					englishElements.forEach(el => el.classList.add('hidden'));
+					tamilBtn.classList.add('active');
+					englishBtn.classList.remove('active');
+				}
+			}
+
+			// Ensure English displays alone by default on page load
+			window.addEventListener('DOMContentLoaded', (event) => {
+				toggleLanguage('english');
+			});
+		</SCRIPT>
+		<STYLE>
+			/* CSS rule to seamlessly hide elements */
+			.hidden { display: none !important; }
+			/* Basic styling for active state toggles */
+			.toggle-btn.active { font-weight: bold; background-color: #ddd; }
+			table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+			th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+			th { background-color: #f4f4f4; }
+		</STYLE>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 		<SCRIPT type='text/javascript'>
@@ -20,43 +57,90 @@
 				<BUTTON class="toggle-btn" id="englishBtn" onclick="toggleLanguage('english')">
 					🌐 Display in English (ஆங்கிலத்தில் காண்பிக்கவும்)
 				</BUTTON>
-				<BUTTON class="toggle-btn active" id="tamilBtn" onclick="toggleLanguage('tamil')">
+				<BUTTON class="toggle-btn" id="tamilBtn" onclick="toggleLanguage('tamil')">
 					🌐 தமிழில் காண்பிக்கவும் (Display in Tamil)
 				</BUTTON>
 			</DIV>
 		<DIV class="content-section">
-			<H1 id="mainTitle" class="hidden">💡 Smart Banking Tips: Avoid Wasting Money on Your Accounts</H1>
+			<H1 id="mainTitle">💡 Smart Banking Tips: Avoid Wasting Money on Your Accounts</H1>
 			<H1 id="mainTitleTamil">💡 உங்கள் வங்கி அல்லது தபால் நிலைய கணக்குகளில் பணத்தை வீணாக்குவதைத் தவிர்ப்பதற்கான உதவிக்குறிப்புகள்</H1>
+			
+			<!-- NEW REQUESTED COMPARISON TABLE -->
+			<DIV class="bank-table-container">
+				<TABLE>
+					<THEAD>
+						<TR>
+							<TH>BANK</TH>
+							<TH>MaxAmtPerDay</TH>
+							<TH>Max AMOUNT DURING EACH ATM WITHDRAWAL</TH>
+							<TH>Max number of times per month to withdraw without service charge</TH>
+							<TH>Max number of times per day</TH>
+						</TR>
+					</THEAD>
+					<TBODY>
+						<TR>
+							<TD>SBI</TD>
+							<TD>40000.00 INR</TD>
+							<TD>10000.00 INR</TD>
+							<TD>10 times</TD>
+							<TD>04 times</TD>
+						</TR>
+						<TR>
+							<TD>TMB</TD>
+							<TD>50000.00 INR</TD>
+							<TD>15000.00 INR</TD>
+							<TD>05 times</TD>
+							<TD>02 times</TD>
+						</TR>
+						<TR>
+							<TD>KVB</TD>
+							<TD>30000.00 INR</TD>
+							<TD>15000.00 INR</TD>
+							<TD>05 times</TD>
+							<TD>02 TIMES</TD>
+						</TR>
+						<TR>
+							<TD>INDIAN BANK</TD>
+							<TD>30000.00 INR</TD>
+							<TD>15000.00 INR</TD>
+							<TD>05 times</TD>
+							<TD>02 times</TD>
+						</TR>
+					</TBODY>
+				</TABLE>
+			</DIV>
+			<BR>
+
 			<DIV class="tip">
-				<DIV class="tip-title hidden" id="tip1Title">A) Smart ATM Withdrawal Limits</DIV>
+				<DIV class="tip-title" id="tip1Title">A) Smart ATM Withdrawal Limits</DIV>
 				<DIV class="tip-title ta-text" id="tip1TitleTa">அ) த.ப.இ/எ.டி.எம் பணம் எடுத்தல் – வரம்பு கடைபிடிக்கவும்</DIV>
 				<DIV class="bilingual-text" id="tip1Content">
-					<P class="en-text hidden"><STRONG>💳 At Your Own Bank's ATM:</STRONG><BR>Withdraw a maximum of <STRONG>3 times per month</STRONG> at any location to avoid extra charges.</P>
+					<P class="en-text"><STRONG>💳 At Your Own Bank's ATM:</STRONG><BR>Withdraw a maximum of <STRONG>3 times per month</STRONG> at any location to avoid extra charges.</P>
 					<P class="ta-text"><STRONG>💳 உங்கள் சொந்த வங்கியின் த.ப.இ/எ.டி.எம்:</STRONG><BR>மாதத்திற்கு அதிகபட்சம் மூன்று முறை மட்டுமே பணம் எடுக்க வேண்டும்.</P>
-					<P class="en-text hidden"><STRONG>🏦 At Other Bank's ATM:</STRONG><BR>Limit yourself to <STRONG>2 withdrawals per month</STRONG> to stay within free transaction limits.</P>
+					<P class="en-text"><STRONG>🏦 At Other Bank's ATM:</STRONG><BR>Limit yourself to <STRONG>2 withdrawals per month</STRONG> to stay within free transaction limits.</P>
 					<P class="ta-text"><STRONG>🏦 மற்ற வங்கிகளின் த.ப.இ/எ.டி.எம்:</STRONG><BR>மாதத்திற்கு அதிகபட்சம் இரண்டு முறை மட்டுமே பணம் எடுக்க வேண்டும்.</P>
 				</DIV>
 			</DIV>
 			<DIV class="tip">
-				<DIV class="tip-title hidden" id="tip2Title">B) Always Check Your Balance Before Withdrawal</DIV>
+				<DIV class="tip-title" id="tip2Title">B) Always Check Your Balance Before Withdrawal</DIV>
 				<DIV class="tip-title ta-text" id="tip2TitleTa">ஆ) பணம் எடுப்பதற்கு முன் உங்கள் பாக்கி தொகையை சரிபார்க்கவும்</DIV>
 				<DIV class="bilingual-text" id="tip2Content">
-					<P class="en-text hidden"><STRONG>⚠️ Why This Matters:</STRONG></P>
+					<P class="en-text"><STRONG>⚠️ Why This Matters:</STRONG></P>
 					<P class="ta-text"><STRONG>⚠️ இது ஏன் முக்கியம்:</STRONG></P>
-					<P class="en-text hidden">If your balance is 9,999.99 &#8377; and you attempt to withdraw 10,000.00 &#8377;, the ATM will automatically charge you 23.60 &#8377; for insufficient balance.</P>
+					<P class="en-text">If your balance is 9,999.99 &#8377; and you attempt to withdraw 10,000.00 &#8377;, the ATM will automatically charge you 23.60 &#8377; for insufficient balance.</P>
 					<P class="ta-text">உதாரணமாக, உங்கள் கணக்கில் 9999.99 ரூபாய் உள்ளது. நீங்கள் 10000.00 ரூபாயை எடுக்க முயன்றால், போதுமானதாக இல்லாத இருப்பு காரணமாக த.ப.இ/எ.டி.எம் தானாகவே 23.60 ரூபாய் கட்டணம் கழித்துவிடும்.</P>
 					<TABLE>
 						<TR>
-							<TD>SPAN class="en-text hidden">Sat 01-Nov-2025</SPAN>SPAN class="ta-text">சனி 01-நவ-2025</SPAN></TD>
-							<TD>SPAN class="en-text hidden">CREDIT</SPAN>SPAN class="ta-text">வரவு</SPAN></TD>
-							<TD>SPAN class="en-text hidden">BY TRANSFER</SPAN>SPAN class="ta-text">பணம் பரிமாற்றம்</SPAN></TD>
+							<TD><SPAN class="en-text">Sat 01-Nov-2025</SPAN><SPAN class="ta-text">சனி 01-நவ-2025</SPAN></TD>
+							<TD><SPAN class="en-text">CREDIT</SPAN><SPAN class="ta-text">வரவு</SPAN></TD>
+							<TD><SPAN class="en-text">BY TRANSFER</SPAN><SPAN class="ta-text">பணம் பரிமாற்றம்</SPAN></TD>
 							<TD>+ 31.00 &#8377;</TD>
 							<TD>+ 9999.99 &#8377;</TD>
 						</TR>
 						<TR>
-							<TD>SPAN class="en-text hidden">Sun 02-Nov-2025</SPAN>SPAN class="ta-text">ஞாயிறு 02-நவ-2025</SPAN></TD>
-							<TD>SPAN class="en-text hidden">DEBIT</SPAN>SPAN class="ta-text">செலவு</SPAN></TD>
-							<TD class="highlight">SPAN class="en-text hidden">INSUFFICIENT BALANCE ATM DECLINE CHARGE</SPAN>SPAN class="ta-text">போதுமானதாக இல்லாத இருப்பு த.ப.இ கட்டணம்</SPAN></TD>
+							<TD><SPAN class="en-text">Sun 02-Nov-2025</SPAN><SPAN class="ta-text">ஞாயிறு 02-நவ-2025</SPAN></TD>
+							<TD><SPAN class="en-text">DEBIT</SPAN><SPAN class="ta-text">செலவு</SPAN></TD>
+							<TD class="highlight"><SPAN class="en-text">INSUFFICIENT BALANCE ATM DECLINE CHARGE</SPAN><SPAN class="ta-text">போதுமானதாக இல்லாத இருப்பு த.ப.இ கட்டணம்</SPAN></TD>
 							<TD class="highlight">- 23.60 &#8377;</TD>
 							<TD>+ 9976.39 &#8377;</TD>
 						</TR>
@@ -64,45 +148,45 @@
 				</DIV>
 			</DIV>
 			<DIV class="tip">
-				<DIV class="tip-title hidden" id="tip3Title">C) Earn Rewards at Indian Oil Stations</DIV>
-				<DIV class="tip-title ta-text" id="tip3TitleTa">இ) இந்தியன் ஆயில் நிலையங்களில் பாறை எண்ணெய்/பெட்ரோலை வாங்கும்போது "பாரத ஸ்டேட் வங்கி/எஸ்.பி.ஐ ரிவார்ட்ஸ் பெறுங்கள்</DIV>
+				<DIV class="tip-title" id="tip3Title">C) Earn Rewards at Indian Oil Stations</DIV>
+				<DIV class="tip-title ta-text" id="tip3TitleTa">இ) இந்தியன் ஆயில் நிலையங்களில் பாறை எண்ணெய்/பெद्रोहலை வாங்கும்போது "பாரத ஸ்டேட் வங்கி/எஸ்.பி.ஐ ரிவார்ட்ஸ் பெறுங்கள்</DIV>
 				<DIV class="bilingual-text" id="tip3Content">
-					<P class="en-text hidden"><STRONG>🎁 Smart Fuel Purchases:</STRONG><BR>Use your SBI Debit Card to buy petrol or diesel at Indian Oil stations and earn reward points automatically!</P>
+					<P class="en-text"><STRONG>🎁 Smart Fuel Purchases:</STRONG><BR>Use your SBI Debit Card to buy petrol or diesel at Indian Oil stations and earn reward points automatically!</P>
 					<P class="ta-text"><STRONG>🎁 புத்திசாலித்தனமான எரிபொருள் வாங்குதல்:</STRONG><BR>இந்தியன் ஆயில் பாறை எண்ணெய்/பெட்ரோலை வாங்கும்போது, உங்கள் "பாரத ஸ்டேட் வங்கி/எஸ்.பி.ஐ த.ப.இ/எ.டி.எம் அட்டையை பயன்படுத்தி "பாரத ஸ்டேட் வங்கி/எஸ்.பி.ஐ வெகுமதி புள்ளிகளை(மறைமுக பணத்தை) பெறலாம்.</P>
 				</DIV>
 			</DIV>
 			<DIV class="tip">
-				<DIV class="tip-title hidden" id="tip4Title">D) Use Your Debit Card for All Purchases</DIV>
+				<DIV class="tip-title" id="tip4Title">D) Use Your Debit Card for All Purchases</DIV>
 				<DIV class="tip-title ta-text" id="tip4TitleTa">ஈ) நீங்கள் எந்த பொருள் வாங்கும் போதும், உங்கள் "பாரத ஸ்டேட் வங்கி/எஸ்.பி.ஐ த.ப.இ/எ.டி.எம் அட்டையை பயன்படுத்தவும்</DIV>
 				<DIV class="bilingual-text" id="tip4Content">
-					<P class="en-text hidden"><STRONG>💰 Maximize Your Rewards:</STRONG><BR>For purchases of 200.00 &#8377; or more (fuel, groceries, or any other items), always use your SBI Debit Card to earn reward points.</P>
+					<P class="en-text"><STRONG>💰 Maximize Your Rewards:</STRONG><BR>For purchases of 200.00 &#8377; or more (fuel, groceries, or any other items), always use your SBI Debit Card to earn reward points.</P>
 					<P class="ta-text"><STRONG>💰 உங்கள் வெகுமதிகளை அதிகரிக்கவும்:</STRONG><BR>ரூபாய் 200.00 &#8377; அல்லது அதற்கும் மேல் மதிப்புள்ள (பாறை எண்ணெய்/பெட்ரோலை/டிசலை, மற்ற பொருட்கள்) எதையும் வாங்கும்போது, "பாரத ஸ்டேட் வங்கி/எஸ்.பி.ஐ த.ப.இ/எ.டி.எம் அட்டையை பயன்படுத்தி ரிவார்ட்ஸ் பாயிண்ட்ஸ்(மறைமுக பணம்) பெறலாம்.</P>
 				</DIV>
 			</DIV>
 			<DIV class="tip">
-				<DIV class="tip-title hidden" id="tip5Title">E) Register Your Mobile Number at Indian Oil</DIV>
+				<DIV class="tip-title" id="tip5Title">E) Register Your Mobile Number at Indian Oil</DIV>
 				<DIV class="tip-title ta-text" id="tip5TitleTa">உ) இந்தியன் ஆயிலில் பாயிண்ட்ஸ்(மறைமுக பணம்) சேகரிக்கவும்</DIV>
 				<DIV class="bilingual-text" id="tip5Content">
-					<P class="en-text hidden"><STRONG>📱 Extra Points Program:</STRONG><BR>When purchasing fuel at Indian Oil, provide your mobile number at the station to earn additional loyalty points.</P>
+					<P class="en-text"><STRONG>📱 Extra Points Program:</STRONG><BR>When purchasing fuel at Indian Oil, provide your mobile number at the station to earn additional loyalty points.</P>
 					<P class="ta-text"><STRONG>📱 கூடுதல் புள்ளிகள் திட்டம்:</STRONG><BR>இந்தியன் ஆயில் பாறை எண்ணெய்/பெட்ரோலை/டிசலை வாங்கும்போது, உங்கள் கைபேசி/மொபைல் எண்ணை கொடுத்தால் பாயிண்ட்ஸ்(மறைமுக பணம்) சேகரிக்கப்படும்.</P>
 				</DIV>
 			</DIV>
 			<DIV class="tip">
-				<DIV class="tip-title hidden" id="tip6Title">F) Redeem Your Points for Free Fuel</DIV>
+				<DIV class="tip-title" id="tip6Title">F) Redeem Your Points for Free Fuel</DIV>
 				<DIV class="tip-title ta-text" id="tip6TitleTa">ஊ) புள்ளிகளைப்(மறைமுக பணத்தைப்) பயன்படுத்தி இலவச பாறை எண்ணெய்/பெட்ரோலை/டிசலை பெறலாம்</DIV>
 				<DIV class="bilingual-text" id="tip6Content">
-					<P class="en-text hidden"><STRONG>🎉 Free Fuel Benefit:</STRONG><BR>After 12-17 months, redeem your accumulated points for 100.00 &#8377; worth of free petrol at any Indian Oil station!</P>
+					<P class="en-text"><STRONG>🎉 Free Fuel Benefit:</STRONG><BR>After 12-17 months, redeem your accumulated points for 100.00 &#8377; worth of free petrol at any Indian Oil station!</P>
 					<P class="ta-text"><STRONG>🎉 இலவச எரிபொருள் நன்மை:</STRONG><BR>1 வருடம் (அல்லது ஒன்றரை வருடம்) கழித்து, சேகரித்த புள்ளிகளைப்(மறைமுக பணத்தைப்) பயன்படுத்தி 100.00 &#8377;/ரூபாய் மதிப்புள்ள இலவச பாறை எண்ணெய்/பெட்ரோலை/டிசலை பெறலாம்.</P>
 				</DIV>
 			</DIV>
 			<DIV class="tip">
-				<DIV class="tip-title hidden" id="tip7Title">G) Optimal Cash Deposit Timing</DIV>
+				<DIV class="tip-title" id="tip7Title">G) Optimal Cash Deposit Timing</DIV>
 				<DIV class="tip-title ta-text" id="tip7TitleTa">எ) தன்னியக்கப் பண/த.ப.இ/எ.டி.எம் இயந்திரங்களுக்குள் பணம் வைப்பு</DIV>
 				<DIV class="bilingual-text" id="tip7Content">
-					<P class="en-text hidden"><STRONG>🏦 Free Deposit Window:</STRONG><BR>Deposit cash at ATM machines between <STRONG>10:00 AM - 4:00 PM IST</STRONG> with no service charges!</P>
+					<P class="en-text"><STRONG>🏦 Free Deposit Window:</STRONG><BR>Deposit cash at ATM machines between <STRONG>10:00 AM - 4:00 PM IST</STRONG> with no service charges!</P>
 					<P class="ta-text"><STRONG>🏦 இலவச வைப்பு நேரம்:</STRONG><BR>இந்திய நேரம் காலை 10:00(பத்து மணி) முதல் மாலை 04:00(நான்கு மணி) வரை தன்னியக்கப் பண/த.ப.இ/எ.டி.எம் இயந்திரங்களில் பணம் வைப்பு செய்தால் சேவை கட்டணம் இல்லை.</P>
-						<P class="en-text hidden"><STRONG>⚠️ Avoid Charges:</STRONG><BR>Cash deposits before 10:00 AM or after 4:00 PM IST incur automatic service charges at SBI accounts. Plan your deposits accordingly!</P>
-						<P class="ta-text"><STRONG>⚠️ கட்டணங்களைத் தவிர்க்கவும்:</STRONG><BR>இந்திய நேரம் 04:00(நான்கு மணிக்கு) பின்னும் 10:00(பத்து மணிக்கு) முன்றும் பணம் வைப்பு செய்தால் "பாரத ஸ்டேட் வங்கி/எஸ்.பி.ஐ கணக்கில் தானாகவே கட்டணம் பிடிக்கப்படும். எனவே இந்த நேரங்களுக்கு வெளியே த.ப.இயில்/எ.டி.எம்மில் பணம் வைப்பு செய்ய வேண்டாம்.</P>
+					<P class="en-text"><STRONG>⚠️ Avoid Charges:</STRONG><BR>Cash deposits before 10:00 AM or after 4:00 PM IST incur automatic service charges at SBI accounts. Plan your deposits accordingly!</P>
+					<P class="ta-text"><STRONG>⚠️ கட்டணங்களைத் தவிர்க்கவும்:</STRONG><BR>இந்திய நேரம் 04:00(நான்கு மணிக்கு) பின்னும் 10:00(பத்து மணிக்கு) முன்றும் பணம் வைப்பு செய்தால் "பாரத ஸ்டேட் வங்கி/எஸ்.பி.ஐ கணக்கில் தானாகவே கட்டணம் பிடிக்கப்படும். எனவே இந்த நேரங்களுக்கு வெளியே த.ப.இயில்/எ.டி.எம்மில் பணம் வைப்பு செய்ய வேண்டாம்.</P>
 					</DIV>
 				</DIV>
 			</DIV>
