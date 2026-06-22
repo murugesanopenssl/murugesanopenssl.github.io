@@ -1102,6 +1102,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"axis-bank-life-insurance-block.html": ["Avoid Private Bank Life Insurance"],
 								"Steps-to-pay-property-tax-bengaluru.html": ["SOUTH INDIAN PROPERTY TAX PAYMENT"],
 								"how-to-link-aadhaar-with-pan-online.html": ["PAN-Aadhaar Linking Guide"],
+								"Aadhaar-Waiting-Days-for-Address-update.html": ["Aadhar address wait days"],
 								"income-tax-documents.html": ["INCOME TAX DOCS"],
 								"israel-usa-iran-war-2026.html": ["Cylinder/Food Warnings due to War"],
 								"health-insurance.html": ["PARENT HEALTH INSURANCE"],
@@ -1540,6 +1541,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								</LI>
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'how-to-link-aadhaar-with-pan-online.html' );" class="nav-link">PAN-Aadhaar Linking Guide</A>
+								</LI>
+								<LI>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'Aadhaar-Waiting-Days-for-Address-update.html' );" class="nav-link">Aadhar address wait days</A>
 								</LI>
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-pay-property-tax-bengaluru.html' );" class="nav-link">SOUTH INDIAN PROPERTY TAX PAYMENT</A>
