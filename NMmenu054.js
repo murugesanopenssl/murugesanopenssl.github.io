@@ -1,3 +1,6 @@
+// https://pdfcoffee.com/download/let-us-c-yashwant-kanetkar-3-pdf-free.html
+
+// https://abhyass.wordpress.com/wp-content/uploads/2016/09/thedesignofunixoperatingsystem_m_bach.pdf
 (
 	function injectDisabledLinkStyles()
 	{
@@ -1104,6 +1107,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"how-to-link-aadhaar-with-pan-online.html": ["PAN-Aadhaar Linking Guide"],
 								"Aadhaar-Waiting-Days-for-Address-update.html": ["Aadhar address wait days"],
 								"how-to-order-aadhaar-pvc-card-online.html": ["Order Aadhaar PVC Card Online Without Broker"],
+								"aadhaar-pvc-waiting-days.html": ["Order Aadhaar PVC Card waiting day count"],
 								"income-tax-documents.html": ["INCOME TAX DOCS"],
 								"israel-usa-iran-war-2026.html": ["Cylinder/Food Warnings due to War"],
 								"health-insurance.html": ["PARENT HEALTH INSURANCE"],
@@ -1550,6 +1554,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 									<A href="#" onclick="javascript:loadHomeContent( event, 'how-to-order-aadhaar-pvc-card-online.html' );" class="nav-link">Order Aadhaar PVC Card Online Without Broker</A>
 								</LI>
 								<LI>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'aadhaar-pvc-waiting-days.html' );" class="nav-link">Order Aadhaar PVC Card waiting day count</A>
+								</LI>
+								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-pay-property-tax-bengaluru.html' );" class="nav-link">SOUTH INDIAN PROPERTY TAX PAYMENT</A>
 								</LI>
 								<LI>
@@ -1896,6 +1903,29 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				<SPAN class="nav-arrow">&gt;</SPAN>
 				</A>
 				<UL class="submenu">
+				<LI class="nav-item">
+					<SPAN class="nav-icon"><FONT color='white'>COMPUTER BOOKS</FONT></SPAN>
+					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="window.open( 'Books/THE_DESIGN_OF_THE_UNIX_OPERATING_SYSTEM.pdf' )" class="nav-link">The design of UNIX OS Maurice J Bach</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="window.open(              'Books/Let_us_C_Yashwant_kanetkar.pdf' )" class="nav-link">Let us C</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="window.open(                      'Books/Test-your-C-skills.pdf' )" class="nav-link">Test your C Skills</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="window.open(              'https://archive.org/details/letusc0000kane/page/n3/mode/2up?_autoReadAloud=show' )" class="nav-link">Let us C++</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="loadHomeContent( event, 'info-ltts.html' )" class="nav-link">L & T EMAIL AUTOMATION</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="loadHomeContent( event, 'talent-ibm.html' )" class="nav-link">IBM EMAIL AUTOMATION</A>
+						</LI>
+					</UL>
+				</LI>
 				<LI class="nav-item">
 					<SPAN class="nav-icon"><FONT color='white'>EMAIL AUTOMATION</FONT></SPAN>
 					<UL class="submenu">
