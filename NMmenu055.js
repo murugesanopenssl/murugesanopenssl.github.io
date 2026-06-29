@@ -1920,7 +1920,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							<A href="#" onclick="window.open(              'Books/Let_us_C_Yashwant_kanetkar.pdf' )" class="nav-link">Let us C</A>
 						</LI>
 						<LI>
-							<A href="#" onclick="window.open(                      'Books/Test-your-C-skills.pdf' )" class="nav-link">Test your C Skills</A>
+							<A href="#" onclick="window.open(                      'Books/Test_Your_C_Skills.html' )" class="nav-link">Test your C Skills</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="window.open(              'https://archive.org/details/letusc0000kane/page/n3/mode/2up?_autoReadAloud=show' )" class="nav-link">Let us C++</A>
