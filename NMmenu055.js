@@ -1138,6 +1138,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"Bharath_gas_booking_steps.html": ["Bharat Gas", "Bharat Gas"],
 								"Indian-Oil-Cylinder-Booking-Online-Steps.html": ["Indian Oil", "Indian Oil"],
 								"how-to-get-lpg-refund.html": ["LPG Subsidy Fix", "LPG Subsidy Fix"],
+								"send-sms-using-two-sim.html": ["Not sending SMS", "Not sending SMS"],
 								"ShareKnowledgeTransferToPeople.html": ["Knowledge Share", "Knowledge Share"],
 								"world-currencies.html": ["Currency Rates", "World Currency Rates"],
 								"Steps-to-talk-with-indian-voter.html": ["Voter01 Help", "Call Indian Voter Help"],
@@ -1882,6 +1883,12 @@ function MainPageHomeLoadContent( event, htmlFileName )
 			</UL>
 		</LI>
 		<!-- Misc -->
+		<LI class="nav-item">
+			<A href="#" class="nav-link">Mobile Errors <SPAN class="nav-arrow">&gt;</SPAN></A>
+			<UL class="submenu">
+				<LI><A href="#" onclick="loadHomeContent(event, 'send-sms-using-two-sim.html');" class="nav-link">Not sending SMS</A></LI>
+			</UL>
+		</LI>
 		<LI class="nav-item">
 			<A href="#" class="nav-link">Others <SPAN class="nav-arrow">&gt;</SPAN></A>
 			<UL class="submenu">
