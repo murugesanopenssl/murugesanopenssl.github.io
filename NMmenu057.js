@@ -1100,6 +1100,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"Self-Insurance-Plan-for-Parents.html": ["Personal Self-Insurance Example"],
 								"why-to-open-fixed-deposit.html": ["Why Choose Fixed Deposit?"],
 								"sbi-yono-registration-error.html": ["YONO SBI REGISTRATION ISSUE"],
+								"Always-have-bank-balance-ending-with-zero.html": ["Make balance ending with .00 INR always."],
 								"dynamic-gold-rate-comparison-tool.html": ["Gold Rate Comparison"],
 								"futura-brush-buying-guide.html": ["Futura Brush: Save AMB Interest (Cash Only)"],
 								"axis-bank-life-insurance-block.html": ["Avoid Private Bank Life Insurance"],
