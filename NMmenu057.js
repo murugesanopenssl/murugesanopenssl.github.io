@@ -1717,6 +1717,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					</A>
 					<UL class="submenu">
 						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'Always-have-bank-balance-ending-with-zero.html' );" class="nav-link">Make balance ending with .00 INR always.</A>
+						</LI>
+						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'sbi-yono-registration-error.html' );" class="nav-link">YONO SBI REGISTRATION ISSUE</A>
 						</LI>
 						<LI>
