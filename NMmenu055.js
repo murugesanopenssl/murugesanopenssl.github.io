@@ -1113,6 +1113,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"health-insurance.html": ["PARENT HEALTH INSURANCE"],
 								"HandleBankAMB.html": ["ATM Usage Tips"],
 								"IGCSE-EXAM-DATES.html": ["Cambridge IGCSE Examination Timetable"],
+								"India-public-holidays.html": ["Indian public holidays"],
 								"twelth-exam-dates.html": ["12th EXAM CHART"],
 								"eleventh-exam-dates.html": ["11th EXAM CHART"],
 								"SSLC-EXAM-DATES.html": ["SSLC EXAM CHART"],
@@ -2013,6 +2014,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				<SPAN class="nav-text"><FONT color='black'>Calendar</FONT></SPAN>
 				</A>
 					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'India-public-holidays.html' );" class="nav-link"><FONT color='white'>Indian public holidays</FONT></A>
+						</LI>
 						<LI>
 							<A href="#" onclick="javascript:window.open( 'twelth-exam-dates.html' );" class="nav-link"><FONT color='#00ff00'>12th EXAM CHART</FONT></A>
 						</LI>
