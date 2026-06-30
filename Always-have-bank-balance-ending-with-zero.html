@@ -21,7 +21,7 @@
 					<LABEL>Amount to Pay at Shop (INR)</LABEL>
 				</TD>
 				<TD valign='top' align='left'>
-					<INPUT type="number" value='200.12' id="shopAmount" step="0.01" placeholder="Example: 200.12">
+					<INPUT type="number" value='201.12' id="shopAmount" step="0.01" placeholder="Example: 201.12">
 				</TD>
 			</TR>
 			<TR>
@@ -29,7 +29,7 @@
 					<LABEL>Bank/Post Office Balance (INR)</LABEL>
 				</TD>
 				<TD valign='top' align='left'>
-					<INPUT type="number" value='600.31' id="bankBalance" step="0.01" placeholder="Example: 12345.31">
+					<INPUT type="number" value='700.62' id="bankBalance" step="0.01" placeholder="Example: 12345.62">
 				</TD>
 			</TR>
 			<TR>
@@ -52,7 +52,7 @@
 				</TD>
 				<TD valign='top' align='right'>
 					<DIV id="result">
-						199.31 ರೂ/ரூ/₹
+						200.62 ರೂ/ரூ/₹
 					</DIV>
 				</TD>
 			</TR>
@@ -62,7 +62,7 @@
 				</TD>
 				<TD valign='top' align='right'>
 					<DIV id="ShopBalPayment">
-						0.81 ರೂ/ரூ/₹
+						0.50 ರೂ/ரூ/₹
 					</DIV>
 				</TD>
 			</TR>
@@ -72,7 +72,7 @@
 				</TD>
 				<TD valign='top' align='right'>
 					<DIV id="BankAfterPayment">
-						401.00 ரூ/ரூ/₹
+						500.00 ರೂ/ரூ/₹
 					</DIV>
 				</TD>
 			</TR>
@@ -105,11 +105,11 @@
 				let shopDeduction = bill - atmPayment;
 				let newBankBalance = bank - atmPayment;
 				document.getElementById("result").innerHTML =
-					atmPayment.toFixed(2) + " ரூ/ரூ/₹";
+					atmPayment.toFixed(2) + " ರೂ/ரூ/₹";
 				document.getElementById("ShopBalPayment").innerHTML =
-					shopDeduction.toFixed(2) + " ரூ/ரூ/₹";
+					shopDeduction.toFixed(2) + " ರೂ/ரூ/₹";
 				document.getElementById("BankAfterPayment").innerHTML =
-					newBankBalance.toFixed(2) + " ரூ/ரூ/₹";
+					newBankBalance.toFixed(2) + " ರೂ/ரூ/₹";
 			}
 		</SCRIPT>
 	</BODY>
