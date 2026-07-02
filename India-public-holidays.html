@@ -105,6 +105,7 @@
 					<SCRIPT type='text/javascript'>
 						if( "Fri" == Day )
 						{
+							Sun_HarvestFestival=(""+new Date( "17-Jan-"+UpdatedYYYY) ).substring( 0, 3)+" 17-Jan-"+UpdatedYYYY;
 							Disp_HarvestFestival=(""+new Date( "14-Jan-"+UpdatedYYYY) ).substring( 0, 3)+" 14-Jan-"+UpdatedYYYY;
 							if( UpdatedYYYY == yyyy )
 							{
@@ -112,7 +113,7 @@
 							}
 							else
 							{
-								document.getElementById("Disp_HarvestFestival").innerHTML = "<U><B>Next</B></U> Harvest festival<BR>Traffic Jam(previous day evening) on "+Disp_HarvestFestival;
+								document.getElementById("Disp_HarvestFestival").innerHTML = "<U><B>Next</B></U> Harvest festival<BR>Traffic Jam(previous day evening) on "+Disp_HarvestFestival+"<BR>and also on "+Sun_HarvestFestival+" (evening time) due to Sunday.";
 							}
 							document.getElementById("Disp_HarvestFestival").style.backgroundColor = "red";
 							document.getElementById("Disp_HarvestFestival").style.color = "white";
@@ -410,13 +411,14 @@
 						if( "Fri" == Day )
 						{
 							Disp_Karnataka_New_YDate=(""+new Date( "18-Mar-"+DispYYYY) ).substring( 0, 3)+" 18-Mar-"+DispYYYY;
+							Sun_Karnataka_New_YDate=(""+new Date( "21-Mar-"+DispYYYY) ).substring( 0, 3)+" 21-Mar-"+DispYYYY;
 							if( DispYYYY == yyyy )
 							{
 								document.getElementById("Disp_Karnataka_New_Year").innerHTML = "Karnataka New Year<BR>Traffic Jam (previous day evening)on "+Disp_Karnataka_New_YDate;
 							}
 							else
 							{
-								document.getElementById("Disp_Karnataka_New_Year").innerHTML = "Karnataka <B><U>Next</B></U> New Year<BR>Traffic Jam(previous day evening) on "+Disp_Karnataka_New_YDate;
+								document.getElementById("Disp_Karnataka_New_Year").innerHTML = "Karnataka <B><U>Next</B></U> New Year<BR>Traffic Jam(previous day evening) on "+Disp_Karnataka_New_YDate+"<BR>and also on "+Sun_Karnataka_New_YDate+" (evening time) due to Sunday.";
 							}
 							document.getElementById("Disp_Karnataka_New_Year").style.backgroundColor = "red";
 							document.getElementById("Disp_Karnataka_New_Year").style.color = "white";
@@ -506,14 +508,15 @@
 						}
 						else if( "Sun" == Day)
 						{
-							Disp_Id_ul_Fitr_date=Disp_Id_ul_Fitr_date.substring( 0, 3)+" 20-Mar-"+Dispyyyy;
+							Disp_Id_ul_Fitr_date=Disp_Id_ul_Fitr_date.substring( 0, 3)+" 21-Mar-"+Dispyyyy;
+							Fri_Id_ul_Fitr_date=(""+new Date( "19-Mar-"+Dispyyyy) ).substring( 0, 3)+" 19-Mar-"+Dispyyyy;
 							if( Dispyyyy == yyyy )
 							{
 								document.getElementById("Disp_Id_ul_Fitr_day").innerHTML = "Id-ul-Fitr (Tentative)<BR>Traffic Jam on "+Disp_Id_ul_Fitr_date;
 							}
 							else
 							{
-								document.getElementById("Disp_Id_ul_Fitr_day").innerHTML = "<B><U>Next</B></U> Id-ul-Fitr (Tentative)<BR>Traffic Jam(evening) on "+Disp_Id_ul_Fitr_date;
+								document.getElementById("Disp_Id_ul_Fitr_day").innerHTML = "<B><U>Next</B></U> Id-ul-Fitr (Tentative)<BR>Traffice Jam (during evening time) on "+Fri_Id_ul_Fitr_date+"<BR>and also on (evening) on "+Disp_Id_ul_Fitr_date;
 							}
 							document.getElementById("Disp_Id_ul_Fitr_day").style.backgroundColor = "red";
 							document.getElementById("Disp_Id_ul_Fitr_day").style.color = "white";
@@ -585,13 +588,14 @@
 						if( "Fri" == Day )
 						{
 							Disp_RamaNavamiDate=(""+new Date( "25-Mar-"+DispYYYY) ).substring( 0, 3)+" 25-Mar-"+DispYYYY;
+							Sun_RamaNavamiDate=(""+new Date( "28-Mar-"+DispYYYY) ).substring( 0, 3)+" 28-Mar-"+DispYYYY;
 							if( DispYYYY == yyyy )
 							{
 								document.getElementById("Disp_Rama_Navami").innerHTML = "<B><U>Next</B></U> Rama Navami<BR>Traffic Jam(previous day evening) on "+Disp_RamaNavamiDate;
 							}
 							else
 							{
-								document.getElementById("Disp_Rama_Navami").innerHTML = "Rama Navami<BR>Traffic Jam on "+Disp_RamaNavamiDate;
+								document.getElementById("Disp_Rama_Navami").innerHTML = "Rama Navami<BR>Traffic Jam (during evening time) on "+Disp_RamaNavamiDate+"<BR>and also on "+Sun_RamaNavamiDate+" (evenint time) due to Sunday.";
 							}
 							document.getElementById("Disp_Rama_Navami").style.backgroundColor = "red";
 							document.getElementById("Disp_Rama_Navami").style.color = "white";
@@ -826,7 +830,7 @@
 							}
 							else
 							{
-								document.getElementById("Disp_Good_Friday").innerHTML = "<B><U>Next</B></U> Good Friday<BR>Traffic Jam on "+Prev_GoodFridayDate+"<BR>and also on "+Disp_GoodFridayDae;
+								document.getElementById("Disp_Good_Friday").innerHTML = "<B><U>Next</B></U> Good Friday<BR>Traffic Jam (during evening time) on "+Prev_GoodFridayDate+"<BR>and also on "+Disp_GoodFridayDae+" due to Sunday.";
 							}
 							document.getElementById("Disp_Good_Friday").style.backgroundColor = "red";
 							document.getElementById("Disp_Good_Friday").style.color = "white";
@@ -890,13 +894,14 @@
 						if( "Fri" == Day )
 						{
 							Disp_Tamilnadu_New_YDate=(""+new Date( "13-Apr-"+DispYYYY) ).substring( 0, 3)+" 13-Apr-"+DispYYYY;
+							Sun_Tamilnadu_New_YDate=(""+new Date( "16-Apr-"+DispYYYY) ).substring( 0, 3)+" 16-Apr-"+DispYYYY;
 							if( DispYYYY == yyyy )
 							{
 								document.getElementById("Disp_Tamilnadu_New_Year").innerHTML = "Tamilnadu New Year<BR>Traffic Jam on "+Disp_Tamilnadu_New_YDate;
 							}
 							else
 							{
-								document.getElementById("Disp_Tamilnadu_New_Year").innerHTML = "Tamilnadu <B><U>Next</B></U> New Year<BR>Traffic Jam(previous day evening) on "+Disp_Tamilnadu_New_YDate;
+								document.getElementById("Disp_Tamilnadu_New_Year").innerHTML = "Tamilnadu <B><U>Next</B></U> New Year<BR>Traffic Jam(previous day evening) on "+Disp_Tamilnadu_New_YDate+"<BR>and also (evenint time) on "+Sun_Tamilnadu_New_YDate+" due to Sunday.";
 							}
 							document.getElementById("Disp_Tamilnadu_New_Year").style.backgroundColor = "red";
 							document.getElementById("Disp_Tamilnadu_New_Year").style.color = "white";
@@ -982,7 +987,29 @@
 						}
 					</SCRIPT>
 					<SCRIPT type='text/javascript'>
-						if( "Sun" == Day || "Fri" == Day )
+						if( "Fri" == Day )
+						{
+							Disp_BuddhaPurnimaDate=Disp_BuddhaPurnimaDate.substring( 0, 3)+" 01-May-"+DispYYYY;
+							if( DispYYYY == yyyy )
+							{
+								document.getElementById("Disp_Buddha_Purnima").innerHTML = "Buddha Purnima<BR>Traffic Jam on "+Disp_BuddhaPurnimaDate;
+							}
+							else
+							{
+								document.getElementById("Disp_Buddha_Purnima").innerHTML = "<B><>Next</B></U> Buddha Purnima<BR>Traffic Jam on "+Disp_BuddhaPurnimaDate;
+							}
+							if( mm > 4 )
+							{
+								document.getElementById("Disp_Buddha_Purnima").style.backgroundColor = "yellow";
+								document.getElementById("Disp_Buddha_Purnima").style.color = "black";
+							}
+							else
+							{
+								document.getElementById("Disp_Buddha_Purnima").style.backgroundColor = "red";
+								document.getElementById("Disp_Buddha_Purnima").style.color = "white";
+							}
+						}
+						else if( "Sun" == Day )
 						{
 							Disp_BuddhaPurnimaDate=Disp_BuddhaPurnimaDate.substring( 0, 3)+" 01-May-"+DispYYYY;
 							if( DispYYYY == yyyy )
@@ -1006,14 +1033,15 @@
 						}
 						else if( "Sat" == Day || "Mon" == Day )
 						{
-							Disp_BuddhaPurnimaDate=(""+new Date("02-May-"+DispYYYY) ).substring( 0, 3)+" 02-May-"+DispYYYY;
+							Disp_BuddhaPurnimaDate=(""+new Date("30-Apr-"+DispYYYY) ).substring( 0, 3)+" 30-Apr-"+DispYYYY;
+							Sun_BuddhaPurnimaDate=(""+new Date("02-May-"+DispYYYY) ).substring( 0, 3)+" 02-May-"+DispYYYY;
 							if( DispYYYY == yyyy )
 							{
 								document.getElementById("Disp_Buddha_Purnima").innerHTML = "Buddha Purnima<BR>Traffic Jam on "+Disp_BuddhaPurnimaDate;
 							}
 							else
 							{
-								document.getElementById("Disp_Buddha_Purnima").innerHTML = "<B><U>Next</B></U> Buddha Purnima<BR>Traffic Jam on "+Disp_BuddhaPurnimaDate;
+								document.getElementById("Disp_Buddha_Purnima").innerHTML = "<B><U>Next</B></U> Buddha Purnima<BR>Traffic Jam (during evening time) on "+Disp_BuddhaPurnimaDate+"<BR>and also(evenint time) on "+Sun_BuddhaPurnimaDate+" due to Sunday.";
 							}
 							document.getElementById("Disp_Buddha_Purnima").style.backgroundColor = "red";
 							document.getElementById("Disp_Buddha_Purnima").style.color = "white";
@@ -1061,7 +1089,22 @@
 							document.getElementById("Id_ul_Zuha").innerHTML = Disp_Id_ul_Zuha;
 							document.getElementById("Id_ul_Zuha").innerHTML = Disp_Id_ul_Zuha;
 						}
-						if( "Sun" == Day || "Fri" == Day )
+						if( "Fri" == Day )
+						{
+							Id_ul_Zuha_Bakrid_Tentative=(""+new Date( "26-May-"+DispYYYY)).substring( 0, 3)+" 26-May-"+DispYYYY;
+							Sun_IdulZuhaBakridTentative=(""+new Date( "29-May-"+DispYYYY)).substring( 0, 3)+" 29-May-"+DispYYYY;
+							if( DispYYYY == yyyy )
+							{
+								document.getElementById("Id_ul_Zuha_Bakrid_Tentative").innerHTML = "Id-ul-Zuha (Bakrid) (Tentative)<BR>Traffic Jam on "+Id_ul_Zuha_Bakrid_Tentative;
+							}
+							else
+							{
+								document.getElementById("Id_ul_Zuha_Bakrid_Tentative").innerHTML = "<B><U>Next</B></U> Id-ul-Zuha (Bakrid) (Tentative)<BR>Traffic Jam (during evening time) on "+Id_ul_Zuha_Bakrid_Tentative+"<BR>and also (evening time) on "+Sun_IdulZuhaBakridTentative+" due to Sunday.";
+							}
+							document.getElementById("Id_ul_Zuha_Bakrid_Tentative").style.backgroundColor = "red";
+							document.getElementById("Id_ul_Zuha_Bakrid_Tentative").style.color = "white";
+						}
+						else if( "Sun" == Day )
 						{
 							Id_ul_Zuha_Bakrid_Tentative=Id_ul_Zuha.substring( 0, 3)+" 27-May-"+DispYYYY;
 							if( DispYYYY == yyyy )
@@ -1185,7 +1228,22 @@
 								}
 							}
 						}
-						if( Day === "Sun" || Day === "Fri" )
+						if( Day == "Fri" )
+						{
+							Disp_MuhrmDate=(""+new Date( "25-Jun-"+DispYYYY)).substring( 0, 3)+" 25-Jun-"+DispYYYY;
+							Sun_MuhrmDate=(""+new Date( "28-Jun-"+DispYYYY)).substring( 0, 3)+" 28-Jun-"+DispYYYY;
+							if( DispYYYY == yyyy )
+							{
+								document.getElementById("Disp_Muharram").innerHTML = "Muharram (Tentative)<BR>Traffic Jam on " + Disp_MuhrmDate;
+							}
+							else
+							{
+								document.getElementById("Disp_Muharram").innerHTML = "<B><U>Next</B></U> Muharram (Tentative)<BR>Traffic Jam (during evening time) on " + Disp_MuhrmDate+"<BR>and also (evening) time on "+Sun_MuhrmDate+" due to Sunday.";
+							}
+							document.getElementById("Disp_Muharram").style.backgroundColor = "red";
+							document.getElementById("Disp_Muharram").style.color = "white";
+						}
+						else if( Day === "Sun" )
 						{
 							Disp_MuhrmDate=(""+MuhrmDate).substring( 0, 3)+" 26-Jun-"+DispYYYY;
 							if( DispYYYY == yyyy )
@@ -1201,14 +1259,15 @@
 						}
 						else if( "Sat" == Day )
 						{
-							Disp_MuhrmDate=(""+new Date("16-Aug-"+DispYYYY) ).substring( 0, 3)+" 16-Aug-"+DispYYYY;
+							Disp_MuhrmDate=(""+new Date("25-Jun-"+DispYYYY) ).substring( 0, 3)+" 25-Jun-"+DispYYYY;
+							Sun_MuhrmDate=(""+new Date("27-Jun-"+DispYYYY) ).substring( 0, 3)+" 27-Jun-"+DispYYYY;
 							if( DispYYYY == yyyy )
 							{
 								document.getElementById("Disp_Muharram").innerHTML = "Muharram (Tentative)<BR>Traffic Jam on " + Disp_MuhrmDate;
 							}
 							else
 							{
-								document.getElementById("Disp_Muharram").innerHTML = "<B><U>Next</B></U> Muharram (Tentative)<BR>Traffic Jam on " + Disp_MuhrmDate;
+								document.getElementById("Disp_Muharram").innerHTML = "<B><U>Next</B></U> Muharram (Tentative)<BR>Traffic Jam (during evening time) on " + Disp_MuhrmDate+"<BR>and also (evening time) on "+Sun_MuhrmDate+" due to Sunday.";
 							}
 							document.getElementById("Disp_Muharram").style.backgroundColor = "red";
 							document.getElementById("Disp_Muharram").style.color = "white";
@@ -1302,7 +1361,7 @@
 							DispIndependencDate=(""+new Date("16-Aug-"+DispYYYY) ).substring( 0, 3)+" 16-Aug-"+DispYYYY;
 							if( DispYYYY == yyyy )
 							{
-								document.getElementById("DispIndependenceDay").innerHTML = "Independence Day<BR>Traffic Jam(due to Friday) on "+PrevDispIndependencDay+"<BR>and also on "+DispIndependencDate+" due to Sunday";
+								document.getElementById("DispIndependenceDay").innerHTML = "Independence Day<BR>Traffic Jam(due to Friday) on "+PrevDispIndependencDay+"<BR>and also on "+DispIndependencDate+" due to Sunday.";
 							}
 							else
 							{
@@ -1393,7 +1452,7 @@
 							DispIdeMiladDate_Tentative=IdeMiladDate.substring( 0, 3)+" 26-Aug-"+DispYYYY;
 							if( DispYYYY == yyyy )
 							{
-								document.getElementById("DispId_e_Milad_Tentative").innerHTML = "Id-e-Milad (Tentative)<BR>Traffic Jam on "+DispIdeMiladDate_Tentative+"<BR>and also on "+NextSunMiladDate_Tentative+" due to Sunday";
+								document.getElementById("DispId_e_Milad_Tentative").innerHTML = "Id-e-Milad (Tentative)<BR>Traffic Jam on "+DispIdeMiladDate_Tentative+"<BR>and also on "+NextSunMiladDate_Tentative+" due to Sunday.";
 							}
 							else
 							{
@@ -1502,10 +1561,10 @@
 						document.getElementById("Janmashtami").innerHTML = Disp_JanmastamDate;
 						if( "Fri" == Day )
 						{
-							DispJanmastamDate=JanmastamDate.substring( 0, 3)+" 04-Sep-"+DispYYYY;
+							DispJanmastamDate=(""+new Date( "03-Sep-"+DispYYYY)).substring( 0, 3)+" 03-Sep-"+DispYYYY;
 							NextSunJasmastDate=(""+new Date( "06-Sep-"+DispYYYY) );
 							DispNextSunJasmastDate=NextSunJasmastDate.substring( 0, 3)+" 04-Sep-"+DispYYYY;
-							document.getElementById("DispJanmashtami").innerHTML = "Janmashtami<BR>Due to friday, traffic Jam on "+DispJanmastamDate+"<BR>and on "+DispNextSunJasmastDate+" due to Sunday";
+							document.getElementById("DispJanmashtami").innerHTML = "Janmashtami<BR>Traffic Jam (during evening time) on "+DispJanmastamDate+"<BR>and aldo (evening time) on "+DispNextSunJasmastDate+" due to Sunday.";
 							document.getElementById("DispJanmashtami").style.backgroundColor = "red";
 							document.getElementById("DispJanmashtami").style.color = "white";
 						}
@@ -1584,10 +1643,10 @@
 						if( "Fri" == Day )
 						{
 							NextSun_GandhiDate=(""+new Date( "04-Oct-"+DispYYYY) ).substring( 0, 3)+" 04-Oct-"+DispYYYY;
-							Disp_GandhiDate=GandhiDate.substring( 0, 3)+" 02-Oct-"+DispYYYY;
+							Disp_GandhiDate=(""+new Date( "01-Oct-"+DispYYYY) ).substring( 0, 3)+" 02-Oct-"+DispYYYY;
 							if( DispYYYY == yyyy )
 							{
-								document.getElementById("Disp_Mohandas_Karamchand_Gandhi").innerHTML = "Mahatma Gandhi Jayanti (Mohandas Karamchand Gandhi birthday)<BR>Traffic Jam(due to Friday) on "+Disp_GandhiDate+"<BR>and also on "+NextSun_GandhiDate+" due to Sunday";
+								document.getElementById("Disp_Mohandas_Karamchand_Gandhi").innerHTML = "Mahatma Gandhi Jayanti (Mohandas Karamchand Gandhi birthday)<BR>Traffic Jam(during evening time) on "+Disp_GandhiDate+"<BR>and also (evening time) on "+NextSun_GandhiDate+" due to Sunday.";
 							}
 							else
 							{
@@ -1654,42 +1713,74 @@
 
 			<TR id='20Oct'>
 				<TD valign='top' align='right' id='Dussehra'>
-					<SCRIPT type='text/javascript'>
-						Dussehra=""+new Date( "20-Oct-"+yyyy);
-						Day=Dussehra.substring( 0, 3);
-						Disp_Dussehra=Day+" 20-Oct-"+yyyy;
-						if( new Date(today) > new Date(Dussehra) )
-						{
-							if( mm > 9 )
-							{
-								document.getElementById("20Oct").style.backgroundColor = "yellow";
-								document.getElementById("20Oct").style.color = "black";
-							}
-						}
-						document.getElementById("Dussehra").innerHTML = Disp_Dussehra;
-					</SCRIPT>
 				</TD>
 				<TD valign='top' align='left' id='Disp_Dussehra'>
 					Dussehra
+				</TD>
+			</TR>
 					<SCRIPT type='text/javascript'>
-						if( "Sun" == Day || "Fri" == Day )
+						if( mm > 9 )
 						{
-							Disp_Dussehra=Dussehra.substring( 0, 3)+" 02-Oct-"+yyyy;
-							document.getElementById("Disp_Dussehra").innerHTML = "Dussehra<BR>Traffic Jam on "+Disp_Dussehra;
+							DispYYYY=yyyy+1;
+							DuseraDate=""+new Date( "20-Oct-"+DispYYYY);
+							Day=DuseraDate.substring( 0, 3);
+							Disp_DuseraDate=Day+" 20-Oct-"+DispYYYY;
+							document.getElementById("20Oct").style.backgroundColor = "yellow";
+							document.getElementById("20Oct").style.color = "black";
+						}
+						else if( mm == 9 )
+						{
+							if( new Date(today) > new Date(DuseraDate) )
+							{
+								DispYYYY=yyyy+1;
+								DuseraDate=""+new Date( "20-Oct-"+DispYYYY);
+								Day=DuseraDate.substring( 0, 3);
+								Disp_DuseraDate=Day+" 20-Oct-"+DispYYYY;
+								document.getElementById("20Oct").style.backgroundColor = "yellow";
+								document.getElementById("20Oct").style.color = "black";
+							}
+							else
+							{
+								DispYYYY=yyyy;
+								DuseraDate=""+new Date( "20-Oct-"+DispYYYY);
+								Day=DuseraDate.substring( 0, 3);
+								Disp_DuseraDate=Day+" 20-Oct-"+DispYYYY;
+							}
+						}
+						else
+						{
+							DispYYYY=yyyy;
+							DuseraDate=""+new Date( "20-Oct-"+DispYYYY);
+							Day=DuseraDate.substring( 0, 3);
+							Disp_DuseraDate=Day+" 20-Oct-"+DispYYYY;
+						}
+						document.getElementById("Dussehra").innerHTML = Disp_DuseraDate;
+						if( "Fri" != Day )
+						{
+							alert("ASD");
+							Disp_DuseraDate=(""+new Date( "19-Oct-"+DispYYYY).substring( 0, 3)+" 19-Oct-"+DispYYYY;
+							document.getElementById("Disp_Dussehra").innerHTML = "Dussehra<BR>Traffic Jam (during evening time) on "+Disp_DuseraDate;
+							document.getElementById("Disp_Dussehra").style.backgroundColor = "red";
+							document.getElementById("Disp_Dussehra").style.color = "white";
+						}
+						else if( "Sun" == Day )
+						{
+							Disp_DuseraDate=DuseraDate.substring( 0, 3)+" 02-Oct-"+DispYYYY;
+							document.getElementById("Disp_Dussehra").innerHTML = "Dussehra<BR>Traffic Jam on "+Disp_DuseraDate;
 							document.getElementById("Disp_Dussehra").style.backgroundColor = "red";
 							document.getElementById("Disp_Dussehra").style.color = "white";
 						}
 						else if( "Sat" == Day )
 						{
-							Disp_Dussehra=(""+new Date("03-Oct-"+yyyy) ).substring( 0, 3)+" 03-Oct-"+yyyy;
-							document.getElementById("Disp_Dussehra").innerHTML = "Dussehra<BR>Traffic Jam on "+Disp_Dussehra;
+							Disp_DuseraDate=(""+new Date("03-Oct-"+DispYYYY) ).substring( 0, 3)+" 03-Oct-"+DispYYYY;
+							document.getElementById("Disp_Dussehra").innerHTML = "Dussehra<BR>Traffic Jam on "+Disp_DuseraDate;
 							document.getElementById("Disp_Dussehra").style.backgroundColor = "red";
 							document.getElementById("Disp_Dussehra").style.color = "white";
 						}
 						else if( "Mon" == Day )
 						{
-							Disp_Dussehra=(""+new Date("25-Aug-"+yyyy) ).substring( 0, 3)+" 01-Oct-"+yyyy;
-							document.getElementById("Disp_Dussehra").innerHTML = "Dussehra<BR>Traffic Jam on "+Disp_Dussehra;
+							Disp_DuseraDate=(""+new Date("25-Aug-"+DispYYYY) ).substring( 0, 3)+" 01-Oct-"+DispYYYY;
+							document.getElementById("Disp_Dussehra").innerHTML = "Dussehra<BR>Traffic Jam on "+Disp_DuseraDate;
 							document.getElementById("Disp_Dussehra").style.backgroundColor = "red";
 							document.getElementById("Disp_Dussehra").style.color = "white";
 						}
@@ -1698,8 +1789,6 @@
 							document.getElementById("Disp_Dussehra").innerHTML = "Dussehra";
 						}
 					</SCRIPT>
-				</TD>
-			</TR>
 
 
 			<TR id='08Nov'>
