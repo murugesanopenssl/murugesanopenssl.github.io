@@ -17,7 +17,7 @@ https://www.gandhicollegekada.org/department/Computer/E-Resources/Test Your C Sk
 			<TR>
 				<TD valign='top' align='left'>
 					<A name='q1.1'></A>
-					<A href='#a1.1'>Q 1.1</A><BR>
+					Q 1.1 <A href='#a1.1'> Answer for Q1.1</A><BR>
 					Next <A href='#q1.2'>Q1.2</A>
 				</TD>
 				<TD valign='top' align='left'>
@@ -62,7 +62,9 @@ int main()
 			<TR>
 				<TD valign='top' align='left'>
 					<A name='q1.2'></A>
-					Q 1.2
+					Q 1.2 <A href='#a1.2'> Answer for Q1.2</A><BR>
+					<A href='#q1.1'>Question for Q 1.1</A><BR>
+					<A href='#q1.3'>Next Question for Q 1.3</A>
 				</TD>
 				<TD valign='top' align='left'>
 					What would be the output of the following program?<PRE>#include &lt;stdio.h&gt;
@@ -103,8 +105,138 @@ int main()
 			</TR>
 			<TR>
 				<TD valign='top' align='left'>
+					Q 1.5
+				</TD>
+				<TD valign='top' align='left'>
+					What would be the output of the following program?<BR>
+					int main()<BR>
+					{<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;extern int i;<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;i = 20;<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;printf( "%d\n", sizeof(i) );<BR>
+					}<BR>
+					A. 2<BR>
+					B. 4<BR>
+					C. Would vary from compiler to compiler.<BR>
+					D. Error, i undefined.
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					Q 1.6
+				</TD>
+				<TD valign='top' align='left'>
+					Is it true that a global variable may have several declarations, but only one definition?<BR>
+					Yes/No
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					Q 1.7
+				</TD>
+				<TD valign='top' align='left'>
+					Is it true that a function may have several declarations, but only one definition?<BR>
+					Yes/No
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					Q 1.8
+				</TD>
+				<TD valign='top' align='left'>
+					In the following program where is the variable a getting defined and where it is getting declared?<BR>
+					int main()<BR>
+					{<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;extern int a;<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;printf( "%d\n", a);<BR>
+					}<BR>
+					int a = 20;
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					Q 1.9
+				</TD>
+				<TD valign='top' align='left'>
+					What would be the output of the following program?<BR>
+					int main()<BR>
+					{<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;extern int a;<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;printf( "%d\n", a);<BR>
+					}<BR>
+					int a = 20;<BR>
+					A. 20<BR>
+					B. 0<BR>
+					C. Garbage value<BR>
+					D. Error
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					Q 1.10
+				</TD>
+				<TD valign='top' align='left'>
+					What's the difference between a definition and declaration of a variable?
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					Q 1.11
+				</TD>
+				<TD valign='top' align='left'>
+					If the definition of an external variable occurs in the source file before its use in a particular function,<BR>
+					then there is no need for an extern declaration in the function.&lt;True/False&gt;
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					Q 1.12
+				</TD>
+				<TD valign='top' align='left'>
+					Suppose a program is divided into three files f1, f2 and f3,<BR>
+					and a variable is defined in the file f1 but used in the files f2 and f3.<BR>
+					In such a case we need the external declaration for the variables in the files f2 and f3?Yes/No
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					Q 1.13
+				</TD>
+				<TD valign='top' align='left'>
+					When we mention the prototype of a function are we declaring the function or defining it?
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					Q 1.14
+				</TD>
+				<TD valign='top' align='left'>
+					What's the difference between the following declarations?<BR>
+					extern int fun();
+					int fun();
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					Q 1.15
+				</TD>
+				<TD valign='top' align='left'>
+					Why does the following program report a redeclaration error of the function display()?<BR>
+					int main()<BR>
+					{<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;display();<BR>
+					}<BR>
+					void display()<BR>
+					{<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;printf( "Cliffhanger\n");<BR>
+					}
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
 					<A name='a1.1'></A>
-					<A href='#q1.1'>Answer for Q 1.1</A>
+					<A href='#q1.1'>Question for Q 1.1</A><BR>
+					<A href='#q1.2'>Next Question for Q 1.2</A>
 				</TD>
 				<TD valign='top' align='left'>
 				Expected output in Turbo C++
@@ -161,7 +293,7 @@ sizeof char* ch3: 2
 			</TR>
 			<TR>
 				<TD valign='top' align='left'>
-					Answer for Q 1.2
+					<A name='#a1.2'></A>Answer for Q 1.2
 				</TD>
 				<TD valign='top' align='left'>
 <PRE>int x = 40; // global variable
