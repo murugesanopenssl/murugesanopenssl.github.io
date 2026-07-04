@@ -2085,7 +2085,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				<DIV id='sidefoot-content'>
 				<DIV class="sidebar-footer">`);
 				yyyy=new Date().getFullYear();
-				document.write( "<FONT color='black'>&copy; "+yyyy+" Murugesan Financial Life Management</FONT>" );
+				document.write( "<FONT color='black'>&copy; "+yyyy+" Financial Life Management Personal Finance Guide</FONT>" );
 				document.write( `<NOSCRIPT>`);
 				document.write( `<P>&copy; 900000000 Life Finance Helper5</P>
 				</NOSCRIPT>
