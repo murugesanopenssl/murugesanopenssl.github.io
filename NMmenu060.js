@@ -1926,8 +1926,59 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							<A href="#" onclick="window.open( 'Books/THE_DESIGN_OF_THE_UNIX_OPERATING_SYSTEM.pdf' )" class="nav-link">The design of UNIX OS Maurice J Bach</A>
 						</LI>
 						<LI>
-							<A href="#" onclick="window.open(              'Books/Let_us_C_Yashwant_kanetkar.pdf' )" class="nav-link">Let us C</A>
-						</LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page001-Page-092.pdf' );" class="nav-link">Let us C Page001 Page092</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page093-Page-184.pdf' );" class="nav-link">Let us C Page093 Page184</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page185-Page-276.pdf' );" class="nav-link">Let us C Page185 Page276</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page277-Page-368.pdf' );" class="nav-link">Let us C Page277 Page368</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page369-Page-460.pdf' );" class="nav-link">Let us C Page369 Page460</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page461-Page-518.pdf' );" class="nav-link">Let us C Page461 Page518</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page519-Page-519.pdf' );" class="nav-link">Let us C Page519 Page519</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page520-Page-520.pdf' );" class="nav-link">Let us C Page520 Page520</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page521-Page-521.pdf' );" class="nav-link">Let us C Page521 Page521</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page522-Page-522.pdf' );" class="nav-link">Let us C Page522 Page522</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page523-Page-523.pdf' );" class="nav-link">Let us C Page523 Page523</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page524-Page-524.pdf' );" class="nav-link">Let us C Page524 Page524</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page525-Page-525.pdf' );" class="nav-link">Let us C Page525 Page525</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page526-Page-526.pdf' );" class="nav-link">Let us C Page526 Page526</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page527-Page-527.pdf' );" class="nav-link">Let us C Page527 Page527</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page528-Page-528.pdf' );" class="nav-link">Let us C Page528 Page528</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page529-Page-529.pdf' );" class="nav-link">Let us C Page529 Page529</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page530-Page-530.pdf' );" class="nav-link">Let us C Page530 Page530</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page531-Page-531.pdf' );" class="nav-link">Let us C Page531 Page531</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page532-Page-532.pdf' );" class="nav-link">Let us C Page532 Page532</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page533-Page-533.pdf' );" class="nav-link">Let us C Page533 Page533</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page534-Page-534.pdf' );" class="nav-link">Let us C Page534 Page534</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page535-Page-535.pdf' );" class="nav-link">Let us C Page535 Page535</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page536-Page-536.pdf' );" class="nav-link">Let us C Page536 Page536</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page537-Page-628.pdf' );" class="nav-link">Let us C Page537 Page628</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page629-Page-720.pdf' );" class="nav-link">Let us C Page629 Page720</A>
+						<LI>
+							<A href="#" onclick="window.open( 'Books/Let_us_C_Yashwant_kanetkar-Page721-Page-743.pdf' );" class="nav-link">Let us C Page721 Page743</A>
 						<LI>
 							<A href="#" onclick="window.open(                      'Books/Test_Your_C_Skills.html' )" class="nav-link">Test your C Skills</A>
 						</LI>
