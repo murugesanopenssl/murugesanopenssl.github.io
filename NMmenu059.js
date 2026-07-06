@@ -1083,6 +1083,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"Increase-Daily-Salary.html": ["Income Growth Strategies"],
 								"submit-itr-steps.html": ["ITR Filing Steps"],
 								"steps-to-recharge-any-sim.html": ["Internet Recharge Exceptions"],
+								"BSNL-postpaid-payment-prevent-wasting-mobile-payment.html": ["Avoid Extra Charges on BSNL Postpaid"],
 								"BIG-MART-POINTS.html": ["Rewards & Smart Spending"],
 								"next_day_sim_recharge.html": ["Handle MOBILE SIM and recharge dates?"],
 								"never-recharge-sim-on-expiry-date.html": ["RechargeSIM@NextDayofExpiryDate"],
@@ -1588,6 +1589,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'steps-to-recharge-any-sim.html' );" class="nav-link">Internet Recharge Exceptions</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'BSNL-postpaid-payment-prevent-wasting-mobile-payment.html' );" class="nav-link"><FONT color='red'>Avoid Extra Charges on BSNL Postpaid</FONT></A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'HandleBankAMB.html' );" class="nav-link">ATM Usage Tips</A>
