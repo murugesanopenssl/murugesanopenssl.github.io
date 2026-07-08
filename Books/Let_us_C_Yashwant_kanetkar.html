@@ -1,0 +1,1140 @@
+<META charset="UTF-8">
+<PRE>Let Us C
+Fifth Edition
+Yashavant P. Kanetkar
+Dedicated to baba
+Who couldn't be here to see this day...
+About the Author
+Destiny drew Yashavant Kanetkar towards computers when the IT
+industry was just making a beginning in India. Having completed
+his education from VJTI Mumbai and IIT Kanpur in Mechanical
+Engineering he started his training company in Nagpur.
+
+Yashavant has a passion for writing and is an author of several
+books in C, C++, VC++, C#, .NET, DirectX and COM
+programming. He is a much sought after speaker on various
+technology subjects and is a regular columnist for Express
+Computers and Developer 2.0. His current affiliations include
+being a Director of KICIT, a training company and DCube
+Software Technologies, a software development company. In
+recognition to his contribution Microsoft awarded him the
+prestigious “Best .NET Technical Contributor” award recently.
+He can be reached at <A href='mailto:kanetkar@kicit.com' target='_blank'>kanetkar@kicit.com</A>
+<B>Preface to the Fifth Edition</B>
+It is mid 2004. World has left behind the DOTCOM bust, 9/11
+tragedy, the economic downturn, etc. and moved on. Countless
+Indians have relentlessly worked for close to two decades to
+successfully establish “India” as a software brand. At times I take
+secret pleasure in seeing that a book that I have been part of, has
+contributed in its own little way in shaping so many budding
+careers that have made the “India” brand acceptable.
+
+Computing and the way people use C for doing it keeps changing
+as years go by. So overwhelming has been the response to all the
+previous editions of “Let Us C” that I have now decided that each
+year I would come up with a new edition of it so that I can keep
+the readers abreast with the way C is being used at that point in
+time.
+
+There are two phases in every C programmer’s life. In the first
+phase he is a learner trying to understand the language elements
+and their nuances. At this stage he wants a simple learning
+environment that helps him to master the language. In my opinion,
+even today there isn’t any learning environment that can beat
+Turbo C/C++ for simplicity. Hence the first fifteen chapters are
+written keeping this environment in mind, though a majority of
+these programs in these chapters would work with any C compiler.
+
+Armed with the knowledge of language elements the C
+programmer enters the second phase. Here he wishes to use all that
+he has learnt to create programs that match the ability of programs
+that he see in today’s world. I am pointing towards programs in
+Windows and Linux world. Chapters 16 to 21 are devoted to this. I
+would like to your attention the fact that if you want to program
+Windows or Linux you need to have a very good grasp over the
+programming model used by each of these OS. Windows
+messaging architecture and Linux signaling mechanism are the
+cases in point. Once you understand these thoroughly rest is just a
+matter of time. Chapters 16 to 21 have been written with this
+motive.
+
+In Linux programming the basic hurdle is in choosing the Linux
+distribution, compiler, editor, shell, libraries, etc. To get a head-
+start you can follow the choices that I found most reasonable and
+simple. They have been mentioned in Chapter 20 and Appendix H.
+Once you are comfortable you can explore other choices.
+
+In fourth edition of Let Us C there were chapters on ‘Disk Basics’,
+‘VDU Basics’, ‘Graphics’, ‘Mouse Programming’, ‘C and
+Assembly’. Though I used to like these chapters a lot I had to take
+a decision to drop them since most of them were DOS-centric and
+would not be so useful in modern-day programming. Modern
+counterparts of all of these have been covered in Chapters 16 to
+21. However, if you still need the chapters from previous edition
+they are available at www.kicit.com/books/letusc/fourthedition.
+
+Also, all the programs present in the book are available in source
+code form at www.kicit.com/books/letusc/sourcecode. You are
+free to download them, improve them, change them, do whatever
+with them. If you wish to get solutions for the Exercises in the
+book they are available in another book titled ‘Let Us C
+Solutions’.
+
+‘Let Us C’ is as much your book as it is mine. So if you feel that I
+could have done certain job better than what I have, or you have
+any suggestions about what you would like to see in the next
+edition, please drop a line to letuscsuggestions@kicit.com.
+All the best and happy programming!
+
+Contents
+1.
+2.
+Getting Started 1
+What is C 2
+Getting Started with C 4
+The C Character Set 5
+Constants, Variables and Keywords 6
+Types of C Constants 7
+Rules for Constructing Integer Constants 8
+Rules for Constructing Real Constants 9
+Rules for Constructing Character Constants 10
+Types of C Variables 11
+Rules for Constructing Variable Names 11
+C Keywords 12
+The First C Program 13
+Compilation and Execution 19
+Receiving Input 21
+C Instructions 23
+Type Declaration Instruction 24
+Arithmetic Instruction 25
+Integer and Float Conversions 29
+Type Conversion in Assignments 29
+Hierarchy of Operations 31
+Associativity of Operators 34
+Control Instructions in C 37
+Summary 37
+Exercise 38
+The Decision Control Structure 49
+Decisions! Decisions! 50
+The if Statement 51
+The Real Thing 55
+Multiple Statements within if 56
+The if-else Statement 58
+Nested if-elses 61
+Forms of if 62
+Use of Logical Operators 64
+The else if Clause 66
+The ! Operator 72
+Hierarchy of Operators Revisited 73
+A Word of Caution 73
+The Conditional Operators 76
+Summary 77
+Exercise 78
+3.
+4.
+The Loop Control Structure 97
+Loops 98
+The while Loop 99
+Tips and Traps 101
+More Operators 105
+The for Loop 107
+Nesting of Loops 114
+Multiple Initialisations in the for Loop 115
+The Odd Loop 116
+The break Statement 118
+The continue Statement 120
+The do-while Loop 121
+Summary 124
+Exercise 124
+The Case Control Structure 135
+Decisions Using switch 136
+The Tips and Traps 140
+switch Versus if-else Ladder 144
+The goto Keyword 145
+Summary 148
+Exercise 149
+5. Functions & Pointers 				157
+	What is a Function					158
+	Why Use Functions					165
+	Passing Values between Functions	166
+Scope Rule of Functions 171
+Calling Convention 172
+One Dicey Issue 173
+Advanced Features of Functions 174
+Function Declaration and Prototypes 175
+Call by Value and Call by Reference 178
+An Introduction to Pointers 178
+Pointer Notation 179
+Back to Function Calls 186
+Conclusions 189
+Recursion 189
+Recursion and Stack 194
+Adding Functions to the Library 197
+Summary 201
+Exercise 201
+Data Types Revisited 213
+Integers, long and short 214
+Integers, signed and unsigned 216
+Chars, signed and unsigned 217
+Floats and Doubles 219
+A Few More Issues… 221
+Storage Classes in C 223
+Automatic Storage Class 224
+Register Storage Class 226
+Static Storage Class 227
+External Storage Class 230
+Which to Use When 233
+Summary 234
+Exercise 235
+x
+The C Preprocessor
+ 
+241
+
+Features of C Preprocessor
+ 
+242
+
+Macro Expansion
+ 
+244
+
+Macros with Arguments
+ 
+248
+
+Macros versus Functions
+ 
+252
+
+File Inclusion
+ 
+253
+
+Conditional Compilation
+ 
+255
+
+#if
+ 
+and
+ 
+#elif
+ 
+Directives
+ 
+258
+
+Miscellaneous Directives
+ 
+260
+
+#undef
+ 
+Directive
+ 
+260
+
+#pragma
+ 
+Directive
+ 
+261
+
+Summary
+ 
+263
+
+Exercise
+ 
+264
+
+7.
+8.
+ 
+Arrays
+ 
+269
+
+What are Arrays
+ 
+270
+
+A Simple Program Using Array
+ 
+272
+
+More on Arrays
+ 
+275
+
+Array Initialization
+ 
+275
+
+Bounds Checking
+ 
+276
+
+Passing Array Elements to a Function
+ 
+277
+
+Pointers and Arrays
+ 
+279
+
+Passing an Entire Array to a Function
+ 
+286
+
+The Real Thing
+ 
+287
+
+Two Dimensional Arrays
+ 
+289
+
+Initializing a 2-Dimensional Array
+ 
+290
+
+Memory Map of a 2-Dimensional Array
+ 
+291
+
+Pointers and 2-Dimensional Arrays
+ 
+292
+
+Pointer to an Array
+ 
+295
+
+Passing 2-D array to a Function
+ 
+297
+
+Array of Pointers
+ 
+300
+
+Three Dimensional Array
+ 
+302
+
+Summary
+ 
+304
+
+xi
+Exercise
+ 
+304
+
+Puppetting On Strings
+ 
+327
+
+What are Strings
+ 
+328
+
+More about Strings
+ 
+329
+
+Pointers and Strings
+ 
+334
+
+Standard Library String Functions
+ 
+335
+
+strlen( )
+ 
+337
+
+strcpy( )
+ 
+339
+
+strcat( )
+ 
+342
+
+strcmp( )
+ 
+343
+
+Two-Dimensional Array of Characters
+ 
+344
+
+Array of Pointers to Strings
+ 
+347
+
+Limitation of Array of Pointers to Strings
+ 
+351
+
+Solution
+ 
+352
+
+Summary
+ 
+353
+
+Exercise
+ 
+354
+
+9.
+10.
+11.
+
+Structures
+ 
+363
+
+Why Use Structures
+ 
+364
+
+Declaring a Structure
+ 
+367
+
+Accessing Structure Elements
+ 
+370
+
+How Structure Elements are Stored
+ 
+370
+
+Array of Structures
+ 
+371
+
+Additional Features of Structures
+ 
+374
+
+Uses of Structures
+ 
+383
+
+Summary
+ 
+384
+
+Exercise
+ 
+384
+
+Console Input/Output
+ 
+393
+
+Types of I/O
+ 
+394
+
+Console I/O Functions
+ 
+395
+
+Formatted Console I/O Functions
+ 
+396
+
+xii
+sprintf( )
+ 
+and
+ 
+sscanf( )
+ 
+Functions
+ 
+404
+
+Unformatted Console I/O Functions
+ 
+405
+
+Summary
+ 
+409
+
+Exercise
+ 
+409
+
+File Input/Output
+ 
+415
+
+Data Organization
+ 
+416
+
+File Operations
+ 
+417
+
+Opening a File
+ 
+418
+
+Reading from a File
+ 
+420
+
+Trouble in Opening a File
+ 
+421
+
+Closing the File
+ 
+422
+
+Counting Characters, Tabs, Spaces, …
+ 
+422
+
+A File-copy Program
+ 
+424
+
+Writing to a File
+ 
+425
+
+File Opening Modes
+ 
+426
+
+String (line) I/O in Files
+ 
+427
+
+The Awkward Newline
+ 
+430
+
+Record I/O in Files
+ 
+430
+
+Text Files and Binary Files
+ 
+434
+
+Record I/O Revisited
+ 
+437
+
+Database Management
+ 
+441
+
+Low Level Disk I/O
+ 
+447
+
+A Low Level File-copy Program
+ 
+448
+
+I/O Under Windows
+ 
+453
+
+Summary
+ 
+453
+
+Exercise
+ 
+454
+
+12.
+13.
+ 
+More Issues In Input/Output
+ 
+465
+
+Using
+ 
+argc
+ 
+and
+ 
+argv
+ 
+466
+
+Detecting Errors in Reading/Writing
+ 
+470
+
+Standard I/O Devices
+ 
+472
+
+I/O Redirection
+ 
+473
+
+Redirecting the Output
+ 
+474
+
+xiii
+Redirecting the Input
+ 
+476
+
+Both Ways at Once
+ 
+477
+
+Summary
+ 
+478
+
+Exercise
+ 
+478
+
+14.
+15.
+
+Operations On Bits
+ 
+481
+
+Bitwise Operators
+ 
+482
+
+One’s Complement Operator
+ 
+484
+
+Right Shift Operator
+ 
+486
+
+Left Shift Operator
+ 
+488
+
+Bitwise AND Operator
+ 
+493
+
+Bitwise OR Operator
+ 
+498
+
+Bitwise XOR Operator
+ 
+499
+
+The
+ 
+showbits( )
+ 
+Function
+ 
+500
+
+Summary
+ 
+501
+
+Exercise
+ 
+501
+
+Miscellaneous Features
+ 
+505
+
+Enumerated Data Type
+ 
+506
+
+Uses of Enumerated Data Type
+ 
+507
+
+Renaming Data Types with
+ 
+typedef
+ 
+510
+
+Typecasting
+ 
+511
+
+Bit Fields
+ 
+513
+
+Pointers to Functions
+ 
+515
+
+Functions Returning Pointers
+ 
+518
+
+Functions with Variable Number of Arguments
+ 
+520
+
+Unions
+ 
+524
+
+Union of Structures
+ 
+530
+
+Summary
+ 
+531
+
+Exercise
+ 
+531
+
+xiv
+C Under Windows
+ 
+535
+
+Which Windows…
+ 
+536
+
+Integers
+ 
+537
+
+The Use of
+ 
+typedef
+ 
+537
+
+Pointers in the 32-bit World
+ 
+539
+
+Memory Management
+ 
+540
+
+Device Access
+ 
+543
+
+DOS Programming Model
+ 
+543
+
+Windows Programming Model
+ 
+547
+
+Event Driven Model
+ 
+551
+
+Windows Programming, a Closer Look
+ 
+552
+
+The First Windows Program
+ 
+554
+
+Hungarian Notation
+ 
+558
+
+Summary
+ 
+558
+
+Exercise
+ 
+559
+
+16.
+17.
+18.
+
+Windows Programming
+ 
+561
+
+The Role of a Message Box
+ 
+562
+
+Here Comes the window…
+ 
+563
+
+More Windows
+ 
+566
+
+A Real-World Window
+ 
+567
+
+Creation and Displaying of Window
+ 
+569
+
+Interaction with Window
+ 
+570
+
+Reacting to Messages
+ 
+572
+
+Program Instances
+ 
+575
+
+Summary
+ 
+575
+
+Exercise
+ 
+576
+
+Graphics Under Windows
+ 
+579
+
+Graphics as of Now
+ 
+580
+
+Device Independent Drawing
+ 
+580
+
+xv
+Hello Windows
+ 
+582
+
+Drawing Shapes
+ 
+586
+
+Types of Pens
+ 
+590
+
+Types of Brushes
+ 
+592
+
+Code and Resources
+ 
+596
+
+Freehand Drawing, the Paintbrush Style
+ 
+596
+
+Capturing the Mouse
+ 
+600
+
+Device Context, a Closer Look
+ 
+601
+
+Displaying a Bitmap
+ 
+603
+
+Animation at Work
+ 
+607
+
+WM_CREATE and
+ 
+OnCreate( )
+ 
+611
+
+WM_TIMER and
+ 
+OnTimer( )
+ 
+611
+
+A Few More Points…
+ 
+612
+
+Windows, the Endless World…
+ 
+613
+
+Summary
+ 
+614
+
+Exercise
+ 
+615
+
+19.
+ 
+Interaction With Hardware
+ 
+617
+
+Hardware Interaction
+ 
+618
+
+Hardware Interaction, DOS Perspective
+ 
+619
+
+Hardware Interaction, Windows Perspective
+ 
+623
+
+Communication with Storage Devices
+ 
+626
+
+The
+ 
+ReadSector( )
+ 
+Function
+ 
+631
+
+Accessing Other Storage Devices
+ 
+633
+
+Communication with Keyboard
+ 
+634
+
+Dynamic Linking
+ 
+635
+
+Windows Hooks
+ 
+635
+
+Caps Locked, Permanently
+ 
+637
+
+Did You Press It TTwwiiccee……
+ 
+643
+
+Mangling Keys
+ 
+644
+
+KeyLogger
+ 
+645
+
+Where is This Leading
+ 
+646
+
+Summary
+ 
+647
+
+Exercise
+ 
+647
+
+xvi
+C Under Linux
+ 
+649
+
+What is Linux
+ 
+650
+
+C Programming Under Linux
+ 
+651
+
+The ‘Hello Linux’ Program
+ 
+652
+
+Processes
+ 
+653
+
+Parent and Child Processes
+ 
+655
+
+More Processes
+ 
+659
+
+Zombies and Orphans
+ 
+660
+
+One Interesting Fact
+ 
+663
+
+Summary
+ 
+664
+
+Exercise
+ 
+664
+
+20.
+21.
+ 
+More Linux Programming
+ 
+667
+
+Communication using Signals
+ 
+668
+
+Handling Multiple Signals
+ 
+671
+
+Registering a Common Handler
+ 
+673
+
+Blocking Signals
+ 
+675
+
+Event Driven Programming
+ 
+678
+
+Where Do You Go From Here
+ 
+684
+
+Summary
+ 
+684
+
+Exercise
+ 
+685
+
+Appendix A
+ 
+–
+ 
+Precedence Table
+ 
+687
+
+Appendix
+ 
+B
+ 
+–
+ 
+Standard Library Functions
+ 
+691
+
+Appendix C
+ 
+–
+ 
+Chasing the Bugs
+ 
+701
+
+Appendix D
+ 
+–
+ 
+Hexadecimal Numbering
+ 
+713
+
+Appendix E
+ 
+–
+ 
+ASCII Chart
+ 
+719
+
+Appendix F
+ 
+–
+ 
+Helper.h File
+ 
+725
+
+Appendix G
+ 
+–
+ 
+Boot Parameters
+ 
+729
+
+Appendix H
+ 
+–
+ 
+Linux Installation
+ 
+735
+
+Index
+ 
+739

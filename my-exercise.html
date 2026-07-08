@@ -4,6 +4,64 @@
 		<META charset="UTF-8">
 		<TITLE>Exercise Master Plan Sub-Page</TITLE>
 		<STYLE type='text/css'>
+			.toe-hover
+			{
+				cursor: pointer;
+				color: blue;
+				text-decoration: underline;
+			}
+			#toe-image-preview
+			{
+				display: none;
+				position: fixed;
+				width: 200px;
+				z-index: 9999;
+				border: 1px solid #555;
+				background: white;
+			}
+			.exercise-help
+			{
+				position: relative;
+				cursor: help;
+			}
+			.exercise-image
+			{
+				display: none;
+				position: absolute;
+				top: 100%;
+				right: 0;
+				width: 250px;
+				border: 1px solid #999;
+				background: white;
+				padding: 5px;
+				z-index: 9999;
+			}
+			.exercise-help:hover .exercise-image
+			{
+				display: block;
+			}
+			.tooltip
+			{
+				position: relative;
+				cursor: help;
+			}
+			.tooltip img
+			{
+				display: none;
+				position: absolute;
+				top: -220px;	/* Show above the header */
+				left: 0;
+				width: 250px;
+				background: #fff;
+				border: 1px solid #999;
+				padding: 4px;
+				box-shadow: 0 0 10px rgba(0,0,0,.3);
+				z-index: 9999;
+			}
+			.tooltip:hover img
+			{
+				display: block;
+			}
 			.zeroWalkValue
 			{
 				background-color:#c00000;
@@ -22,63 +80,36 @@
 				color:white;
 				font-weight:bold;
 			}
-			body
+			.input-panel
 			{
-				font-family: Arial, sans-serif;
-				margin: 20px;
-				background-color: #f9f9f9;
-			}
-			table
-			{
-				width: 100%;
-				border-collapse:collapse;
-				margin-bottom:30px;
-				background-color:
-				#fff;
-			}
-			th, TD
-			{
-				border: 1px solid #ccc;
-				padding: 10px;
-				text-align: left;
-				font-size: 14px;
-			}
-			th
-			{
-				background-color: #f2f2f2;
-				font-weight: bold;
-			}
-			h2, h3
-			{
-				color: #333;
-				margin-bottom: 10px;
-			}
-			/* New styles for the input panel */
-			.input-panel {
 				background-color: #f0f4f8;
 				border: 1px solid #b0c4de;
 				padding: 15px;
 				margin-bottom: 25px;
 				border-radius: 5px;
 			}
-			.form-group {
+			.form-group
+			{
 				margin-bottom: 10px;
 				display: inline-block;
 				margin-right: 15px;
 			}
-			.form-group label {
+			.form-group label
+			{
 				display: block;
 				font-weight: bold;
 				font-size: 12px;
 				margin-bottom: 3px;
 			}
-			.form-group input, .form-group select {
+			.form-group input, .form-group select
+			{
 				padding: 5px;
 				font-size: 13px;
 				border: 1px solid #ccc;
 				border-radius: 3px;
 			}
-			.submit-btn {
+			.submit-btn
+			{
 				background-color: #4CAF50;
 				color: white;
 				padding: 8px 15px;
@@ -88,12 +119,13 @@
 				font-weight: bold;
 				font-size: 14px;
 			}
-			.submit-btn:hover {
+			.submit-btn:hover
+			{
 				background-color: #45a049;
 			}
 		</STYLE>
 	</HEAD>
-	<BODY>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 	<H3>தினசரி உடற்பயிற்சியைக் கண்காணிக்கும் முறை<BR>A method for tracking daily exercise.</H3>
 	
 	<DIV class="input-panel">
@@ -131,10 +163,6 @@
 				<LABEL for="input_try_sit">07) Inv. Bench (Times)</LABEL>
 				<INPUT type="text" id="input_try_sit" value="50 times">
 			</DIV>
-			<DIV class="form-group">
-				<LABEL for="input_back_squat">08) Back Squat (Times)</LABEL>
-				<INPUT type="text" id="input_back_squat" value="50 times">
-			</DIV>
 			<DIV class="form-group" style="display:block; margin-top:10px;">
 				<LABEL for="input_notes">09) Issue / Notes</LABEL>
 				<INPUT type="text" id="input_notes" value="NO ISSUE." style="width: 100%; max-width: 500px;">
@@ -142,10 +170,10 @@
 			<BUTTON type="submit" class="submit-btn">Submit / Update Data</BUTTON>
 		</FORM>
 	</DIV>
-
 	<SELECT id='monthFilter' onchange='FilterData( );'>
-		<OPTION value='ALL'>All</OPTION>
-		<OPTION value='Jun-2026' selected>Jun-2026</OPTION>
+		<OPTION value='ALL' selected>All</OPTION>
+		<OPTION value='Jul-2026'>Jul-2026</OPTION>
+		<OPTION value='Jun-2026'>Jun-2026</OPTION>
 		<OPTION value='May-2026'>May-2026</OPTION>
 	</SELECT>
 	<TABLE border='1' style='width:100%;' id="logTable">
@@ -153,34 +181,46 @@
 			<TR>
 				<TH valign='top' align='right'>நாள்<BR>Day</TH>
 				<TH valign='top' align='right'>தேதி<BR>Date</TH>
-				<TH valign='top' align='right'>01) நடைப்பயிற்சி நேரம்/<BR>Walking Time<BR>( MM:SS )</TH>
-				<TH title='Try to sit on the floor without allowing the back of your hips to touch the floor.' valign='top' align='right'>
-					02) தரையில் அமர்வது போன்ற உடற்பயிற்சி<BR>
-					Sit on Floor<BR>( Seconds )
+				<TH class="exercise-help" valign="top" align="right">
+					01) நடைப்பயிற்சி நேரம்/<BR>Walking Time<BR>
+					( MM:SS )
+					<IMG src="images/walking-time.jpg" class="exercise-image">
 				</TH>
-				<TH valign='top' align='right' title='01) Sit on chair&#10;02) Rotate left foot clockwise&#10;03) Rotate right foot clockwise&#10;04) Rotate left foot anti-clockwise&#10;05) Rotate right foot anti-clockwise'>
+				<TH class="exercise-help" title='Try to sit on the floor without allowing the back of your hips to touch the floor.' valign='top' align='right'>
+					02) தரையில் அமர்வது போன்ற உடற்பயிற்சி<BR>
+					Sit on Floor<BR>( Seconds )<BR>
+					<IMG src="images/sit-on-floor.jpg" class="exercise-image">
+				</TH>
+				<TH class="exercise-help" valign='top' align='right' title='01) Sit on chair&#10;02) Rotate left foot clockwise without touching the floor.&#10;03) Rotate right foot clockwise without touching the floor.&#10;04) Rotate left foot anti-clockwise without touching the floor.&#10;05) Rotate right foot anti-clockwise without touching the floor.'>
 					பாதம் சுற்றும் உடற்பயிற்சி<BR>
 					03) Sit on chair<BR>
-					Foot Rotation<BR>Two legs
+					Foot Rotation<BR>Two legs<BR>
+					<IMG src='images/Rotate-logs-chair.jpg' class="exercise-image">
 				</TH>
-				<TH valign='top' align='right' title='01) Stand near a wall&#10;02) Keep both hands on the wall aligned with your standing position&#10;03) Move your body forward while pushing your hips backward&#10;04) Return to the starting position by bringing your hips forward&#10;05) Repeat slowly and comfortably'>
+				<TH class="exercise-help" valign='top' align='right' title='01) Stand near a wall&#10;02) Keep both hands on the wall aligned with your standing position&#10;03) Move your body forward while pushing your hips backward&#10;04) Return to the starting position by bringing your hips forward&#10;05) Repeat slowly and comfortably'>
 					04) சுவரில்<BR>
 					முன்-பின் இடுப்பு இயக்கப் பயிற்சி<BR>
-					Wall Plank
+					Wall Plank<BR>
+					<IMG src='images/Wall-Plank.jpg' class="exercise-image">
 				</TH>
-				<TH valign='top' align='right' title='01) Lay flat on a bed or floor&#10;02) Keep your back touching the bed or floor&#10;03) Raise the right leg to approximately 80-90 degrees and lower it&#10;04) Repeat for the required number of times&#10;05) Raise the left leg to approximately 80-90 degrees and lower it&#10;06) Repeat for the required number of times'>
+				<TH class="exercise-help" valign='top' align='right' title='01) Lay flat on a bed or floor&#10;02) Keep your back touching the bed or floor&#10;03) Raise the right leg to approximately 80-90 degrees and lower it&#10;04) Repeat for the required number of times&#10;05) Raise the left leg to approximately 80-90 degrees and lower it&#10;06) Repeat for the required number of times'>
 					05) படுக்கை/தரையில்<BR>படுத்து<BR>கால் உயர்த்தும் பயிற்சி<BR>
-					Bed/Floor Plank
+					Bed/Floor Plank<BR>
+					<IMG src='images/lying-floor-leg-raise.jpg' class="exercise-image">
 				</TH>
-				<TH valign='top' align='right' title='01) Stand on the floor&#10;02) Raise the left leg and lower it&#10;03) Repeat for the required number of times&#10;04) After completing the left leg repetitions, raise the right leg and lower it&#10;05) Repeat for the required number of times'>
+				<TH class="exercise-help" valign='top' align='right' title='01) Stand on the floor&#10;02) Raise the left leg and lower it&#10;03) Repeat for the required number of times&#10;04) After completing the left leg repetitions, raise the right leg and lower it&#10;05) Repeat for the required number of times'>
 					06) நின்று<BR>வலது/இடது கால்<BR>உயர்த்தும் பயிற்சி<BR>
-					Stand Alternating<BR>Leg/Hand Raise
+					Stand Alternating<BR>Leg/Hand Raise<BR>
+					<IMG src='images/stand-raise-leg.jpg' class="exercise-image">
 				</TH>
-				<TH valign='top' align='right' title='01) Stand on the floor&#10;02) Keep both hands together at the middle of the chest&#10;03) Lower the hips as if sitting on an invisible bench&#10;04) Stop before reaching a deep squat position&#10;05) Return to the standing position&#10;06) Repeat for the required number of times'>
+				<TH class="exercise-help" valign='top' align='right' title='01) Stand on the floor&#10;02) Keep both hands together at the middle of the chest&#10;03) Lower the hips as if sitting on an invisible bench&#10;04) Stop before reaching a deep squat position&#10;05) Return to the standing position&#10;06) Repeat for the required number of times'>
 					07) நின்று<BR>கற்பனை இருக்கையில்<BR>அமர்ந்து எழும் பயிற்சி<BR>
 					Sit back squat<BR>( Protected Chest )
+					<IMG src='images/try-to-sit.jpg' class="exercise-image">
 				</TH>
-				<TH valign='top' align='right'>08) Issue / Notes</TH>
+				<TH class="exercise-help" valign="top" align="right">
+					08) Issue / Notes
+				</TH>
 			</TR>
 		</THEAD>
 		<TBODY>
@@ -201,31 +241,39 @@
 	<SCRIPT type='text/javascript'>
 		function GetWalkCellHtml(value)
 		{
-			if( "00:00" === String(value).trim() )
+			if( ["00:00", "00"].includes(String(value).trim() ) )
 			{
 				return "<TD class='zeroWalkValue' valign='top' align='right'>" + value + "</TD>";
 			}
 			return "<TD valign='top' align='right'>" + value + "</TD>";
 		}
-		function GetCellHtml( value )
+		function GetCellHtml(value)
 		{
-			let text = String( value ).trim().toLowerCase();
-			if(
-				text.startsWith( "00 times" ) ||
-				"00" === text ||
-				text.startsWith( "00 times" )
+			let text = String(value).trim().toLowerCase();
+
+			// Get the numeric part (00, 000, 0000, etc.)
+			let match = text.match(/^\d+/);
+			let number = match ? parseInt(match[0], 10) : NaN;
+
+			// Highlight all zero values
+			if (
+				text === "00" ||
+				text === "00:00" ||
+				(!isNaN(number) && number === 0)
 			)
 			{
 				return "<TD class='zeroValue' valign='top' align='right'>" + value + "</TD>";
 			}
-			if(
-				"not started"	=== text ||
-				"no issue"	=== text ||
-				"no issue."	=== text
+
+			if (
+				text === "not started" ||
+				text === "no issue" ||
+				text === "no issue."
 			)
 			{
 				return "<TD class='notStartedValue' valign='top' align='left'>" + value + "</TD>";
 			}
+
 			return "<TD valign='top' align='right'>" + value + "</TD>";
 		}
 		function FormatDuration( totalSeconds )
@@ -319,6 +367,15 @@
 			});
 			return total + " times";
 		}
+		function GetTotalRaiseLegCount()
+		{
+			let total = 0;
+			logData.forEach( item =>
+			{
+				total += ExtractNumber( item.stand_raise_leg );
+			});
+			return total + " times";
+		}
 		function GetTotalBedPlank()
 		{
 			let total = 0;
@@ -337,21 +394,13 @@
 			});
 			return total + " times";
 		}
-		function GetTotalSitBackSquat()
-		{
-			let total = 0;
-			logData.forEach( item =>
-			{
-				total += ExtractNumber( item.sit_back_squat );
-			});
-			return total + " times";
-		}
 		function GetTotalWalkTime()
 		{
 			let totalSeconds = 0;
 			logData.forEach( item =>
 			{
-				if (item.walk.includes(":")) {
+				if( item.walk.includes(":") )
+				{
 					let [mins, secs] = item.walk.split( ":" ).map( Number );
 					totalSeconds += mins * 60 + secs;
 				}
@@ -386,15 +435,20 @@
 			{
 				details: "<strong>Exercise 07</strong><BR>நின்றுகொண்டு, விரல்களை ஒன்றிணைத்து நெஞ்சின் மையப்பகுதியில் வையுங்கள். உள்ளங்கைகளை ஒன்றுடன் ஒன்று அழுத்தியவாறே, ஒரு பெஞ்சில் அமர்வது போல 20 முறை செய்யுங்கள்.<BR><BR>Stand, keep combined fingers at mid of chest. Push palms together and act like sitting on a bench 20 times",
 				status: "Required"
-			},
-			{
-				details: "<strong>Exercise 08</strong><BR>மார்பைப் பாதுகாக்கும் வகையில் பின்னால் சாய்ந்து உட்காருங்கள்.<BR>Sit back squat protecting chest",
-				status: "Required"
 			}
 		];
-
 		// Let keyword used instead of const to dynamically mutate content safely
 		let logData = [
+			{	date: "Wed 08-Jul-2026",
+				walk: "16:31",
+				sit_on_floor: "00",
+				sit_on_chair_rotate_leg: "020 times",
+				wall_plank: "20",
+				bed_plank: "000 times",
+				stand_raise_leg: "20 times",
+				stand_try_to_sit_down: "10 times",
+				notes: "NO ISSUE."
+			},
 			{	date: "Fri 12-Jun-2026",
 				walk: "16:08",
 				sit_on_floor: "75",
@@ -403,7 +457,6 @@
 				bed_plank: "150 times",
 				stand_raise_leg: "150 times",
 				stand_try_to_sit_down: "75 times",
-				sit_back_squat: "00 times",
 				notes: "NO ISSUE."
 			},
 			{	date: "Thu 11-Jun-2026",
@@ -413,8 +466,7 @@
 				wall_plank: "00",
 				bed_plank: "07 times",
 				stand_raise_leg: "50 times",
-				stand_try_to_sit_down: "25 times",
-				sit_back_squat: "30 times",
+				stand_try_to_sit_down: "30 times",
 				notes: "NO ISSUE."
 			},
 			{	date: "Sat 06-Jun-2026",
@@ -425,7 +477,6 @@
 				bed_plank: "150 times",
 				stand_raise_leg: "150 times",
 				stand_try_to_sit_down: "75 times",
-				sit_back_squat: "75 times",
 				notes: "NO ISSUE."
 			},
 			{	date: "Fri 05-Jun-2026",
@@ -436,7 +487,6 @@
 				bed_plank: "150 times",
 				stand_raise_leg: "75",
 				stand_try_to_sit_down: "75 times",
-				sit_back_squat: "75 times",
 				notes: "THROAT INFECTION."
 			},
 			{
@@ -448,7 +498,6 @@
 				wall_plank: "75",
 				stand_raise_leg: "75",
 				stand_try_to_sit_down: "75 times",
-				sit_back_squat: "75 times",
 				notes: "BACK PAIN AFTER WAKEUP."
 			},
 			{
@@ -458,7 +507,6 @@
 				bed_plank: "00 times", wall_plank: "75",
 				stand_raise_leg: "25",
 				stand_try_to_sit_down: "75 times",
-				sit_back_squat: "75 times",
 				notes: "NO ISSUE."
 			},
 			{
@@ -468,7 +516,6 @@
 				bed_plank: "00 times", wall_plank: "75",
 				stand_raise_leg: "00",
 				stand_try_to_sit_down: "00 times",
-				sit_back_squat: "00 times",
 				notes: "TIRED DUE TO TRAVEL FROM TN TO KA."
 			},
 			{
@@ -478,7 +525,6 @@
 				bed_plank: "106 times", wall_plank: "53",
 				stand_raise_leg: "53",
 				stand_try_to_sit_down: "53 times",
-				sit_back_squat: "53 times",
 				notes: "NO ISSUE."
 			},
 			{
@@ -488,7 +534,6 @@
 				bed_plank: "106 times", wall_plank: "53",
 				stand_raise_leg: "53",
 				stand_try_to_sit_down: "53 times",
-				sit_back_squat: "53 times",
 				notes: "NO ISSUE."
 			},
 			{
@@ -498,7 +543,6 @@
 				bed_plank: "100 times", wall_plank: "50",
 				stand_raise_leg: "50",
 				stand_try_to_sit_down: "50 times",
-				sit_back_squat: "50 times",
 				notes: "NO ISSUE."
 			},
 			{
@@ -508,7 +552,6 @@
 				bed_plank: "100 times", wall_plank: "50",
 				stand_raise_leg: "50",
 				stand_try_to_sit_down: "50 times",
-				sit_back_squat: "50 times",
 				notes: "NO ISSUE."
 			},
 			{
@@ -518,7 +561,6 @@
 				bed_plank: "100 times", wall_plank: "50",
 				stand_raise_leg: "50",
 				stand_try_to_sit_down: "50 times",
-				sit_back_squat: "50 times",
 				notes: "NO ISSUE."
 			},
 			{
@@ -527,8 +569,7 @@
 				sit_on_chair_rotate_leg: "160 times",
 				bed_plank: "080 times", wall_plank: "30",
 				stand_raise_leg: "40",
-				stand_try_to_sit_down: "40 times",
-				sit_back_squat: "50 times",
+				stand_try_to_sit_down: "50 times",
 				notes: "NO ISSUE."
 			},
 			{
@@ -538,7 +579,6 @@
 				bed_plank: "040 times", wall_plank: "20",
 				stand_raise_leg: "40",
 				stand_try_to_sit_down: "40 times",
-				sit_back_squat: "20 times",
 				notes: "NO ISSUE."
 			},
 			{
@@ -548,7 +588,6 @@
 				bed_plank: "NOT STARTED", wall_plank: "10",		
 				stand_raise_leg: "NOT STARTED",
 				stand_try_to_sit_down: "NOT STARTED",
-				sit_back_squat: "NOT STARTED",
 				notes: "Second toe at left frozen for 5 seconds when taking bath."
 			},
 			{
@@ -558,7 +597,6 @@
 				bed_plank: "NOT STARTED", wall_plank: "NOT STARTED",
 				stand_raise_leg: "NOT STARTED",
 				stand_try_to_sit_down: "NOT STARTED",
-				sit_back_squat: "NOT STARTED",
 				notes: "Second toe at Left leg frozen for 8 mins after walk. Sat idle 20 mins."
 			},
 			{
@@ -568,7 +606,6 @@
 				bed_plank: "NOT STARTED", wall_plank: "NOT STARTED",
 				stand_raise_leg: "NOT STARTED",
 				stand_try_to_sit_down: "NOT STARTED",
-				sit_back_squat: "NOT STARTED",
 				notes: "NO ISSUE"
 			},
 			{
@@ -578,7 +615,6 @@
 				bed_plank: "NOT STARTED", wall_plank: "NOT STARTED",
 				stand_raise_leg: "NOT STARTED",
 				stand_try_to_sit_down: "NOT STARTED",
-				sit_back_squat: "NOT STARTED",
 				notes: "NO ISSUE"
 			},
 			{
@@ -588,7 +624,6 @@
 				bed_plank: "NOT STARTED", wall_plank: "NOT STARTED",
 				stand_raise_leg: "NOT STARTED",
 				stand_try_to_sit_down: "NOT STARTED",
-				sit_back_squat: "NOT STARTED",
 				notes: "NO ISSUE"
 			},
 			{
@@ -598,7 +633,6 @@
 				bed_plank: "NOT STARTED", wall_plank: "NOT STARTED",
 				stand_raise_leg: "NOT STARTED",
 				stand_try_to_sit_down: "NOT STARTED",
-				sit_back_squat: "NOT STARTED",
 				notes: "NO ISSUE"
 			},
 			{
@@ -608,13 +642,12 @@
 				bed_plank: "NOT STARTED", wall_plank: "NOT STARTED",
 				stand_raise_leg: "NOT STARTED",
 				stand_try_to_sit_down: "NOT STARTED",
-				sit_back_squat: "NOT STARTED",
 				notes: "NO ISSUE"
 			}
 		];
-
 		// Formats Date object into string matching logs (e.g., "Sun 24-May-2026")
-		function FormatFormDate(dateString) {
+		function FormatFormDate( dateString )
+		{
 			const dateObj = new Date(dateString);
 			const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 			const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -626,7 +659,6 @@
 			
 			return `${dayName} ${dayNum}-${monthName}-${yearNum}`;
 		}
-
 		// Sets HTML input calendar baseline to current system date automatically
 		window.addEventListener('DOMContentLoaded', () => {
 			const today = new Date();
@@ -635,9 +667,9 @@
 			const dd = String(today.getDate()).padStart(2, '0');
 			document.getElementById('input_date').value = `${yyyy}-${mm}-${dd}`;
 		});
-
 		// Processes the submission cleanly, updates logData calculations dynamically
-		function HandleSubmit(event) {
+		function HandleSubmit( event )
+		{
 			event.preventDefault();
 			
 			let rawDate = document.getElementById("input_date").value;
@@ -652,17 +684,19 @@
 				bed_plank: document.getElementById("input_bed_plank").value,
 				stand_raise_leg: document.getElementById("input_stand_raise").value,
 				stand_try_to_sit_down: document.getElementById("input_try_sit").value,
-				sit_back_squat: document.getElementById("input_back_squat").value,
 				notes: document.getElementById("input_notes").value
 			};
 			
 			// Re-submitting protection rule: find if the date entry exists
 			let recordIndex = logData.findIndex(item => item.date === formattedDateStr);
 			
-			if (recordIndex !== -1) {
+			if( -1 !== recordIndex )
+			{
 				// Re-submit updates existing matching row
 				logData[recordIndex] = newRecord;
-			} else {
+			}
+			else
+			{
 				// New item added right at top chronological level
 				logData.unshift(newRecord);
 			}
@@ -670,13 +704,11 @@
 			// Recalculate tables safely without document.write or breaking components
 			PopulateLogTable();
 		}
-
-		function GetMonthYear( dateText )
+		function GetMonthYear(dateText)
 		{
-			let parts = dateText.split( "-" );
-			return parts[1] + "-" + parts[2];
-		}
-
+		let parts = dateText.split("-");
+		return parts[1] + "-" + parts[2];
+	}
 		function PopulateLogTable()
 		{
 			// Dynamic calculation of global context values based on runtime data mutations
@@ -688,33 +720,36 @@
 			const format2Digits = ( num ) => String( num ).padStart( 2, '0');
 			
 			let displayDateString = "";
-			if( 0 < years ) {
+			if( 0 < years )
+			{
 				let yearLabel = years === 1 ? "year" : "years";
 				let monthLabel = months === 1 ? "month" : "months";
 				let dayLabel = days === 1 ? "day" : "days";
 				displayDateString = `${format2Digits( years )} ${yearLabel} ${format2Digits( months )} ${monthLabel} ${format2Digits( days )} ${dayLabel}`;
-			} else if( 0 < months ) {
+			}
+			else if( 0 < months )
+			{
 				let monthLabel = months === 1 ? "month" : "months";
 				let dayLabel = days === 1 ? "day" : "days";
 				displayDateString = (0 === days) ? `${format2Digits( months )} ${monthLabel}` : `${format2Digits( months )} ${monthLabel} ${format2Digits( days )} ${dayLabel}`;
-			} else {
+			}
+			else
+			{
 				let dayLabel = rawDays === 1 ? "day" : "days";
 				displayDateString = `${format2Digits( rawDays )} ${dayLabel}`;
 			}
-
 			const totals = {
-				day: "Total:",
+				day: "Count",
 				date: displayDateString,
 				walk: GetTotalWalkTime(),
 				sit_on_floor: GetTotalSit(),
 				sit_on_chair_rotate_leg: GetTotalLeg(),
 				wall_plank: GetTotalWallPlank(),
 				bed_plank: GetTotalBedPlank(),
+				stand_raise_leg: GetTotalRaiseLegCount(),
 				stand_try_to_sit_down: GetTotalComboRaise(),
-				sit_back_squat: GetTotalSitBackSquat(),
 				notes: "Issues occurred on designated target baseline days."
 			};
-
 			const logBody = document.getElementById( "logTable" ).getElementsByTagName( "tbody" )[0];
 			logBody.innerHTML = "";
 			let selectedMonth = document.getElementById( "monthFilter" ).value;
@@ -722,48 +757,51 @@
 			
 			logData.forEach( ( item )=> {
 				let itemMonth = GetMonthYear( item.date );
-				if( ( "ALL" !== selectedMonth ) && ( itemMonth !== selectedMonth ) ) {
+				if( ( "ALL" !== selectedMonth ) && ( itemMonth !== selectedMonth ) )
+				{
 					return;
 				}
 				filteredData.push( item );
 			});
-
 			let totalRow = logBody.insertRow();
 			totalRow.style.fontWeight = "bold";
 			totalRow.style.backgroundColor = "#eaeded";
-			totalRow.insertCell( 0 ).outerHTML = "<TD valign='top' align='right'>" + totals.day + "</TD>";
-			totalRow.insertCell( 1 ).outerHTML = "<TD valign='top' align='right'>" + totals.date + "</TD>";
+			totalRow.insertCell( 0 ).outerHTML = "<TD style='width:10px; text-align:left; vertical-align:top;'>" + totals.day + "</TD>";
+			totalRow.insertCell( 1 ).outerHTML = "<TD valign='top' align='right' style='width:123px;'>" + totals.date + "</TD>";
 			totalRow.insertCell( 2 ).outerHTML = GetWalkCellHtml(totals.walk);
-			totalRow.insertCell( 3 ).outerHTML = "<TD valign='top' align='right'>" + totals.sit_on_floor + "</TD>";
+			totalRow.insertCell( 3 ).outerHTML = GetCellHtml( totals.sit_on_floor );
 			totalRow.insertCell( 4 ).outerHTML = GetCellHtml( totals.sit_on_chair_rotate_leg );
 			totalRow.insertCell( 5 ).outerHTML = GetCellHtml( totals.wall_plank );
 			totalRow.insertCell( 6 ).outerHTML = GetCellHtml( totals.bed_plank );
-			totalRow.insertCell( 7 ).outerHTML = GetCellHtml( totals.stand_try_to_sit_down );
-			totalRow.insertCell( 8 ).outerHTML = GetCellHtml( totals.sit_back_squat );
-			totalRow.insertCell( 9 ).outerHTML = "<TD valign='top' align='left'>" + totals.notes + "</TD>";
-
+			totalRow.insertCell( 7 ).outerHTML = GetCellHtml( totals.stand_raise_leg );
+			totalRow.insertCell( 8 ).outerHTML = GetCellHtml( totals.stand_try_to_sit_down );
+			let notesText = totals.notes;
+			if (notesText.toLowerCase().includes("toe")) {
+				notesText = "<span class='toe-hover'>" + notesText + "</span>";
+			}
+			// totalRow.insertCell( 9 ).outerHTML = GetCellHtml( totals.notes );
+			// totalRow.insertCell(9).outerHTML = GetCellHtml(notesText);
+			totalRow.insertCell(9).outerHTML = "<TD valign='top' align='left'>" + notesText + "</TD>";
 			let dayNo = filteredData.length;
 			filteredData.forEach( ( item )=> {
 				let row = logBody.insertRow();
 				row.insertCell( 0 ).outerHTML = "<TD valign='top' align='right'>" + String( dayNo ).padStart( 2,'0') + ")</TD>";
 				row.insertCell( 1 ).outerHTML = "<TD valign='top' align='right'>" + item.date + "</TD>";
 				row.insertCell( 2 ).outerHTML = GetWalkCellHtml( item.walk );
-				row.insertCell( 3 ).outerHTML = "<TD valign='top' align='right'>" + item.sit_on_floor + "</TD>";
+				row.insertCell( 3 ).outerHTML = GetCellHtml( item.sit_on_floor );
 				row.insertCell( 4 ).outerHTML = GetCellHtml( item.sit_on_chair_rotate_leg );
 				row.insertCell( 5 ).outerHTML = GetCellHtml( item.wall_plank );
 				row.insertCell( 6 ).outerHTML = GetCellHtml( item.bed_plank );
-				row.insertCell( 7 ).outerHTML = GetCellHtml( item.stand_try_to_sit_down );
-				row.insertCell( 8 ).outerHTML = GetCellHtml( item.sit_back_squat );
+				row.insertCell( 7 ).outerHTML = GetCellHtml( item.stand_raise_leg );
+				row.insertCell( 8 ).outerHTML = GetCellHtml( item.stand_try_to_sit_down );
 				row.insertCell( 9 ).outerHTML = GetCellHtml( item.notes );
 				dayNo--;
 			});
 		}
-
 		function FilterData()
 		{
 			PopulateLogTable();
 		}
-
 		// Initial initialization load executions
 		const masterBody = document.getElementById( "masterPlanTable" ).getElementsByTagName( "tbody" )[0];
 		masterPlanData.forEach( ( item, index ) => {
@@ -777,7 +815,6 @@
 			cell2.outerHTML = "<TD valign='top' align='left'>" + item.details + "</TD>";
 			cell3.outerHTML = "<TD valign='top' align='left'>" + item.status + "</TD>";
 		});
-
 		PopulateLogTable();
 	</SCRIPT>
 	</BODY>
