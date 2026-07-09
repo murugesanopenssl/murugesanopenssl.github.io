@@ -1102,7 +1102,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"why-to-open-fixed-deposit.html": ["Why Choose Fixed Deposit?"],
 								"sbi-yono-registration-error.html": ["YONO SBI REGISTRATION ISSUE"],
 								"Always-have-bank-balance-ending-with-zero.html": ["Make balance ending with .00 INR always."],
-								"sbi-atm-receive-date.html": ["New SBI atm card waiting days."],
+								"sbi-atm-receive-date.html": ["SBI new atm card waiting days."],
 								"dynamic-gold-rate-comparison-tool.html": ["Gold Rate Comparison"],
 								"futura-brush-buying-guide.html": ["Futura Brush: Save AMB Interest (Cash Only)"],
 								"axis-bank-life-insurance-block.html": ["Avoid Private Bank Life Insurance"],
@@ -1724,7 +1724,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					</A>
 					<UL class="submenu">
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'sbi-atm-receive-date.html' );" class="nav-link">New SBI atm card waiting days.</A>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'sbi-atm-receive-date.html' );" class="nav-link">SBI new atm card waiting days.</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Always-have-bank-balance-ending-with-zero.html' );" class="nav-link">Make balance ending with .00 INR always.</A>
