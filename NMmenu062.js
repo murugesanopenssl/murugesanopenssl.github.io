@@ -1167,6 +1167,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"Visitor_count.html": ["Visitor Information"],
 								"beggar-count.html": ["Beggar Count Report"],
 								"my-kt-rank-chatgpt-Fri-09-Jan-2026.html": ["My ChatGPT Knowledge Transfer"],
+								"sugar-tablets.html": ["Sugar Tablets Schedule"],
 								"my-exercise.html": ["My exercise"],
 								"../urination-water.html": ["My urination and Water"],
 								"NMurugesan_cv.html": ["My profile"],
@@ -2118,7 +2119,10 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								</A>
 							</LI>
 						`:""}
-			<LI>
+					<LI>
+						<A href="#" onclick="javascript:loadHomeContent( event, 'sugar-tablets.html' );" class="nav-link">Sugar Tablets Schedule</A>
+					</LI>
+					<LI>
 						<A href="#" onclick="javascript:loadHomeContent( event, 'my-exercise.html' );" class="nav-link">My exercise</A>
 					</LI>
 					<LI>
