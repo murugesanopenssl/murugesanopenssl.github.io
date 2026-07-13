@@ -1430,9 +1430,11 @@
 						// If 02-Oct is Friday, traffic jam happens on evening of Friday (02-Oct) 
 						// and also on Sunday (04-Oct) due to Sunday weekend return
 						DispGandhiJamDate = JanmastamDate.substring(0, 3) + " 02-Oct-" + DispYYYY;
+						TrafficJamDate = "" + new Date("01-Oct-" + DispYYYY);
+						Day = TrafficJamDate.substring(0, 3);
+						Disp_GandhiDate = Day + " 01-Oct-" + DispYYYY;
 						NextSunGandhiDate = ("" + new Date("04-Oct-" + DispYYYY));
 						DispNextSunGandhiDate = NextSunGandhiDate.substring(0, 3) + " 04-Oct-" + DispYYYY;
-						
 						document.getElementById("Disp_Mohandas_Karamchand_Gandhi").innerHTML = "Mahatma Gandhi Jayanti (Mohandas Karamchand Gandhi birthday)<BR>Traffic Jam (during evening time) on " + Disp_GandhiDate + "<BR>and also (evening time) on " + DispNextSunGandhiDate + " due to Sunday.";
 						document.getElementById("Disp_Mohandas_Karamchand_Gandhi").style.backgroundColor = "red";
 						document.getElementById("Disp_Mohandas_Karamchand_Gandhi").style.color = "white";
@@ -1713,7 +1715,6 @@
 						var targetYear = (typeof mm !== 'undefined' && typeof yyyy !== 'undefined') 
 							? (mm > 11 ? yyyy + 1 : yyyy) 
 							: now.getFullYear();
-						
 						var d = new Date(day + "-" + monthStr + "-" + targetYear);
 						if (!isNaN(d.getTime())) {
 							parsedDate = d;
