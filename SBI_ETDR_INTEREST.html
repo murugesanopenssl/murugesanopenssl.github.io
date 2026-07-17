@@ -458,7 +458,7 @@
 	<!--
 	#}
 	-->
-<SCRIPT TYPE="text/javascript" src="./NMmenu000.js">
+<SCRIPT TYPE="text/javascript" src="./NMmenu001.js">
 		</SCRIPT>
 		<TABLE border='1'>
 		<TR>
@@ -830,6 +830,9 @@
 			<TD valign='top' align='left'>
 				ETDR DAY COUNT
 			</TD>
+			<TD valign='top' align='left' style='background-color:#00ff00;color:White;'>
+				SENIOR CITIZEN
+			</TD>
 			<TD valign='top' align='left'>
 				EDTR INTEREST LAST TIME NOTED ON:
 			</TD>
@@ -839,7 +842,10 @@
 		</TR>
 		<NOSCRIPT>
 <TR><TD valign='top' align='right'>FROM 1000.00 INR TO 08.90 Lakhs+ INR.</A></TD><TD valign='top' align='right'>6.75</TD><TD valign='top' align='right'><A href='SBI_ETDR_01_YEAR.html'>01 YEAR</A></TD><TD valign='top' align='right'>Tue 15-Jul-2025</TD><TD valign='top' align='right'>UPDATED ETDR ON Sat 12-Jun-2026</TD></TR>
-<TR><TD valign='top' align='right'>FROM 1000.00 INR TO 08.90 Lakhs+ INR.</A></TD><TD valign='top' align='right'>4.90</TD><TD valign='top' align='right'><A href='SBI_ETDR_46.html'>46 DAYS</A></TD><TD valign='top' align='right'>Tue 15-Jul-2025</TD><TD valign='top' align='right'>UPDATED ETDR ON Sat 12-Jun-2026</TD></TR>
+<TR><TD valign='top' align='right'>FROM 1000.00 INR TO 08.90 Lakhs+ INR.</A></TD><TD valign='top' align='right'>4.90</TD>
+	<TD valign='top' align='right'><A href='SBI_ETDR_46.html'>46 DAYS</A></TD>
+	<TD valign='top' align='right'><A href='SBI_ETDR_46_Senior.html'>46 DAYS Senior</A></TD>
+	<TD valign='top' align='right'>Tue 15-Jul-2025</TD><TD valign='top' align='right'>UPDATED ETDR ON Sat 12-Jun-2026</TD></TR>
 <TR><TD valign='top' align='right'>FROM 1000.00 INR TO 08.90 Lakhs+ INR.</TD><TD valign='top' align='right'>3.05</TD><TD valign='top' align='right'><A href='SBI_ETDR_45.html'>45 DAYS</A></TD><TD valign='top' align='right'></TD><TD valign='top' align='right'>UPDATED ETDR ON Sat 12-Jun-2026</TD></TR>
 <TR><TD valign='top' align='right'>FROM 1000.00 INR TO 08.90 Lakhs+ INR.</TD><TD valign='top' align='right'>3.05</TD><TD valign='top' align='right'><A href='SBI_ETDR_44.html'>44 DAYS</A></TD><TD valign='top' align='right'></TD><TD valign='top' align='right'>UPDATED ETDR ON Sat 12-Jun-2026</TD></TR>
 <TR><TD valign='top' align='right'>FROM 1000.00 INR TO 08.90 Lakhs+ INR.</TD><TD valign='top' align='right'>3.05</TD><TD valign='top' align='right'><A href='SBI_ETDR_43.html'>43 DAYS</A></TD><TD valign='top' align='right'></TD><TD valign='top' align='right'>UPDATED ETDR ON Sat 12-Jun-2026</TD></TR>
@@ -895,6 +901,9 @@
 			document.write( "<TD valign='top' align='right'>");
 			document.write( "<A href='SBI_ETDR_01_YEAR.html'>01 YEAR</A>" );
 			document.write( "</TD>");
+			document.write( "<A href='SBI_ETDR_01_YEAR.html'>01 YEAR SENIOR</A>" );
+			document.write( "<TD valign='top' align='right'>");
+			document.write( "</TD>");
 			document.write( "<TD valign='top' align='right'>");
 			document.write( "Fri 12-Jun-2026" );
 			document.write( "</TD>");
@@ -929,11 +938,20 @@
 				document.write( disp_R.toFixed(2));
 				if( 10 > i )
 				{
-					document.write( "<TD valign='top' align='right'><A href='"+href_url+"'> 0"+i+" DAYS </TD>");
+					document.write( "<TD valign='top' align='right'><A href='"+href_url+"'> 0"+i+" DAYS</TD>");
 				}
 				else
 				{
 					document.write( "<TD valign='top' align='right'><A href='"+href_url+"'> "+i+" DAYS </TD>");
+					href_url="SBI_ETDR_"+i+"_senior.html";
+					if( 46 == i || 45 == i )
+					{
+						document.write( "<TD valign='top' align='right'><A href='"+href_url+"'> "+i+" DAYS Senior</TD>");
+					}
+					else
+					{
+						document.write( "<TD valign='top' align='right'>"+i+" DAYS Senior</TD>");
+					}
 				}
 				if (
 					( 07 == i ) ||
@@ -949,7 +967,15 @@
 						document.write( "<TD valign='top' align='right' rowspan='40'></A></TD>");
 						dispRedefinedInt="y";
 					}
-					document.write( "<TD valign='top' align='right'>UPDATED ETDR ON Sat 12-Jun-2026</TD>");
+					if( 07 == i )
+					{
+						href_url="SBI_ETDR_"+i+"_senior.html";
+						document.write( "<TD valign='top' align='right'><A href='"+href_url+"'> "+i+" DAYS Senior</TD>");
+					}
+					else
+					{
+						document.write( "<TD valign='top' align='right'>UPDATED ETDR ON Sat 12-Jun-2026</TD>");
+					}
 				}
 				else if (
 					( 18 == i ) ||

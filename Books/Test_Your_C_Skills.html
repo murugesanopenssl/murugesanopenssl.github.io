@@ -22,42 +22,43 @@ https://www.gandhicollegekada.org/department/Computer/E-Resources/Test Your C Sk
 					Next <A href='#q1.2'>Q1.2</A>
 				</TD>
 				<TD valign='top' align='left'>
-					What would be the output of the following program (TURBO C/TURBO C++)?<PRE>#include &lt;stdio.h&gt;
-int main()
-{
-#ifdef __TURBOC__
-	char near* nptr[32203] = { NULL };
-	char near* n1 = NULL, *n2 = NULL;
-	char far* f1 = NULL, *f2 = NULL;
-	char huge* h1 = NULL, *h2 = NULL;
-#endif
-	char* ch1 = NULL, ch2 = NULL;
-	char* ch3 = NULL, *ch4 = NULL;
-#ifdef __TURBOC__
-	clrscr( );
-	if( n1 && n2 && f1 && f2 && h1 && h2 && ch2 && ch3 && ch4)
-#else
-	system( "/usr/bin/clear");
-	if( ch1 && ch2 && ch3 && ch4)
-#endif
-	{
-		// dummy block to avoid unused warning
-	}
-#ifdef __TURBOC__
-	printf("sizeof near* n1: %d\n", sizeof(n1));
-	printf("             n2: %d\n", sizeof(n2));
-	printf("sizeof  far* f1: %d\n", sizeof(f1));
-	printf("             f2: %d\n", sizeof(f2));
-	printf("sizeof huge* h1: %d\n", sizeof(h1));
-	printf("             h2: %d\n", sizeof(h2));
-#endif
-	printf("sizeof char* ch1: %d\n", sizeof(ch1));
-	printf("             ch2: %d\n", sizeof(ch2));
-	printf("sizeof char* ch3: %d\n", sizeof(ch3));
-	printf("             ch4: %d\n", sizeof(ch4));
-	getch();
-	return 0;
-}</PRE>
+					What would be the output of the following program (TURBO C/TURBO C++)?<BR>
+					#include &lt;stdio.h&gt;<BR>
+int main()<BR>
+{<BR>
+#ifdef __TURBOC__<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char near* nptr[32203] = { NULL };<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char near* n1 = NULL, *n2 = NULL;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char far* f1 = NULL, *f2 = NULL;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char huge* h1 = NULL, *h2 = NULL;<BR>
+#endif<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char* ch1 = NULL, ch2 = NULL;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char* ch3 = NULL, *ch4 = NULL;<BR>
+#ifdef __TURBOC__<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clrscr( );<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if( n1 && n2 && f1 && f2 && h1 && h2 && ch2 && ch3 && ch4)<BR>
+#else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system( "/usr/bin/clear");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if( ch1 && ch2 && ch3 && ch4)<BR>
+#endif<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// dummy block to avoid unused warning<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+#ifdef __TURBOC__<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("sizeof near* n1: %d\n", sizeof(n1));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("             n2: %d\n", sizeof(n2));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("sizeof  far* f1: %d\n", sizeof(f1));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("             f2: %d\n", sizeof(f2));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("sizeof huge* h1: %d\n", sizeof(h1));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("             h2: %d\n", sizeof(h2));<BR>
+#endif<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("sizeof char* ch1: %d\n", sizeof(ch1));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("             ch2: %d\n", sizeof(ch2));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("sizeof char* ch3: %d\n", sizeof(ch3));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("             ch4: %d\n", sizeof(ch4));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getch();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<BR>
+}
 				</TD>
 			</TR>
 			<TR>
@@ -68,14 +69,15 @@ int main()
 					<A href='#q1.3'>Next Question for Q 1.3</A>
 				</TD>
 				<TD valign='top' align='left'>
-					What would be the output of the following program?<PRE>#include &lt;stdio.h&gt;
-int x = 40;
-int main()
-{
-	int x = 20;
-	printf( "x = %d\n", x);
-	return 0;
-}</PRE>
+					What would be the output of the following program?<BR>
+					#include &lt;stdio.h&gt;<BR>
+					int x = 40;<BR>
+					int main()<BR>
+					{<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int x = 20;<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf( "x = %d\n", x);<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<BR>
+					}
 				</TD>
 			</TR>
 			<TR>
@@ -84,20 +86,22 @@ int main()
 				</TD>
 				<TD valign='top' align='left'>
 					What would be the output of the following program?<BR>
-					<PRE>int main()
-{
-	int x = 50;
-	{
-		int x = 10;
-		printf( "x = %d\n", x);
-	}
-	return 0;
-}</PRE>
+					int main()<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int x = 50;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int x = 10;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf( "x = %d\n", x);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<BR>
+}
 				</TD>
 			</TR>
 			<TR>
 				<TD valign='top' align='left'>
-					Q 1.4
+					<A name='q1.4'></A>
+					Q 1.4<BR>
+					<A href='#a1.4'>Answer for Q 1.4</A>
 				</TD>
 				<TD valign='top' align='left'>
 					Is the following statement a declaration or definition?<BR>
@@ -106,7 +110,9 @@ int main()
 			</TR>
 			<TR>
 				<TD valign='top' align='left'>
-					Q 1.5
+					<A name='q1.5'></A>
+					Q 1.5<BR>
+					<A href='#a1.5'>Answer for Q 1.5</A>
 				</TD>
 				<TD valign='top' align='left'>
 					What would be the output of the following program?<BR>
@@ -124,7 +130,9 @@ int main()
 			</TR>
 			<TR>
 				<TD valign='top' align='left'>
-					Q 1.6
+					<A name='q1.6'></A>
+					Q 1.6<BR>
+					<A href='#a1.6'>Answer for Q 1.6</A>
 				</TD>
 				<TD valign='top' align='left'>
 					Is it true that a global variable may have several declarations, but only one definition?<BR>
@@ -133,7 +141,9 @@ int main()
 			</TR>
 			<TR>
 				<TD valign='top' align='left'>
-					Q 1.7
+					<A name='q1.7'></A>
+					Q 1.7<BR>
+					<A href='#a1.7'>Answer for Q 1.7</A>
 				</TD>
 				<TD valign='top' align='left'>
 					Is it true that a function may have several declarations, but only one definition?<BR>
@@ -142,7 +152,9 @@ int main()
 			</TR>
 			<TR>
 				<TD valign='top' align='left'>
-					Q 1.8
+					<A name='q1.8'></A>
+					Q 1.8<BR>
+					<A href='#a1.8'>Answer for Q 1.8</A>
 				</TD>
 				<TD valign='top' align='left'>
 					In the following program where is the variable a getting defined and where it is getting declared?<BR>
@@ -209,11 +221,12 @@ int main()
 			</TR>
 			<TR>
 				<TD valign='top' align='left'>
-					Q 1.14
+					Q 1.14<BR>
+					Answer for Q 1.14
 				</TD>
 				<TD valign='top' align='left'>
 					What's the difference between the following declarations?<BR>
-					extern int fun();
+					extern int fun();<BR>
 					int fun();
 				</TD>
 			</TR>
@@ -240,23 +253,22 @@ int main()
 					<A href='#q1.2'>Next Question for Q 1.2</A>
 				</TD>
 				<TD valign='top' align='left'>
-				Expected output in Turbo C++
-<PRE>
-sizeof near*  n1: 2
-              n2: 2
-sizeof  far*  f1: 4
-              f2: 2
-sizeof huge*  h1: 4
-              h2: 2
-sizeof char* ch1: 2
-             ch2: 1
-sizeof char* ch3: 2
-             ch4: 2</PRE>
+				Expected output in Turbo C++<BR>
+sizeof near*  n1: 2<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n2: 2<BR>
+sizeof  far*  f1: 4<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f2: 2<BR>
+sizeof huge*  h1: 4<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h2: 2<BR>
+sizeof char* ch1: 2<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ch2: 1<BR>
+sizeof char* ch3: 2<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ch4: 2<BR>
 					near, far, and huge are non-standard keywords used only in Turbo C/Turbo C++.<BR>
 					They were introduced to handle the 16-bit segmented memory architecture of Intel 8086 processors.<BR><BR>
 					Memory in Turbo C is divided into segments of size 64 KB (65536 bytes).<BR>
 					Each segment contains offsets from 0 to 65535.<BR><BR>
-					<TABLE border='1'>
+					<TABLE border='1' style='width:100%;'>
 						<TR>
 							<TD valign='top' align='left'><b>Concept</b></TD>
 							<TD valign='top' align='left'><b>Explanation</b></TD>
@@ -297,16 +309,16 @@ sizeof char* ch3: 2
 					<A name='#a1.2'></A>Answer for Q 1.2
 				</TD>
 				<TD valign='top' align='left'>
-<PRE>int x = 40; // global variable
-int main()
-{
-	int x = 20; // local variable
-	printf( "x = %d\n", x); // local variable has higher preference than global variable.
-	return 0;
-}
-/* OUTPUT:
-x = 20
-*/</PRE>
+int x = 40; // global variable<BR>
+int main()<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int x = 20; // local variable<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf( "x = %d\n", x); // local variable has higher preference than global variable.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<BR>
+}<BR>
+/* OUTPUT:<BR>
+x = 20<BR>
+*/
 				</TD>
 			</TR>
 			<TR>
@@ -314,27 +326,153 @@ x = 20
 					Answer for Q 1.3
 				</TD>
 				<TD valign='top' align='left'>
-<PRE>#include &lt;stdio.h&gt;
-int main()
-{
-	int x = 50; // local_01 variable
-	{
-		int x = 10; // local_02 variable
-		printf( "x = %d\n", x); // local_02 variable has higher preference than local_01 variable.
-	}
-	return 0;
-}
-/* OUTPUT:
-x = 10
-*/</PRE>
+#include &lt;stdio.h&gt;<BR>
+int main()<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int x = 50; // local_01 variable<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int x = 10; // local_02 variable<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf( "x = %d\n", x); // local_02 variable has higher preference than local_01 variable.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<BR>
+}<BR>
+/* OUTPUT:<BR>
+x = 10<BR>
+*/
 				</TD>
 			</TR>
 			<TR>
 				<TD valign='top' align='left'>
+					<A href='#q1.4'>Q 1.4</A><BR>
+					<A name='a1.4'></A>
 					Answer for Q 1.4
 				</TD>
 				<TD valign='top' align='left'>
-					Declaration
+					There is no difference except for the fact that the first one gives a hint that the funtion fun() is probably in another source file.<BR>
+					extern int fun();<BR>
+					Above statement providing a hint to the compiler that this function might be defined in other file.<BR>
+					However, if this function is defined in same file without other file, it will compile fine.
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					<A href='#q1.5'>Q 1.5</A><BR>
+					<A name='a1.5'></A>
+					Answer for Q 1.5
+				</TD>
+				<TD valign='top' align='left'>
+					D. Error, i undefined.<BR>
+					extern int i is a declaration and not a definition, hence the error.<BR>
+					Error at Turbo C++:<BR>
+					Linker Error: Undefined symbol _i in modile Q1-5.c<BR>
+					However if we write following program:<BR>
+					#include &lt;stdio.h&gt;<BR>
+int main()<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extern int i;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// i = 20;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf( "%d\n", sizeof(i) );<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<BR>
+}<BR>
+					This program compiles when using Turbo C++ or gcc or gcc.exe at any OS.<BR>
+					Output being the size of the int:<BR>
+					2 at Turbo C<BR>
+					4 at gcc.exe/gcc<BR>
+					Reason: sizeof is nothing but displaying the typeof (int) instead of using typeof(i)<BR>
+					Hence this compiled.
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					<A name='a1.6'></A>
+					<A href='#q1.6'>Q 1.6</A><BR>
+				
+					Answer for 1.6
+				</TD>
+				<TD valign='top' align='left'>
+					Yes, it is true that a global variable may have several declarations, but only one definition, excluding shared libraries.<BR>
+					int main()<BR>
+					{<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extern int a; // declaration<BR>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf( "%d\n", a);<BR>
+					}<BR>
+					int a = 20; // definition
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					<A href='#q1.7'>Q 1.7</A><BR>
+					<A name='a1.7'></A>
+					Answer for 1.7
+				</TD>
+				<TD valign='top' align='left'>
+					Yes, it is true that a function may have several declarations, but only one definition.<BR>
+					Assume that I have following application:<BR>
+					ftp_bridge.exe<BR>
+					This executable can be compiled using following options:<BR>
+					<TABLE border='1' style='width:100%;'>
+						<TR>
+							<TD valign='top' align='left'>
+								ftp_bridge_lib.c
+							</TD>
+							<TD valign='top' align='left'>
+								#include &lt;stdio.h&gt;<BR>
+void Disp_name()<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf( "Disp_name function inside ftp_bridge_lib.c\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<BR>
+}
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='left'>
+								entftps_lib.c
+							</TD>
+							<TD valign='top' align='left'>
+								#include &lt;stdio.h&gt;<BR>
+void Disp_name()<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf( "Disp_name function inside entftps_lib.c\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<BR>
+}
+							</TD>
+						</TR>
+						<TR>
+							<TD>
+								ftp_bridge.c
+							</TD>
+							<TD>
+								#include &lt;stdio.h&gt;<BR>
+extern void Disp_name();<BR>
+int main()<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf( "ftp_bridge\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Disp_name();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<BR>
+}
+							</TD>
+						</TR>
+					</TABLE>
+					a)	Using CYGWIN_NT at Windows 10 pro<BR>
+						/usr/bin/gcc.exe -c ftp_bridge_lib.c -o ftp_bridge_lib.o<BR>
+						/usr/bin/gcc.exe -shared ftp_bridge_lib.o -o libftp_bridge.dll<BR>
+						/usr/bin/gcc.exe -c entftps_lib.c -o entftps_lib.o<BR>
+						/usr/bin/gcc.exe -shared entftps_lib.o -o libentftps.dll<BR>
+						/usr/bin/gcc.exe -c -g -Wall ftp_bridge.c -o ftp_bridge.o<BR>
+						/usr/bin/gcc.exe -g -Wall ftp_bridge.o -L. -o ./a.out -lftp_bridge -lentftps<BR>
+						If i compile using -lentftps at the end, the compiler takes the function from libentftps.dll<BR>
+						If i compile using -lftp_bridge at the end, the compiler takes the function from libftp_bridge.dll<BR>
+						Re-definition error wont happen
+				</TD>
+			</TR>
+			<TR>
+				<TD valign='top' align='left'>
+					<A href='#q1.6'>Q 1.8</A><BR>
+					<A name='a1.8'></A>
+					Answer for 1.8
+				</TD>
+				<TD valign='top' align='left'>
+					Yes, it is true that a global variable may have several declarations, but only one definition.
 				</TD>
 			</TR>
 		</TABLE>

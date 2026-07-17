@@ -1171,6 +1171,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"sugar-tablets.html": ["Sugar Tablets Schedule"],
 								"my-exercise.html": ["My exercise"],
 								"../urination-water.html": ["My urination and Water"],
+								"../my_finance_dashboard.html": ["My finance dash board"],
 								"NMurugesan_cv.html": ["My profile"],
 								"openssl_speed.html": ["OpenSSL Speed Test"],
 								"murugesan_achievements.html": ["My achievements"],
@@ -2120,6 +2121,13 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							<LI>
 								<A href="#" onclick="loadHomeContent(event, '../urination-water.html');" class="nav-link">
 									My urination and Water
+								</A>
+							</LI>
+						`:""}
+						${ "127.0.0.1" === window.location.hostname ?`
+							<LI>
+								<A href="#" onclick="loadHomeContent(event, '../my_finance_dashboard.html');" class="nav-link">
+									My finance dash board
 								</A>
 							</LI>
 						`:""}
