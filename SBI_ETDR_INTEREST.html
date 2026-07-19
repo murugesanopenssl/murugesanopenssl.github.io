@@ -944,7 +944,7 @@
 				{
 					document.write( "<TD valign='top' align='right'><A href='"+href_url+"'> "+i+" DAYS </TD>");
 					href_url="SBI_ETDR_"+i+"_senior.html";
-					if( 46 == i || 45 == i )
+					if( ( 10 <= i ) && ( 46 >= i ) )
 					{
 						document.write( "<TD valign='top' align='right'><A href='"+href_url+"'> "+i+" DAYS Senior</TD>");
 					}
@@ -967,9 +967,9 @@
 						document.write( "<TD valign='top' align='right' rowspan='40'></A></TD>");
 						dispRedefinedInt="y";
 					}
-					if( 07 == i )
+					if( ( 7 == i ) || ( 8 == i ) || ( 9 == i ) )
 					{
-						href_url="SBI_ETDR_"+i+"_senior.html";
+						href_url="SBI_ETDR_0"+i+"_senior.html";
 						document.write( "<TD valign='top' align='right'><A href='"+href_url+"'> "+i+" DAYS Senior</TD>");
 					}
 					else
