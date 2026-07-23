@@ -102,29 +102,23 @@
 	<DIV class="container">
 		<H1>📊 Daily Visitor Count</H1>
 		<P class="subtitle">Track daily visitors by country and date</P>
-		
 		<DIV id="firebaseStatus"></DIV>
 		<DIV id="loadingIndicator" class="loading">Loading visitor data...</DIV>
-		
 		<DIV class="controls" style="display: none;" id="controlsDiv">
 			<LABEL for="monthSelect">Select Month:</LABEL>
 			<SELECT id="monthSelect">
 				<OPTION value="all">All Months</OPTION>
 			</SELECT>
-			
 			<LABEL for="countryFilter">Filter by Country:</LABEL>
 			<SELECT id="countryFilter">
 				<OPTION value="all">All Countries</OPTION>
 			</SELECT>
 		</DIV>
-		
 		<DIV id="tableContainer" style="display: none;"></DIV>
 	</DIV>
-	
 	<SCRIPT type="module">
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 		import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-		
 		const firebaseConfig = {
 			apiKey: "AIzaSyDSNanmji7WVBtQHlPO-J_E5RQu9Qlq4Qw",
 			authDomain: "openmurugesan.firebaseapp.com",
@@ -134,38 +128,30 @@
 			messagingSenderId: "307675598593",
 			appId: "1:307675598593:web:4af163460ce2c3bc719500"
 		};
-		
 		let app, database;
 		let allVisitorData = {};
-		
 		try {
 			app = initializeApp(firebaseConfig);
 			database = getDatabase(app);
 			showStatus('Connected to Firebase', 'connected');
-			
 			// Store current visit first
 			storeCurrentVisit();
-			
 			// Then load all visitor data
 			loadVisitorData();
 		} catch (error) {
 			showStatus('Firebase Error: ' + error.message, 'error');
 			console.error('Firebase initialization error:', error);
 		}
-		
 		function showStatus(message, type) {
 			const statusDiv = document.getElementById('firebaseStatus');
 			statusDiv.textContent = message;
 			statusDiv.className = `status firebase-${type}`;
 		}
-		
 		async function storeCurrentVisit() {
 			try {
 				const { push } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js");
-				
 				// Try to get location data
 				let locationData = null;
-				
 				try {
 					const response = await fetch('https://ipapi.co/json/', { 
 						signal: AbortSignal.timeout(3000)
@@ -189,7 +175,6 @@
 						ip: 'Unknown'
 					};
 				}
-				
 				// Store visit with current timestamp
 				await push(ref(database, "userAccess"), {
 					country: locationData.country,
@@ -200,29 +185,23 @@
 					userAgent: navigator.userAgent,
 					timestamp: Date.now()
 				});
-				
 				console.log('Current visit stored successfully');
 			} catch (error) {
 				console.error('Error storing current visit:', error);
 			}
 		}
-		
 		function formatDate(ts) {
 			if (!ts || isNaN(ts)) return "UNKNOWN";
 			const d = new Date(Number(ts));
 			if (isNaN(d.getTime())) return "UNKNOWN";
-			
 			const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 			const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-			
 			const dayName = days[d.getDay()];
 			const date = String(d.getDate()).padStart(2, "0");
 			const month = months[d.getMonth()];
 			const year = d.getFullYear();
-			
 			return `${dayName} ${date}-${month}-${year}`;
 		}
-		
 		function getDateKey(ts) {
 			const d = new Date(ts);
 			const day = String(d.getDate()).padStart(2, "0");
@@ -230,41 +209,33 @@
 			const year = d.getFullYear();
 			return `${day}-${month}-${year}`;
 		}
-		
 		function getMonthKey(ts) {
 			const d = new Date(ts);
 			const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 			return `${months[d.getMonth()]}-${d.getFullYear()}`;
 		}
-		
 		function loadVisitorData() {
 			onValue(ref(database, "userAccess"), snapshot => {
 				document.getElementById('loadingIndicator').style.display = 'none';
-				
 				if (!snapshot.exists()) {
 					document.getElementById('tableContainer').innerHTML = 
 						"<P style='text-align:center;padding:20px;'>No visitor data available</P>";
 					document.getElementById('tableContainer').style.display = 'block';
 					return;
 				}
-				
 				// Process data: organize by date and country
 				const dailyData = {};
 				const countries = new Set();
 				const months = new Set();
-				
 				snapshot.forEach(child => {
 					const v = child.val();
 					const ts = Number(v.timestamp);
 					if (!ts || isNaN(ts)) return;
-					
 					const dateKey = getDateKey(ts);
 					const monthKey = getMonthKey(ts);
 					const country = (v.country || "Unknown").trim();
-					
 					countries.add(country);
 					months.add(monthKey);
-					
 					if (!dailyData[dateKey]) {
 						dailyData[dateKey] = {
 							timestamp: ts,
@@ -272,32 +243,24 @@
 							total: 0
 						};
 					}
-					
 					if (!dailyData[dateKey].countries[country]) {
 						dailyData[dateKey].countries[country] = 0;
 					}
-					
 					dailyData[dateKey].countries[country]++;
 					dailyData[dateKey].total++;
 				});
-				
 				allVisitorData = dailyData;
-				
 				// Populate filters
 				populateFilters(Array.from(months), Array.from(countries));
-				
 				// Display data
 				renderTable('all', 'all');
-				
 				document.getElementById('controlsDiv').style.display = 'block';
 				document.getElementById('tableContainer').style.display = 'block';
 			});
 		}
-		
 		function populateFilters(months, countries) {
 			const monthSelect = document.getElementById('monthSelect');
 			const countryFilter = document.getElementById('countryFilter');
-			
 			// Sort months in reverse chronological order
 			months.sort((a, b) => {
 				const [monthA, yearA] = a.split('-');
@@ -306,14 +269,12 @@
 				const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 				return monthNames.indexOf(monthB) - monthNames.indexOf(monthA);
 			});
-			
 			months.forEach(month => {
 				const option = document.createElement('option');
 				option.value = month;
 				option.textContent = month;
 				monthSelect.appendChild(option);
 			});
-			
 			// Sort countries alphabetically
 			countries.sort();
 			countries.forEach(country => {
@@ -322,75 +283,59 @@
 				option.textContent = country;
 				countryFilter.appendChild(option);
 			});
-			
 			// Add event listeners
 			monthSelect.addEventListener('change', () => {
 				renderTable(monthSelect.value, countryFilter.value);
 			});
-			
 			countryFilter.addEventListener('change', () => {
 				renderTable(monthSelect.value, countryFilter.value);
 			});
 		}
-		
 		function renderTable(monthFilter, countryFilter) {
 			const tableContainer = document.getElementById('tableContainer');
-			
 			// Filter data
 			const filteredData = {};
 			for (const dateKey in allVisitorData) {
 				const data = allVisitorData[dateKey];
 				const monthKey = getMonthKey(data.timestamp);
-				
 				if (monthFilter !== 'all' && monthKey !== monthFilter) continue;
-				
 				filteredData[dateKey] = data;
 			}
-			
 			// Get all unique countries in filtered data
 			const allCountries = new Set();
 			for (const dateKey in filteredData) {
 				Object.keys(filteredData[dateKey].countries).forEach(c => allCountries.add(c));
 			}
-			
 			// Filter countries if needed
 			let displayCountries = Array.from(allCountries);
 			if (countryFilter !== 'all') {
 				displayCountries = [countryFilter];
 			}
 			displayCountries.sort();
-			
 			// Build table HTML
 			let html = `<TABLE class="visitor-table">
 				<THEAD>
 					<TR>
 						<TH>Date</TH>`;
-			
 			displayCountries.forEach(country => {
 				html += `<TH>${country}</TH>`;
 			});
-			
 			html += `<TH>Total</TH>
 					</TR>
 				</THEAD>
 				<TBODY>`;
-			
 			// Sort dates in reverse chronological order
 			const sortedDates = Object.keys(filteredData).sort((a, b) => {
 				return filteredData[b].timestamp - filteredData[a].timestamp;
 			});
-			
 			let grandTotal = 0;
 			const countryTotals = {};
 			displayCountries.forEach(c => countryTotals[c] = 0);
-			
 			sortedDates.forEach(dateKey => {
 				const data = filteredData[dateKey];
 				const formattedDate = formatDate(data.timestamp);
-				
 				html += `<TR>
 					<TD style="text-align:left; font-weight:bold;">${formattedDate}</TD>`;
-				
 				let rowTotal = 0;
 				displayCountries.forEach(country => {
 					const count = data.countries[country] || 0;
@@ -398,25 +343,19 @@
 					countryTotals[country] += count;
 					html += `<TD>${count > 0 ? count : '-'}</TD>`;
 				});
-				
 				grandTotal += rowTotal;
 				html += `<TD style="font-weight:bold; color:#28a745;">${rowTotal}</TD>
 				</TR>`;
 			});
-			
 			// Totals row
 			html += `<TR class="total-row">
 				<TD style="text-align:left;">TOTAL</TD>`;
-			
 			displayCountries.forEach(country => {
 				html += `<TD>${countryTotals[country]}</TD>`;
 			});
-			
 			html += `<TD style="color:#28a745; font-size:1.2em;">${grandTotal}</TD>
 				</TR>`;
-			
 			html += `</TBODY></TABLE>`;
-			
 			tableContainer.innerHTML = html;
 		}
 	</SCRIPT>

@@ -33,12 +33,10 @@
 				var isToday = key(d) == key(t);
 				var displayText = adhoc.some(ad=>key(ad)==key(d)) ? 
 								  'All Banks: Likely closed or severely affected due to the strike' : h;
-
 				var tnBg = isToday ? 'red' : 'orange';
 				var kaBg = isToday ? 'red' : '#00ff00';
 				var tnColor = isToday ? 'white' : 'black';
 				var kaColor = isToday ? 'white' : 'black';
-
 				return '<TR>'+
 					'<TD valign="top" align="right" style="background-color:'+tnBg+'; color:'+tnColor+';">'+dstr(d)+'</TD>'+
 					'<TD valign="top" align="right" style="background-color:'+tnBg+'; color:'+tnColor+';">'+displayText+'</TD>'+
@@ -56,16 +54,13 @@
 				[2,9,'Gandhi Jayanti'],
 				[25,11,'Christmas Day']
 			];
-
 			for (var m = 0; m < 12; m++) {
 				r.innerHTML += row(sat(m,2),'Second Saturday');
 				r.innerHTML += row(sat(m,4),'Fourth Saturday');
 			}
-
 			for (var i = 0; i < fixed.length; i++) {
 				r.innerHTML += row(new Date(y(), fixed[i][1], fixed[i][0]), fixed[i][2]);
 			}
-
 			for (var i = 0; i < adhoc.length; i++) {
 				r.innerHTML += row(adhoc[i],'All Banks: Likely closed or severely affected due to the strike');
 			}

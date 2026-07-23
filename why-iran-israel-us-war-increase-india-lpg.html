@@ -226,7 +226,6 @@
 						<P>ನಿರ್ಣಯ: ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಂಘರ್ಷ ಭಾರತದ ಆಮದು ಎಲ್‌ಪಿಜಿ ವೆಚ್ಚವನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ, ಅದರಿಂದ ಕಡಿಮೆ ಮತ್ತು ಮಧ್ಯಮ ವರ್ಗದ ಕುಟುಂಬಗಳು ಹೆಚ್ಚಿನ ಸಿಲಿಂಡರ್ ದರವನ್ನು ಅನುಭವಿಸುತ್ತಾರೆ。</P>`
 				}
 			};
-			
 			function setLanguage(lang)
 			{
 				var langs=['kannada','tamil','hindi','english'];
@@ -248,14 +247,12 @@
 				document.getElementById('page-heading').innerText=contentMap[lang].heading;
 				document.getElementById('language-content').innerHTML=contentMap[lang].content;
 			}
-			
 			// Get language from URL hash or default to tamil
 			window.onload=function(){
 				var hash = window.location.hash.substring(1);
 				var lang = (hash && contentMap[hash]) ? hash : 'tamil';
 				setLanguage(lang);
 			};
-			
 			// Handle hash change for browser back/forward
 			window.onhashchange = function(){
 				var hash = window.location.hash.substring(1);
@@ -275,7 +272,6 @@
 				<TD valign='top' align='left'><A id='lang-english' href='#english' onclick="setLanguage('english')">Display in English</A></TD>
 			</TR>
 		</TABLE>
-		
 		<!-- Content Area -->
 		<DIV style='padding:20px;'>
 			<H1 id='page-heading'>Why Iran-Israel-US War Increases IndianOil/Bharath/HP LPG Cylinder Prices</H1>

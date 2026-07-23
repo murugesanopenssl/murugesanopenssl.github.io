@@ -270,8 +270,8 @@ sizeof char* ch3: 2<BR>
 					Each segment contains offsets from 0 to 65535.<BR><BR>
 					<TABLE border='1' style='width:100%;'>
 						<TR>
-							<TD valign='top' align='left'><b>Concept</b></TD>
-							<TD valign='top' align='left'><b>Explanation</b></TD>
+							<TD valign='top' align='left'><B>Concept</B></TD>
+							<TD valign='top' align='left'><B>Explanation</B></TD>
 						</TR>
 						<TR>
 							<TD valign='top' align='left'>near pointer</TD>
@@ -287,18 +287,18 @@ sizeof char* ch3: 2<BR>
 						</TR>
 					</TABLE>
 					<BR>
-					<b>Important clarification:</b><BR>
+					<B>Important clarification:</B><BR>
 					sizeof(pointer) does NOT represent memory being pointed to.<BR>
 					It only represents the size of the pointer variable itself.<BR><BR>
 					Example:<BR>
 					- near pointer = 2 bytes (offset only)<BR>
 					- far pointer  = 4 bytes (segment + offset)<BR>
 					- huge pointer = 4 bytes<BR><BR>
-					<b>Correct memory model:</b><BR>
+					<B>Correct memory model:</B><BR>
 					- 1 segment = 65536 bytes (64 KB)<BR>
 					- near pointers operate within a single segment only<BR>
 					- far pointers can access multiple segments in full memory space<BR><BR>
-					<b>Final conclusion:</b><BR>
+					<B>Final conclusion:</B><BR>
 					The output of sizeof() reflects only pointer sizes, not actual memory usage of data.<BR>
 					Memory in Turbo C is segmented, not arranged as small byte boxes.<BR>
 					There is no concept of total bytes limiting address rangeish  based on sizeof calculations.<BR>

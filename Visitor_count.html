@@ -64,7 +64,6 @@
 	return 0;
 	});
 	sorted.forEach(r => {
-
 	var UsDrum = r.country && r.country === "United States";
 	if ( !UsDrum )
 	{
@@ -120,13 +119,10 @@
 		}
 	}
 	var RegionUnknown = r.region && r.region !== "Unknown";
-
 	let style = "";
-
 	// 🔴 United States = #00ff00 background + white text
 	if (UsDrum) {
 		style = "background-color:#ff0000; color:#ffffff;";
-
 	// 🟢 Otherwise region known = green
 	}
 	else if (RegionUnknown) {
@@ -135,7 +131,6 @@
 	else if (UnkownCountry) {
 		style = "background-color:#8e2a2a; color:#ffffff;";
 	}
-
 	tbody.innerHTML += `
 	<TR style="${style}">
 		<TD class="count-cell">${String(r.count).padStart(4,"0")}</TD>

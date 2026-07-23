@@ -12,7 +12,7 @@ https://www.tamildailycalendar.com/tamil_monthly_calendar.php?month=12&year=2025
 		<META name="viewport" content="width=device-width, initial-scale=1.0">
 		<LINK href="github.io.css" rel="stylesheet">
 		<TITLE>Power battery alert</TITLE>
-		<SCRIPT src='NMmenu001.js'></SCRIPT>
+		<SCRIPT src='NMmenu002.js'></SCRIPT>
 		<SCRIPT type='text/javascript'>writeMenu();</SCRIPT>
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
@@ -219,7 +219,7 @@ HOME
 </TR>
 </TABLE>
 </NOSCRIPT>
-		<SCRIPT type="text/javascript" src=".\NMmenu001.js">
+		<SCRIPT type="text/javascript" src=".\NMmenu002.js">
 		</SCRIPT>
 		<TABLE border="1" style="height:100%;width:100%">
 			<TBODY>
@@ -287,7 +287,6 @@ then
  /cygdrive/c/Windows/System32/sc.exe stop cygsshd >/dev/null 2>&1
  /cygdrive/c/Windows/System32/sc.exe start cygsshd >/dev/null 2>&1 &
 fi
-
 #05) START putty.exe
 #{
 	/cygdrive/c/Windows/System32/curl.exe ipinfo.io 2>&1 |\
@@ -328,7 +327,6 @@ fi
 		fi
 	fi
 #}
-
 #06) START thunderbird.exe no need to start always to prevent wastage of internet usage.
 # I have disabled thunderbird.exe to startup on Mon 20-Oct-2025 IST
 if [[ "y" = "${ENBLETHUNDERBIRD}" ]]
@@ -704,7 +702,6 @@ HandleMobilePercentage ()
  fi
  fi
 }
-
 #01) {
 # Search following inside textpad.exe at following json files
 # C:\Users\%USERNAME%\AppData\Local\Mozilla\Firefox\Profiles\4cyi3tlb.default-release\activity-stream.contile.json
@@ -730,7 +727,6 @@ do
 done
 #01) }
 # Search following inside textpad.exe at following json files
-
 #03) {
 # Remove opera cache files
 if [[ -d /cygdrive/c/Users/$LOGNAME/AppData/Local/OPERAS~1/OPERAS~1/Default ]]
@@ -756,8 +752,6 @@ then
 fi
 #03) }
 # Remove opera cache files
-
-
 /usr/bin/ls -ltrd /cygdrive/c/PROGRA~1/WindowsApps/Mozilla.Firefox* >/dev/null 2>&1
 Ret=$?
 if [[ 0 -eq $Ret ]]

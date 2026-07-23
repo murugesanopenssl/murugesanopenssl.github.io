@@ -9,7 +9,7 @@
 		<META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 		<META http-equiv="Pragma" content="no-cache">
 		<META http-equiv="Expires" content="0">
-		<SCRIPT src='NMmenu001.js'></SCRIPT>
+		<SCRIPT src='NMmenu002.js'></SCRIPT>
 		<SCRIPT type='text/javascript'>
 			// Function to toggle language visibility dynamically
 			function toggleLanguage(lang) {
@@ -17,7 +17,6 @@
 				const tamilElements = document.querySelectorAll('.ta-text, [id^="tip"][id$="TitleTa"], #mainTitleTamil');
 				const englishBtn = document.getElementById('englishBtn');
 				const tamilBtn = document.getElementById('tamilBtn');
-
 				if (lang === 'english') {
 					// Show English, Hide Tamil
 					englishElements.forEach(el => el.classList.remove('hidden'));
@@ -32,7 +31,6 @@
 					englishBtn.classList.remove('active');
 				}
 			}
-
 			// Ensure English displays alone by default on page load
 			window.addEventListener('DOMContentLoaded', (event) => {
 				toggleLanguage('english');
@@ -64,7 +62,6 @@
 		<DIV class="content-section">
 			<H1 id="mainTitle">💡 Smart Banking Tips: Avoid Wasting Money on Your Accounts</H1>
 			<H1 id="mainTitleTamil">💡 உங்கள் வங்கி அல்லது தபால் நிலைய கணக்குகளில் பணத்தை வீணாக்குவதைத் தவிர்ப்பதற்கான உதவிக்குறிப்புகள்</H1>
-			
 			<!-- NEW REQUESTED COMPARISON TABLE -->
 			<DIV class="bank-table-container">
 				<TABLE>
@@ -110,7 +107,6 @@
 				</TABLE>
 			</DIV>
 			<BR>
-
 			<DIV class="tip">
 				<DIV class="tip-title" id="tip1Title">A) Smart ATM Withdrawal Limits</DIV>
 				<DIV class="tip-title ta-text" id="tip1TitleTa">அ) த.ப.இ/எ.டி.எம் பணம் எடுத்தல் – வரம்பு கடைபிடிக்கவும்</DIV>

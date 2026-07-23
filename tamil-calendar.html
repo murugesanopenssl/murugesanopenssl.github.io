@@ -26,7 +26,6 @@ function getTamilYear(date) {
             populateMonthSelector();
             document.getElementById("monthSelector").addEventListener("change", onMonthChange);
             onMonthChange();
-
             document.addEventListener('keydown', (event) => {
                 const selector = document.getElementById("monthSelector");
                 const options = selector.options;
@@ -109,36 +108,29 @@ const initialYear = 2026;       // start at April 2026
 const initialMonth = 3;         // April (0-based index)
 const monthsBeforeAfter = 12;   // allow +/- 12 months
 let tamilYearOffset = 3102;     // Tamil year offset
-
 function clearCalendar(tableId) {
     const tbody = document.getElementById(tableId).getElementsByTagName('tbody')[0];
     tbody.innerHTML = "";
 }
-
 function populateMonthSelector() {
     const selector = document.getElementById("monthSelector");
     selector.innerHTML = "";
-
     // Show last 4 months + next 12 months
     const monthsBefore = 4;   // last 4 months
     const monthsAfter = 12;   // next 12 months
-
     for (let i = -monthsBefore; i <= monthsAfter; i++) {
         const date = new Date(initialYear, initialMonth + i);
         const monthName = date.toLocaleString('default', { month: 'short' });
         const option = document.createElement("option");
         option.value = `${date.getFullYear()}-${date.getMonth()}`;
         option.text = `${monthName}-${date.getFullYear()}`;
-
         // select the current month by default
         if (date.getFullYear() === initialYear && date.getMonth() === initialMonth) {
             option.selected = true;
         }
-
         selector.appendChild(option);
     }
 }
-
 function onMonthChange() {
     const value = document.getElementById("monthSelector").value;
     const parts = value.split("-");
@@ -149,15 +141,12 @@ function onMonthChange() {
     createGregorianCalendar(y, m);
     createTamilCalendar(y, m);
 }
-
 function createGregorianCalendar(year, month) {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const firstDay = new Date(year, month, 1).getDay();
     const table = document.getElementById('gregorian-calendar').getElementsByTagName('tbody')[0];
     let row = document.createElement('tr');
-
     for (let i = 0; i < firstDay; i++) row.appendChild(document.createElement('td'));
-
     for (let day = 1; day <= daysInMonth; day++) {
         const cell = document.createElement('td');
         const MMM = new Date(year, month).toLocaleString('default', { month: 'short' });
@@ -172,11 +161,9 @@ function createGregorianCalendar(year, month) {
             row = document.createElement('tr');
         }
     }
-
     while (row.children.length < 7) row.appendChild(document.createElement('td'));
     table.appendChild(row);
 }
-
 const tamilMonthRanges = [
     { month: "சித்திரை", start: { month: 3, day: 14 }, end: { month: 4, day: 13 } },
     { month: "வைகாசி", start: { month: 4, day: 14 }, end: { month: 5, day: 14 } },
@@ -191,11 +178,9 @@ const tamilMonthRanges = [
     { month: "மாசி", start: { month: 0, day: 15 }, end: { month: 1, day: 14 } },
     { month: "பங்குனி", start: { month: 1, day: 15 }, end: { month: 2, day: 14 } }
 ];
-
 function getTamilMonth(date) {
     const m = date.getMonth();
     const d = date.getDate();
-
     const tamilMonthRanges = [
         { month: "சித்திரை", start: { month: 3, day: 14 }, end: { month: 4, day: 13 } },
         { month: "வைகாசி", start: { month: 4, day: 14 }, end: { month: 5, day: 14 } },
@@ -210,7 +195,6 @@ function getTamilMonth(date) {
         { month: "மாசி", start: { month: 1, day: 15 }, end: { month: 2, day: 14 } },
         { month: "பங்குனி", start: { month: 2, day: 15 }, end: { month: 3, day: 13 } }
     ];
-
     for (let r of tamilMonthRanges) {
         const s = r.start, e = r.end;
         if (s.month <= e.month) {
@@ -229,33 +213,26 @@ function getTamilMonth(date) {
     }
     return '';
 }
-
 function createTamilCalendar(year, month) {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const firstDay = new Date(year, month, 1).getDay();
     const table = document.getElementById('tamil-calendar').getElementsByTagName('tbody')[0];
     let row = document.createElement('tr');
-
     // Flag to mark first occurrence of சித்திரை
     let tamilNewYearMarked = false;
-
     for (let i = 0; i < firstDay; i++) row.appendChild(document.createElement('td'));
-
     for (let day = 1; day <= daysInMonth; day++) {
         const d = new Date(year, month, day);
         let tamilMonth = getTamilMonth(d);
         let tamilDay = day;
         let tamilYear = getTamilYear(d);
-
         const cell = document.createElement('td');
         cell.innerHTML = (tamilDay < 10 ? "0" : "") + tamilDay + "-" + tamilMonth + "-" + tamilYear;
-
         // Highlight today's date in green
         if (today.getDate() === day && today.getMonth() === month && today.getFullYear() === year) {
             cell.style.backgroundColor = '#00ff00';
             cell.style.fontWeight = 'bold';
         }
-
         // Highlight **first occurrence of சித்திரை** in cyan
         if (!tamilNewYearMarked && tamilMonth === "சித்திரை") {
             cell.style.backgroundColor = 'cyan';
@@ -263,18 +240,15 @@ function createTamilCalendar(year, month) {
             cell.style.fontWeight = 'bold';
             tamilNewYearMarked = true;  // mark it so we don't highlight again
         }
-
         row.appendChild(cell);
         if ((firstDay + day) % 7 === 0) {
             table.appendChild(row);
             row = document.createElement('tr');
         }
     }
-
     while (row.children.length < 7) row.appendChild(document.createElement('td'));
     table.appendChild(row);
 }
-
 // initialize
 populateMonthSelector();
 document.getElementById("monthSelector").addEventListener("change", onMonthChange);

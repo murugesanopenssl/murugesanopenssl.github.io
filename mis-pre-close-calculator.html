@@ -134,8 +134,10 @@
 				function updateInterestRate()
 				{
 					var input=document.getElementById('opendate').value;
-					if(!input) return;
-
+					if(!input)
+					{
+						return;
+					}
 					var d=new Date(input);
 					var rate;
 					if( d >= new Date('2023-04-01') && d <= new Date('3026-12-31') )

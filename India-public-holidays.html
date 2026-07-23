@@ -136,7 +136,7 @@
 							{
 								var NextDate = new Date("16-Jan-" + yyyy);
 								var prevDay = NextDate.toString().substring(0, 3);
-								document.getElementById("Disp_HarvestFestival").innerHTML = "Harvest festival<br>Traffic Jam on " + prevDay + " 27-Jan-" + yyyy;
+								document.getElementById("Disp_HarvestFestival").innerHTML = "Harvest festival<BR>Traffic Jam on " + prevDay + " 27-Jan-" + yyyy;
 								document.getElementById("Disp_HarvestFestival").style.backgroundColor = "red";
 								document.getElementById("Disp_HarvestFestival").style.color = "white";
 							}
@@ -144,7 +144,7 @@
 							{
 								var NextDate = new Date("15-Jan-" + yyyy);
 								var prevDay = NextDate.toString().substring(0, 3);
-								document.getElementById("Disp_HarvestFestival").innerHTML = "Harvest festival<br>Traffic Jam on " + prevDay + " 25-Jan-" + yyyy;
+								document.getElementById("Disp_HarvestFestival").innerHTML = "Harvest festival<BR>Traffic Jam on " + prevDay + " 25-Jan-" + yyyy;
 								if( mm > 0 )
 								{
 									document.getElementById("Disp_HarvestFestival").style.backgroundColor = "yellow";
@@ -218,9 +218,9 @@
                                 var NextDate = new Date("27-Jan-" + Dispyyyy);
                                 var prevDay = NextDate.toString().substring(0, 3);
                                 if (Dispyyyy != yyyy) {
-                                    document.getElementById("Disp_Republic_Day").innerHTML = "<U><B>Next</B></U> Republic Day<br>Traffic Jam on " + prevDay + " 27-Jan-" + Dispyyyy;
+                                    document.getElementById("Disp_Republic_Day").innerHTML = "<U><B>Next</B></U> Republic Day<BR>Traffic Jam on " + prevDay + " 27-Jan-" + Dispyyyy;
                                 } else {
-                                    document.getElementById("Disp_Republic_Day").innerHTML = "Republic Day<br>Traffic Jam on " + prevDay + " 27-Jan-" + Dispyyyy;
+                                    document.getElementById("Disp_Republic_Day").innerHTML = "Republic Day<BR>Traffic Jam on " + prevDay + " 27-Jan-" + Dispyyyy;
                                 }
                                 document.getElementById("Disp_Republic_Day").style.backgroundColor = "red";
                                 document.getElementById("Disp_Republic_Day").style.color = "white";
@@ -229,11 +229,11 @@
                                 var NextDate = new Date("25-Jan-" + Dispyyyy);
                                 var prevDay = NextDate.toString().substring(0, 3);
                                 if (Dispyyyy != yyyy) {
-                                    document.getElementById("Disp_Republic_Day").innerHTML = "<U><B>Next</B></U> Republic Day<br>Traffic Jam on " + prevDay + " 25-Jan-" + Dispyyyy;
+                                    document.getElementById("Disp_Republic_Day").innerHTML = "<U><B>Next</B></U> Republic Day<BR>Traffic Jam on " + prevDay + " 25-Jan-" + Dispyyyy;
                                     document.getElementById("Disp_Republic_Day").style.backgroundColor = "yellow";
                                     document.getElementById("Disp_Republic_Day").style.color = "black";
                                 } else {
-                                    document.getElementById("Disp_Republic_Day").innerHTML = "Republic Day<br>Traffic Jam on " + prevDay + " 25-Jan-" + Dispyyyy;
+                                    document.getElementById("Disp_Republic_Day").innerHTML = "Republic Day<BR>Traffic Jam on " + prevDay + " 25-Jan-" + Dispyyyy;
                                     document.getElementById("Disp_Republic_Day").style.backgroundColor = "red";
                                     document.getElementById("Disp_Republic_Day").style.color = "white";
                                 }
@@ -254,8 +254,6 @@
                                 }
                             }
                         </SCRIPT>
-
-
 				<TR id='04Mar'>
 					<TD valign='top' align='right' id='holi_day'>
 					</TD>
@@ -281,9 +279,7 @@
                         var prevDate = new Date("03-Mar-" + DispYYYY);
                         var prevDay = prevDate.toString().substring(0, 3);
                         var Disp_holi_day = prevDay + " 03-Mar-" + DispYYYY;
-                        
                         var trafficNote = ("Fri" == Day) ? "Traffic Jam(previous day evening) on " : "Traffic Jam on ";
-                        
                         document.getElementById("Disp_holi_day").innerHTML = labelPrefix + "Holi Day<BR>" + trafficNote + Disp_holi_day;
                         document.getElementById("Disp_holi_day").style.backgroundColor = "red";
                         document.getElementById("Disp_holi_day").style.color = "white";
@@ -299,8 +295,6 @@
                         }
                     }
                 </SCRIPT>
-
-
 				<TR id='19Mar'>
 					<TD valign='top' align='right' id='Karnataka_New_Year'>
 					</TD>
@@ -448,7 +442,6 @@
 								}
 							}
 						</SCRIPT>
-
 				<TR id='26Mar'>
 					<TD valign='top' align='right' id='Rama_Navami'>
 					</TD>
@@ -556,7 +549,6 @@
 								}
 							}
 						</SCRIPT>
-
 				<TR id='31Mar'>
 					<TD valign='top' align='right' id='Mahavir_Jayanti'>
 					</TD>
@@ -649,7 +641,6 @@
 								}
 							}
 						</SCRIPT>
-
 				<TR id='03Apr'>
 					<TD valign='top' align='right' id='Good_Friday'>
 					</TD>
@@ -739,7 +730,6 @@
 								}
 							}
 						</SCRIPT>
-
 				<TR id='14Apr'>
 					<TD valign='top' align='right' id='Tamilnadu_New_Year'>
 					</TD>
@@ -847,7 +837,6 @@
 								}
 							}
 						</SCRIPT>
-
 				<TR id='01May'>
 					<TD valign='top' align='right' id='Buddha_Purnima'>
 					</TD>
@@ -950,8 +939,6 @@
 								}
 							}
 						</SCRIPT>
-
-
 				<TR id='27May'>
 					<TD valign='top' align='right' id='Id_ul_Zuha'>
 					</TD>
@@ -1066,8 +1053,6 @@
 								}
 							}
 						</SCRIPT>
-
-
 				<TR id='26Jun'>
 					<TD valign='top' align='right' id='Muharram'>
 						InitialVal
@@ -1190,8 +1175,6 @@
 								}
 							}
 						</SCRIPT>
-
-
 						<TR id='15Aug'>
 							<TD valign='top' align='right' id='IndependenceDay'></TD>
 							<TD valign='top' align='left' id='DispIndependenceDay'>Indian Independence Day</TD>
@@ -1226,7 +1209,6 @@
 							}
 							document.getElementById("IndependenceDay").innerHTML = Disp_IndependencDate;
 						</SCRIPT>
-
 				<TR id='26Aug'>
 					<TD valign='top' align='right' id='Id_e_Milad'>
 					</TD>
@@ -1402,8 +1384,6 @@
 								document.getElementById("DispJanmashtami").innerHTML = "Janmashtami";
 							}
 						</SCRIPT>
-
-
 				<TR id='02Oct'>
 					<TD valign='top' align='right' id='Mohandas_Karamchand_Gandhi'>
 					</TD>
@@ -1420,12 +1400,10 @@
 					} else {
 						DispYYYY = yyyy;
 					}
-
 					GandhiDate = "" + new Date("02-Oct-" + DispYYYY);
 					Day = GandhiDate.substring(0, 3);
 					Disp_GandhiDate = Day + " 02-Oct-" + DispYYYY;
 					document.getElementById("Mohandas_Karamchand_Gandhi").innerHTML = Disp_GandhiDate;
-
 					if ("Fri" == Day) {
 						// If 02-Oct is Friday, traffic jam happens on evening of Friday (02-Oct) 
 						// and also on Sunday (04-Oct) due to Sunday weekend return
@@ -1450,8 +1428,6 @@
 						document.getElementById("Disp_Mohandas_Karamchand_Gandhi").innerHTML = "Mahatma Gandhi Jayanti (Mohandas Karamchand Gandhi birthday)";
 					}
 				</SCRIPT>
-
-
 				<TR id='20Oct'>
                     <TD valign='top' align='right' id='Dussehra'>
                     </TD>
@@ -1487,7 +1463,6 @@
                         document.getElementById("Disp_Dussehra").style.color = "";
                     }
                 </SCRIPT>
-
 				<TR id='01Nov'>
                     <TD valign='top' align='right' id='Rajyotsava'>
                     </TD>
@@ -1525,7 +1500,6 @@
                         document.getElementById("Rajyotsava_details").style.color = "";
                     }
                 </SCRIPT>
-
 				<TR id='08Nov'>
                     <TD valign='top' align='right' id='Deepavali'>
                         </TD>
@@ -1559,8 +1533,6 @@
 						document.getElementById("Deepavali_details").style.color = "";
 					}
 				</SCRIPT>
-
-
 		<TR id='24Nov'>
 			<TD valign='top' align='right' id='Guru_Nanak_Jayanti'>
 				<SCRIPT type='text/javascript'>
@@ -1609,7 +1581,6 @@
 				</SCRIPT>
 					</TD>
 				</TR>
-
 				<TR id='25Dec'>
 					<TD valign='top' align='right' id='Christmas_Day'></TD>
 					<TD valign='top' align='left' id='Disp_Christmas_Day'>Christmas Day</TD>
@@ -1644,7 +1615,6 @@
 					}
 					document.getElementById("Christmas_Day").innerHTML = Disp_ChristmasDate;
 				</SCRIPT>
-
 			</TBDOY>
 		</TABLE>
 		<SCRIPT type='text/javascript'>

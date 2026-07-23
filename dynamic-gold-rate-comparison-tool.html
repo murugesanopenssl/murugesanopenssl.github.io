@@ -488,9 +488,7 @@
 				dharmapuri: { '22k': 0, '24k': 0 },
 				bangalore: { '22k': 0, '24k': 0 }
 			};
-			
 			const weights = [0.25, 0.5, 0.75, 1, 2, 4, 8, 10];
-			
 			function formatCurrency(amount)
 			{
 				return amount.toLocaleString( 'en-IN',
@@ -500,7 +498,6 @@
 					}
 				) + ' ரூ/₹ INR';
 			}
-			
 			// Function to fetch gold rates using a backend proxy or scraping service
 			async function fetchGoldRates()
 			{
@@ -508,25 +505,21 @@
 				const errorSection = document.getElementById('errorSection');
 				const successSection = document.getElementById('successSection');
 				const refreshBtn = document.getElementById('refreshBtn');
-				
 				loadingSection.style.display = 'block';
 				errorSection.style.display = 'none';
 				successSection.style.display = 'none';
 				refreshBtn.disabled = true;
 				refreshBtn.textContent = '⏳ Fetching...';
-				
 				try
 				{
 					const dpiResponse = await fetchWithTimeout(
 					  'https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.goodreturns.in/gold-rates/dharmapuri.html'),
 					  8000
 					);
-					
 					if (dpiResponse.ok)
 					{
 						const dpiData = await dpiResponse.json();
 						const dpiHtml = dpiData.contents;
-						
 						// Parse Dharmapuri rates from HTML
 						const dpiRates = parseGoldRates(dpiHtml);
 						if (dpiRates.gold22k && dpiRates.gold24k)
@@ -535,18 +528,15 @@
 							rates.dharmapuri['24k'] = dpiRates.gold24k;
 						}
 					}
-					
 					// Try fetching Bangalore rates
 					const blrResponse = await fetchWithTimeout(
 						'https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.goodreturns.in/gold-rates/bangalore.html'),
 						8000
 					);
-					
 					if (blrResponse.ok)
 					{
 						const blrData = await blrResponse.json();
 						const blrHtml = blrData.contents;
-						
 						// Parse Bangalore rates from HTML
 						const blrRates = parseGoldRates(blrHtml);
 						if (blrRates.gold22k && blrRates.gold24k)
@@ -555,7 +545,6 @@
 							rates.bangalore['24k'] = blrRates.gold24k;
 						}
 					}
-					
 					// Check if we got valid rates
 					if (rates.dharmapuri['22k'] > 0 && rates.bangalore['22k'] > 0)
 					{
@@ -582,13 +571,11 @@
 						<A href="https://www.goodreturns.in/gold-rates/bangalore.html" target="_blank" style="color: #0066cc;">Bangalore Rates</A><BR><BR>
 						Using fallback reference rates from recent market data.
 					`;
-					
 					// Use fallback rates (recent approximate values) - PER GRAM
 					rates.dharmapuri['22k'] = 14830;  // 14,830 ரூ/₹ INR per gram (8g = 1,18,640 ரூ/₹ INR)
 					rates.dharmapuri['24k'] = 16176;  // 16,176.00 ரூ/₹ INR per gram
 					rates.bangalore['22k'] = 14920;   // 14,920.00 ரூ/₹ INR per gram
 					rates.bangalore['24k'] = 16274;   // 16,274.00 ரூ/₹ INR per gram
-					
 					updateUI();
 				}
 				finally
@@ -597,7 +584,6 @@
 					refreshBtn.textContent = '🔄 Fetch Live Rates';
 				}
 			}
-			
 			// Helper function with timeout
 			function fetchWithTimeout(url, timeout = 8000)
 			{
@@ -608,37 +594,30 @@
 					)
 				]);
 			}
-			
 			// Parse gold rates from GoodReturns HTML
 			function parseGoldRates(html)
 			{
 				const rates = { gold22k: 0, gold24k: 0 };
-				
 				try
 				{
 					// Look for common patterns in GoodReturns HTML
 					// Pattern 1: Direct text with rupee symbol
 					const match22_1 = html.match(/22.*?[Kk]arat.*?₹\s*([0-9,]+)/i);
 					const match24_1 = html.match(/24.*?[Kk]arat.*?₹\s*([0-9,]+)/i);
-					
 					if (match22_1) rates.gold22k = parseFloat(match22_1[1].replace(/,/g, ''));
 					if (match24_1) rates.gold24k = parseFloat(match24_1[1].replace(/,/g, ''));
-					
 					// Pattern 2: Table format
 					if (!rates.gold22k || !rates.gold24k)
 					{
 						const tableMatch22 = html.match(/<TD[^>]*>.*?22.*?<\/td>\s*<TD[^>]*>.*?([0-9,]+).*?<\/td>/i);
 						const tableMatch24 = html.match(/<TD[^>]*>.*?24.*?<\/td>\s*<TD[^>]*>.*?([0-9,]+).*?<\/td>/i);
-						
 						if (tableMatch22 && !rates.gold22k) rates.gold22k = parseFloat(tableMatch22[1].replace(/,/g, ''));
 						if (tableMatch24 && !rates.gold24k) rates.gold24k = parseFloat(tableMatch24[1].replace(/,/g, ''));
 					}
-					
 					// GoodReturns shows rates PER 10 GRAMS, so we need to divide by 10 to get per gram rate
 					// Check if rates are > 50000 (which indicates they're for 10 grams, not 1 gram)
 					if (rates.gold22k > 50000) rates.gold22k = rates.gold22k / 10;
 					if (rates.gold24k > 50000) rates.gold24k = rates.gold24k / 10;
-					
 					// Validate rates are reasonable (between 5000-20000 per gram)
 					if (rates.gold22k < 5000 || rates.gold22k > 20000) rates.gold22k = 0;
 					if (rates.gold24k < 5000 || rates.gold24k > 20000) rates.gold24k = 0;
@@ -647,23 +626,18 @@
 				{
 					console.error('Parse error:', e);
 				}
-				
 				return rates;
 			}
-			
 			function updateUI()
 			{
 				document.getElementById('dharmapuri-22k').textContent = rates.dharmapuri['22k'].toLocaleString('en-IN');
 				document.getElementById('dharmapuri-24k').textContent = rates.dharmapuri['24k'].toLocaleString('en-IN');
 				document.getElementById('bangalore-22k').textContent = rates.bangalore['22k'].toLocaleString('en-IN');
 				document.getElementById('bangalore-24k').textContent = rates.bangalore['24k'].toLocaleString('en-IN');
-				
 				const savings22 = rates.bangalore['22k'] - rates.dharmapuri['22k'];
 				const savings24 = rates.bangalore['24k'] - rates.dharmapuri['24k'];
-				
 				const cheaper = savings22 > 0 ? 'Dharmapuri' : 'Bangalore';
 				const expensive = savings22 > 0 ? 'Bangalore' : 'Dharmapuri';
-				
 				const savingsSection = document.getElementById('savingsSection');
 				savingsSection.innerHTML = `
 					<H3>💰 Your Potential Savings</H3>
@@ -677,7 +651,6 @@
 						* For 8 grams of 24K gold, you save ${formatCurrency(Math.abs(savings24 * 8))}!
 					</P>
 				`;
-				
 				const recommendationSection = document.getElementById('recommendationSection');
 				recommendationSection.innerHTML = `
 					<H2>🎯 Recommendation: Buy in ${cheaper.toUpperCase()}!</H2>
@@ -696,23 +669,19 @@
 						Always ask for total price including making charges, GST, and other fees!
 					</P>
 				`;
-				
 				populateTable();
 				updateDateTime();
 			}
-			
 			function populateTable()
 			{
 				const tbody = document.getElementById('comparisonTableBody');
 				tbody.innerHTML = '';
-				
 				weights.forEach( weight =>
 					{
 						const dharmapuri22 = rates.dharmapuri['22k'] * weight;
 						const bangalore22 = rates.bangalore['22k'] * weight;
 						const savings22 = Math.abs(bangalore22 - dharmapuri22);
 						const cheaperLocation22 = dharmapuri22 < bangalore22 ? 'dharmapuri' : 'bangalore';
-						
 						const tr22 = document.createElement('tr');
 						tr22.innerHTML = `
 							<TD valign='top' align='right'><STRONG>${weight.toFixed(2)} grams</STRONG></TD>
@@ -722,12 +691,10 @@
 							<TD style="color: #28a745; font-weight: bold;">${formatCurrency(savings22)}</TD>
 						`;
 						tbody.appendChild(tr22);
-						
 						const dharmapuri24 = rates.dharmapuri['24k'] * weight;
 						const bangalore24 = rates.bangalore['24k'] * weight;
 						const savings24 = Math.abs(bangalore24 - dharmapuri24);
 						const cheaperLocation24 = dharmapuri24 < bangalore24 ? 'dharmapuri' : 'bangalore';
-						
 						const tr24 = document.createElement('tr');
 						tr24.innerHTML = `
 							<TD valign='top' align='right'><STRONG>${weight.toFixed(2)} grams</STRONG></TD>
@@ -740,7 +707,6 @@
 					}
 				);
 			}
-			
 			function updateDateTime()
 			{
 				const now = new Date();
@@ -755,7 +721,6 @@
 				document.getElementById('lastUpdated').textContent = 
 					now.toLocaleDateString('en-IN', options) + ' IST';
 			}
-			
 			// Auto-fetch rates on page load
 			window.addEventListener('load', () => {
 				fetchGoldRates();

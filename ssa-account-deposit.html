@@ -110,7 +110,7 @@
 			{
 				var totalAmount=0;
 				var yearCount=0;
-				for(yearCount=0;yearCount<years;yearCount++)
+				for( yearCount=0; yearCount < years; ++yearCount)
 				{
 					totalAmount=(totalAmount+yearlyDeposit)*(1+(interestRate/100));
 				}
@@ -155,10 +155,9 @@
 				for (i = 0; i < languages.length; i++) {
 					var lang = languages[i];
 					var el = document.getElementById("language" + lang.charAt(0).toUpperCase() + lang.slice(1));
-
-					if (el != null) {
+					if( null != el )
+					{
 						el.innerHTML = labels[lang];
-
 						if (lang === languageName) {
 							// ACTIVE LANGUAGE
 							el.removeAttribute("onclick");

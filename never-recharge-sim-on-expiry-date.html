@@ -39,14 +39,12 @@
 </HEAD>
 <SCRIPT>
     var monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
     function formatDateToDDMMMYYYY(d) {
         var day = ('0' + d.getDate()).slice(-2);
         var mon = monthNames[d.getMonth()];
         var yr = d.getFullYear();
         return day + '-' + mon + '-' + yr;
     }
-
     function setDefaultValues() {
         document.getElementById('sim').value = 'BSNL';
         var today = new Date('2026-03-06');
@@ -58,7 +56,6 @@
         document.getElementById('mmm').value = monthNames[dateObj.getMonth()];
         document.getElementById('yyyy').value = dateObj.getFullYear();
     }
-
     function updateDate() {
         var selected = document.getElementById('calendar').value;
         if(selected != '') {
@@ -81,45 +78,33 @@
         var nextDay = new Date(expiryDate);
         nextDay.setDate(expiryDate.getDate() + 1);
         var formattedNextDay = formatDateToDDMMMYYYY(nextDay);
-
         document.getElementById('result').innerHTML =
             'SIM: ' + sim + ' | Expiry Date: ' + dd + '-' + mmm + '-' + yyyy + ' IST<BR>' +
             '<FONT color=red><B><U>RECHARGE</FONT></B></U> ONE DAY AFTER EXPIRY DATE <FONT color=red><B><U>ON ' + formattedNextDay + ' IST</B></U></FONT><BR>' +
             'This helps maintain your Average Monthly Balance (AMB) interest in any bank on Earth when interest is calculated once every 3 months.';
     }
 </SCRIPT>
-
 <TABLE border="1">
     <TR>
         <TD valign="top" align="left">
 <PRE>
 I prefer all users on Earth to recharge their mobile one day after the SIM expiry date.
-
 All banks in this world provide interest to customers once every 3 months.
 Hence, they provide interest 4 times per year.
-
 Assume that a bank is going to provide interest to customers on Fri 25-Dec-2026.
-
 Assume that I have 1000.00 INR in my bank account on 01-Oct-2026.
 From 01-Oct-2026 to 25-Dec-2026, I have not withdrawn or deposited any money.
-
 The bank calculates the total amount for these days:
-
 TOTAL AMB SUM = 1000.00 × 86 days
 TOTAL AMB SUM = 86,000.00
-
 For this AMB amount, the bank provides some interest on 25-Dec-2026.
-
 If I recharge my SIM exactly on the expiry date, my total balance will reduce on that day.
 If I recharge one day after the expiry date, my total balance reduces one day later.
-
 Hence, my AMB interest may be slightly affected if I recharge exactly on expiry date.
-
 I have been following this practice for my own SIM from 2003 until now,
 for my mother from 2005 until now,
 and for my father from 2024 until now.
 </PRE>
-
 <H1>
 a) Never recharge a SIM on the expiry date.<BR>
 b) Always recharge any SIM for one year instead of 28 / 84 / 90 days to prevent wastage of money.

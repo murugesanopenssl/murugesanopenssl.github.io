@@ -52,7 +52,6 @@ ME.privsep.
 *** Warning: Perhaps cygsshd is a pre-existing domain account.
 *** Warning: Continuing, but check if this is ok.
 *** Info: Updating /etc/sshd_config file
-
 *** Query: Do you want to install cygsshd as a service?
 *** Query: (Say "no" if it is already installed as a service) (yes/no) yes
 *** Query: Enter the value of CYGWIN for the daemon: [] cyg_sshd
@@ -60,23 +59,18 @@ ME.privsep.
 *** Info: SYSTEM account cannot setuid to other users -- a capability
 *** Info: cygsshd requires.  You need to have or to create a privileged
 *** Info: account.  This script will help you do so.
-
 *** Info: You appear to be running Windows XP 64bit, Windows 2003 Server,
 *** Info: or later.  On these systems, it's not possible to use the LocalSystem
 *** Info: account for services that can change the user id without an
 *** Info: explicit password (such as passwordless logins [e.g. public key
 *** Info: authentication] via cygsshd).
-
 *** Info: If you want to enable that functionality, it's required to create
 *** Info: a new account with special privileges (unless a similar account
 *** Info: already exists). This account is then used to run these special
 *** Info: servers.
-
 *** Info: Note that creating a new user requires that the current account
 *** Info: have Administrator privileges itself.
-
 *** Info: No privileged account could be found.
-
 *** Info: This script plans to use 'cyg_server'.
 *** Info: 'cyg_server' will only be used by registered services.
 *** Query: Do you want to use a different name? (yes/no) yeh
@@ -91,7 +85,6 @@ ME.privsep.
 *** Info: If you change the password, please remember also to change the
 *** Info: password for the installed services which use (or will soon use)
 *** Info: the 'RajeshModi' account.
-
 *** Info: Also keep in mind that the user 'RajeshModi' needs read permissions
 *** Info: on all users' relevant files for the services running as 'RajeshModi'.
 *** Info: In particular, for the cygsshd server all users' .ssh/authorized_keys
@@ -99,8 +92,6 @@ ME.privsep.
 *** Info: authentication. (Re-)running ssh-user-config for each user will set
 *** Info: these permissions correctly. [Similar restrictions apply, for
 *** Info: instance, for .rhosts files if the rshd server is running, etc].
-
-
 *** Info: The cygsshd service has been installed under the 'RajeshModi'
 *** Info: account.  To start the service now, call `net start sshd' or
 *** Info: `cygrunsrv -S sshd'.  Otherwise, it will start automatically
@@ -122,33 +113,24 @@ ME.privsep.
 		This script sets some key parameters of the exim
 		installation and starts the exim daemon.
 		See the details in /usr/share/doc/Cygwin/exim-X-Y.README.
-
 		LOCAL SERVICE:*:19:19:
 		NETWORK SERVICE:*:20:20:
 		NT SERVICE+TrustedInstaller:*:328384:328384:
-
 		WARNING: The usernames displayed above contain spaces.
 		    They cannot receive mail nor appear in /etc/aliases.
 		    If necessary edit /etc/passwd and use names without spaces.
-
 		OK. The /etc/aliases file contains "postmaster".
-
 		OK. /etc/exim.conf created from /etc/defaults/etc/exim.conf.
-
 		Looking for the fully qualified primary hostname.
 		Is it "laptop-ekh0db73"? (yes/no) yes
 		OK. Exim will autodiscover that name.
-
 		INFO: This version of Exim supports ipv6.
 		      This feature is currently disabled in /etc/exim.conf.
 		Do you want to change that setting? (yes/no) yes
 		OK. The setting was changed.
-
 		OK. The mode and ownership of the /etc/exim.conf file are now:
 		-rw-rw-r--+ 1 SYSTEM Administrators 47039 Apr 18 13:38 /etc/exim.conf
-
 		OK. /usr/bin/exim points to /usr/bin/exim-4.95-1.exe.
-
 		INFO: Some programs expect /usr/sbin/sendmail to handle mail.
 		Currently /usr/sbin/sendmail is a symbolic link to /usr/libexec/sendmail.exe via alternatives
 		You now have the ability to link /usr/sbin/sendmail, as well as /usr/lib/sendmail,
@@ -163,21 +145,16 @@ ME.privsep.
 		Some scripts expect /usr/bin/newaliases to point to a mailer
 		Currently /usr/bin/newaliases is a symbolic link to /usr/libexec/sendmail.exe via alternatives
 		OK. Links created with alternatives.
-
 		The exim daemon can run as a service or as a job. The latter is not recommended
 		Do you want to install the exim daemon as a service? (yes/no) yes
 		Enter the period of the queue runner, in minutes: [15] 15
 		Enter the value of CYGWIN for the daemon: [] cygexim
-
 		Do you want to start the exim daemon as a service now? (yes/no) yes
 		OK. The mail daemon is now accepting mail.
 		    You can test it with "telnet localhost 25".
-
 		INFO: The exim log files are in /var/log/exim.
-
 		WARNING: The default file permissions are only suitable for a casual environment.
 		    See /usr/share/doc/Cygwin/exim-X-Y.README for how to adjust them.
-
 		When everything else fails,
 		    read /usr/share/doc/Cygwin/exim-X-Y.README,
 		    or look up the documentation on www.exim.org.

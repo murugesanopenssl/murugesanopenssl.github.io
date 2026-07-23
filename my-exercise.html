@@ -127,7 +127,6 @@
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
 	<H3>தினசரி உடற்பயிற்சியைக் கண்காணிக்கும் முறை<BR>A method for tracking daily exercise.</H3>
-	
 	<DIV class="input-panel">
 		<H4 style="margin-top:0; color:#2c3e50;">Log / Update Today's Exercise Data</H4>
 		<FORM id="exerciseForm" onsubmit="HandleSubmit(event);">
@@ -250,11 +249,9 @@
 		function GetCellHtml(value)
 		{
 			let text = String(value).trim().toLowerCase();
-
 			// Get the numeric part (00, 000, 0000, etc.)
 			let match = text.match(/^\d+/);
 			let number = match ? parseInt(match[0], 10) : NaN;
-
 			// Highlight all zero values
 			if (
 				text === "00" ||
@@ -264,7 +261,6 @@
 			{
 				return "<TD class='zeroValue' valign='top' align='right'>" + value + "</TD>";
 			}
-
 			if (
 				text === "not started" ||
 				text === "no issue" ||
@@ -273,7 +269,6 @@
 			{
 				return "<TD class='notStartedValue' valign='top' align='left'>" + value + "</TD>";
 			}
-
 			return "<TD valign='top' align='right'>" + value + "</TD>";
 		}
 		function FormatDuration( totalSeconds )
@@ -409,31 +404,31 @@
 		}
 		const masterPlanData = [
 			{
-				details: "<strong>Exercise 01</strong><BR>35 நிமிடங்கள் நடக்கவும்.<BR>Walk for 35 minutes",
+				details: "<STRONG>Exercise 01</STRONG><BR>35 நிமிடங்கள் நடக்கவும்.<BR>Walk for 35 minutes",
 				status: "Required ( Most important )"
 			},
 			{
-				details: "<strong>Exercise 02</strong><BR>நாற்காலியில் அமர்ந்து, ஒவ்வொரு காலையும் 20 முறை சுழற்றுங்கள்.<BR>Sit on chair and rotate legs 20 times for each leg",
+				details: "<STRONG>Exercise 02</STRONG><BR>நாற்காலியில் அமர்ந்து, ஒவ்வொரு காலையும் 20 முறை சுழற்றுங்கள்.<BR>Sit on chair and rotate legs 20 times for each leg",
 				status: "Required"
 			},
 			{
-				details: "<strong>Exercise 03</strong><BR>பின்புறம் தரையில் படாமல், தரையில் அமர்வது போல 50 முறை செய்யவும்.<BR>Sit on floor without backside touching the ground 50 times",
+				details: "<STRONG>Exercise 03</STRONG><BR>பின்புறம் தரையில் படாமல், தரையில் அமர்வது போல 50 முறை செய்யவும்.<BR>Sit on floor without backside touching the ground 50 times",
 				status: "Required"
 			},
 			{
-				details: "<strong>Exercise 04</strong><BR>படுக்கையில் படுத்துக்கொண்டு, இடது காலை மட்டும் 20 முறை உயர்த்தவும்.<BR>வலது காலை மட்டும் 20 முறை உயர்த்தவும்.<BR>Lay on bed raise left leg alone for 20 times<BR>Raise right leg alone for 20 times",
+				details: "<STRONG>Exercise 04</STRONG><BR>படுக்கையில் படுத்துக்கொண்டு, இடது காலை மட்டும் 20 முறை உயர்த்தவும்.<BR>வலது காலை மட்டும் 20 முறை உயர்த்தவும்.<BR>Lay on bed raise left leg alone for 20 times<BR>Raise right leg alone for 20 times",
 				status: "Required"
 			},
 			{
-				details: "<strong>Exercise 05</strong><BR>நின்றுகொண்டு, தலை சுவரில் படாதவாறு 20 முறை முன்னும் பின்னும் நகரவும்.<BR>Stand, move front and back without making the head touch the wall 20 times",
+				details: "<STRONG>Exercise 05</STRONG><BR>நின்றுகொண்டு, தலை சுவரில் படாதவாறு 20 முறை முன்னும் பின்னும் நகரவும்.<BR>Stand, move front and back without making the head touch the wall 20 times",
 				status: "Required"
 			},
 			{
-				details: "<strong>Exercise 06</strong><BR>நின்ற நிலையில் இடது காலை உயர்த்தி, வலது கையால் இடது முழங்காலைத் தொடவும்.<BR>நின்ற நிலையில் வலது காலை உயர்த்தி, இடது கையால் வலது முழங்காலைத் தொடவும்.<BR>இதை 20 முறை செய்யவும்.<BR>Stand raise left leg and touch left leg knee using right hand<BR>Stand raise right leg and touch right leg knee using left hand<BR>Repeat 20 times",
+				details: "<STRONG>Exercise 06</STRONG><BR>நின்ற நிலையில் இடது காலை உயர்த்தி, வலது கையால் இடது முழங்காலைத் தொடவும்.<BR>நின்ற நிலையில் வலது காலை உயர்த்தி, இடது கையால் வலது முழங்காலைத் தொடவும்.<BR>இதை 20 முறை செய்யவும்.<BR>Stand raise left leg and touch left leg knee using right hand<BR>Stand raise right leg and touch right leg knee using left hand<BR>Repeat 20 times",
 				status: "Required"
 			},
 			{
-				details: "<strong>Exercise 07</strong><BR>நின்றுகொண்டு, விரல்களை ஒன்றிணைத்து நெஞ்சின் மையப்பகுதியில் வையுங்கள். உள்ளங்கைகளை ஒன்றுடன் ஒன்று அழுத்தியவாறே, ஒரு பெஞ்சில் அமர்வது போல 20 முறை செய்யுங்கள்.<BR><BR>Stand, keep combined fingers at mid of chest. Push palms together and act like sitting on a bench 20 times",
+				details: "<STRONG>Exercise 07</STRONG><BR>நின்றுகொண்டு, விரல்களை ஒன்றிணைத்து நெஞ்சின் மையப்பகுதியில் வையுங்கள். உள்ளங்கைகளை ஒன்றுடன் ஒன்று அழுத்தியவாறே, ஒரு பெஞ்சில் அமர்வது போல 20 முறை செய்யுங்கள்.<BR><BR>Stand, keep combined fingers at mid of chest. Push palms together and act like sitting on a bench 20 times",
 				status: "Required"
 			}
 		];
@@ -671,12 +666,10 @@
 			const dateObj = new Date(dateString);
 			const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 			const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-			
 			let dayName = days[dateObj.getDay()];
 			let dayNum = String(dateObj.getDate()).padStart(2, '0');
 			let monthName = months[dateObj.getMonth()];
 			let yearNum = dateObj.getFullYear();
-			
 			return `${dayName} ${dayNum}-${monthName}-${yearNum}`;
 		}
 		// Sets HTML input calendar baseline to current system date automatically
@@ -691,10 +684,8 @@
 		function HandleSubmit( event )
 		{
 			event.preventDefault();
-			
 			let rawDate = document.getElementById("input_date").value;
 			let formattedDateStr = FormatFormDate(rawDate);
-			
 			let newRecord = {
 				date: formattedDateStr,
 				walk: document.getElementById("input_walk").value,
@@ -706,10 +697,8 @@
 				stand_try_to_sit_down: document.getElementById("input_try_sit").value,
 				notes: document.getElementById("input_notes").value
 			};
-			
 			// Re-submitting protection rule: find if the date entry exists
 			let recordIndex = logData.findIndex(item => item.date === formattedDateStr);
-			
 			if( -1 !== recordIndex )
 			{
 				// Re-submit updates existing matching row
@@ -720,7 +709,6 @@
 				// New item added right at top chronological level
 				logData.unshift(newRecord);
 			}
-			
 			// Recalculate tables safely without document.write or breaking components
 			PopulateLogTable();
 		}
@@ -738,7 +726,6 @@
 			let months = Math.floor( remainingAfterYears / 30 );
 			let days = remainingAfterYears % 30;
 			const format2Digits = ( num ) => String( num ).padStart( 2, '0');
-			
 			let displayDateString = "";
 			if( 0 < years )
 			{
@@ -774,7 +761,6 @@
 			logBody.innerHTML = "";
 			let selectedMonth = document.getElementById( "monthFilter" ).value;
 			let filteredData = [];
-			
 			logData.forEach( ( item )=> {
 				let itemMonth = GetMonthYear( item.date );
 				if( ( "ALL" !== selectedMonth ) && ( itemMonth !== selectedMonth ) )
@@ -797,7 +783,7 @@
 			totalRow.insertCell( 8 ).outerHTML = GetCellHtml( totals.stand_try_to_sit_down );
 			let notesText = totals.notes;
 			if (notesText.toLowerCase().includes("toe")) {
-				notesText = "<span class='toe-hover'>" + notesText + "</span>";
+				notesText = "<SPAN class='toe-hover'>" + notesText + "</SPAN>";
 			}
 			// totalRow.insertCell( 9 ).outerHTML = GetCellHtml( totals.notes );
 			// totalRow.insertCell(9).outerHTML = GetCellHtml(notesText);

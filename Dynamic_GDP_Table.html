@@ -15,89 +15,72 @@
  padding: 0;
  background-color: #f4f4f4;
  }
-
  .container {
  max-width: 1200px;
  margin: 0 auto;
  padding: 20px;
  }
-
  table {
  width: 100%;
  border-collapse: collapse;
  margin-top: 20px;
  background-color: white;
  }
-
  th,
  td {
  padding: 10px;
  text-align: left;
  border: 1px solid #ddd;
  }
-
  th {
  background-color: #f2f2f2;
  }
-
  .highlight-india {
  background-color: #ffe680;
  }
-
  #loadingMessage {
  text-align: center;
  font-size: 18px;
  font-weight: bold;
  display: none;
  }
-
  #errorMessage {
  color: red;
  text-align: center;
  font-size: 18px;
  display: none;
  }
-
  #statsBox {
  text-align: center;
  margin-bottom: 20px;
  }
-
  .rank {
  width: 5%;
  }
-
  .gdp-amount {
  text-align: right;
  }
-
  em {
  font-style: italic;
  color: #666;
  }
-
  strong {
  font-weight: bold;
  }
-
  #showingCount {
  font-weight: bold;
  }
  </STYLE>
 </HEAD>
-
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-
  <DIV class="container">
  <H1>Top 10 Countries by GDP</H1>
  <DIV id="statsBox">
  <P>Total countries: <SPAN id="totalCount">0</SPAN></P>
  <P>Last updated: <SPAN id="lastUpdate">N/A</SPAN></P>
  </DIV>
-
  <DIV id="loadingMessage">Loading data...</DIV>
  <DIV id="errorMessage"></DIV>
-
  <TABLE id="countriesEconomyTable" style="display: none;">
  <THEAD>
  <TR>
@@ -112,13 +95,10 @@
  <!-- Table rows will be inserted here -->
  </TBODY>
  </TABLE>
-
  <P>Showing top <SPAN id="showingCount">0</SPAN> countries.</P>
  </DIV>
-
  <SCRIPT type='text/javascript'>
  let allCountriesData = [];
-
  // Fetching and parsing the data
  async function loadGDPData() {
  const loadingDiv = document.getElementById('loadingMessage');
@@ -127,15 +107,12 @@
  loadingDiv.style.display = 'block';
  errorDiv.style.display = 'none';
  table.style.display = 'none';
-
  try {
  const apiUrl = 'https://en.wikipedia.org/w/api.php?action=parse&page=List_of_countries_by_GDP_(nominal)&prop=text&formatversion=2&format=json&origin=*';
  const response = await fetch(apiUrl);
-
  if (!response.ok) {
  throw new Error(`HTTP error! status: ${response.status}`);
  }
-
  const data = await response.json();
  parseGDPDataFromAPI(data.parse.text);
  } catch (error) {
@@ -145,21 +122,17 @@
  loadFallbackData(); // Use fallback data in case of failure
  }
  }
-
  // Parse GDP data from API
  function parseGDPDataFromAPI(htmlText) {
  const parser = new DOMParser();
  const doc = parser.parseFromString(htmlText, 'text/html');
  allCountriesData = [];
  const tables = doc.querySelectorAll('table.wikitable');
-
  for (let table of tables) {
  const rows = table.querySelectorAll('tr');
-
  for (let i = 1; i < rows.length && i < 200; i++) {
  const cells = rows[i].querySelectorAll('td, th');
  if (cells.length < 3) continue;
-
  let rank = cells[0].textContent.trim();
  let countryCell = cells[0];
  let gdpCell = cells[2];
@@ -175,17 +148,12 @@
  .replace(/\(.*?\)/g, '') // Remove any content in parentheses
  .replace(/\s+/g, ' ') // Normalize spaces
  .trim();
-
  let gdpText = gdpCell.textContent.trim();
-
  // Clean up GDP string: remove any non-numeric characters (commas, etc.)
  gdpText = gdpText.replace(/[^\d\.]/g, ''); // Keep only numbers and decimal points
-
  if (!gdpText) continue;
-
  const rankNum = parseInt(rank.replace(/[^\d]/g, '')); // Clean rank number, remove non-numeric
  const gdpNum = parseFloat(gdpText); // Convert GDP to a float number (for USD)
-
  if (rankNum > 0 && country && gdpNum > 0 && country.length > 1 && country.length < 50) {
  allCountriesData.push({
  rank: rankNum,
@@ -195,13 +163,10 @@
  });
  }
  }
-
  // Sort countries by rank (ascending order)
  allCountriesData.sort((a, b) => a.rank - b.rank);
-
  // Display only the top 10 countries
  allCountriesData = allCountriesData.slice(0, 10);
-
  // Update stats and display GDP table
  if (allCountriesData.length > 0) {
  updateStats();
@@ -211,19 +176,16 @@
  }
  }
  }
-
  // Format GDP values in USD (in billions)
  function formatUSDNumber(num) {
  return num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
  }
-
  // Update the stats section
  function updateStats() {
  document.getElementById('statsBox').style.display = 'block';
  document.getElementById('totalCount').textContent = allCountriesData.length;
  document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
  }
-
  // Display the GDP table
  function displayGDPTable(filteredData = null) {
  const tbody = document.getElementById('gdpTableBody');
@@ -231,43 +193,35 @@
  const loadingDiv = document.getElementById('loadingMessage');
  tbody.innerHTML = '';
  const dataToDisplay = filteredData || allCountriesData;
-
  if (dataToDisplay.length === 0) {
  loadingDiv.textContent = 'No data to display';
  return;
  }
-
  document.getElementById('showingCount').textContent = dataToDisplay.length;
  dataToDisplay.forEach(item => {
  const row = document.createElement('tr');
-
  // Highlight India row
  if (item.country.toLowerCase().includes('india')) {
  row.className = 'highlight-india';
  }
-
  // Rank
  const rankCell = document.createElement('td');
  rankCell.className = 'rank';
  rankCell.textContent = String(item.rank).padStart(2, '0');
  row.appendChild(rankCell);
-
  // Country
  const countryCell = document.createElement('td');
  countryCell.textContent = item.country;
  row.appendChild(countryCell);
-
  // GDP
  const gdpCell = document.createElement('td');
  gdpCell.className = 'gdp-amount';
  gdpCell.textContent = '$' + item.gdpFormatted + ' Billion';
  row.appendChild(gdpCell);
-
  // Country again (for some reason, repeating the country column)
  const countryCell2 = document.createElement('td');
  countryCell2.textContent = item.country;
  row.appendChild(countryCell2);
-
  // Notes
  const notesCell = document.createElement('td');
  if (item.rank <= 10) {
@@ -277,14 +231,11 @@
  notesCell.innerHTML = '<STRONG>🇮🇳 Target: Surpass Japan by 2032</STRONG>';
  }
  row.appendChild(notesCell);
-
  tbody.appendChild(row);
  });
-
  loadingDiv.style.display = 'none';
  table.style.display = 'table';
  }
-
  // Fallback data for testing or in case of error
  function loadFallbackData() {
  allCountriesData = [
@@ -299,16 +250,13 @@
  { rank: 9, country: 'Brazil', gdpUSD: 2.331, gdpFormatted: formatUSDNumber(2.331) },
  { rank: 10, country: 'Canada', gdpUSD: 2.242, gdpFormatted: formatUSDNumber(2.242) }
  ];
-
  updateStats();
  displayGDPTable();
  }
-
  // Call to load data on page load
  window.addEventListener('load', function () {
  loadGDPData();
  });
  </SCRIPT>
 </BODY>
-
 </HTMLhtml>

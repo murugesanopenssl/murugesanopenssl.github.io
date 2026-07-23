@@ -15,7 +15,6 @@
             populateMonthSelector();
             document.getElementById("monthSelector").addEventListener("change", onMonthChange);
             onMonthChange();
-
             document.addEventListener('keydown', (event) => {
                 const selector = document.getElementById("monthSelector");
                 const options = selector.options;
@@ -96,12 +95,10 @@
         const today = new Date();
         const currentYear = today.getFullYear();
         let tamilYear = currentYear + 3102;
-
         function clearCalendar(tableId) {
             const tbody = document.getElementById(tableId).getElementsByTagName('tbody')[0];
             tbody.innerHTML = "";
         }
-
         function populateMonthSelector() {
             const selector = document.getElementById("monthSelector");
             selector.innerHTML = "";
@@ -121,7 +118,6 @@
                 selector.appendChild(option);
             }
         }
-
         function onMonthChange() {
             const value = document.getElementById("monthSelector").value;
             const parts = value.split("-");
@@ -132,7 +128,6 @@
             createGregorianCalendar(y, m);
             createTamilCalendar(y, m);
         }
-
         function createGregorianCalendar(year, month) {
             const daysInMonth = new Date(year, month + 1, 0).getDate();
             const firstDay = new Date(year, month, 1).getDay();
@@ -156,7 +151,6 @@
             while (row.children.length < 7) row.appendChild(document.createElement('td'));
             table.appendChild(row);
         }
-
         const tamilMonthRanges = [
             { month: "சித்திரை", start: { month: 3, day: 14 }, end: { month: 4, day: 13 } },
             { month: "வைகாசி", start: { month: 4, day: 14 }, end: { month: 5, day: 14 } },
@@ -171,7 +165,6 @@
             { month: "மாசி", start: { month: 0, day: 15 }, end: { month: 1, day: 14 } },
             { month: "பங்குனி", start: { month: 1, day: 15 }, end: { month: 2, day: 14 } }
         ];
-
         function getTamilMonth(date) {
 			const tamilMonthRanges = [
 				{ month: "சித்திரை", start: { month: 3, day: 14 }, end: { month: 4, day: 13 } },
@@ -187,7 +180,6 @@
 				{ month: "மாசி", start: { month: 1, day: 15 }, end: { month: 2, day: 14 } },
 				{ month: "பங்குனி", start: { month: 2, day: 15 }, end: { month: 3, day: 13 } }
 			];
-
 			for (let r of tamilMonthRanges) {
 				const s = r.start, e = r.end;
 				if (
@@ -201,7 +193,6 @@
 			}
 			return '';
 		}
-
         function createTamilCalendar(year, month) {
             const daysInMonth = new Date(year, month + 1, 0).getDate();
             const firstDay = new Date(year, month, 1).getDay();
@@ -227,7 +218,6 @@
             while (row.children.length < 7) row.appendChild(document.createElement('td'));
             table.appendChild(row);
         }
-
         populateMonthSelector();
         document.getElementById("monthSelector").addEventListener("change", onMonthChange);
         onMonthChange();

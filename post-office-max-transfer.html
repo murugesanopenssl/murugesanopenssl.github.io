@@ -9,7 +9,7 @@
 		<META http-equiv="Expires" content="0" />
 		<LINK href="github.io.css" rel="stylesheet">
 		<TITLE>Max transfer per day from post office</TITLE>
-		<SCRIPT src='NMmenu001.js'>
+		<SCRIPT src='NMmenu002.js'>
 		</SCRIPT>
 		<SCRIPT type='text/javascript'>
 			writeMenu();
@@ -756,15 +756,12 @@ I CAN TRANSFER USING FOLLOWING WAY ALONE:
 			{
 				const istOffset = 5.5 * 60 * 60 * 1000;
 				const istDate = new Date(date.getTime() + istOffset);
-				
 				const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 				const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-				
 				const dayName = days[istDate.getUTCDay()];
 				const day = istDate.getUTCDate();
 				const monthName = months[istDate.getUTCMonth()];
 				const year = istDate.getUTCFullYear();
-				
 				return `${dayName} ${day}-${monthName}-${year}`;
 			}
 			function showStatus(message, isError = false)

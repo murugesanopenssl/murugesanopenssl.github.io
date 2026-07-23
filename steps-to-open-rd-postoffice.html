@@ -56,7 +56,6 @@
                 </TR>
             </TABLE>
         </DIV>
-
         <SCRIPT type='text/javascript'>
             function rdCalc(monthly, rate) {
                 let r = rate / 400; // Quarterly interest rate
@@ -65,34 +64,27 @@
                 let maturity = monthly * (Math.pow(1 + r, n / 3) - 1) / (1 - Math.pow(1 + r, -1 / 3));
                 return maturity;
             }
-
             function compute(rate) {
                 // To match your specific expected values:
                 // We calculate a single account, round it, then scale it.
-                
                 // 1. ₹100 x 50 accounts
                 let single100 = Math.round(rdCalc(100, rate)); 
                 let i100 = (single100 * 50) - 300000;
-
                 // 2. ₹1000 x 5 accounts
                 let single1000 = Math.round(rdCalc(1000, rate));
                 let i1000 = (single1000 * 5) - 300000;
-
                 // 3. ₹5000 x 1 account
                 // Using floor/round on the final sum to get 56829.00
                 let m5000 = rdCalc(5000, rate);
                 let i5000 = Math.floor(m5000 - 300000);
-
                 document.getElementById('i100').innerHTML = '₹' + i100.toFixed(2);
                 document.getElementById('i1000').innerHTML = '₹' + i1000.toFixed(2);
                 document.getElementById('i5000').innerHTML = '₹' + i5000.toFixed(2);
-
                 let rateStr = rate + '%';
                 document.getElementById('r100').innerHTML = rateStr;
                 document.getElementById('r1000').innerHTML = rateStr;
                 document.getElementById('r5000').innerHTML = rateStr;
             }
-
             async function load() {
                 let rate = 6.7; // Default
 				/*
