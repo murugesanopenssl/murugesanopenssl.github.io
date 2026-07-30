@@ -1,0 +1,43 @@
+<PRE>https://www.experts-exchange.com/dashboard/#/questions/29279579
+FYI:
+[code]
+C:\murugesan-openssl&gt; curl.exe -L -o Win64OpenSSL.exe https://slproweb.com/download
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+100    169 100    169   0      0    149      0   00:01   00:01              0
+100    153 100    153   0      0    107      0   00:01   00:01              0
+C:\murugesan-openssl&gt; TYPE Win64OpenSSL.exe
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;403 Forbidden&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;403 Forbidden&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.30.2&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+C:\murugesan-openssl&gt;
+[/code]
+Hence you can download from following urls:
+https://slproweb.com/download/Win64OpenSSL_Light-4_0_1.exe
+https://slproweb.com/download/Win64OpenSSL-4_0_1.exe
+https://slproweb.com/download/Win32OpenSSL_Light-4_0_1.exe
+https://slproweb.com/download/Win32OpenSSL-4_0_1.exe
+https://slproweb.com/download/Win64ARMOpenSSL_Light-4_0_1.exe
+https://slproweb.com/download/Win64ARMOpenSSL-4_0_1.exe
+https://slproweb.com/download/WinUniversalOpenSSL-4_0_1.exe
+https://slproweb.com/download/Win64OpenSSL_Light-3_6_3.exe
+https://slproweb.com/download/Win64OpenSSL-3_6_3.exe
+https://slproweb.com/download/Win32OpenSSL_Light-3_6_3.exe
+https://slproweb.com/download/Win32OpenSSL-3_6_3.exe
+...
+Example:
+C:\murugesan-openssl&gt; curl.exe -L -o Win32OpenSSL-3_6_3.exe https://slproweb.com/download/Win32OpenSSL-3_6_3.exe
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+100 208.1M 100 208.1M   0      0  5.92M      0   00:35   00:35          6.36M
+After downloading this I have installed openssl.exe at following directory:
+C:\murugesan-openssl\Win64OpenSSL&gt; DIR/S /B *.exe
+C:\murugesan-openssl\Win64OpenSSL\unins000.exe
+C:\murugesan-openssl\Win64OpenSSL\bin\openssl.exe
+C:\murugesan-openssl\Win64OpenSSL&gt; .\bin\openssl.exe version
+OpenSSL 4.0.1 9 Jun 2026 (Library: OpenSSL 4.0.1 9 Jun 2026)
+[/code]</PRE>

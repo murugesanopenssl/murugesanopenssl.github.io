@@ -1,258 +1,312 @@
 <!DOCTYPE html>
-<HTML lang="en">
-<HEAD>
-    <META name="keywords" content="murugesan,financial life management ,india savings account awareness">
-    <META http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <META http-equiv="Pragma" content="no-cache">
-    <META http-equiv="Expires" content="0">
-    <META CHARSET="UTF-8">
-    <META name="viewport" content="width=device-width, initial-scale=1.0">
-    <TITLE>Tamil and Gregorian Calendar</TITLE>
-</HEAD>
-<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-    <SCRIPT>
-function getTamilYear(date) {
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
-    // Tamil new year starts on 14-April
-    if (month > 3 || (month === 3 && day >= 14)) {
-        return year - 512;   // Tamil year for 14-Apr onwards
-    } else {
-        return year - 513;   // Tamil year for before 14-Apr
-    }
-}
+<html lang="en">
+<head>
+    <meta name="keywords" content="murugesan,financial life management,india savings account awareness">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil and Gregorian Calendar</title>
+    <style>
+        body {
+            background-color: #004C8F;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 15px;
+        }
+        
+        .controls {
+            margin-bottom: 15px;
+        }
+
+        select {
+            font-weight: bold;
+            padding: 6px 12px;
+            font-size: 1rem;
+            border-radius: 4px;
+        }
+
+        .calendar-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .calendar-box {
+            flex: 1;
+            min-width: 320px;
+            background-color: #003D82;
+            padding: 10px;
+            border-radius: 6px;
+            border: 2px solid #0066CC;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        caption {
+            font-weight: bold;
+            padding: 8px;
+            margin-bottom: 5px;
+            background-color: #0066CC;
+            color: #FFFFFF;
+            border-radius: 4px;
+        }
+
+        th, td {
+            border: 1px solid #0066CC;
+            padding: 8px 4px;
+            font-size: 0.85rem;
+        }
+
+        th {
+            background-color: #004C8F;
+            color: #FFCC00;
+        }
+
+        td {
+            background-color: #002B5C;
+        }
+
+        .today {
+            background-color: #00ff00 !important;
+            color: #000000 !important;
+            font-weight: bold;
+        }
+
+        .new-year {
+            background-color: #00ffff !important;
+            color: #000000 !important;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <select id="monthSelector"></select>
+    </div>
+
+    <div class="calendar-container">
+        <!-- Tamil Calendar -->
+        <div class="calendar-box">
+            <table id="tamil-calendar">
+                <caption>தமிழ் ஆண்டு / Tamil Calendar</caption>
+                <thead>
+                    <tr>
+                        <th>ஞாயிறு</th><th>திங்கள்</th><th>செவ்வாய்</th><th>புதன்</th>
+                        <th>வியாழன்</th><th>வெள்ளி</th><th>சனி</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Gregorian Calendar -->
+        <div class="calendar-box">
+            <table id="gregorian-calendar">
+                <caption>Gregorian Calendar</caption>
+                <thead>
+                    <tr>
+                        <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th>
+                        <th>Thu</th><th>Fri</th><th>Sat</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // Dynamic Current Date Init
+        const today = new Date();
+        const initialYear = today.getFullYear(); 
+        const initialMonth = today.getMonth();   
+
+        // Accurate Tamil Month Transition Start Dates
+        const tamilStarts = [
+            { month: 3, day: 14, name: "சித்திரை" },  // Apr 14
+            { month: 4, day: 15, name: "வைகாசி" },    // May 15
+            { month: 5, day: 15, name: "ஆனி" },      // Jun 15
+            { month: 6, day: 17, name: "ஆடி" },      // Jul 17 (Aadi 1 = July 17)
+            { month: 7, day: 18, name: "ஆவணி" },     // Aug 18
+            { month: 8, day: 18, name: "புரட்டாசி" }, // Sep 18
+            { month: 9, day: 18, name: "ஐப்பசி" },   // Oct 18
+            { month: 10, day: 17, name: "கார்த்திகை" },// Nov 17
+            { month: 11, day: 16, name: "மார்கழி" },  // Dec 16
+            { month: 0, day: 15, name: "தை" },       // Jan 15
+            { month: 1, day: 13, name: "மாசி" },     // Feb 13
+            { month: 2, day: 15, name: "பங்குனி" }   // Mar 15
+        ];
+
+        function getTamilDetails(date) {
+            const yr = date.getFullYear();
+            let startYear = yr;
+
+            if (date < new Date(yr, 3, 14)) startYear--;
+
+            let currentStart = new Date(startYear, 3, 14);
+            let currentMonth = "சித்திரை";
+
+            for (let i = 0; i < tamilStarts.length; i++) {
+                let s = tamilStarts[i];
+                let y = startYear;
+                if (s.month < 3) y++;
+
+                let sd = new Date(y, s.month, s.day);
+                if (date >= sd) {
+                    currentStart = sd;
+                    currentMonth = s.name;
+                }
+            }
+
+            // Calculation for Tamil Day
+            const tamilDay = Math.floor((date - currentStart) / (24 * 60 * 60 * 1000)) + 1;
+            
+            // Thiruvalluvar Aandu (Gregorian Year + 31)
+            const thiruvalluvarYear = yr + 31;
+
+            return { month: currentMonth, day: tamilDay, year: thiruvalluvarYear };
+        }
+
+        function clearCalendar(tableId) {
+            document.getElementById(tableId).getElementsByTagName('tbody')[0].innerHTML = "";
+        }
+
+        function populateMonthSelector() {
+            const selector = document.getElementById("monthSelector");
+            selector.innerHTML = "";
+            const monthsBefore = 6;
+            const monthsAfter = 12;
+
+            for (let i = -monthsBefore; i <= monthsAfter; i++) {
+                const date = new Date(initialYear, initialMonth + i, 1);
+                const monthName = date.toLocaleString('default', { month: 'short' });
+                const option = document.createElement("option");
+                option.value = `${date.getFullYear()}-${date.getMonth()}`;
+                option.text = `${monthName}-${date.getFullYear()}`;
+                
+                // Select active month by default
+                if (date.getFullYear() === initialYear && date.getMonth() === initialMonth) {
+                    option.selected = true;
+                }
+                selector.appendChild(option);
+            }
+        }
+
+        function onMonthChange() {
+            const value = document.getElementById("monthSelector").value;
+            const [y, m] = value.split("-").map(Number);
+
+            clearCalendar("gregorian-calendar");
+            clearCalendar("tamil-calendar");
+
+            createGregorianCalendar(y, m);
+            createTamilCalendar(y, m);
+        }
+
+        function createGregorianCalendar(year, month) {
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const firstDay = new Date(year, month, 1).getDay();
+            const table = document.getElementById('gregorian-calendar').getElementsByTagName('tbody')[0];
+
+            let row = document.createElement('tr');
+            for (let i = 0; i < firstDay; i++) row.appendChild(document.createElement('td'));
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const cell = document.createElement('td');
+                const MMM = new Date(year, month).toLocaleString('default', { month: 'short' });
+                cell.textContent = `${day < 10 ? "0" : ""}${day}-${MMM}-${year}`;
+
+                if (today.getDate() === day && today.getMonth() === month && today.getFullYear() === year) {
+                    cell.classList.add('today');
+                }
+
+                row.appendChild(cell);
+
+                if ((firstDay + day) % 7 === 0) {
+                    table.appendChild(row);
+                    row = document.createElement('tr');
+                }
+            }
+
+            while (row.children.length > 0 && row.children.length < 7) {
+                row.appendChild(document.createElement('td'));
+            }
+            if (row.children.length > 0) table.appendChild(row);
+        }
+
+        function createTamilCalendar(year, month) {
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const firstDay = new Date(year, month, 1).getDay();
+            const table = document.getElementById('tamil-calendar').getElementsByTagName('tbody')[0];
+
+            let row = document.createElement('tr');
+            let tamilNewYearMarked = false;
+
+            for (let i = 0; i < firstDay; i++) row.appendChild(document.createElement('td'));
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const d = new Date(year, month, day);
+                const tamil = getTamilDetails(d);
+                const cell = document.createElement('td');
+                
+                cell.textContent = `${tamil.day < 10 ? "0" : ""}${tamil.day}-${tamil.month}-${tamil.year}`;
+
+                // Highlight today
+                if (today.getDate() === day && today.getMonth() === month && today.getFullYear() === year) {
+                    cell.classList.add('today');
+                }
+
+                // Highlight Chithirai 1 (Tamil New Year)
+                if (!tamilNewYearMarked && tamil.month === "சித்திரை" && tamil.day === 1) {
+                    cell.classList.add('new-year');
+                    cell.title = "புத்தாண்டு வாழ்த்துக்கள்";
+                    tamilNewYearMarked = true;
+                }
+
+                row.appendChild(cell);
+
+                if ((firstDay + day) % 7 === 0) {
+                    table.appendChild(row);
+                    row = document.createElement('tr');
+                }
+            }
+
+            while (row.children.length > 0 && row.children.length < 7) {
+                row.appendChild(document.createElement('td'));
+            }
+            if (row.children.length > 0) table.appendChild(row);
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
+            const selector = document.getElementById("monthSelector");
             populateMonthSelector();
-            document.getElementById("monthSelector").addEventListener("change", onMonthChange);
+            selector.addEventListener("change", onMonthChange);
             onMonthChange();
+
+            // Keyboard navigation
             document.addEventListener('keydown', (event) => {
-                const selector = document.getElementById("monthSelector");
                 const options = selector.options;
                 const currentIndex = selector.selectedIndex;
+
                 if (options.length > 0) {
-                    if (event.key === 'ArrowDown') {
-                        if (currentIndex < options.length - 1) {
-                            selector.selectedIndex = currentIndex + 1;
-                            onMonthChange();
-                        }
-                    } else if (event.key === 'ArrowUp') {
-                        if (currentIndex > 0) {
-                            selector.selectedIndex = currentIndex - 1;
-                            onMonthChange();
-                        }
+                    if (event.key === 'ArrowDown' && currentIndex < options.length - 1) {
+                        selector.selectedIndex = currentIndex + 1;
+                        onMonthChange();
+                    } else if (event.key === 'ArrowUp' && currentIndex > 0) {
+                        selector.selectedIndex = currentIndex - 1;
+                        onMonthChange();
                     }
                 }
             });
         });
-    </SCRIPT>
-    <STYLE type='text/css'>
-        body { background-color: #004C8F; color: #FFFFFF; font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        h3 { color: #FFFFFF; border-bottom: 2px solid #FF6600; padding-bottom: 10px; }
-        #financialResourcesMenu01, #financialResourcesMenu02 {
-            background-color: #0066CC !important; color: #FFFFFF !important; border: 2px solid #003D82 !important; border-radius: 5px;
-        }
-        #financialResourcesMenu01 a, #financialResourcesMenu02 a { color: #FFCC00 !important; font-weight: bold; }
-        #financialResourcesMenu01 a:hover, #financialResourcesMenu02 a:hover {
-            color: #FF6600 !important; background-color: #003D82; padding: 5px; border-radius: 3px;
-        }
-        button { background-color: #003D82 !important; color: #FFFFFF !important; border: 2px solid #FF6600 !important; font-weight: bold; }
-        button:hover { background-color: #FF6600 !important; color: #FFFFFF !important; border: 2px solid #003D82 !important; }
-    </STYLE>
-    <DIV style="width:100%;display:block;margin:0;padding:0;">
-        <DIV style="display: flex; flex-direction: column; align-items: flex-start; background-color: blue; padding:6px;">
-            <TABLE style='width:100%;'>
-                <TR>
-                    <TD style="color:white;text-align:middle;" colspan='2'>
-                        <SELECT id="monthSelector" style="font-weight:bold; margin-bottom:10px;" onchange="onMonthChange()"></SELECT>
-                    </TD>
-                </TR>
-            </TABLE>
-            <DIV style="display: flex; justify-content: space-between; width: 100%;">
-                <TABLE style='width:100%;' border='1'>
-                    <TR>
-                        <TD valign='top' align='left' style='width:50%;'>
-                            <TABLE style="width: 100%; border: 1px solid #000;" id="tamil-calendar" border='1'>
-                                <TBODY>
-                                    <CAPTION><STRONG>தமிழ் ஆண்டு/Tamil Calendar</STRONG></CAPTION>
-                                    <THEAD>
-                                        <TR>
-                                            <TH>ஞாயிறு</TH><TH>திங்கள்</TH><TH>செவ்வாய்</TH><TH>புதன்</TH>
-                                            <TH>வியாழன்</TH><TH>வெள்ளி</TH><TH>சனி</TH>
-                                        </TR>
-                                    </THEAD>
-                                </TBODY>
-                            </TABLE>
-                        </TD>
-                        <TD valign='top' align='left' style='width:50%;'>
-                            <TABLE style="width: 100%; border: 1px solid #000;" border='1' id="gregorian-calendar">
-                                <TBODY>
-                                    <CAPTION><STRONG>Gregorian Calendar</STRONG></CAPTION>
-                                    <THEAD>
-                                        <TR>
-                                            <TH>Sun</TH><TH>Mon</TH><TH>Tue</TH><TH>Wed</TH>
-                                            <TH>Thu</TH><TH>Fri</TH><TH>Sat</TH>
-                                        </TR>
-                                    </THEAD>
-                                </TBODY>
-                            </TABLE>
-                        </TD>
-                    </TR>
-                </TABLE>
-            </DIV>
-        </DIV>
-    </DIV>
-    <SCRIPT type='text/javascript'>
-const today = new Date();
-const initialYear = 2026;       // start at April 2026
-const initialMonth = 3;         // April (0-based index)
-const monthsBeforeAfter = 12;   // allow +/- 12 months
-let tamilYearOffset = 3102;     // Tamil year offset
-function clearCalendar(tableId) {
-    const tbody = document.getElementById(tableId).getElementsByTagName('tbody')[0];
-    tbody.innerHTML = "";
-}
-function populateMonthSelector() {
-    const selector = document.getElementById("monthSelector");
-    selector.innerHTML = "";
-    // Show last 4 months + next 12 months
-    const monthsBefore = 4;   // last 4 months
-    const monthsAfter = 12;   // next 12 months
-    for (let i = -monthsBefore; i <= monthsAfter; i++) {
-        const date = new Date(initialYear, initialMonth + i);
-        const monthName = date.toLocaleString('default', { month: 'short' });
-        const option = document.createElement("option");
-        option.value = `${date.getFullYear()}-${date.getMonth()}`;
-        option.text = `${monthName}-${date.getFullYear()}`;
-        // select the current month by default
-        if (date.getFullYear() === initialYear && date.getMonth() === initialMonth) {
-            option.selected = true;
-        }
-        selector.appendChild(option);
-    }
-}
-function onMonthChange() {
-    const value = document.getElementById("monthSelector").value;
-    const parts = value.split("-");
-    const y = parseInt(parts[0]);
-    const m = parseInt(parts[1]);
-    clearCalendar("gregorian-calendar");
-    clearCalendar("tamil-calendar");
-    createGregorianCalendar(y, m);
-    createTamilCalendar(y, m);
-}
-function createGregorianCalendar(year, month) {
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const firstDay = new Date(year, month, 1).getDay();
-    const table = document.getElementById('gregorian-calendar').getElementsByTagName('tbody')[0];
-    let row = document.createElement('tr');
-    for (let i = 0; i < firstDay; i++) row.appendChild(document.createElement('td'));
-    for (let day = 1; day <= daysInMonth; day++) {
-        const cell = document.createElement('td');
-        const MMM = new Date(year, month).toLocaleString('default', { month: 'short' });
-        cell.innerHTML = (day < 10 ? "0" : "") + day + "-" + MMM + "-" + year;
-        if (today.getDate() === day && today.getMonth() === month && today.getFullYear() === year) {
-            cell.style.backgroundColor = '#00ff00';
-            cell.style.fontWeight = 'bold';
-        }
-        row.appendChild(cell);
-        if ((firstDay + day) % 7 === 0) {
-            table.appendChild(row);
-            row = document.createElement('tr');
-        }
-    }
-    while (row.children.length < 7) row.appendChild(document.createElement('td'));
-    table.appendChild(row);
-}
-const tamilMonthRanges = [
-    { month: "சித்திரை", start: { month: 3, day: 14 }, end: { month: 4, day: 13 } },
-    { month: "வைகாசி", start: { month: 4, day: 14 }, end: { month: 5, day: 14 } },
-    { month: "ஆனி", start: { month: 5, day: 15 }, end: { month: 6, day: 14 } },
-    { month: "ஆடி", start: { month: 6, day: 15 }, end: { month: 7, day: 14 } },
-    { month: "ஆவணி", start: { month: 7, day: 15 }, end: { month: 8, day: 14 } },
-    { month: "புரட்டாசி", start: { month: 8, day: 15 }, end: { month: 9, day: 14 } },
-    { month: "கார்த்திகை", start: { month: 9, day: 1 }, end: { month: 9, day: 30 } },
-    { month: "ஐப்பசி", start: { month: 9, day: 15 }, end: { month: 10, day: 14 } },
-    { month: "மார்கழி", start: { month: 10, day: 16 }, end: { month: 11, day: 16 } },
-    { month: "தை", start: { month: 11, day: 17 }, end: { month: 0, day: 14 } },
-    { month: "மாசி", start: { month: 0, day: 15 }, end: { month: 1, day: 14 } },
-    { month: "பங்குனி", start: { month: 1, day: 15 }, end: { month: 2, day: 14 } }
-];
-function getTamilMonth(date) {
-    const m = date.getMonth();
-    const d = date.getDate();
-    const tamilMonthRanges = [
-        { month: "சித்திரை", start: { month: 3, day: 14 }, end: { month: 4, day: 13 } },
-        { month: "வைகாசி", start: { month: 4, day: 14 }, end: { month: 5, day: 14 } },
-        { month: "ஆனி", start: { month: 5, day: 15 }, end: { month: 6, day: 14 } },
-        { month: "ஆடி", start: { month: 6, day: 15 }, end: { month: 7, day: 14 } },
-        { month: "ஆவணி", start: { month: 7, day: 15 }, end: { month: 8, day: 14 } },
-        { month: "புரட்டாசி", start: { month: 8, day: 15 }, end: { month: 9, day: 14 } },
-        { month: "ஐப்பசி", start: { month: 9, day: 15 }, end: { month: 10, day: 14 } },
-        { month: "கார்த்திகை", start: { month: 10, day: 15 }, end: { month: 11, day: 15 } },
-        { month: "மார்கழி", start: { month: 11, day: 16 }, end: { month: 0, day: 14 } },
-        { month: "தை", start: { month: 0, day: 15 }, end: { month: 1, day: 14 } },
-        { month: "மாசி", start: { month: 1, day: 15 }, end: { month: 2, day: 14 } },
-        { month: "பங்குனி", start: { month: 2, day: 15 }, end: { month: 3, day: 13 } }
-    ];
-    for (let r of tamilMonthRanges) {
-        const s = r.start, e = r.end;
-        if (s.month <= e.month) {
-            if ((m > s.month && m < e.month) || 
-                (m === s.month && d >= s.day) || 
-                (m === e.month && d <= e.day)) {
-                return r.month;
-            }
-        } else { // range wraps around year
-            if ((m > s.month || m < e.month) || 
-                (m === s.month && d >= s.day) || 
-                (m === e.month && d <= e.day)) {
-                return r.month;
-            }
-        }
-    }
-    return '';
-}
-function createTamilCalendar(year, month) {
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const firstDay = new Date(year, month, 1).getDay();
-    const table = document.getElementById('tamil-calendar').getElementsByTagName('tbody')[0];
-    let row = document.createElement('tr');
-    // Flag to mark first occurrence of சித்திரை
-    let tamilNewYearMarked = false;
-    for (let i = 0; i < firstDay; i++) row.appendChild(document.createElement('td'));
-    for (let day = 1; day <= daysInMonth; day++) {
-        const d = new Date(year, month, day);
-        let tamilMonth = getTamilMonth(d);
-        let tamilDay = day;
-        let tamilYear = getTamilYear(d);
-        const cell = document.createElement('td');
-        cell.innerHTML = (tamilDay < 10 ? "0" : "") + tamilDay + "-" + tamilMonth + "-" + tamilYear;
-        // Highlight today's date in green
-        if (today.getDate() === day && today.getMonth() === month && today.getFullYear() === year) {
-            cell.style.backgroundColor = '#00ff00';
-            cell.style.fontWeight = 'bold';
-        }
-        // Highlight **first occurrence of சித்திரை** in cyan
-        if (!tamilNewYearMarked && tamilMonth === "சித்திரை") {
-            cell.style.backgroundColor = 'cyan';
-            cell.title = "புத்தாண்டு வாழ்த்துக்கள்";  // Happy Tamil New Year
-            cell.style.fontWeight = 'bold';
-            tamilNewYearMarked = true;  // mark it so we don't highlight again
-        }
-        row.appendChild(cell);
-        if ((firstDay + day) % 7 === 0) {
-            table.appendChild(row);
-            row = document.createElement('tr');
-        }
-    }
-    while (row.children.length < 7) row.appendChild(document.createElement('td'));
-    table.appendChild(row);
-}
-// initialize
-populateMonthSelector();
-document.getElementById("monthSelector").addEventListener("change", onMonthChange);
-onMonthChange();
-</SCRIPT>
-</BODY>
-</HTML>
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width,initial-scale=1.0">
+		<TITLE>Become a Lakhpati/Crorepati Through Savings</TITLE>
+			<STYLE type='text/css'>
+				body
+				{
+					font-family:Arial,Helvetica,sans-serif;
+					font-size:16px;
+					line-height:1.6;
+					margin:10px;
+					color:#000000;
+					background-color:#FFFFFF;
+				}
+				h1
+				{
+					color:#003366;
+				}
+				h2
+				{
+					color:#006600;
+				}
+				p
+				{
+					text-align:justify;
+				}
+				.note
+				{
+					color:#990000;
+					font-weight:bold;
+				}
+			</STYLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV>
+			<H2>Lakhpati/Crorepati Goal</H2>
+			<DIV id='lakhpatiYear'></DIV>
+			<SCRIPT type='text/javascript'>
+				var TODAYDate=new Date("30-Sep-2026");
+				var currentYear=TODAYDate.getFullYear();
+				var targetYear=currentYear+10;
+				
+				document.getElementById('lakhpatiYear').innerHTML="Your target year to become a Lakhpati/Crorepati may be around "+targetYear+".";
+			</SCRIPT>
+			<P>
+				<TABLE border='1' style='width:100%;'>
+					<TR>
+						<TD style='width:130px;' valign='top' align='right'>Date</TD>
+						<TD style='width:100px;' valign='top' align='right'>Amount</TD>
+						<TD valign='top' align='left'>Action</TD>
+					</TR>
+					<TBODY id='lakhpatiTable' align='left'></TBODY>
+				</TABLE>
+				<SCRIPT type='text/javascript'>
+					var today=TODAYDate;
+					var year=today.getFullYear();
+					var month=today.getMonth();
+					var days=new Date(year,month+1,0).getDate();
+					var table="";
+					var amount=days*10;
+					var dayNames=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+					var monthNames=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+					var dd=TODAYDate.getDate();
+					for(var day=1;day<=days;day++)
+					{
+						if(1==day || 2==day || dd==day || days==day)
+						{
+							var date=new Date(year,month,day);
+							var dayName=dayNames[date.getDay()];
+							var dayNumber=("0"+day).slice(-2);
+							var monthName=monthNames[month];
+							table+="<TR>";
+							table+="<TD valign='top' align='left'>"+dayName+" "+dayNumber+"-"+monthName+"-"+year+"</TD>";
+							table+="<TD valign='top' align='right'>Rs. "+amount.toFixed(2)+"</TD>";
+							table+="<TD valign='top' align='left'>Transfer from your bank to post office using internet banking without using mobile app IPPB. Reason: IPPB used service charges.</TD>";
+							table+="</TR>";
+						}
+						amount=amount-10;
+					}
+					table+="<TR>";
+					table+="<TD colspan='3'>Perform the same by deducting Rs.10.00 each month from previous transfer</TD>";
+					table+="</TR>";
+					document.getElementById('lakhpatiTable').innerHTML=table;
+				</SCRIPT>
+			</P>
+			<P>
+				This method may work well for some people. However, many poor and middle-class families find it difficult because household expenses usually increase after the middle of the month. From around the 15th day until the end of the month, many families experience financial pressure due to food expenses, school fees, transport, electricity bills, medical expenses and other essential needs.
+			</P>
+			<P class='note'>
+				Hence, the following salary-based savings method may help poor and middle-class people around the world develop regular saving habits.
+			</P>
+			<H2>About This Method</H2>
+			<P>
+				This savings method is based on more than 25 years of disciplined personal saving experience. It is shared to help readers develop the habit of saving regularly. Every person's income, expenses and financial responsibilities are different. Readers should decide whether this method is suitable for their own financial situation.
+			</P>
+			<H2>Step 1</H2>
+			<P>
+				Assume your monthly salary is credited on the 31st of every month.
+			</P>
+			<P>
+				At the end of every month, transfer the remaining balance from your salary account to your Post Office Savings Account using NEFT. Continue doing this every month while you are employed.
+			</P>
+			<H2>Step 2</H2>
+			<P>
+				Do not withdraw the saved amount unless it is absolutely necessary. Treat your savings as your future financial security.
+			</P>
+			<H2>Step 3</H2>
+			<P>
+				When your Post Office Savings Account balance reaches the amount required to open a new Post Office Monthly Income Scheme (MIS) account under the applicable rules, consider opening one and continue saving the remaining balance.
+			</P>
+			<H2>Example</H2>
+			<P>
+				Assume your monthly salary is Rs.45000.00.
+			</P>
+			<UL>
+				<LI>Keep Rs.10000.00 for school fees.</LI>
+				<LI>Keep Rs.5000.00 for your parent's insurance premium.</LI>
+				<LI>Keep at least Rs.1000.00 for your daughter's Sukanya Samriddhi Account contribution if applicable.</LI>
+				<LI>Keep at least Rs.1000.00 for your son's Sukanya Samriddhi Account contribution if applicable.</LI>
+				<LI>Keep at least Rs.1000.00 for your LPG cylinder booking because the waiting period may vary between rural and urban areas.</LI>
+				<LI>Keep at least Rs.1000.00 for your parent's LPG cylinder booking if required.</LI>
+				<LI>Save money every month for future mobile recharge expenses.</LI>
+				<LI>If the money saved for mobile recharges becomes sufficient for one year, consider keeping it separately until it is required.</LI>
+			</UL>
+			<H2>When Your Savings Reach Rs.10600.00</H2>
+			<P>
+				When your Post Office Savings Account balance reaches Rs.10600.00, you may consider following this approach.
+			</P>
+			<UL>
+				<LI>Keep Rs.600.00 as the minimum balance in your Post Office Savings Account. Do not use this amount.</LI>
+				<LI>Use Rs.5000.00 to open one new Post Office Monthly Income Scheme (MIS) account if eligible.</LI>
+				<LI>Open one Post Office Recurring Deposit (RD) with a monthly installment of Rs.100.00.</LI>
+				<LI>Reserve the remaining Rs.4900.00 to support future RD installments.</LI>
+				<LI>Every month, deposit the MIS interest and the remaining balance from your salary account into your Post Office Savings Account through NEFT.</LI>
+				<LI>Whenever your Post Office Savings Account again reaches the required amount, repeat the same process.</LI>
+			</UL>
+			<H2>Continue Every Month</H2>
+			<P>
+				Repeat this process every month. Save before spending. Avoid unnecessary expenses. Allow your savings to grow slowly and steadily through discipline and patience.
+			</P>
+			<P>
+				Over time, your savings, investments and monthly income from eligible schemes may continue to increase. With consistent saving habits and financial discipline, many people can gradually build savings worth several lakhs.
+			</P>
+			<H2>Final Message</H2>
+			<P>
+				Becoming a Lakhpati/Crorepati is not about becoming rich overnight. It is about developing the habit of saving every month, planning future expenses in advance and avoiding unnecessary spending. Even small monthly savings can become a large amount after many years of consistent effort.
+			</P>
+		</DIV>
+	</BODY>
+</HTML>

@@ -1080,6 +1080,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"asd5.html": ["asd5"],
 								"Always-Have-Cash-A-Lesson.html": ["Emergency Fund Planning"],
 								"Personal-Spending-Strategy.html": ["Smart Spending Plan"],
+								"become-lakhpati-through-savings.html": ["Become Lakhpati/Crorepati"],
 								"Increase-Daily-Salary.html": ["Income Growth Strategies"],
 								"submit-itr-steps.html": ["ITR Filing Steps"],
 								"steps-to-recharge-any-sim.html": ["Internet Recharge Exceptions"],
@@ -1103,6 +1104,8 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"sbi-yono-registration-error.html": ["YONO SBI REGISTRATION ISSUE"],
 								"Always-have-bank-balance-ending-with-zero.html": ["Make balance ending with .00 INR always."],
 								"sbi-atm-receive-date.html": ["SBI new atm card waiting days."],
+								"how-to-transfer-from-bank-post-neft.html": ["Transfer money from SBI to post office using YONO."],
+								"how-to-transfer-to-post-neft.html": ["Transfer money from SBI to post office using net bank."],
 								"sbi-atm-cash-deposit-condition.html": ["SBI ATM Cash Deposit Timing to Avoid Charges"],
 								"dynamic-gold-rate-comparison-tool.html": ["Gold Rate Comparison"],
 								"futura-brush-buying-guide.html": ["Futura Brush: Save AMB Interest (Cash Only)"],
@@ -1154,6 +1157,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"Air-Cooler-Plan.html": ["Air cooler plan"],
 								"ITR-2025-2026.html": ["ITR Fri 31-Jul-2026 IST", "ITR Filing Guide"],
 								"form-15-TDS-Certificate-ITR-help.html": ["ITR Fri 31-Jul-2026 IST", "TDS FORM15 ITR HELP"],
+								"un-subscribe-samsung-garbage.html": ["ITR Fri 31-Jul-2026 IST", "Remove Samsung Email Garbage"],
 								"TN-how-to-get-more-vote.html": ["TN Voter Guide", "TN Voter Increase Guide"],
 								"how-repair-led-help.html": ["Steps to repair LED BULB", "Steps to repair LED BULB"],
 								"pm-cm-india-relations.html": ["Politician Relations", "Earth politician Relations"],
@@ -1171,6 +1175,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"my-kt-rank-chatgpt-Fri-09-Jan-2026.html": ["My ChatGPT Knowledge Transfer"],
 								"sugar-tablets.html": ["Sugar Tablets Schedule"],
 								"my-exercise.html": ["My exercise"],
+								"../recharge-mobile.html": ["ALL MOBILES RECHARGE"],
 								"../urination-water.html": ["My urination and Water"],
 								"../my_finance_dashboard.html": ["My finance dash board"],
 								"NMurugesan_cv.html": ["My profile"],
@@ -1508,6 +1513,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							</A>
 							<UL class="submenu">
 								<LI>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'become-lakhpati-through-savings.html' );" class="nav-link">Become Lakhpati/Crorepati</A>
+								</LI>
+								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'Increase-Daily-Salary.html' );" class="nav-link">Income Growth Strategies</A>
 								</LI>
 								<LI>
@@ -1737,6 +1745,12 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							<A href="#" onclick="javascript:loadHomeContent( event, 'sbi-atm-receive-date.html' );" class="nav-link">SBI new atm card waiting days.</A>
 						</LI>
 						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'how-to-transfer-from-bank-post-neft.html' );" class="nav-link">Transfer money from SBI to post office using net bank.</A>
+						</LI>
+						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'how-to-transfer-to-post-neft.html' );" class="nav-link">Transfer money from SBI to post office using YONO.</A>
+						</LI>
+						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'Always-have-bank-balance-ending-with-zero.html' );" class="nav-link">Make balance ending with .00 INR always.</A>
 						</LI>
 						<LI>
@@ -1827,6 +1841,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				</LI>
 				<LI>
 					<A href="#" onclick="javascript:loadHomeContent(event, 'form-15-TDS-Certificate-ITR-help.html');" class="nav-link">TDS FORM15 ITR HELP</A>
+				</LI>
+				<LI>
+					<A href="#" onclick="javascript:loadHomeContent(event, 'un-subscribe-samsung-garbage.html');" class="nav-link">Remove Samsung Email Garbage</A>
 				</LI>
 				<LI>
 					<A href="#" onclick="javascript:loadHomeContent( event, '2-wheeler-4-wheeler-rank.html' );" class="nav-link">Vehicle Cost Rankings</A>
@@ -2123,9 +2140,17 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					<UL class="submenu">
 						${ "127.0.0.1" === window.location.hostname ?`
 							<LI>
+								<A href="#" onclick="loadHomeContent(event, '../recharge-mobile.html');" class="nav-link">
+									ALL MOBILES RECHARGE
+								</A>
+							</LI>
+							<LI>
 								<A href="#" onclick="loadHomeContent(event, '../urination-water.html');" class="nav-link">
 									My urination and Water
 								</A>
+							</LI>
+							<LI>
+								<A href="#" onclick="javascript:loadHomeContent( event, 'my-exercise.html' );" class="nav-link">My exercise</A>
 							</LI>
 						`:""}
 						${ "127.0.0.1" === window.location.hostname ?`
@@ -2137,9 +2162,6 @@ function MainPageHomeLoadContent( event, htmlFileName )
 						`:""}
 					<LI>
 						<A href="#" onclick="javascript:loadHomeContent( event, 'sugar-tablets.html' );" class="nav-link">Sugar Tablets Schedule</A>
-					</LI>
-					<LI>
-						<A href="#" onclick="javascript:loadHomeContent( event, 'my-exercise.html' );" class="nav-link">My exercise</A>
 					</LI>
 					<LI>
 						<A href="#" onclick="javascript:loadHomeContent( event, 'My_Drawings.html' );" class="nav-link">My drawings</A>

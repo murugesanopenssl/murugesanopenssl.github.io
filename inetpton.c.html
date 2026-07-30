@@ -1,0 +1,38 @@
+[code]
+C:\murugesan-openssl&gt; TYPE InetPton.c
+#include &lt;stdio.h&gt;
+#include &lt;winsock2.h&gt;
+#include &lt;ws2tcpip.h&gt;
+#pragma comment(lib, "Ws2_32.lib")
+int main(void)
+{
+	struct sockaddr_in addr = { 0U };
+	int port = 8080;
+	addr.sin_family = AF_INET;
+	addr.sin_port = htons(port);
+	if( 1 == InetPton(AF_INET, "127.0.0.1", &addr.sin_addr) )
+	{
+		printf("IP conversion successful\n");
+	}
+	else
+	{
+		printf("IP conversion failed\n");
+	}
+	return 0;
+}
+C:\murugesan-openssl&gt; cl.exe InetPton.c
+Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35215 for x86
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+InetPton.c
+Microsoft (R) Incremental Linker Version 14.44.35215.0
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+/out:InetPton.exe
+InetPton.obj
+
+C:\murugesan-openssl&gt; .\InetPton.exe
+IP conversion successful
+
+C:\murugesan-openssl&gt;
+[/code]
