@@ -902,7 +902,17 @@ function MainPageHomeLoadContent( event, htmlFileName )
 						console.log("Main content area:", mainContent ? "FOUND" : "NOT FOUND");
 						if( mainContent)
 						{
+							document.querySelectorAll("SCRIPT[data-loaded-page]").forEach(function(script){
+								script.remove();
+							});
 							mainContent.innerHTML = content;
+							mainContent.querySelectorAll("SCRIPT").forEach(function(script) {
+								const newScript = document.createElement("SCRIPT");
+								newScript.type = "text/javascript";
+								newScript.text = script.textContent;
+								newScript.setAttribute("data-loaded-page","true");
+								document.body.appendChild(newScript);
+							});
 							var tempDiv = document.createElement('div');
 							tempDiv.innerHTML = content;
 							var scripts = tempDiv.querySelectorAll('script');
@@ -1104,8 +1114,8 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"sbi-yono-registration-error.html": ["YONO SBI REGISTRATION ISSUE"],
 								"Always-have-bank-balance-ending-with-zero.html": ["Make balance ending with .00 INR always."],
 								"sbi-atm-receive-date.html": ["SBI new atm card waiting days."],
-								"how-to-transfer-from-bank-post-neft.html": ["Transfer money from SBI to post office using YONO."],
-								"how-to-transfer-to-post-neft.html": ["Transfer money from SBI to post office using net bank."],
+								"how-to-transfer-from-bank-post-neft.html": ["Transfer money from SBI to post office using net bank."],
+								"how-to-transfer-to-post-neft.html": ["Transfer money from SBI to post office using YONO."],
 								"sbi-atm-cash-deposit-condition.html": ["SBI ATM Cash Deposit Timing to Avoid Charges"],
 								"dynamic-gold-rate-comparison-tool.html": ["Gold Rate Comparison"],
 								"futura-brush-buying-guide.html": ["Futura Brush: Save AMB Interest (Cash Only)"],
@@ -1175,6 +1185,8 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"my-kt-rank-chatgpt-Fri-09-Jan-2026.html": ["My ChatGPT Knowledge Transfer"],
 								"sugar-tablets.html": ["Sugar Tablets Schedule"],
 								"my-exercise.html": ["My exercise"],
+								"../my-income-spending.html": ["MY INCOME SPENDING"],
+								"../sbi-rewards-points.html": ["MY SBI REWARD POINTS"],
 								"../recharge-mobile.html": ["ALL MOBILES RECHARGE"],
 								"../urination-water.html": ["My urination and Water"],
 								"../my_finance_dashboard.html": ["My finance dash board"],
@@ -2139,6 +2151,16 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					</A>
 					<UL class="submenu">
 						${ "127.0.0.1" === window.location.hostname ?`
+							<LI>
+								<A href="#" onclick="loadHomeContent(event, '../sbi-rewards-points.html');" class="nav-link">
+									MY SBI REWARD POINTS
+								</A>
+							</LI>
+							<LI>
+								<A href="#" onclick="loadHomeContent(event, '../my-income-spending.html');" class="nav-link">
+									MY INCOME SPENDING
+								</A>
+							</LI>
 							<LI>
 								<A href="#" onclick="loadHomeContent(event, '../recharge-mobile.html');" class="nav-link">
 									ALL MOBILES RECHARGE
