@@ -1104,6 +1104,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"how-to-use-mobile-home-fibnernet-bsnl.html": ["BSNL Mobile & Fibernet"],
 								"Steps-to-save-money-from-mis.html": ["Post Office Savings Guide"],
 								"ppf-info.html": ["Steps to save at PPF?"],
+								"pay-ppf-online.html": ["PAY A POST OFFICE PPF FUND ONLINE"],
 								"steps-to-open-rd-postoffice.html": ["Recurring Deposit (RD)"],
 								"ssa-account-deposit.html": ["SSA Account"],
 								"td-better-than-mis-nsc.html": ["TD vs MIS: Which Strategy Wins?"],
@@ -1187,6 +1188,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"my-exercise.html": ["My exercise"],
 								"../my-income-spending.html": ["MY INCOME SPENDING"],
 								"../sbi-rewards-points.html": ["MY SBI REWARD POINTS"],
+								"pain-killer-tablet.html": ["PAIN KILLER TABLET"],
 								"../recharge-mobile.html": ["ALL MOBILES RECHARGE"],
 								"../urination-water.html": ["My urination and Water"],
 								"../my_finance_dashboard.html": ["My finance dash board"],
@@ -1706,6 +1708,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 									</TABLE>
 									<UL class="submenu">
 										<LI>
+											<A href="#" onclick="javascript:loadHomeContent( event, 'pay-ppf-online.html' );" class="nav-link">PAY A POST OFFICE PPF FUND ONLINE</A>
+										</LI>
+										<LI>
 											<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-info.html' );" class="nav-link">Steps to save at PPF?</A>
 										</LI>
 									</UL>
@@ -2150,6 +2155,11 @@ function MainPageHomeLoadContent( event, htmlFileName )
 						<SPAN class="nav-arrow">&gt;</SPAN>
 					</A>
 					<UL class="submenu">
+							<LI>
+								<A href="#" onclick="loadHomeContent(event, 'pain-killer-tablet.html');" class="nav-link">
+									PAIN KILLER TABLET
+								</A>
+							</LI>
 						${ "127.0.0.1" === window.location.hostname ?`
 							<LI>
 								<A href="#" onclick="loadHomeContent(event, '../sbi-rewards-points.html');" class="nav-link">
