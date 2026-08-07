@@ -1211,10 +1211,9 @@
 						</SCRIPT>
 				<TR id='26Aug'>
 					<TD valign='top' align='right' id='Id_e_Milad'>
+						Wed 26-Aug-2026
 					</TD>
-					<TD valign='top' align='left' id='DispId_e_Milad_Tentative'>
-						Id-e-Milad (Tentative)
-					</TD>
+					<TD valign='top' align='left' id='DispId_e_Milad_Tentative'>Id-e-Milad (Tentative)</TD>
 				</TR>
 						<SCRIPT type='text/javascript'>
 							if( mm > 7 )
@@ -1256,7 +1255,9 @@
 									// document.getElementById("26Aug").style.backgroundColor = "yellow";
 									// document.getElementById("26Aug").style.color = "black";
 							}
-							document.getElementById("Id_e_Milad").innerHTML = Disp_IdeMiladDate;
+							//document.getElementById("Id_e_Milad").innerHTML = Disp_IdeMiladDate;
+							console.log("IdeMilad:", Disp_IdeMiladDate);
+							document.getElementById("Id_e_Milad").textContent = Disp_IdeMiladDate;
 							if( "Fri" == Day )
 							{
 								NextSunMiladDate_Tentative=(""+new Date( "28-Aug-"+DispYYYY) ).substring( 0, 3)+" 28-Aug-"+DispYYYY;
@@ -1682,10 +1683,14 @@
 					if (match) {
 						var day = match[1];
 						var monthStr = match[2];
-						var targetYear = (typeof mm !== 'undefined' && typeof yyyy !== 'undefined') 
-							? (mm > 11 ? yyyy + 1 : yyyy) 
-							: now.getFullYear();
+						var targetYear = yyyy;
 						var d = new Date(day + "-" + monthStr + "-" + targetYear);
+
+						// If the holiday has already passed this year, treat it as next year's occurrence
+						if (d < now) {
+							d.setFullYear(targetYear + 1);
+						}
+
 						if (!isNaN(d.getTime())) {
 							parsedDate = d;
 						}

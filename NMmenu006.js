@@ -1113,7 +1113,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"Self-Insurance-Plan-for-Parents.html": ["Personal Self-Insurance Example"],
 								"why-to-open-fixed-deposit.html": ["Why Choose Fixed Deposit?"],
 								"sbi-yono-registration-error.html": ["YONO SBI REGISTRATION ISSUE"],
-								"Always-have-bank-balance-ending-with-zero.html": ["Make balance ending with .00 INR always."],
+								"Always-have-bank-balance-ending-with-zero.html": ["How to make balance ending with .00 INR"],
 								"sbi-atm-receive-date.html": ["SBI new atm card waiting days."],
 								"how-to-transfer-from-bank-post-neft.html": ["Transfer money from SBI to post office using net bank."],
 								"how-to-transfer-to-post-neft.html": ["Transfer money from SBI to post office using YONO."],
@@ -1182,6 +1182,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"talent-ibm.html": ["IBM EMAIL AUTOMATION", "IBM EMAIL AUTOMATION"],
 								"My_Drawings.html": ["My drawings"],
 								"Visitor_count.html": ["Visitor Information"],
+								"Prediction_04.html": ["MyPredict"],
 								"beggar-count.html": ["Beggar Count Report"],
 								"my-kt-rank-chatgpt-Fri-09-Jan-2026.html": ["My ChatGPT Knowledge Transfer"],
 								"sugar-tablets.html": ["Sugar Tablets Schedule"],
@@ -1521,8 +1522,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					<UL class="nav-list">
 						<LI class="nav-item">
 							<A href='javascript:void( 0 );' class="nav-link" style="cursor: text; text-decoration: none;">
-								<SPAN class="nav-icon">&#127974;</SPAN>
-								<SPAN class="nav-text"><FONT color='black'>HandleMoney</FONT></SPAN>
+								<SPAN class="nav-text"><FONT color='black'><TABLE border='1'><TR><TD><IMG src='images/handle-money.jpg' style='width:35px;'></TD><TD>HandleMoney</TD><TD><IMG src='images/DrillDown.png' style='width:15px;'></TD></TR></TABLE></FONT></SPAN>
 								<SPAN class="nav-arrow">&gt;</SPAN>
 							</A>
 							<UL class="submenu">
@@ -1557,8 +1557,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 						</LI>
 				<LI class="nav-item">
 					<A href="#" class="nav-link">
-						<SPAN class="nav-icon">&#127974;</SPAN>
-						<SPAN class="nav-text"><FONT color='black'>Spending</FONT></SPAN>
+						<SPAN class="nav-text"><FONT color='black'><TABLE border='1'><TR><TD><IMG src='images/spending.jpg' style='width:50px;'></TD><TD>Spending</TD><TD><IMG src='images/DrillDown.png' style='width:15px;'></TD></TR></TABLE></FONT></SPAN>
 						<SPAN class="nav-arrow">&gt;</SPAN>
 					</A>
 					<UL class="submenu">
@@ -1670,8 +1669,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				</UL>
 				<LI class="nav-item">
 					<A href="#" class="nav-link">
-						<SPAN class="nav-icon">&#127974;</SPAN>
-						<SPAN class="nav-text"><FONT color='black'>Banking</FONT></SPAN>
+						<SPAN class="nav-text"><FONT color='black'><TABLE border='1'><TR><TD><IMG src='images/sbi-postoffice.jpg' style='width:50px;'></TD><TD>Banking</TD><TD><IMG src='images/DrillDown.png' style='width:15px;'></TD></TR></TABLE></FONT></SPAN>
 						<SPAN class="nav-arrow">&gt;</SPAN>
 					</A>
 					<UL class="submenu">
@@ -1768,7 +1766,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							<A href="#" onclick="javascript:loadHomeContent( event, 'how-to-transfer-to-post-neft.html' );" class="nav-link">Transfer money from SBI to post office using YONO.</A>
 						</LI>
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'Always-have-bank-balance-ending-with-zero.html' );" class="nav-link">Make balance ending with .00 INR always.</A>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'Always-have-bank-balance-ending-with-zero.html' );" class="nav-link">How to make balance ending with .00 INR</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'sbi-yono-registration-error.html' );" class="nav-link">YONO SBI REGISTRATION ISSUE</A>
@@ -1870,8 +1868,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 	</LI>
 <LI class="nav-item">
 	<A href="#" class="nav-link">
-		<SPAN class="nav-icon">&#x1F527;</SPAN>
-		<SPAN class="nav-text"><FONT color='black'>Utility</FONT></SPAN>
+		<SPAN class="nav-text"><FONT color='black'><TABLE border='1'><TR><TD><SPAN class="nav-icon">&#x1F527;</SPAN></TD><TD>Utility</TD><TD><IMG src='images/DrillDown.png' style='width:15px;'></TD></TR></TABLE></FONT></SPAN>
 		<SPAN class="nav-arrow">&gt;</SPAN>
 	</A>
 	<UL class="submenu">
@@ -1957,14 +1954,8 @@ function MainPageHomeLoadContent( event, htmlFileName )
 	</UL>
 </LI>
 				<LI class="nav-item">
-					<A href="#" onclick="loadHomeContent( event, 'Prediction_04.html' )" class="nav-link">
-						<SPAN class="nav-icon">&#x1F465;<FONT color='black'>MyPredict</FONT></SPAN>
-					</A>
-				</LI>
-				<LI class="nav-item">
 				<A href="#" class="nav-link">
-				<SPAN class="nav-icon">&#x1F4BB;</SPAN>
-				<SPAN class="nav-text"><FONT color='black'>Tech</FONT></SPAN>
+				<SPAN class="nav-text"><FONT color='black'><TABLE border='1'><TR><TD><SPAN class="nav-icon">&#x1F4BB;</SPAN></TD><TD>Tech</TD><TD><IMG src='images/DrillDown.png' style='width:15px;'></TD></TR></TABLE></FONT></SPAN>
 				<SPAN class="nav-arrow">&gt;</SPAN>
 				</A>
 				<UL class="submenu">
@@ -2084,11 +2075,31 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				</LI>
 				<LI class="nav-item">
 					<A href="javascript:void(0);" class="nav-link">
-						<SPAN class="nav-icon">&#x1F465;</SPAN>
-						<SPAN class="nav-text"><FONT color='black'>Visitors</FONT></SPAN>
+						<SPAN class="nav-text">
+							<FONT color='black'>
+								<TABLE border='1'>
+									<TR>
+										<TD>
+											<SPAN class="nav-icon">&#x1F465;</SPAN>
+										</TD>
+										<TD>
+											Visitors
+										</TD>
+										<TD>
+											<IMG src='images/DrillDown.png' style='width:15px;'>
+										</TD>
+									</TR>
+								</TABLE>
+							</FONT>
+						</SPAN>
 						<SPAN class="nav-arrow">&gt;</SPAN>
 					</A>
 					<UL class="submenu">
+						<LI>
+							<A href="#" onclick="loadHomeContent( event, 'Prediction_04.html' )" class="nav-link">
+								<SPAN class="nav-icon">&#x1F465;<FONT color='black'>MyPredict</FONT></SPAN>
+							</A>
+						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent(event, 'Visitor_count.html');" class="nav-link">Visitor Information</A>
 						</LI>
@@ -2119,7 +2130,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				<LI class="nav-item">
 				<A class="nav-link">
 				<SPAN class="nav-icon">&#x1F4C5;</SPAN>
-				<SPAN class="nav-text"><FONT color='black'>Calendar</FONT></SPAN>
+				<SPAN class="nav-text"><FONT color='black'><TABLE border='1'><TR><TD>Calendar</TD><TD><IMG src='images/DrillDown.png' style='width:15px;'></TD></TR></TABLE></FONT></SPAN>
 				</A>
 					<UL class="submenu">
 						<LI>
@@ -2150,8 +2161,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				</LI>
 				<LI class="nav-item">
 					<A href="#" class="nav-link">
-						<SPAN class="nav-icon"><FONT color="black">&#x2705;</FONT></SPAN>
-						<SPAN class="nav-text"><FONT color='black'>About</FONT></SPAN>
+						<SPAN class="nav-text"><FONT color='black'><TABLE border='1'><TR><TD>About</TD><TD><IMG src='images/DrillDown.png' style='width:15px;'></TD></TR></TABLE></FONT></SPAN>
 						<SPAN class="nav-arrow">&gt;</SPAN>
 					</A>
 					<UL class="submenu">
