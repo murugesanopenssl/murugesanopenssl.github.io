@@ -2,7 +2,7 @@
 <HTML lang="en">
 	<HEAD>
 		<META CHARSET='UTF-8'>
-		<STYLE>
+		<STYLE type='text/css'>
 			.last-row
 			{
 				background-color:red;
@@ -22,7 +22,6 @@
 					<DIV id="chitfund-post-sbi-compare">
 					<H1>Post Office / SBI / DNC Investment Comparison</H1>
 					<DIV class="subtitle">Investment comparison based on the amounts and periods specified</DIV>
-
 					<DIV class="table-wrap">
 						<TABLE border='1' style='width:100%;'>
 							<THEAD>
@@ -31,318 +30,278 @@
 									<TH>Rate</TH>
 									<TH>Monthly Amount<BR>ರೂ/ரூ/₹ INR</TH>
 									<TH>Period</TH>
-									<TH>Total Paid</TH>
-									<TH>Interest / Profit</TH>
-									<TH>Amount After Period</TH>
+									<TH>Total Paid<BR>ರೂ/ரூ/₹ INR</TH>
+									<TH>Interest / Profit<BR>ರೂ/ரூ/₹ INR</TH>
+									<TH>Amount After Period<BR>ರೂ/ரூ/₹ INR</TH>
 								</TR>
 							</THEAD>
 							<TBODY id="investment-table-body">
 							</TBODY>
 						</TABLE>
 					</DIV>
-
 					<DIV class="warning">
 						<STRONG>Important:</STRONG> PPF is a 15-year account. The calculation below assumes 8000.00 is deposited every month for the first 25 months and an additional 500.00 is deposited every month for the full 15 years.
 						<BR>
 						PPF interest is calculated using an estimated monthly-compounding model for comparison purposes. Actual PPF interest is calculated according to the PPF rules and applicable financial-year interest rates.
 					</DIV>
-
 					<DIV class="note">
 						<STRONG>PPF calculation:</STRONG> 8000.00/month × 25 months + 500.00/month × 180 months.
 						<BR>
 						The total contribution is therefore 290000.00 over 15 years.
 					</DIV>
-
 					<DIV class="note">
 						<STRONG>RD calculation:</STRONG> One Post Office RD with 8000.00 deposited every month for 5 years is compared with 80 separate RD accounts, each receiving 100.00 every month for 5 years.
 						<BR>
 						Because 100.00 × 80 = 8000.00, both RD options have the same total monthly contribution and, assuming the same interest rate and dates, approximately the same maturity value.
 					</DIV>
-
 					<DIV class="note">
 						<STRONG>SBI calculation:</STRONG> The SBI figure assumes 8000.00 is invested every month at a constant 6.00% annual rate for 25 months using the senioFD rates may change, so this is an estimate.
 					</DIV>
-
 					<DIV class="note">
 						<STRONG>DNC calculation:</STRONG> DNC is shown using 8000.00 per month for 25 months. The calculation assumes the full chit value is received at the end without considering any dividend, discount, commission, GST, or other charges.
 					</DIV>
-
 					<DIV class="note">
 						<STRONG>Rates:</STRONG> Post Office PPF 7.10% and Post Office RD 6.70% are the rates currently listed by India Post. Rates can be revised by the Government from time to time.
 					</DIV>
-
-				<SCRIPT type='text/javascript'>
-						(function()
-	{
-		const monthlyAmount = 8000;
-		const months = 25;
-		const totalPaid = monthlyAmount * months;
-		const chitTotalPaid = 175000.00;
-		const misRate = 0.074;
-		const sbiRate = 0.060;
-
-		const ppfRate = 0.071;
-		const ppfMonths = 180;
-		const ppfExtraAmount = 500;
-
-		const ssaRate = 0.082;
-		const ssaMonths = 180;
-		const ssaExtraAmount = 500;
-
-		const rdRate = 0.067;
-		const rdMonths = 60;
-		const rdMonthlyAmount = 8000;
-		const rdSmallAmount = 100;
-		const rdSmallAccounts = 80;
-
-		const nscRate = 0.077;
-		const nscMaturityFor1000 = 1446;
-		const nscMonthlyAmount = 8000;
-		const nscSmallAmount = 1000;
-		const nscSmallAccounts = 8;
-
-		const misProfit = totalPaid * misRate * (months / 12);
-		const misFinal = totalPaid + misProfit;
-
-		const monthlyRate = Math.pow(1 + sbiRate, 1 / 12) - 1;
-		const sbiFinal = monthlyAmount * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
-		const sbiProfit = sbiFinal - totalPaid;
-
-		const dncFinal = totalPaid;
-		const dncProfit = dncFinal - totalPaid;
-
-		let ppfBalance = 0;
-		let ppfTotalPaid = 0;
-
-		for (let month = 1; month <= ppfMonths; month++)
-		{
-			let deposit = ppfExtraAmount;
-
-			if (month <= months)
-			{
-				deposit = deposit + monthlyAmount;
-			}
-
-			ppfBalance = ppfBalance + deposit;
-			ppfTotalPaid = ppfTotalPaid + deposit;
-
-			ppfBalance = ppfBalance * Math.pow(1 + ppfRate, 1 / 12);
-		}
-
-		const ppfFinal = ppfBalance;
-		const ppfProfit = ppfFinal - ppfTotalPaid;
-
-		let ssaBalance = 0;
-		let ssaTotalPaid = 0;
-
-		for (let month = 1; month <= ssaMonths; month++)
-		{
-			let deposit = ssaExtraAmount;
-
-			if (month <= months)
-			{
-				deposit = deposit + monthlyAmount;
-			}
-
-			ssaBalance = ssaBalance + deposit;
-			ssaTotalPaid = ssaTotalPaid + deposit;
-
-			ssaBalance = ssaBalance * Math.pow(1 + ssaRate, 1 / 12);
-		}
-
-		const ssaFinal = ssaBalance;
-		const ssaProfit = ssaFinal - ssaTotalPaid;
-
-		const rdMonthlyRate = Math.pow(1 + rdRate, 1 / 12) - 1;
-
-		const rdFinal = rdMonthlyAmount *
-			((Math.pow(1 + rdMonthlyRate, rdMonths) - 1) / rdMonthlyRate);
-
-		const rdTotalPaid = rdMonthlyAmount * rdMonths;
-		const rdProfit = rdFinal - rdTotalPaid;
-
-		const rdSmallTotalMonthlyAmount = rdSmallAmount * rdSmallAccounts;
-		const rdSmallFinalPerAccount = 7137.00;
-
-		// const rdSmallFinal = rdSmallTotalMonthlyAmount * ((Math.pow(1 + rdMonthlyRate, rdMonths) - 1) / rdMonthlyRate);
-		const rdSmallFinal = rdSmallFinalPerAccount * rdSmallAccounts;
-		const rdSmallTotalPaid = rdSmallTotalMonthlyAmount * rdMonths;
-		const rdSmallProfit = rdSmallFinal - rdSmallTotalPaid;
-		// alert(rdSmallProfit);
-		// alert(rdSmallProfit); => 85430.41968715354
-		// 85430.00 is wrong
-		// for 100.00 final amount is 7137.00
-		// for 100.00 80 times final amount is 7137.00 * 80 = 570960.00
-		const nscMaturityFor8000 = nscMaturityFor1000 * 8;
-	const nscTotalPaid = nscMonthlyAmount * months;
-	const nscFinal = nscMaturityFor8000 * months;
-	const nscProfit = nscFinal - nscTotalPaid;
-
-	const nscSmallMonthlyTotalAmount = nscSmallAmount * nscSmallAccounts;
-	const nscSmallTotalPaid = nscSmallMonthlyTotalAmount * months;
-	const nscSmallFinal = nscMaturityFor1000 * nscSmallAccounts * months;
-	const nscSmallProfit = nscSmallFinal - nscSmallTotalPaid;
-
-		const formatINR = function(value)
-		{
-			return Math.round(value)+".00 ರೂ/ரூ/₹ INR";
-		};
-
-		const investments = [
-			{
-				option: "PPF - Post Office 8000.00 for 25 months and 500.00 till completing 15 years.",
-				rate: "7.10%",
-				monthlyAmount: "8000.00 + 500.00",
-				period: "15 years",
-				totalPaid: ppfTotalPaid,
-				profit: ppfProfit,
-				finalAmount: ppfFinal
-			},
-			{
-				option: "SSA Sukanya Samriddhi 8000.00 for 25 months and 500.00 till completing 15 years.",
-				rate: "8.20%",
-				monthlyAmount: "8000.00 + 500.00",
-				period: "15 years",
-				totalPaid: ssaTotalPaid,
-				profit: ssaProfit,
-				finalAmount: ssaFinal
-			},
-			{
-				option: "Post Office RD - 1 Account 8000.00 during each month for 5 years",
-				rate: "6.70%",
-				monthlyAmount: "8000.00",
-				period: "5 years",
-				totalPaid: rdTotalPaid,
-				profit: rdProfit,
-				finalAmount: rdFinal
-			},
-			{
-				option: "Post Office RD - 80 Accounts paying 100.00 eight times each month for 5 years.",
-				rate: "6.70%",
-				monthlyAmount: "80 × 100.00",
-				period: "5 years",
-				totalPaid: rdSmallTotalPaid,
-				profit: rdSmallProfit,
-				finalAmount: rdSmallFinal
-			},
-			{
-				option: "NSC - 1 Certificate Monthly paying 8000.00 for 25 months",
-				rate: "7.70%",
-				monthlyAmount: "1 × 8000.00",
-				period: "25 purchases / 5 years each",
-				totalPaid: nscTotalPaid,
-				profit: nscProfit,
-				finalAmount: nscFinal
-			},
-			{
-				option: "NSC - 8 Certificates Monthly paying 1000.00 each for 25 months",
-				rate: "7.70%",
-				monthlyAmount: "8 × 1000.00",
-				period: "25 purchases / 5 years each",
-				totalPaid: nscSmallTotalPaid,
-				profit: nscSmallProfit,
-				finalAmount: nscSmallFinal
-			},
-			{
-				option: "Post Office MIS",
-				rate: "7.40%",
-				monthlyAmount: "8000.00",
-				period: "25 months",
-				totalPaid: totalPaid,
-				profit: misProfit,
-				finalAmount: misFinal
-			},
-			{
-				option: "DNC Chit Fund",
-				rate: "3.85%",
-				monthlyAmount: "7200.00",
-				period: "25 months",
-				totalPaid: chitTotalPaid,
-				profit: 15000.00,
-				finalAmount: 190000.00
-			},
-			{
-				option: "SBI 46-Day FD - Senior Citizen",
-				rate: "6.00%",
-				monthlyAmount: "8000.00",
-				period: "25 months",
-				totalPaid: totalPaid,
-				profit: sbiProfit,
-				finalAmount: sbiFinal
-			}
-		];
-		investments.sort(function(a, b) {
-    // Force SBI 46-Day FD to always be the last item
-    if (a.option.includes("SBI 46-Day FD")) return 1;
-    if (b.option.includes("SBI 46-Day FD")) return -1;
-
-    // Otherwise, sort descending by finalAmount
-    return parseFloat(b.finalAmount) - parseFloat(a.finalAmount);
-});
-		const tableBody = document.getElementById("investment-table-body");
-		tableBody.innerHTML = "";
-		investments.forEach(function(investment, index)
-		{
-			const row = document.createElement("TR");
-
-			if (index === investments.length - 1)
-			{
-				row.className = "last-row";
-			}
-			if( "Post Office RD - 80 Accounts paying 100.00 eight times each month for 5 years." == investment.option )
-			{
-				row.innerHTML =
-					"<TD valign='top' align='right' style='background-color:#00ff00;'>"+investment.option+"</TD>"+
-					"<TD valign='top' align='right'>"+investment.rate+"</TD>"+
-					"<TD valign='top' align='right'>"+investment.monthlyAmount+" </TD>"+
-					"<TD valign='top' align='right'>"+investment.period+"</TD>"+
-					"<TD valign='top' align='right'>"+formatINR(investment.totalPaid)+"</TD>"+
-					"<TD valign='top' align='right'>"+formatINR(investment.profit)+"</TD>"+
-					"<TD valign='top' align='right'>"+formatINR(investment.finalAmount)+"</TD>";
-			}
-			else if( "Post Office RD - 1 Account 8000.00 during each month for 5 years" == investment.option )
-			{
-				row.innerHTML =
-					"<TD valign='top' align='right' style='background-color:red;color:white;'>"+investment.option+"</TD>"+
-					"<TD valign='top' align='right'>"+investment.rate+"</TD>"+
-					"<TD valign='top' align='right'>"+investment.monthlyAmount+" </TD>"+
-					"<TD valign='top' align='right'>"+investment.period+"</TD>"+
-					"<TD valign='top' align='right'>"+formatINR(investment.totalPaid)+"</TD>"+
-					"<TD valign='top' align='right'>"+formatINR(investment.profit)+"</TD>"+
-					"<TD valign='top' align='right'>"+formatINR(investment.finalAmount)+"</TD>";
-			}
-			else
-			{
-				row.innerHTML =
-					"<TD valign='top' align='right'>"+investment.option+"</TD>"+
-					"<TD valign='top' align='right'>"+investment.rate+"</TD>"+
-					"<TD valign='top' align='right'>"+investment.monthlyAmount+" </TD>"+
-					"<TD valign='top' align='right'>"+investment.period+"</TD>"+
-					"<TD valign='top' align='right'>"+formatINR(investment.totalPaid)+"</TD>"+
-					"<TD valign='top' align='right'>"+formatINR(investment.profit)+"</TD>"+
-					"<TD valign='top' align='right'>"+formatINR(investment.finalAmount)+"</TD>";
-			}
-
-			tableBody.appendChild(row);
-		});
-	} ) ();
-</SCRIPT>
-
-And keep this in your <HEAD>:
-
-<STYLE>
-	.last-row
-	{
-		background-color:red;
-		color:white;
-	}
-
-	.last-row TD
-	{
-		background-color:red;
-		color:white;
-	}
-				</SCRIPT>
+					<SCRIPT type='text/javascript'>
+							(function()
+							{
+								const monthlyAmount = 8000;
+								const months = 25;
+								const totalPaid = monthlyAmount * months;
+								const chitTotalPaid = 175000.00;
+								const misRate = 0.074;
+								const sbiRate = 0.060;
+								const ppfRate = 0.071;
+								const ppfMonths = 180;
+								const ppfExtraAmount = 500;
+								const ssaRate = 0.082;
+								const ssaMonths = 180;
+								const ssaExtraAmount = 500;
+								const rdRate = 0.067;
+								const rdMonths = 60;
+								const rdMonthlyAmount = 8000;
+								const rdSmallAmount = 100;
+								const rdSmallAccounts = 80;
+								const nscRate = 0.077;
+								const nscMaturityFor1000 = 1446;
+								const nscMonthlyAmount = 8000;
+								const nscSmallAmount = 1000;
+								const nscSmallAccounts = 8;
+								const misProfit = totalPaid * misRate * (months / 12);
+								const misFinal = totalPaid + misProfit;
+								const monthlyRate = Math.pow(1 + sbiRate, 1 / 12) - 1;
+								const sbiFinal = monthlyAmount * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+								const sbiProfit = sbiFinal - totalPaid;
+								const dncFinal = totalPaid;
+								const dncProfit = dncFinal - totalPaid;
+								let ppfBalance = 0;
+								let ppfTotalPaid = 0;
+								for (let month = 1; month <= ppfMonths; month++)
+								{
+									let deposit = ppfExtraAmount;
+									if (month <= months)
+									{
+										deposit = deposit + monthlyAmount;
+									}
+									ppfBalance = ppfBalance + deposit;
+									ppfTotalPaid = ppfTotalPaid + deposit;
+									ppfBalance = ppfBalance * Math.pow(1 + ppfRate, 1 / 12);
+								}
+								const ppfFinal = ppfBalance;
+								const ppfProfit = ppfFinal - ppfTotalPaid;
+								let ssaBalance = 0;
+								let ssaTotalPaid = 0;
+								for (let month = 1; month <= ssaMonths; month++)
+								{
+									let deposit = ssaExtraAmount;
+									if (month <= months)
+									{
+										deposit = deposit + monthlyAmount;
+									}
+									ssaBalance = ssaBalance + deposit;
+									ssaTotalPaid = ssaTotalPaid + deposit;
+									ssaBalance = ssaBalance * Math.pow(1 + ssaRate, 1 / 12);
+								}
+								const ssaFinal = ssaBalance;
+								const ssaProfit = ssaFinal - ssaTotalPaid;
+								const rdMonthlyRate = Math.pow(1 + rdRate, 1 / 12) - 1;
+								const rdFinal = rdMonthlyAmount *
+									((Math.pow(1 + rdMonthlyRate, rdMonths) - 1) / rdMonthlyRate);
+								const rdTotalPaid = rdMonthlyAmount * rdMonths;
+								const rdProfit = rdFinal - rdTotalPaid;
+								const rdSmallTotalMonthlyAmount = rdSmallAmount * rdSmallAccounts;
+								const rdSmallFinalPerAccount = 7137.00;
+								// const rdSmallFinal = rdSmallTotalMonthlyAmount * ((Math.pow(1 + rdMonthlyRate, rdMonths) - 1) / rdMonthlyRate);
+								const rdSmallFinal = rdSmallFinalPerAccount * rdSmallAccounts;
+								const rdSmallTotalPaid = rdSmallTotalMonthlyAmount * rdMonths;
+								const rdSmallProfit = rdSmallFinal - rdSmallTotalPaid;
+								// alert(rdSmallProfit);
+								// alert(rdSmallProfit); => 85430.41968715354
+								// 85430.00 is wrong
+								// for 100.00 final amount is 7137.00
+								// for 100.00 80 times final amount is 7137.00 * 80 = 570960.00
+								const nscMaturityFor8000 = nscMaturityFor1000 * 8;
+							const nscTotalPaid = nscMonthlyAmount * months;
+							const nscFinal = nscMaturityFor8000 * months;
+							const nscProfit = nscFinal - nscTotalPaid;
+							const nscSmallMonthlyTotalAmount = nscSmallAmount * nscSmallAccounts;
+							const nscSmallTotalPaid = nscSmallMonthlyTotalAmount * months;
+							const nscSmallFinal = nscMaturityFor1000 * nscSmallAccounts * months;
+							const nscSmallProfit = nscSmallFinal - nscSmallTotalPaid;
+								const formatINR = function(value)
+								{
+									return Math.round(value)+".00";
+								};
+								const investments = [
+									{
+										option: "PPF - Post Office 8000.00 for 25 months and 500.00 till completing 15 years.",
+										rate: "7.10%",
+										monthlyAmount: "8000.00 + 500.00",
+										period: "15 years",
+										totalPaid: ppfTotalPaid,
+										profit: ppfProfit,
+										finalAmount: ppfFinal
+									},
+									{
+										option: "SSA Sukanya Samriddhi 8000.00 for 25 months and 500.00 till completing 15 years.",
+										rate: "8.20%",
+										monthlyAmount: "8000.00 + 500.00",
+										period: "15 years",
+										totalPaid: ssaTotalPaid,
+										profit: ssaProfit,
+										finalAmount: ssaFinal
+									},
+									{
+										option: "Post Office RD - 1 Account 8000.00 during each month for 5 years",
+										rate: "6.70%",
+										monthlyAmount: "8000.00",
+										period: "5 years",
+										totalPaid: rdTotalPaid,
+										profit: rdProfit,
+										finalAmount: rdFinal
+									},
+									{
+										option: "Post Office RD - 80 Accounts paying 100.00 eight times each month for 5 years.",
+										rate: "6.70%",
+										monthlyAmount: "80 × 100.00",
+										period: "5 years",
+										totalPaid: rdSmallTotalPaid,
+										profit: rdSmallProfit,
+										finalAmount: rdSmallFinal
+									},
+									{
+										option: "NSC - 1 Certificate Monthly paying 8000.00 for 25 months",
+										rate: "7.70%",
+										monthlyAmount: "1 × 8000.00",
+										period: "25 purchases / 5 years each",
+										totalPaid: nscTotalPaid,
+										profit: nscProfit,
+										finalAmount: nscFinal
+									},
+									{
+										option: "NSC - 8 Certificates Monthly paying 1000.00 each for 25 months",
+										rate: "7.70%",
+										monthlyAmount: "8 × 1000.00",
+										period: "25 purchases / 5 years each",
+										totalPaid: nscSmallTotalPaid,
+										profit: nscSmallProfit,
+										finalAmount: nscSmallFinal
+									},
+									{
+										option: "Post Office MIS",
+										rate: "7.40%",
+										monthlyAmount: "8000.00",
+										period: "25 months",
+										totalPaid: totalPaid,
+										profit: misProfit,
+										finalAmount: misFinal
+									},
+									{
+										option: "DNC Chit Fund",
+										rate: "3.85%",
+										monthlyAmount: "7200.00",
+										period: "25 months",
+										totalPaid: chitTotalPaid,
+										profit: 15000.00,
+										finalAmount: 190000.00
+									},
+									{
+										option: "SBI 46-Day FD - Senior Citizen",
+										rate: "6.00%",
+										monthlyAmount: "8000.00",
+										period: "25 months",
+										totalPaid: totalPaid,
+										profit: sbiProfit,
+										finalAmount: sbiFinal
+									}
+								];
+								investments.sort(function(a, b) {
+							// Force SBI 46-Day FD to always be the last item
+							if (a.option.includes("SBI 46-Day FD")) return 1;
+							if (b.option.includes("SBI 46-Day FD")) return -1;
+							// Otherwise, sort descending by finalAmount
+							return parseFloat(b.finalAmount) - parseFloat(a.finalAmount);
+						});
+								const tableBody = document.getElementById("investment-table-body");
+								tableBody.innerHTML = "";
+								investments.forEach(function(investment, index)
+								{
+									const row = document.createElement("TR");
+									if (index === investments.length - 1)
+									{
+										row.className = "last-row";
+									}
+									if( "Post Office RD - 80 Accounts paying 100.00 eight times each month for 5 years." == investment.option )
+									{
+										row.innerHTML =
+											"<TD valign='top' align='right' style='background-color:#00ff00;'>"+investment.option+"</TD>"+
+											"<TD valign='top' align='right'>"+investment.rate+"</TD>"+
+											"<TD valign='top' align='right'>"+investment.monthlyAmount+" </TD>"+
+											"<TD valign='top' align='right'>"+investment.period+"</TD>"+
+											"<TD valign='top' align='right'>"+formatINR(investment.totalPaid)+"</TD>"+
+											"<TD valign='top' align='right'>"+formatINR(investment.profit)+"</TD>"+
+											"<TD valign='top' align='right'>"+formatINR(investment.finalAmount)+"</TD>";
+									}
+									else if( "Post Office RD - 1 Account 8000.00 during each month for 5 years" == investment.option )
+									{
+										row.innerHTML =
+											"<TD valign='top' align='right' style='background-color:red;color:white;'>"+investment.option+"</TD>"+
+											"<TD valign='top' align='right'>"+investment.rate+"</TD>"+
+											"<TD valign='top' align='right'>"+investment.monthlyAmount+" </TD>"+
+											"<TD valign='top' align='right'>"+investment.period+"</TD>"+
+											"<TD valign='top' align='right'>"+formatINR(investment.totalPaid)+"</TD>"+
+											"<TD valign='top' align='right'>"+formatINR(investment.profit)+"</TD>"+
+											"<TD valign='top' align='right'>"+formatINR(investment.finalAmount)+"</TD>";
+									}
+									else
+									{
+										row.innerHTML =
+											"<TD valign='top' align='right'>"+investment.option+"</TD>"+
+											"<TD valign='top' align='right'>"+investment.rate+"</TD>"+
+											"<TD valign='top' align='right'>"+investment.monthlyAmount+" </TD>"+
+											"<TD valign='top' align='right'>"+investment.period+"</TD>"+
+											"<TD valign='top' align='right'>"+formatINR(investment.totalPaid)+"</TD>"+
+											"<TD valign='top' align='right'>"+formatINR(investment.profit)+"</TD>"+
+											"<TD valign='top' align='right'>"+formatINR(investment.finalAmount)+"</TD>";
+									}
+									tableBody.appendChild(row);
+								});
+							} ) ();
+						</SCRIPT>
+						And keep this in your <HEAD>:
+						<STYLE type='text/css'>
+							.last-row
+							{
+								background-color:red;
+								color:white;
+							}
+							.last-row TD
+							{
+								background-color:red;
+								color:white;
+							}
+						</SCRIPT>
 					</DIV>
 				</TD>
 			</TR>

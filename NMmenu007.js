@@ -1118,6 +1118,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"how-to-transfer-from-bank-post-neft.html": ["Transfer money from SBI to post office using net bank."],
 								"how-to-transfer-to-post-neft.html": ["Transfer money from SBI to post office using YONO."],
 								"sbi-atm-cash-deposit-condition.html": ["SBI ATM Cash Deposit Timing to Avoid Charges"],
+								"chitfund-post-sbi-compare.html": ["Post/SBI/Chit fund compare"],
 								"dynamic-gold-rate-comparison-tool.html": ["Gold Rate Comparison"],
 								"futura-brush-buying-guide.html": ["Futura Brush: Save AMB Interest (Cash Only)"],
 								"axis-bank-life-insurance-block.html": ["Avoid Private Bank Life Insurance"],
@@ -1754,6 +1755,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					</A>
 					<UL class="submenu">
 						<LI>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'chitfund-post-sbi-compare.html' );" class="nav-link">Post/SBI/Chit fund compare</A>
+						</LI>
+						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'sbi-atm-cash-deposit-condition.html' );" class="nav-link">SBI ATM Cash Deposit Timing to Avoid Charges</A>
 						</LI>
 						<LI>
@@ -2024,12 +2028,6 @@ function MainPageHomeLoadContent( event, htmlFileName )
 						</LI>
 						<LI>
 							<A href="#" onclick="window.open(              'https://archive.org/details/letusc0000kane/page/n3/mode/2up?_autoReadAloud=show' )" class="nav-link">Let us C++</A>
-						</LI>
-						<LI>
-							<A href="#" onclick="loadHomeContent( event, 'info-ltts.html' )" class="nav-link">L & T EMAIL AUTOMATION</A>
-						</LI>
-						<LI>
-							<A href="#" onclick="loadHomeContent( event, 'talent-ibm.html' )" class="nav-link">IBM EMAIL AUTOMATION</A>
 						</LI>
 					</UL>
 				</LI>
