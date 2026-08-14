@@ -735,7 +735,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					"post-office-mis.html": "Monthly Income Scheme (MIS)",
 					"steps-to-open-rd-postoffice.html": "Recurring Deposit (RD)",
 					"ssa-account-deposit.html": "SSA Account",
-					"td-better-than-mis-nsc.html": "TD vs MIS: Which Strategy Wins?",
+					"td-better-than-mis-nsc.html": "SCSS BETTER THAN TD/MIS/NSC/RD",
 					"Steps-to-save-money-from-mis.html": "STEPS TO SAVE MONEY FROM MIS",
 					"spending.html": "Daily Spending",
 					"2-wheeler-4-wheeler-rank.html": "Vehicle ranking",
@@ -839,7 +839,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				}
 				else if( "td-better-than-mis-nsc.html" == htmlFileName )
 				{
-				document.title = "TD vs MIS: Which Strategy Wins?";
+					document.title = "SCSS BETTER THAN TD/MIS/NSC/RD";
 				}
 				else if( "Steps-to-save-money-from-mis.html" == htmlFileName )
 				{
@@ -1107,7 +1107,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"pay-ppf-online.html": ["PAY A POST OFFICE PPF FUND ONLINE"],
 								"steps-to-open-rd-postoffice.html": ["Recurring Deposit (RD)"],
 								"ssa-account-deposit.html": ["SSA Account"],
-								"td-better-than-mis-nsc.html": ["TD vs MIS: Which Strategy Wins?"],
+								"td-better-than-mis-nsc.html": ["SCSS BETTER THAN TD/MIS/NSC/RD"],
 								"mis-pre-close-calculator.html": ["PRE CLOSE MIS CALC"],
 								"ippb-awareness-indian-citizens.html": ["IPPB Premium Savings Tips"],
 								"Self-Insurance-Plan-for-Parents.html": ["Personal Self-Insurance Example"],
@@ -1718,7 +1718,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 									<A href="#" onclick='javascript:window.open( "post-office-mis.html" );' class="nav-link"><FONT color='#00ff00'>Monthly Income Scheme (MIS)</FONT></A>
 								</LI>
 								<LI>
-									<A href="#" onclick='javascript:loadHomeContent( event, "td-better-than-mis-nsc.html" );' class="nav-link">TD vs MIS: Which Strategy Wins?</A>
+									<A href="#" onclick='javascript:loadHomeContent( event, "td-better-than-mis-nsc.html" );' class="nav-link">SCSS BETTER THAN TD/MIS/NSC/RD</A>
 								</LI>
 								<LI>
 									<A href="#" onclick='javascript:loadHomeContent( event, "steps-to-open-rd-postoffice.html" );' class="nav-link">Recurring Deposit (RD)</A>
@@ -2169,6 +2169,11 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								</A>
 							</LI>
 						${ "127.0.0.1" === window.location.hostname ?`
+							<LI>
+								<A href="#" onclick="loadHomeContent(event, '../my-father-property-tax.html');" class="nav-link">
+									MY FATHER PROPERTY TAX
+								</A>
+							</LI>
 							<LI>
 								<A href="#" onclick="loadHomeContent(event, '../sbi-rewards-points.html');" class="nav-link">
 									MY SBI REWARD POINTS

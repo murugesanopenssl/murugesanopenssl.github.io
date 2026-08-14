@@ -11,7 +11,7 @@
 		<LINK rel="stylesheet" href="font-alignment-border-style.css">
 	</HEAD>
 	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
-		<SCRIPT src="NMmenu007.js"></SCRIPT>
+		<SCRIPT src="NMmenu008.js"></SCRIPT>
 		<DIV class="container">
 			<SCRIPT>
 				DisplayMainMenu();
@@ -66,22 +66,17 @@ C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25060.7-0\MpDefenderCore
 
 <B>4. Delete or gzip Defender Files</B>
 In Command Prompt(Administrator at safe mode):
-C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0&gt; DEL /P "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe"
-C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe, Delete (Y/N)? Y
-C:\ProgramData\Microsoft\Windows Defender\Platform&gt; DEL /P "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe"
-C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe, Delete (Y/N)? Y
-C:\ProgramData\Microsoft\Windows Defender\Platform&gt; DEL /P "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MpDefenderCoreService.exe"
-C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MpDefenderCoreService.exe, Delete (Y/N)? Y
-C:\ProgramData\Microsoft\Windows Defender\Platform&gt; DEL /P "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25060.7-0\MpDefenderCoreService.exe"
-C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25060.7-0\MpDefenderCoreService.exe, Delete (Y/N)? Y
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0&gt; gzip.exe "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe"
+C:\ProgramData\Microsoft\Windows Defender\Platform&gt; gzip.exe "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe"
+C:\ProgramData\Microsoft\Windows Defender\Platform&gt; gzip.exe "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MpDefenderCoreService.exe"
+C:\ProgramData\Microsoft\Windows Defender\Platform&gt; gzip.exe "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25060.7-0\MpDefenderCoreService.exe"
 
 
 C:\Windows\System32&gt; CD /D C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0
 C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0&gt; chown.exe murugesan -R .
 C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0&gt; chgrp.exe openssl -R .
 
-C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0&gt; DEL /P MsMpEng.exe
-C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0\MsMpEng.exe, Delete (Y/N)? Y
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25070.5-0&gt; gzip.exe MsMpEng.exe
 
 5. Exit Safe Mode
 
@@ -106,20 +101,13 @@ bash.exe:
 <TABLE style='background-color:black;color:white;'>
 <TR>
 <TD>
-$ rm -i /cygdrive/c/Windows/System32/bash.exe
-/bin/rm: remove regular file '/cygdrive/c/Windows/System32/bash.exe'? y
-$ rm -i /cygdrive/c/Windows/WinSxS/amd64_microsoft-windows-lxss-bash_31bf3856ad364e35_10.0.19041.5794_none_b42e587f71e90738/bash.exe
-/bin/rm: remove regular file '/cygdrive/c/Windows/WinSxS/amd64_microsoft-windows-lxss-bash_31bf3856ad364e35_10.0.19041.5794_none_b42e587f71e90738/bash.exe'? y
-$ rm -i "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"
-/bin/rm: remove regular file "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"? y
-$ rm -i "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"
-/bin/rm: remove regular file "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"? y
-$ rm -i "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MpDefenderCoreService.exe"
-/bin/rm: remove regular file "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MpDefenderCoreService.exe"? y
-$ rm -i "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25060.7-0/MpDefenderCoreService.exe"
-/bin/rm: remove regular file "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25060.7-0/MpDefenderCoreService.exe"? y
-$ rm -i "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"
-/bin/rm: remove regular file "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"? y
+$ gzip /cygdrive/c/Windows/System32/bash.exe
+$ gzip /cygdrive/c/Windows/WinSxS/amd64_microsoft-windows-lxss-bash_31bf3856ad364e35_10.0.19041.5794_none_b42e587f71e90738/bash.exe
+$ gzip "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"
+$ gzip "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"
+$ gzip "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MpDefenderCoreService.exe"
+$ gzip "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25060.7-0/MpDefenderCoreService.exe"
+$ gzip "/cygdrive/c/ProgramData/Microsoft/Windows Defender/Platform/4.18.25070.5-0/MsMpEng.exe"
 </TD>
 </TR>
 </TABLE>

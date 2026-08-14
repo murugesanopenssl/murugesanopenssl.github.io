@@ -1,515 +1,2079 @@
 <!DOCTYPE html>
 <HTML lang="en">
-    <HEAD>
-        <META charset="UTF-8">
-        <META name="viewport" content="width=device-width, initial-scale=1.0">
-        <TITLE>Term Deposit vs Monthly Income Scheme Comparison</TITLE>
-		<!--
-        <STYLE type='text/css'>
-            .container
-            {
-                font-family: Arial, sans-serif;
-                background-color: #ffffff;
-                color: #333333;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+<HEAD>
+    <META charset="UTF-8">
+    <META name="viewport" content="width=device-width, initial-scale=1.0">
+    <TITLE>NSC vs TD vs MIS vs SCSS - Profit Comparison</TITLE>
+    <STYLE type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 10px;
+            background-color: #f4f6f9;
+            color: #222222;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        .mainTable {
+            width: 100%;
+            background-color: #ffffff;
+        }
+        .languageTable {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .languageButton {
+            cursor: pointer;
+            font-weight: bold;
+            color: #003366;
+            text-decoration: underline;
+        }
+        .disabledButton {
+            cursor: default;
+            font-weight: bold;
+            color: #666666;
+            text-decoration: none;
+        }
+        .winnerHeader {
+            width: 100%;
+            background-color: #008000;
+            color: #ffffff;
+            font-size: 19px;
+            font-weight: bold;
+            padding: 12px;
+            text-align: center;
+        }
+        .title {
+            background-color: #1f4e78;
+            color: #ffffff;
+            font-size: 21px;
+            font-weight: bold;
+            padding: 12px;
+            text-align: left;
+        }
+        .inputTable {
+            width: 100%;
+            margin-top: 10px;
+            background-color: #ffffff;
+        }
+        .inputTable td {
+            padding: 7px;
+        }
+        .inputBox {
+            width: 130px;
+            padding: 6px;
+            text-align: right;
+            font-size: 14px;
+            border: 1px solid #888888;
+        }
+        .selectBox {
+            width: 150px;
+            padding: 6px;
+            font-size: 14px;
+            border: 1px solid #888888;
+        }
+        .calculateButton {
+            background-color: #1f4e78;
+            color: #ffffff;
+            border: 0;
+            padding: 8px 18px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .calculateButton:hover {
+            background-color: #163a5a;
+        }
+        .resultTable {
+            width: 100%;
+            margin-top: 12px;
+            background-color: #ffffff;
+        }
+        .resultTable th {
+            background-color: #d9eaf7;
+            border: 1px solid #777777;
+            padding: 8px;
+            text-align: center;
+        }
+        .resultTable td {
+            border: 1px solid #777777;
+            padding: 8px;
+            text-align: right;
+        }
+        .resultTable td:first-child {
+            text-align: left;
+        }
+        .winnerColumn {
+            background-color: #c6efce !important;
+            color: #006100;
+            font-weight: bold;
+        }
+        .highlight {
+            background-color: #fff2cc;
+            font-weight: bold;
+        }
+        .profitCell {
+            font-weight: bold;
+            color: #006100;
+        }
+        .lossCell {
+            color: #b30000;
+        }
+        .note {
+            background-color: #ffffff;
+            padding: 10px;
+            margin-top: 10px;
+            color: #444444;
+            font-size: 13px;
+            line-height: 1.5;
+            border-left: 5px solid #1f4e78;
+        }
+        .warning {
+            background-color: #fcf8e3;
+            border-left: 5px solid #f0ad4e;
+            padding: 12px;
+            margin-top: 10px;
+            color: #8a6d3b;
+            line-height: 1.5;
+        }
+        .scenario {
+            background-color: #f2dede;
+            border-left: 5px solid #d9534f;
+            padding: 12px;
+            margin-top: 10px;
+            color: #a94442;
+            line-height: 1.5;
+        }
+        .sectionTitle {
+            background-color: #1f4e78;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 9px;
+            margin-top: 12px;
+        }
+        .smallText {
+            font-size: 12px;
+        }
+        .rateSource {
+            font-size: 12px;
+            color: #666666;
+            margin-top: 5px;
+        }
+        @media screen and (max-width: 700px )
+	{
+            body {
+                padding: 5px;
+                font-size: 13px;
             }
-            .languageButton
-            {
-                cursor: pointer;
-                font-weight: bold;
-                color: #003366;
-                text-decoration: underline;
+            .inputTable td {
+                display: block;
+                width: 100%;
             }
-            .disabledButton
-            {
-                cursor: default;
-                font-weight: bold;
-                color: #666666;
-                text-decoration: none;
+            .inputBox,
+            .selectBox {
+                width: 100%;
             }
-            h2
-            {
-                color: #003366;
-                border-bottom: 2px solid #003366;
-                padding-bottom: 5px;
+            .resultTable {
+                font-size: 12px;
             }
-            table
-            {
-                border-collapse: collapse;
-                margin-top: 10px;
-                margin-bottom: 20px;
+            .resultTable th,
+            .resultTable td {
+                padding: 5px;
             }
-            th
-            {
-                background-color: #003366;
-                color: #ffffff;
-                font-weight: bold;
-                padding: 8px;
+            .winnerHeader {
+                font-size: 16px;
             }
-            td
-            {
-                padding: 8px;
+            .title {
+                font-size: 18px;
             }
-            .highlight
-            {
-                font-weight: bold;
-                color: #b30000;
+        }
+    </STYLE>
+    <SCRIPT type="text/javascript">
+        /*
+         * CURRENT SMALL-SAVINGS RATES
+         *
+         * Rates used in this calculator:
+         *
+         * NSC  = 7.7%
+         * TD   = 7.5%  (5 Year TD)
+         * MIS  = 7.4%
+         * SCSS = 8.2%
+         *
+         * Update these four values when the Government changes
+         * the quarterly small-savings rates.
+         */
+        var rates = {
+            nsc: 7.7,
+            td: 7.5,
+            mis: 7.4,
+            scss: 8.2
+        };
+        var translations = {
+            english: {
+                title:
+                    "NSC vs TD vs MIS vs SCSS = SCSS(senior citizen) is better than a) NSC, b) TD, and c) MIS for higher profit",
+                investment:
+                    "Initial Investment",
+                period:
+                    "Comparison Period",
+                reinvest:
+                    "Reinvest Interest",
+                yes:
+                    "Yes - Reinvest",
+                no:
+                    "No - Keep Interest as Cash",
+                calculate:
+                    "Calculate",
+                scheme:
+                    "Scheme",
+                rate:
+                    "Interest Rate",
+                interestMethod:
+                    "Interest Method",
+                interestReceived:
+                    "Interest Received",
+                finalPrincipal:
+                    "Final Principal",
+                totalValue:
+                    "Total Portfolio Value",
+                profit:
+                    "Total Profit",
+                effectiveReturn:
+                    "Effective Return",
+                liquidity:
+                    "Liquidity",
+                nsc:
+                    "NSC",
+                td:
+                    "5-Year TD",
+                mis:
+                    "MIS",
+                scss:
+                    "SCSS",
+                nscMethod:
+                    "Annual compounding",
+                tdMethod:
+                    "Quarterly compounding",
+                misMethod:
+                    "Monthly interest payout",
+                scssMethod:
+                    "Quarterly interest payout",
+                medium:
+                    "Medium",
+                high:
+                    "High",
+                low:
+                    "Low",
+                bestFor:
+                    "Best suited for",
+                nscBest:
+                    "Long-term growth",
+                tdBest:
+                    "Fixed-income growth",
+                misBest:
+                    "Regular monthly income",
+                scssBest:
+                    "Senior citizens + income",
+                winner:
+                    "is better than",
+                comparison:
+                    "Profit Comparison",
+                ranking:
+                    "Profit Ranking",
+                rank:
+                    "Rank",
+                difference:
+                    "Difference from #1",
+                totalInvestment:
+                    "Total Investment",
+                totalInterest:
+                    "Total Interest / Profit",
+                finalValue:
+                    "Final Value",
+                cashInterest:
+                    "Interest kept as cash",
+                reinvestedInterest:
+                    "Interest reinvested",
+                noteTitle:
+                    "Important calculation note",
+                noteText:
+                    "NSC is modeled with annual compounding and the 5-year TD with quarterly compounding. MIS pays interest monthly and SCSS pays interest quarterly. When reinvestment is enabled, the calculator assumes each payout is reinvested at the same rate and frequency for comparison purposes. Actual future rates may change when each scheme matures.",
+                scenarioTitle:
+                    "Practical interpretation",
+                scenarioText:
+                    "If your objective is maximum growth and you do not need periodic income, a compounding scheme can be advantageous. MIS and SCSS are different because their interest is paid out. Their ranking can change significantly depending on whether those payouts are spent or reinvested.",
+                rateTitle:
+                    "Rates Used",
+                currentRate:
+                    "Current rate used in this calculator",
+                rateWarning:
+                    "Small-savings interest rates are periodically notified by the Government. Change the rate values in the JavaScript when a new quarter's rates are announced.",
+                senior:
+                    "Senior citizen oriented",
+                normal:
+                    "General investor",
+                tax:
+                    "Tax / deduction",
+                taxNSC:
+                    "Eligible subject to applicable rules",
+                taxTD:
+                    "5-year TD may qualify under applicable 80C rules",
+                taxMIS:
+                    "Interest taxable as applicable",
+                taxSCSS:
+                    "Interest taxable as applicable",
+                conclusion:
+                    "Conclusion",
+                conclusionText:
+                    "The winner shown above is based only on the calculated portfolio profit under the selected assumptions. It does not mean that one scheme is universally better for every investor."
+            },
+            tamil: {
+                title:
+                    "NSC vs TD vs MIS vs SCSS - எதில் அதிக லாபம்?",
+                investment:
+                    "ஆரம்ப முதலீடு",
+                period:
+                    "ஒப்பீட்டு காலம்",
+                reinvest:
+                    "வட்டியை மறுமுதலீடு செய்யவா?",
+                yes:
+                    "ஆம் - மறுமுதலீடு",
+                no:
+                    "இல்லை - வட்டியை ரொக்கமாக வைத்திரு",
+                calculate:
+                    "கணக்கிடு",
+                scheme:
+                    "திட்டம்",
+                rate:
+                    "வட்டி விகிதம்",
+                interestMethod:
+                    "வட்டி முறை",
+                interestReceived:
+                    "பெறப்பட்ட வட்டி",
+                finalPrincipal:
+                    "இறுதி அசல்",
+                totalValue:
+                    "மொத்த போர்ட்ஃபோலியோ மதிப்பு",
+                profit:
+                    "மொத்த லாபம்",
+                effectiveReturn:
+                    "மொத்த வருமான விகிதம்",
+                liquidity:
+                    "பணப்புழக்கம்",
+                nsc:
+                    "NSC",
+                td:
+                    "5-வருட TD",
+                mis:
+                    "MIS",
+                scss:
+                    "SCSS",
+                nscMethod:
+                    "ஆண்டு கூட்டு வட்டி",
+                tdMethod:
+                    "காலாண்டு கூட்டு வட்டி",
+                misMethod:
+                    "மாதாந்திர வட்டி வழங்கல்",
+                scssMethod:
+                    "காலாண்டு வட்டி வழங்கல்",
+                medium:
+                    "நடுத்தரம்",
+                high:
+                    "அதிகம்",
+                low:
+                    "குறைவு",
+                bestFor:
+                    "சிறந்த பயன்பாடு",
+                nscBest:
+                    "நீண்டகால வளர்ச்சி",
+                tdBest:
+                    "நிலையான வருமான வளர்ச்சி",
+                misBest:
+                    "மாதாந்திர வருமானம்",
+                scssBest:
+                    "மூத்த குடிமக்கள் + வருமானம்",
+                winner:
+                    "(முதியவர்) மற்றவற்றை விட சிறந்தது",
+                comparison:
+                    "லாப ஒப்பீடு",
+                ranking:
+                    "லாப தரவரிசை",
+                rank:
+                    "தரவரிசை",
+                difference:
+                    "முதல் இடத்திலிருந்து வித்தியாசம்",
+                totalInvestment:
+                    "மொத்த முதலீடு",
+                totalInterest:
+                    "மொத்த வட்டி / லாபம்",
+                finalValue:
+                    "இறுதி மதிப்பு",
+                cashInterest:
+                    "ரொக்கமாக வைத்த வட்டி",
+                reinvestedInterest:
+                    "மறுமுதலீடு செய்யப்பட்ட வட்டி",
+                noteTitle:
+                    "முக்கிய கணக்கீட்டு குறிப்பு",
+                noteText:
+                    "NSC-க்கு ஆண்டு கூட்டு வட்டியும், 5-வருட TD-க்கு காலாண்டு கூட்டு வட்டியும் பயன்படுத்தப்படுகிறது. MIS வட்டி மாதந்தோறும் வழங்கப்படுகிறது; SCSS வட்டி காலாண்டுதோறும் வழங்கப்படுகிறது. மறுமுதலீடு தேர்ந்தெடுக்கப்பட்டால், ஒப்பீட்டிற்காக அந்த வட்டி அதே விகிதத்தில் மீண்டும் முதலீடு செய்யப்படுகிறது. உண்மையான எதிர்கால வட்டி விகிதங்கள் மாறலாம்.",
+                scenarioTitle:
+                    "நடைமுறை விளக்கம்",
+                scenarioText:
+                    "தொடர்ச்சியான வருமானம் தேவையில்லாமல் அதிக வளர்ச்சியை விரும்பினால் கூட்டு வட்டி திட்டங்கள் பயனுள்ளதாக இருக்கலாம். MIS மற்றும் SCSS வட்டி வெளியே வழங்கப்படுவதால் வேறுபடுகின்றன. அந்த வட்டியை செலவு செய்கிறீர்களா அல்லது மறுமுதலீடு செய்கிறீர்களா என்பதன் அடிப்படையில் தரவரிசை மாறலாம்.",
+                rateTitle:
+                    "பயன்படுத்தப்படும் வட்டி விகிதங்கள்",
+                currentRate:
+                    "இந்த கணக்கீட்டில் பயன்படுத்தப்படும் விகிதம்",
+                rateWarning:
+                    "சிறு சேமிப்பு திட்டங்களின் வட்டி விகிதங்கள் அரசால் காலாண்டு அடிப்படையில் அறிவிக்கப்படுகின்றன. புதிய விகிதம் அறிவிக்கப்பட்டால் JavaScript-ல் உள்ள விகிதங்களை மாற்றவும்.",
+                senior:
+                    "மூத்த குடிமக்களுக்கு ஏற்றது",
+                normal:
+                    "பொதுவான முதலீட்டாளர்",
+                tax:
+                    "வரி / கழிவு",
+                taxNSC:
+                    "பொருந்தும் விதிகளுக்கு உட்பட்டு தகுதி இருக்கலாம்",
+                taxTD:
+                    "5-வருட TD பொருந்தும் 80C விதிகளின் கீழ் தகுதி பெறலாம்",
+                taxMIS:
+                    "பொருந்தும் விதிகளின்படி வட்டி வரிக்கு உட்படும்",
+                taxSCSS:
+                    "பொருந்தும் விதிகளின்படி வட்டி வரிக்கு உட்படும்",
+                conclusion:
+                    "முடிவு",
+                conclusionText:
+                    "மேலே காட்டப்படும் வெற்றியாளர் தேர்ந்தெடுக்கப்பட்ட கணக்கீட்டு முறையின் அடிப்படையில் மட்டுமே தீர்மானிக்கப்படுகிறது. எல்லா முதலீட்டாளர்களுக்கும் ஒரே திட்டம் சிறந்தது என்று இதை கருதக்கூடாது."
+            },
+            telugu: {
+                title:
+                    "NSC vs TD vs MIS vs SCSS - ఏది ఎక్కువ లాభం ఇస్తుంది?",
+                investment:
+                    "ప్రారంభ పెట్టుబడి",
+                period:
+                    "పోలిక కాలం",
+                reinvest:
+                    "వడ్డీని తిరిగి పెట్టుబడి చేయాలా?",
+                yes:
+                    "అవును - తిరిగి పెట్టుబడి",
+                no:
+                    "లేదు - వడ్డీని నగదుగా ఉంచు",
+                calculate:
+                    "లెక్కించు",
+                scheme:
+                    "పథకం",
+                rate:
+                    "వడ్డీ రేటు",
+                interestMethod:
+                    "వడ్డీ విధానం",
+                interestReceived:
+                    "అందుకున్న వడ్డీ",
+                finalPrincipal:
+                    "చివరి అసలు",
+                totalValue:
+                    "మొత్తం పోర్ట్‌ఫోలియో విలువ",
+                profit:
+                    "మొత్తం లాభం",
+                effectiveReturn:
+                    "మొత్తం రాబడి",
+                liquidity:
+                    "లిక్విడిటీ",
+                nsc:
+                    "NSC",
+                td:
+                    "5-సంవత్సరాల TD",
+                mis:
+                    "MIS",
+                scss:
+                    "SCSS",
+                nscMethod:
+                    "వార్షిక చక్రవడ్డీ",
+                tdMethod:
+                    "త్రైమాసిక చక్రవడ్డీ",
+                misMethod:
+                    "నెలవారీ వడ్డీ చెల్లింపు",
+                scssMethod:
+                    "త్రైమాసిక వడ్డీ చెల్లింపు",
+                medium:
+                    "మధ్యస్థం",
+                high:
+                    "అధికం",
+                low:
+                    "తక్కువ",
+                bestFor:
+                    "ఎవరికి అనుకూలం",
+                nscBest:
+                    "దీర్ఘకాల వృద్ధి",
+                tdBest:
+                    "స్థిర ఆదాయ వృద్ధి",
+                misBest:
+                    "నెలవారీ ఆదాయం",
+                scssBest:
+                    "సీనియర్ సిటిజన్లు + ఆదాయం",
+                winner:
+                    "కంటే మెరుగైనది",
+                comparison:
+                    "లాభ పోలిక",
+                ranking:
+                    "లాభ ర్యాంకింగ్",
+                rank:
+                    "ర్యాంక్",
+                difference:
+                    "#1 నుండి తేడా",
+                totalInvestment:
+                    "మొత్తం పెట్టుబడి",
+                totalInterest:
+                    "మొత్తం వడ్డీ / లాభం",
+                finalValue:
+                    "చివరి విలువ",
+                cashInterest:
+                    "నగదుగా ఉంచిన వడ్డీ",
+                reinvestedInterest:
+                    "తిరిగి పెట్టుబడి చేసిన వడ్డీ",
+                noteTitle:
+                    "ముఖ్యమైన లెక్కింపు గమనిక",
+                noteText:
+                    "NSCకి వార్షిక చక్రవడ్డీ మరియు 5-సంవత్సరాల TDకి త్రైమాసిక చక్రవడ్డీ ఉపయోగించబడుతుంది. MIS వడ్డీ నెలవారీగా మరియు SCSS వడ్డీ త్రైమాసికంగా చెల్లించబడుతుంది. తిరిగి పెట్టుబడి ఎంచుకుంటే పోలిక కోసం అదే రేటులో తిరిగి పెట్టుబడి చేసినట్లు లెక్కించబడుతుంది.",
+                scenarioTitle:
+                    "ప్రాక్టికల్ వివరణ",
+                scenarioText:
+                    "నిరంతర ఆదాయం అవసరం లేకుండా గరిష్ట వృద్ధి కావాలంటే చక్రవడ్డీ పథకాలు అనుకూలంగా ఉండవచ్చు. MIS మరియు SCSSలో వడ్డీ బయటకు చెల్లించబడుతుంది. ఆ వడ్డీని ఖర్చు చేస్తున్నారా లేదా తిరిగి పెట్టుబడి చేస్తున్నారా అనే దాని ఆధారంగా విజేత మారవచ్చు.",
+                rateTitle:
+                    "ఉపయోగిస్తున్న వడ్డీ రేట్లు",
+                currentRate:
+                    "ఈ కాలిక్యులేటర్‌లో ఉపయోగించిన ప్రస్తుత రేటు",
+                rateWarning:
+                    "చిన్న పొదుపు పథకాల వడ్డీ రేట్లను ప్రభుత్వం కాలానుగుణంగా ప్రకటిస్తుంది. కొత్త రేట్లు ప్రకటించినప్పుడు JavaScriptలో రేట్లను మార్చండి.",
+                senior:
+                    "సీనియర్ సిటిజన్లకు అనుకూలం",
+                normal:
+                    "సాధారణ పెట్టుబడిదారు",
+                tax:
+                    "పన్ను / మినహాయింపు",
+                taxNSC:
+                    "వర్తించే నిబంధనలకు లోబడి అర్హత ఉండవచ్చు",
+                taxTD:
+                    "5-సంవత్సరాల TD వర్తించే 80C నిబంధనల ప్రకారం అర్హత పొందవచ్చు",
+                taxMIS:
+                    "వర్తించే నిబంధనల ప్రకారం వడ్డీ పన్నుకు లోబడి ఉంటుంది",
+                taxSCSS:
+                    "వర్తించే నిబంధనల ప్రకారం వడ్డీ పన్నుకు లోబడి ఉంటుంది",
+                conclusion:
+                    "ముగింపు",
+                conclusionText:
+                    "పై విజేత ఎంపిక చేసిన లెక్కింపు విధానం ఆధారంగా మాత్రమే నిర్ణయించబడుతుంది. ప్రతి పెట్టుబడిదారుడికి ఒకే పథకం ఉత్తమమని దీని అర్థం కాదు."
+            },
+            kannada: {
+                title:
+                    "NSC vs TD vs MIS vs SCSS - ಯಾವುದು ಹೆಚ್ಚು ಲಾಭ ನೀಡುತ್ತದೆ?",
+                investment:
+                    "ಆರಂಭಿಕ ಹೂಡಿಕೆ",
+                period:
+                    "ಹೋಲಿಕೆ ಅವಧಿ",
+                reinvest:
+                    "ಬಡ್ಡಿಯನ್ನು ಮರುಹೂಡಿಕೆ ಮಾಡಬೇಕೇ?",
+                yes:
+                    "ಹೌದು - ಮರುಹೂಡಿಕೆ",
+                no:
+                    "ಇಲ್ಲ - ಬಡ್ಡಿಯನ್ನು ನಗದಾಗಿ ಇಟ್ಟುಕೊಳ್ಳಿ",
+                calculate:
+                    "ಲೆಕ್ಕ ಹಾಕಿ",
+                scheme:
+                    "ಯೋಜನೆ",
+                rate:
+                    "ಬಡ್ಡಿ ದರ",
+                interestMethod:
+                    "ಬಡ್ಡಿ ವಿಧಾನ",
+                interestReceived:
+                    "ಪಡೆದ ಬಡ್ಡಿ",
+                finalPrincipal:
+                    "ಅಂತಿಮ ಅಸಲು",
+                totalValue:
+                    "ಒಟ್ಟು ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ಮೌಲ್ಯ",
+                profit:
+                    "ಒಟ್ಟು ಲಾಭ",
+                effectiveReturn:
+                    "ಒಟ್ಟು ಆದಾಯ",
+                liquidity:
+                    "ದ್ರವ್ಯತೆ",
+                nsc:
+                    "NSC",
+                td:
+                    "5-ವರ್ಷದ TD",
+                mis:
+                    "MIS",
+                scss:
+                    "SCSS",
+                nscMethod:
+                    "ವಾರ್ಷಿಕ ಸಂಯುಕ್ತ ಬಡ್ಡಿ",
+                tdMethod:
+                    "ತ್ರೈಮಾಸಿಕ ಸಂಯುಕ್ತ ಬಡ್ಡಿ",
+                misMethod:
+                    "ಮಾಸಿಕ ಬಡ್ಡಿ ಪಾವತಿ",
+                scssMethod:
+                    "ತ್ರೈಮಾಸಿಕ ಬಡ್ಡಿ ಪಾವತಿ",
+                medium:
+                    "ಮಧ್ಯಮ",
+                high:
+                    "ಹೆಚ್ಚು",
+                low:
+                    "ಕಡಿಮೆ",
+                bestFor:
+                    "ಯಾರಿಗೆ ಸೂಕ್ತ",
+                nscBest:
+                    "ದೀರ್ಘಕಾಲೀನ ಬೆಳವಣಿಗೆ",
+                tdBest:
+                    "ಸ್ಥಿರ ಆದಾಯ ಬೆಳವಣಿಗೆ",
+                misBest:
+                    "ಮಾಸಿಕ ಆದಾಯ",
+                scssBest:
+                    "ಹಿರಿಯ ನಾಗರಿಕರು + ಆದಾಯ",
+                winner:
+                    "ಗಿಂತ ಉತ್ತಮ",
+                comparison:
+                    "ಲಾಭ ಹೋಲಿಕೆ",
+                ranking:
+                    "ಲಾಭ ಶ್ರೇಯಾಂಕ",
+                rank:
+                    "ಶ್ರೇಣಿ",
+                difference:
+                    "#1 ರಿಂದ ವ್ಯತ್ಯಾಸ",
+                totalInvestment:
+                    "ಒಟ್ಟು ಹೂಡಿಕೆ",
+                totalInterest:
+                    "ಒಟ್ಟು ಬಡ್ಡಿ / ಲಾಭ",
+                finalValue:
+                    "ಅಂತಿಮ ಮೌಲ್ಯ",
+                cashInterest:
+                    "ನಗದಾಗಿ ಇಟ್ಟ ಬಡ್ಡಿ",
+                reinvestedInterest:
+                    "ಮರುಹೂಡಿಕೆ ಮಾಡಿದ ಬಡ್ಡಿ",
+                noteTitle:
+                    "ಪ್ರಮುಖ ಲೆಕ್ಕಾಚಾರ ಸೂಚನೆ",
+                noteText:
+                    "NSCಗೆ ವಾರ್ಷಿಕ ಸಂಯುಕ್ತ ಬಡ್ಡಿ ಮತ್ತು 5-ವರ್ಷದ TDಗೆ ತ್ರೈಮಾಸಿಕ ಸಂಯುಕ್ತ ಬಡ್ಡಿ ಬಳಸಲಾಗುತ್ತದೆ. MIS ಬಡ್ಡಿಯನ್ನು ಮಾಸಿಕವಾಗಿ ಮತ್ತು SCSS ಬಡ್ಡಿಯನ್ನು ತ್ರೈಮಾಸಿಕವಾಗಿ ಪಾವತಿಸುತ್ತದೆ. ಮರುಹೂಡಿಕೆ ಆಯ್ಕೆ ಮಾಡಿದರೆ ಹೋಲಿಕೆಗಾಗಿ ಅದೇ ದರದಲ್ಲಿ ಬಡ್ಡಿಯನ್ನು ಮರುಹೂಡಿಕೆ ಮಾಡಿದಂತೆ ಲೆಕ್ಕಿಸಲಾಗುತ್ತದೆ.",
+                scenarioTitle:
+                    "ಪ್ರಾಯೋಗಿಕ ವಿವರಣೆ",
+                scenarioText:
+                    "ನಿಯಮಿತ ಆದಾಯ ಅಗತ್ಯವಿಲ್ಲದೆ ಹೆಚ್ಚಿನ ಬೆಳವಣಿಗೆ ಬೇಕಾದರೆ ಸಂಯುಕ್ತ ಬಡ್ಡಿ ಯೋಜನೆಗಳು ಅನುಕೂಲಕರವಾಗಬಹುದು. MIS ಮತ್ತು SCSS ಬಡ್ಡಿಯನ್ನು ಹೊರಗೆ ಪಾವತಿಸುತ್ತವೆ. ಆ ಬಡ್ಡಿಯನ್ನು ಖರ್ಚು ಮಾಡುತ್ತೀರಾ ಅಥವಾ ಮರುಹೂಡಿಕೆ ಮಾಡುತ್ತೀರಾ ಎಂಬುದರ ಮೇಲೆ ವಿಜೇತ ಬದಲಾಗಬಹುದು.",
+                rateTitle:
+                    "ಬಳಸಿದ ಬಡ್ಡಿ ದರಗಳು",
+                currentRate:
+                    "ಈ ಕ್ಯಾಲ್ಕುಲೇಟರ್‌ನಲ್ಲಿ ಬಳಸಿದ ಪ್ರಸ್ತುತ ದರ",
+                rateWarning:
+                    "ಸಣ್ಣ ಉಳಿತಾಯ ಯೋಜನೆಗಳ ಬಡ್ಡಿ ದರಗಳನ್ನು ಸರ್ಕಾರ ಕಾಲಕಾಲಕ್ಕೆ ಪ್ರಕಟಿಸುತ್ತದೆ. ಹೊಸ ದರ ಪ್ರಕಟವಾದಾಗ JavaScript‌ನಲ್ಲಿರುವ ದರಗಳನ್ನು ಬದಲಾಯಿಸಿ.",
+                senior:
+                    "ಹಿರಿಯ ನಾಗರಿಕರಿಗೆ ಸೂಕ್ತ",
+                normal:
+                    "ಸಾಮಾನ್ಯ ಹೂಡಿಕೆದಾರ",
+                tax:
+                    "ತೆರಿಗೆ / ಕಡಿತ",
+                taxNSC:
+                    "ಅನ್ವಯಿಸುವ ನಿಯಮಗಳಿಗೆ ಒಳಪಟ್ಟು ಅರ್ಹತೆ ಇರಬಹುದು",
+                taxTD:
+                    "5-ವರ್ಷದ TD ಅನ್ವಯಿಸುವ 80C ನಿಯಮಗಳ ಅಡಿಯಲ್ಲಿ ಅರ್ಹವಾಗಬಹುದು",
+                taxMIS:
+                    "ಅನ್ವಯಿಸುವ ನಿಯಮಗಳ ಪ್ರಕಾರ ಬಡ್ಡಿ ತೆರಿಗೆಗೆ ಒಳಪಡುತ್ತದೆ",
+                taxSCSS:
+                    "ಅನ್ವಯಿಸುವ ನಿಯಮಗಳ ಪ್ರಕಾರ ಬಡ್ಡಿ ತೆರಿಗೆಗೆ ಒಳಪಡುತ್ತದೆ",
+                conclusion:
+                    "ತೀರ್ಮಾನ",
+                conclusionText:
+                    "ಮೇಲಿನ ವಿಜೇತ ಆಯ್ಕೆ ಮಾಡಿದ ಲೆಕ್ಕಾಚಾರ ವಿಧಾನವನ್ನು ಮಾತ್ರ ಆಧರಿಸಿದೆ. ಪ್ರತಿಯೊಬ್ಬ ಹೂಡಿಕೆದಾರರಿಗೂ ಒಂದೇ ಯೋಜನೆ ಅತ್ಯುತ್ತಮ ಎಂದರ್ಥವಲ್ಲ."
+            },
+            hindi: {
+                title:
+                    "NSC vs TD vs MIS vs SCSS - किसमें अधिक लाभ है?",
+                investment:
+                    "प्रारंभिक निवेश",
+                period:
+                    "तुलना अवधि",
+                reinvest:
+                    "ब्याज का पुनर्निवेश?",
+                yes:
+                    "हाँ - पुनर्निवेश",
+                no:
+                    "नहीं - ब्याज नकद रखें",
+                calculate:
+                    "गणना करें",
+                scheme:
+                    "योजना",
+                rate:
+                    "ब्याज दर",
+                interestMethod:
+                    "ब्याज पद्धति",
+                interestReceived:
+                    "प्राप्त ब्याज",
+                finalPrincipal:
+                    "अंतिम मूलधन",
+                totalValue:
+                    "कुल पोर्टफोलियो मूल्य",
+                profit:
+                    "कुल लाभ",
+                effectiveReturn:
+                    "कुल रिटर्न",
+                liquidity:
+                    "तरलता",
+                nsc:
+                    "NSC",
+                td:
+                    "5-वर्ष TD",
+                mis:
+                    "MIS",
+                scss:
+                    "SCSS",
+                nscMethod:
+                    "वार्षिक चक्रवृद्धि",
+                tdMethod:
+                    "त्रैमासिक चक्रवृद्धि",
+                misMethod:
+                    "मासिक ब्याज भुगतान",
+                scssMethod:
+                    "त्रैमासिक ब्याज भुगतान",
+                medium:
+                    "मध्यम",
+                high:
+                    "उच्च",
+                low:
+                    "कम",
+                bestFor:
+                    "किसके लिए बेहतर",
+                nscBest:
+                    "दीर्घकालीन वृद्धि",
+                tdBest:
+                    "स्थिर आय वृद्धि",
+                misBest:
+                    "मासिक आय",
+                scssBest:
+                    "वरिष्ठ नागरिक + आय",
+                winner:
+                    "से बेहतर",
+                comparison:
+                    "लाभ तुलना",
+                ranking:
+                    "लाभ रैंकिंग",
+                rank:
+                    "रैंक",
+                difference:
+                    "#1 से अंतर",
+                totalInvestment:
+                    "कुल निवेश",
+                totalInterest:
+                    "कुल ब्याज / लाभ",
+                finalValue:
+                    "अंतिम मूल्य",
+                cashInterest:
+                    "नकद रखा गया ब्याज",
+                reinvestedInterest:
+                    "पुनर्निवेश किया गया ब्याज",
+                noteTitle:
+                    "महत्वपूर्ण गणना नोट",
+                noteText:
+                    "NSC के लिए वार्षिक चक्रवृद्धि और 5-वर्षीय TD के लिए त्रैमासिक चक्रवृद्धि का उपयोग किया गया है। MIS ब्याज मासिक और SCSS ब्याज त्रैमासिक भुगतान करता है। पुनर्निवेश चुनने पर तुलना के लिए उसी दर और आवृत्ति पर ब्याज का पुनर्निवेश माना गया है।",
+                scenarioTitle:
+                    "व्यावहारिक अर्थ",
+                scenarioText:
+                    "यदि आपको नियमित आय की आवश्यकता नहीं है और अधिकतम वृद्धि चाहिए, तो चक्रवृद्धि योजनाएं उपयोगी हो सकती हैं। MIS और SCSS में ब्याज बाहर भुगतान होता है। उस ब्याज को खर्च करने या पुनर्निवेश करने के आधार पर विजेता बदल सकता है।",
+                rateTitle:
+                    "उपयोग की गई ब्याज दरें",
+                currentRate:
+                    "इस कैलकुलेटर में उपयोग की गई वर्तमान दर",
+                rateWarning:
+                    "छोटी बचत योजनाओं की ब्याज दरें सरकार द्वारा समय-समय पर घोषित की जाती हैं। नई दर घोषित होने पर JavaScript में दरों को बदलें।",
+                senior:
+                    "वरिष्ठ नागरिकों के लिए उपयुक्त",
+                normal:
+                    "सामान्य निवेशक",
+                tax:
+                    "कर / कटौती",
+                taxNSC:
+                    "लागू नियमों के अधीन पात्र हो सकता है",
+                taxTD:
+                    "5-वर्षीय TD लागू 80C नियमों के तहत पात्र हो सकता है",
+                taxMIS:
+                    "लागू नियमों के अनुसार ब्याज कर योग्य है",
+                taxSCSS:
+                    "लागू नियमों के अनुसार ब्याज कर योग्य है",
+                conclusion:
+                    "निष्कर्ष",
+                conclusionText:
+                    "ऊपर दिखाया गया विजेता केवल चुनी गई गणना पद्धति पर आधारित है। इसका अर्थ यह नहीं है कि हर निवेशक के लिए एक ही योजना सर्वोत्तम है।"
             }
-        </STYLE>
-		-->
-        <SCRIPT type='text/javascript'>
-            var translations = {
-                "english": {
-                    "title": "20 Year \"TERM DEPOSIT\"/TD AND \"MONTHLY INSTALLMENT SCHEME\"/MIS WHICH ONE IS BEST?",
-                    "mth": "Metric",
-                    "p1h": "Person01 (Female) - MIS Strategy",
-                    "p2h": "Person02 (Female) - TD Strategy",
-                    "m1": "Scheme Chosen",
-                    "p1v1": "Post Office Monthly Income Scheme (MIS)",
-                    "p2v1": "Post Office 5-Year Term Deposit (TD)",
-                    "m2": "Interest Rate",
-                    "p1v2": "7.4% per annum (Paid Monthly)",
-                    "p2v2": "7.5% per annum (Compounded Quarterly)",
-                    "m3": "Initial Setup (May-2026)",
-                    "p1v3": "Opened 1 MIS account daily (31 accounts total)",
-                    "p2v3": "Opened 1 TD account daily (31 accounts total)",
-                    "m4": "Initial Out-of-Pocket Principal",
-                    "m5": "Baseline Savings Balance",
-                    "m6": "Growth Mechanism",
-                    "p1v6": "Pools monthly interest to open new 5000.00 ರೂ/ரூ/₹ INR accounts manually when threshold is reached.",
-                    "p2v6": "Interest automatically quarterly-compounded. Every 5 years, she reinvests principal + full interest.",
-                    "m7": "Total Accounts Opened (Year 20)",
-                    "p1v7": "134 Accounts",
-                    "p2v7": "31 Accounts (Grown in value individually)",
-                    "m8": "Final Cash Balance (31-May-2046)",
-                    "m9": "Final Grand Total Portfolio Value",
-                    "cth": "Conclusion & Early Exit Analysis",
-                    "cval": "The comparison shows that Person02's Term Deposit strategy yields a higher profit than Person01's MIS strategy if held to maturity. Even though Person01 manually reinvests monthly interest payouts into new accounts, Person02 wins by a Sub-Sum of 13991.23 ರೂ/ரூ/₹ INR because the 5-Year TD features a 0.10% higher base interest rate and automatic quarterly compounding.<BR><BR><B>Early Closure Trade-off (At Year 4):</B><BR>However, if you pre-close, <B>MIS creates much less loss.</B> In an early exit at 4 years, MIS only penalizes the principal by 1% (50.00 ರೂ/ரூ/₹ INR loss per account), because your full interest was already safely paid out monthly. For 31 accounts, the final year interest loss breaks down precisely as 10 * 31 + 2 * 30 accounts daily sequence stopping monthly payouts (370.00 ರೂ/ரூ/₹ INR lost interest). In contrast, TD penalizes you heavily (731.35 ರೂ/ரூ/₹ INR total loss per account) by retroactively stripping and recalculating past compounded interest. Therefore, TD provides maximum gains if untouched, while MIS offers superior emergency flexibility.",
-                    "sc_title": "💡 Practical Scenario & Operational Frequency:",
-                    "sc_desc": "Assume that a person opens a Post Office Monthly Income Scheme (MIS) account with an amount of <STRONG>5000.00</STRONG> sequentially across the 1st, 2nd, ... up to the 31st day of different months and across different years. Upon completing a 31-day cycle, this exact pattern is repeated systematically again and again for many consecutive years.",
-                    "imp_title": "⚠️ Impact of Financial Interruptions (Job Loss / Business Downturn):",
-                    "imp_desc": "In the event of unexpected job loss or a sudden change in business conditions, that person relies on receiving <STRONG>daily MIS interest streams</STRONG> to directly manage critical day-to-day survival overheads (such as daily spending, food, traveling, school fees, utility bills, and donations).",
-                    "imp_lim": "🚫 Critical Limitation: This precise daily cash flow requirement cannot be achieved when utilizing a standard TERM DEPOSIT—even though a Term Deposit mathematically provides higher cumulative interest values than an MIS—because that peak yield is locked and only fully realized after 5 years."
-                },
-                "tamil": {
-                    "title": "20 வருட \"தவணை வைப்பு\"/TD மற்றும் \"மாதாந்திர வருமான திட்டம்\"/MIS எது சிறந்தது?",
-                    "mth": "அளவீடு",
-                    "p1h": "நபர்01 (பெண்) - \"மாதாந்திர வருமான திட்டம்\"/MIS திட்டம்",
-                    "p2h": "நபர்02 (பெண்) - TD திட்டம்",
-                    "m1": "தேர்ந்தெடுக்கப்பட்ட திட்டம்",
-                    "p1v1": "அஞ்சலக மாதாந்திர வருமான திட்டம் (MIS)",
-                    "p2v1": "அஞ்சலக 5-வருட தவணை வைப்பு (TD)",
-                    "m2": "வட்டி விகிதம்",
-                    "p1v2": "ஆண்டிற்கு 7.4% (மாதாந்திரம் வழங்கப்படும்)",
-                    "p2v2": "ஆண்டிற்கு 7.5% (காலாண்டுக்கு ஒருமுறை கூட்டு வட்டி)",
-                    "m3": "ஆரம்ப அமைப்பு (மே-2026)",
-                    "p1v3": "தினமும் 1 \"மாதாந்திர வருமான திட்டம்\"/MIS கணக்கு தொடங்கப்பட்டது (மொத்தம் 31 கணக்குகள்)",
-                    "p2v3": "தினமும் 1 TD கணக்கு தொடங்கப்பட்டது (மொத்தம் 31 கணக்குகள்)",
-                    "m4": "ஆரம்ப கைமுறை அசல்",
-                    "m5": "அடிப்படை சேமிப்பு இருப்பு",
-                    "m6": "வளர்ச்சி வழிமுறை",
-                    "p1v6": "மாதாந்திர வட்டியைச் சேகரித்து, 5000.00 ರೂ/ரூ/₹ INR எல்லையை எட்டும்போது கைமுறையாக புதிய கணக்குகளைத் தொடங்குதல்.",
-                    "p2v6": "வட்டி தானாகவே காலாண்டுக்கு ஒருமுறை கூட்டப்படும். ஒவ்வொரு 5 ஆண்டுகளுக்கும், அசல் + முழு வட்டியை அவர் மறுமுதலீடு செய்கிறார்.",
-                    "m7": "தொடங்கப்பட்ட மொத்த கணக்குகள் (20ஆம் ஆண்டு)",
-                    "p1v7": "134 கணக்குகள்",
-                    "p2v7": "31 கணக்குகள் (ஒவ்வொன்றும் தனித்தனியாக மதிப்பில் வளர்ந்துள்ளன)",
-                    "m8": "இறுதி ரொக்க இருப்பு (31-மே-2046)",
-                    "m9": "இறுதி மொத்த போர்ட்ஃபோலியோ மதிப்பு",
-                    "cth": "முடிவுரை மற்றும் முன்கூட்டியே மூடுதல் பகுப்பாய்வு",
-                    "cval": "முதிர்வு காலம் வரை வைத்திருந்தால் நபர்01-இன் \"மாதாந்திர வருமான திட்டம்\"/MIS திட்டத்தை விட நபர்02-இன் தவணை வைப்பு (TD) திட்டம் அதிக லாபம் தருகிறது என்பதை இந்த ஒப்பீடு காட்டுகிறது. நபர்01 மாதாந்திர வட்டி வருவாயை புதிய கணக்குகளில் மறுமுதலீடு செய்தபோதிலும், 0.10% அதிக வட்டி மற்றும் தானியங்கி காலாண்டு கூட்டு வட்டி காரணமாக நபர்02 உப-தொகையாக 13991.23 ರೂ/ரூ/₹ INR அதிகமாகப் பெற்று வெற்றி பெறுகிறார்.<BR><BR><B>முன்கூட்டியே மூடுதல் வர்த்தகம் (4 ஆம் ஆண்டில்):</B><BR>இருப்பினும், கணக்கை முன்கூட்டியே மூடினால் <B>\"மாதாந்திர வருமான திட்டம்\"/MIS திட்டத்தில் இழப்பு மிகவும் குறைவு.</B> 4 ஆண்டுகளில் வெளியேறும்போது, மாதாந்திர வட்டி ஏற்கனவே கைக்கு வந்துவிட்டதால், அசல் தொகையிலிருந்து 1% மட்டுமே (கணக்கிற்கு 50.00 ರೂ/ரூ/₹ INR) அபராதமாகப் பிடிக்கப்படும். 31 கணக்குகளுக்கு, இறுதி ஆண்டு வட்டி இழப்பு என்பது தினமும் கணக்கு தொடங்கிய வரிசைப்படி மாதாந்திர கொடுப்பனவு நிறுத்தப்படுவதால் துல்லியமாக 10 * 31 + 2 * 30 (370.00 ರೂ/ரூ/₹ INR வட்டி இழப்பு) ஆகும். ஆனால், TD திட்டத்தில் கடந்த 4 ஆண்டுகால கூட்டு வட்டியை மறுதலை கணக்கீடு செய்து குறைப்பதால் கணக்கிற்கு மொத்தம் 731.35 ರೂ/ரூ/₹ INR பெரும் இழப்பு ஏற்படும். எனவே, தொடாமல் இருக்க TD அதிக லாபம் தரும், அவசர தேவைக்கு \"மாதாந்திர வருமான திட்டம்\"/MIS சிறந்த நெகிழ்வுத்தன்மையை அளிக்கும்.",
-                    "sc_title": "💡 நடைமுறை சூழ்நிலை & செயல்பாட்டு அதிர்வெண்:",
-                    "sc_desc": "ஒரு நபர் வெவ்வேறு மாதங்கள் மற்றும் வெவ்வேறு ஆண்டுகளில் 1, 2, ... முதல் 31 ஆம் தேதி வரை தொடர்ச்சியாக <STRONG>5000.00</STRONG> தொகையுடன் அஞ்சலக மாதாந்திர வருமான திட்ட (MIS) கணக்கைத் தொடங்குகிறார் என்று வைத்துக்கொள்வோம். 31 நாட்கள் சுழற்சி முடிந்ததும், இதே சரியான முறை பல தொடர்ச்சியான ஆண்டுகளுக்கு முறவழியாக மீண்டும் மீண்டும் செய்யப்படுகிறது.",
-                    "imp_title": "⚠️ நிதி தடைகளின் தாக்கம் (வேலை இழப்பு / வணிக வீழ்ச்சி):",
-                    "imp_desc": "எதிர்பாராத வேலை இழப்பு அல்லது வணிகச் சூழ்நிலைகளில் திடீர் மாற்றம் ஏற்படும் போது, அந்த நபர் அன்றாட வாழ்வாதாரச் செலவுகளை (தினசரி செலவுகள், உணவு, பயணம், பள்ளி கட்டணம், பயன்பாட்டு கட்டணங்கள் மற்றும் நன்கொடைகள் போன்றவை) நேரடியாக நிர்வகிக்க <STRONG>தினசரி \"மாதாந்திர வருமான திட்டம்\"/MIS வட்டி வருவாயை</STRONG> நம்பியிருக்கிறார்.",
-                    "imp_lim": "🚫 முக்கியமான வரம்பு: ஒரு நிலையான தவணை வைப்பு (Term Deposit) திட்டத்தைப் பயன்படுத்தும் போது இந்தத் துல்லியமான தினசரி பணப்புழக்கத் தேவையை அடைய முடியாது—வடிவ கணித ரீதியாக தவணை வைப்பு திட்டம் \"மாதாந்திர வருமான திட்டம்\"/MIS-ஐ விட அதிக ஒட்டுமொத்த வட்டி மதிப்புகளை வழங்கினாலும்—ஏனெனில் அந்த அதிகபட்ச வருவாய் 5 ஆண்டுகளுக்குப் பிறகே முழுமையாகப் பூர்த்தி செய்யப்பட்டு லாக் செய்யப்படுகிறது."
-                },
-                "telugu": {
-                    "title": "20 సంవత్సరాల \"ఫిక్స్‌డ్ డిపాజిట్\"/TD మరియు \"మంత్లీ ఇన్‌కమ్ స్కేమ్\"/MIS ఏది ఉత్తమమైనది?",
-                    "mth": "కొలమానం",
-                    "p1h": "వ్యльти01 (మహిళ) - MIS వ్యూహం",
-                    "p2h": "వ్యక్తి02 (మహిళ) - TD వ్యూహం",
-                    "m1": "ఎంచుకున్న పథకం",
-                    "p1v1": "పోస్ట్ ఆఫీస్ మంత్లీ ఇన్‌కమ్ స్కేమ్ (MIS)",
-                    "p2v1": "పోస్ట్ ఆఫీస్ 5-సంవత్సరాల టర్మ్ డిపాజిట్ (TD)",
-                    "m2": "వడ్డీ రేటు",
-                    "p1v2": "సంవత్సరానికి 7.4% (నెలవారీగా చెల్లించబడుతుంది)",
-                    "p2v2": "సంవత్సరానికి 7.5% (త్రైమాసిక చక్రవడ్డీ)",
-                    "m3": "ప్రారంభ సెటప్ (మే-2026)",
-                    "p1v3": "ప్రతిరోజూ 1 MIS ఖాతా తెరవబడింది (మొత్తం 31 ఖాతాలు)",
-                    "p2v3": "ప్రతిరోజూ 1 TD ఖాతా తెరవబడింది (మొత్తం 31 ఖాతాలు)",
-                    "m4": "ప్రారంభ చేతి పెట్టుబడి అసలు",
-                    "m5": "ప్రాథమిక పొదుపు నిల్వ",
-                    "m6": "వృద్ధి యంత్రాంగం",
-                    "p1v6": "నెలవారీ వడ్డీని సేకరించి, అది 5000.00 ರೂ/ரூ/₹ INR కి చేరినప్పుడు మాన్యువల్‌గా కొత్త ఖాతాలను తెరవడం.",
-                    "p2v6": "వడ్డీ స్వయంచాలకంగా త్రైమాసికానికి చక్రవడ్డీగా మారుతుంది. ప్రతి 5 సంవత్సరాలకు, ఆమె అసలు + పూర్తి వడ్డీని తిరిగి పెట్టుబడి పెడుతుంది.",
-                    "m7": "మొత్తం తెరిచిన ఖాతాలు (20వ సంవత్సరం)",
-                    "p1v7": "134 ఖాతాలు",
-                    "p2v7": "31 ఖాతాలు (వ్యక్తిగతంగా విలువలో పెరిగాయి)",
-                    "m8": "తుది నగదు నిల్వ (31-మే-2046)",
-                    "m9": "తుది మొత్తం పోర్ట్‌ఫోలియో విలువ",
-                    "cth": "ముగింపు & ముందస్తు క్లోజర్ విశ్లేషణ",
-                    "cval": "పూర్తి కాలపరిమితి వరకు ఉంచితే వ్యక్తి01 యొక్క MIS వ్యూహం కంటే వ్యక్తి02 యొక్క టర్మ్ డిపాజిట్ వ్యూహం ఎక్కువ లాభాన్ని ఇస్తుందని ఈ పోలిక చూపుతుంది. వ్యక్తి01 వడ్డీని తిరిగి పెట్టుబడి పెట్టినప్పటికీ, 0.10% ఎక్కువ బేస్ రేటు మరియు ఆటోమేటిక్ చక్రవడ్డీ వల్ల వ్యక్తి02 సబ్-సమ్‌గా 13991.23 ರೂ/ரூ/₹ INR అదనంగా పొంది విజయం సాధించారు.<BR><BR><B>ముందస్తు క్లోజర్ ట్రేడ్-ఆఫ్ (4వ సంవత్సరంలో):</B><BR>అయితే, మీరు ఖాతాను ముందే క్లోజ్ చేస్తే <B>MIS లో నష్టం చాలా తక్కువగా ఉంటుంది.</B> 4 సంవత్సరాల వద్ద ముందస్తు ఎగ్జిట్ అయితే, నెలవారీ వడ్డీ ఇప్పటికే వచ్చేసింది కాబట్టి కేవలం అసలుపై 1% (ఖాతాకు 50.00 ರೂ/ரூ/₹ INR) పెనాల్టీ పడుతుంది. 31 ఖాతాలకు, చివరి సంవత్సరం వడ్డీ నష్టం రోజువారీ ఖాతాల క్రమం ప్రకారం నెలవారీ చెల్లింపులు ఆగిపోవడం వల్ల ఖచ్చితంగా 10 * 31 + 2 * 30 (370.00 ರೂ/ரூ/₹ INR కోల్పోయిన వడ్డీ) అవుతుంది. కానీ, TD లో గత 4 ఏళ్ల చక్రవడ్డీని వెనక్కి తీసుకుని తగ్గించడం వల్ల ఖాతాకు మొత్తం 731.35 ರೂ/ரூ/₹ INR భారీ నష్టం వాటిల్లుతుంది. కాబట్టి, తాకకుండా ఉంచితే TD గరిష్ట లాభాన్ని ఇస్తుంది, అత్యవసర ఫ్లెక్సిబిలిటీ కోసం MIS తక్కువ నష్టాన్ని కలిగిస్తుంది.",
-                    "sc_title": "💡 ప్రాక్టికల్ సినారియో & ఆపరేషనల్ ఫ్రీక్వెన్సీ:",
-                    "sc_desc": "ఒక వ్యక్తి వివిధ నెలలు మరియు వివిధ సంవత్సరాల్లో 1, 2, ... నుండి 31వ తేదీ వరకు వరుసగా <STRONG>5000.00</STRONG> మొత్తంతో పోస్ట్ ఆఫీస్ మంత్లీ ఇన్‌కమ్ స్కీమ్ (MIS) ఖాతాను తెరుస్తున్నారని అనుకుందాం. 31 రోజుల సైకిల్ పూర్తయిన తర్వాత, ఇదే ఖచ్చితమైన పద్ధతి చాలా సంవత్సరాల పాటు క్రమపద్ధతిలో పునరావృతం అవుతుంది.",
-                    "imp_title": "⚠️ ఆర్థిక అంతరాయాల ప్రభావం (ఉద్యోగం కోల్పోవడం / వ్యాపార క్షీణత):",
-                    "imp_desc": "అనూహ్యంగా ఉద్యోగం కోల్పోయినప్పుడు లేదా వ్యాపార పరిస్థితులలో అకస్మాత్తుగా మార్పులు వచ్చినప్పుడు, ఆ వ్యక్తి క్లిష్టమైన రోజువారీ మనుగడ ఖర్చులను (రోజువారీ ఖర్చులు, ఆహారం, ప్రయాణం, పాఠశాల ఫీజులు, యుటిలిటీ బిల్లులు మరియు విరాళాలు వంటివి) నేరుగా నిర్వహించడానికి <STRONG>రోజువారీ MIS వడ్డీ ప్రవాహాలపై</STRONG> ఆధారపడతారు.",
-                    "imp_lim": "🚫 కీలక పరిమితి: సాధారణ టర్మ్ డిపాజిట్ (Term Deposit) ఉపయోగించినప్పుడు ఈ ఖచ్చితమైన రోజువారీ నగదు ప్రవాహ అవసరాన్ని సాధించలేము—గణితశాస్త్రపరంగా టర్మ్ డిపాజిట్ MIS కంటే ఎక్కువ సంచిత వడ్డీ విలువలను అందించినప్పటికీ—ఎందుకంటే ఆ గరిష్ట రాబడి లాక్ చేయబడి, 5 సంవత్సరాల తర్వాత మాత్రమే పూర్తిగా అందుతుంది."
-                },
-                "kannada": {
-                    "title": "20 ವರ್ಷಗಳ \"ಅವಧಿ ಠೇವಣಿ\"/TD ಮತ್ತು \"ಮಾಸಿಕ ಆದಾಯ ಯೋಜನೆ\"/MIS ಯಾವುದು ಉತ್ತಮ?",
-                    "mth": "ಮಾಪನ",
-                    "p1h": "▼್ಯಕ್ತಿ01 (ಮಹಿಳೆ) - MIS ಕಾರ್ಯತಂತ್ರ",
-                    "p2h": "ವ್ಯಕ್ತಿ02 (ಮಹಿಳೆ) - TD ಕಾರ್ಯತಂತ್ರ",
-                    "m1": "ಆಯ್ಕೆ ಮಾಡಿದ ಯೋಜನೆ",
-                    "p1v1": "ಪೋಸ್ಟ್ ಆಫೀಸ್ ಮಾಸಿಕ ಆದಾಯ ಯೋಜನೆ (MIS)",
-                    "p2v1": "ಪೋಸ್ಟ್ ಆಫೀಸ್ 5-ವರ್ಷದ ಅವಧಿ ಠೇವಣಿ (TD)",
-                    "m2": "ಬಡ್ಡಿ ದರ",
-                    "p1v2": "ವರ್ಷಕ್ಕೆ 7.4% (ಮಾಸಿಕ ಪಾವತಿ)",
-                    "p2v2": "ವರ್ಷಕ್ಕೆ 7.5% (ತ್ರೈಮಾಸಿಕ ಜಂಟಿ ಬಡ್ಡಿ)",
-                    "m3": "ಆರಂಭಿಕ ಸೆಟಪ್ (ಮೇ-2026)",
-                    "p1v3": "ಪ್ರತಿದಿನ 1 MIS ಖಾತೆಯನ್ನು ತೆರೆಯಲಾಗಿದೆ (ಒಟ್ಟು 31 ಖಾತೆಗಳು)",
-                    "p2v3": "ಪ್ರತಿದಿನ 1 TD ಖಾತೆಯನ್ನು ತೆರೆಯಲಾಗಿದೆ (ಒಟ್ಟು 31 ಖಾತೆಗಳು)",
-                    "m4": "ಆರಂಭಿಕ ಕೈಯಿಂದ ಹೂಡಿದ ಅಸಲು",
-                    "m5": "ಮೂಲ ಉಳಿತಾಯ ಬಾಕಿ",
-                    "m6": "ಬೆಳವಣಿಗೆಯ ಕಾರ್ಯವಿಧಾನ",
-                    "p1v6": "ಮಾಸಿಕ ಬಡ್ಡಿಯನ್ನು ಸಂಗ್ರಹಿಸಿ, ಮಿತಿ 5000.00 ರೂ/ரூ/₹ INR ತಲುಪಿದಾಗ ಹಸ್ತಚಾಲಿತವಾಗಿ ಹೊಸ ಖಾತೆಗಳನ್ನು ತೆರೆಯುವುದು.",
-                    "p2v6": "ಬಡ್ಡಿಯು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ತ್ರೈಮಾಸಿಕವಾಗಿ ಜಂಟಿಯಾಗುತ್ತಾ ಹೋಗುತ್ತದೆ. ಪ್ರತಿ 5 ವರ್ಷಗಳಿಗೊಮ್ಮೆ, ಅವರು ಅಸಲು + ಪೂರ್ಣ ಬಡ್ಡಿಯನ್ನು ಮರುಹೂಡಿಕೆ ಮಾಡುತ್ತಾರೆ.",
-                    "m7": "ಒಟ್ಟು ತೆರೆಯಲಾದ ಖಾತೆಗಳು (20ನೇ  ವರ್ಷ)",
-                    "p1v7": "134 ಖಾತೆಗಳು",
-                    "p2v7": "31 ಖಾತೆಗಳು (ಪ್ರತ್ಯೇಕವಾಗಿ ಮೌಲ್ಯದಲ್ಲಿ ಬೆಳೆದಿವೆ)",
-                    "m8": "ಅಂತಿಮ ನಗದು ಬಾಕಿ (31-ಮೇ-2046)",
-                    "m9": "ಅಂತಿಮ ಒಟ್ಟು ಪೋರ್ಟ್ಫೋಲಿಯೋ ಮೌಲ್ಯ",
-                    "cth": "ತೀರ್ಮಾನ ಮತ್ತು ಮುಂಚಿತ ಮುಕ್ತಾಯದ ವಿಶ್ಲೇಷಣೆ",
-                    "cval": "Pೂರ್ಣ ಅವಧಿಯವರೆಗೆ ಇಟ್ಟುಕೊಂಡರೆ ವ್ಯಕ್ತಿ01 ರ MIS ಕಾರ್ಯತಂತ್ರಕ್ಕಿಂತ ವ್ಯಕ್ತಿ02 ರ ಅವಧಿ ಠೇವಣಿ (TD) ಕಾರ್ಯತಂತ್ರವು ಹೆಚ್ಚಿನ ಲಾಭವನ್ನು ನೀಡುತ್ತದೆ ಎಂದು ಈ ಹೋಲಿಕೆಯು ತೋರಿಸುತ್ತದೆ. ವ್ಯಕ್ತಿ01 ಬಡ್ಡಿಯನ್ನು ಮರುಹೂಡಿಕೆ ಮಾಡಿದರೂ, 0.10% ಹೆಚ್ಚಿನ ಮೂಲ ದರ ಮತ್ತು ಸ್ವಯಂಚಾಲಿತ ತ್ರೈಮಾಸಿಕ ಬಡ್ಡಿಯಿಂದಾಗಿ ವ್ಯಕ್ತಿ02 ಉಪ-ಮೊತ್ತವಾಗಿ 13991.23 ರೂ/ரூ/₹ INR ರಷ್ಟು ಹೆಚ್ಚು ಗಳಿಸುತ್ತಾರೆ.<BR><BR><B>ಮುಂಚಿತ ಮುಕ್ತಾಯದ ಹೂಡಿಕೆ ಬದಲಾವಣೆ (4ನೇ ವರ್ಷದಲ್ಲಿ):</B><BR>ಆದಾಗ್ಯೂ, ನೀವು ಖಾತೆಯನ್ನು ಮುಂಚಿತವಾಗಿ ಮುಚ್ಚಿದರೆ <B>MIS ಯೋಜನೆಯಲ್ಲಿ ನಷ್ಟವು ತುಂಬಾ ಕಡಿಮೆಯಿರುತ್ತದೆ.</B> 4 ವರ್ಷಗಳಲ್ಲಿ ಮುಂಚಿತವಾಗಿ ನಿರ್ಗಮಿಸಿದರೆ, maಸಿಕ ಬಡ್ಡಿಯು ಈಗಾಗಲೇ ಕೈಸೇರಿರುವುದರಿಂದ ಕೇವಲ ಅಸಲಿನ ಮೇಲೆ 1% (ಖಾತೆಗೆ 50.00 ರೂ/ரூ/₹ INR) ದಂಡ ವಿಧಿಸಲಾಗುತ್ತದೆ. 31 ಖಾತೆಗಳಿಗೆ, ಕೊನೆಯ ವರ್ಷದ ಬಡ್ಡಿಯ ನಷ್ಟವು ದೈನಂದಿನ ಖಾತೆಗಳ ತೆರೆಯುವಿಕೆಯ ಕ್ರಮದ ಪ್ರಕಾರ ಮಾಸಿಕ ಪಾವತಿಗಳು ನಿಲ್ಲುವುದರಿಂದ ನಿಖರವಾಗಿ 10 * 31 + 2 * 30 (370.00 ರೂ/ரூ/₹ INR ಕಳೆದುಹೋದ ಬಡ್ಡಿ) ಆಗಿರುತ್ತದೆ. ಆದರೆ, TD ಯಲ್ಲಿ ಕಳೆದ 4 ವರ್ಷಗಳ ಜಂಟಿ ಬಡ್ಡಿಯನ್ನು ಹಿಂಪಡೆದು ಕಡಿತಗೊಳಿಸುವುದರಿಂದ ಖಾತೆಗೆ ಒಟ್ಟು 731.35 ರೂ/ரூ/₹ INR ಭಾರಿ ನಷ್ಟವಾಗುತ್ತದೆ. ಆದ್ದರಿಂದ, ಮುಟ್ಟದೆ ಇಟ್ಟರೆ TD ಗರಿಷ್ಠ ಲಾಭ ನೀಡುತ್ತದೆ, ತುರ್ತು ಅಗತ್ಯದ ನಮ್ಯತೆಗೆ MIS ಕಡಿಮೆ ನಷ್ಟವನ್ನು ಉಂಟುಮಾಡುತ್ತದೆ.",
-                    "sc_title": "💡 ಪ್ರಾಯೋಗಿಕ ಸಿನಾರಿಯೋ ಮತ್ತು ಕಾರ್ಯಾಚರಣೆಯ ಆವರ್ತನ:",
-                    "sc_desc": "ಒಬ್ಬ ವ್ಯಕ್ತಿಯು ವಿವಿಧ ತಿಂಗಳು ಹಾಗೂ ವಿವಿಧ ವರ್ಷಗಳಲ್ಲಿ 1, 2, ... ರಿಂದ 31 ನೇ ತಾರೀಖಿನವರೆಗೆ ಸರಣಿ ಕ್ರಮದಲ್ಲಿ <STRONG>5000.00</STRONG> ಮೊತ್ತದೊಂದಿಗೆ ಪೋಸ್ಟ್ ಆಫೀಸ್ ಮಾಸಿಕ ಆದಾಯ ಯೋಜನೆ (MIS) ಖಾತೆಯನ್ನು ತೆರೆಯುತ್ತಾನೆ ಎಂದು ಭಾವಿಸೋಣ. 31 ದಿನಗಳ ಚಕ್ರವು ಪೂರ್ಣಗೊಂಡ ನಂತರ, ಇದೇ ನಿಖರವಾದ ಮಾದರಿಯನ್ನು ಹಲವು ವರ್ಷಗಳವರೆಗೆ ವ್ಯವಸ್ಥಿತವಾಗಿ ಪುನರಾವರ್ತಿಸಲಾಗುತ್ತದೆ.",
-                    "imp_title": "⚠️ ಆರ್ಥಿಕ ಅಡಚಣೆಗಳ ಪರಿಣಾಮ (ಉದ್ಯೋಗ ನಷ್ಟ / ವ್ಯವಹಾರದ ಕುಸಿತ):",
-                    "imp_desc": "ಅನಿರೀಕ್ಷಿತ ಉದ್ಯೋಗ ನಷ್ಟ ಅಥವಾ ವ್ಯವಹಾರದ ಪರಿಸ್ಥಿತಿಯಲ್ಲಿ ಹಠಾತ್ ಬದಲಾವಣೆ ಉಂಟಾದಾಗ, ಆ ವ್ಯಕ್ತಿಯು ನಿರ್ಣಾಯಕ ದಿನನಿತ್ಯದ ಬದುಕುಳಿಯುವ ವೆಚ್ಚಗಳನ್ನು (ದೈನಂದಿನ ಖರ್ಚುಗಳು, ಆಹಾರ, ಪ್ರಯಾಣ, ಶಾಲಾ ಶುಲ್ಕಗಳು, ಯುಟಿಲಿಟಿ ಬಿಲ್‌ಗಳು ಮತ್ತು ದೇಣಿಗೆಗಳಂತಹವು) ನೇರವಾಗಿ ನಿರ್ವಹಿಸಲು <STRONG>ದೈನಂದಿನ MIS ಬಡ್ಡಿಯ ಹರಿವನ್ನು</STRONG> ಅವಲಂಬಿಸಿರುತ್ತಾರೆ.",
-                    "imp_lim": "🚫 ನಿರ್ಣಾಯಕ ಮಿತಿ: ಸಾಮಾನ್ಯ ಅವಧಿ ಠೇವಣಿ (Term Deposit) ಬಳಸುವಾಗ ಈ ನಿಖರವಾದ ದೈನಂದಿನ ನಗದು ಹರಿವಿನ ಅಗತ್ಯವನ್ನು ಸಾಧಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ—ಗಣಿತದ ಪ್ರಕಾರ ಅವಧಿ ಠೇವಣಿಯು MIS ಗಿಂತ ಹೆಚ್ಚಿನ ಸಂಚಿತ ಬಡ್ಡಿ ಮೌಲ್ಯಗಳನ್ನು ನೀಡಿದಾಗ್ಯೂ—ಏಕೆಂದರೆ ಆ ಗರಿಷ್ಠ ಆದಾಯವು ಲಾಕ್ ಆಗಿರುತ್ತದೆ ಮತ್ತು 5 ವರ್ಷಗಳ ನಂತರವೇ ಪೂರ್ಣವಾಗಿ ಲಭ್ಯವಾಗುತ್ತದೆ."
-                },
-                "hindi": {
-                    "title": "20 वर्षीय \"सावधि जमा\"/TD और \"मासिक आय योजना\"/MIS कौन सा सबसे अच्छा है?",
-                    "mth": "मापदंड",
-                    "p1h": "व्यक्ति01 (महिला) - MIS रणनीति",
-                    "p2h": "व्यक्ति02 (महिला) - TD रणनीति",
-                    "m1": "चुनी गई योजना",
-                    "p1v1": "डाकघर मासिक आय योजना (MIS)",
-                    "p2v1": "डाकघर 5-वर्षीय सावधि जमा (TD)",
-                    "m2": "ब्याज दर",
-                    "p1v2": "7.4% प्रति वर्ष (मासिक भुगतान)",
-                    "p2v2": "7.5% प्रति वर्ष (त्रैमासिक चक्रवृद्धि ब्याज)",
-                    "m3": "प्रहारंभिक सेटअप (मई-2026)",
-                    "p1v3": "प्रतिदिन 1 MIS खाता खोला गया (कुल 31 खाते)",
-                    "p2v3": "प्रतिदिन 1 TD खाता खोला गया (कुल 31 खाते)",
-                    "m4": "प्रारंभिक अपनी जेब से लगाया गया मूलधन",
-                    "m5": "प्रारंभिक बचत शेष",
-                    "m6": "विकास तंत्र",
-                    "p1v6": "मासिक ब्याज को एकत्रित करना और 5000.00  ರೂ/ரூ/₹ INR की सीमा तक पहुँचने पर मैन्युअल रूप से नए खाते खोलना।",
-                    "p2v6": "ब्याज स्वचालित रूप से त्रैमासिक रूप से संयोजित होता है। हर 5 साल में, वह मूलधन + पूरा ब्याज पुनर्निवेश करती है।",
-                    "m7": "खोले गए कुल खाते (वर्ष 20)",
-                    "p1v7": "134 खाते",
-                    "p2v7": "31 खाते (व्यक्तिगत रूप से मूल्य में वृद्धि हुई है)",
-                    "m8": "अंतिम नकद शेष (31-मई-2046)",
-                    "m9": "अंतिम कुल पोर्टफोलियो मूल्य",
-                    "cth": "निष्कर्ष और समय से पहले खाता बंद करने का विश्लेषण",
-                    "cval": "तुलना से पता चलता है कि यदि परिपक्वता तक रखा जाए तो व्यक्ति01 की MIS रणनीति की तुलना में व्यक्ति02 की सावधि जमा (TD) रणनीति अधिक लाभ देती है। भले ही व्यक्ति01 ब्याज का पुनर्निवेश करती है, फिर भी 0.10% अधिक आधार दर और त्रैमासिक चक्रवृद्धि के कारण व्यक्ति02 उप-योग के रूप में 13991.23 ರೂ/ரூ/₹ INR अधिक प्राप्त करके जीतती है।<BR><BR><B>समय से पहले बंद करने का सौदा (4 वर्ष पर):</B><BR>हालांकि, यदि आप समय से पहले खाता बंद करते हैं, तो <B>MIS में बहुत कम नुकसान होता है।</B> 4 साल में जल्दी बाहर निकलने पर, चूंकि मासिक ब्याज पहले ही मिल चुका है, इसलिए मूलधन पर केवल 1% (प्रति खाता 50.00 ರೂ/ரூ/₹ INR) का जुर्माना लगता है। 31 खातों के लिए, अंतिम वर्ष के ब्याज का नुकसान दैनिक खाता खोलने के क्रम के अनुसार मासिक भुगतान रुकने से ठीक 10 * 31 + 2 * 30 (370.00  ರೂ/ரூ/₹ INR खोया हुआ ब्याज) होता है। इसके विपरीत, TD में पिछले 4 वर्षों के चक्रवृद्धि ब्याज को पुनर्गणना करके घटा दिया जाता है जिससे प्रति खाता कुल 731.35  ರೂ/ரூ/₹ INR का भारी नुकसान होता है। इसलिए, बिना छुए रखने पर TD अधिकतम लाभ देता है, जबकि आपातकालीन लचीलेपन के लिए MIS कम नुकसान देता है।",
-                    "sc_title": "💡 व्यावहारिक परिदृश्य और परिचालन आवृत्ति:",
-                    "sc_desc": "मान लें कि कोई व्यक्ति विभिन्न महीनों और विभिन्न वर्षों में पहली, दूसरी, ... से लेकर 31वीं तारीख तक क्रमिक रूप से <STRONG>5000.00</STRONG> की राशि के साथ डाकघर मासिक आय योजना (MIS) खाता खोलता है। 31-दिन का चक्र पूरा होने पर, यही सटीक पैटर्न कई लगातार वर्षों तक व्यवस्थित रूप से बार-बार दोहराया जाता है।",
-                    "imp_title": "⚠️ वित्तीय बाधाओं का प्रभाव (नौकरी जाना / व्यावसायिक मंदी):",
-                    "imp_desc": "अपेक्षित नौकरी छूटने या व्यावसायिक स्थितियों में अचानक बदलाव की स्थिति में, वह व्यक्ति दैनिक जीवन के महत्वपूर्ण खर्चों (जैसे दैनिक खर्च, भोजन, यात्रा, स्कूल की फीस, उपयोगिता बिल और दान) को सीधे प्रबंधित करने के लिए <STRONG>दैनिक MIS ब्याज प्रवाह</STRONG> पर निर्भर करता है।",
-                    "imp_lim": "🚫 महत्वपूर्ण सीमा: एक मानक सावधि जमा (Term Deposit) का उपयोग करते समय यह सटीक दैनिक नकदी प्रवाह आवश्यकता प्राप्त नहीं की जा सकती है—भले ही गणितीय रूप से सावधि जमा MIS की तुलना में अधिक संचयी ब्याज मूल्य प्रदान करता है—क्योंकि वह अधिकतम लाभ लॉक होता है और 5 वर्षों के बाद ही पूरी तरह से प्राप्त होता है।"
-                }
-            };
-            function updateLanguageButtons(selectedLang)
-            {
-                var langs = ["tamil", "telugu", "kannada", "hindi", "english"];
-                for(var i = 0; i < langs.length; i++)
-                {
-                    var currentLang = langs[i];
-                    var elementId = "language" + currentLang.charAt(0).toUpperCase() + currentLang.slice(1);
-                    var element = document.getElementById(elementId);
-                    if(element)
+        };
+        var currentLanguage = "english";
+        function money(value)
+	{
+            if( !isFinite(value) )
+	    {
+                value = 0;
+            }
+            return  value.toLocaleString(
+                    "en-IN",
                     {
-                        if(currentLang === selectedLang)
-                        {
-                            element.className = "disabledButton";
-                            element.onclick = null;
-                        }
-                        else
-                        {
-                            element.className = "languageButton";
-                            element.onclick = (function(langCode) {
-                                return function() {
-                                    loadLanguage(langCode);
-                                };
-                            })(currentLang);
-                        }
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
                     }
-                }
+                )+" ರೂ/ரூ/₹ INR";
+        }
+        function numberValue(id, defaultValue )
+	{
+            var value =
+                parseFloat(
+                    document.getElementById(id).value
+                );
+            if( !isFinite(value) || value < 0 )
+	    {
+                return defaultValue;
             }
-            function loadLanguage(lang)
-            {
-                var data = translations[lang];
-                if(!data)
-                {
-                    data = translations["english"];
+            return value;
+        }
+        /*
+         * Calculate one scheme.
+         *
+         * The calculation is intentionally based on the selected
+         * comparison period.
+         *
+         * For periods beyond 5 years, this is an ESTIMATE using
+         * the same current rate repeatedly.
+         *
+         * This does NOT predict future Government rates.
+         */
+        function calculateScheme(
+            principal,
+            years,
+            rate,
+            frequency,
+            reinvest
+        )
+	{
+            var rateDecimal = rate / 100;
+            var periods =
+                Math.round(years * frequency);
+            var periodicRate =
+                rateDecimal / frequency;
+            var finalValue = principal;
+            var cashInterest = 0;
+            var reinvestedInterest = 0;
+            var i;
+            if( true === reinvest )
+	    {
+                /*
+                 * Interest is reinvested.
+                 *
+                 * This produces a theoretical compound-growth
+                 * comparison based on each scheme's payment/
+                 * compounding frequency.
+                 */
+                for (i = 0; i < periods; i++)
+		{
+                    var interest =
+                        finalValue * periodicRate;
+                    finalValue += interest;
+                    reinvestedInterest += interest;
                 }
-                document.getElementById("mainTitle").innerHTML = data.title;
-                document.getElementById("thMetric").innerHTML = data.mth;
-                document.getElementById("thP1").innerHTML = data.p1h;
-                document.getElementById("thP2").innerHTML = data.p2h;
-                document.getElementById("lblScheme").innerHTML = data.m1;
-                document.getElementById("valP1Scheme").innerHTML = data.p1v1;
-                document.getElementById("valP2Scheme").innerHTML = data.p2v1;
-                document.getElementById("lblRate").innerHTML = data.m2;
-                document.getElementById("valP1Rate").innerHTML = data.p1v2;
-                document.getElementById("valP2Rate").innerHTML = data.p2v2;
-                document.getElementById("lblSetup").innerHTML = data.m3;
-                document.getElementById("valP1Setup").innerHTML = data.p1v3;
-                document.getElementById("valP2Setup").innerHTML = data.p2v3;
-                document.getElementById("lblPrincipal").innerHTML = data.m4;
-                document.getElementById("lblBaseline").innerHTML = data.m5;
-                document.getElementById("lblMechanism").innerHTML = data.m6;
-                document.getElementById("valP1Mechanism").innerHTML = data.p1v6;
-                document.getElementById("valP2Mechanism").innerHTML = data.p2v6;
-                document.getElementById("lblTotalAcc").innerHTML = data.m7;
-                document.getElementById("valP1TotalAcc").innerHTML = data.p1v7;
-                document.getElementById("valP2TotalAcc").innerHTML = data.p2v7;
-                document.getElementById("lblCashBal").innerHTML = data.m8;
-                document.getElementById("lblGrandTotal").innerHTML = data.m9;
-                document.getElementById("conclusionTitle").innerHTML = data.cth;
-                document.getElementById("conclusionValue").innerHTML = data.cval;
-                document.getElementById("scScenarioTitle").innerHTML = data.sc_title;
-                document.getElementById("scScenarioDesc").innerHTML = data.sc_desc;
-                document.getElementById("scImpactTitle").innerHTML = data.imp_title;
-                document.getElementById("scImpactDesc").innerHTML = data.imp_desc;
-                document.getElementById("scImpactLim").innerHTML = data.imp_lim;
-                updateLanguageButtons(lang);
-				document.getElementById("misTdTitle").innerHTML = data.misTdTitle;
-document.getElementById("misTdMetric").innerHTML = data.misTdMetric;
-document.getElementById("misTdInterest").innerHTML = data.misTdInterest;
-document.getElementById("misTdLiquidity").innerHTML = data.misTdLiquidity;
-document.getElementById("misTdTax").innerHTML = data.misTdTax;
-document.getElementById("misTdReturn").innerHTML = data.misTdReturn;
-document.getElementById("misTdScheme1").innerHTML = data.misTdScheme1;
-document.getElementById("misTdScheme2").innerHTML = data.misTdScheme2;
-document.getElementById("misTdInterest1").innerHTML = data.misTdInterest1;
-document.getElementById("misTdInterest2").innerHTML = data.misTdInterest2;
-document.getElementById("misTdLiquidity1").innerHTML = data.misTdLiquidity1;
-document.getElementById("misTdLiquidity2").innerHTML = data.misTdLiquidity2;
-document.getElementById("misTdTax1").innerHTML = data.misTdTax1;
-document.getElementById("misTdTax2").innerHTML = data.misTdTax2;
-document.getElementById("misTdReturn1").innerHTML = data.misTdReturn1;
-document.getElementById("misTdReturn2").innerHTML = data.misTdReturn2;
+            } else {
+                /*
+                 * Interest is NOT reinvested.
+                 *
+                 * Principal remains unchanged and all interest
+                 * becomes cash.
+                 */
+                for (i = 0; i < periods; i++)
+		{
+                    var payout =
+                        principal * periodicRate;
+                    cashInterest += payout;
+                }
+                finalValue = principal + cashInterest;
             }
-            window.onload = function() {
-                loadLanguage("tamil");
+            return {
+                principal: principal,
+                finalValue: finalValue,
+                profit: finalValue - principal,
+                cashInterest: cashInterest,
+                reinvestedInterest: reinvestedInterest
             };
-        </SCRIPT>
-    </HEAD>
-    <BODY style="background-color: #f4f6f9; padding: 10px;">
-        <TABLE border='1' style='width:100%; border-collapse: collapse; background-color: #ffffff;'>
-            <TR>
-                <TD valign='top' align='center' style="padding: 10px;">
-                    <SPAN id='languageTamil' class="languageButton">
-                        தமிழ்/తమిళం/తమిಳು/तमिल/Tamil
-                    </SPAN>
-                </TD>
-                <TD valign='top' align='center' style="padding: 10px;">
-                    <SPAN id='languageTelugu' class="languageButton">
-                        తెలుగు/தெலுங்கு/ತೆಲುಗು/तेलुगु/Telugu
-                    </SPAN>
-                </TD>
-                <TD valign='top' align='center' style="padding: 10px;">
-                    <SPAN id='languageKannada' class="languageButton">
-                        ಕನ್ನಡ/ಕನ್ನಡ/ಗನ್ನಡಮ್/कन्नडा/Kannada
-                    </SPAN>
-                </TD>
-                <TD valign='top' align='center' style="padding: 10px;">
-                    <SPAN id='languageHindi' class="languageButton">
-                        हिन्दी/इसि/హిందీ/ಹಿಂದಿ/Hindi
-                    </SPAN>
-                </TD>
-                <TD valign='top' align='center' style="padding: 10px;">
-                    <SPAN id='languageEnglish' class="languageButton">
-                        English/ஆங்கிலம்/ஆங்லம்/இங்ಲೀஷ்/अंग्रेज़ी
-                    </SPAN>
-                </TD>
-            </TR>
-		<TR>
-			<TD valign='top' align='center' style="padding: 10px;" colspan='5'>
-        <DIV class="scenarios-container" style="margin-bottom: 20px; font-family: sans-serif; line-height: 1.6;">
-            <DIV class="scenario-context-row" style="background-color: #fcf8e3; border-left: 5px solid #f0ad4e; padding: 15px; margin-bottom: 15px; border-radius: 4px; color: #8a6d3b;">
-                <P id="scScenarioTitle" style="margin: 0; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">
-                    💡 Practical Scenario & Operational Frequency:
-                </P>
-                <P id="scScenarioDesc" style="margin: 0; text-align: justify;">
-                    Assume that a person opens a Post Office Monthly Income Scheme (MIS) account with an amount of <STRONG>5000.00</STRONG> sequentially across the 1st, 2nd, ... up to the 31st day of different months and across different years. Upon completing a 31-day cycle, this exact pattern is repeated systematically again and again for many consecutive years.
-                </P>
+        }
+        function calculateComparison()
+	{
+            var principal =
+                numberValue(
+                    "investmentAmount",
+                    155000
+                );
+            var years =
+                parseFloat(
+                    document.getElementById(
+                        "comparisonPeriod"
+                    ).value
+                );
+            var reinvest =
+                document.getElementById(
+                    "reinvestInterest"
+                ).value === "yes";
+            /*
+             * Frequencies:
+             *
+             * NSC = annual
+             * TD  = quarterly
+             * MIS = monthly
+             * SCSS = quarterly
+             */
+            var results = {
+                nsc:
+                    calculateScheme(
+                        principal,
+                        years,
+                        rates.nsc,
+                        1,
+                        reinvest
+                    ),
+                td:
+                    calculateScheme(
+                        principal,
+                        years,
+                        rates.td,
+                        4,
+                        reinvest
+                    ),
+                mis:
+                    calculateScheme(
+                        principal,
+                        years,
+                        rates.mis,
+                        12,
+                        reinvest
+                    ),
+                scss:
+                    calculateScheme(
+                        principal,
+                        years,
+                        rates.scss,
+                        4,
+                        reinvest
+                    )
+            };
+            var schemes = [
+                {
+                    id: "nsc",
+                    name: "NSC"
+                },
+                {
+                    id: "td",
+                    name: "TD"
+                },
+                {
+                    id: "mis",
+                    name: "MIS"
+                },
+                {
+                    id: "scss",
+                    name: "SCSS"
+                }
+            ];
+            /*
+             * Sort by PROFIT, highest first.
+             */
+            schemes.sort(
+                function(a, b)
+		{
+                    return (
+                        results[b.id].profit -
+                        results[a.id].profit
+                    );
+                }
+            );
+            var winner =
+                schemes[0];
+            var winnerProfit =
+                results[winner.id].profit;
+            /*
+             * First row:
+             *
+             * SCSS is(senior citizen) better than NSC, TD and MIS
+             *
+             * Automatically changes according to result.
+             */
+            var otherNames = [];
+            for (
+                var x = 1;
+                x < schemes.length;
+                x++
+            )
+	    {
+                otherNames.push(
+                    schemes[x].name
+                );
+            }
+			var totalAmt = money(2000);
+            var winnerText =
+                winner.name +
+                " " +
+                translations[currentLanguage].winner +
+                " " +
+                otherNames.join(", ") +
+                " — Highest estimated profit: " +
+                money(winnerProfit)+"<BR>(Monthly "+totalAmt+" deposited for the first 12 months)";
+            document.getElementById(
+                "winnerHeader"
+            ).innerHTML =
+                "🏆 " + winnerText;
+            /*
+             * Display results.
+             */
+            var ids = [
+                "nsc",
+                "td",
+                "mis",
+                "scss"
+            ];
+            for (var i = 0; i < ids.length; i++)
+	    {
+                var id = ids[i];
+                document.getElementById(
+                    id + "Interest"
+                ).innerHTML =
+                    money(
+                        results[id].profit
+                    );
+                document.getElementById(
+                    id + "Final"
+                ).innerHTML =
+                    money(
+                        results[id].finalValue
+                    );
+                document.getElementById(
+                    id + "Cash"
+                ).innerHTML =
+                    money(
+                        results[id].cashInterest
+                    );
+                document.getElementById(
+                    id + "Reinvested"
+                ).innerHTML =
+                    money(
+                        results[id].reinvestedInterest
+                    );
+                document.getElementById(
+                    id + "Return"
+                ).innerHTML =
+                    (
+                        results[id].profit /
+                        principal *
+                        100
+                    ).toFixed(2) + "%";
+                document.getElementById(
+                    id + "Difference"
+                ).innerHTML =
+                    "";
+                document.getElementById(
+                    id + "Header"
+                ).classList.remove(
+                    "winnerColumn"
+                );
+            }
+            /*
+             * Highlight winner column.
+             */
+            document.getElementById(
+                winner.id + "Header"
+            ).classList.add(
+                "winnerColumn"
+            );
+            document.getElementById(
+                winner.id + "Interest"
+            ).classList.add(
+                "winnerColumn"
+            );
+            document.getElementById(
+                winner.id + "Final"
+            ).classList.add(
+                "winnerColumn"
+            );
+            /*
+             * Ranking table.
+             */
+            var rankingHTML = "";
+            for (
+                var r = 0;
+                r < schemes.length;
+                r++
+            )
+	    {
+                var scheme =
+                    schemes[r];
+                var result =
+                    results[scheme.id];
+                var difference =
+                    winnerProfit -
+                    result.profit;
+                rankingHTML +=
+                    "<TR>" +
+                    "<TD valign='top' align='right'>" +
+                    (r + 1) +
+                    "</TD>" +
+                    "<TD valign='top' align='right'>" +
+                    scheme.name +
+                    "</TD>" +
+                    "<TD valign='top' align='right'>" +
+                    money(result.profit) +
+                    "</TD>" +
+                    "<TD valign='top' align='right'>" +
+                    money(result.finalValue) +
+                    "</TD>" +
+                    "<TD valign='top' align='right'>" +
+                    (
+                        r === 0
+                            ? "🏆 #1"
+                            : money(difference)
+                    ) +
+                    "</TD>" +
+                    "</TR>";
+            }
+            document.getElementById(
+                "rankingBody"
+            ).innerHTML =
+                rankingHTML;
+            /*
+             * Winner summary.
+             */
+            document.getElementById(
+                "winnerSummary"
+            ).innerHTML =
+                "<B>" +
+                winner.name +
+                "</B> gives the highest estimated profit of " +
+                "<B>" +
+                money(winnerProfit) +
+                "</B> on an initial investment of " +
+                "<B>" +
+                money(principal) +
+                "</B> over " +
+                "<B>" +
+                years +
+                " year(s)</B> under the selected assumptions.";
+            /*
+             * Rate display.
+             */
+            document.getElementById(
+                "rateNSC"
+            ).innerHTML =
+                rates.nsc.toFixed(1) + "%";
+            document.getElementById(
+                "rateTD"
+            ).innerHTML =
+                rates.td.toFixed(1) + "%";
+            document.getElementById(
+                "rateMIS"
+            ).innerHTML =
+                rates.mis.toFixed(1) + "%";
+            document.getElementById(
+                "rateSCSS"
+            ).innerHTML =
+                rates.scss.toFixed(1) + "%";
+        }
+        function setText(id, value)
+	{
+            var element =
+                document.getElementById(id);
+            if( element) {
+                element.innerHTML = value;
+            }
+        }
+        function updateLanguageButtons(
+            selectedLanguage
+        ) {
+            var languages = [
+                "tamil",
+                "telugu",
+                "kannada",
+                "hindi",
+                "english"
+            ];
+            for (
+                var i = 0;
+                i < languages.length;
+                i++
+            ) {
+                var lang =
+                    languages[i];
+                var element =
+                    document.getElementById(
+                        "language" +
+                        lang.charAt(0).toUpperCase() +
+                        lang.slice(1)
+                    );
+                if( !element) {
+                    continue;
+                }
+                if( 
+                    lang ===
+                    selectedLanguage
+                ) {
+                    element.className =
+                        "disabledButton";
+                    element.onclick = null;
+                } else {
+                    element.className =
+                        "languageButton";
+                    element.onclick =
+                        (function(languageCode) {
+                            return function() {
+                                loadLanguage(
+                                    languageCode
+                                );
+                            };
+                        })(lang);
+                }
+            }
+        }
+        function loadLanguage(lang) {
+            if( !translations[lang]) {
+                lang = "english";
+            }
+            currentLanguage = lang;
+            var data =
+                translations[lang];
+            setText(
+                "mainTitle",
+                data.title
+            );
+            setText(
+                "lblInvestment",
+                data.investment
+            );
+            setText(
+                "lblPeriod",
+                data.period
+            );
+            setText(
+                "lblReinvest",
+                data.reinvest
+            );
+            setText(
+                "yesOption",
+                data.yes
+            );
+            setText(
+                "noOption",
+                data.no
+            );
+            setText(
+                "calculateButton",
+                data.calculate
+            );
+            setText(
+                "comparisonTitle",
+                data.comparison
+            );
+            setText(
+                "thScheme",
+                data.scheme
+            );
+            setText(
+                "thRate",
+                data.rate
+            );
+            setText(
+                "thInterestMethod",
+                data.interestMethod
+            );
+            setText(
+                "thInterest",
+                data.interestReceived
+            );
+            setText(
+                "thFinal",
+                data.finalPrincipal
+            );
+            setText(
+                "thTotal",
+                data.totalValue
+            );
+            setText(
+                "thProfit",
+                data.profit
+            );
+            setText(
+                "thReturn",
+                data.effectiveReturn
+            );
+            setText(
+                "thLiquidity",
+                data.liquidity
+            );
+            setText(
+                "nscName",
+                data.nsc
+            );
+            setText(
+                "tdName",
+                data.td
+            );
+            setText(
+                "misName",
+                data.mis
+            );
+            setText(
+                "scssName",
+                data.scss
+            );
+            setText(
+                "nscMethod",
+                data.nscMethod
+            );
+            setText(
+                "tdMethod",
+                data.tdMethod
+            );
+            setText(
+                "misMethod",
+                data.misMethod
+            );
+            setText(
+                "scssMethod",
+                data.scssMethod
+            );
+            setText(
+                "nscLiquidity",
+                data.medium
+            );
+            setText(
+                "tdLiquidity",
+                data.medium
+            );
+            setText(
+                "misLiquidity",
+                data.high
+            );
+            setText(
+                "scssLiquidity",
+                data.medium
+            );
+            setText(
+                "bestTitle",
+                data.bestFor
+            );
+            setText(
+                "nscBest",
+                data.nscBest
+            );
+            setText(
+                "tdBest",
+                data.tdBest
+            );
+            setText(
+                "misBest",
+                data.misBest
+            );
+            setText(
+                "scssBest",
+                data.scssBest
+            );
+            setText(
+                "rankingTitle",
+                data.ranking
+            );
+            setText(
+                "rankTitle",
+                data.rank
+            );
+            setText(
+                "differenceTitle",
+                data.difference
+            );
+            setText(
+                "noteTitle",
+                data.noteTitle
+            );
+            setText(
+                "noteText",
+                data.noteText
+            );
+            setText(
+                "scenarioTitle",
+                data.scenarioTitle
+            );
+            setText(
+                "scenarioText",
+                data.scenarioText
+            );
+            setText(
+                "rateTitle",
+                data.rateTitle
+            );
+            setText(
+                "rateWarning",
+                data.rateWarning
+            );
+            setText(
+                "conclusionTitle",
+                data.conclusion
+            );
+            setText(
+                "conclusionText",
+                data.conclusionText
+            );
+            updateLanguageButtons(
+                lang
+            );
+            calculateComparison();
+        }
+        window.onload =
+            function() {
+                loadLanguage(
+                    "tamil"
+                );
+            };
+    </SCRIPT>
+</HEAD>
+<BODY>
+<TABLE class="mainTable" border="0">
+    <!-- DYNAMIC WINNER ROW -->
+    <TR>
+        <TD
+            id="winnerHeader"
+            class="winnerHeader"
+        >
+            🏆 Calculating...
+        </TD>
+    </TR>
+    <!-- LANGUAGE ROW -->
+    <TR>
+        <TD valign='top' align='right'>
+            <TABLE
+                class="languageTable"
+                border="1"
+                style="width:100%;"
+            >
+                <TR>
+                    <TD
+                        align="center"
+                        style="padding:9px;"
+                    >
+                        <SPAN
+                            id="languageTamil"
+                            class="languageButton"
+                        >
+                            தமிழ்
+                        </SPAN>
+                    </TD>
+                    <TD
+                        align="center"
+                        style="padding:9px;"
+                    >
+                        <SPAN
+                            id="languageTelugu"
+                            class="languageButton"
+                        >
+                            తెలుగు
+                        </SPAN>
+                    </TD>
+                    <TD
+                        align="center"
+                        style="padding:9px;"
+                    >
+                        <SPAN
+                            id="languageKannada"
+                            class="languageButton"
+                        >
+                            ಕನ್ನಡ
+                        </SPAN>
+                    </TD>
+                    <TD
+                        align="center"
+                        style="padding:9px;"
+                    >
+                        <SPAN
+                            id="languageHindi"
+                            class="languageButton"
+                        >
+                            हिन्दी
+                        </SPAN>
+                    </TD>
+                    <TD
+                        align="center"
+                        style="padding:9px;"
+                    >
+                        <SPAN
+                            id="languageEnglish"
+                            class="languageButton"
+                        >
+                            English
+                        </SPAN>
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+    </TR>
+    <!-- TITLE -->
+    <TR>
+        <TD
+            id="mainTitle"
+            class="title"
+        >
+            NSC vs TD vs MIS vs SCSS
+        </TD>
+    </TR>
+    <!-- INPUTS -->
+    <TR>
+        <TD valign='top' align='right'>
+            <TABLE
+                class="inputTable"
+                border="0"
+            >
+                <TR>
+                    <TD valign='top' align='right'>
+                        <B id="lblInvestment">
+                            Initial Investment
+                        </B>
+                    </TD>
+                    <TD valign='top' align='right'>
+                        <INPUT
+                            id="investmentAmount"
+                            class="inputBox"
+                            type="number"
+                            value="155000"
+                            min="0"
+                            step="100"
+                            onchange="calculateComparison();"
+                        >
+                    </TD>
+                    <TD valign='top' align='right'>
+                        <B id="lblPeriod">
+                            Comparison Period
+                        </B>
+                    </TD>
+                    <TD valign='top' align='right'>
+                        <SELECT
+                            id="comparisonPeriod"
+                            class="selectBox"
+                            onchange="calculateComparison();"
+                        >
+                            <OPTION value="5">
+                                5 Years
+                            </OPTION>
+                            <OPTION value="10">
+                                10 Years
+                            </OPTION>
+                            <OPTION value="15">
+                                15 Years
+                            </OPTION>
+                            <OPTION value="20">
+                                20 Years
+                            </OPTION>
+                        </SELECT>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        <B id="lblReinvest">
+                            Reinvest Interest
+                        </B>
+                    </TD>
+                    <TD valign='top' align='right'>
+                        <SELECT
+                            id="reinvestInterest"
+                            class="selectBox"
+                            onchange="calculateComparison();"
+                        >
+                            <OPTION
+                                value="yes"
+                                id="yesOption"
+                            >
+                                Yes - Reinvest
+                            </OPTION>
+                            <OPTION
+                                value="no"
+                                id="noOption"
+                            >
+                                No - Keep Interest as Cash
+                            </OPTION>
+                        </SELECT>
+                    </TD>
+                    <TD valign='top' align='right'>
+                        <BUTTON
+                            id="calculateButton"
+                            class="calculateButton"
+                            onclick="calculateComparison();"
+                        >
+                            Calculate
+                        </BUTTON>
+                    </TD>
+                    <TD valign='top' align='right'>
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+    </TR>
+    <!-- COMPARISON TABLE -->
+    <TR>
+        <TD valign='top' align='right'>
+            <DIV
+                id="comparisonTitle"
+                class="sectionTitle"
+            >
+                Profit Comparison
             </DIV>
-            <DIV class="scenario-impact-row" style="background-color: #f2dede; border-left: 5px solid #d9534f; padding: 15px; margin-bottom: 20px; border-radius: 4px; color: #a94442;">
-                <P id="scImpactTitle" style="margin: 0; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">
-                    ⚠️ Impact of Financial Interruptions (Job Loss / Business Downturn):
-                </P>
-                <P id="scImpactDesc" style="margin: 0; text-align: justify;">
-                    In the event of unexpected job loss or a sudden change in business conditions, that person relies on receiving <STRONG>daily MIS interest streams</STRONG> to directly manage critical day-to-day survival overheads (such as daily spending, food, traveling, school fees, utility bills, and donations). 
-                </P>
-                <P id="scImpactLim" style="margin: 5px 0 0 0; font-weight: bold; text-align: justify;">
-                    🚫 Critical Limitation: This precise daily cash flow requirement cannot be achieved when utilizing a standard TERM DEPOSIT—even though a Term Deposit mathematically provides higher cumulative interest values than an MIS—because that peak yield is locked and only fully realized after 5 years.
-                </P>
+            <TABLE
+                class="resultTable"
+                border="1"
+            >
+                <TR>
+                    <TH id="thScheme">
+                        Scheme
+                    </TH>
+                    <TH>
+                        <SPAN id="nscName">NSC</SPAN>
+                        <BR>
+                        <SPAN id="rateNSC"></SPAN>
+                    </TH>
+                    <TH id="tdHeader">
+                        <SPAN id="tdName">5-Year TD</SPAN>
+                        <BR>
+                        <SPAN id="rateTD"></SPAN>
+                    </TH>
+                    <TH>
+                        <SPAN id="misName">MIS</SPAN>
+                        <BR>
+                        <SPAN id="rateMIS"></SPAN>
+                    </TH>
+                    <TH>
+                        <SPAN id="scssName">SCSS</SPAN>
+                        <BR>
+                        <SPAN id="rateSCSS"></SPAN>
+                    </TH>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        <B id="thRate">
+                            Interest Rate
+                        </B>
+                    </TD>
+                    <TD valign='top' align='right'>
+                        7.7%
+                    </TD>
+                    <TD valign='top' align='right'>
+                        7.5%
+                    </TD>
+                    <TD valign='top' align='right'>
+                        7.4%
+                    </TD>
+                    <TD valign='top' align='right'>
+                        8.2%
+                    </TD>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        <B id="thInterestMethod">
+                            Interest Method
+                        </B>
+                    </TD>
+                    <TD id="nscMethod">
+                        Annual compounding
+                    </TD>
+                    <TD id="tdMethod">
+                        Quarterly compounding
+                    </TD>
+                    <TD id="misMethod">
+                        Monthly interest payout
+                    </TD>
+                    <TD id="scssMethod">
+                        Quarterly interest payout
+                    </TD>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        <B id="thInterest">
+                            Interest / Profit
+                        </B>
+                    </TD>
+                    <TD id="nscInterest">
+                    </TD>
+                    <TD id="tdInterest">
+                    </TD>
+                    <TD id="misInterest">
+                    </TD>
+                    <TD id="scssInterest">
+                    </TD>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        <B id="thFinal">
+                            Final Principal / Value
+                        </B>
+                    </TD>
+                    <TD id="nscFinal">
+                    </TD>
+                    <TD id="tdFinal">
+                    </TD>
+                    <TD id="misFinal">
+                    </TD>
+                    <TD id="scssFinal">
+                    </TD>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        <B>
+                            <SPAN id="thTotal">
+                                Total Portfolio Value
+                            </SPAN>
+                        </B>
+                    </TD>
+                    <TD id="nscFinal2">
+                    </TD>
+                    <TD id="tdFinal2">
+                    </TD>
+                    <TD id="misFinal2">
+                    </TD>
+                    <TD id="scssFinal2">
+                    </TD>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        <B id="thProfit">
+                            Total Profit
+                        </B>
+                    </TD>
+                    <TD
+                        id="nscInterest2"
+                        class="profitCell"
+                    >
+                    </TD>
+                    <TD
+                        id="tdInterest2"
+                        class="profitCell"
+                    >
+                    </TD>
+                    <TD
+                        id="misInterest2"
+                        class="profitCell"
+                    >
+                    </TD>
+                    <TD
+                        id="scssInterest2"
+                        class="profitCell"
+                    >
+                    </TD>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        <B id="thReturn">
+                            Effective Return
+                        </B>
+                    </TD>
+                    <TD id="nscReturn">
+                    </TD>
+                    <TD id="tdReturn">
+                    </TD>
+                    <TD id="misReturn">
+                    </TD>
+                    <TD id="scssReturn">
+                    </TD>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        <B id="thLiquidity">
+                            Liquidity
+                        </B>
+                    </TD>
+                    <TD id="nscLiquidity">
+                        Medium
+                    </TD>
+                    <TD id="tdLiquidity">
+                        Medium
+                    </TD>
+                    <TD id="misLiquidity">
+                        High
+                    </TD>
+                    <TD id="scssLiquidity">
+                        Medium
+                    </TD>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        <B id="bestTitle">
+                            Best suited for
+                        </B>
+                    </TD>
+                    <TD id="nscBest">
+                        Long-term growth
+                    </TD>
+                    <TD id="tdBest">
+                        Fixed-income growth
+                    </TD>
+                    <TD id="misBest">
+                        Regular monthly income
+                    </TD>
+                    <TD id="scssBest">
+                        Senior citizens + income
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+    </TR>
+    <!-- RANKING -->
+    <TR>
+        <TD valign='top' align='right'>
+            <DIV
+                id="rankingTitle"
+                class="sectionTitle"
+            >
+                Profit Ranking
             </DIV>
-        </DIV>
-			</TD>
-		</TR>
-            <TR>
-                <TD valign='top' align='left' colspan='5'>
-                    <DIV class="container">
-                        <H2 id="mainTitle"></H2>
-                        <TABLE border='1' style='width:100%;'>
-                            <TR>
-                                <TH id="thMetric" valign='top' align='left'></TH>
-                                <TH id="thP1" valign='top' align='left'></TH>
-                                <TH id="thP2" valign='top' align='left'></TH>
-                            </TR>
-                            <TR>
-                                <TD valign='top' align='left'><B id="lblScheme"></B></TD>
-                                <TD id="valP1Scheme" valign='top' align='left'></TD>
-                                <TD id="valP2Scheme" valign='top' align='left'></TD>
-                            </TR>
-                            <TR>
-                                <TD valign='top' align='left'><B id="lblRate"></B></TD>
-                                <TD id="valP1Rate" valign='top' align='left'></TD>
-                                <TD id="valP2Rate" valign='top' align='left'></TD>
-                            </TR>
-                            <TR>
-                                <TD valign='top' align='left'><B id="lblSetup"></B></TD>
-                                <TD id="valP1Setup" valign='top' align='left'></TD>
-                                <TD id="valP2Setup" valign='top' align='left'></TD>
-                            </TR>
-                            <TR>
-                                <TD valign='top' align='left'><B id="lblPrincipal"></B></TD>
-                                <TD valign='top' align='left'>155000.00 ರೂ/ரூ/₹ INR</TD>
-                                <TD valign='top' align='left'>155000.00 ರೂ/ரூ/₹ INR</TD>
-                            </TR>
-                            <TR>
-                                <TD valign='top' align='left'><B id="lblBaseline"></B></TD>
-                                <TD valign='top' align='left'>500.00 ರೂ/ரூ/₹ INR</TD>
-                                <TD valign='top' align='left'>500.00 ರೂ/ரூ/₹ INR</TD>
-                            </TR>
-                            <TR>
-                                <TD valign='top' align='left'><B id="lblMechanism"></B></TD>
-                                <TD id="valP1Mechanism" valign='top' align='left'></TD>
-                                <TD id="valP2Mechanism" valign='top' align='left'></TD>
-                            </TR>
-                            <TR>
-                                <TD valign='top' align='left'><B id="lblTotalAcc"></B></TD>
-                                <TD id="valP1TotalAcc" valign='top' align='left'></TD>
-                                <TD id="valP2TotalAcc" valign='top' align='left'></TD>
-                            </TR>
-                            <TR>
-                                <TD valign='top' align='left'><B id="lblCashBal"></B></TD>
-                                <TD valign='top' align='left'>1589.00 ರೂ/ரூ/₹ INR</TD>
-                                <TD valign='top' align='left'>500.00 ರೂ/ரூ/₹ INR</TD>
-                            </TR>
-                            <TR>
-                                <TD valign='top' align='left'><B id="lblGrandTotal" class="highlight"></B></TD>
-                                <TD valign='top' align='left'><B class="highlight">671589.00 ರೂ/ரூ/₹ INR</B></TD>
-                                <TD valign='top' align='left'><B class="highlight">685580.23 ರೂ/ரூ/₹ INR</B></TD>
-                            </TR>
-                        </TABLE>
-                        <H2 id="conclusionTitle"></H2>
-                        <TABLE border='1' style='width:100%;'>
-                            <TR>
-                                <TD id="conclusionValue" valign='top' align='left'></TD>
-                            </TR>
-                        </TABLE>
-                    </DIV>
-                </TD>
-            </TR>
-        </TABLE>
-	<SCRIPT type="text/javascript">
-		translations.english.misTdTitle = "MIS vs TD Comparison";
-		translations.tamil.misTdTitle = "MIS vs TD ஒப்பீடு";
-		translations.telugu.misTdTitle = "MIS vs TD పోలిక";
-		translations.kannada.misTdTitle = "MIS vs TD ಹೋಲಿಕೆ";
-		translations.hindi.misTdTitle = "MIS vs TD तुलना";
-		translations.english.misTdMetric = "Metric";
-		translations.tamil.misTdMetric = "அளவீடு";
-		translations.telugu.misTdMetric = "కొలమానం";
-		translations.kannada.misTdMetric = "ಮಾಪನ";
-		translations.hindi.misTdMetric = "मापदंड";
-		translations.english.misTdInterest = "Interest";
-		translations.tamil.misTdInterest = "வட்டி";
-		translations.telugu.misTdInterest = "వడ్డీ";
-		translations.kannada.misTdInterest = "ಬಡ್ಡಿ";
-		translations.hindi.misTdInterest = "ब्याज";
-		translations.english.misTdLiquidity = "Liquidity";
-		translations.tamil.misTdLiquidity = "திரவத்தன்மை";
-		translations.telugu.misTdLiquidity = "లిక్విడిటీ";
-		translations.kannada.misTdLiquidity = "ದ್ರವತೆ";
-		translations.hindi.misTdLiquidity = "तरलता";
-		translations.english.misTdTax = "Tax Benefit";
-		translations.tamil.misTdTax = "வரி நன்மை";
-		translations.telugu.misTdTax = "పన్ను ప్రయోజనం";
-		translations.kannada.misTdTax = "ತೆರಿಗೆ ಲಾಭ";
-		translations.hindi.misTdTax = "कर लाभ";
-		translations.english.misTdReturn = "Return Level";
-		translations.tamil.misTdReturn = "வருமான நிலை";
-		translations.telugu.misTdReturn = "రాబడి స్థాయి";
-		translations.kannada.misTdReturn = "ಆದಾಯ ಮಟ್ಟ";
-		translations.hindi.misTdReturn = "रिटर्न स्तर";
-		translations.english.misTdScheme1 = "Monthly Income Scheme";
-		translations.tamil.misTdScheme1 = "மாதாந்திர வருமான திட்டம்";
-		translations.telugu.misTdScheme1 = "మాసిక ఆదాయ పథకం";
-		translations.kannada.misTdScheme1 = "ಮಾಸಿಕ ಆದಾಯ ಯೋಜನೆ";
-		translations.hindi.misTdScheme1 = "मासिक आय योजना";
-		translations.english.misTdScheme2 = "Term Deposit";
-		translations.tamil.misTdScheme2 = "தவணை வைப்பு";
-		translations.telugu.misTdScheme2 = "ఫిక్స్‌డ్ డిపాజిట్";
-		translations.kannada.misTdScheme2 = "ಅವಧಿ ಠೇವಣಿ";
-		translations.hindi.misTdScheme2 = "सावधि जमा";
-		translations.english.misTdInterest1 = "Paid Monthly";
-		translations.tamil.misTdInterest1 = "மாதாந்திரம் வழங்கப்படும்";
-		translations.telugu.misTdInterest1 = "నెలవారీ చెల్లింపు";
-		translations.kannada.misTdInterest1 = "ಮಾಸಿಕ ಪಾವತಿ";
-		translations.hindi.misTdInterest1 = "मासिक भुगतान";
-		translations.english.misTdInterest2 = "Compounded Quarterly";
-		translations.tamil.misTdInterest2 = "காலாண்டு கூட்டு வட்டி";
-		translations.telugu.misTdInterest2 = "త్రైమాసిక చక్రవడ్డీ";
-		translations.kannada.misTdInterest2 = "ತ್ರೈಮಾಸಿಕ ಸಂಯೋಜಿತ ಬಡ್ಡಿ";
-		translations.hindi.misTdInterest2 = "त्रैमासिक चक्रवृद्धि";
-		translations.english.misTdLiquidity1 = "High";
-		translations.tamil.misTdLiquidity1 = "அதிகம்";
-		translations.telugu.misTdLiquidity1 = "అధికం";
-		translations.kannada.misTdLiquidity1 = "ಹೆಚ್ಚು";
-		translations.hindi.misTdLiquidity1 = "उच्च";
-		translations.english.misTdLiquidity2 = "Low";
-		translations.tamil.misTdLiquidity2 = "குறைவு";
-		translations.telugu.misTdLiquidity2 = "తక్కువ";
-		translations.kannada.misTdLiquidity2 = "ಕಡಿಮೆ";
-		translations.hindi.misTdLiquidity2 = "कम";
-		translations.english.misTdTax1 = "No benefit";
-		translations.tamil.misTdTax1 = "வரி சலுகை இல்லை";
-		translations.telugu.misTdTax1 = "పన్ను ప్రయోజనం లేదు";
-		translations.kannada.misTdTax1 = "ತೆರಿಗೆ ಲಾಭ ಇಲ್ಲ";
-		translations.hindi.misTdTax1 = "कोई लाभ नहीं";
-		translations.english.misTdTax2 = "Limited";
-		translations.tamil.misTdTax2 = "வரம்புக்குள்";
-		translations.telugu.misTdTax2 = "పరిమిత";
-		translations.kannada.misTdTax2 = "ಮಿತ";
-		translations.hindi.misTdTax2 = "सीमित";
-		translations.english.misTdReturn1 = "Moderate";
-		translations.tamil.misTdReturn1 = "மிதமான";
-		translations.telugu.misTdReturn1 = "మధ్యస్థం";
-		translations.kannada.misTdReturn1 = "ಮಧ್ಯಮ";
-		translations.hindi.misTdReturn1 = "मध्यम";
-		translations.english.misTdReturn2 = "High";
-		translations.tamil.misTdReturn2 = "அதிகம்";
-		translations.telugu.misTdReturn2 = "అధికం";
-		translations.kannada.misTdReturn2 = "ಹೆಚ್ಚು";
-		translations.hindi.misTdReturn2 = "उच्च";
-	</SCRIPT>
-    </BODY>
+            <TABLE
+                class="resultTable"
+                border="1"
+            >
+                <TR>
+                    <TH id="rankTitle">
+                        Rank
+                    </TH>
+                    <TH>
+                        Scheme
+                    </TH>
+                    <TH>
+                        Profit
+                    </TH>
+                    <TH>
+                        Final Value
+                    </TH>
+                    <TH id="differenceTitle">
+                        Difference from #1
+                    </TH>
+                </TR>
+                <TBODY id="rankingBody">
+                </TBODY>
+            </TABLE>
+        </TD>
+    </TR>
+    <!-- WINNER SUMMARY -->
+    <TR>
+        <TD valign='top' align='right'>
+            <DIV
+                class="sectionTitle"
+            >
+                🏆 Result
+            </DIV>
+            <DIV
+                id="winnerSummary"
+                class="winnerHeader"
+                style="
+                    margin-top:0;
+                    background-color:#c6efce;
+                    color:#006100;
+                    font-size:15px;
+                "
+            >
+            </DIV>
+        </TD>
+    </TR>
+    <!-- RATE TABLE -->
+    <TR>
+        <TD valign='top' align='right'>
+            <DIV
+                id="rateTitle"
+                class="sectionTitle"
+            >
+                Rates Used
+            </DIV>
+            <TABLE
+                class="resultTable"
+                border="1"
+            >
+                <TR>
+                    <TH>
+                        Scheme
+                    </TH>
+                    <TH>
+                        Rate
+                    </TH>
+                    <TH>
+                        Payment / Compounding
+                    </TH>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        NSC
+                    </TD>
+                    <TD id="rateNSC2">
+                        7.7%
+                    </TD>
+                    <TD valign='top' align='right'>
+                        Annual compounding
+                    </TD>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        5-Year TD
+                    </TD>
+                    <TD id="rateTD2">
+                        7.5%
+                    </TD>
+                    <TD valign='top' align='right'>
+                        Quarterly compounding
+                    </TD>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        MIS
+                    </TD>
+                    <TD id="rateMIS2">
+                        7.4%
+                    </TD>
+                    <TD valign='top' align='right'>
+                        Monthly payout
+                    </TD>
+                </TR>
+                <TR>
+                    <TD valign='top' align='right'>
+                        SCSS
+                    </TD>
+                    <TD id="rateSCSS2">
+                        8.2%
+                    </TD>
+                    <TD valign='top' align='right'>
+                        Quarterly payout
+                    </TD>
+                </TR>
+            </TABLE>
+            <DIV
+                id="rateWarning"
+                class="rateSource"
+            >
+                Small-savings rates are periodically notified by the Government.
+            </DIV>
+        </TD>
+    </TR>
+    <!-- PRACTICAL SCENARIO -->
+    <TR>
+        <TD valign='top' align='right'>
+            <DIV
+                class="warning"
+            >
+                <B id="scenarioTitle">
+                    Practical interpretation
+                </B>
+                <BR>
+                <SPAN id="scenarioText">
+                    If your objective is maximum growth and you do not need
+                    periodic income, a compounding scheme can be advantageous.
+                    MIS and SCSS are different because their interest is paid out.
+                </SPAN>
+            </DIV>
+        </TD>
+    </TR>
+    <!-- IMPORTANT NOTE -->
+    <TR>
+        <TD valign='top' align='right'>
+            <DIV
+                class="note"
+            >
+                <B id="noteTitle">
+                    Important calculation note
+                </B>
+                <BR>
+                <SPAN id="noteText">
+                    NSC is modeled with annual compounding and the 5-year TD
+                    with quarterly compounding. MIS pays interest monthly and
+                    SCSS pays interest quarterly.
+                </SPAN>
+            </DIV>
+        </TD>
+    </TR>
+    <!-- CONCLUSION -->
+    <TR>
+        <TD valign='top' align='right'>
+            <DIV
+                class="sectionTitle"
+                id="conclusionTitle"
+            >
+                Conclusion
+            </DIV>
+            <DIV
+                class="note"
+                id="conclusionText"
+            >
+                The winner shown above is based only on the calculated
+                portfolio profit under the selected assumptions.
+            </DIV>
+        </TD>
+    </TR>
+</TABLE>
+<SCRIPT type="text/javascript">
+    /*
+     * Copy calculated values into the duplicate summary cells.
+     */
+    function syncResultCells() {
+        var ids = [
+            "nsc",
+            "td",
+            "mis",
+            "scss"
+        ];
+        for (
+            var i = 0;
+            i < ids.length;
+            i++
+        ) {
+            var id = ids[i];
+            document.getElementById(
+                id + "Final2"
+            ).innerHTML =
+                document.getElementById(
+                    id + "Final"
+                ).innerHTML;
+            document.getElementById(
+                id + "Interest2"
+            ).innerHTML =
+                document.getElementById(
+                    id + "Interest"
+                ).innerHTML;
+        }
+    }
+    /*
+     * Override the calculation function so that the duplicate
+     * summary cells are synchronized after calculation.
+     */
+    var originalCalculate =
+        calculateComparison;
+    calculateComparison =
+        function() {
+            originalCalculate();
+            syncResultCells();
+            /*
+             * Rate table.
+             */
+            document.getElementById(
+                "rateNSC2"
+            ).innerHTML =
+                rates.nsc.toFixed(1) + "%";
+            document.getElementById(
+                "rateTD2"
+            ).innerHTML =
+                rates.td.toFixed(1) + "%";
+            document.getElementById(
+                "rateMIS2"
+            ).innerHTML =
+                rates.mis.toFixed(1) + "%";
+            document.getElementById(
+                "rateSCSS2"
+            ).innerHTML =
+                rates.scss.toFixed(1) + "%";
+        };
+    /*
+     * Initial calculation.
+     */
+    window.setTimeout(
+        function() {
+            calculateComparison();
+        },
+        100
+    );
+</SCRIPT>
+</BODY>
 </HTML>
