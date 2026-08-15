@@ -72,7 +72,7 @@
  }
  function displayData(data) {
  const selected = document.getElementById('monthSelect').value;
- let html = "<TABLE><TR><TH valign='top' align='right'>Date</TH><TH valign='top' align='right'>Item</TH><TH valign='top' align='right'>Amount</TH></TR>";
+ let html = "<TABLE border='1' style='width:100%;'><TR><TH valign='top' align='right'>Date</TH><TH valign='top' align='right'>Item</TH><TH valign='top' align='right'>Amount</TH></TR>";
  const months = selected === "all" ? Object.keys(data) : [currentMonth];
  months.forEach(m => {
  if (data[m]) {
