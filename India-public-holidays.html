@@ -1181,14 +1181,29 @@
 						</TR>
 						<SCRIPT type='text/javascript'>
 							var currentYearHoliday = new Date("15-Aug-" + yyyy);
-							if (new Date(today) > currentYearHoliday) {
+							currentYearHoliday.setHours(0,0,0);
+							today.setHours(0,0,0);
+							if(new Date(today) < currentYearHoliday)
+							{
+								alert(today);
 								DispYYYY = yyyy + 1;
 								document.getElementById("15Aug").style.backgroundColor = "yellow";
 								document.getElementById("15Aug").style.color = "black";
-							} else {
+							}
+							else if( ""+today == ""+currentYearHoliday)
+							{
+								document.getElementById("15Aug").style.backgroundColor = "yellow";
+								document.getElementById("15Aug").style.color = "black";
 								DispYYYY = yyyy;
 							}
-							IndependencDate = "" + new Date("15-Aug-" + DispYYYY);
+							else
+							{
+								alert(""+today == ""+currentYearHoliday);
+								DispYYYY = yyyy;
+							}
+							IndException=new Date("15-Aug-" + DispYYYY);
+							IndException.setHours(0,0,0);
+							IndependencDate = "" + IndException;
 							Day = IndependencDate.substring(0, 3);
 							Disp_IndependencDate = Day + " 15-Aug-" + DispYYYY;
 							if("Sun" == Day || "Fri" == Day || "Sat" == Day) {
@@ -1650,74 +1665,106 @@
 			}
 		</SCRIPT>
 		<SCRIPT type='text/javascript'>
-		(function() {
-			var table = document.getElementById("indiapublicholidays");
-			if (!table) return;
-			var tbody = table.tBodies[0];
-			if (!tbody) return;
-			var rows = Array.prototype.slice.call(tbody.rows);
-			if (rows.length === 0) return;
-			var headerRow = null;
-			var dataRows = [];
-			rows.forEach(function(row) {
-				var firstCellText = row.cells[0] ? row.cells[0].innerText.trim() : "";
-				if (firstCellText === "Date") {
-					headerRow = row;
-				} else {
-					dataRows.push(row);
-				}
-			});
-			var now = new Date();
-			var rowData = dataRows.map(function(row) {
-				var firstCellText = row.cells[0] ? row.cells[0].innerText.trim() : "";
-				var parsedDate = null;
-				if (firstCellText) {
-					var cleanedDateStr = firstCellText.replace(/^[A-Za-z]{3}\s+/, "");
-					var d = new Date(cleanedDateStr);
-					if (!isNaN(d.getTime())) {
-						parsedDate = d;
-					}
-				}
-				if (!parsedDate && row.id) {
-					var match = row.id.match(/^(\d{2})([A-Za-z]{3})$/);
-					if (match) {
-						var day = match[1];
-						var monthStr = match[2];
-						var targetYear = yyyy;
-						var d = new Date(day + "-" + monthStr + "-" + targetYear);
+(function() {
+	var table = document.getElementById("indiapublicholidays");
+	if (!table) return;
 
-						// If the holiday has already passed this year, treat it as next year's occurrence
-						if (d < now) {
-							d.setFullYear(targetYear + 1);
-						}
+	var tbody = table.tBodies[0];
+	if (!tbody) return;
 
-						if (!isNaN(d.getTime())) {
-							parsedDate = d;
-						}
-					}
-				}
-				return {
-					element: row,
-					date: parsedDate
-				};
-			});
-			rowData.sort(function(a, b) {
-				if (!a.date) return 1;
-				if (!b.date) return -1;
-				var aPast = a.date < now;
-				var bPast = b.date < now;
-				if (aPast !== bPast) {
-					return aPast ? 1 : -1;
-				}
-				return a.date - b.date;
-			});
-			if (headerRow) {
-				tbody.appendChild(headerRow);
+	var rows = Array.prototype.slice.call(tbody.rows);
+	if (rows.length === 0) return;
+
+	var headerRow = null;
+	var dataRows = [];
+
+	rows.forEach(function(row) {
+		var firstCellText = row.cells[0] ? row.cells[0].innerText.trim() : "";
+
+		if (firstCellText === "Date") {
+			headerRow = row;
+		} else {
+			dataRows.push(row);
+		}
+	});
+
+	var now = new Date();
+	now.setHours(0, 0, 0, 0);
+
+	var rowData = dataRows.map(function(row) {
+		var firstCellText = row.cells[0] ? row.cells[0].innerText.trim() : "";
+		var parsedDate = null;
+
+		if (firstCellText) {
+			var cleanedDateStr = firstCellText.replace(/^[A-Za-z]{3}\s+/, "");
+			var d = new Date(cleanedDateStr);
+
+			if (!isNaN(d.getTime())) {
+				d.setHours(0, 0, 0, 0);
+				parsedDate = d;
 			}
-			rowData.forEach(function(item) {
-				tbody.appendChild(item.element);
-			});
-		})();
-		</SCRIPT>
+		}
+
+		if (!parsedDate && row.id) {
+			var match = row.id.match(/^(\d{2})([A-Za-z]{3})$/);
+
+			if (match) {
+				var day = parseInt(match[1], 10);
+				var monthStr = match[2];
+
+				var monthMap = {
+					Jan: 0, Feb: 1, Mar: 2, Apr: 3,
+					May: 4, Jun: 5, Jul: 6, Aug: 7,
+					Sep: 8, Oct: 9, Nov: 10, Dec: 11
+				};
+
+				var month = monthMap[monthStr];
+				var targetYear = yyyy;
+
+				var d = new Date(targetYear, month, day);
+				d.setHours(0, 0, 0, 0);
+
+				// If the holiday has already passed this year,
+				// treat it as next year's occurrence.
+				if (d < now) {
+					d = new Date(targetYear + 1, month, day);
+					d.setHours(0, 0, 0, 0);
+				}
+
+				if (!isNaN(d.getTime())) {
+					parsedDate = d;
+				}
+			}
+		}
+
+		return {
+			element: row,
+			date: parsedDate
+		};
+	});
+
+	rowData.sort(function(a, b) {
+		if (!a.date) return 1;
+		if (!b.date) return -1;
+
+		var aPast = a.date < now;
+		var bPast = b.date < now;
+
+		if (aPast !== bPast) {
+			return aPast ? 1 : -1;
+		}
+
+		return a.date - b.date;
+	});
+
+	if (headerRow) {
+		tbody.appendChild(headerRow);
+	}
+
+	rowData.forEach(function(item) {
+		tbody.appendChild(item.element);
+	});
+})();
+</SCRIPT>
 	</BODY>
 </HTML>
