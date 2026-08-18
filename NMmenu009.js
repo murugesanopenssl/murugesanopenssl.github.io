@@ -736,6 +736,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					"steps-to-open-rd-postoffice.html": "Recurring Deposit (RD)",
 					"ssa-account-deposit.html": "SSA Account",
 					"td-better-than-mis-nsc.html": "SCSS BETTER THAN TD/MIS/NSC/RD",
+					"pre-closure-NSC-steps.html": "PRE CLOSURE NSC STEPS",
 					"Steps-to-save-money-from-mis.html": "STEPS TO SAVE MONEY FROM MIS",
 					"spending.html": "Daily Spending",
 					"2-wheeler-4-wheeler-rank.html": "Vehicle ranking",
@@ -831,7 +832,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				}
 				else if( "steps-to-open-rd-postoffice.html" == htmlFileName )
 				{
-				document.title = "Recurring Deposit (RD)";
+					document.title = "Recurring Deposit (RD)";
 				}
 				else if( "ssa-account-deposit.html" == htmlFileName )
 				{
@@ -840,6 +841,10 @@ function MainPageHomeLoadContent( event, htmlFileName )
 				else if( "td-better-than-mis-nsc.html" == htmlFileName )
 				{
 					document.title = "SCSS BETTER THAN TD/MIS/NSC/RD";
+				}
+				else if( "pre-closure-NSC-steps.html" == htmlFileName )
+				{
+					document.title = "PRE CLOSURE NSC STEPS";
 				}
 				else if( "Steps-to-save-money-from-mis.html" == htmlFileName )
 				{
@@ -1109,6 +1114,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"ssa-account-deposit.html": ["SSA Account"],
 								"td-better-than-mis-nsc.html": ["SCSS BETTER THAN TD/MIS/NSC/RD"],
 								"mis-pre-close-calculator.html": ["PRE CLOSE MIS CALC"],
+								"pre-closure-NSC-steps.html": ["PRE CLOSURE NSC STEPS"],
 								"ippb-awareness-indian-citizens.html": ["IPPB Premium Savings Tips"],
 								"Self-Insurance-Plan-for-Parents.html": ["Personal Self-Insurance Example"],
 								"why-to-open-fixed-deposit.html": ["Why Choose Fixed Deposit?"],
@@ -1190,6 +1196,8 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"my-exercise.html": ["My exercise"],
 								"../my-income-spending.html": ["MY INCOME SPENDING"],
 								"../sbi-rewards-points.html": ["MY SBI REWARD POINTS"],
+								"../my-father-property-tax.html": ["MY FATHER PROPERTY TAX"],
+								"../NM_ETDR_AMOUNT.html": ["ND ETDR SBI"],
 								"pain-killer-tablet.html": ["PAIN KILLER TABLET"],
 								"../recharge-mobile.html": ["ALL MOBILES RECHARGE"],
 								"../urination-water.html": ["My urination and Water"],
@@ -1720,14 +1728,15 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								<LI>
 									<A href="#" onclick='javascript:loadHomeContent( event, "td-better-than-mis-nsc.html" );' class="nav-link">SCSS BETTER THAN TD/MIS/NSC/RD</A>
 								</LI>
-								<LI>
-									<A href="#" onclick='javascript:loadHomeContent( event, "steps-to-open-rd-postoffice.html" );' class="nav-link">Recurring Deposit (RD)</A>
-								</LI>
+								<LI><A href="#" onclick='javascript:loadHomeContent( event, "steps-to-open-rd-postoffice.html" );' class="nav-link">Recurring Deposit (RD)</A></LI>
 								<LI>
 									<A href="#" onclick='javascript:loadHomeContent( event, "ssa-account-deposit.html" );' class="nav-link">SSA Account</A>
 								</LI>
 								<LI>
 									<A href="#" onclick='javascript:loadHomeContent( event, "mis-pre-close-calculator.html" );' class="nav-link"><FONT color='white'>PRE CLOSE MIS CALC</FONT></A>
+								</LI>
+								<LI>
+									<A href="#" onclick='javascript:loadHomeContent( event, "pre-closure-NSC-steps.html" );' class="nav-link">PRE CLOSURE NSC STEPS</A>
 								</LI>
 								<LI>
 									<A href="#" onclick='javascript:window.open( "post-office-nsc.html" );' class="nav-link"><FONT color='#00ff00'>National Savings Certificate (NSC)</FONT></A>
@@ -2163,12 +2172,12 @@ function MainPageHomeLoadContent( event, htmlFileName )
 						<SPAN class="nav-arrow">&gt;</SPAN>
 					</A>
 					<UL class="submenu">
+						${ "127.0.0.1" === window.location.hostname ?`
 							<LI>
-								<A href="#" onclick="loadHomeContent(event, 'pain-killer-tablet.html');" class="nav-link">
-									PAIN KILLER TABLET
+								<A href="#" onclick="loadHomeContent(event, '../NM_ETDR_AMOUNT.html');" class="nav-link">
+									ND ETDR SBI
 								</A>
 							</LI>
-						${ "127.0.0.1" === window.location.hostname ?`
 							<LI>
 								<A href="#" onclick="loadHomeContent(event, '../my-father-property-tax.html');" class="nav-link">
 									MY FATHER PROPERTY TAX
@@ -2197,14 +2206,17 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							<LI>
 								<A href="#" onclick="javascript:loadHomeContent( event, 'my-exercise.html' );" class="nav-link">My exercise</A>
 							</LI>
-						`:""}
-						${ "127.0.0.1" === window.location.hostname ?`
 							<LI>
 								<A href="#" onclick="loadHomeContent(event, '../my_finance_dashboard.html');" class="nav-link">
 									My finance dash board
 								</A>
 							</LI>
 						`:""}
+					<LI>
+						<A href="#" onclick="loadHomeContent(event, 'pain-killer-tablet.html');" class="nav-link">
+							PAIN KILLER TABLET
+						</A>
+					</LI>
 					<LI>
 						<A href="#" onclick="javascript:loadHomeContent( event, 'sugar-tablets.html' );" class="nav-link">Sugar Tablets Schedule</A>
 					</LI>
