@@ -193,9 +193,9 @@ R=4.5;
 P=1000.00;
 DAYS=8;
 INT=P*R*DAYS/36500.00;
-document.write( "<TR><TD>");
+document.write( "<TR><TD valign='top' align='left'>");
 document.write( P.toFixed(2) );
-document.write( "</TD><TD>");
+document.write( "</TD><TD valign='top' align='left'>");
 if( 10 > DAYS )
 {
 	document.write( "0"+DAYS);
@@ -206,7 +206,7 @@ else
 }
 document.write( " days");
 document.write( "</TD>");
-document.write( "<TD>");
+document.write( "<TD valign='top' align='left'>");
 document.write( P.toFixed(2) );
 document.write( "*");
 document.write( R);
@@ -214,20 +214,20 @@ document.write( "*");
 document.write( DAYS);
 document.write( "/36500.00");
 document.write( "</TD>");
-document.write( "<TD>");
+document.write( "<TD valign='top' align='left'>");
 document.write( R);
 document.write( "</TD>");
-document.write( "<TD>");
+document.write( "<TD valign='top' align='left'>");
 document.write( INT);
 document.write( "</TD>");
-document.write( "<TD>");
+document.write( "<TD valign='top' align='left'>");
 document.write( INT.toFixed(2) );
 document.write( "</TD>");
-document.write( "<TD>");
+document.write( "<TD valign='top' align='left'>");
 ACTUAL_INT=Math.round( INT );
 document.write( ACTUAL_INT.toFixed(2) );
 document.write( "</TD>");
-document.write( "<TD>");
+document.write( "<TD valign='top' align='left'>");
 if( 10 > ACTUAL_INT )
 {
 	document.write( P.toFixed(2)+" + 0"+ACTUAL_INT+".00" );
@@ -237,7 +237,7 @@ else
 	document.write( P.toFixed(2)+" + "+ACTUAL_INT );
 }
 document.write( "</TD>");
-document.write( "<TD>");
+document.write( "<TD valign='top' align='left'>");
 document.write( (P+ACTUAL_INT).toFixed(2) );
 document.write( "</TD>");
 document.write( "</TR>");
@@ -253,9 +253,9 @@ P=1200.00;
 			}
 			P++;
 		}
-		document.write( "<TR><TD>");
+		document.write( "<TR><TD valign='top' align='left'>");
 		document.write( P.toFixed(2) );
-		document.write( "</TD><TD>");
+		document.write( "</TD><TD valign='top' align='left'>");
 		if( 10 > DAYS )
 		{
 		document.write( "0"+DAYS);
@@ -266,7 +266,7 @@ P=1200.00;
 		}
 		document.write( " days");
 		document.write( "</TD>");
-		document.write( "<TD>");
+		document.write( "<TD valign='top' align='left'>");
 		document.write( P.toFixed(2) );
 		document.write( "*");
 		document.write( R);
@@ -274,20 +274,20 @@ P=1200.00;
 		document.write( DAYS);
 		document.write( "/36500.00");
 		document.write( "</TD>");
-		document.write( "<TD>");
+		document.write( "<TD valign='top' align='left'>");
 		document.write( R);
 		document.write( "</TD>");
-		document.write( "<TD>");
+		document.write( "<TD valign='top' align='left'>");
 		document.write( INT);
 		document.write( "</TD>");
-		document.write( "<TD>");
+		document.write( "<TD valign='top' align='left'>");
 		document.write( INT.toFixed(2) );
 		document.write( "</TD>");
-		document.write( "<TD>");
+		document.write( "<TD valign='top' align='left'>");
 		ACTUAL_INT=Math.round( INT );
 		document.write( ACTUAL_INT.toFixed(2) );
 		document.write( "</TD>");
-		document.write( "<TD>");
+		document.write( "<TD valign='top' align='left'>");
 		if( 10 > ACTUAL_INT )
 		{
 			document.write( P.toFixed(2)+" + 0"+ACTUAL_INT+".00" );
@@ -297,7 +297,7 @@ P=1200.00;
 			document.write( P.toFixed(2)+" + "+ACTUAL_INT );
 		}
 		document.write( "</TD>");
-		document.write( "<TD>");
+		document.write( "<TD valign='top' align='left'>");
 		document.write( (P+ACTUAL_INT).toFixed(2) );
 		document.write( "</TD>");
 		document.write( "</TR>");

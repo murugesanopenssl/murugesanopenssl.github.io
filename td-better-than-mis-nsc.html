@@ -1,1891 +1,1891 @@
 <!DOCTYPE html>
 <HTML lang="en">
-<HEAD>
-    <META charset="UTF-8">
-    <META name="viewport" content="width=device-width, initial-scale=1.0">
-    <TITLE>NSC vs TD vs MIS vs SCSS - Profit Comparison</TITLE>
-    <SCRIPT type="text/javascript">
-        /*
-         * CURRENT SMALL-SAVINGS RATES
-         *
-         * Rates used in this calculator:
-         *
-         * NSC  = 7.7%
-         * TD   = 7.5%  (5 Year TD)
-         * MIS  = 7.4%
-         * SCSS = 8.2%
-         *
-         * Update these four values when the Government changes
-         * the quarterly small-savings rates.
-         */
-        var rates = {
-            nsc: 7.7,
-            td: 7.5,
-            mis: 7.4,
-            scss: 8.2
-        };
-        var translations = {
-            english: {
-                title:
-                    "NSC vs TD vs MIS vs SCSS = SCSS(senior citizen) is better than a) NSC, b) TD, and c) MIS for higher profit",
-                investment:
-                    "Initial Investment",
-                period:
-                    "Comparison Period",
-                reinvest:
-                    "Reinvest Interest",
-                yes:
-                    "Yes - Reinvest",
-                no:
-                    "No - Keep Interest as Cash",
-                calculate:
-                    "Calculate",
-                scheme:
-                    "Scheme",
-                rate:
-                    "Interest Rate",
-                interestMethod:
-                    "Interest Method",
-                interestReceived:
-                    "Interest Received",
-                finalPrincipal:
-                    "Final Principal",
-                totalValue:
-                    "Total Portfolio Value",
-                profit:
-                    "Total Profit",
-                effectiveReturn:
-                    "Effective Return",
-                liquidity:
-                    "Liquidity",
-                nsc:
-                    "NSC",
-                td:
-                    "5-Year TD",
-                mis:
-                    "MIS",
-                scss:
-                    "SCSS",
-                nscMethod:
-                    "Annual compounding",
-                tdMethod:
-                    "Quarterly compounding",
-                misMethod:
-                    "Monthly interest payout",
-                scssMethod:
-                    "Quarterly interest payout",
-                medium:
-                    "Medium",
-                high:
-                    "High",
-                low:
-                    "Low",
-                bestFor:
-                    "Best suited for",
-                nscBest:
-                    "Long-term growth",
-                tdBest:
-                    "Fixed-income growth",
-                misBest:
-                    "Regular monthly income",
-                scssBest:
-                    "Senior citizens + income",
-                winner:
-                    "is better than",
-                comparison:
-                    "Profit Comparison",
-                ranking:
-                    "Profit Ranking",
-                rank:
-                    "Rank",
-                difference:
-                    "Difference from #1",
-                totalInvestment:
-                    "Total Investment",
-                totalInterest:
-                    "Total Interest / Profit",
-                finalValue:
-                    "Final Value",
-                cashInterest:
-                    "Interest kept as cash",
-                reinvestedInterest:
-                    "Interest reinvested",
-                noteTitle:
-                    "Important calculation note",
-                noteText:
-                    "NSC is modeled with annual compounding and the 5-year TD with quarterly compounding. MIS pays interest monthly and SCSS pays interest quarterly. When reinvestment is enabled, the calculator assumes each payout is reinvested at the same rate and frequency for comparison purposes. Actual future rates may change when each scheme matures.",
-                scenarioTitle:
-                    "Practical interpretation",
-                scenarioText:
-                    "If your objective is maximum growth and you do not need periodic income, a compounding scheme can be advantageous. MIS and SCSS are different because their interest is paid out. Their ranking can change significantly depending on whether those payouts are spent or reinvested.",
-                rateTitle:
-                    "Rates Used",
-                currentRate:
-                    "Current rate used in this calculator",
-                rateWarning:
-                    "Small-savings interest rates are periodically notified by the Government. Change the rate values in the JavaScript when a new quarter's rates are announced.",
-                senior:
-                    "Senior citizen oriented",
-                normal:
-                    "General investor",
-                tax:
-                    "Tax / deduction",
-                taxNSC:
-                    "Eligible subject to applicable rules",
-                taxTD:
-                    "5-year TD may qualify under applicable 80C rules",
-                taxMIS:
-                    "Interest taxable as applicable",
-                taxSCSS:
-                    "Interest taxable as applicable",
-                conclusion:
-                    "Conclusion",
-                conclusionText:
-                    "The winner shown above is based only on the calculated portfolio profit under the selected assumptions. It does not mean that one scheme is universally better for every investor."
-            },
-            tamil: {
-                title:
-                    "NSC vs TD vs MIS vs SCSS - எதில் அதிக லாபம்?",
-                investment:
-                    "ஆரம்ப முதலீடு",
-                period:
-                    "ஒப்பீட்டு காலம்",
-                reinvest:
-                    "வட்டியை மறுமுதலீடு செய்யவா?",
-                yes:
-                    "ஆம் - மறுமுதலீடு",
-                no:
-                    "இல்லை - வட்டியை ரொக்கமாக வைத்திரு",
-                calculate:
-                    "கணக்கிடு",
-                scheme:
-                    "திட்டம்",
-                rate:
-                    "வட்டி விகிதம்",
-                interestMethod:
-                    "வட்டி முறை",
-                interestReceived:
-                    "பெறப்பட்ட வட்டி",
-                finalPrincipal:
-                    "இறுதி அசல்",
-                totalValue:
-                    "மொத்த போர்ட்ஃபோலியோ மதிப்பு",
-                profit:
-                    "மொத்த லாபம்",
-                effectiveReturn:
-                    "மொத்த வருமான விகிதம்",
-                liquidity:
-                    "பணப்புழக்கம்",
-                nsc:
-                    "NSC",
-                td:
-                    "5-வருட TD",
-                mis:
-                    "MIS",
-                scss:
-                    "SCSS",
-                nscMethod:
-                    "ஆண்டு கூட்டு வட்டி",
-                tdMethod:
-                    "காலாண்டு கூட்டு வட்டி",
-                misMethod:
-                    "மாதாந்திர வட்டி வழங்கல்",
-                scssMethod:
-                    "காலாண்டு வட்டி வழங்கல்",
-                medium:
-                    "நடுத்தரம்",
-                high:
-                    "அதிகம்",
-                low:
-                    "குறைவு",
-                bestFor:
-                    "சிறந்த பயன்பாடு",
-                nscBest:
-                    "நீண்டகால வளர்ச்சி",
-                tdBest:
-                    "நிலையான வருமான வளர்ச்சி",
-                misBest:
-                    "மாதாந்திர வருமானம்",
-                scssBest:
-                    "மூத்த குடிமக்கள் + வருமானம்",
-                winner:
-                    "(முதியவர்) மற்றவற்றை விட சிறந்தது",
-                comparison:
-                    "லாப ஒப்பீடு",
-                ranking:
-                    "லாப தரவரிசை",
-                rank:
-                    "தரவரிசை",
-                difference:
-                    "முதல் இடத்திலிருந்து வித்தியாசம்",
-                totalInvestment:
-                    "மொத்த முதலீடு",
-                totalInterest:
-                    "மொத்த வட்டி / லாபம்",
-                finalValue:
-                    "இறுதி மதிப்பு",
-                cashInterest:
-                    "ரொக்கமாக வைத்த வட்டி",
-                reinvestedInterest:
-                    "மறுமுதலீடு செய்யப்பட்ட வட்டி",
-                noteTitle:
-                    "முக்கிய கணக்கீட்டு குறிப்பு",
-                noteText:
-                    "NSC-க்கு ஆண்டு கூட்டு வட்டியும், 5-வருட TD-க்கு காலாண்டு கூட்டு வட்டியும் பயன்படுத்தப்படுகிறது. MIS வட்டி மாதந்தோறும் வழங்கப்படுகிறது; SCSS வட்டி காலாண்டுதோறும் வழங்கப்படுகிறது. மறுமுதலீடு தேர்ந்தெடுக்கப்பட்டால், ஒப்பீட்டிற்காக அந்த வட்டி அதே விகிதத்தில் மீண்டும் முதலீடு செய்யப்படுகிறது. உண்மையான எதிர்கால வட்டி விகிதங்கள் மாறலாம்.",
-                scenarioTitle:
-                    "நடைமுறை விளக்கம்",
-                scenarioText:
-                    "தொடர்ச்சியான வருமானம் தேவையில்லாமல் அதிக வளர்ச்சியை விரும்பினால் கூட்டு வட்டி திட்டங்கள் பயனுள்ளதாக இருக்கலாம். MIS மற்றும் SCSS வட்டி வெளியே வழங்கப்படுவதால் வேறுபடுகின்றன. அந்த வட்டியை செலவு செய்கிறீர்களா அல்லது மறுமுதலீடு செய்கிறீர்களா என்பதன் அடிப்படையில் தரவரிசை மாறலாம்.",
-                rateTitle:
-                    "பயன்படுத்தப்படும் வட்டி விகிதங்கள்",
-                currentRate:
-                    "இந்த கணக்கீட்டில் பயன்படுத்தப்படும் விகிதம்",
-                rateWarning:
-                    "சிறு சேமிப்பு திட்டங்களின் வட்டி விகிதங்கள் அரசால் காலாண்டு அடிப்படையில் அறிவிக்கப்படுகின்றன. புதிய விகிதம் அறிவிக்கப்பட்டால் JavaScript-ல் உள்ள விகிதங்களை மாற்றவும்.",
-                senior:
-                    "மூத்த குடிமக்களுக்கு ஏற்றது",
-                normal:
-                    "பொதுவான முதலீட்டாளர்",
-                tax:
-                    "வரி / கழிவு",
-                taxNSC:
-                    "பொருந்தும் விதிகளுக்கு உட்பட்டு தகுதி இருக்கலாம்",
-                taxTD:
-                    "5-வருட TD பொருந்தும் 80C விதிகளின் கீழ் தகுதி பெறலாம்",
-                taxMIS:
-                    "பொருந்தும் விதிகளின்படி வட்டி வரிக்கு உட்படும்",
-                taxSCSS:
-                    "பொருந்தும் விதிகளின்படி வட்டி வரிக்கு உட்படும்",
-                conclusion:
-                    "முடிவு",
-                conclusionText:
-                    "மேலே காட்டப்படும் வெற்றியாளர் தேர்ந்தெடுக்கப்பட்ட கணக்கீட்டு முறையின் அடிப்படையில் மட்டுமே தீர்மானிக்கப்படுகிறது. எல்லா முதலீட்டாளர்களுக்கும் ஒரே திட்டம் சிறந்தது என்று இதை கருதக்கூடாது."
-            },
-            telugu: {
-                title:
-                    "NSC vs TD vs MIS vs SCSS - ఏది ఎక్కువ లాభం ఇస్తుంది?",
-                investment:
-                    "ప్రారంభ పెట్టుబడి",
-                period:
-                    "పోలిక కాలం",
-                reinvest:
-                    "వడ్డీని తిరిగి పెట్టుబడి చేయాలా?",
-                yes:
-                    "అవును - తిరిగి పెట్టుబడి",
-                no:
-                    "లేదు - వడ్డీని నగదుగా ఉంచు",
-                calculate:
-                    "లెక్కించు",
-                scheme:
-                    "పథకం",
-                rate:
-                    "వడ్డీ రేటు",
-                interestMethod:
-                    "వడ్డీ విధానం",
-                interestReceived:
-                    "అందుకున్న వడ్డీ",
-                finalPrincipal:
-                    "చివరి అసలు",
-                totalValue:
-                    "మొత్తం పోర్ట్‌ఫోలియో విలువ",
-                profit:
-                    "మొత్తం లాభం",
-                effectiveReturn:
-                    "మొత్తం రాబడి",
-                liquidity:
-                    "లిక్విడిటీ",
-                nsc:
-                    "NSC",
-                td:
-                    "5-సంవత్సరాల TD",
-                mis:
-                    "MIS",
-                scss:
-                    "SCSS",
-                nscMethod:
-                    "వార్షిక చక్రవడ్డీ",
-                tdMethod:
-                    "త్రైమాసిక చక్రవడ్డీ",
-                misMethod:
-                    "నెలవారీ వడ్డీ చెల్లింపు",
-                scssMethod:
-                    "త్రైమాసిక వడ్డీ చెల్లింపు",
-                medium:
-                    "మధ్యస్థం",
-                high:
-                    "అధికం",
-                low:
-                    "తక్కువ",
-                bestFor:
-                    "ఎవరికి అనుకూలం",
-                nscBest:
-                    "దీర్ఘకాల వృద్ధి",
-                tdBest:
-                    "స్థిర ఆదాయ వృద్ధి",
-                misBest:
-                    "నెలవారీ ఆదాయం",
-                scssBest:
-                    "సీనియర్ సిటిజన్లు + ఆదాయం",
-                winner:
-                    "కంటే మెరుగైనది",
-                comparison:
-                    "లాభ పోలిక",
-                ranking:
-                    "లాభ ర్యాంకింగ్",
-                rank:
-                    "ర్యాంక్",
-                difference:
-                    "#1 నుండి తేడా",
-                totalInvestment:
-                    "మొత్తం పెట్టుబడి",
-                totalInterest:
-                    "మొత్తం వడ్డీ / లాభం",
-                finalValue:
-                    "చివరి విలువ",
-                cashInterest:
-                    "నగదుగా ఉంచిన వడ్డీ",
-                reinvestedInterest:
-                    "తిరిగి పెట్టుబడి చేసిన వడ్డీ",
-                noteTitle:
-                    "ముఖ్యమైన లెక్కింపు గమనిక",
-                noteText:
-                    "NSCకి వార్షిక చక్రవడ్డీ మరియు 5-సంవత్సరాల TDకి త్రైమాసిక చక్రవడ్డీ ఉపయోగించబడుతుంది. MIS వడ్డీ నెలవారీగా మరియు SCSS వడ్డీ త్రైమాసికంగా చెల్లించబడుతుంది. తిరిగి పెట్టుబడి ఎంచుకుంటే పోలిక కోసం అదే రేటులో తిరిగి పెట్టుబడి చేసినట్లు లెక్కించబడుతుంది.",
-                scenarioTitle:
-                    "ప్రాక్టికల్ వివరణ",
-                scenarioText:
-                    "నిరంతర ఆదాయం అవసరం లేకుండా గరిష్ట వృద్ధి కావాలంటే చక్రవడ్డీ పథకాలు అనుకూలంగా ఉండవచ్చు. MIS మరియు SCSSలో వడ్డీ బయటకు చెల్లించబడుతుంది. ఆ వడ్డీని ఖర్చు చేస్తున్నారా లేదా తిరిగి పెట్టుబడి చేస్తున్నారా అనే దాని ఆధారంగా విజేత మారవచ్చు.",
-                rateTitle:
-                    "ఉపయోగిస్తున్న వడ్డీ రేట్లు",
-                currentRate:
-                    "ఈ కాలిక్యులేటర్‌లో ఉపయోగించిన ప్రస్తుత రేటు",
-                rateWarning:
-                    "చిన్న పొదుపు పథకాల వడ్డీ రేట్లను ప్రభుత్వం కాలానుగుణంగా ప్రకటిస్తుంది. కొత్త రేట్లు ప్రకటించినప్పుడు JavaScriptలో రేట్లను మార్చండి.",
-                senior:
-                    "సీనియర్ సిటిజన్లకు అనుకూలం",
-                normal:
-                    "సాధారణ పెట్టుబడిదారు",
-                tax:
-                    "పన్ను / మినహాయింపు",
-                taxNSC:
-                    "వర్తించే నిబంధనలకు లోబడి అర్హత ఉండవచ్చు",
-                taxTD:
-                    "5-సంవత్సరాల TD వర్తించే 80C నిబంధనల ప్రకారం అర్హత పొందవచ్చు",
-                taxMIS:
-                    "వర్తించే నిబంధనల ప్రకారం వడ్డీ పన్నుకు లోబడి ఉంటుంది",
-                taxSCSS:
-                    "వర్తించే నిబంధనల ప్రకారం వడ్డీ పన్నుకు లోబడి ఉంటుంది",
-                conclusion:
-                    "ముగింపు",
-                conclusionText:
-                    "పై విజేత ఎంపిక చేసిన లెక్కింపు విధానం ఆధారంగా మాత్రమే నిర్ణయించబడుతుంది. ప్రతి పెట్టుబడిదారుడికి ఒకే పథకం ఉత్తమమని దీని అర్థం కాదు."
-            },
-            kannada: {
-                title:
-                    "NSC vs TD vs MIS vs SCSS - ಯಾವುದು ಹೆಚ್ಚು ಲಾಭ ನೀಡುತ್ತದೆ?",
-                investment:
-                    "ಆರಂಭಿಕ ಹೂಡಿಕೆ",
-                period:
-                    "ಹೋಲಿಕೆ ಅವಧಿ",
-                reinvest:
-                    "ಬಡ್ಡಿಯನ್ನು ಮರುಹೂಡಿಕೆ ಮಾಡಬೇಕೇ?",
-                yes:
-                    "ಹೌದು - ಮರುಹೂಡಿಕೆ",
-                no:
-                    "ಇಲ್ಲ - ಬಡ್ಡಿಯನ್ನು ನಗದಾಗಿ ಇಟ್ಟುಕೊಳ್ಳಿ",
-                calculate:
-                    "ಲೆಕ್ಕ ಹಾಕಿ",
-                scheme:
-                    "ಯೋಜನೆ",
-                rate:
-                    "ಬಡ್ಡಿ ದರ",
-                interestMethod:
-                    "ಬಡ್ಡಿ ವಿಧಾನ",
-                interestReceived:
-                    "ಪಡೆದ ಬಡ್ಡಿ",
-                finalPrincipal:
-                    "ಅಂತಿಮ ಅಸಲು",
-                totalValue:
-                    "ಒಟ್ಟು ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ಮೌಲ್ಯ",
-                profit:
-                    "ಒಟ್ಟು ಲಾಭ",
-                effectiveReturn:
-                    "ಒಟ್ಟು ಆದಾಯ",
-                liquidity:
-                    "ದ್ರವ್ಯತೆ",
-                nsc:
-                    "NSC",
-                td:
-                    "5-ವರ್ಷದ TD",
-                mis:
-                    "MIS",
-                scss:
-                    "SCSS",
-                nscMethod:
-                    "ವಾರ್ಷಿಕ ಸಂಯುಕ್ತ ಬಡ್ಡಿ",
-                tdMethod:
-                    "ತ್ರೈಮಾಸಿಕ ಸಂಯುಕ್ತ ಬಡ್ಡಿ",
-                misMethod:
-                    "ಮಾಸಿಕ ಬಡ್ಡಿ ಪಾವತಿ",
-                scssMethod:
-                    "ತ್ರೈಮಾಸಿಕ ಬಡ್ಡಿ ಪಾವತಿ",
-                medium:
-                    "ಮಧ್ಯಮ",
-                high:
-                    "ಹೆಚ್ಚು",
-                low:
-                    "ಕಡಿಮೆ",
-                bestFor:
-                    "ಯಾರಿಗೆ ಸೂಕ್ತ",
-                nscBest:
-                    "ದೀರ್ಘಕಾಲೀನ ಬೆಳವಣಿಗೆ",
-                tdBest:
-                    "ಸ್ಥಿರ ಆದಾಯ ಬೆಳವಣಿಗೆ",
-                misBest:
-                    "ಮಾಸಿಕ ಆದಾಯ",
-                scssBest:
-                    "ಹಿರಿಯ ನಾಗರಿಕರು + ಆದಾಯ",
-                winner:
-                    "ಗಿಂತ ಉತ್ತಮ",
-                comparison:
-                    "ಲಾಭ ಹೋಲಿಕೆ",
-                ranking:
-                    "ಲಾಭ ಶ್ರೇಯಾಂಕ",
-                rank:
-                    "ಶ್ರೇಣಿ",
-                difference:
-                    "#1 ರಿಂದ ವ್ಯತ್ಯಾಸ",
-                totalInvestment:
-                    "ಒಟ್ಟು ಹೂಡಿಕೆ",
-                totalInterest:
-                    "ಒಟ್ಟು ಬಡ್ಡಿ / ಲಾಭ",
-                finalValue:
-                    "ಅಂತಿಮ ಮೌಲ್ಯ",
-                cashInterest:
-                    "ನಗದಾಗಿ ಇಟ್ಟ ಬಡ್ಡಿ",
-                reinvestedInterest:
-                    "ಮರುಹೂಡಿಕೆ ಮಾಡಿದ ಬಡ್ಡಿ",
-                noteTitle:
-                    "ಪ್ರಮುಖ ಲೆಕ್ಕಾಚಾರ ಸೂಚನೆ",
-                noteText:
-                    "NSCಗೆ ವಾರ್ಷಿಕ ಸಂಯುಕ್ತ ಬಡ್ಡಿ ಮತ್ತು 5-ವರ್ಷದ TDಗೆ ತ್ರೈಮಾಸಿಕ ಸಂಯುಕ್ತ ಬಡ್ಡಿ ಬಳಸಲಾಗುತ್ತದೆ. MIS ಬಡ್ಡಿಯನ್ನು ಮಾಸಿಕವಾಗಿ ಮತ್ತು SCSS ಬಡ್ಡಿಯನ್ನು ತ್ರೈಮಾಸಿಕವಾಗಿ ಪಾವತಿಸುತ್ತದೆ. ಮರುಹೂಡಿಕೆ ಆಯ್ಕೆ ಮಾಡಿದರೆ ಹೋಲಿಕೆಗಾಗಿ ಅದೇ ದರದಲ್ಲಿ ಬಡ್ಡಿಯನ್ನು ಮರುಹೂಡಿಕೆ ಮಾಡಿದಂತೆ ಲೆಕ್ಕಿಸಲಾಗುತ್ತದೆ.",
-                scenarioTitle:
-                    "ಪ್ರಾಯೋಗಿಕ ವಿವರಣೆ",
-                scenarioText:
-                    "ನಿಯಮಿತ ಆದಾಯ ಅಗತ್ಯವಿಲ್ಲದೆ ಹೆಚ್ಚಿನ ಬೆಳವಣಿಗೆ ಬೇಕಾದರೆ ಸಂಯುಕ್ತ ಬಡ್ಡಿ ಯೋಜನೆಗಳು ಅನುಕೂಲಕರವಾಗಬಹುದು. MIS ಮತ್ತು SCSS ಬಡ್ಡಿಯನ್ನು ಹೊರಗೆ ಪಾವತಿಸುತ್ತವೆ. ಆ ಬಡ್ಡಿಯನ್ನು ಖರ್ಚು ಮಾಡುತ್ತೀರಾ ಅಥವಾ ಮರುಹೂಡಿಕೆ ಮಾಡುತ್ತೀರಾ ಎಂಬುದರ ಮೇಲೆ ವಿಜೇತ ಬದಲಾಗಬಹುದು.",
-                rateTitle:
-                    "ಬಳಸಿದ ಬಡ್ಡಿ ದರಗಳು",
-                currentRate:
-                    "ಈ ಕ್ಯಾಲ್ಕುಲೇಟರ್‌ನಲ್ಲಿ ಬಳಸಿದ ಪ್ರಸ್ತುತ ದರ",
-                rateWarning:
-                    "ಸಣ್ಣ ಉಳಿತಾಯ ಯೋಜನೆಗಳ ಬಡ್ಡಿ ದರಗಳನ್ನು ಸರ್ಕಾರ ಕಾಲಕಾಲಕ್ಕೆ ಪ್ರಕಟಿಸುತ್ತದೆ. ಹೊಸ ದರ ಪ್ರಕಟವಾದಾಗ JavaScript‌ನಲ್ಲಿರುವ ದರಗಳನ್ನು ಬದಲಾಯಿಸಿ.",
-                senior:
-                    "ಹಿರಿಯ ನಾಗರಿಕರಿಗೆ ಸೂಕ್ತ",
-                normal:
-                    "ಸಾಮಾನ್ಯ ಹೂಡಿಕೆದಾರ",
-                tax:
-                    "ತೆರಿಗೆ / ಕಡಿತ",
-                taxNSC:
-                    "ಅನ್ವಯಿಸುವ ನಿಯಮಗಳಿಗೆ ಒಳಪಟ್ಟು ಅರ್ಹತೆ ಇರಬಹುದು",
-                taxTD:
-                    "5-ವರ್ಷದ TD ಅನ್ವಯಿಸುವ 80C ನಿಯಮಗಳ ಅಡಿಯಲ್ಲಿ ಅರ್ಹವಾಗಬಹುದು",
-                taxMIS:
-                    "ಅನ್ವಯಿಸುವ ನಿಯಮಗಳ ಪ್ರಕಾರ ಬಡ್ಡಿ ತೆರಿಗೆಗೆ ಒಳಪಡುತ್ತದೆ",
-                taxSCSS:
-                    "ಅನ್ವಯಿಸುವ ನಿಯಮಗಳ ಪ್ರಕಾರ ಬಡ್ಡಿ ತೆರಿಗೆಗೆ ಒಳಪಡುತ್ತದೆ",
-                conclusion:
-                    "ತೀರ್ಮಾನ",
-                conclusionText:
-                    "ಮೇಲಿನ ವಿಜೇತ ಆಯ್ಕೆ ಮಾಡಿದ ಲೆಕ್ಕಾಚಾರ ವಿಧಾನವನ್ನು ಮಾತ್ರ ಆಧರಿಸಿದೆ. ಪ್ರತಿಯೊಬ್ಬ ಹೂಡಿಕೆದಾರರಿಗೂ ಒಂದೇ ಯೋಜನೆ ಅತ್ಯುತ್ತಮ ಎಂದರ್ಥವಲ್ಲ."
-            },
-            hindi: {
-                title:
-                    "NSC vs TD vs MIS vs SCSS - किसमें अधिक लाभ है?",
-                investment:
-                    "प्रारंभिक निवेश",
-                period:
-                    "तुलना अवधि",
-                reinvest:
-                    "ब्याज का पुनर्निवेश?",
-                yes:
-                    "हाँ - पुनर्निवेश",
-                no:
-                    "नहीं - ब्याज नकद रखें",
-                calculate:
-                    "गणना करें",
-                scheme:
-                    "योजना",
-                rate:
-                    "ब्याज दर",
-                interestMethod:
-                    "ब्याज पद्धति",
-                interestReceived:
-                    "प्राप्त ब्याज",
-                finalPrincipal:
-                    "अंतिम मूलधन",
-                totalValue:
-                    "कुल पोर्टफोलियो मूल्य",
-                profit:
-                    "कुल लाभ",
-                effectiveReturn:
-                    "कुल रिटर्न",
-                liquidity:
-                    "तरलता",
-                nsc:
-                    "NSC",
-                td:
-                    "5-वर्ष TD",
-                mis:
-                    "MIS",
-                scss:
-                    "SCSS",
-                nscMethod:
-                    "वार्षिक चक्रवृद्धि",
-                tdMethod:
-                    "त्रैमासिक चक्रवृद्धि",
-                misMethod:
-                    "मासिक ब्याज भुगतान",
-                scssMethod:
-                    "त्रैमासिक ब्याज भुगतान",
-                medium:
-                    "मध्यम",
-                high:
-                    "उच्च",
-                low:
-                    "कम",
-                bestFor:
-                    "किसके लिए बेहतर",
-                nscBest:
-                    "दीर्घकालीन वृद्धि",
-                tdBest:
-                    "स्थिर आय वृद्धि",
-                misBest:
-                    "मासिक आय",
-                scssBest:
-                    "वरिष्ठ नागरिक + आय",
-                winner:
-                    "से बेहतर",
-                comparison:
-                    "लाभ तुलना",
-                ranking:
-                    "लाभ रैंकिंग",
-                rank:
-                    "रैंक",
-                difference:
-                    "#1 से अंतर",
-                totalInvestment:
-                    "कुल निवेश",
-                totalInterest:
-                    "कुल ब्याज / लाभ",
-                finalValue:
-                    "अंतिम मूल्य",
-                cashInterest:
-                    "नकद रखा गया ब्याज",
-                reinvestedInterest:
-                    "पुनर्निवेश किया गया ब्याज",
-                noteTitle:
-                    "महत्वपूर्ण गणना नोट",
-                noteText:
-                    "NSC के लिए वार्षिक चक्रवृद्धि और 5-वर्षीय TD के लिए त्रैमासिक चक्रवृद्धि का उपयोग किया गया है। MIS ब्याज मासिक और SCSS ब्याज त्रैमासिक भुगतान करता है। पुनर्निवेश चुनने पर तुलना के लिए उसी दर और आवृत्ति पर ब्याज का पुनर्निवेश माना गया है।",
-                scenarioTitle:
-                    "व्यावहारिक अर्थ",
-                scenarioText:
-                    "यदि आपको नियमित आय की आवश्यकता नहीं है और अधिकतम वृद्धि चाहिए, तो चक्रवृद्धि योजनाएं उपयोगी हो सकती हैं। MIS और SCSS में ब्याज बाहर भुगतान होता है। उस ब्याज को खर्च करने या पुनर्निवेश करने के आधार पर विजेता बदल सकता है।",
-                rateTitle:
-                    "उपयोग की गई ब्याज दरें",
-                currentRate:
-                    "इस कैलकुलेटर में उपयोग की गई वर्तमान दर",
-                rateWarning:
-                    "छोटी बचत योजनाओं की ब्याज दरें सरकार द्वारा समय-समय पर घोषित की जाती हैं। नई दर घोषित होने पर JavaScript में दरों को बदलें।",
-                senior:
-                    "वरिष्ठ नागरिकों के लिए उपयुक्त",
-                normal:
-                    "सामान्य निवेशक",
-                tax:
-                    "कर / कटौती",
-                taxNSC:
-                    "लागू नियमों के अधीन पात्र हो सकता है",
-                taxTD:
-                    "5-वर्षीय TD लागू 80C नियमों के तहत पात्र हो सकता है",
-                taxMIS:
-                    "लागू नियमों के अनुसार ब्याज कर योग्य है",
-                taxSCSS:
-                    "लागू नियमों के अनुसार ब्याज कर योग्य है",
-                conclusion:
-                    "निष्कर्ष",
-                conclusionText:
-                    "ऊपर दिखाया गया विजेता केवल चुनी गई गणना पद्धति पर आधारित है। इसका अर्थ यह नहीं है कि हर निवेशक के लिए एक ही योजना सर्वोत्तम है।"
-            }
-        };
-        var currentLanguage = "english";
-        function money(value)
-	{
-            if( !isFinite(value) )
-	    {
-                value = 0;
-            }
-            return  value.toLocaleString(
-                    "en-IN",
-                    {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    }
-                )+" ರೂ/ரூ/₹ INR";
-        }
-        function numberValue(id, defaultValue )
-	{
-            var value =
-                parseFloat(
-                    document.getElementById(id).value
-                );
-            if( !isFinite(value) || value < 0 )
-	    {
-                return defaultValue;
-            }
-            return value;
-        }
-        /*
-         * Calculate one scheme.
-         *
-         * The calculation is intentionally based on the selected
-         * comparison period.
-         *
-         * For periods beyond 5 years, this is an ESTIMATE using
-         * the same current rate repeatedly.
-         *
-         * This does NOT predict future Government rates.
-         */
-        function calculateScheme(
-            principal,
-            years,
-            rate,
-            frequency,
-            reinvest
-        )
-	{
-            var rateDecimal = rate / 100;
-            var periods =
-                Math.round(years * frequency);
-            var periodicRate =
-                rateDecimal / frequency;
-            var finalValue = principal;
-            var cashInterest = 0;
-            var reinvestedInterest = 0;
-            var i;
-            if( true === reinvest )
-	    {
-                /*
-                 * Interest is reinvested.
-                 *
-                 * This produces a theoretical compound-growth
-                 * comparison based on each scheme's payment/
-                 * compounding frequency.
-                 */
-                for (i = 0; i < periods; i++)
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>NSC vs TD vs MIS vs SCSS - Profit Comparison</TITLE>
+		<SCRIPT type="text/javascript">
+			/*
+			 * CURRENT SMALL-SAVINGS RATES
+			 *
+			 * Rates used in this calculator:
+			 *
+			 * SCSS = 8.2%
+			 * NSC	= 7.7%
+			 * TD	= 7.5% (5 Year TD)
+			 * MIS	= 7.4%
+			 *
+			 * Update these four values when the Government changes
+			 * the quarterly small-savings rates.
+			 */
+			var rates = {
+				scss: 8.2,
+				nsc: 7.7,
+				td: 7.5,
+				mis: 7.4
+			};
+			var translations = {
+				english: {
+					title:
+						"NSC vs TD vs MIS vs SCSS = SCSS(senior citizen) is better than a) NSC, b) TD, and c) MIS for higher profit",
+					investment:
+						"Initial Investment",
+					period:
+						"Comparison Period",
+					reinvest:
+						"Reinvest Interest",
+					yes:
+						"Yes - Reinvest",
+					no:
+						"No - Keep Interest as Cash",
+					calculate:
+						"Calculate",
+					scheme:
+						"Scheme",
+					rate:
+						"Interest Rate",
+					interestMethod:
+						"Interest Method",
+					interestReceived:
+						"Interest Received",
+					finalPrincipal:
+						"Final Principal",
+					totalValue:
+						"Total Portfolio Value",
+					profit:
+						"Total Profit",
+					effectiveReturn:
+						"Effective Return",
+					liquidity:
+						"Liquidity",
+					nsc:
+						"NSC",
+					td:
+						"5-Year TD",
+					mis:
+						"MIS",
+					scss:
+						"SCSS",
+					nscMethod:
+						"Annual compounding",
+					tdMethod:
+						"Quarterly compounding",
+					misMethod:
+						"Monthly interest payout",
+					scssMethod:
+						"Quarterly interest payout",
+					medium:
+						"Medium",
+					high:
+						"High",
+					low:
+						"Low",
+					bestFor:
+						"Best suited for",
+					nscBest:
+						"Long-term growth",
+					tdBest:
+						"Fixed-income growth",
+					misBest:
+						"Regular monthly income",
+					scssBest:
+						"Senior citizens + income",
+					winner:
+						"is better than",
+					comparison:
+						"Profit Comparison",
+					ranking:
+						"Profit Ranking",
+					rank:
+						"Rank",
+					difference:
+						"Difference from #1",
+					totalInvestment:
+						"Total Investment",
+					totalInterest:
+						"Total Interest / Profit",
+					finalValue:
+						"Final Value",
+					cashInterest:
+						"Interest kept as cash",
+					reinvestedInterest:
+						"Interest reinvested",
+					noteTitle:
+						"Important calculation note",
+					noteText:
+						"NSC is modeled with annual compounding and the 5-year TD with quarterly compounding. MIS pays interest monthly and SCSS pays interest quarterly. When reinvestment is enabled, the calculator assumes each payout is reinvested at the same rate and frequency for comparison purposes. Actual future rates may change when each scheme matures.",
+					scenarioTitle:
+						"Practical interpretation",
+					scenarioText:
+						"If your objective is maximum growth and you do not need periodic income, a compounding scheme can be advantageous. MIS and SCSS are different because their interest is paid out. Their ranking can change significantly depending on whether those payouts are spent or reinvested.",
+					rateTitle:
+						"Rates Used",
+					currentRate:
+						"Current rate used in this calculator",
+					rateWarning:
+						"Small-savings interest rates are periodically notified by the Government. Change the rate values in the JavaScript when a new quarter's rates are announced.",
+					senior:
+						"Senior citizen oriented",
+					normal:
+						"General investor",
+					tax:
+						"Tax / deduction",
+					taxNSC:
+						"Eligible subject to applicable rules",
+					taxTD:
+						"5-year TD may qualify under applicable 80C rules",
+					taxMIS:
+						"Interest taxable as applicable",
+					taxSCSS:
+						"Interest taxable as applicable",
+					conclusion:
+						"Conclusion",
+					conclusionText:
+						"The winner shown above is based only on the calculated portfolio profit under the selected assumptions. It does not mean that one scheme is universally better for every investor."
+				},
+				tamil: {
+					title:
+						"NSC vs TD vs MIS vs SCSS - எதில் அதிக லாபம்?",
+					investment:
+						"ஆரம்ப முதலீடு",
+					period:
+						"ஒப்பீட்டு காலம்",
+					reinvest:
+						"வட்டியை மறுமுதலீடு செய்யவா?",
+					yes:
+						"ஆம் - மறுமுதலீடு",
+					no:
+						"இல்லை - வட்டியை ரொக்கமாக வைத்திரு",
+					calculate:
+						"கணக்கிடு",
+					scheme:
+						"திட்டம்",
+					rate:
+						"வட்டி விகிதம்",
+					interestMethod:
+						"வட்டி முறை",
+					interestReceived:
+						"பெறப்பட்ட வட்டி",
+					finalPrincipal:
+						"இறுதி அசல்",
+					totalValue:
+						"மொத்த போர்ட்ஃபோலியோ மதிப்பு",
+					profit:
+						"மொத்த லாபம்",
+					effectiveReturn:
+						"மொத்த வருமான விகிதம்",
+					liquidity:
+						"பணப்புழக்கம்",
+					nsc:
+						"NSC",
+					td:
+						"5-வருட TD",
+					mis:
+						"MIS",
+					scss:
+						"SCSS",
+					nscMethod:
+						"ஆண்டு கூட்டு வட்டி",
+					tdMethod:
+						"காலாண்டு கூட்டு வட்டி",
+					misMethod:
+						"மாதாந்திர வட்டி வழங்கல்",
+					scssMethod:
+						"காலாண்டு வட்டி வழங்கல்",
+					medium:
+						"நடுத்தரம்",
+					high:
+						"அதிகம்",
+					low:
+						"குறைவு",
+					bestFor:
+						"சிறந்த பயன்பாடு",
+					nscBest:
+						"நீண்டகால வளர்ச்சி",
+					tdBest:
+						"நிலையான வருமான வளர்ச்சி",
+					misBest:
+						"மாதாந்திர வருமானம்",
+					scssBest:
+						"மூத்த குடிமக்கள் + வருமானம்",
+					winner:
+						"(முதியவர்) மற்றவற்றை விட சிறந்தது",
+					comparison:
+						"லாப ஒப்பீடு",
+					ranking:
+						"லாப தரவரிசை",
+					rank:
+						"தரவரிசை",
+					difference:
+						"முதல் இடத்திலிருந்து வித்தியாசம்",
+					totalInvestment:
+						"மொத்த முதலீடு",
+					totalInterest:
+						"மொத்த வட்டி / லாபம்",
+					finalValue:
+						"இறுதி மதிப்பு",
+					cashInterest:
+						"ரொக்கமாக வைத்த வட்டி",
+					reinvestedInterest:
+						"மறுமுதலீடு செய்யப்பட்ட வட்டி",
+					noteTitle:
+						"முக்கிய கணக்கீட்டு குறிப்பு",
+					noteText:
+						"NSC-க்கு ஆண்டு கூட்டு வட்டியும், 5-வருட TD-க்கு காலாண்டு கூட்டு வட்டியும் பயன்படுத்தப்படுகிறது. MIS வட்டி மாதந்தோறும் வழங்கப்படுகிறது; SCSS வட்டி காலாண்டுதோறும் வழங்கப்படுகிறது. மறுமுதலீடு தேர்ந்தெடுக்கப்பட்டால், ஒப்பீட்டிற்காக அந்த வட்டி அதே விகிதத்தில் மீண்டும் முதலீடு செய்யப்படுகிறது. உண்மையான எதிர்கால வட்டி விகிதங்கள் மாறலாம்.",
+					scenarioTitle:
+						"நடைமுறை விளக்கம்",
+					scenarioText:
+						"தொடர்ச்சியான வருமானம் தேவையில்லாமல் அதிக வளர்ச்சியை விரும்பினால் கூட்டு வட்டி திட்டங்கள் பயனுள்ளதாக இருக்கலாம். MIS மற்றும் SCSS வட்டி வெளியே வழங்கப்படுவதால் வேறுபடுகின்றன. அந்த வட்டியை செலவு செய்கிறீர்களா அல்லது மறுமுதலீடு செய்கிறீர்களா என்பதன் அடிப்படையில் தரவரிசை மாறலாம்.",
+					rateTitle:
+						"பயன்படுத்தப்படும் வட்டி விகிதங்கள்",
+					currentRate:
+						"இந்த கணக்கீட்டில் பயன்படுத்தப்படும் விகிதம்",
+					rateWarning:
+						"சிறு சேமிப்பு திட்டங்களின் வட்டி விகிதங்கள் அரசால் காலாண்டு அடிப்படையில் அறிவிக்கப்படுகின்றன. புதிய விகிதம் அறிவிக்கப்பட்டால் JavaScript-ல் உள்ள விகிதங்களை மாற்றவும்.",
+					senior:
+						"மூத்த குடிமக்களுக்கு ஏற்றது",
+					normal:
+						"பொதுவான முதலீட்டாளர்",
+					tax:
+						"வரி / கழிவு",
+					taxNSC:
+						"பொருந்தும் விதிகளுக்கு உட்பட்டு தகுதி இருக்கலாம்",
+					taxTD:
+						"5-வருட TD பொருந்தும் 80C விதிகளின் கீழ் தகுதி பெறலாம்",
+					taxMIS:
+						"பொருந்தும் விதிகளின்படி வட்டி வரிக்கு உட்படும்",
+					taxSCSS:
+						"பொருந்தும் விதிகளின்படி வட்டி வரிக்கு உட்படும்",
+					conclusion:
+						"முடிவு",
+					conclusionText:
+						"மேலே காட்டப்படும் வெற்றியாளர் தேர்ந்தெடுக்கப்பட்ட கணக்கீட்டு முறையின் அடிப்படையில் மட்டுமே தீர்மானிக்கப்படுகிறது. எல்லா முதலீட்டாளர்களுக்கும் ஒரே திட்டம் சிறந்தது என்று இதை கருதக்கூடாது."
+				},
+				telugu: {
+					title:
+						"NSC vs TD vs MIS vs SCSS - ఏది ఎక్కువ లాభం ఇస్తుంది?",
+					investment:
+						"ప్రారంభ పెట్టుబడి",
+					period:
+						"పోలిక కాలం",
+					reinvest:
+						"వడ్డీని తిరిగి పెట్టుబడి చేయాలా?",
+					yes:
+						"అవును - తిరిగి పెట్టుబడి",
+					no:
+						"లేదు - వడ్డీని నగదుగా ఉంచు",
+					calculate:
+						"లెక్కించు",
+					scheme:
+						"పథకం",
+					rate:
+						"వడ్డీ రేటు",
+					interestMethod:
+						"వడ్డీ విధానం",
+					interestReceived:
+						"అందుకున్న వడ్డీ",
+					finalPrincipal:
+						"చివరి అసలు",
+					totalValue:
+						"మొత్తం పోర్ట్‌ఫోలియో విలువ",
+					profit:
+						"మొత్తం లాభం",
+					effectiveReturn:
+						"మొత్తం రాబడి",
+					liquidity:
+						"లిక్విడిటీ",
+					nsc:
+						"NSC",
+					td:
+						"5-సంవత్సరాల TD",
+					mis:
+						"MIS",
+					scss:
+						"SCSS",
+					nscMethod:
+						"వార్షిక చక్రవడ్డీ",
+					tdMethod:
+						"త్రైమాసిక చక్రవడ్డీ",
+					misMethod:
+						"నెలవారీ వడ్డీ చెల్లింపు",
+					scssMethod:
+						"త్రైమాసిక వడ్డీ చెల్లింపు",
+					medium:
+						"మధ్యస్థం",
+					high:
+						"అధికం",
+					low:
+						"తక్కువ",
+					bestFor:
+						"ఎవరికి అనుకూలం",
+					nscBest:
+						"దీర్ఘకాల వృద్ధి",
+					tdBest:
+						"స్థిర ఆదాయ వృద్ధి",
+					misBest:
+						"నెలవారీ ఆదాయం",
+					scssBest:
+						"సీనియర్ సిటిజన్లు + ఆదాయం",
+					winner:
+						"కంటే మెరుగైనది",
+					comparison:
+						"లాభ పోలిక",
+					ranking:
+						"లాభ ర్యాంకింగ్",
+					rank:
+						"ర్యాంక్",
+					difference:
+						"#1 నుండి తేడా",
+					totalInvestment:
+						"మొత్తం పెట్టుబడి",
+					totalInterest:
+						"మొత్తం వడ్డీ / లాభం",
+					finalValue:
+						"చివరి విలువ",
+					cashInterest:
+						"నగదుగా ఉంచిన వడ్డీ",
+					reinvestedInterest:
+						"తిరిగి పెట్టుబడి చేసిన వడ్డీ",
+					noteTitle:
+						"ముఖ్యమైన లెక్కింపు గమనిక",
+					noteText:
+						"NSCకి వార్షిక చక్రవడ్డీ మరియు 5-సంవత్సరాల TDకి త్రైమాసిక చక్రవడ్డీ ఉపయోగించబడుతుంది. MIS వడ్డీ నెలవారీగా మరియు SCSS వడ్డీ త్రైమాసికంగా చెల్లించబడుతుంది. తిరిగి పెట్టుబడి ఎంచుకుంటే పోలిక కోసం అదే రేటులో తిరిగి పెట్టుబడి చేసినట్లు లెక్కించబడుతుంది.",
+					scenarioTitle:
+						"ప్రాక్టికల్ వివరణ",
+					scenarioText:
+						"నిరంతర ఆదాయం అవసరం లేకుండా గరిష్ట వృద్ధి కావాలంటే చక్రవడ్డీ పథకాలు అనుకూలంగా ఉండవచ్చు. MIS మరియు SCSSలో వడ్డీ బయటకు చెల్లించబడుతుంది. ఆ వడ్డీని ఖర్చు చేస్తున్నారా లేదా తిరిగి పెట్టుబడి చేస్తున్నారా అనే దాని ఆధారంగా విజేత మారవచ్చు.",
+					rateTitle:
+						"ఉపయోగిస్తున్న వడ్డీ రేట్లు",
+					currentRate:
+						"ఈ కాలిక్యులేటర్‌లో ఉపయోగించిన ప్రస్తుత రేటు",
+					rateWarning:
+						"చిన్న పొదుపు పథకాల వడ్డీ రేట్లను ప్రభుత్వం కాలానుగుణంగా ప్రకటిస్తుంది. కొత్త రేట్లు ప్రకటించినప్పుడు JavaScriptలో రేట్లను మార్చండి.",
+					senior:
+						"సీనియర్ సిటిజన్లకు అనుకూలం",
+					normal:
+						"సాధారణ పెట్టుబడిదారు",
+					tax:
+						"పన్ను / మినహాయింపు",
+					taxNSC:
+						"వర్తించే నిబంధనలకు లోబడి అర్హత ఉండవచ్చు",
+					taxTD:
+						"5-సంవత్సరాల TD వర్తించే 80C నిబంధనల ప్రకారం అర్హత పొందవచ్చు",
+					taxMIS:
+						"వర్తించే నిబంధనల ప్రకారం వడ్డీ పన్నుకు లోబడి ఉంటుంది",
+					taxSCSS:
+						"వర్తించే నిబంధనల ప్రకారం వడ్డీ పన్నుకు లోబడి ఉంటుంది",
+					conclusion:
+						"ముగింపు",
+					conclusionText:
+						"పై విజేత ఎంపిక చేసిన లెక్కింపు విధానం ఆధారంగా మాత్రమే నిర్ణయించబడుతుంది. ప్రతి పెట్టుబడిదారుడికి ఒకే పథకం ఉత్తమమని దీని అర్థం కాదు."
+				},
+				kannada: {
+					title:
+						"NSC vs TD vs MIS vs SCSS - ಯಾವುದು ಹೆಚ್ಚು ಲಾಭ ನೀಡುತ್ತದೆ?",
+					investment:
+						"ಆರಂಭಿಕ ಹೂಡಿಕೆ",
+					period:
+						"ಹೋಲಿಕೆ ಅವಧಿ",
+					reinvest:
+						"ಬಡ್ಡಿಯನ್ನು ಮರುಹೂಡಿಕೆ ಮಾಡಬೇಕೇ?",
+					yes:
+						"ಹೌದು - ಮರುಹೂಡಿಕೆ",
+					no:
+						"ಇಲ್ಲ - ಬಡ್ಡಿಯನ್ನು ನಗದಾಗಿ ಇಟ್ಟುಕೊಳ್ಳಿ",
+					calculate:
+						"ಲೆಕ್ಕ ಹಾಕಿ",
+					scheme:
+						"ಯೋಜನೆ",
+					rate:
+						"ಬಡ್ಡಿ ದರ",
+					interestMethod:
+						"ಬಡ್ಡಿ ವಿಧಾನ",
+					interestReceived:
+						"ಪಡೆದ ಬಡ್ಡಿ",
+					finalPrincipal:
+						"ಅಂತಿಮ ಅಸಲು",
+					totalValue:
+						"ಒಟ್ಟು ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ಮೌಲ್ಯ",
+					profit:
+						"ಒಟ್ಟು ಲಾಭ",
+					effectiveReturn:
+						"ಒಟ್ಟು ಆದಾಯ",
+					liquidity:
+						"ದ್ರವ್ಯತೆ",
+					nsc:
+						"NSC",
+					td:
+						"5-ವರ್ಷದ TD",
+					mis:
+						"MIS",
+					scss:
+						"SCSS",
+					nscMethod:
+						"ವಾರ್ಷಿಕ ಸಂಯುಕ್ತ ಬಡ್ಡಿ",
+					tdMethod:
+						"ತ್ರೈಮಾಸಿಕ ಸಂಯುಕ್ತ ಬಡ್ಡಿ",
+					misMethod:
+						"ಮಾಸಿಕ ಬಡ್ಡಿ ಪಾವತಿ",
+					scssMethod:
+						"ತ್ರೈಮಾಸಿಕ ಬಡ್ಡಿ ಪಾವತಿ",
+					medium:
+						"ಮಧ್ಯಮ",
+					high:
+						"ಹೆಚ್ಚು",
+					low:
+						"ಕಡಿಮೆ",
+					bestFor:
+						"ಯಾರಿಗೆ ಸೂಕ್ತ",
+					nscBest:
+						"ದೀರ್ಘಕಾಲೀನ ಬೆಳವಣಿಗೆ",
+					tdBest:
+						"ಸ್ಥಿರ ಆದಾಯ ಬೆಳವಣಿಗೆ",
+					misBest:
+						"ಮಾಸಿಕ ಆದಾಯ",
+					scssBest:
+						"ಹಿರಿಯ ನಾಗರಿಕರು + ಆದಾಯ",
+					winner:
+						"ಗಿಂತ ಉತ್ತಮ",
+					comparison:
+						"ಲಾಭ ಹೋಲಿಕೆ",
+					ranking:
+						"ಲಾಭ ಶ್ರೇಯಾಂಕ",
+					rank:
+						"ಶ್ರೇಣಿ",
+					difference:
+						"#1 ರಿಂದ ವ್ಯತ್ಯಾಸ",
+					totalInvestment:
+						"ಒಟ್ಟು ಹೂಡಿಕೆ",
+					totalInterest:
+						"ಒಟ್ಟು ಬಡ್ಡಿ / ಲಾಭ",
+					finalValue:
+						"ಅಂತಿಮ ಮೌಲ್ಯ",
+					cashInterest:
+						"ನಗದಾಗಿ ಇಟ್ಟ ಬಡ್ಡಿ",
+					reinvestedInterest:
+						"ಮರುಹೂಡಿಕೆ ಮಾಡಿದ ಬಡ್ಡಿ",
+					noteTitle:
+						"ಪ್ರಮುಖ ಲೆಕ್ಕಾಚಾರ ಸೂಚನೆ",
+					noteText:
+						"NSCಗೆ ವಾರ್ಷಿಕ ಸಂಯುಕ್ತ ಬಡ್ಡಿ ಮತ್ತು 5-ವರ್ಷದ TDಗೆ ತ್ರೈಮಾಸಿಕ ಸಂಯುಕ್ತ ಬಡ್ಡಿ ಬಳಸಲಾಗುತ್ತದೆ. MIS ಬಡ್ಡಿಯನ್ನು ಮಾಸಿಕವಾಗಿ ಮತ್ತು SCSS ಬಡ್ಡಿಯನ್ನು ತ್ರೈಮಾಸಿಕವಾಗಿ ಪಾವತಿಸುತ್ತದೆ. ಮರುಹೂಡಿಕೆ ಆಯ್ಕೆ ಮಾಡಿದರೆ ಹೋಲಿಕೆಗಾಗಿ ಅದೇ ದರದಲ್ಲಿ ಬಡ್ಡಿಯನ್ನು ಮರುಹೂಡಿಕೆ ಮಾಡಿದಂತೆ ಲೆಕ್ಕಿಸಲಾಗುತ್ತದೆ.",
+					scenarioTitle:
+						"ಪ್ರಾಯೋಗಿಕ ವಿವರಣೆ",
+					scenarioText:
+						"ನಿಯಮಿತ ಆದಾಯ ಅಗತ್ಯವಿಲ್ಲದೆ ಹೆಚ್ಚಿನ ಬೆಳವಣಿಗೆ ಬೇಕಾದರೆ ಸಂಯುಕ್ತ ಬಡ್ಡಿ ಯೋಜನೆಗಳು ಅನುಕೂಲಕರವಾಗಬಹುದು. MIS ಮತ್ತು SCSS ಬಡ್ಡಿಯನ್ನು ಹೊರಗೆ ಪಾವತಿಸುತ್ತವೆ. ಆ ಬಡ್ಡಿಯನ್ನು ಖರ್ಚು ಮಾಡುತ್ತೀರಾ ಅಥವಾ ಮರುಹೂಡಿಕೆ ಮಾಡುತ್ತೀರಾ ಎಂಬುದರ ಮೇಲೆ ವಿಜೇತ ಬದಲಾಗಬಹುದು.",
+					rateTitle:
+						"ಬಳಸಿದ ಬಡ್ಡಿ ದರಗಳು",
+					currentRate:
+						"ಈ ಕ್ಯಾಲ್ಕುಲೇಟರ್‌ನಲ್ಲಿ ಬಳಸಿದ ಪ್ರಸ್ತುತ ದರ",
+					rateWarning:
+						"ಸಣ್ಣ ಉಳಿತಾಯ ಯೋಜನೆಗಳ ಬಡ್ಡಿ ದರಗಳನ್ನು ಸರ್ಕಾರ ಕಾಲಕಾಲಕ್ಕೆ ಪ್ರಕಟಿಸುತ್ತದೆ. ಹೊಸ ದರ ಪ್ರಕಟವಾದಾಗ JavaScript‌ನಲ್ಲಿರುವ ದರಗಳನ್ನು ಬದಲಾಯಿಸಿ.",
+					senior:
+						"ಹಿರಿಯ ನಾಗರಿಕರಿಗೆ ಸೂಕ್ತ",
+					normal:
+						"ಸಾಮಾನ್ಯ ಹೂಡಿಕೆದಾರ",
+					tax:
+						"ತೆರಿಗೆ / ಕಡಿತ",
+					taxNSC:
+						"ಅನ್ವಯಿಸುವ ನಿಯಮಗಳಿಗೆ ಒಳಪಟ್ಟು ಅರ್ಹತೆ ಇರಬಹುದು",
+					taxTD:
+						"5-ವರ್ಷದ TD ಅನ್ವಯಿಸುವ 80C ನಿಯಮಗಳ ಅಡಿಯಲ್ಲಿ ಅರ್ಹವಾಗಬಹುದು",
+					taxMIS:
+						"ಅನ್ವಯಿಸುವ ನಿಯಮಗಳ ಪ್ರಕಾರ ಬಡ್ಡಿ ತೆರಿಗೆಗೆ ಒಳಪಡುತ್ತದೆ",
+					taxSCSS:
+						"ಅನ್ವಯಿಸುವ ನಿಯಮಗಳ ಪ್ರಕಾರ ಬಡ್ಡಿ ತೆರಿಗೆಗೆ ಒಳಪಡುತ್ತದೆ",
+					conclusion:
+						"ತೀರ್ಮಾನ",
+					conclusionText:
+						"ಮೇಲಿನ ವಿಜೇತ ಆಯ್ಕೆ ಮಾಡಿದ ಲೆಕ್ಕಾಚಾರ ವಿಧಾನವನ್ನು ಮಾತ್ರ ಆಧರಿಸಿದೆ. ಪ್ರತಿಯೊಬ್ಬ ಹೂಡಿಕೆದಾರರಿಗೂ ಒಂದೇ ಯೋಜನೆ ಅತ್ಯುತ್ತಮ ಎಂದರ್ಥವಲ್ಲ."
+				},
+				hindi: {
+					title:
+						"NSC vs TD vs MIS vs SCSS - किसमें अधिक लाभ है?",
+					investment:
+						"प्रारंभिक निवेश",
+					period:
+						"तुलना अवधि",
+					reinvest:
+						"ब्याज का पुनर्निवेश?",
+					yes:
+						"हाँ - पुनर्निवेश",
+					no:
+						"नहीं - ब्याज नकद रखें",
+					calculate:
+						"गणना करें",
+					scheme:
+						"योजना",
+					rate:
+						"ब्याज दर",
+					interestMethod:
+						"ब्याज पद्धति",
+					interestReceived:
+						"प्राप्त ब्याज",
+					finalPrincipal:
+						"अंतिम मूलधन",
+					totalValue:
+						"कुल पोर्टफोलियो मूल्य",
+					profit:
+						"कुल लाभ",
+					effectiveReturn:
+						"कुल रिटर्न",
+					liquidity:
+						"तरलता",
+					nsc:
+						"NSC",
+					td:
+						"5-वर्ष TD",
+					mis:
+						"MIS",
+					scss:
+						"SCSS",
+					nscMethod:
+						"वार्षिक चक्रवृद्धि",
+					tdMethod:
+						"त्रैमासिक चक्रवृद्धि",
+					misMethod:
+						"मासिक ब्याज भुगतान",
+					scssMethod:
+						"त्रैमासिक ब्याज भुगतान",
+					medium:
+						"मध्यम",
+					high:
+						"उच्च",
+					low:
+						"कम",
+					bestFor:
+						"किसके लिए बेहतर",
+					nscBest:
+						"दीर्घकालीन वृद्धि",
+					tdBest:
+						"स्थिर आय वृद्धि",
+					misBest:
+						"मासिक आय",
+					scssBest:
+						"वरिष्ठ नागरिक + आय",
+					winner:
+						"से बेहतर",
+					comparison:
+						"लाभ तुलना",
+					ranking:
+						"लाभ रैंकिंग",
+					rank:
+						"रैंक",
+					difference:
+						"#1 से अंतर",
+					totalInvestment:
+						"कुल निवेश",
+					totalInterest:
+						"कुल ब्याज / लाभ",
+					finalValue:
+						"अंतिम मूल्य",
+					cashInterest:
+						"नकद रखा गया ब्याज",
+					reinvestedInterest:
+						"पुनर्निवेश किया गया ब्याज",
+					noteTitle:
+						"महत्वपूर्ण गणना नोट",
+					noteText:
+						"NSC के लिए वार्षिक चक्रवृद्धि और 5-वर्षीय TD के लिए त्रैमासिक चक्रवृद्धि का उपयोग किया गया है। MIS ब्याज मासिक और SCSS ब्याज त्रैमासिक भुगतान करता है। पुनर्निवेश चुनने पर तुलना के लिए उसी दर और आवृत्ति पर ब्याज का पुनर्निवेश माना गया है।",
+					scenarioTitle:
+						"व्यावहारिक अर्थ",
+					scenarioText:
+						"यदि आपको नियमित आय की आवश्यकता नहीं है और अधिकतम वृद्धि चाहिए, तो चक्रवृद्धि योजनाएं उपयोगी हो सकती हैं। MIS और SCSS में ब्याज बाहर भुगतान होता है। उस ब्याज को खर्च करने या पुनर्निवेश करने के आधार पर विजेता बदल सकता है।",
+					rateTitle:
+						"उपयोग की गई ब्याज दरें",
+					currentRate:
+						"इस कैलकुलेटर में उपयोग की गई वर्तमान दर",
+					rateWarning:
+						"छोटी बचत योजनाओं की ब्याज दरें सरकार द्वारा समय-समय पर घोषित की जाती हैं। नई दर घोषित होने पर JavaScript में दरों को बदलें।",
+					senior:
+						"वरिष्ठ नागरिकों के लिए उपयुक्त",
+					normal:
+						"सामान्य निवेशक",
+					tax:
+						"कर / कटौती",
+					taxNSC:
+						"लागू नियमों के अधीन पात्र हो सकता है",
+					taxTD:
+						"5-वर्षीय TD लागू 80C नियमों के तहत पात्र हो सकता है",
+					taxMIS:
+						"लागू नियमों के अनुसार ब्याज कर योग्य है",
+					taxSCSS:
+						"लागू नियमों के अनुसार ब्याज कर योग्य है",
+					conclusion:
+						"निष्कर्ष",
+					conclusionText:
+						"ऊपर दिखाया गया विजेता केवल चुनी गई गणना पद्धति पर आधारित है। इसका अर्थ यह नहीं है कि हर निवेशक के लिए एक ही योजना सर्वोत्तम है।"
+				}
+			};
+			var currentLanguage = "english";
+			function money(value)
 		{
-                    var interest =
-                        finalValue * periodicRate;
-                    finalValue += interest;
-                    reinvestedInterest += interest;
-                }
-            } else {
-                /*
-                 * Interest is NOT reinvested.
-                 *
-                 * Principal remains unchanged and all interest
-                 * becomes cash.
-                 */
-                for (i = 0; i < periods; i++)
+				if( !isFinite(value) )
+			{
+					value = 0;
+				}
+				return value.toLocaleString(
+						"en-IN",
+						{
+							minimumFractionDigits: 2,
+							maximumFractionDigits: 2
+						}
+					)+" ರೂ/ரூ/₹ INR";
+			}
+			function numberValue(id, defaultValue )
 		{
-                    var payout =
-                        principal * periodicRate;
-                    cashInterest += payout;
-                }
-                finalValue = principal + cashInterest;
-            }
-            return {
-                principal: principal,
-                finalValue: finalValue,
-                profit: finalValue - principal,
-                cashInterest: cashInterest,
-                reinvestedInterest: reinvestedInterest
-            };
-        }
-        function calculateComparison()
-	{
-            var principal =
-                numberValue(
-                    "investmentAmount",
-                    155000
-                );
-            var years =
-                parseFloat(
-                    document.getElementById(
-                        "comparisonPeriod"
-                    ).value
-                );
-            var reinvest =
-                document.getElementById(
-                    "reinvestInterest"
-                ).value === "yes";
-            /*
-             * Frequencies:
-             *
-             * NSC = annual
-             * TD  = quarterly
-             * MIS = monthly
-             * SCSS = quarterly
-             */
-            var results = {
-                nsc:
-                    calculateScheme(
-                        principal,
-                        years,
-                        rates.nsc,
-                        1,
-                        reinvest
-                    ),
-                td:
-                    calculateScheme(
-                        principal,
-                        years,
-                        rates.td,
-                        4,
-                        reinvest
-                    ),
-                mis:
-                    calculateScheme(
-                        principal,
-                        years,
-                        rates.mis,
-                        12,
-                        reinvest
-                    ),
-                scss:
-                    calculateScheme(
-                        principal,
-                        years,
-                        rates.scss,
-                        4,
-                        reinvest
-                    )
-            };
-            var schemes = [
-                {
-                    id: "nsc",
-                    name: "NSC"
-                },
-                {
-                    id: "td",
-                    name: "TD"
-                },
-                {
-                    id: "mis",
-                    name: "MIS"
-                },
-                {
-                    id: "scss",
-                    name: "SCSS"
-                }
-            ];
-            /*
-             * Sort by PROFIT, highest first.
-             */
-            schemes.sort(
-                function(a, b)
+				var value =
+					parseFloat(
+						document.getElementById(id).value
+					);
+				if( !isFinite(value) || value < 0 )
+			{
+					return defaultValue;
+				}
+				return value;
+			}
+			/*
+			 * Calculate one scheme.
+			 *
+			 * The calculation is intentionally based on the selected
+			 * comparison period.
+			 *
+			 * For periods beyond 5 years, this is an ESTIMATE using
+			 * the same current rate repeatedly.
+			 *
+			 * This does NOT predict future Government rates.
+			 */
+			function calculateScheme(
+				principal,
+				years,
+				rate,
+				frequency,
+				reinvest
+			)
 		{
-                    return (
-                        results[b.id].profit -
-                        results[a.id].profit
-                    );
-                }
-            );
-            var winner =
-                schemes[0];
-            var winnerProfit =
-                results[winner.id].profit;
-            /*
-             * First row:
-             *
-             * SCSS is(senior citizen) better than NSC, TD and MIS
-             *
-             * Automatically changes according to result.
-             */
-            var otherNames = [];
-            for (
-                var x = 1;
-                x < schemes.length;
-                x++
-            )
-	    {
-                otherNames.push(
-                    schemes[x].name
-                );
-            }
-			var totalAmt = money(2000);
-            var winnerText =
-                winner.name +
-                " " +
-                translations[currentLanguage].winner +
-                " " +
-                otherNames.join(", ") +
-                " — Highest estimated profit: " +
-                money(winnerProfit)+"<BR>(Monthly "+totalAmt+" deposited for the first 12 months)";
-            document.getElementById(
-                "winnerHeader"
-            ).innerHTML =
-                "🏆 " + winnerText;
-            /*
-             * Display results.
-             */
-            var ids = [
-                "nsc",
-                "td",
-                "mis",
-                "scss"
-            ];
-            for (var i = 0; i < ids.length; i++)
-	    {
-                var id = ids[i];
-                document.getElementById(
-                    id + "Interest"
-                ).innerHTML =
-                    money(
-                        results[id].profit
-                    );
-                document.getElementById(
-                    id + "Final"
-                ).innerHTML =
-                    money(
-                        results[id].finalValue
-                    );
-                document.getElementById(
-                    id + "Cash"
-                ).innerHTML =
-                    money(
-                        results[id].cashInterest
-                    );
-                document.getElementById(
-                    id + "Reinvested"
-                ).innerHTML =
-                    money(
-                        results[id].reinvestedInterest
-                    );
-                document.getElementById(
-                    id + "Return"
-                ).innerHTML =
-                    (
-                        results[id].profit /
-                        principal *
-                        100
-                    ).toFixed(2) + "%";
-                document.getElementById(
-                    id + "Difference"
-                ).innerHTML =
-                    "";
-                document.getElementById(
-                    id + "Header"
-                ).classList.remove(
-                    "winnerColumn"
-                );
-            }
-            /*
-             * Highlight winner column.
-             */
-            document.getElementById(
-                winner.id + "Header"
-            ).classList.add(
-                "winnerColumn"
-            );
-            document.getElementById(
-                winner.id + "Interest"
-            ).classList.add(
-                "winnerColumn"
-            );
-            document.getElementById(
-                winner.id + "Final"
-            ).classList.add(
-                "winnerColumn"
-            );
-            /*
-             * Ranking table.
-             */
-            var rankingHTML = "";
-            for (
-                var r = 0;
-                r < schemes.length;
-                r++
-            )
-	    {
-                var scheme =
-                    schemes[r];
-                var result =
-                    results[scheme.id];
-                var difference =
-                    winnerProfit -
-                    result.profit;
-                rankingHTML +=
-                    "<TR>" +
-                    "<TD valign='top' align='right'>" +
-                    (r + 1) +
-                    "</TD>" +
-                    "<TD valign='top' align='right'>" +
-                    scheme.name +
-                    "</TD>" +
-                    "<TD valign='top' align='right'>" +
-                    money(result.profit) +
-                    "</TD>" +
-                    "<TD valign='top' align='right'>" +
-                    money(result.finalValue) +
-                    "</TD>" +
-                    "<TD valign='top' align='right'>" +
-                    (
-                        r === 0
-                            ? "🏆 #1"
-                            : money(difference)
-                    ) +
-                    "</TD>" +
-                    "</TR>";
-            }
-            document.getElementById(
-                "rankingBody"
-            ).innerHTML =
-                rankingHTML;
-            /*
-             * Winner summary.
-             */
-            document.getElementById(
-                "winnerSummary"
-            ).innerHTML =
-                "<B>" +
-                winner.name +
-                "</B> gives the highest estimated profit of " +
-                "<B>" +
-                money(winnerProfit) +
-                "</B> on an initial investment of " +
-                "<B>" +
-                money(principal) +
-                "</B> over " +
-                "<B>" +
-                years +
-                " year(s)</B> under the selected assumptions.";
-            /*
-             * Rate display.
-             */
-            document.getElementById(
-                "rateNSC"
-            ).innerHTML =
-                rates.nsc.toFixed(1) + "%";
-            document.getElementById(
-                "rateTD"
-            ).innerHTML =
-                rates.td.toFixed(1) + "%";
-            document.getElementById(
-                "rateMIS"
-            ).innerHTML =
-                rates.mis.toFixed(1) + "%";
-            document.getElementById(
-                "rateSCSS"
-            ).innerHTML =
-                rates.scss.toFixed(1) + "%";
-        }
-        function setText(id, value)
-	{
-            var element =
-                document.getElementById(id);
-            if( element) {
-                element.innerHTML = value;
-            }
-        }
-        function updateLanguageButtons(
-            selectedLanguage
-        ) {
-            var languages = [
-                "tamil",
-                "telugu",
-                "kannada",
-                "hindi",
-                "english"
-            ];
-            for (
-                var i = 0;
-                i < languages.length;
-                i++
-            ) {
-                var lang =
-                    languages[i];
-                var element =
-                    document.getElementById(
-                        "language" +
-                        lang.charAt(0).toUpperCase() +
-                        lang.slice(1)
-                    );
-                if( !element) {
-                    continue;
-                }
-                if( 
-                    lang ===
-                    selectedLanguage
-                ) {
-                    element.className =
-                        "disabledButton";
-                    element.onclick = null;
-                } else {
-                    element.className =
-                        "languageButton";
-                    element.onclick =
-                        (function(languageCode) {
-                            return function() {
-                                loadLanguage(
-                                    languageCode
-                                );
-                            };
-                        })(lang);
-                }
-            }
-        }
-        function loadLanguage(lang) {
-            if( !translations[lang]) {
-                lang = "english";
-            }
-            currentLanguage = lang;
-            var data =
-                translations[lang];
-            setText(
-                "mainTitle",
-                data.title
-            );
-            setText(
-                "lblInvestment",
-                data.investment
-            );
-            setText(
-                "lblPeriod",
-                data.period
-            );
-            setText(
-                "lblReinvest",
-                data.reinvest
-            );
-            setText(
-                "yesOption",
-                data.yes
-            );
-            setText(
-                "noOption",
-                data.no
-            );
-            setText(
-                "calculateButton",
-                data.calculate
-            );
-            setText(
-                "comparisonTitle",
-                data.comparison
-            );
-            setText(
-                "thScheme",
-                data.scheme
-            );
-            setText(
-                "thRate",
-                data.rate
-            );
-            setText(
-                "thInterestMethod",
-                data.interestMethod
-            );
-            setText(
-                "thInterest",
-                data.interestReceived
-            );
-            setText(
-                "thFinal",
-                data.finalPrincipal
-            );
-            setText(
-                "thTotal",
-                data.totalValue
-            );
-            setText(
-                "thProfit",
-                data.profit
-            );
-            setText(
-                "thReturn",
-                data.effectiveReturn
-            );
-            setText(
-                "thLiquidity",
-                data.liquidity
-            );
-            setText(
-                "nscName",
-                data.nsc
-            );
-            setText(
-                "tdName",
-                data.td
-            );
-            setText(
-                "misName",
-                data.mis
-            );
-            setText(
-                "scssName",
-                data.scss
-            );
-            setText(
-                "nscMethod",
-                data.nscMethod
-            );
-            setText(
-                "tdMethod",
-                data.tdMethod
-            );
-            setText(
-                "misMethod",
-                data.misMethod
-            );
-            setText(
-                "scssMethod",
-                data.scssMethod
-            );
-            setText(
-                "nscLiquidity",
-                data.medium
-            );
-            setText(
-                "tdLiquidity",
-                data.medium
-            );
-            setText(
-                "misLiquidity",
-                data.high
-            );
-            setText(
-                "scssLiquidity",
-                data.medium
-            );
-            setText(
-                "bestTitle",
-                data.bestFor
-            );
-            setText(
-                "nscBest",
-                data.nscBest
-            );
-            setText(
-                "tdBest",
-                data.tdBest
-            );
-            setText(
-                "misBest",
-                data.misBest
-            );
-            setText(
-                "scssBest",
-                data.scssBest
-            );
-            setText(
-                "rankingTitle",
-                data.ranking
-            );
-            setText(
-                "rankTitle",
-                data.rank
-            );
-            setText(
-                "differenceTitle",
-                data.difference
-            );
-            setText(
-                "noteTitle",
-                data.noteTitle
-            );
-            setText(
-                "noteText",
-                data.noteText
-            );
-            setText(
-                "scenarioTitle",
-                data.scenarioTitle
-            );
-            setText(
-                "scenarioText",
-                data.scenarioText
-            );
-            setText(
-                "rateTitle",
-                data.rateTitle
-            );
-            setText(
-                "rateWarning",
-                data.rateWarning
-            );
-            setText(
-                "conclusionTitle",
-                data.conclusion
-            );
-            setText(
-                "conclusionText",
-                data.conclusionText
-            );
-            updateLanguageButtons(
-                lang
-            );
-            calculateComparison();
-        }
-        window.onload =
-            function() {
-                loadLanguage(
-                    "tamil"
-                );
-            };
-    </SCRIPT>
-</HEAD>
-<BODY>
-<TABLE class="mainTable" border="0">
-    <!-- DYNAMIC WINNER ROW -->
-    <TR>
-        <TD
-            id="winnerHeader"
-            class="winnerHeader"
-        >
-            🏆 Calculating...
-        </TD>
-    </TR>
-    <!-- LANGUAGE ROW -->
-    <TR>
-        <TD valign='top' align='right'>
-            <TABLE
-                class="languageTable"
-                border="1"
-                style="width:100%;"
-            >
-                <TR>
-                    <TD
-                        align="center"
-                        style="padding:9px;"
-                    >
-                        <SPAN
-                            id="languageTamil"
-                            class="languageButton"
-                        >
-                            தமிழ்
-                        </SPAN>
-                    </TD>
-                    <TD
-                        align="center"
-                        style="padding:9px;"
-                    >
-                        <SPAN
-                            id="languageTelugu"
-                            class="languageButton"
-                        >
-                            తెలుగు
-                        </SPAN>
-                    </TD>
-                    <TD
-                        align="center"
-                        style="padding:9px;"
-                    >
-                        <SPAN
-                            id="languageKannada"
-                            class="languageButton"
-                        >
-                            ಕನ್ನಡ
-                        </SPAN>
-                    </TD>
-                    <TD
-                        align="center"
-                        style="padding:9px;"
-                    >
-                        <SPAN
-                            id="languageHindi"
-                            class="languageButton"
-                        >
-                            हिन्दी
-                        </SPAN>
-                    </TD>
-                    <TD
-                        align="center"
-                        style="padding:9px;"
-                    >
-                        <SPAN
-                            id="languageEnglish"
-                            class="languageButton"
-                        >
-                            English
-                        </SPAN>
-                    </TD>
-                </TR>
-            </TABLE>
-        </TD>
-    </TR>
-    <!-- TITLE -->
-    <TR>
-        <TD
-            id="mainTitle"
-            class="title"
-        >
-            NSC vs TD vs MIS vs SCSS
-        </TD>
-    </TR>
-    <!-- INPUTS -->
-    <TR>
-        <TD valign='top' align='right'>
-            <TABLE
-                class="inputTable"
-                border="0"
-            >
-                <TR>
-                    <TD valign='top' align='right'>
-                        <B id="lblInvestment">
-                            Initial Investment
-                        </B>
-                    </TD>
-                    <TD valign='top' align='right'>
-                        <INPUT
-                            id="investmentAmount"
-                            class="inputBox"
-                            type="number"
-                            value="155000"
-                            min="0"
-                            step="100"
-                            onchange="calculateComparison();"
-                        >
-                    </TD>
-                    <TD valign='top' align='right'>
-                        <B id="lblPeriod">
-                            Comparison Period
-                        </B>
-                    </TD>
-                    <TD valign='top' align='right'>
-                        <SELECT
-                            id="comparisonPeriod"
-                            class="selectBox"
-                            onchange="calculateComparison();"
-                        >
-                            <OPTION value="5">
-                                5 Years
-                            </OPTION>
-                            <OPTION value="10">
-                                10 Years
-                            </OPTION>
-                            <OPTION value="15">
-                                15 Years
-                            </OPTION>
-                            <OPTION value="20">
-                                20 Years
-                            </OPTION>
-                        </SELECT>
-                    </TD>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        <B id="lblReinvest">
-                            Reinvest Interest
-                        </B>
-                    </TD>
-                    <TD valign='top' align='right'>
-                        <SELECT
-                            id="reinvestInterest"
-                            class="selectBox"
-                            onchange="calculateComparison();"
-                        >
-                            <OPTION
-                                value="yes"
-                                id="yesOption"
-                            >
-                                Yes - Reinvest
-                            </OPTION>
-                            <OPTION
-                                value="no"
-                                id="noOption"
-                            >
-                                No - Keep Interest as Cash
-                            </OPTION>
-                        </SELECT>
-                    </TD>
-                    <TD valign='top' align='right'>
-                        <BUTTON
-                            id="calculateButton"
-                            class="calculateButton"
-                            onclick="calculateComparison();"
-                        >
-                            Calculate
-                        </BUTTON>
-                    </TD>
-                    <TD valign='top' align='right'>
-                    </TD>
-                </TR>
-            </TABLE>
-        </TD>
-    </TR>
-    <!-- COMPARISON TABLE -->
-    <TR>
-        <TD valign='top' align='right'>
-            <DIV
-                id="comparisonTitle"
-                class="sectionTitle"
-            >
-                Profit Comparison
-            </DIV>
-            <TABLE
-                class="resultTable"
-                border="1"
-            >
-                <TR>
-                    <TH id="thScheme">
-                        Scheme
-                    </TH>
-                    <TH>
-                        <SPAN id="nscName">NSC</SPAN>
-                        <BR>
-                        <SPAN id="rateNSC"></SPAN>
-                    </TH>
-                    <TH id="tdHeader">
-                        <SPAN id="tdName">5-Year TD</SPAN>
-                        <BR>
-                        <SPAN id="rateTD"></SPAN>
-                    </TH>
-                    <TH>
-                        <SPAN id="misName">MIS</SPAN>
-                        <BR>
-                        <SPAN id="rateMIS"></SPAN>
-                    </TH>
-                    <TH>
-                        <SPAN id="scssName">SCSS</SPAN>
-                        <BR>
-                        <SPAN id="rateSCSS"></SPAN>
-                    </TH>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        <B id="thRate">
-                            Interest Rate
-                        </B>
-                    </TD>
-                    <TD valign='top' align='right'>
-                        7.7%
-                    </TD>
-                    <TD valign='top' align='right'>
-                        7.5%
-                    </TD>
-                    <TD valign='top' align='right'>
-                        7.4%
-                    </TD>
-                    <TD valign='top' align='right'>
-                        8.2%
-                    </TD>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        <B id="thInterestMethod">
-                            Interest Method
-                        </B>
-                    </TD>
-                    <TD id="nscMethod">
-                        Annual compounding
-                    </TD>
-                    <TD id="tdMethod">
-                        Quarterly compounding
-                    </TD>
-                    <TD id="misMethod">
-                        Monthly interest payout
-                    </TD>
-                    <TD id="scssMethod">
-                        Quarterly interest payout
-                    </TD>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        <B id="thInterest">
-                            Interest / Profit
-                        </B>
-                    </TD>
-                    <TD id="nscInterest">
-                    </TD>
-                    <TD id="tdInterest">
-                    </TD>
-                    <TD id="misInterest">
-                    </TD>
-                    <TD id="scssInterest">
-                    </TD>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        <B id="thFinal">
-                            Final Principal / Value
-                        </B>
-                    </TD>
-                    <TD id="nscFinal">
-                    </TD>
-                    <TD id="tdFinal">
-                    </TD>
-                    <TD id="misFinal">
-                    </TD>
-                    <TD id="scssFinal">
-                    </TD>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        <B>
-                            <SPAN id="thTotal">
-                                Total Portfolio Value
-                            </SPAN>
-                        </B>
-                    </TD>
-                    <TD id="nscFinal2">
-                    </TD>
-                    <TD id="tdFinal2">
-                    </TD>
-                    <TD id="misFinal2">
-                    </TD>
-                    <TD id="scssFinal2">
-                    </TD>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        <B id="thProfit">
-                            Total Profit
-                        </B>
-                    </TD>
-                    <TD
-                        id="nscInterest2"
-                        class="profitCell"
-                    >
-                    </TD>
-                    <TD
-                        id="tdInterest2"
-                        class="profitCell"
-                    >
-                    </TD>
-                    <TD
-                        id="misInterest2"
-                        class="profitCell"
-                    >
-                    </TD>
-                    <TD
-                        id="scssInterest2"
-                        class="profitCell"
-                    >
-                    </TD>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        <B id="thReturn">
-                            Effective Return
-                        </B>
-                    </TD>
-                    <TD id="nscReturn">
-                    </TD>
-                    <TD id="tdReturn">
-                    </TD>
-                    <TD id="misReturn">
-                    </TD>
-                    <TD id="scssReturn">
-                    </TD>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        <B id="thLiquidity">
-                            Liquidity
-                        </B>
-                    </TD>
-                    <TD id="nscLiquidity">
-                        Medium
-                    </TD>
-                    <TD id="tdLiquidity">
-                        Medium
-                    </TD>
-                    <TD id="misLiquidity">
-                        High
-                    </TD>
-                    <TD id="scssLiquidity">
-                        Medium
-                    </TD>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        <B id="bestTitle">
-                            Best suited for
-                        </B>
-                    </TD>
-                    <TD id="nscBest">
-                        Long-term growth
-                    </TD>
-                    <TD id="tdBest">
-                        Fixed-income growth
-                    </TD>
-                    <TD id="misBest">
-                        Regular monthly income
-                    </TD>
-                    <TD id="scssBest">
-                        Senior citizens + income
-                    </TD>
-                </TR>
-            </TABLE>
-        </TD>
-    </TR>
-    <!-- RANKING -->
-    <TR>
-        <TD valign='top' align='right'>
-            <DIV
-                id="rankingTitle"
-                class="sectionTitle"
-            >
-                Profit Ranking
-            </DIV>
-            <TABLE
-                class="resultTable"
-                border="1"
-            >
-                <TR>
-                    <TH id="rankTitle">
-                        Rank
-                    </TH>
-                    <TH>
-                        Scheme
-                    </TH>
-                    <TH>
-                        Profit
-                    </TH>
-                    <TH>
-                        Final Value
-                    </TH>
-                    <TH id="differenceTitle">
-                        Difference from #1
-                    </TH>
-                </TR>
-                <TBODY id="rankingBody">
-                </TBODY>
-            </TABLE>
-        </TD>
-    </TR>
-    <!-- WINNER SUMMARY -->
-    <TR>
-        <TD valign='top' align='right'>
-            <DIV
-                class="sectionTitle"
-            >
-                🏆 Result
-            </DIV>
-            <DIV
-                id="winnerSummary"
-                class="winnerHeader"
-                style="
-                    margin-top:0;
-                    background-color:#c6efce;
-                    color:#006100;
-                    font-size:15px;
-                "
-            >
-            </DIV>
-        </TD>
-    </TR>
-    <!-- RATE TABLE -->
-    <TR>
-        <TD valign='top' align='right'>
-            <DIV
-                id="rateTitle"
-                class="sectionTitle"
-            >
-                Rates Used
-            </DIV>
-            <TABLE
-                class="resultTable"
-                border="1"
-            >
-                <TR>
-                    <TH>
-                        Scheme
-                    </TH>
-                    <TH>
-                        Rate
-                    </TH>
-                    <TH>
-                        Payment / Compounding
-                    </TH>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        NSC
-                    </TD>
-                    <TD id="rateNSC2">
-                        7.7%
-                    </TD>
-                    <TD valign='top' align='right'>
-                        Annual compounding
-                    </TD>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        5-Year TD
-                    </TD>
-                    <TD id="rateTD2">
-                        7.5%
-                    </TD>
-                    <TD valign='top' align='right'>
-                        Quarterly compounding
-                    </TD>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        MIS
-                    </TD>
-                    <TD id="rateMIS2">
-                        7.4%
-                    </TD>
-                    <TD valign='top' align='right'>
-                        Monthly payout
-                    </TD>
-                </TR>
-                <TR>
-                    <TD valign='top' align='right'>
-                        SCSS
-                    </TD>
-                    <TD id="rateSCSS2">
-                        8.2%
-                    </TD>
-                    <TD valign='top' align='right'>
-                        Quarterly payout
-                    </TD>
-                </TR>
-            </TABLE>
-            <DIV
-                id="rateWarning"
-                class="rateSource"
-            >
-                Small-savings rates are periodically notified by the Government.
-            </DIV>
-        </TD>
-    </TR>
-    <!-- PRACTICAL SCENARIO -->
-    <TR>
-        <TD valign='top' align='right'>
-            <DIV
-                class="warning"
-            >
-                <B id="scenarioTitle">
-                    Practical interpretation
-                </B>
-                <BR>
-                <SPAN id="scenarioText">
-                    If your objective is maximum growth and you do not need
-                    periodic income, a compounding scheme can be advantageous.
-                    MIS and SCSS are different because their interest is paid out.
-                </SPAN>
-            </DIV>
-        </TD>
-    </TR>
-    <!-- IMPORTANT NOTE -->
-    <TR>
-        <TD valign='top' align='right'>
-            <DIV
-                class="note"
-            >
-                <B id="noteTitle">
-                    Important calculation note
-                </B>
-                <BR>
-                <SPAN id="noteText">
-                    NSC is modeled with annual compounding and the 5-year TD
-                    with quarterly compounding. MIS pays interest monthly and
-                    SCSS pays interest quarterly.
-                </SPAN>
-            </DIV>
-        </TD>
-    </TR>
-    <!-- CONCLUSION -->
-    <TR>
-        <TD valign='top' align='right'>
-            <DIV
-                class="sectionTitle"
-                id="conclusionTitle"
-            >
-                Conclusion
-            </DIV>
-            <DIV
-                class="note"
-                id="conclusionText"
-            >
-                The winner shown above is based only on the calculated
-                portfolio profit under the selected assumptions.
-            </DIV>
-        </TD>
-    </TR>
-</TABLE>
-<SCRIPT type="text/javascript">
-    /*
-     * Copy calculated values into the duplicate summary cells.
-     */
-    function syncResultCells() {
-        var ids = [
-            "nsc",
-            "td",
-            "mis",
-            "scss"
-        ];
-        for (
-            var i = 0;
-            i < ids.length;
-            i++
-        ) {
-            var id = ids[i];
-            document.getElementById(
-                id + "Final2"
-            ).innerHTML =
-                document.getElementById(
-                    id + "Final"
-                ).innerHTML;
-            document.getElementById(
-                id + "Interest2"
-            ).innerHTML =
-                document.getElementById(
-                    id + "Interest"
-                ).innerHTML;
-        }
-    }
-    /*
-     * Override the calculation function so that the duplicate
-     * summary cells are synchronized after calculation.
-     */
-    var originalCalculate =
-        calculateComparison;
-    calculateComparison =
-        function() {
-            originalCalculate();
-            syncResultCells();
-            /*
-             * Rate table.
-             */
-            document.getElementById(
-                "rateNSC2"
-            ).innerHTML =
-                rates.nsc.toFixed(1) + "%";
-            document.getElementById(
-                "rateTD2"
-            ).innerHTML =
-                rates.td.toFixed(1) + "%";
-            document.getElementById(
-                "rateMIS2"
-            ).innerHTML =
-                rates.mis.toFixed(1) + "%";
-            document.getElementById(
-                "rateSCSS2"
-            ).innerHTML =
-                rates.scss.toFixed(1) + "%";
-        };
-    /*
-     * Initial calculation.
-     */
-    window.setTimeout(
-        function() {
-            calculateComparison();
-        },
-        100
-    );
-</SCRIPT>
-</BODY>
+				var rateDecimal = rate / 100;
+				var periods =
+					Math.round(years * frequency);
+				var periodicRate =
+					rateDecimal / frequency;
+				var finalValue = principal;
+				var cashInterest = 0;
+				var reinvestedInterest = 0;
+				var i;
+				if( true === reinvest )
+			{
+					/*
+					 * Interest is reinvested.
+					 *
+					 * This produces a theoretical compound-growth
+					 * comparison based on each scheme's payment/
+					 * compounding frequency.
+					 */
+					for (i = 0; i < periods; i++)
+			{
+						var interest =
+							finalValue * periodicRate;
+						finalValue += interest;
+						reinvestedInterest += interest;
+					}
+				} else {
+					/*
+					 * Interest is NOT reinvested.
+					 *
+					 * Principal remains unchanged and all interest
+					 * becomes cash.
+					 */
+					for (i = 0; i < periods; i++)
+			{
+						var payout =
+							principal * periodicRate;
+						cashInterest += payout;
+					}
+					finalValue = principal + cashInterest;
+				}
+				return {
+					principal: principal,
+					finalValue: finalValue,
+					profit: finalValue - principal,
+					cashInterest: cashInterest,
+					reinvestedInterest: reinvestedInterest
+				};
+			}
+			function calculateComparison()
+		{
+				var principal =
+					numberValue(
+						"investmentAmount",
+						155000
+					);
+				var years =
+					parseFloat(
+						document.getElementById(
+							"comparisonPeriod"
+						).value
+					);
+				var reinvest =
+					document.getElementById(
+						"reinvestInterest"
+					).value === "yes";
+				/*
+				 * Frequencies:
+				 *
+				 * NSC	= annual
+				 * TD	= quarterly
+				 * MIS	= monthly
+				 * SCSS	= quarterly
+				 */
+				var results = {
+					nsc:
+						calculateScheme(
+							principal,
+							years,
+							rates.nsc,
+							1,
+							reinvest
+						),
+					td:
+						calculateScheme(
+							principal,
+							years,
+							rates.td,
+							4,
+							reinvest
+						),
+					mis:
+						calculateScheme(
+							principal,
+							years,
+							rates.mis,
+							12,
+							reinvest
+						),
+					scss:
+						calculateScheme(
+							principal,
+							years,
+							rates.scss,
+							4,
+							reinvest
+						)
+				};
+				var schemes = [
+					{
+						id: "nsc",
+						name: "NSC"
+					},
+					{
+						id: "td",
+						name: "TD"
+					},
+					{
+						id: "mis",
+						name: "MIS"
+					},
+					{
+						id: "scss",
+						name: "SCSS"
+					}
+				];
+				/*
+				 * Sort by PROFIT, highest first.
+				 */
+				schemes.sort(
+					function(a, b)
+			{
+						return (
+							results[b.id].profit -
+							results[a.id].profit
+						);
+					}
+				);
+				var winner =
+					schemes[0];
+				var winnerProfit =
+					results[winner.id].profit;
+				/*
+				 * First row:
+				 *
+				 * SCSS is(senior citizen) better than NSC, TD and MIS
+				 *
+				 * Automatically changes according to result.
+				 */
+				var otherNames = [];
+				for (
+					var x = 1;
+					x < schemes.length;
+					x++
+				)
+			{
+					otherNames.push(
+						schemes[x].name
+					);
+				}
+				var totalAmt = money(2000);
+				var winnerText =
+					winner.name +
+					" " +
+					translations[currentLanguage].winner +
+					" " +
+					otherNames.join(", ") +
+					" — Highest estimated profit: " +
+					money(winnerProfit)+"<BR>(Monthly "+totalAmt+" deposited for the first 12 months)";
+				document.getElementById(
+					"winnerHeader"
+				).innerHTML =
+					"🏆 " + winnerText;
+				/*
+				 * Display results.
+				 */
+				var ids = [
+					"nsc",
+					"td",
+					"mis",
+					"scss"
+				];
+				for (var i = 0; i < ids.length; i++)
+			{
+					var id = ids[i];
+					document.getElementById(
+						id + "Interest"
+					).innerHTML =
+						money(
+							results[id].profit
+						);
+					document.getElementById(
+						id + "Final"
+					).innerHTML =
+						money(
+							results[id].finalValue
+						);
+					document.getElementById(
+						id + "Cash"
+					).innerHTML =
+						money(
+							results[id].cashInterest
+						);
+					document.getElementById(
+						id + "Reinvested"
+					).innerHTML =
+						money(
+							results[id].reinvestedInterest
+						);
+					document.getElementById(
+						id + "Return"
+					).innerHTML =
+						(
+							results[id].profit /
+							principal *
+							100
+						).toFixed(2) + "%";
+					document.getElementById(
+						id + "Difference"
+					).innerHTML =
+						"";
+					document.getElementById(
+						id + "Header"
+					).classList.remove(
+						"winnerColumn"
+					);
+				}
+				/*
+				 * Highlight winner column.
+				 */
+				document.getElementById(
+					winner.id + "Header"
+				).classList.add(
+					"winnerColumn"
+				);
+				document.getElementById(
+					winner.id + "Interest"
+				).classList.add(
+					"winnerColumn"
+				);
+				document.getElementById(
+					winner.id + "Final"
+				).classList.add(
+					"winnerColumn"
+				);
+				/*
+				 * Ranking table.
+				 */
+				var rankingHTML = "";
+				for (
+					var r = 0;
+					r < schemes.length;
+					r++
+				)
+			{
+					var scheme =
+						schemes[r];
+					var result =
+						results[scheme.id];
+					var difference =
+						winnerProfit -
+						result.profit;
+					rankingHTML +=
+						"<TR>" +
+						"<TD valign='top' align='right'>" +
+						(r + 1) +
+						"</TD>" +
+						"<TD valign='top' align='right'>" +
+						scheme.name +
+						"</TD>" +
+						"<TD valign='top' align='right'>" +
+						money(result.profit) +
+						"</TD>" +
+						"<TD valign='top' align='right'>" +
+						money(result.finalValue) +
+						"</TD>" +
+						"<TD valign='top' align='right'>" +
+						(
+							r === 0
+								? "🏆 #1"
+								: money(difference)
+						) +
+						"</TD>" +
+						"</TR>";
+				}
+				document.getElementById(
+					"rankingBody"
+				).innerHTML =
+					rankingHTML;
+				/*
+				 * Winner summary.
+				 */
+				document.getElementById(
+					"winnerSummary"
+				).innerHTML =
+					"<B>" +
+					winner.name +
+					"</B> gives the highest estimated profit of " +
+					"<B>" +
+					money(winnerProfit) +
+					"</B> on an initial investment of " +
+					"<B>" +
+					money(principal) +
+					"</B> over " +
+					"<B>" +
+					years +
+					" year(s)</B> under the selected assumptions.";
+				/*
+				 * Rate display.
+				 */
+				document.getElementById(
+					"rateNSC"
+				).innerHTML =
+					rates.nsc.toFixed(1) + "%";
+				document.getElementById(
+					"rateTD"
+				).innerHTML =
+					rates.td.toFixed(1) + "%";
+				document.getElementById(
+					"rateMIS"
+				).innerHTML =
+					rates.mis.toFixed(1) + "%";
+				document.getElementById(
+					"rateSCSS"
+				).innerHTML =
+					rates.scss.toFixed(1) + "%";
+			}
+			function setText(id, value)
+		{
+				var element =
+					document.getElementById(id);
+				if( element) {
+					element.innerHTML = value;
+				}
+			}
+			function updateLanguageButtons(
+				selectedLanguage
+			) {
+				var languages = [
+					"tamil",
+					"telugu",
+					"kannada",
+					"hindi",
+					"english"
+				];
+				for (
+					var i = 0;
+					i < languages.length;
+					i++
+				) {
+					var lang =
+						languages[i];
+					var element =
+						document.getElementById(
+							"language" +
+							lang.charAt(0).toUpperCase() +
+							lang.slice(1)
+						);
+					if( !element) {
+						continue;
+					}
+					if( 
+						lang ===
+						selectedLanguage
+					) {
+						element.className =
+							"disabledButton";
+						element.onclick = null;
+					} else {
+						element.className =
+							"languageButton";
+						element.onclick =
+							(function(languageCode) {
+								return function() {
+									loadLanguage(
+										languageCode
+									);
+								};
+							})(lang);
+					}
+				}
+			}
+			function loadLanguage(lang) {
+				if( !translations[lang]) {
+					lang = "english";
+				}
+				currentLanguage = lang;
+				var data =
+					translations[lang];
+				setText(
+					"mainTitle",
+					data.title
+				);
+				setText(
+					"lblInvestment",
+					data.investment
+				);
+				setText(
+					"lblPeriod",
+					data.period
+				);
+				setText(
+					"lblReinvest",
+					data.reinvest
+				);
+				setText(
+					"yesOption",
+					data.yes
+				);
+				setText(
+					"noOption",
+					data.no
+				);
+				setText(
+					"calculateButton",
+					data.calculate
+				);
+				setText(
+					"comparisonTitle",
+					data.comparison
+				);
+				setText(
+					"thScheme",
+					data.scheme
+				);
+				setText(
+					"thRate",
+					data.rate
+				);
+				setText(
+					"thInterestMethod",
+					data.interestMethod
+				);
+				setText(
+					"thInterest",
+					data.interestReceived
+				);
+				setText(
+					"thFinal",
+					data.finalPrincipal
+				);
+				setText(
+					"thTotal",
+					data.totalValue
+				);
+				setText(
+					"thProfit",
+					data.profit
+				);
+				setText(
+					"thReturn",
+					data.effectiveReturn
+				);
+				setText(
+					"thLiquidity",
+					data.liquidity
+				);
+				setText(
+					"nscName",
+					data.nsc
+				);
+				setText(
+					"tdName",
+					data.td
+				);
+				setText(
+					"misName",
+					data.mis
+				);
+				setText(
+					"scssName",
+					data.scss
+				);
+				setText(
+					"nscMethod",
+					data.nscMethod
+				);
+				setText(
+					"tdMethod",
+					data.tdMethod
+				);
+				setText(
+					"misMethod",
+					data.misMethod
+				);
+				setText(
+					"scssMethod",
+					data.scssMethod
+				);
+				setText(
+					"nscLiquidity",
+					data.medium
+				);
+				setText(
+					"tdLiquidity",
+					data.medium
+				);
+				setText(
+					"misLiquidity",
+					data.high
+				);
+				setText(
+					"scssLiquidity",
+					data.medium
+				);
+				setText(
+					"bestTitle",
+					data.bestFor
+				);
+				setText(
+					"nscBest",
+					data.nscBest
+				);
+				setText(
+					"tdBest",
+					data.tdBest
+				);
+				setText(
+					"misBest",
+					data.misBest
+				);
+				setText(
+					"scssBest",
+					data.scssBest
+				);
+				setText(
+					"rankingTitle",
+					data.ranking
+				);
+				setText(
+					"rankTitle",
+					data.rank
+				);
+				setText(
+					"differenceTitle",
+					data.difference
+				);
+				setText(
+					"noteTitle",
+					data.noteTitle
+				);
+				setText(
+					"noteText",
+					data.noteText
+				);
+				setText(
+					"scenarioTitle",
+					data.scenarioTitle
+				);
+				setText(
+					"scenarioText",
+					data.scenarioText
+				);
+				setText(
+					"rateTitle",
+					data.rateTitle
+				);
+				setText(
+					"rateWarning",
+					data.rateWarning
+				);
+				setText(
+					"conclusionTitle",
+					data.conclusion
+				);
+				setText(
+					"conclusionText",
+					data.conclusionText
+				);
+				updateLanguageButtons(
+					lang
+				);
+				calculateComparison();
+			}
+			window.onload =
+				function() {
+					loadLanguage(
+						"tamil"
+					);
+				};
+		</SCRIPT>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<TABLE class="mainTable" border="0">
+			<!-- DYNAMIC WINNER ROW -->
+			<TR>
+				<TD
+					id="winnerHeader"
+					class="winnerHeader"
+				>
+					🏆 Calculating...
+				</TD>
+			</TR>
+			<!-- LANGUAGE ROW -->
+			<TR>
+				<TD valign='top' align='right'>
+					<TABLE
+						class="languageTable"
+						border="1"
+						style="width:100%;"
+					>
+						<TR>
+							<TD
+								align="center"
+								style="padding:9px;"
+							>
+								<SPAN
+									id="languageTamil"
+									class="languageButton"
+								>
+									தமிழ்
+								</SPAN>
+							</TD>
+							<TD
+								align="center"
+								style="padding:9px;"
+							>
+								<SPAN
+									id="languageTelugu"
+									class="languageButton"
+								>
+									తెలుగు
+								</SPAN>
+							</TD>
+							<TD
+								align="center"
+								style="padding:9px;"
+							>
+								<SPAN
+									id="languageKannada"
+									class="languageButton"
+								>
+									ಕನ್ನಡ
+								</SPAN>
+							</TD>
+							<TD
+								align="center"
+								style="padding:9px;"
+							>
+								<SPAN
+									id="languageHindi"
+									class="languageButton"
+								>
+									हिन्दी
+								</SPAN>
+							</TD>
+							<TD
+								align="center"
+								style="padding:9px;"
+							>
+								<SPAN
+									id="languageEnglish"
+									class="languageButton"
+								>
+									English
+								</SPAN>
+							</TD>
+						</TR>
+					</TABLE>
+				</TD>
+			</TR>
+			<!-- TITLE -->
+			<TR>
+				<TD
+					id="mainTitle"
+					class="title"
+				>
+					NSC vs TD vs MIS vs SCSS
+				</TD>
+			</TR>
+			<!-- INPUTS -->
+			<TR>
+				<TD valign='top' align='right'>
+					<TABLE
+						class="inputTable"
+						border="0"
+					>
+						<TR>
+							<TD valign='top' align='right'>
+								<B id="lblInvestment">
+									Initial Investment
+								</B>
+							</TD>
+							<TD valign='top' align='right'>
+								<INPUT
+									id="investmentAmount"
+									class="inputBox"
+									type="number"
+									value="155000"
+									min="0"
+									step="100"
+									onchange="calculateComparison();"
+								>
+							</TD>
+							<TD valign='top' align='right'>
+								<B id="lblPeriod">
+									Comparison Period
+								</B>
+							</TD>
+							<TD valign='top' align='right'>
+								<SELECT
+									id="comparisonPeriod"
+									class="selectBox"
+									onchange="calculateComparison();"
+								>
+									<OPTION value="5">
+										5 Years
+									</OPTION>
+									<OPTION value="10">
+										10 Years
+									</OPTION>
+									<OPTION value="15">
+										15 Years
+									</OPTION>
+									<OPTION value="20">
+										20 Years
+									</OPTION>
+								</SELECT>
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								<B id="lblReinvest">
+									Reinvest Interest
+								</B>
+							</TD>
+							<TD valign='top' align='right'>
+								<SELECT
+									id="reinvestInterest"
+									class="selectBox"
+									onchange="calculateComparison();"
+								>
+									<OPTION
+										value="yes"
+										id="yesOption"
+									>
+										Yes - Reinvest
+									</OPTION>
+									<OPTION
+										value="no"
+										id="noOption"
+									>
+										No - Keep Interest as Cash
+									</OPTION>
+								</SELECT>
+							</TD>
+							<TD valign='top' align='right'>
+								<BUTTON
+									id="calculateButton"
+									class="calculateButton"
+									onclick="calculateComparison();"
+								>
+									Calculate
+								</BUTTON>
+							</TD>
+							<TD valign='top' align='right'>
+							</TD>
+						</TR>
+					</TABLE>
+				</TD>
+			</TR>
+			<!-- COMPARISON TABLE -->
+			<TR>
+				<TD valign='top' align='right'>
+					<DIV
+						id="comparisonTitle"
+						class="sectionTitle"
+					>
+						Profit Comparison
+					</DIV>
+					<TABLE
+						class="resultTable"
+						border="1"
+					>
+						<TR>
+							<TH id="thScheme">
+								Scheme
+							</TH>
+							<TH>
+								<SPAN id="nscName">NSC</SPAN>
+								<BR>
+								<SPAN id="rateNSC"></SPAN>
+							</TH>
+							<TH id="tdHeader">
+								<SPAN id="tdName">5-Year TD</SPAN>
+								<BR>
+								<SPAN id="rateTD"></SPAN>
+							</TH>
+							<TH>
+								<SPAN id="misName">MIS</SPAN>
+								<BR>
+								<SPAN id="rateMIS"></SPAN>
+							</TH>
+							<TH>
+								<SPAN id="scssName">SCSS</SPAN>
+								<BR>
+								<SPAN id="rateSCSS"></SPAN>
+							</TH>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								<B id="thRate">
+									Interest Rate
+								</B>
+							</TD>
+							<TD valign='top' align='right'>
+								7.7%
+							</TD>
+							<TD valign='top' align='right'>
+								7.5%
+							</TD>
+							<TD valign='top' align='right'>
+								7.4%
+							</TD>
+							<TD valign='top' align='right'>
+								8.2%
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								<B id="thInterestMethod">
+									Interest Method
+								</B>
+							</TD>
+							<TD id="nscMethod">
+								Annual compounding
+							</TD>
+							<TD id="tdMethod">
+								Quarterly compounding
+							</TD>
+							<TD id="misMethod">
+								Monthly interest payout
+							</TD>
+							<TD id="scssMethod">
+								Quarterly interest payout
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								<B id="thInterest">
+									Interest / Profit
+								</B>
+							</TD>
+							<TD id="nscInterest">
+							</TD>
+							<TD id="tdInterest">
+							</TD>
+							<TD id="misInterest">
+							</TD>
+							<TD id="scssInterest">
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								<B id="thFinal">
+									Final Principal / Value
+								</B>
+							</TD>
+							<TD id="nscFinal">
+							</TD>
+							<TD id="tdFinal">
+							</TD>
+							<TD id="misFinal">
+							</TD>
+							<TD id="scssFinal">
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								<B>
+									<SPAN id="thTotal">
+										Total Portfolio Value
+									</SPAN>
+								</B>
+							</TD>
+							<TD id="nscFinal2">
+							</TD>
+							<TD id="tdFinal2">
+							</TD>
+							<TD id="misFinal2">
+							</TD>
+							<TD id="scssFinal2">
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								<B id="thProfit">
+									Total Profit
+								</B>
+							</TD>
+							<TD
+								id="nscInterest2"
+								class="profitCell"
+							>
+							</TD>
+							<TD
+								id="tdInterest2"
+								class="profitCell"
+							>
+							</TD>
+							<TD
+								id="misInterest2"
+								class="profitCell"
+							>
+							</TD>
+							<TD
+								id="scssInterest2"
+								class="profitCell"
+							>
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								<B id="thReturn">
+									Effective Return
+								</B>
+							</TD>
+							<TD id="nscReturn">
+							</TD>
+							<TD id="tdReturn">
+							</TD>
+							<TD id="misReturn">
+							</TD>
+							<TD id="scssReturn">
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								<B id="thLiquidity">
+									Liquidity
+								</B>
+							</TD>
+							<TD id="nscLiquidity">
+								Medium
+							</TD>
+							<TD id="tdLiquidity">
+								Medium
+							</TD>
+							<TD id="misLiquidity">
+								High
+							</TD>
+							<TD id="scssLiquidity">
+								Medium
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								<B id="bestTitle">
+									Best suited for
+								</B>
+							</TD>
+							<TD id="nscBest">
+								Long-term growth
+							</TD>
+							<TD id="tdBest">
+								Fixed-income growth
+							</TD>
+							<TD id="misBest">
+								Regular monthly income
+							</TD>
+							<TD id="scssBest">
+								Senior citizens + income
+							</TD>
+						</TR>
+					</TABLE>
+				</TD>
+			</TR>
+			<!-- RANKING -->
+			<TR>
+				<TD valign='top' align='right'>
+					<DIV
+						id="rankingTitle"
+						class="sectionTitle"
+					>
+						Profit Ranking
+					</DIV>
+					<TABLE
+						class="resultTable"
+						border="1"
+					>
+						<TR>
+							<TH id="rankTitle">
+								Rank
+							</TH>
+							<TH>
+								Scheme
+							</TH>
+							<TH>
+								Profit
+							</TH>
+							<TH>
+								Final Value
+							</TH>
+							<TH id="differenceTitle">
+								Difference from #1
+							</TH>
+						</TR>
+						<TBODY id="rankingBody">
+						</TBODY>
+					</TABLE>
+				</TD>
+			</TR>
+			<!-- WINNER SUMMARY -->
+			<TR>
+				<TD valign='top' align='right'>
+					<DIV
+						class="sectionTitle"
+					>
+						🏆 Result
+					</DIV>
+					<DIV
+						id="winnerSummary"
+						class="winnerHeader"
+						style="
+							margin-top:0;
+							background-color:#c6efce;
+							color:#006100;
+							font-size:15px;
+						"
+					>
+					</DIV>
+				</TD>
+			</TR>
+			<!-- RATE TABLE -->
+			<TR>
+				<TD valign='top' align='right'>
+					<DIV
+						id="rateTitle"
+						class="sectionTitle"
+					>
+						Rates Used
+					</DIV>
+					<TABLE
+						class="resultTable"
+						border="1"
+					>
+						<TR>
+							<TH>
+								Scheme
+							</TH>
+							<TH>
+								Rate
+							</TH>
+							<TH>
+								Payment / Compounding
+							</TH>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								SCSS
+							</TD>
+							<TD id="rateSCSS2" style='background-color:#00ff00;'>
+								8.2%
+							</TD>
+							<TD valign='top' align='right'>
+								Quarterly payout
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								NSC
+							</TD>
+							<TD id="rateNSC2" style='background-color:cyan;'>
+								7.7%
+							</TD>
+							<TD valign='top' align='right'>
+								Annual compounding
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								5-Year TD
+							</TD>
+							<TD id="rateTD2" style='background-color:orange;'>
+								7.5%
+							</TD>
+							<TD valign='top' align='right'>
+								Quarterly compounding
+							</TD>
+						</TR>
+						<TR>
+							<TD valign='top' align='right'>
+								MIS
+							</TD>
+							<TD id="rateMIS2" style='background-color:yellow;'>
+								7.4%
+							</TD>
+							<TD valign='top' align='right'>
+								Monthly payout
+							</TD>
+						</TR>
+					</TABLE>
+					<DIV
+						id="rateWarning"
+						class="rateSource"
+					>
+						Small-savings rates are periodically notified by the Government.
+					</DIV>
+				</TD>
+			</TR>
+			<!-- PRACTICAL SCENARIO -->
+			<TR>
+				<TD valign='top' align='right'>
+					<DIV
+						class="warning"
+					>
+						<B id="scenarioTitle">
+							Practical interpretation
+						</B>
+						<BR>
+						<SPAN id="scenarioText">
+							If your objective is maximum growth and you do not need
+							periodic income, a compounding scheme can be advantageous.
+							MIS and SCSS are different because their interest is paid out.
+						</SPAN>
+					</DIV>
+				</TD>
+			</TR>
+			<!-- IMPORTANT NOTE -->
+			<TR>
+				<TD valign='top' align='right'>
+					<DIV
+						class="note"
+					>
+						<B id="noteTitle">
+							Important calculation note
+						</B>
+						<BR>
+						<SPAN id="noteText">
+							NSC is modeled with annual compounding and the 5-year TD
+							with quarterly compounding. MIS pays interest monthly and
+							SCSS pays interest quarterly.
+						</SPAN>
+					</DIV>
+				</TD>
+			</TR>
+			<!-- CONCLUSION -->
+			<TR>
+				<TD valign='top' align='right'>
+					<DIV
+						class="sectionTitle"
+						id="conclusionTitle"
+					>
+						Conclusion
+					</DIV>
+					<DIV
+						class="note"
+						id="conclusionText"
+					>
+						The winner shown above is based only on the calculated
+						portfolio profit under the selected assumptions.
+					</DIV>
+				</TD>
+			</TR>
+		</TABLE>
+		<SCRIPT type="text/javascript">
+			/*
+			 * Copy calculated values into the duplicate summary cells.
+			 */
+			function syncResultCells() {
+				var ids = [
+					"nsc",
+					"td",
+					"mis",
+					"scss"
+				];
+				for (
+					var i = 0;
+					i < ids.length;
+					i++
+				) {
+					var id = ids[i];
+					document.getElementById(
+						id + "Final2"
+					).innerHTML =
+						document.getElementById(
+							id + "Final"
+						).innerHTML;
+					document.getElementById(
+						id + "Interest2"
+					).innerHTML =
+						document.getElementById(
+							id + "Interest"
+						).innerHTML;
+				}
+			}
+			/*
+			 * Override the calculation function so that the duplicate
+			 * summary cells are synchronized after calculation.
+			 */
+			var originalCalculate =
+				calculateComparison;
+			calculateComparison =
+				function() {
+					originalCalculate();
+					syncResultCells();
+					/*
+					 * Rate table.
+					 */
+					document.getElementById(
+						"rateNSC2"
+					).innerHTML =
+						rates.nsc.toFixed(1) + "%";
+					document.getElementById(
+						"rateTD2"
+					).innerHTML =
+						rates.td.toFixed(1) + "%";
+					document.getElementById(
+						"rateMIS2"
+					).innerHTML =
+						rates.mis.toFixed(1) + "%";
+					document.getElementById(
+						"rateSCSS2"
+					).innerHTML =
+						rates.scss.toFixed(1) + "%";
+				};
+			/*
+			 * Initial calculation.
+			 */
+			window.setTimeout(
+				function() {
+					calculateComparison();
+				},
+				100
+			);
+		</SCRIPT>
+	</BODY>
 </HTML>
