@@ -1123,7 +1123,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"sbi-atm-receive-date.html": ["SBI new atm card waiting days."],
 								"how-to-transfer-from-bank-post-neft.html": ["Transfer money from SBI to post office using net bank."],
 								"how-to-transfer-to-post-neft.html": ["Transfer money from SBI to post office using YONO."],
-								"sbi-atm-cash-deposit-condition.html": ["SBI ATM Cash Deposit Timing to Avoid Charges"],
+								"sbi-atm-cash-deposit-condition.html": ["ATM CASH DEPOSIT TIMING TO AVOID CHARGES"],
 								"chitfund-post-sbi-compare.html": ["Post/SBI/Chit fund compare"],
 								"dynamic-gold-rate-comparison-tool.html": ["Gold Rate Comparison"],
 								"futura-brush-buying-guide.html": ["Futura Brush: Save AMB Interest (Cash Only)"],
@@ -1764,10 +1764,10 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					</A>
 					<UL class="submenu">
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'chitfund-post-sbi-compare.html' );" class="nav-link">Post/SBI/Chit fund compare</A>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'sbi-atm-cash-deposit-condition.html' );" class="nav-link">ATM CASH DEPOSIT TIMING TO AVOID CHARGES</A>
 						</LI>
 						<LI>
-							<A href="#" onclick="javascript:loadHomeContent( event, 'sbi-atm-cash-deposit-condition.html' );" class="nav-link">SBI ATM Cash Deposit Timing to Avoid Charges</A>
+							<A href="#" onclick="javascript:loadHomeContent( event, 'chitfund-post-sbi-compare.html' );" class="nav-link">Post/SBI/Chit fund compare</A>
 						</LI>
 						<LI>
 							<A href="#" onclick="javascript:loadHomeContent( event, 'sbi-atm-receive-date.html' );" class="nav-link">SBI new atm card waiting days.</A>
@@ -1935,6 +1935,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 		<LI class="nav-item">
 			<A href="#" class="nav-link">Mobile & SIM <SPAN class="nav-arrow">&gt;</SPAN></A>
 			<UL class="submenu">
+			<!-- MY NUMBER -->
 				<LI><A href="#" onclick="loadHomeContent(event, 'how-to-know-sim-number.html');" class="nav-link">Find SIM Number</A></LI>
 				<LI><A href="#" onclick="loadHomeContent(event, 'bsnl-sim-change-not-working.html');" class="nav-link">BSNL SIM Voice Fix by State</A></LI>
 				<LI><A href="#" onclick="loadHomeContent(event, 'steps-to-port-jio-to-bsnl.html');" class="nav-link">Port Jio to BSNL</A></LI>
