@@ -1197,6 +1197,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"../my-income-spending.html": ["MY INCOME SPENDING"],
 								"../sbi-rewards-points.html": ["MY SBI REWARD POINTS"],
 								"../my-father-property-tax.html": ["MY FATHER PROPERTY TAX"],
+								"../saved-amt-total.html": ["MY SAVED AMT"],
 								"../NM_ETDR_AMOUNT.html": ["ND ETDR SBI"],
 								"pain-killer-tablet.html": ["PAIN KILLER TABLET"],
 								"../recharge-mobile.html": ["ALL MOBILES RECHARGE"],
@@ -2174,6 +2175,11 @@ function MainPageHomeLoadContent( event, htmlFileName )
 					</A>
 					<UL class="submenu">
 						${ "127.0.0.1" === window.location.hostname ?`
+							<LI>
+								<A href="#" onclick="loadHomeContent(event, '../saved-amt-total.html');" class="nav-link">
+									MY SAVED AMT
+								</A>
+							</LI>
 							<LI>
 								<A href="#" onclick="loadHomeContent(event, '../NM_ETDR_AMOUNT.html');" class="nav-link">
 									ND ETDR SBI
