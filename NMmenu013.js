@@ -1702,10 +1702,10 @@ function MainPageHomeLoadContent( event, htmlFileName )
 							</A>
 							<UL class="submenu">
 								<LI>
-									<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-scss-comparison.html' );" class="nav-link">SCSS BETTER THAN PPF</A>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-save-money-from-mis.html' );" class="nav-link">Post Office Savings Guide</A>
 								</LI>
 								<LI>
-									<A href="#" onclick="javascript:loadHomeContent( event, 'Steps-to-save-money-from-mis.html' );" class="nav-link">Post Office Savings Guide</A>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-scss-comparison.html' );" class="nav-link">SCSS BETTER THAN PPF</A>
 								</LI>
 								<LI class="nav-item">
 									<TABLE cellpadding="0" cellspacing="0" border="0">
