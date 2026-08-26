@@ -1885,7 +1885,27 @@ DIR /A
     <BR>Found: java.exe (apache webserver at localhost) was using this file
     <BR>Execute:
     <PRE>taskkill.exe /f /im java.exe</PRE>
-    After this corrupted recycle bin error was resolved.
+    If this has not been resolved:<HR>
+	Open (Windows r)<BR>
+	C:\Windows\System32\msconfig.exe<BR>
+	Select Boot tab<BR>
+	Enable Safe Boot<BR>
+	Click Apply<BR>
+	Restart Windows to login at safe mode.<BR>
+	After login at safe mode,<BR>
+	execluding following command at safe mode inside cmd.exe as Administrator:<BR>
+	<TABLE>
+		<TR style='background-color:black;color:white;'>
+			<TD>
+				C:&gt; CD /D C:\$Recycle.Bin\S-1-5-21-1731824304-853207916-3243420573-1001<BR>
+				C:\$Recycle.Bin\S-1-5-21-1731824304-853207916-3243420573-1001&gt; DEL /Q .* 2&gt;NUL<BR>
+				C:\$Recycle.Bin\S-1-5-21-1731824304-853207916-3243420573-1001&gt; CD /D D:\$Recycle.Bin\S-1-5-21-1731824304-853207916-3243420573-1001<BR>
+				D:\$RECYCLE.BIN\S-1-5-21-1731824304-853207916-3243420573-1001&gt; DEL /Q .* 2&gt;NUL<BR>
+				D:\$Recycle.Bin\S-1-5-21-1731824304-853207916-3243420573-1001&gt; CD /D E:\$Recycle.Bin\S-1-5-21-1731824304-853207916-3243420573-1001<BR>
+				E:\$RECYCLE.BIN\S-1-5-21-1731824304-853207916-3243420573-1001&gt; DEL /Q .* 2&gt;NUL<BR>
+			</TD>
+		</TR>
+	</TABLE>
   </TD>
   <TD class="nav"><A href="#top">Top</A><A href="#80">Prev</A><A href="#82">Next</A></TD>
 </TR>
