@@ -522,7 +522,7 @@
     </TR>
     <TR class="row-odd">
       <TD class="idx"><A href="#92">092</A></TD>
-      <TD class="topic"><A href="#92">How to set short names like C:\PROGRA~1 to F:\THUNDE~1\THUNDE~1.exe instead of F:\Thunderbird\thunderbird.exe?</A></TD>
+      <TD class="topic"><A href="#92">How to set short names like C:\PROGRA~1 to D:\THUNDE~1\THUNDE~1.exe instead of D:\Thunderbird\thunderbird.exe?</A></TD>
       <TD class="nav"></TD>
     </TR>
     <TR class="row-even">
@@ -553,31 +553,31 @@
     <PRE>@ECHO OFF
 REM CONTENT OF C:\CheckLaptopBattery.cmd
 REM UNUSED SYSTEM POWER BATTERY USED TO INCREASE POLLUTION.
-IF NOT EXIST C:\RemovePlug.txt ECHO ALERT MESSAGE: REMOVE POWER CABLE AT LAPTOP NOW > C:\RemovePlug.txt
-IF NOT EXIST C:\AddPlug.txt    ECHO ALERT MESSAGE: ADD POWER CABLE AT LAPTOP NOW    > C:\AddPlug.txt
+IF NOT EXIST C:\RemovePlug.txt ECHO ALERT MESSAGE: REMOVE POWER CABLE AT LAPTOP NOW &gt; C:\RemovePlug.txt
+IF NOT EXIST C:\AddPlug.txt    ECHO ALERT MESSAGE: ADD POWER CABLE AT LAPTOP NOW    &gt; C:\AddPlug.txt
 SETLOCAL ENABLEDELAYEDEXPANSION
 :START
 FOR /F "skip=1 tokens=1" %%A in ('C:/Windows/System32/wbem/WMIC.exe Path Win32_Battery Get BatteryStatus ^| C:/Windows/System32/findstr.exe /r /v "^$"') DO SET BatteryStatus=%%A
 FOR /f "tokens=2 delims==" %%E in ('WMIC.exe path Win32_Battery get EstimatedChargeRemaining /value') do (SET "BA=%%E")
 IF %BA% GEQ 98 GOTO MOREPOWER
 IF %BA% LEQ 35 GOTO LESSPOWER
-TIMEOUT 120 >NUL 2>NUL
+TIMEOUT 120 &gt;NUL 2&gt;NUL
 GOTO START
 :MOREPOWER
 IF %BatteryStatus% EQU 2 (
         START /B C:\Windows\System32\notepad.exe C:\RemovePlug.txt
 ) ELSE (
-        C:\Windows\System32\taskkill.exe /f /im notepad.exe >NUL 2>NUL
+        C:\Windows\System32\taskkill.exe /f /im notepad.exe &gt;NUL 2&gt;NUL
 )
-TIMEOUT 10 >NUL 2>NUL
+TIMEOUT 10 &gt;NUL 2&gt;NUL
 GOTO START
 :LESSPOWER
 IF %BatteryStatus% EQU 1 (
         START /B START /B C:\Windows\System32\notepad.exe C:\AddPlug.txt
 ) ELSE (
-        C:\Windows\System32\taskkill.exe /f /im notepad.exe >NUL 2>NUL
+        C:\Windows\System32\taskkill.exe /f /im notepad.exe &gt;NUL 2&gt;NUL
 )
-TIMEOUT 10 >NUL 2>NUL
+TIMEOUT 10 &gt;NUL 2&gt;NUL
 GOTO START</PRE>
     <B>CONTENT OF FILE C:\CheckLaptopBattery.vbs</B>
     <PRE>Dim WinScriptHost
@@ -619,8 +619,8 @@ C:\Windows\System32\reg.exe add "HKCU\Control Panel\International" /f /v sTimeFo
   <TD class="topic">
     <B>How to search files at C: drive inside C:\Windows\System32\cmd.exe?</B>
     <BR>Redirect error(2) to NUL device to discard error output.
-    <PRE>C:\> CD \
-C:\> DIR /S /B *murugesan*openssl* 2>NUL</PRE>
+    <PRE>C:\&gt; CD \
+C:\&gt; DIR /S /B *murugesan*openssl* 2&gt;NUL</PRE>
   </TD>
   <TD class="nav"><A href="#top">Top</A><A href="#2">Prev</A><A href="#4">Next</A></TD>
 </TR>
@@ -630,7 +630,7 @@ C:\> DIR /S /B *murugesan*openssl* 2>NUL</PRE>
   <TD class="topic">
     <B>How to know short name of a file or folder at Windows operating system?</B>
     <BR>PROGRA~1 = "Program Files" &nbsp; PROGRA~2 = "Program Files (x86)"
-    <PRE>C:\> DIR /O:D /A /X C:\ | C:\Windows\System32\find.exe "Program Files"
+    <PRE>C:\&gt; DIR /O:D /A /X C:\ | C:\Windows\System32\find.exe "Program Files"
 Tue 20-May-2003  06:00:AM  &lt;DIR&gt;  PROGRA~2   Program Files (x86)
 Wed 21-May-2003  03:00:AM  &lt;DIR&gt;  PROGRA~1   Program Files</PRE>
   </TD>
@@ -641,10 +641,10 @@ Wed 21-May-2003  03:00:AM  &lt;DIR&gt;  PROGRA~1   Program Files</PRE>
   <TD class="idx"><A name="5">005</A></TD>
   <TD class="topic">
     <B>How to know Windows operating system login time OR Windows logon time?</B>
-    <PRE>C:\> C:\Windows\System32\query.exe user
+    <PRE>C:\&gt; C:\Windows\System32\query.exe user
 USERNAME          SESSIONNAME  ID  STATE   IDLE TIME  LOGON TIME
 &gt;murugesan_openssl  console   38  Active  1+05:35    Tue 20-May-2003  06:00:AM
-C:\> C:\Windows\System32\net.exe user %USERNAME% | C:\Windows\System32\findstr.exe "logon"
+C:\&gt; C:\Windows\System32\net.exe user %USERNAME% | C:\Windows\System32\findstr.exe "logon"
 Last logon    Tue 20-May-2003  06:00 AM</PRE>
   </TD>
   <TD class="nav"><A href="#top">Top</A><A href="#4">Prev</A><A href="#6">Next</A></TD>
@@ -661,7 +661,7 @@ REM CONTENTS OF power.cmd
 CLS
 ECHO %CD%^> power
 :LOOP_POWER_BATCH
-C:\Windows\System32\wbem\WMIC.exe Path Win32_Battery Get BatteryStatus | C:\Windows\System32\find.exe "2" > NUL
+C:\Windows\System32\wbem\WMIC.exe Path Win32_Battery Get BatteryStatus | C:\Windows\System32\find.exe "2" &gt; NUL
 IF %ERRORLEVEL% NEQ 0 (
   ECHO POWER BATTERY PLUGGED OUT
 ) ELSE (
@@ -672,13 +672,13 @@ ECHO TITLE=POWER %Ba%%%
 TITLE=POWER %Ba%%%</PRE>
     <B>Shell script (mksh/bash):</B>
     <PRE>#!/bin/mksh
-/cygdrive/c/Windows/System32/wbem/WMIC.exe Path Win32_Battery Get BatteryStatus 2>&amp;1 |\
+/cygdrive/c/Windows/System32/wbem/WMIC.exe Path Win32_Battery Get BatteryStatus 2&gt;&amp;1 |\
 /usr/bin/tr -d "\r" 2>>1 |\
-/usr/bin/grep "2" >/dev/null 2>&amp;1
+/usr/bin/grep "2" >/dev/null 2&gt;&amp;1
 Ret=$?
 if [ 0 -eq $Ret ]; then echo "POWER BATTERY PLUGGED IN"
 else echo "POWER BATTERY PLUGGED OUT"; fi
-/cygdrive/c/Windows/System32/cmd.exe /c "C:\Windows\System32\wbem\WMIC.exe PATH WIN32_BATTERY GET ESTIMATEDCHARGEREMAINING /VALUE" 2>&amp;1 |\
+/cygdrive/c/Windows/System32/cmd.exe /c "C:\Windows\System32\wbem\WMIC.exe PATH WIN32_BATTERY GET ESTIMATEDCHARGEREMAINING /VALUE" 2&gt;&amp;1 |\
 /usr/bin/tr -d "\r" 2>>1 | /usr/bin/grep -v "^$" | /usr/bin/sed "s/.*=//;" |\
 /usr/bin/awk '{ printf("POWER PERCENTAGE %s%\n", $0); }'</PRE>
   </TD>
@@ -713,7 +713,7 @@ C:\Windows\System32\reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\
 ECHO DISABLED PROXY</PRE>
     <B>network.cmd — check proxy status:</B>
     <PRE>@ECHO OFF
-C:\Windows\System32\reg.exe query "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" 2>&amp;1 |^
+C:\Windows\System32\reg.exe query "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" 2&gt;&amp;1 |^
 tr.exe -d "\r" 2>>1 | grep.exe -i ProxyEnable |^
 gawk.exe '{ if( "0x1" == $NF) printf("PROXY AT ENABLED STATUS\n"); else printf("PROXY AT DISABLED STATUS\n"); }'</PRE>
   </TD>
@@ -839,8 +839,8 @@ gawk.exe '{ if( "0x1" == $NF) printf("PROXY AT ENABLED STATUS\n"); else printf("
     <BR>Right click → New String Value → Name: <B>Autorun</B>
     <BR>Value Data: <SPAN class="code-inline">C:\Users\<SPAN style="color:orange;">murugesan_openssl</SPAN>\YourFileName.cmd</SPAN>
     <BR><B>Contents of YourFileName.cmd:</B>
-    <PRE>C:\Windows\System32\icacls.exe "%USERPROFILE%\Favorites\Links" /Setintegritylevel (OI)(CI)Medium >NUL 2>NUL
-C:\Windows\System32\icacls.exe "%CD%" /Setintegritylevel (OI)(CI)Medium >NUL 2>NUL
+    <PRE>C:\Windows\System32\icacls.exe "%USERPROFILE%\Favorites\Links" /Setintegritylevel (OI)(CI)Medium &gt;NUL 2&gt;NUL
+C:\Windows\System32\icacls.exe "%CD%" /Setintegritylevel (OI)(CI)Medium &gt;NUL 2&gt;NUL
 SET TITLE=%USERDNSDOMAIN:~0,8%\%USERNAME%
 CD /D %USERPROFILE%</PRE>
   </TD>
@@ -920,8 +920,8 @@ OUTPUT:  Start_ShowClassicMode    REG_DWORD    0x1</PRE>
     <PRE>@ECHO OFF
 START /B C:\PROGRA~1\WindowsApps\Microsoft.ScreenSketch_11.2209.2.0_x64__8wekyb3d8bbwe\ScreenSketch.exe
 REM Search ScreenSketch.exe path:
-REM C:> CD /D C:\PROGRA~1\WindowsApps\
-REM C:> DIR/S /B ScreenSketch.exe</PRE>
+REM C:&gt; CD /D C:\PROGRA~1\WindowsApps\
+REM C:&gt; DIR/S /B ScreenSketch.exe</PRE>
     Save as <B>snippingtool.cmd</B> → Add that directory to PATH environment variable
     <BR>After this: Windows r → snippingtool → works
   </TD>
@@ -1088,11 +1088,11 @@ IF EXIST GUP.exe MOVE GUP.exe GUP.ORIGINAL.exe</PRE>
   <TD class="idx"><A name="33">033</A></TD>
   <TD class="topic">
     <B>How to know the process name listening at a particular port number on Windows?</B>
-    <PRE>C:\> c:\Windows\System32\NETSTAT.EXE -nato | c:\Windows\System32\findstr.exe "9017 Address"
+    <PRE>C:\&gt; c:\Windows\System32\NETSTAT.EXE -nato | c:\Windows\System32\findstr.exe "9017 Address"
 Proto  Local Address          Foreign Address    State       PID   Offload State
 TCP    127.0.0.1:9017         0.0.0.0:0          LISTENING   5264  InHost
 TCP    127.0.0.1:9017         127.0.0.1:49694    ESTABLISHED 5264  InHost
-C:\> c:\Windows\System32\NETSTAT.EXE -nato | c:\Windows\System32\findstr.exe "9017 Address" | tasklist /fi "PID eq 5264"
+C:\&gt; c:\Windows\System32\NETSTAT.EXE -nato | c:\Windows\System32\findstr.exe "9017 Address" | tasklist /fi "PID eq 5264"
 Image Name                 PID   Session Name   Session#   Mem Usage
 TeamViewer_Service.exe    5264   Services          0      26,724 K</PRE>
   </TD>
@@ -1113,13 +1113,13 @@ TeamViewer_Service.exe    5264   Services          0      26,724 K</PRE>
     <PRE>@ECHO OFF
 IF NOT EXIST %USERPROFILE%\Downloads\ep_setup.exe ECHO DOWNLOAD ep_setup.exe from https://github.com/valinet/ExplorerPatcher/releases
 IF NOT EXIST %USERPROFILE%\Downloads\ep_setup.exe GOTO EOF
-C:\Windows\System32\whoami /groups | C:\Windows\System32\findstr.exe /B BUILTIN\Administrators | C:\Windows\System32\findstr.exe /C:"Enabled group" >NUL &amp;&amp; GOTO :EXECUTE_USING_ADMIN_PRIVILEGE
+C:\Windows\System32\whoami /groups | C:\Windows\System32\findstr.exe /B BUILTIN\Administrators | C:\Windows\System32\findstr.exe /C:"Enabled group" &gt;NUL &amp;&amp; GOTO :EXECUTE_USING_ADMIN_PRIVILEGE
 ECHO EXECUTE %0 using ADMINISTRATOR PRIVILEGES.
 GOTO EOF
 :EXECUTE_USING_ADMIN_PRIVILEGE
-c:\WINDOWS\system32\taskkill.exe /f /im explorer.exe >NUL 2>NUL
-c:\WINDOWS\system32\taskkill.exe /f /im SearchHost.exe >NUL 2>NUL
-c:\WINDOWS\system32\taskkill.exe /f /im HxTsr.exe >NUL 2>NUL
+c:\WINDOWS\system32\taskkill.exe /f /im explorer.exe &gt;NUL 2&gt;NUL
+c:\WINDOWS\system32\taskkill.exe /f /im SearchHost.exe &gt;NUL 2&gt;NUL
+c:\WINDOWS\system32\taskkill.exe /f /im HxTsr.exe &gt;NUL 2&gt;NUL
 IF EXIST C:\PROGRA~1\EXPLOR~1\ep_setup.exe C:\PROGRA~1\EXPLOR~1\ep_setup.exe
 GOTO EOF
 :EOF</PRE>
@@ -1222,8 +1222,8 @@ C:\PROGRA~2\MICROS~2\root\Office16\EXCEL.EXE</PRE>
     <B>How to execute a required command always when opening C:\Windows\System32\cmd.exe?</B>
     <BR>Create <SPAN class="code-inline">C:\Users\murugesan_openssl\murugesanopenssl.cmd</SPAN>:
     <PRE>@ECHO OFF
-START /B mode 800 >NUL 2>NUL
-C:\Windows\System32\icacls.exe "%userprofile%\Favorites\Links" /Setintegritylevel (OI)(CI)Medium >NUL 2>NUL
+START /B mode 800 &gt;NUL 2&gt;NUL
+C:\Windows\System32\icacls.exe "%userprofile%\Favorites\Links" /Setintegritylevel (OI)(CI)Medium &gt;NUL 2&gt;NUL
 SET TITLE=%USERDNSDOMAIN:~0,8%\%USERNAME%
 CD /D %USERPROFILE%</PRE>
     Open regedit.exe → Go to: <SPAN class="code-inline">HKEY_CURRENT_USER\SOFTWARE\Microsoft\Command Processor</SPAN>
@@ -1260,7 +1260,7 @@ C:\Windows\System32\appwiz.cpl</PRE>
     <B>How to view saved network passwords at Windows operating system?</B>
     <PRE>#!/bin/mksh
 count="y";
-for NETWORKNAMES in $(/cygdrive/c/Windows/System32/netsh.exe wlan show profile 2>&amp;1 |\
+for NETWORKNAMES in $(/cygdrive/c/Windows/System32/netsh.exe wlan show profile 2&gt;&amp;1 |\
   /usr/bin/tr -d "\r" 2>>1 |\
   /usr/bin/grep "All User Profile" |\
   /usr/bin/sed "s/.*: //;s/ /SPACE/g;")
@@ -1425,7 +1425,7 @@ done</PRE>
   <TD class="topic">
     <B>How to open putty.exe always at maximized window?</B>
     <BR><B>a)</B> Windows r → type:
-    <PRE>C:\Windows\System32\cmd.exe /c "START /B /MAX C:\PuttyDirectory\putty.exe <A href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2d40585f584a485e4c4372425d48435e5e416d1c1f1a031d031d031c">[email&#160;protected]</A>"</PRE>
+    <PRE>C:\Windows\System32\cmd.exe /c "START /B /MAX C:\PuttyDirectory\putty.exe %USERNAME%@127.0.0.1"</PRE>
     <B>b)</B> Create maximum_putty.cmd batch file → add its directory to PATH → Windows r → maximum_putty
     <BR><B>c)</B> In %USERPROFILE%\Favorites\Links → Right click putty shortcut → Properties → Run → select <B>Maximized</B>
   </TD>
@@ -1470,8 +1470,8 @@ done</PRE>
     <BR>a) Create a shell script / batch file calling applications in sequence with START /B /MAX
     <BR>b) Create startup.exe (compiled C program) placed at Startup directory. Key actions: ignore signals, fork/setsid, check battery, start firefox, start putty, start editor.
     <BR>Verify:
-    <PRE>C:\> ps.exe -ea | grep.exe -E -v "grep$|ps$"
-C:\> C:\Windows\System32\tasklist.exe | tr.exe -d "\r" | grep.exe -E "bash.exe|firefox.exe|sleep.exe|PID|notepad\+\+.exe"</PRE>
+    <PRE>C:\&gt; ps.exe -ea | grep.exe -E -v "grep$|ps$"
+C:\&gt; C:\Windows\System32\tasklist.exe | tr.exe -d "\r" | grep.exe -E "bash.exe|firefox.exe|sleep.exe|PID|notepad\+\+.exe"</PRE>
   </TD>
   <TD class="nav"><A href="#top">Top</A><A href="#58">Prev</A><A href="#60">Next</A></TD>
 </TR>
@@ -1494,9 +1494,9 @@ C:\> C:\Windows\System32\tasklist.exe | tr.exe -d "\r" | grep.exe -E "bash.exe|f
     <B>Windows cygwin security error when removing cygwin permissions?</B>
     <BR>Error: "You can't remove NULL SID because this object is inheriting permissions from its parent."
     <BR>Open cmd.exe as Administrator, current user, and the user who installed cygwin. Execute:
-    <PRE>C:\> CD /D %HOME%
-C:\cygwin\home\openssl_murugesan> CD ..\..
-C:\cygwin> C:\Windows\System32\icacls.exe "%CD%" /grant %USERNAME%:(F) /T /C /Q</PRE>
+    <PRE>C:\&gt; CD /D %HOME%
+C:\cygwin\home\openssl_murugesan&gt; CD ..\..
+C:\cygwin&gt; C:\Windows\System32\icacls.exe "%CD%" /grant %USERNAME%:(F) /T /C /Q</PRE>
   </TD>
   <TD class="nav"><A href="#top">Top</A><A href="#60">Prev</A><A href="#62">Next</A></TD>
 </TR>
@@ -1587,18 +1587,18 @@ netscp -edit</PRE>
 exit</PRE>
     Create <B>Disable_Defender.cmd</B>:
     <PRE>@ECHO OFF
-%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\MsSecFlt" /v "Start" /t REG_DWORD /d "4" /f >NUL 2>nul
-%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\SecurityHealthService" /v "Start" /t REG_DWORD /d "4" /f >NUL 2>nul
-%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\Sense" /v "Start" /t REG_DWORD /d "4" /f >NUL 2>nul
-%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\WdBoot" /v "Start" /t REG_DWORD /d "4" /f >NUL 2>nul
-%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\WdFilter" /v "Start" /t REG_DWORD /d "4" /f >NUL 2>nul
-%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\WdNisDrv" /v "Start" /t REG_DWORD /d "4" /f >NUL 2>nul
-%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\WdNisSvc" /v "Start" /t REG_DWORD /d "4" /f >NUL 2>nul
-%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\WinDefend" /v "Start" /t REG_DWORD /d "4" /f >NUL 2>nul
-%windir%\System32\reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "SecurityHealth" /f >NUL 2>nul
-%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\SgrmAgent" /v "Start" /t REG_DWORD /d "4" /f >NUL 2>nul
-%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\SgrmBroker" /v "Start" /t REG_DWORD /d "4" /f >NUL 2>nul
-%windir%\System32\reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScreenEnabled" /t REG_SZ /d "Off" /f >NUL 2>nul
+%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\MsSecFlt" /v "Start" /t REG_DWORD /d "4" /f &gt;NUL 2&gt;NUL
+%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\SecurityHealthService" /v "Start" /t REG_DWORD /d "4" /f &gt;NUL 2&gt;NUL
+%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\Sense" /v "Start" /t REG_DWORD /d "4" /f &gt;NUL 2&gt;NUL
+%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\WdBoot" /v "Start" /t REG_DWORD /d "4" /f &gt;NUL 2&gt;NUL
+%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\WdFilter" /v "Start" /t REG_DWORD /d "4" /f &gt;NUL 2&gt;NUL
+%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\WdNisDrv" /v "Start" /t REG_DWORD /d "4" /f &gt;NUL 2&gt;NUL
+%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\WdNisSvc" /v "Start" /t REG_DWORD /d "4" /f &gt;NUL 2&gt;NUL
+%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\WinDefend" /v "Start" /t REG_DWORD /d "4" /f &gt;NUL 2&gt;NUL
+%windir%\System32\reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "SecurityHealth" /f &gt;NUL 2&gt;NUL
+%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\SgrmAgent" /v "Start" /t REG_DWORD /d "4" /f &gt;NUL 2&gt;NUL
+%windir%\System32\reg.exe add "HKLM\SYSTEM\ControlSet001\Services\SgrmBroker" /v "Start" /t REG_DWORD /d "4" /f &gt;NUL 2&gt;NUL
+%windir%\System32\reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScreenEnabled" /t REG_SZ /d "Off" /f &gt;NUL 2&gt;NUL
 GOTO :EOF</PRE>
     <B><A name="67c">67c)</A></B> Open <SPAN class="code-inline">C:\Windows\System32\services.msc</SPAN> and disable:
     <TABLE class="nav-inner">
@@ -1720,10 +1720,10 @@ GOTO :EOF</PRE>
     <BR>Settings → Developer Actions → Enable: On, Stay awake, USB debugging
     <BR>Connect mobile via USB cable to computer.
     <PRE>#!/bin/bash
-/cygdrive/c/platform-tools/adb.exe devices 2>&amp;1 | tr -d "\r" | grep -E -v "^$|List of devices attached"
+/cygdrive/c/platform-tools/adb.exe devices 2&gt;&amp;1 | tr -d "\r" | grep -E -v "^$|List of devices attached"
 # For each device, check battery level:
-/cygdrive/c/platform-tools/adb.exe -s $devname shell dumpsys battery 2>&amp;1 | tr -d "\r" | grep level | sed "s/ *level: //;s/$/%/;"
-/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe path Win32_Battery get EstimatedChargeRemaining /value 2>&amp;1 | tr -d "\r" | grep -E -v "^$" | sed "s/EstimatedChargeRemaining=/Windows 11 LAPTOP POWER: /;s/$/%/;"</PRE>
+/cygdrive/c/platform-tools/adb.exe -s $devname shell dumpsys battery 2&gt;&amp;1 | tr -d "\r" | grep level | sed "s/ *level: //;s/$/%/;"
+/cygdrive/c/WINDOWS/System32/Wbem/WMIC.exe path Win32_Battery get EstimatedChargeRemaining /value 2&gt;&amp;1 | tr -d "\r" | grep -E -v "^$" | sed "s/EstimatedChargeRemaining=/Windows 11 LAPTOP POWER: /;s/$/%/;"</PRE>
   </TD>
   <TD class="nav"><A href="#top">Top</A><A href="#70">Prev</A><A href="#72">Next</A></TD>
 </TR>
@@ -1878,13 +1878,23 @@ C:\PROGRA~1\WindowsApps\Microsoft.OutlookForWindows_1.2024.821.200_x64__8wekyb3d
     <BR>Error seen at Windows 11 (Dec-2024 IST):
     <BR><SPAN style="color:red;"><B>The Recycle Bin on C:\ is corrupted. Do you want to empty the Recycle Bin for this drive?</B></SPAN>
     <BR>Open cmd.exe as Administrator:
-    <PRE>CD C:\$Recycle.Bin
-DIR /A
-&lt;DIR&gt;  S-1-5-21-651189585-2582186959-2098595288-1003</PRE>
+    <PRE>CD /D C:\$Recycle.Bin
+C:\$Recycle.Bin&gt;DIR /O:D /A /X
+ Volume in drive C is murugesan-openssl
+ Volume Serial Number is 1A2B-C3E4
+ Directory of C:\$Recycle.Bin
+Wed 20-Aug-2003  05:20 AM    &lt;DIR&gt;                       ..
+Wed 20-Aug-2003  05:20 AM    &lt;DIR&gt;                       .
+Wed 20-Aug-2003  05:20 AM    &lt;DIR&gt;          S-1-5-~1     S-0-1-23-4567890123-456789012-3456789012-3456
+               0 File(s)              0 bytes
+               3 Dir(s)  105,449,971,712 bytes free
+C:\$Recycle.Bin&gt;
+</PRE>
     Open procexp.exe → Ctrl E → Search for that SID
     <BR>Found: java.exe (apache webserver at localhost) was using this file
     <BR>Execute:
-    <PRE>taskkill.exe /f /im java.exe</PRE>
+    <PRE>C:\Windows\System32\taskkill.exe /f /im java.exe
+C:\Windows\System32\taskkill.exe /f /im explorer.exe</PRE>
     If this has not been resolved:<HR>
 	Open (Windows r)<BR>
 	C:\Windows\System32\msconfig.exe<BR>
@@ -1897,12 +1907,12 @@ DIR /A
 	<TABLE>
 		<TR style='background-color:black;color:white;'>
 			<TD>
-				C:&gt; CD /D C:\$Recycle.Bin\S-1-5-21-1731824304-853207916-3243420573-1001<BR>
-				C:\$Recycle.Bin\S-1-5-21-1731824304-853207916-3243420573-1001&gt; DEL /Q .* 2&gt;NUL<BR>
-				C:\$Recycle.Bin\S-1-5-21-1731824304-853207916-3243420573-1001&gt; CD /D D:\$Recycle.Bin\S-1-5-21-1731824304-853207916-3243420573-1001<BR>
-				D:\$RECYCLE.BIN\S-1-5-21-1731824304-853207916-3243420573-1001&gt; DEL /Q .* 2&gt;NUL<BR>
-				D:\$Recycle.Bin\S-1-5-21-1731824304-853207916-3243420573-1001&gt; CD /D E:\$Recycle.Bin\S-1-5-21-1731824304-853207916-3243420573-1001<BR>
-				E:\$RECYCLE.BIN\S-1-5-21-1731824304-853207916-3243420573-1001&gt; DEL /Q .* 2&gt;NUL<BR>
+				C:&gt; CD /D C:\$Recycle.Bin\S-0-1-23-4567890123-456789012-3456789012-3456<BR>
+				C:\$Recycle.Bin\S-0-1-23-4567890123-456789012-3456789012-3456&gt; DEL /Q .* 2&gt;NUL<BR>
+				C:\$Recycle.Bin\S-0-1-23-4567890123-456789012-3456789012-3456&gt; CD /D D:\$Recycle.Bin\S-0-1-23-4567890123-456789012-3456789012-3456<BR>
+				D:\$RECYCLE.BIN\S-0-1-23-4567890123-456789012-3456789012-3456&gt; DEL /Q .* 2&gt;NUL<BR>
+				D:\$Recycle.Bin\S-0-1-23-4567890123-456789012-3456789012-3456&gt; CD /D E:\$Recycle.Bin\S-0-1-23-4567890123-456789012-3456789012-3456<BR>
+				E:\$RECYCLE.BIN\S-0-1-23-4567890123-456789012-3456789012-3456&gt; DEL /Q .* 2&gt;NUL<BR>
 			</TD>
 		</TR>
 	</TABLE>
@@ -1915,7 +1925,7 @@ DIR /A
   <TD class="topic">
     <B><FONT color="yellow">How to start firefox.exe inside putty.exe at Windows 127.0.0.1/localhost?</FONT></B>
     <BR>Execute the following command inside mksh.exe/bash.exe or any MINGW/CYGWIN shells:
-    <PRE><A href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="48253d3a3d2f2d3b29261727382d263b3b2408797a7f667866786679">[email&#160;protected]</A> CYGWIN_NT-10.0-22631 MODEL x86_64 REL 3.5.4-1.x86_64
+    <PRE>CYGWIN_NT-10.0-22631 MODEL x86_64 REL 3.5.4-1.x86_64
 $ # Command inside mksh.exe/bash.exe or any MINGW/CYGWIN shells
 $ /cygdrive/c/WINDOWS/system32/cmd.exe /c "C:\\PROGRA~1\\MOZILL~1\\firefox.exe"
 $ # OR
@@ -1968,7 +1978,7 @@ Uninstall OneDrive</PRE>
     <PRE>Windows Key + R
 C:\Windows\regedit.exe
 Navigate to: HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
-Find the value of: Desktop
+Find the value oD: Desktop
 Replace: %USERPROFILE%\OneDrive\Desktop
 With: %USERPROFILE%\Desktop</PRE>
     <BR><SPAN style="color:blue;"><B>Step 03: Restart</B></SPAN>
@@ -2005,16 +2015,16 @@ BluetoothUserService_4a7c737f \
 BTAGService \
 bthserv
 do
-    /cygdrive/c/Windows/system32/sc.exe query $braveService 2>&amp;1 | \
-    /usr/bin/tr -d "\r" 2>&amp;1 | \
-    /usr/bin/grep STATE 2>&amp;1 | \
-    /usr/bin/grep STOPPED >/dev/null 2>&amp;1
+    /cygdrive/c/Windows/system32/sc.exe query $braveService 2&gt;&amp;1 | \
+    /usr/bin/tr -d "\r" 2&gt;&amp;1 | \
+    /usr/bin/grep STATE 2&gt;&amp;1 | \
+    /usr/bin/grep STOPPED &gt;/dev/null 2&gt;&amp;1
     Ret=$?
     if [[ "BluetoothUserService_4a7c737f" = "$braveService" ]]
     then
-        /cygdrive/c/Windows/system32/sc.exe query $braveService 2>&amp;1 | \
-        /usr/bin/tr -d "\r" 2>&amp;1 | \
-        /usr/bin/grep "does not exist" >/dev/null 2>&amp;1
+        /cygdrive/c/Windows/system32/sc.exe query $braveService 2&gt;&amp;1 | \
+        /usr/bin/tr -d "\r" 2&gt;&amp;1 | \
+        /usr/bin/grep "does not exist" >/dev/null 2&gt;&amp;1
         Ret=$?
         if [[ 0 -ne $Ret ]]
         then
@@ -2022,9 +2032,9 @@ do
         fi
     elif [[ 0 -eq $Ret ]]
     then
-        /cygdrive/c/Windows/system32/net.exe START $braveService 2>&amp;1 | \
-        /usr/bin/tr -d "\r" 2>&amp;1 | \
-        /usr/bin/grep disabled >/dev/null 2>&amp;1
+        /cygdrive/c/Windows/system32/net.exe START $braveService 2&gt;&amp;1 | \
+        /usr/bin/tr -d "\r" 2&gt;&amp;1 | \
+        /usr/bin/grep disabled >/dev/null 2&gt;&amp;1
         Ret=$?
         if [[ 0 -ne $Ret ]]
         then
@@ -2109,7 +2119,7 @@ done</PRE>
 <TR class="row-red">
   <TD class="idx"><A name="92">092</A></TD>
   <TD class="topic">
-    <B><FONT color="yellow">How to set short names like C:\PROGRA~1 to F:\THUNDE~1\THUNDE~1.exe instead of F:\Thunderbird\thunderbird.exe?</FONT></B>
+    <B><FONT color="yellow">How to set short names like C:\PROGRA~1 to D:\THUNDE~1\THUNDE~1.exe instead of D:\Thunderbird\thunderbird.exe?</FONT></B>
     <BR><SPAN style="color:blue;"><B>What are Short Names (8.3 Filename Format)?</B></SPAN>
     <BR>Short names are legacy DOS-style names limited to 8 characters + 3-character extension (e.g., PROGRA~1 for "Program Files").
     <BR><BR><SPAN style="color:blue;"><B>Step 01: Find Short Name of a File/Folder</B></SPAN><BR>
@@ -2117,27 +2127,27 @@ done</PRE>
 Navigate to your desired location and execute following command:<BR>
 DIR /X /A<BR>
 Example output:<BR>
-<PRE>F:\&gt; CD "F:\Thunderbird"
-F:\&gt; DIR /X /A
-Directory of F:\Thunderbird
+<PRE>D:\&gt; CD /D "D:\Thunderbird"
+D:\&gt; DIR /X /A
+Directory of D:\Thunderbird
 10/15/2024  02:30 PM    &lt;DIR&gt;          THUNDE~1           Thunderbird
 10/15/2024  02:31 PM    &lt;DIR&gt;          PROFIL~1           Profile
 10/15/2024  02:32 PM    3,245,120       THUNDE~1 EXE        thunderbird.exe</PRE>
     <BR><SPAN style="color:blue;"><B>Step 02: Use Short Name in Command/Scripts</B></SPAN><BR>
     Instead of using:<BR>
-F:\Thunderbird\thunderbird.exe<BR>
+D:\Thunderbird\thunderbird.exe<BR>
 we can use:<BR>
-F:\THUNDE~1\THUNDE~1.EXE<BR>
+D:\THUNDE~1\THUNDE~1.EXE<BR>
 <BR>
 Or in batch scripts:<BR>
 <PRE>@ECHO OFF
-CD /D F:\THUNDE~1
+CD /D D:\THUNDE~1
 START THUNDE~1.EXE</PRE>
     <BR><SPAN style="color:blue;"><B>Step 03: Gzip Unnecessary .exe Files at Thunderbird</B></SPAN>
     <BR>To reduce disk space, gzip the following unnecessary executable files:
     <PRE>#!/bin/bash
 # Navigate to Thunderbird installation directory
-cd "/cygdrive/f/THUNDE~1"
+cd "/cygdrive/d/THUNDE~1"
 # List of files to gzip
 files_to_gzip=(
     "updater.exe"
@@ -2164,11 +2174,11 @@ do
 done
 echo "Gzip operation completed."</PRE>
     <BR><SPAN style="color:blue;"><B>Alternative: Single Command Gzip</B></SPAN>
-    <PRE>CD /D F:\THUNDE~1
+    <PRE>CD /D D:\THUNDE~1
 		gzip -v updater.exe rnpkeys.exe rnp-cli.exe plugin-container.exe pingsender.exe maintenanceservice_installer.exe maintenanceservice.exe crashreporter.exe WSEnable.exe crashhelper.exe
 	</PRE>
     <BR><SPAN style="color:blue;"><B>Step 04: Verify Gzipped Files</B></SPAN>
-    <PRE>ls.exe -la F:\THUNDE~1\*.exe.gz</PRE>
+    <PRE>ls.exe -la D:\THUNDE~1\*.exe.gz</PRE>
     <BR><SPAN style="color:blue;"><B>Important Notes:</B></SPAN>
     <BR>• Short names are useful for batch scripts and when paths contain spaces
     <BR>• Gzipped .exe files (.exe.gz) cannot be executed directly - use only for backup/storage
@@ -2194,7 +2204,7 @@ example at C:\cygwin\bin\magick.exe
 I created that inside bash.exe:
 $ /usr/bin/magick.exe folder.png -define icon:auto-resize=16,32,48,64,128,256 folder.ico
 we can create the same using cmd.exe also
-C:\> C:\cygwin\bin\magick.exe folder.png -define icon:auto-resize=16,32,48,64,128,256 folder.ico
+C:\&gt; C:\cygwin\bin\magick.exe folder.png -define icon:auto-resize=16,32,48,64,128,256 folder.ico
 this  will create C:\folder.ico
 Right click on any folder you like.
 you select C:\folder.ico
