@@ -1110,6 +1110,7 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								"Steps-to-save-money-from-mis.html": ["Post Office Savings Guide"],
 								"ppf-info.html": ["Steps to save at PPF?"],
 								"ppf-scss-comparison.html": ["SCSS BETTER THAN PPF"],
+								"post-office-open-time-deposit.html": ["TERM DEPOSIT ONLINE"],
 								"pay-ppf-online.html": ["PAY A POST OFFICE PPF FUND ONLINE"],
 								"steps-to-open-rd-postoffice.html": ["Recurring Deposit (RD)"],
 								"ssa-account-deposit.html": ["SSA Account"],
@@ -1706,6 +1707,9 @@ function MainPageHomeLoadContent( event, htmlFileName )
 								</LI>
 								<LI>
 									<A href="#" onclick="javascript:loadHomeContent( event, 'ppf-scss-comparison.html' );" class="nav-link">SCSS BETTER THAN PPF</A>
+								</LI>
+								<LI>
+									<A href="#" onclick="javascript:loadHomeContent( event, 'post-office-open-time-deposit.html' );" class="nav-link">TERM DEPOSIT ONLINE</A>
 								</LI>
 								<LI class="nav-item">
 									<TABLE cellpadding="0" cellspacing="0" border="0">
