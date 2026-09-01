@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META CHARSET='UTF-8'>
+		<TITLE>Snacks for Daughter</TITLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV class="container">
+			<H1>🍛 Snacks for Daughter</H1>
+			<DIV class="field">
+				<LABEL for="restroom">Restroom (minutes)</LABEL>
+				<INPUT type="number" id="restroom" value="2" min="0">
+			</DIV>
+			<DIV class="field">
+				<LABEL for="getReady">Get ready (minutes)</LABEL>
+				<INPUT type="number" id="getReady" value="2" min="0">
+			</DIV>
+			<DIV class="field">
+				<LABEL for="arrivalTime">Daughter reaches home</LABEL>
+				<INPUT type="time" id="arrivalTime" value="16:45">
+			</DIV>
+			<DIV class="field">
+				<LABEL for="travelTo">Travel to shop (minutes)</LABEL>
+				<INPUT type="number" id="travelTo" value="8" min="0">
+			</DIV>
+			<DIV class="field">
+				<LABEL for="travelBack">Travel back home (minutes)</LABEL>
+				<INPUT type="number" id="travelBack" value="8" min="0">
+			</DIV>
+			<DIV class="field">
+				<LABEL for="parcelPayment">Masala puri parcel + payment (minutes)</LABEL>
+				<INPUT type="number" id="parcelPayment" value="7" min="0">
+			</DIV>
+			<DIV class="field">
+				<LABEL for="tea">Tea outside (minutes)</LABEL>
+				<INPUT type="number" id="tea" value="5" min="0">
+			</DIV>
+			<DIV class="field">
+				<LABEL for="exception">Exception / buffer (minutes)</LABEL>
+				<INPUT type="number" id="exception" value="5" min="0">
+			</DIV>
+			<BUTTON onclick="calculate()">Calculate Start Time</BUTTON>
+			<DIV id="result">
+				<DIV class="start-time" id="startTime"></DIV>
+				<DIV class="calculation" id="calculation"></DIV>
+			</DIV>
+		</DIV>
+		<SCRIPT type='text/javascript'>
+			function calculate()
+			{
+				const arrivalTime = document.getElementById("arrivalTime").value;
+				const travelTo = Number(document.getElementById("travelTo").value) || 0;
+				const parcelPayment = Number(document.getElementById("parcelPayment").value) || 0;
+				const travelBack = Number(document.getElementById("travelBack").value) || 0;
+				const restroom = Number(document.getElementById("restroom").value) || 0;
+				const getReady = Number(document.getElementById("getReady").value) || 0;
+				const tea = Number(document.getElementById("tea").value) || 0;
+				const exception = Number(document.getElementById("exception").value) || 0;
+				if( !arrivalTime )
+				{
+					alert("Please enter the daughter's arrival time.");
+					return;
+				}
+				/*
+				Total time after starting the preparation:
+				restroom
+				+ get ready
+				+ tea
+				+ travel to shop
+				+ parcel/payment
+				+ travel back
+				+ exception/buffer
+				*/
+				const totalMinutes =
+				restroom +
+				getReady +
+				tea +
+				travelTo +
+				parcelPayment +
+				travelBack +
+				exception;
+				const [hours, minutes] = arrivalTime.split(":").map(Number);
+				let arrivalTotal = hours * 60 + minutes;
+				// Calculate required start time.
+				let startTotal = arrivalTotal - totalMinutes;
+				// Handle previous day if necessary.
+				if( 0 > startTotal )
+				{
+					startTotal += 24 * 60;
+				}
+				const startHours = Math.floor(startTotal / 60);
+				const startMinutes = startTotal % 60;
+				const formattedStart =
+				String(startHours).padStart(2, "0") +
+				":" +
+				String(startMinutes).padStart(2, "0");
+				document.getElementById("startTime").textContent = "Start leaving the house at: " + formattedStart.replace(/^(\d{2}):(\d{2})$/, function(match, hours, minutes)
+				{
+					const hour = Number(hours);
+					const period = 12 <= hour ? "PM" : "AM";
+					const displayHour = hour % 12 || 12;
+					return String(displayHour).padStart(2, "0") + ":" + minutes + " " + period;
+				}) + " IST";
+				document.getElementById("calculation").innerHTML = `
+				Daughter arrives: <B>${arrivalTime}</B><BR>
+				Total required time: <B>${totalMinutes} minutes</B><BR>
+				Buffer included: <B>${exception} minutes</B>
+				`;
+				document.getElementById("result").style.display = "block";
+			}
+		</SCRIPT>
+	</BODY>
+</HTML>
