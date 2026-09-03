@@ -994,6 +994,117 @@
 				</TD>
 				</TR>
 				<TR>
+					<TD valign='top' align='left' colspan='2'>
+						Inside vim<BR>
+						I need to find the following search string inside a file:<BR>
+						obj:.*\n\t\$(CC)<BR>
+						To find the number of occurences inside that file:<BR>
+						Press Esc<BR>
+						Type <B><U>:</B></U><BR>
+						followed by<BR>
+						<B><U>%s/obj:.*\n\t\$(CC)//gn</B></U><BR>
+						This will display the number of occurences inside that current file.
+					</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left'colspan='2'>
+<PRE>Using vim
+Replace:
+	crypto/encode_decode/libcrypto-shlib-encoder_err.obj: crypto/encode_decode/encoder_err.c
+	$(CC) -I. -Iinclude -Iproviders/common/include -Iproviders/implementations/include ... $@ crypto/encode_decode/encoder_err.c
+	/usr/bin/touch crypto/encode_decode/libcrypto-shlib-encoder_err.d.tmp
+	@if /usr/bin/cmp crypto/encode_decode/libcrypto-shlib-encoder_err.d.tmp crypto/encode_decode/libcrypto-shlib-encoder_err.d > /dev/null 2> /dev/null; then \
+With:
+	crypto/encode_decode/libcrypto-shlib-encoder_err.obj: crypto/encode_decode/encoder_err.c
+	@echo "$(CC) -I. -Iinclude -Iproviders/common/include -Iproviders/implementations/include ... -o $@ crypto/encode_decode/encoder_err.c";\
+	$(CC) -I. -Iinclude -Iproviders/common/include -Iproviders/implementations/include -DAES_ASM ... -o $@ crypto/encode_decode/encoder_err.c;\
+	echo "touch crypto/encode_decode/libcrypto-shlib-encoder_err.d.tmp";\
+	/usr/bin/touch crypto/encode_decode/libcrypto-shlib-encoder_err.d.tmp;\
+	if /usr/bin/cmp crypto/encode_decode/libcrypto-shlib-encoder_err.d.tmp crypto/encode_decode/libcrypto-shlib-encoder_err.d > /dev/null 2> /dev/null;\
+	then \</PRE>
+	Press Esc<BR>
+	Type <B><U>:</B></U><BR>
+	followed by<BR>
+	<B><U>%s/\(obj:.*\)\n\t\(\$(CC).*\)\n\t\(\/usr\/bin\/touch .*\)\n\t@if \(.*\); then \\/\1\r\t@echo "\2";\\\r\t\2;\\\r\techo "touch \3";\\\r\t\3;\\\r\tif \4;\\\r\tthen \\<B></U>
+					</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left'>
+<PRE>Using vim
+Replace:
+	then\
+	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
+		-o test/buildtest_c_byteorder.exe \
+		test/buildtest_c_byteorder-bin-buildtest_byteorder.obj \
+		-lssl -lcrypto $(BIN_EX_LIBS);\
+With:
+	then\
+		echo "$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
+			-o test/buildtest_c_byteorder.exe \
+			test/buildtest_c_byteorder-bin-buildtest_byteorder.obj \
+			-lssl -lcrypto $(BIN_EX_LIBS)";\
+		$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
+			-o test/buildtest_c_byteorder.exe \
+			test/buildtest_c_byteorder-bin-buildtest_byteorder.obj \
+			-lssl -lcrypto $(BIN_EX_LIBS);\</PRE>
+Press Esc<BR>
+Type <B><U>:</B></U><BR>
+followed by<BR>
+<B><U>%s/\(then\\\n\t\)\(\$\${LDCMD.*\)\\\n\(\t.*\) \\\n\(\t.*\) \\\n\(\t.*BIN_EX_LIBS)\);\\/\1\techo "\2\\\r\t\3\\\r\t\4\\\r\t\5";\\\r\t\t\2\\\r\t\3\\\r\t\4\\\r\t\5;\\\r</B></U>
+					</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left' colspan='2'>
+						How to replace sed command inside file using full path of /usr/bin/sed command inside vim?<BR>
+						Press Esc<BR>
+						Type <B><U>:</B></U><BR>
+						followed by<BR>
+						<B><U>%s/ sed / \/usr\/bin\/sed /</B></U>
+					</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left' colspan='2'>
+						How to replace cp command inside file using full path of /usr/bin/cp command inside vim?<BR>
+						Press Esc<BR>
+						Type <B><U>:</B></U><BR>
+						followed by<BR>
+						<B><U>%s/ sed / \/usr\/bin\/sed /</B></U>
+					</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left' colspan='2'>
+						How to replace tab followed by mv command inside file using full path of tab /usr/bin/mv command inside vim?<BR>
+						Press Esc<BR>
+						Type <B><U>:</B></U><BR>
+						followed by<BR>
+						<B><U>%s/\tmv /\t\/usr\/bin\/mv /</B></U>
+					</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left' colspan='2'>
+						How to replace tab followed by cmp command inside file using full path of tab /usr/bin/cmp command inside vim?<BR>
+						Press Esc<BR>
+						Type <B><U>:</B></U><BR>
+						followed by<BR>
+						<B><U>%s/\t\cmp /\t\/usr\/bin\/cmp /</B></U>
+					</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left' colspan='2'>
+						How to replace tab followed by rm -f inside file using with tab followed by full path of rm /usr/bin/rm and remove -f option vim?<BR>
+						Press Esc<BR>
+						Type <B><U>:</B></U><BR>
+						followed by<BR>
+						<B><U>%s/\t\rm -f /\t\/usr\/bin\/rm /</B></U>
+					</TD>
+				</TR>
+				<TR>
+					<TD valign='top' align='left' colspan='2'>
+						How to search a line having new line and related tabs?<BR>
+						<B><U>@if [[ .*\n\tthen\\\n.*rm</B></U>
+					</TD>
+				</TR>
+				<TR>
 				<TD valign='top' align='left'>
 				After opening a file using the following command:
 				vim murugesan.txt
