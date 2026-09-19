@@ -629,11 +629,11 @@
 												OTHER_YEAR_INT=OTHER_YEAR_INT_NINEDAYS+OTHER_YEAR_INT_TWODAYS;
 												TOTAL_INT=OTHER_YEAR_INT+FIRST_YEAR_INT;
 												document.write( "<TR>\
-													<TD valign='top' id='"+P+"' align='left' bgcolor=cyan>"+P+".00 USE THIS PRINCIPAL, INTEREST INR PAISE >= .50</TD>\
-													<TD valign='top' align='left' bgcolor=cyan>"+INTEREST_FIXED_02+"</TD>\
+													<TD valign='top' id='"+P+"' align='left' bgcolor=red>"+P+".00 DO NOT USE THIS PRINCIPAL, INTEREST INR PAISE >= 0.50 AND &lt; 0.75</TD>\
+													<TD valign='top' align='left' bgcolor=red>"+INTEREST_FIXED_02+"</TD>\
 													<TD valign='top' align='left'>"+Number(INTEREST_FIXED_00)+".00</TD>\
-													<TD valign='top' align='left' bgcolor='cyan'>"+FIRST_YEAR_INT+".00</TD>\
-													<TD valign='top' align='left' bgcolor='cyan'>"+TOTAL_INT+".00</TD>\
+													<TD valign='top' align='left' bgcolor='red'>"+FIRST_YEAR_INT+".00</TD>\
+													<TD valign='top' align='left' bgcolor='red'>"+TOTAL_INT+".00</TD>\
 													<TD valign='top' align='left'>"+R+"%</TD>\
 													<TD valign='top' align='left'></TD>\
 												</TR>");
@@ -651,13 +651,13 @@
 												OTHER_YEAR_INT=OTHER_YEAR_INT_NINEDAYS+OTHER_YEAR_INT_TWODAYS;
 												TOTAL_INT=OTHER_YEAR_INT+FIRST_YEAR_INT;
 												document.write( "<TR>\
-													<TD valign='top' id='"+P+"' align='left' bgcolor=#2CF209>"+P+".00 USE THIS PRINCIPAL, INTEREST INR PAISE >= .75</TD>\
-													<TD valign='top' align='left' bgcolor=#2CF209>"+INTEREST_FIXED_02+"</TD>\
-													<TD valign='top' align='left'>"+Number(INTEREST_FIXED_00)+".00</TD>\
-													<TD valign='top' align='left' bgcolor='#2CF209'>"+FIRST_YEAR_INT+".00</TD>\
-													<TD valign='top' align='left' bgcolor='#2CF209'>"+TOTAL_INT+".00</TD>\
+													<TD valign='top' id='"+P+"' align='left' bgcolor=#00ff00>"+P+".00 USE THIS PRINCIPAL, INTEREST INR PAISE &gt;= .75</TD>\
+													<TD valign='top' align='left' bgcolor=#00ff00>"+INTEREST_FIXED_02+"</TD>\
+													<TD valign='top' align='left' bgcolor='#00ff00'>"+Number(INTEREST_FIXED_00)+".00</TD>\
+													<TD valign='top' align='left' bgcolor='#00ff00'>"+FIRST_YEAR_INT+".00</TD>\
+													<TD valign='top' align='left' bgcolor='#00ff00'>"+TOTAL_INT+".00</TD>\
 													<TD valign='top' align='left'>"+R+"%</TD>\
-													<TD valign='top' align='left' bgcolor='#2CF209'>OPEN MIS IF INTEREST PAISE &gt;= 0.83 PAISE (INR)</TD>\
+													<TD valign='top' align='left' bgcolor='#00ff00'>OPEN MIS IF INTEREST PAISE &gt;= 0.83 PAISE (INR)</TD>\
 												</TR>");
 											}
 											else if( ( -1 != (""+INTEREST.toFixed(2)).indexOf(".6") ) || ( -1 != (""+INTEREST.toFixed(2)).indexOf(".7") ) )
@@ -673,11 +673,11 @@
 												OTHER_YEAR_INT=OTHER_YEAR_INT_NINEDAYS+OTHER_YEAR_INT_TWODAYS;
 												TOTAL_INT=OTHER_YEAR_INT+FIRST_YEAR_INT;
 												document.write( "<TR>\
-													<TD valign='top' id='"+P+"' align='left' bgcolor=orange>"+P+".00 USE THIS PRINCIPAL, INTEREST INR PAISE >= .67</TD>\
-													<TD valign='top' align='left' bgcolor=orange>"+INTEREST_FIXED_02+"</TD>\
+													<TD valign='top' id='"+P+"' align='left' bgcolor=red>"+P+".00 DO NOT USE THIS PRINCIPAL, INTEREST INR PAISE &gt;= 0.67 AND &lt; 0.75 </TD>\
+													<TD valign='top' align='left' bgcolor=red>"+INTEREST_FIXED_02+"</TD>\
 													<TD valign='top' align='left'>"+Number(INTEREST_FIXED_00)+".00</TD>\
-													<TD valign='top' align='left' bgcolor='orange'>"+FIRST_YEAR_INT+".00</TD>\
-													<TD valign='top' align='left' bgcolor='orange'>"+TOTAL_INT+".00</TD>\
+													<TD valign='top' align='left' bgcolor='red'>"+FIRST_YEAR_INT+".00</TD>\
+													<TD valign='top' align='left' bgcolor='red'>"+TOTAL_INT+".00</TD>\
 													<TD valign='top' align='left'>"+R+"%</TD>\
 													<TD valign='top' align='left'>RECEIVE &gt; INTEREST 8 MONTHS && &lt; INTEREST 4 MONTHS</TD>\
 												</TR>");
@@ -695,7 +695,7 @@
 				OTHER_YEAR_INT=OTHER_YEAR_INT_NINEDAYS+OTHER_YEAR_INT_TWODAYS;
 				TOTAL_INT=OTHER_YEAR_INT+FIRST_YEAR_INT;
 				document.write( "<TR>\
-					<TD valign='top' id='"+P+"' align='left' bgcolor=red>"+P+".00 DO NOT USE THIS PRINCIPAL, INTEREST INR PAISE < .50</TD>\
+					<TD valign='top' id='"+P+"' align='left' bgcolor=red>"+P+".00 DO NOT USE THIS PRINCIPAL, INTEREST INR PAISE &lt; .50</TD>\
 					<TD valign='top' align='left' bgcolor=red>"+INTEREST_FIXED_02+"</TD>\
 					<TD valign='top' align='left'>"+Number(INTEREST_FIXED_00)+".00</TD>\
 					<TD valign='top' align='left' bgcolor='cyan'>"+FIRST_YEAR_INT+".00</TD>\
@@ -1012,7 +1012,7 @@ Please try after sometime.<BR>\
 					<TD valign='top' align='left'>\
 					<TABLE width='100%'>\
 					<TR>\
-					<TD valign='top' align='middle' colspan='2' bgcolor='#2CF209'>\
+					<TD valign='top' align='middle' colspan='2' bgcolor='#00ff00'>\
 					<FONT color='black'>ON Fri 19-Jul-2019 I HAVE SEEN Mr. SRINIVASAN RAMANUJAN AT MY DREAM.\
 					</TD>\
 					</TR>\
@@ -1077,7 +1077,7 @@ Please try after sometime.<BR>\
 					Mr. SRINIVASAN RAMANUJAN WILL GET MIS INTEREST ON SATURDAY/ONE DAY BEFORE THE EXPECTED DATE.\
 					</TD>\
 					</TR>\
-					<TR bgcolor='#2CF209'>\
+					<TR bgcolor='#00ff00'>\
 					<TD valign='top' align='left' colspan='2'>\
 					<FONT color='black'>THE TOTAL INTEREST AT BOTH THESE CASES ARE SAME FOR 05 YEARS.<BR>\
 					HOWEVER Mr. SRINIVASAN RAMANUJAN CAN<BR>\
@@ -1091,7 +1091,7 @@ Please try after sometime.<BR>\
 					</TABLE>\
 						<A href='mis_interest_valid_Dates.html'>\
 						<FONT color='black'>\
-						I USED TO OPEN MULTIPLE MIS WHERE EACH MIS HAVING <B><U><FONT color='#2CF209'>5000.00</FONT></B></U></A> INR AS PRINCIPAL FROM Fri 20-Jul-2029 APPROXIMATELY AT 05:00 AM USING INTERNET BANKING USING BSNL MOBILE NETWORK WITHOUT WASTING PETROL AND WITHOUT MAKING TRAFFIC POLLUTION.<BR>\
+						I USED TO OPEN MULTIPLE MIS WHERE EACH MIS HAVING <B><U><FONT color='#00ff00'>5000.00</FONT></B></U></A> INR AS PRINCIPAL FROM Fri 20-Jul-2029 APPROXIMATELY AT 05:00 AM USING INTERNET BANKING USING BSNL MOBILE NETWORK WITHOUT WASTING PETROL AND WITHOUT MAKING TRAFFIC POLLUTION.<BR>\
 									REASON: ANALYSIS TO OPEN MIS AT OTHER DAYS IN PROGRESS TO GET GOOD INTEREST FOR 10 MONTHS AND BAD INTEREST(GOOD_INTEREST-1.00 INR) FOR TWO MONTHS PER YEAR IN PROGRESS NOW.<BR>\
 									IF YOU ARE READING THIS PAGE, READ TILL <A href='#end'><FONT color='white'>END OF CURRENT WEB PAGE</FONT></A>.<BR>\
 									<TABLE width='100%'><TR>\
