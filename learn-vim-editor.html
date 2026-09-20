@@ -148,9 +148,14 @@
 									$ /bin/vim filename1.txt \<BR>
 									filename2.txt<BR>
 									OR<BR>
-									$ /usr/bin/vim $(find ./ -type f -maxdepth 2 -name "*.html" 2>/dev/null | /usr/bin/head -n 5)<BR>
-									We can get name of the file after opening using vim<BR>
-									Press Ctrl g after opening the file
+									$ /usr/bin/find ./ -type f -maxdepth 2 -name "*.html" >/dev/null 2>&1<BR>
+									$ Ret=$?<BR>
+									$ if [[ 0 -eq $Ret ]]<BR>
+									then<BR>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/vim $(/usr/bin/find ./ -type f -maxdepth 2 -name "*.html" 2>/dev/null | /usr/bin/head -n 5)<BR>
+									fi<BR>
+									We can get name of the file after opening inside vim<BR>
+									Inside vim when we press Ctrl g vim used to display the name of the current file.
 								</TD>
 								<TD valign="top" align="left">
 									C:\Progra~2\TextPa~1\TextPad.exe "1.txt" "2.txt" "3.txt"<BR>
@@ -996,7 +1001,7 @@
 				<TR>
 					<TD valign='top' align='left' colspan='2'>
 						Inside vim<BR>
-						I need to find the following search string inside a file:<BR>
+						How to find the following search string inside a file:<BR>
 						obj:.*\n\t\$(CC)<BR>
 						To find the number of occurences inside that file:<BR>
 						Press Esc<BR>
@@ -1158,10 +1163,10 @@ followed by<BR>
 				set nu
 				</B>
 				<BR><BR>
-				#Always disable color inside vi or vim using "syntax off"<BR>
-				#We can enable color inside vi or vim using "syntax on"<BR>
+				#We can disable color inside vi or vim using "syntax off"<BR>
+				#We can  enable color inside vi or vim using "syntax on"<BR>
 				<B>
-				syntax off
+				syntax on
 				</B>
 				<BR><BR>
 				#We we keep the curser at opening paranthesis, it used to display color at closing paranthesis.<BR>
