@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META charset="UTF-8">
+		<META name="viewport" content="width=device-width, initial-scale=1.0">
+		<TITLE>Dynamic SCSS Valid Opening Dates & Greatest Interest</TITLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<DIV class="container">
+			<H1>SCSS Maximum Interest Optimization Report</H1>
+			<P class="subtitle">Valid Date Mapping for Financial Year <SPAN id="fyRange"></SPAN> to Prevent Payout Wastage</P>
+			<H2>Optimized Quarter-Start Opening Schedule</H2>
+			<TABLE border='1' style='width:100%;'>
+				<THEAD>
+					<TR>
+						<TH valign='top' align='left'>Quarter Period</TH>
+						<TH valign='top' align='left'>Always open SCSS at following dates alone to get more profit from SCSS</TH>
+						<TH valign='top' align='left'>Objective / Interest Maximization Benefit</TH>
+					</TR>
+				</THEAD>
+				<TBODY>
+					<TR class="highlight-row">
+						<TD valign='top' align='left'>Quarter 01<BR>(<SPAN id="fyLabel1"></SPAN>)</TD>
+						<TD valign='top' align='left'><SPAN id="q1Start"></SPAN> to <SPAN id="q1End"></SPAN></TD>
+						<TD valign='top' align='left'>
+							Zero fractional interest shortfall.<BR>
+							Secures maximum profit and highest quarterly payout returns for full gain across the 5-year block.</TD>
+					</TR>
+					<TR>
+						<TD valign='top' align='left'>Quarter 02<BR>(<SPAN id="fyLabel2"></SPAN>)</TD>
+						<TD valign='top' align='left'><SPAN id="q2Start"></SPAN> to <SPAN id="q2End"></SPAN></TD>
+						<TD valign='top' align='left'>Aligns with the start of Q2 interest cycle; prevents mid-quarter prorated deductions.</TD>
+					</TR>
+					<TR>
+						<TD valign='top' align='left'>Quarter 03<BR>(<SPAN id="fyLabel3"></SPAN>)</TD>
+						<TD valign='top' align='left'><SPAN id="q3Start"></SPAN> to <SPAN id="q3End"></SPAN></TD>
+						<TD valign='top' align='left'>Synchronizes opening right after the Oct 1 interest payout milestone.</TD>
+					</TR>
+					<TR>
+						<TD valign='top' align='left'>Quarter 04<BR>(<SPAN id="fyLabel4"></SPAN>)</TD>
+						<TD valign='top' align='left'><SPAN id="q4Start"></SPAN> to <SPAN id="q4End"></SPAN></TD>
+						<TD valign='top' align='left'>Final fiscal opportunity to lock in active rates before the March year-end transition.</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+			<H2>Corrected Account Distribution Matrix</H2>
+			<TABLE border='1' style='width:100%;'>
+				<THEAD>
+					<TR>
+						<TH valign='top' align='left'>Account Cluster</TH>
+						<TH valign='top' align='left'>Corrected Target Window</TH>
+						<TH valign='top' align='left'>Status</TH>
+					</TR>
+				</THEAD>
+				<TBODY>
+					<TR><TD valign='top' align='left'>SCSS001 to SCSS004</TD><TD valign='top' align='left'>Aligned to Q2 Start (<SPAN id="q2MonthTarget"></SPAN>)</TD><TD valign='top' align='left'>Optimized</TD></TR>
+					<TR><TD valign='top' align='left'>SCSS005 to SCSS010</TD><TD valign='top' align='left'>Aligned to Q2/Q3 Transition (<SPAN id="transitionMonthTarget"></SPAN>)</TD><TD valign='top' align='left'>Optimized</TD></TR>
+					<TR><TD valign='top' align='left'>SCSS011 to SCSS014</TD><TD valign='top' align='left'>Aligned to Q3 Start (<SPAN id="q3MonthTarget"></SPAN>)</TD><TD valign='top' align='left'>Optimized</TD></TR>
+				</TBODY>
+			</TABLE>
+			<DIV class="note-box">
+				<STRONG>Rule Compliance Note:</STRONG> To ensure absolute maximum total interest over the 5-year tenure without wasting fractional days, your 14 SCSS accounts must be initiated strictly on the <STRONG>1st working day of the respective quarter</STRONG>. Mid-month or random erratic dates result in prorated first-quarter checks, reducing total overall yields.
+			</DIV>
+		</DIV>
+	<SCRIPT type='text/javascript'>
+		// Helper function to format date as DD-Mon-YYYY
+		function formatDate(date)
+		{
+			const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+			const ddd = days[date.getDay()];
+			const day = String(date.getDate()).padStart(2, '0');
+			const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+			const mmm = months[date.getMonth()];
+			const year = date.getFullYear();
+			return `${ddd} ${day}-${mmm}-${year}`;
+		}
+		// Determine current financial year based on today's date
+		const today = new Date();
+		const currentYear = today.getFullYear();
+		const currentMonth = today.getMonth(); // 0-indexed (0 = Jan, 3 = Apr, etc.)
+		let startYear, endYear;
+		if( 3 <= currentMonth )
+		{ // April or later
+			startYear = currentYear;
+			endYear = currentYear + 1;
+		}
+		else
+		{ // Jan to March
+			startYear = currentYear - 1;
+			endYear = currentYear;
+		}
+		const fyString = `${startYear}-${endYear}`;
+		const fyShortString = `${startYear.toString().slice(-2)}-${endYear.toString().slice(-2)}`;
+		// Set Financial Year Header Texts
+		document.getElementById("fyRange").innerHTML = `<STRONG>01-Apr-${startYear} to 31-Mar-${endYear}</STRONG>`;
+		document.getElementById("fyLabel1").innerText = fyString;
+		document.getElementById("fyLabel2").innerText = fyString;
+		document.getElementById("fyLabel3").innerText = fyString;
+		document.getElementById("fyLabel4").innerText = fyString;
+		// Calculate Quarter Dates dynamically
+		// Q1: Apr 1 - Apr 15
+		const q1Start = new Date(startYear, 3, 1);
+		const q1End = new Date(startYear, 3, 15);
+		document.getElementById("q1Start").innerText = formatDate(q1Start);
+		document.getElementById("q1End").innerText = formatDate(q1End);
+		// Q2: Jul 1 - Jul 15
+		const q2Start = new Date(startYear, 6, 1);
+		const q2End = new Date(startYear, 6, 15);
+		document.getElementById("q2Start").innerText = formatDate(q2Start);
+		document.getElementById("q2End").innerText = formatDate(q2End);
+		// Month name for table targets
+		document.getElementById("q2MonthTarget").innerHTML = `<STRONG>July ${startYear}</STRONG>`;
+		document.getElementById("transitionMonthTarget").innerHTML = `<STRONG>September/October ${startYear}</STRONG>`;
+		// Q3: Oct 1 - Oct 15
+		const q3Start = new Date(startYear, 9, 1);
+		const q3End = new Date(startYear, 9, 15);
+		document.getElementById("q3Start").innerText = formatDate(q3Start);
+		document.getElementById("q3End").innerText = formatDate(q3End);
+		document.getElementById("q3MonthTarget").innerHTML = `<STRONG>October ${startYear}</STRONG>`;
+		// Q4: Jan 1 - Jan 15 of end year
+		const q4Start = new Date(endYear, 0, 1);
+		const q4End = new Date(endYear, 0, 15);
+		document.getElementById("q4Start").innerText = formatDate(q4Start);
+		document.getElementById("q4End").innerText = formatDate(q4End);
+		</SCRIPT>
+	</BODY>
+</HTML>
