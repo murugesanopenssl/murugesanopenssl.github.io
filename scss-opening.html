@@ -44,7 +44,8 @@
 				</TBODY>
 			</TABLE>
 			<H2>Corrected Account Distribution Matrix</H2>
-			<TABLE border='1' style='width:100%;'>
+			<FONT color='red'><B><U>Always open SCSS during following months alone:</B></U></FONT>
+			<TABLE border='1' style='width:100%;background-color:cyan;'>
 				<THEAD>
 					<TR>
 						<TH valign='top' align='left'>Account Cluster</TH>
@@ -53,9 +54,10 @@
 					</TR>
 				</THEAD>
 				<TBODY>
-					<TR><TD valign='top' align='left'>SCSS001 to SCSS004</TD><TD valign='top' align='left'>Aligned to Q2 Start (<SPAN id="q2MonthTarget"></SPAN>)</TD><TD valign='top' align='left'>Optimized</TD></TR>
-					<TR><TD valign='top' align='left'>SCSS005 to SCSS010</TD><TD valign='top' align='left'>Aligned to Q2/Q3 Transition (<SPAN id="transitionMonthTarget"></SPAN>)</TD><TD valign='top' align='left'>Optimized</TD></TR>
-					<TR><TD valign='top' align='left'>SCSS011 to SCSS014</TD><TD valign='top' align='left'>Aligned to Q3 Start (<SPAN id="q3MonthTarget"></SPAN>)</TD><TD valign='top' align='left'>Optimized</TD></TR>
+					<TR><TD valign='top' align='left'>SCSS001 to SCSS004</TD><TD valign='top' align='left'>Aligned to Q1 Start (<SPAN id="q2MonthTarget"></SPAN>) 01st till 15th of Apr</TD><TD valign='top' align='left'>Optimized</TD></TR>
+					<TR><TD valign='top' align='left'>SCSS005 to SCSS010</TD><TD valign='top' align='left'>Aligned to Q2 Transition (<SPAN id="transitionMonthTarget"></SPAN>) 01st till 15th of Jul</TD><TD valign='top' align='left'>Optimized</TD></TR>
+					<TR><TD valign='top' align='left'>SCSS011 to SCSS014</TD><TD valign='top' align='left'>Aligned to Q3 Start (<SPAN id="q3MonthTarget"></SPAN>) from 01st till 15th of Oct</TD><TD valign='top' align='left'>Optimized</TD></TR>
+					<TR><TD valign='top' align='left'>SCSS015 to SCSS023</TD><TD valign='top' align='left'>Aligned to Q4 Start (<SPAN id="q4MonthTarget"></SPAN>) from 01st till 15th of Jan</TD><TD valign='top' align='left'>Optimized</TD></TR>
 				</TBODY>
 			</TABLE>
 			<DIV class="note-box">
@@ -78,7 +80,7 @@
 		const today = new Date();
 		const currentYear = today.getFullYear();
 		const currentMonth = today.getMonth(); // 0-indexed (0 = Jan, 3 = Apr, etc.)
-		let startYear, endYear;
+		let startYear = 0, endYear = 0;
 		if( 3 <= currentMonth )
 		{ // April or later
 			startYear = currentYear;
@@ -109,19 +111,20 @@
 		document.getElementById("q2Start").innerText = formatDate(q2Start);
 		document.getElementById("q2End").innerText = formatDate(q2End);
 		// Month name for table targets
-		document.getElementById("q2MonthTarget").innerHTML = `<STRONG>July ${startYear}</STRONG>`;
-		document.getElementById("transitionMonthTarget").innerHTML = `<STRONG>September/October ${startYear}</STRONG>`;
+		document.getElementById("q2MonthTarget").innerHTML = `<STRONG>Apr ${startYear}</STRONG>`;
+		document.getElementById("transitionMonthTarget").innerHTML = `<STRONG>Jul ${startYear}</STRONG>`;
 		// Q3: Oct 1 - Oct 15
 		const q3Start = new Date(startYear, 9, 1);
 		const q3End = new Date(startYear, 9, 15);
 		document.getElementById("q3Start").innerText = formatDate(q3Start);
 		document.getElementById("q3End").innerText = formatDate(q3End);
-		document.getElementById("q3MonthTarget").innerHTML = `<STRONG>October ${startYear}</STRONG>`;
+		document.getElementById("q3MonthTarget").innerHTML = `<STRONG>Oct ${startYear}</STRONG>`;
 		// Q4: Jan 1 - Jan 15 of end year
 		const q4Start = new Date(endYear, 0, 1);
 		const q4End = new Date(endYear, 0, 15);
 		document.getElementById("q4Start").innerText = formatDate(q4Start);
 		document.getElementById("q4End").innerText = formatDate(q4End);
+		document.getElementById("q4MonthTarget").innerHTML = `<STRONG>Jan ${endYear}</STRONG>`;
 		</SCRIPT>
 	</BODY>
 </HTML>
