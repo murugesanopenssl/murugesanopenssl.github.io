@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<META CHARSET='UTF-8'>
+		<TITLE>MIS Interest Transfer Schedule</TITLE>
+	</HEAD>
+	<BODY TOPMARGIN='0' LEFTMARGIN='0' MARGINHEIGHT='0' MARGINWIDTH='0'>
+		<TABLE border='1' cellpadding='5' cellspacing='0' style='width:100%;border-collapse:collapse;'>
+			<TR>
+				<TD colspan='3' valign='top' align='center' style='background-color:navy;color:white;'>
+					<B>MIS Interest Transfer Schedule</B>
+				</TD>
+			</TR>
+			<TR>
+				<TD colspan='3' valign='top' align='left'>
+					Due to the leap year on Thu 29-Feb-2024 IST, MIS interest transfer timing shifted by one day after the applicable night-time cutoff.<BR>
+					This applies only to MIS accounts opened on or before Wed 28-Feb-2024 IST that have not yet been closed yet.
+				</TD>
+			</TR>
+			<TR style='background-color:navy;color:white;'>
+				<TH valign='top' align='left'>Time (IST) to Receive Tomorrow's MIS Interest Today<BR>
+					Applicable to MIS Accounts Opened Before Thu 29-Feb-2024 and Not Yet Closed.</TH>
+				<TH valign='top' align='left'>Day</TH>
+				<TH valign='top' align='left'>Comment</TH>
+			</TR>
+			<TBODY id='schedule'>
+			</TBODY>
+			<SCRIPT type='text/javascript'>
+				(
+					function()
+					{
+						var now = new Date();
+						var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+						var times = ['10:35 PM', '09:00 PM', '08:50 PM', '09:10 PM', '10:05 PM', '09:02 PM', '10:04 PM'];
+						var schedule = document.getElementById('schedule');
+						var today = now.getDay();
+						var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+						function formatDate(date)
+						{
+							return days[date.getDay()].substring(0, 3) + ' ' + String(date.getDate()).padStart(2, '0') + '-' + months[date.getMonth()] + '-' + date.getFullYear();
+						}
+						function addCell(row, value)
+						{
+							var cell = document.createElement('TD');
+							cell.setAttribute('valign', 'top');
+							cell.setAttribute('align', 'left');
+							cell.innerHTML = value;
+							row.appendChild(cell);
+						}
+						var monday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+						var daysUntilMonday = (8 - monday.getDay()) % 7;
+						if (daysUntilMonday === 0) {
+							daysUntilMonday = 7;
+						}
+						monday.setDate(monday.getDate() + daysUntilMonday);
+						var tuesday = new Date(monday);
+						tuesday.setDate(tuesday.getDate() + 1);
+						var wednesday = new Date(monday);
+						wednesday.setDate(wednesday.getDate() + 2);
+						for (var i = 0; i < 7; i++) {
+							var dayIndex = (today + i) % 7;
+							var row = document.createElement('TR');
+							row.setAttribute('data-day', days[dayIndex]);
+							if (i === 0) {
+								row.style.backgroundColor = 'red';
+								row.style.color = 'white';
+								row.style.fontWeight = 'bold';
+							}
+							addCell(row, times[dayIndex]);
+							addCell(row, days[dayIndex]);
+							var comment = 'Applicable only if tomorrow is not a government public holiday.';
+							if (dayIndex === 5) {
+								comment = 'Example during the following days:<BR>Sat 17-Oct-2026,<BR>Sun 18-Oct-2026 (public holiday),<BR>Mon 19-Oct-2026 (public holiday), and<BR>Tue 20-Oct-2026 (public holiday),<BR>MIS interest for the above days may be received on Sat 17-Oct-2026 itself.<BR>Due to the leap year on Thu 29-Feb-2024,<BR>MIS interest for the above days was received on Fri 16-Oct-2026 after 09:02 PM IST itself.';
+							}
+							if (dayIndex === 6) {
+								comment = 'Applicable only if the forthcoming:<BR>a) Mon ' + formatDate(monday).substring(4) + ' is not a government public holiday, OR<BR>b) Mon ' + formatDate(monday).substring(4) + ' AND Tue ' + formatDate(tuesday).substring(4) + ' (in sequence) are not government public holidays, OR<BR>c) Mon ' + formatDate(monday).substring(4) + ' AND Tue ' + formatDate(tuesday).substring(4) + ' AND Wed ' + formatDate(wednesday).substring(4) + ' (in sequence) are not government public holidays.';
+							}
+							if (dayIndex === 5 || dayIndex === 6) {
+								comment = 'Sunday interest may be received on Saturday itself.<BR>' + comment;
+							}
+							addCell(row, comment);
+							schedule.appendChild(row);
+						}
+					}
+				)();
+			</SCRIPT>
+		</TABLE>
+		<SCRIPT type='text/javascript'>
+			(
+				function()
+				{
+					var now = new Date();
+					var year = now.getFullYear();
+					var leapYear = year - 1;
+					while (!(leapYear % 4 === 0 && (leapYear % 100 !== 0 || leapYear % 400 === 0))) {
+						leapYear--;
+					}
+					var leapDate = new Date(Date.UTC(leapYear, 1, 29));
+					var leapDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+					document.getElementById('leapDay').textContent = leapDays[leapDate.getUTCDay()];
+					document.getElementById('leapDate').textContent = '29';
+					document.getElementById('leapYear').textContent = leapYear;
+					var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+					var today = days[now.getDay()];
+					var rows = document.querySelectorAll('#schedule TR');
+					for (var i = 0; i < rows.length; i++) {
+						if (rows[i].getAttribute('data-day') === today) {
+							rows[i].style.backgroundColor = 'red';
+							rows[i].style.color = 'white';
+							rows[i].style.fontWeight = 'bold';
+						}
+					}
+				}
+			)();
+		</SCRIPT>
+	</BODY>
+</HTML>
